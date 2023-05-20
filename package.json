@@ -1,48 +1,22 @@
 {
-    "name": "@getbrevo/client",
-    "version": "1.0.0",
-    "description": "NodeJS client for Brevo V3 api",
-    "main": "dist/api.js",
-    "types": "dist/api.d.ts",
-    "scripts": {
-        "clean": "rimraf -rf dist/",
-        "build": "tsc",
-        "lint": "eslint . --ext .ts",
-        "lint-and-fix": "eslint . --ext .ts --fix",
-        "prepublishOnly": "npm run clean && npm run build"
-    },
-    "files": [
-    "dist/*",
-    "package.json",
-    "README"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/getbrevo/brevo-node.git"
-    },
-    "author": {
-        "name": "Brevo",
-        "email": "developers@brevo.com",
-        "url": "https://www.brevo.com/"
-    },
-    "license": "MIT",
-    "dependencies": {
-        "bluebird": "^3.5.0",
-        "lodash": "^4.17.21",
-        "request": "^2.81.0",
-        "@types/bluebird": "*",
-        "@types/request": "*"
-    },
-    "devDependencies": {
-        "@types/bluebird": "*",
-        "@types/request": "*",
-        "@types/node": "*",
-        "@typescript-eslint/eslint-plugin": "^4.20.0",
-        "@typescript-eslint/parser": "^4.20.0",
-        "eslint": "^7.23.0",
-        "eslint-plugin-unused-imports": "^1.1.0",
-        "minimist": "^1.2.5",
-        "rimraf": "^3.0.2",
-        "typescript": "^3.5.1"
-    }
+  "name": "brevo-node",
+  "version": "1.0.0",
+  "description": "Brevo_provide_a_RESTFul_API_that_can_be_used_with_any_languages__With_this_API_you_will_be_able_to_____Manage_your_campaigns_and_get_the_statistics____Manage_your_contacts____Send_transactional_Emails_and_SMS____and_much_more___You_can_download_our_wrappers_at_httpsgithub_comorgsbrevoPossible_responses___Code__Message____________________________________200___OK__Successful_Request_____201___OK__Successful_Creation____202___OK__Request_accepted____204___OK__Successful_UpdateDeletion_____400___Error__Bad_Request_____401___Error__Authentication_Needed_____402___Error__Not_enough_credit_plan_upgrade_needed_____403___Error__Permission_denied_____404___Error__Object_does_not_exist____405___Error__Method_not_allowed_____406___Error__Not_Acceptable__",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "superagent": "3.7.0",
+    "querystring": "0.2.0"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
 }
