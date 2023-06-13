@@ -24,7 +24,7 @@ please follow the procedure in ["Publishing npm packages"](https://docs.npmjs.co
 Then install it via:
 
 ```shell
-npm install brevo --save
+npm install @getbrevo/brevo --save
 ```
 
 ##### Local development
