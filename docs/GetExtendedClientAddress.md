@@ -1,4 +1,4 @@
-# BrevoNode.GetExtendedClientAddress
+# Brevo.GetExtendedClientAddress
 
 ## Properties
 Name | Type | Description | Notes

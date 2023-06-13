@@ -1,4 +1,4 @@
-# BrevoNode.CreateEmailCampaignRecipients
+# Brevo.CreateEmailCampaignRecipients
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.GetList
+# Brevo.GetList
 
 ## Properties
 Name | Type | Description | Notes

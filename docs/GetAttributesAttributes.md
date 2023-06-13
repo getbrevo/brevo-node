@@ -1,4 +1,4 @@
-# BrevoNode.GetAttributesAttributes
+# Brevo.GetAttributesAttributes
 
 ## Properties
 Name | Type | Description | Notes

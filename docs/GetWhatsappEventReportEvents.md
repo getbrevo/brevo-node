@@ -1,4 +1,4 @@
-# BrevoNode.GetWhatsappEventReportEvents
+# Brevo.GetWhatsappEventReportEvents
 
 ## Properties
 Name | Type | Description | Notes

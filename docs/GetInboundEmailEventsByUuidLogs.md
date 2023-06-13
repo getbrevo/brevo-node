@@ -1,4 +1,4 @@
-# BrevoNode.GetInboundEmailEventsByUuidLogs
+# Brevo.GetInboundEmailEventsByUuidLogs
 
 ## Properties
 Name | Type | Description | Notes

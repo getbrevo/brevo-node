@@ -1,4 +1,4 @@
-# BrevoNode.UserApi
+# Brevo.UserApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -16,8 +16,8 @@ Get the list of all your users
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -31,7 +31,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.UserApi();
+var apiInstance = new Brevo.UserApi();
 apiInstance.getInvitedUsersList().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -64,8 +64,8 @@ Check user permission
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -79,7 +79,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.UserApi();
+var apiInstance = new Brevo.UserApi();
 
 var email = "email_example"; // String | Email of the invited user.
 

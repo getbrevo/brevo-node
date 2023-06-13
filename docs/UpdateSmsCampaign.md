@@ -1,4 +1,4 @@
-# BrevoNode.UpdateSmsCampaign
+# Brevo.UpdateSmsCampaign
 
 ## Properties
 Name | Type | Description | Notes

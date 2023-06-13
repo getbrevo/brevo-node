@@ -1,4 +1,4 @@
-# BrevoNode.CreateSmtpTemplate
+# Brevo.CreateSmtpTemplate
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.SubAccountDetailsResponsePlanInfoFeaturesUsers
+# Brevo.SubAccountDetailsResponsePlanInfoFeaturesUsers
 
 ## Properties
 Name | Type | Description | Notes

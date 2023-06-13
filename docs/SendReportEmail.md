@@ -1,4 +1,4 @@
-# BrevoNode.SendReportEmail
+# Brevo.SendReportEmail
 
 ## Properties
 Name | Type | Description | Notes

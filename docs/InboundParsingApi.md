@@ -1,4 +1,4 @@
-# BrevoNode.InboundParsingApi
+# Brevo.InboundParsingApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -19,8 +19,8 @@ This endpoint will retrieve inbound attachment with download token.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -34,7 +34,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.InboundParsingApi();
+var apiInstance = new Brevo.InboundParsingApi();
 
 var downloadToken = "downloadToken_example"; // String | Token to fetch a particular attachment
 
@@ -75,8 +75,8 @@ This endpoint will show the list of all the events for the received emails.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -90,7 +90,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.InboundParsingApi();
+var apiInstance = new Brevo.InboundParsingApi();
 
 var opts = { 
   'sender': "sender_example", // String | Email address of the sender.
@@ -142,8 +142,8 @@ This endpoint will show the list of all events history for one particular receiv
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -157,7 +157,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.InboundParsingApi();
+var apiInstance = new Brevo.InboundParsingApi();
 
 var uuid = "uuid_example"; // String | UUID to fetch events specific to recieved email
 

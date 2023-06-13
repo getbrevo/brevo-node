@@ -1,4 +1,4 @@
-# BrevoNode.CreateEmailCampaign
+# Brevo.CreateEmailCampaign
 
 ## Properties
 Name | Type | Description | Notes
@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **templateId** | **Number** | Mandatory if htmlContent and htmlUrl are empty. Id of the transactional email template with status 'active'. Used to copy only its content fetched from htmlContent/htmlUrl to an email campaign for RSS feature. | [optional] 
 **scheduledAt** | **String** | Sending UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part). | [optional] 
 **subject** | **String** | Subject of the campaign. Mandatory if abTesting is false. Ignored if abTesting is true. | [optional] 
+**previewText** | **String** | Preview text or preheader of the email campaign | [optional] 
 **replyTo** | **String** | Email on which the campaign recipients will be able to reply to | [optional] 
 **toField** | **String** | To personalize the «To» Field. If you want to include the first name and last name of your recipient, add {FNAME} {LNAME}. These contact attributes must already exist in your Brevo account. If input parameter 'params' used please use {{contact.FNAME}} {{contact.LNAME}} for personalization | [optional] 
 **recipients** | [**CreateEmailCampaignRecipients**](CreateEmailCampaignRecipients.md) |  | [optional] 

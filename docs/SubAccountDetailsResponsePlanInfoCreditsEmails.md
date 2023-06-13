@@ -1,4 +1,4 @@
-# BrevoNode.SubAccountDetailsResponsePlanInfoCreditsEmails
+# Brevo.SubAccountDetailsResponsePlanInfoCreditsEmails
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.VariablesItems
+# Brevo.VariablesItems
 
 ## Properties
 Name | Type | Description | Notes

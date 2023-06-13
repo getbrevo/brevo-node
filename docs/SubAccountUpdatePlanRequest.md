@@ -1,4 +1,4 @@
-# BrevoNode.SubAccountUpdatePlanRequest
+# Brevo.SubAccountUpdatePlanRequest
 
 ## Properties
 Name | Type | Description | Notes

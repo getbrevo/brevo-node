@@ -1,4 +1,4 @@
-# BrevoNode.NotesApi
+# Brevo.NotesApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -19,8 +19,8 @@ Get all notes
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -34,7 +34,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.NotesApi();
+var apiInstance = new Brevo.NotesApi();
 
 var opts = { 
   'entity': "entity_example", // String | Filter by note entity type
@@ -86,8 +86,8 @@ Delete a note
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -101,7 +101,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.NotesApi();
+var apiInstance = new Brevo.NotesApi();
 
 var id = "id_example"; // String | Note ID to delete
 
@@ -140,8 +140,8 @@ Get a note
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -155,7 +155,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.NotesApi();
+var apiInstance = new Brevo.NotesApi();
 
 var id = "id_example"; // String | Note ID to get
 
@@ -194,8 +194,8 @@ Update a note
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -209,11 +209,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.NotesApi();
+var apiInstance = new Brevo.NotesApi();
 
 var id = "id_example"; // String | Note ID to update
 
-var body = new BrevoNode.NoteData(); // NoteData | Note data to update a note
+var body = new Brevo.NoteData(); // NoteData | Note data to update a note
 
 apiInstance.crmNotesIdPatch(id, body).then(function() {
   console.log('API called successfully.');
@@ -251,8 +251,8 @@ Create a note
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -266,9 +266,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.NotesApi();
+var apiInstance = new Brevo.NotesApi();
 
-var body = new BrevoNode.NoteData(); // NoteData | Note data to create a note.
+var body = new Brevo.NoteData(); // NoteData | Note data to create a note.
 
 apiInstance.crmNotesPost(body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

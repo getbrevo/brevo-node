@@ -1,4 +1,4 @@
-# BrevoNode.GetScheduledEmailByBatchId
+# Brevo.GetScheduledEmailByBatchId
 
 ## Properties
 Name | Type | Description | Notes

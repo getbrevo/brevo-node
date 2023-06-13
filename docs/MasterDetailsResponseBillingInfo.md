@@ -1,4 +1,4 @@
-# BrevoNode.MasterDetailsResponseBillingInfo
+# Brevo.MasterDetailsResponseBillingInfo
 
 ## Properties
 Name | Type | Description | Notes

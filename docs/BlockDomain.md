@@ -1,4 +1,4 @@
-# BrevoNode.BlockDomain
+# Brevo.BlockDomain
 
 ## Properties
 Name | Type | Description | Notes

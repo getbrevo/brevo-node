@@ -1,4 +1,4 @@
-# BrevoNode.GetExtendedCampaignOverview
+# Brevo.GetExtendedCampaignOverview
 
 ## Properties
 Name | Type | Description | Notes

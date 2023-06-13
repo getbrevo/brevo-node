@@ -1,4 +1,4 @@
-# BrevoNode.GetAllExternalFeedsFeeds
+# Brevo.GetAllExternalFeedsFeeds
 
 ## Properties
 Name | Type | Description | Notes

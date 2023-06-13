@@ -1,4 +1,4 @@
-# BrevoNode.CreateUpdateBatchCategory
+# Brevo.CreateUpdateBatchCategory
 
 ## Properties
 Name | Type | Description | Notes

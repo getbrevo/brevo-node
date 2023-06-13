@@ -1,4 +1,4 @@
-# BrevoNode.GetInvitedUsersListUsers
+# Brevo.GetInvitedUsersListUsers
 
 ## Properties
 Name | Type | Description | Notes

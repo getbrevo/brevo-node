@@ -1,4 +1,4 @@
-# BrevoNode.CreateList
+# Brevo.CreateList
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.GetSmtpTemplateOverview
+# Brevo.GetSmtpTemplateOverview
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.InlineResponse200
+# Brevo.InlineResponse200
 
 ## Properties
 Name | Type | Description | Notes

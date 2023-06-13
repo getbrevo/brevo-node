@@ -1,4 +1,4 @@
-# BrevoNode.GetStatsByDevice
+# Brevo.GetStatsByDevice
 
 ## Properties
 Name | Type | Description | Notes

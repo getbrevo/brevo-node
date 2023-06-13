@@ -1,4 +1,4 @@
-# BrevoNode.CreateDomainModelDnsRecordsDkimRecord
+# Brevo.CreateDomainModelDnsRecordsDkimRecord
 
 ## Properties
 Name | Type | Description | Notes

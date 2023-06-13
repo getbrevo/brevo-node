@@ -1,4 +1,4 @@
-# BrevoNode.CreateDomainModel
+# Brevo.CreateDomainModel
 
 ## Properties
 Name | Type | Description | Notes

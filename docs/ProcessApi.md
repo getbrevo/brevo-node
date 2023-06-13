@@ -1,4 +1,4 @@
-# BrevoNode.ProcessApi
+# Brevo.ProcessApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -16,8 +16,8 @@ Return the informations for a process
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -31,7 +31,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ProcessApi();
+var apiInstance = new Brevo.ProcessApi();
 
 var processId = 789; // Number | Id of the process
 
@@ -70,8 +70,8 @@ Return all the processes for your account
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -85,7 +85,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ProcessApi();
+var apiInstance = new Brevo.ProcessApi();
 
 var opts = { 
   'limit': 10, // Number | Number limitation for the result returned

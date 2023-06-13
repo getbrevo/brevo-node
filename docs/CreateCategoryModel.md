@@ -1,4 +1,4 @@
-# BrevoNode.CreateCategoryModel
+# Brevo.CreateCategoryModel
 
 ## Properties
 Name | Type | Description | Notes

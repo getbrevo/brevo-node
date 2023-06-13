@@ -1,4 +1,4 @@
-# BrevoNode.UpdateSender
+# Brevo.UpdateSender
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.GetTransacEmailsListTransactionalEmails
+# Brevo.GetTransacEmailsListTransactionalEmails
 
 ## Properties
 Name | Type | Description | Notes

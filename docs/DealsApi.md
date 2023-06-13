@@ -1,4 +1,4 @@
-# BrevoNode.DealsApi
+# Brevo.DealsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**crmDealsLinkUnlinkIdPatch**](DealsApi.md#crmDealsLinkUnlinkIdPatch) | **PATCH** /crm/deals/link-unlink/{id} | Link and Unlink a deal with contacts and companies
 [**crmDealsPost**](DealsApi.md#crmDealsPost) | **POST** /crm/deals | Create a deal
 [**crmPipelineDetailsGet**](DealsApi.md#crmPipelineDetailsGet) | **GET** /crm/pipeline/details | Get pipeline stages
+[**crmPipelineDetailsPipelineIDGet**](DealsApi.md#crmPipelineDetailsPipelineIDGet) | **GET** /crm/pipeline/details/{pipelineID} | Get pipelines and their details
 
 
 <a name="crmAttributesDealsGet"></a>
@@ -22,8 +23,8 @@ Get deal attributes
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -37,7 +38,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DealsApi();
+var apiInstance = new Brevo.DealsApi();
 apiInstance.crmAttributesDealsGet().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -70,8 +71,8 @@ Get all deals
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -85,7 +86,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DealsApi();
+var apiInstance = new Brevo.DealsApi();
 
 var opts = { 
   'filtersAttributes': "filtersAttributes_example", // String | Filter by attrbutes. If you have filter for owner on your side please send it as `attributes.owner`.\"
@@ -137,8 +138,8 @@ Delete a deal
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -152,7 +153,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DealsApi();
+var apiInstance = new Brevo.DealsApi();
 
 var id = "id_example"; // String | 
 
@@ -191,8 +192,8 @@ Get a deal
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -206,7 +207,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DealsApi();
+var apiInstance = new Brevo.DealsApi();
 
 var id = "id_example"; // String | 
 
@@ -245,8 +246,8 @@ Update a deal
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -260,11 +261,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DealsApi();
+var apiInstance = new Brevo.DealsApi();
 
 var id = "id_example"; // String | 
 
-var body = new BrevoNode.Body4(); // Body4 | Updated deal details.
+var body = new Brevo.Body4(); // Body4 | Updated deal details.
 
 apiInstance.crmDealsIdPatch(id, body).then(function() {
   console.log('API called successfully.');
@@ -302,8 +303,8 @@ Link and Unlink a deal with contacts and companies
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -317,11 +318,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DealsApi();
+var apiInstance = new Brevo.DealsApi();
 
 var id = "id_example"; // String | 
 
-var body = new BrevoNode.Body5(); // Body5 | Linked / Unlinked contacts and companies ids.
+var body = new Brevo.Body5(); // Body5 | Linked / Unlinked contacts and companies ids.
 
 apiInstance.crmDealsLinkUnlinkIdPatch(id, body).then(function() {
   console.log('API called successfully.');
@@ -359,8 +360,8 @@ Create a deal
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -374,9 +375,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DealsApi();
+var apiInstance = new Brevo.DealsApi();
 
-var body = new BrevoNode.Body3(); // Body3 | Deal create data.
+var body = new Brevo.Body3(); // Body3 | Deal create data.
 
 apiInstance.crmDealsPost(body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -411,10 +412,12 @@ Name | Type | Description  | Notes
 
 Get pipeline stages
 
+This endpoint is deprecated. Prefer /crm/pipeline/details/{pipelineID} instead.
+
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -428,7 +431,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DealsApi();
+var apiInstance = new Brevo.DealsApi();
 apiInstance.crmPipelineDetailsGet().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -443,6 +446,60 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Pipeline**](Pipeline.md)
+
+### Authorization
+
+[api-key](../README.md#api-key), [partner-key](../README.md#partner-key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="crmPipelineDetailsPipelineIDGet"></a>
+# **crmPipelineDetailsPipelineIDGet**
+> Pipelines crmPipelineDetailsPipelineIDGet(pipelineID)
+
+Get pipelines and their details
+
+### Example
+```javascript
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
+
+// Configure API key authorization: api-key
+var api-key = defaultClient.authentications['api-key'];
+api-key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//api-key.apiKeyPrefix = 'Token';
+
+// Configure API key authorization: partner-key
+var partner-key = defaultClient.authentications['partner-key'];
+partner-key.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//partner-key.apiKeyPrefix = 'Token';
+
+var apiInstance = new Brevo.DealsApi();
+
+var pipelineID = "pipelineID_example"; // String | Gets the pipeline details with given pipelineID and all if no pipeline provided
+
+apiInstance.crmPipelineDetailsPipelineIDGet(pipelineID).then(function(data) {
+  console.log('API called successfully. Returned data: ' + data);
+}, function(error) {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pipelineID** | **String**| Gets the pipeline details with given pipelineID and all if no pipeline provided | 
+
+### Return type
+
+[**Pipelines**](Pipelines.md)
 
 ### Authorization
 

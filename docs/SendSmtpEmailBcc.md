@@ -1,4 +1,4 @@
-# BrevoNode.SendSmtpEmailBcc
+# Brevo.SendSmtpEmailBcc
 
 ## Properties
 Name | Type | Description | Notes

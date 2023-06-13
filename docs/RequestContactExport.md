@@ -1,4 +1,4 @@
-# BrevoNode.RequestContactExport
+# Brevo.RequestContactExport
 
 ## Properties
 Name | Type | Description | Notes

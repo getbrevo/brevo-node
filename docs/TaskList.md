@@ -1,4 +1,4 @@
-# BrevoNode.TaskList
+# Brevo.TaskList
 
 ## Properties
 Name | Type | Description | Notes

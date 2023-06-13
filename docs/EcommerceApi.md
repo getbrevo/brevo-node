@@ -1,4 +1,4 @@
-# BrevoNode.EcommerceApi
+# Brevo.EcommerceApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -27,8 +27,8 @@ Create multiple orders at one time instead of one order at a time
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -42,9 +42,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
-var orderBatch = new BrevoNode.OrderBatch(); // OrderBatch | 
+var orderBatch = new Brevo.OrderBatch(); // OrderBatch | 
 
 apiInstance.createBatchOrder(orderBatch).then(function() {
   console.log('API called successfully.');
@@ -83,8 +83,8 @@ Manages the transactional status of the order
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -98,9 +98,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
-var order = new BrevoNode.Order(); // Order | 
+var order = new Brevo.Order(); // Order | 
 
 apiInstance.createOrder(order).then(function() {
   console.log('API called successfully.');
@@ -137,8 +137,8 @@ Create categories in batch
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -152,9 +152,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
-var createUpdateBatchCategory = new BrevoNode.CreateUpdateBatchCategory(); // CreateUpdateBatchCategory | Values to create a batch of categories
+var createUpdateBatchCategory = new Brevo.CreateUpdateBatchCategory(); // CreateUpdateBatchCategory | Values to create a batch of categories
 
 apiInstance.createUpdateBatchCategory(createUpdateBatchCategory).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -191,8 +191,8 @@ Create products in batch
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -206,9 +206,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
-var createUpdateBatchProducts = new BrevoNode.CreateUpdateBatchProducts(); // CreateUpdateBatchProducts | Values to create a batch of products
+var createUpdateBatchProducts = new Brevo.CreateUpdateBatchProducts(); // CreateUpdateBatchProducts | Values to create a batch of products
 
 apiInstance.createUpdateBatchProducts(createUpdateBatchProducts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -245,8 +245,8 @@ Create/Update a category
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -260,9 +260,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
-var createUpdateCategory = new BrevoNode.CreateUpdateCategory(); // CreateUpdateCategory | Values to create/update a category
+var createUpdateCategory = new Brevo.CreateUpdateCategory(); // CreateUpdateCategory | Values to create/update a category
 
 apiInstance.createUpdateCategory(createUpdateCategory).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -299,8 +299,8 @@ Create/Update a product
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -314,9 +314,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
-var createUpdateProduct = new BrevoNode.CreateUpdateProduct(); // CreateUpdateProduct | Values to create/update a product
+var createUpdateProduct = new Brevo.CreateUpdateProduct(); // CreateUpdateProduct | Values to create/update a product
 
 apiInstance.createUpdateProduct(createUpdateProduct).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -355,8 +355,8 @@ Getting access to Brevo eCommerce.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -370,7 +370,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 apiInstance.ecommerceActivatePost().then(function() {
   console.log('API called successfully.');
 }, function(error) {
@@ -403,8 +403,8 @@ Return all your categories
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -418,7 +418,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
 var opts = { 
   'limit': 50, // Number | Number of documents per page
@@ -466,8 +466,8 @@ Get a category details
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -481,7 +481,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
 var id = "id_example"; // String | Category ID
 
@@ -520,8 +520,8 @@ Get a product's details
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -535,7 +535,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
 var id = "id_example"; // String | Product ID
 
@@ -574,8 +574,8 @@ Return all your products
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -589,7 +589,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EcommerceApi();
+var apiInstance = new Brevo.EcommerceApi();
 
 var opts = { 
   'limit': 50, // Number | Number of documents per page

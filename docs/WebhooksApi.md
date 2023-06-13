@@ -1,4 +1,4 @@
-# BrevoNode.WebhooksApi
+# Brevo.WebhooksApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -20,8 +20,8 @@ Create a webhook
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -35,9 +35,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WebhooksApi();
+var apiInstance = new Brevo.WebhooksApi();
 
-var createWebhook = new BrevoNode.CreateWebhook(); // CreateWebhook | Values to create a webhook
+var createWebhook = new Brevo.CreateWebhook(); // CreateWebhook | Values to create a webhook
 
 apiInstance.createWebhook(createWebhook).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -74,8 +74,8 @@ Delete a webhook
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -89,7 +89,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WebhooksApi();
+var apiInstance = new Brevo.WebhooksApi();
 
 var webhookId = 789; // Number | Id of the webhook
 
@@ -130,8 +130,8 @@ This endpoint will submit a request to get the history of webhooks in the CSV fi
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -145,9 +145,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WebhooksApi();
+var apiInstance = new Brevo.WebhooksApi();
 
-var exportWebhookHistory = new BrevoNode.ExportWebhooksHistory(); // ExportWebhooksHistory | Values to submit for webhooks history
+var exportWebhookHistory = new Brevo.ExportWebhooksHistory(); // ExportWebhooksHistory | Values to submit for webhooks history
 
 apiInstance.exportWebhooksHistory(exportWebhookHistory).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -184,8 +184,8 @@ Get a webhook details
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -199,7 +199,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WebhooksApi();
+var apiInstance = new Brevo.WebhooksApi();
 
 var webhookId = 789; // Number | Id of the webhook
 
@@ -238,8 +238,8 @@ Get all webhooks
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -253,7 +253,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WebhooksApi();
+var apiInstance = new Brevo.WebhooksApi();
 
 var opts = { 
   'type': "transactional", // String | Filter on webhook type
@@ -295,8 +295,8 @@ Update a webhook
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -310,11 +310,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WebhooksApi();
+var apiInstance = new Brevo.WebhooksApi();
 
 var webhookId = 789; // Number | Id of the webhook
 
-var updateWebhook = new BrevoNode.UpdateWebhook(); // UpdateWebhook | Values to update a webhook
+var updateWebhook = new Brevo.UpdateWebhook(); // UpdateWebhook | Values to update a webhook
 
 apiInstance.updateWebhook(webhookId, updateWebhook).then(function() {
   console.log('API called successfully.');

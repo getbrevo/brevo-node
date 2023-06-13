@@ -1,4 +1,4 @@
-# BrevoNode.UpdateEmailCampaignSender
+# Brevo.UpdateEmailCampaignSender
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.CreateWhatsAppCampaignRecipients
+# Brevo.CreateWhatsAppCampaignRecipients
 
 ## Properties
 Name | Type | Description | Notes

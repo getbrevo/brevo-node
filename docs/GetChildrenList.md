@@ -1,4 +1,4 @@
-# BrevoNode.GetChildrenList
+# Brevo.GetChildrenList
 
 ## Properties
 Name | Type | Description | Notes

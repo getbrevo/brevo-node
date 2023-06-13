@@ -1,4 +1,4 @@
-# BrevoNode.UpdateAttribute
+# Brevo.UpdateAttribute
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.Deal
+# Brevo.Deal
 
 ## Properties
 Name | Type | Description | Notes

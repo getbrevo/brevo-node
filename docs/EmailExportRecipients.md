@@ -1,4 +1,4 @@
-# BrevoNode.EmailExportRecipients
+# Brevo.EmailExportRecipients
 
 ## Properties
 Name | Type | Description | Notes

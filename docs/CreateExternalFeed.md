@@ -1,4 +1,4 @@
-# BrevoNode.CreateExternalFeed
+# Brevo.CreateExternalFeed
 
 ## Properties
 Name | Type | Description | Notes

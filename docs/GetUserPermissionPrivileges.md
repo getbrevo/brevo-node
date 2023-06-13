@@ -1,4 +1,4 @@
-# BrevoNode.GetUserPermissionPrivileges
+# Brevo.GetUserPermissionPrivileges
 
 ## Properties
 Name | Type | Description | Notes

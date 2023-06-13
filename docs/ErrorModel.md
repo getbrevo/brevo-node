@@ -1,4 +1,4 @@
-# BrevoNode.ErrorModel
+# Brevo.ErrorModel
 
 ## Properties
 Name | Type | Description | Notes

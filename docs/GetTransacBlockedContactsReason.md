@@ -1,4 +1,4 @@
-# BrevoNode.GetTransacBlockedContactsReason
+# Brevo.GetTransacBlockedContactsReason
 
 ## Properties
 Name | Type | Description | Notes

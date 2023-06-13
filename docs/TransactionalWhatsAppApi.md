@@ -1,4 +1,4 @@
-# BrevoNode.TransactionalWhatsAppApi
+# Brevo.TransactionalWhatsAppApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -18,8 +18,8 @@ This endpoint will show the unaggregated statistics for WhatsApp activity (30 da
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -33,7 +33,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalWhatsAppApi();
+var apiInstance = new Brevo.TransactionalWhatsAppApi();
 
 var opts = { 
   'limit': 2500, // Number | Number limitation for the result returned
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 <a name="sendWhatsappMessage"></a>
 # **sendWhatsappMessage**
-> InlineResponse2012 sendWhatsappMessage(sendWhatsappMessage)
+> InlineResponse2013 sendWhatsappMessage(sendWhatsappMessage)
 
 Send a WhatsApp message
 
@@ -89,8 +89,8 @@ This endpoint is used to send a WhatsApp message. <br/>(**The first message you 
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -104,9 +104,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalWhatsAppApi();
+var apiInstance = new Brevo.TransactionalWhatsAppApi();
 
-var sendWhatsappMessage = new BrevoNode.SendWhatsappMessage(); // SendWhatsappMessage | Values to send WhatsApp message
+var sendWhatsappMessage = new Brevo.SendWhatsappMessage(); // SendWhatsappMessage | Values to send WhatsApp message
 
 apiInstance.sendWhatsappMessage(sendWhatsappMessage).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2012**](InlineResponse2012.md)
+[**InlineResponse2013**](InlineResponse2013.md)
 
 ### Authorization
 

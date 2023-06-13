@@ -1,4 +1,4 @@
-# BrevoNode.CreateSubAccount
+# Brevo.CreateSubAccount
 
 ## Properties
 Name | Type | Description | Notes

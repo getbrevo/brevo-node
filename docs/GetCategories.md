@@ -1,4 +1,4 @@
-# BrevoNode.GetCategories
+# Brevo.GetCategories
 
 ## Properties
 Name | Type | Description | Notes

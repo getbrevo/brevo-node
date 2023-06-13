@@ -1,4 +1,4 @@
-# BrevoNode.GetIpFromSender
+# Brevo.GetIpFromSender
 
 ## Properties
 Name | Type | Description | Notes

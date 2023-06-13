@@ -1,4 +1,4 @@
-# BrevoNode.CreateWhatsAppTemplate
+# Brevo.CreateWhatsAppTemplate
 
 ## Properties
 Name | Type | Description | Notes

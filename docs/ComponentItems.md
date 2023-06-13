@@ -1,4 +1,4 @@
-# BrevoNode.ComponentItems
+# Brevo.ComponentItems
 
 ## Properties
 Name | Type | Description | Notes

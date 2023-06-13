@@ -1,4 +1,4 @@
-# BrevoNode.GetDomainsListDomains
+# Brevo.GetDomainsListDomains
 
 ## Properties
 Name | Type | Description | Notes

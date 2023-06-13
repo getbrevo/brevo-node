@@ -1,4 +1,4 @@
-# BrevoNode.GetAggregatedReport
+# Brevo.GetAggregatedReport
 
 ## Properties
 Name | Type | Description | Notes

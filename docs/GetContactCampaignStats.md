@@ -1,4 +1,4 @@
-# BrevoNode.GetContactCampaignStats
+# Brevo.GetContactCampaignStats
 
 ## Properties
 Name | Type | Description | Notes

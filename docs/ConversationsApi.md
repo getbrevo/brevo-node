@@ -1,4 +1,4 @@
-# BrevoNode.ConversationsApi
+# Brevo.ConversationsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -25,8 +25,8 @@ We recommend pinging this endpoint every minute for as long as the agent has to 
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -40,9 +40,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
-var body = new BrevoNode.Body12(); // Body12 | Agent fields.
+var body = new Brevo.Body12(); // Body12 | Agent fields.
 
 apiInstance.conversationsAgentOnlinePingPost(body).then(function() {
   console.log('API called successfully.');
@@ -81,8 +81,8 @@ Only agents’ messages can be deleted.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -96,7 +96,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
 var id = "id_example"; // String | ID of the message
 
@@ -135,8 +135,8 @@ Get a message
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -150,7 +150,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
 var id = "id_example"; // String | ID of the message
 
@@ -191,8 +191,8 @@ Only agents’ messages can be edited.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -206,12 +206,12 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
 var id = "id_example"; // String | ID of the message
 
 var opts = { 
-  'body': new BrevoNode.Body9() // Body9 | 
+  'body': new Brevo.Body9() // Body9 | 
 };
 apiInstance.conversationsMessagesIdPut(id, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -249,8 +249,8 @@ Send a message as an agent
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -264,9 +264,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
-var body = new BrevoNode.Body8(); // Body8 | Message fields.
+var body = new Brevo.Body8(); // Body8 | Message fields.
 
 apiInstance.conversationsMessagesPost(body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -303,8 +303,8 @@ Delete an automated message
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -318,7 +318,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
 var id = "id_example"; // String | ID of the message
 
@@ -357,8 +357,8 @@ Get an automated message
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -372,7 +372,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
 var id = "id_example"; // String | ID of the message sent previously
 
@@ -411,8 +411,8 @@ Update an automated message
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -426,11 +426,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
 var id = "id_example"; // String | ID of the message
 
-var body = new BrevoNode.Body11(); // Body11 | 
+var body = new Brevo.Body11(); // Body11 | 
 
 apiInstance.conversationsPushedMessagesIdPut(id, body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -470,8 +470,8 @@ Example of automated messages: order status, announce new features in your web a
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -485,9 +485,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ConversationsApi();
+var apiInstance = new Brevo.ConversationsApi();
 
-var body = new BrevoNode.Body10(); // Body10 | 
+var body = new Brevo.Body10(); // Body10 | 
 
 apiInstance.conversationsPushedMessagesPost(body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

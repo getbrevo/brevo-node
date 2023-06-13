@@ -1,4 +1,4 @@
-# BrevoNode.Order
+# Brevo.Order
 
 ## Properties
 Name | Type | Description | Notes

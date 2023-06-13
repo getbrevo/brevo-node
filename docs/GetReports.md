@@ -1,4 +1,4 @@
-# BrevoNode.GetReports
+# Brevo.GetReports
 
 ## Properties
 Name | Type | Description | Notes

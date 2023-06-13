@@ -1,4 +1,4 @@
-# BrevoNode.CreateUpdateContactModel
+# Brevo.CreateUpdateContactModel
 
 ## Properties
 Name | Type | Description | Notes

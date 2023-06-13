@@ -1,4 +1,4 @@
-# BrevoNode.UpdateList
+# Brevo.UpdateList
 
 ## Properties
 Name | Type | Description | Notes

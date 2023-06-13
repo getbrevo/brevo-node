@@ -1,4 +1,4 @@
-# BrevoNode.GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription
+# Brevo.GetExtendedContactDetailsStatisticsUnsubscriptionsAdminUnsubscription
 
 ## Properties
 Name | Type | Description | Notes

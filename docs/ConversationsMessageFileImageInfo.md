@@ -1,4 +1,4 @@
-# BrevoNode.ConversationsMessageFileImageInfo
+# Brevo.ConversationsMessageFileImageInfo
 
 ## Properties
 Name | Type | Description | Notes

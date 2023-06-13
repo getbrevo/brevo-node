@@ -1,4 +1,4 @@
-# BrevoNode.AbTestCampaignResultClickedLinks
+# Brevo.AbTestCampaignResultClickedLinks
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.GetSmsCampaignStats
+# Brevo.GetSmsCampaignStats
 
 ## Properties
 Name | Type | Description | Notes

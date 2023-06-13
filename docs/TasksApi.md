@@ -1,4 +1,4 @@
-# BrevoNode.TasksApi
+# Brevo.TasksApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -20,8 +20,8 @@ Get all tasks
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -35,7 +35,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TasksApi();
+var apiInstance = new Brevo.TasksApi();
 
 var opts = { 
   'filterType': "filterType_example", // String | Filter by task type (ID)
@@ -99,8 +99,8 @@ Delete a task
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -114,7 +114,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TasksApi();
+var apiInstance = new Brevo.TasksApi();
 
 var id = "id_example"; // String | 
 
@@ -153,8 +153,8 @@ Get a task
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -168,7 +168,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TasksApi();
+var apiInstance = new Brevo.TasksApi();
 
 var id = "id_example"; // String | 
 
@@ -207,8 +207,8 @@ Update a task
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -222,11 +222,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TasksApi();
+var apiInstance = new Brevo.TasksApi();
 
 var id = "id_example"; // String | 
 
-var body = new BrevoNode.Body7(); // Body7 | Updated task details.
+var body = new Brevo.Body7(); // Body7 | Updated task details.
 
 apiInstance.crmTasksIdPatch(id, body).then(function() {
   console.log('API called successfully.');
@@ -264,8 +264,8 @@ Create a task
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -279,9 +279,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TasksApi();
+var apiInstance = new Brevo.TasksApi();
 
-var body = new BrevoNode.Body6(); // Body6 | Task name.
+var body = new Brevo.Body6(); // Body6 | Task name.
 
 apiInstance.crmTasksPost(body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -318,8 +318,8 @@ Get all task types
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -333,7 +333,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TasksApi();
+var apiInstance = new Brevo.TasksApi();
 apiInstance.crmTasktypesGet().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {

@@ -1,4 +1,4 @@
-# BrevoNode.GetDeviceBrowserStats
+# Brevo.GetDeviceBrowserStats
 
 ## Properties
 Name | Type | Description | Notes

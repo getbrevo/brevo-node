@@ -1,4 +1,4 @@
-# BrevoNode.RemainingCreditModelChild
+# Brevo.RemainingCreditModelChild
 
 ## Properties
 Name | Type | Description | Notes

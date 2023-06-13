@@ -1,4 +1,4 @@
-# BrevoNode.ConversationsMessage
+# Brevo.ConversationsMessage
 
 ## Properties
 Name | Type | Description | Notes

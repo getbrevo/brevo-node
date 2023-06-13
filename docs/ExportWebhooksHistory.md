@@ -1,4 +1,4 @@
-# BrevoNode.ExportWebhooksHistory
+# Brevo.ExportWebhooksHistory
 
 ## Properties
 Name | Type | Description | Notes

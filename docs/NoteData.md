@@ -1,4 +1,4 @@
-# BrevoNode.NoteData
+# Brevo.NoteData
 
 ## Properties
 Name | Type | Description | Notes

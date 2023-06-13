@@ -1,4 +1,4 @@
-# BrevoNode.CreatedBatchId
+# Brevo.CreatedBatchId
 
 ## Properties
 Name | Type | Description | Notes

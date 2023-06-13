@@ -1,4 +1,4 @@
-# BrevoNode.GetExtendedContactDetailsStatisticsOpened
+# Brevo.GetExtendedContactDetailsStatisticsOpened
 
 ## Properties
 Name | Type | Description | Notes

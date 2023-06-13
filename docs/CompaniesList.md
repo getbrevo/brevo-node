@@ -1,4 +1,4 @@
-# BrevoNode.CompaniesList
+# Brevo.CompaniesList
 
 ## Properties
 Name | Type | Description | Notes

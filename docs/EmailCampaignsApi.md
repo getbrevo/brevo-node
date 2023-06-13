@@ -1,4 +1,4 @@
-# BrevoNode.EmailCampaignsApi
+# Brevo.EmailCampaignsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -27,8 +27,8 @@ Create an email campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -42,9 +42,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
-var emailCampaigns = new BrevoNode.CreateEmailCampaign(); // CreateEmailCampaign | Values to create a campaign
+var emailCampaigns = new Brevo.CreateEmailCampaign(); // CreateEmailCampaign | Values to create a campaign
 
 apiInstance.createEmailCampaign(emailCampaigns).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -81,8 +81,8 @@ Delete an email campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -96,7 +96,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | id of the campaign
 
@@ -135,8 +135,8 @@ Export the recipients of an email campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -150,12 +150,12 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
 var opts = { 
-  'recipientExport': new BrevoNode.EmailExportRecipients() // EmailExportRecipients | Values to send for a recipient export request
+  'recipientExport': new Brevo.EmailExportRecipients() // EmailExportRecipients | Values to send for a recipient export request
 };
 apiInstance.emailExportRecipients(campaignId, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -195,8 +195,8 @@ Obtain winning version of an A/B test email campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -210,7 +210,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the A/B test campaign
 
@@ -249,8 +249,8 @@ Get an email campaign report
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -264,7 +264,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
@@ -307,8 +307,8 @@ Return all your created email campaigns
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -322,7 +322,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var opts = { 
   'type': "type_example", // String | Filter on the type of the campaigns
@@ -380,8 +380,8 @@ Get a unique URL to share & import an email template from one Brevo account to a
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -395,7 +395,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign or template
 
@@ -434,8 +434,8 @@ Send an email campaign immediately, based on campaignId
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -449,7 +449,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
@@ -490,8 +490,8 @@ A PDF will be sent to the specified email addresses
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -505,11 +505,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
-var sendReport = new BrevoNode.SendReport(); // SendReport | Values for send a report
+var sendReport = new Brevo.SendReport(); // SendReport | Values for send a report
 
 apiInstance.sendReport(campaignId, sendReport).then(function() {
   console.log('API called successfully.');
@@ -547,8 +547,8 @@ Send an email campaign to your test list
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -562,11 +562,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
-var emailTo = new BrevoNode.SendTestEmail(); // SendTestEmail | 
+var emailTo = new Brevo.SendTestEmail(); // SendTestEmail | 
 
 apiInstance.sendTestEmail(campaignId, emailTo).then(function() {
   console.log('API called successfully.');
@@ -604,8 +604,8 @@ Update an email campaign status
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -619,11 +619,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
-var status = new BrevoNode.UpdateCampaignStatus(); // UpdateCampaignStatus | Status of the campaign
+var status = new Brevo.UpdateCampaignStatus(); // UpdateCampaignStatus | Status of the campaign
 
 apiInstance.updateCampaignStatus(campaignId, status).then(function() {
   console.log('API called successfully.');
@@ -661,8 +661,8 @@ Update an email campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -676,11 +676,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
-var emailCampaign = new BrevoNode.UpdateEmailCampaign(); // UpdateEmailCampaign | Values to update a campaign
+var emailCampaign = new Brevo.UpdateEmailCampaign(); // UpdateEmailCampaign | Values to update a campaign
 
 apiInstance.updateEmailCampaign(campaignId, emailCampaign).then(function() {
   console.log('API called successfully.');
@@ -718,8 +718,8 @@ Upload an image to your account's image gallery
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -733,9 +733,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.EmailCampaignsApi();
+var apiInstance = new Brevo.EmailCampaignsApi();
 
-var uploadImage = new BrevoNode.UploadImageToGallery(); // UploadImageToGallery | Parameters to upload an image
+var uploadImage = new Brevo.UploadImageToGallery(); // UploadImageToGallery | Parameters to upload an image
 
 apiInstance.uploadImageToGallery(uploadImage).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

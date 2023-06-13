@@ -1,4 +1,4 @@
-# BrevoNode.GetEmailCampaigns
+# Brevo.GetEmailCampaigns
 
 ## Properties
 Name | Type | Description | Notes

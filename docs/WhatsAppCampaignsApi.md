@@ -1,4 +1,4 @@
-# BrevoNode.WhatsAppCampaignsApi
+# Brevo.WhatsAppCampaignsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -23,8 +23,8 @@ Create and Send a WhatsApp campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -38,9 +38,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 
-var whatsAppCampaigns = new BrevoNode.CreateWhatsAppCampaign(); // CreateWhatsAppCampaign | Values to create a campaign
+var whatsAppCampaigns = new Brevo.CreateWhatsAppCampaign(); // CreateWhatsAppCampaign | Values to create a campaign
 
 apiInstance.createWhatsAppCampaign(whatsAppCampaigns).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -77,8 +77,8 @@ Create a WhatsApp template
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -92,9 +92,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 
-var whatsAppTemplates = new BrevoNode.CreateWhatsAppTemplate(); // CreateWhatsAppTemplate | Values to create a template
+var whatsAppTemplates = new Brevo.CreateWhatsAppTemplate(); // CreateWhatsAppTemplate | Values to create a template
 
 apiInstance.createWhatsAppTemplate(whatsAppTemplates).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -131,8 +131,8 @@ Delete a WhatsApp campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -146,7 +146,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 
 var campaignId = 789; // Number | id of the campaign
 
@@ -185,8 +185,8 @@ Get a WhatsApp campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -200,7 +200,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
@@ -239,8 +239,8 @@ Return all your created WhatsApp campaigns
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -254,7 +254,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 
 var opts = { 
   'startDate': "startDate_example", // String | **Mandatory if endDate is used**. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the campaigns created. **Prefer to pass your timezone in date-time format for accurate result** 
@@ -302,8 +302,8 @@ Get your WhatsApp API account information
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -317,7 +317,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 apiInstance.getWhatsAppConfig().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -350,8 +350,8 @@ Return all your created WhatsApp templates
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -365,7 +365,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 
 var opts = { 
   'startDate': "startDate_example", // String | **Mandatory if endDate is used**. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the templates created. **Prefer to pass your timezone in date-time format for accurate result** 
@@ -413,8 +413,8 @@ Send your WhatsApp template for approval
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -428,7 +428,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 
 var templateId = 789; // Number | id of the campaign
 
@@ -467,8 +467,8 @@ Update a WhatsApp campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -482,12 +482,12 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.WhatsAppCampaignsApi();
+var apiInstance = new Brevo.WhatsAppCampaignsApi();
 
 var campaignId = 789; // Number | Id of the campaign
 
 var opts = { 
-  'whatsAppCampaign': new BrevoNode.UpdateWhatsAppCampaign() // UpdateWhatsAppCampaign | values to update WhatsApp Campaign
+  'whatsAppCampaign': new Brevo.UpdateWhatsAppCampaign() // UpdateWhatsAppCampaign | values to update WhatsApp Campaign
 };
 apiInstance.updateWhatsAppCampaign(campaignId, opts).then(function() {
   console.log('API called successfully.');

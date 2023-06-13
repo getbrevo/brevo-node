@@ -1,4 +1,4 @@
-# BrevoNode.GetExternalFeedByUUID
+# Brevo.GetExternalFeedByUUID
 
 ## Properties
 Name | Type | Description | Notes

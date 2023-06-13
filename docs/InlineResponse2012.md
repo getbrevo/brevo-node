@@ -1,8 +1,8 @@
-# BrevoNode.InlineResponse2012
+# Brevo.InlineResponse2012
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**messageId** | **String** | messageId of sent message | 
+**id** | **String** | The id of the created collection | 
 
 

@@ -1,4 +1,4 @@
-# BrevoNode.CreateUpdateFolder
+# Brevo.CreateUpdateFolder
 
 ## Properties
 Name | Type | Description | Notes

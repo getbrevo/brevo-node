@@ -1,4 +1,4 @@
-# BrevoNode.UpdateChildDomain
+# Brevo.UpdateChildDomain
 
 ## Properties
 Name | Type | Description | Notes

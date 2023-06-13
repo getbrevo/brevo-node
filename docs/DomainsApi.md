@@ -1,4 +1,4 @@
-# BrevoNode.DomainsApi
+# Brevo.DomainsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -19,8 +19,8 @@ Authenticate a domain
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -34,7 +34,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DomainsApi();
+var apiInstance = new Brevo.DomainsApi();
 
 var domainName = "domainName_example"; // String | Domain name
 
@@ -73,8 +73,8 @@ Create a new domain
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -88,10 +88,10 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DomainsApi();
+var apiInstance = new Brevo.DomainsApi();
 
 var opts = { 
-  'domainName': new BrevoNode.CreateDomain() // CreateDomain | domain's name
+  'domainName': new Brevo.CreateDomain() // CreateDomain | domain's name
 };
 apiInstance.createDomain(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -128,8 +128,8 @@ Delete a domain
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -143,7 +143,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DomainsApi();
+var apiInstance = new Brevo.DomainsApi();
 
 var domainName = "domainName_example"; // String | Domain name
 
@@ -182,8 +182,8 @@ Validate domain configuration
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -197,7 +197,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DomainsApi();
+var apiInstance = new Brevo.DomainsApi();
 
 var domainName = "domainName_example"; // String | Domain name
 
@@ -236,8 +236,8 @@ Get the list of all your domains
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -251,7 +251,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.DomainsApi();
+var apiInstance = new Brevo.DomainsApi();
 apiInstance.getDomains().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {

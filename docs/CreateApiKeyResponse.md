@@ -1,4 +1,4 @@
-# BrevoNode.CreateApiKeyResponse
+# Brevo.CreateApiKeyResponse
 
 ## Properties
 Name | Type | Description | Notes

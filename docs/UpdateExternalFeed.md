@@ -1,4 +1,4 @@
-# BrevoNode.UpdateExternalFeed
+# Brevo.UpdateExternalFeed
 
 ## Properties
 Name | Type | Description | Notes

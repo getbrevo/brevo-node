@@ -1,4 +1,4 @@
-# BrevoNode.RemoveCredits
+# Brevo.RemoveCredits
 
 ## Properties
 Name | Type | Description | Notes

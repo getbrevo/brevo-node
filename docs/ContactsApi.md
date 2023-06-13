@@ -1,4 +1,4 @@
-# BrevoNode.ContactsApi
+# Brevo.ContactsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -43,8 +43,8 @@ Add existing contacts to a list
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -58,11 +58,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var listId = 789; // Number | Id of the list
 
-var contactEmails = new BrevoNode.AddContactToList(); // AddContactToList | Emails addresses OR IDs of the contacts
+var contactEmails = new Brevo.AddContactToList(); // AddContactToList | Emails addresses OR IDs of the contacts
 
 apiInstance.addContactToList(listId, contactEmails).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -100,8 +100,8 @@ Create contact attribute
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -115,13 +115,13 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var attributeCategory = "attributeCategory_example"; // String | Category of the attribute
 
 var attributeName = "attributeName_example"; // String | Name of the attribute
 
-var createAttribute = new BrevoNode.CreateAttribute(); // CreateAttribute | Values to create an attribute
+var createAttribute = new Brevo.CreateAttribute(); // CreateAttribute | Values to create an attribute
 
 apiInstance.createAttribute(attributeCategory, attributeName, createAttribute).then(function() {
   console.log('API called successfully.');
@@ -160,8 +160,8 @@ Create a contact
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -175,9 +175,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
-var createContact = new BrevoNode.CreateContact(); // CreateContact | Values to create a contact
+var createContact = new Brevo.CreateContact(); // CreateContact | Values to create a contact
 
 apiInstance.createContact(createContact).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -214,8 +214,8 @@ Create Contact via DOI (Double-Opt-In) Flow
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -229,9 +229,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
-var createDoiContact = new BrevoNode.CreateDoiContact(); // CreateDoiContact | Values to create the Double opt-in (DOI) contact
+var createDoiContact = new Brevo.CreateDoiContact(); // CreateDoiContact | Values to create the Double opt-in (DOI) contact
 
 apiInstance.createDoiContact(createDoiContact).then(function() {
   console.log('API called successfully.');
@@ -268,8 +268,8 @@ Create a folder
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -283,9 +283,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
-var createFolder = new BrevoNode.CreateUpdateFolder(); // CreateUpdateFolder | Name of the folder
+var createFolder = new Brevo.CreateUpdateFolder(); // CreateUpdateFolder | Name of the folder
 
 apiInstance.createFolder(createFolder).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -322,8 +322,8 @@ Create a list
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -337,9 +337,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
-var createList = new BrevoNode.CreateList(); // CreateList | Values to create a list
+var createList = new Brevo.CreateList(); // CreateList | Values to create a list
 
 apiInstance.createList(createList).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -376,8 +376,8 @@ Delete an attribute
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -391,7 +391,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var attributeCategory = "attributeCategory_example"; // String | Category of the attribute
 
@@ -433,8 +433,8 @@ Delete a contact
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -448,7 +448,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var identifier = "identifier_example"; // String | Email (urlencoded) OR ID of the contact
 
@@ -487,8 +487,8 @@ Delete a folder (and all its lists)
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -502,7 +502,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var folderId = 789; // Number | Id of the folder
 
@@ -541,8 +541,8 @@ Delete a list
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -556,7 +556,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var listId = 789; // Number | Id of the list
 
@@ -595,8 +595,8 @@ List all attributes
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -610,7 +610,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 apiInstance.getAttributes().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -645,8 +645,8 @@ Along with the contact details, this endpoint will show the statistics of contac
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -660,7 +660,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var identifier = "identifier_example"; // String | Email (urlencoded) OR ID of the contact OR its SMS attribute value
 
@@ -705,8 +705,8 @@ Get email campaigns' statistics for a contact
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -720,7 +720,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var identifier = "identifier_example"; // String | Email (urlencoded) OR ID of the contact
 
@@ -765,8 +765,8 @@ Get all the contacts
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -780,7 +780,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var opts = { 
   'limit': 50, // Number | Number of documents per page
@@ -828,8 +828,8 @@ Get contacts in a list
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -843,7 +843,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var listId = 789; // Number | Id of the list
 
@@ -892,8 +892,8 @@ Returns a folder's details
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -907,7 +907,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var folderId = 789; // Number | id of the folder
 
@@ -946,8 +946,8 @@ Get lists in a folder
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -961,7 +961,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var folderId = 789; // Number | Id of the folder
 
@@ -1008,8 +1008,8 @@ Get all folders
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1023,7 +1023,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var limit = 10; // Number | Number of documents per page
 
@@ -1069,8 +1069,8 @@ Get a list's details
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1084,7 +1084,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var listId = 789; // Number | Id of the list
 
@@ -1123,8 +1123,8 @@ Get all the lists
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1138,7 +1138,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var opts = { 
   'limit': 10, // Number | Number of documents per page
@@ -1182,8 +1182,8 @@ Get all the Segments
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1197,7 +1197,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var limit = 10; // Number | Number of documents per page
 
@@ -1245,8 +1245,8 @@ It returns the background process ID which on completion calls the notify URL th
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1260,9 +1260,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
-var requestContactImport = new BrevoNode.RequestContactImport(); // RequestContactImport | Values to import contacts in Brevo. To know more about the expected format, please have a look at ``https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns``
+var requestContactImport = new Brevo.RequestContactImport(); // RequestContactImport | Values to import contacts in Brevo. To know more about the expected format, please have a look at ``https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns``
 
 apiInstance.importContacts(requestContactImport).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -1299,8 +1299,8 @@ Delete a contact from a list
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1314,11 +1314,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var listId = 789; // Number | Id of the list
 
-var contactEmails = new BrevoNode.RemoveContactFromList(); // RemoveContactFromList | Emails addresses OR IDs of the contacts
+var contactEmails = new Brevo.RemoveContactFromList(); // RemoveContactFromList | Emails addresses OR IDs of the contacts
 
 apiInstance.removeContactFromList(listId, contactEmails).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -1358,8 +1358,8 @@ It returns the background process ID which on completion calls the notify URL th
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1373,9 +1373,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
-var requestContactExport = new BrevoNode.RequestContactExport(); // RequestContactExport | Values to request a contact export
+var requestContactExport = new Brevo.RequestContactExport(); // RequestContactExport | Values to request a contact export
 
 apiInstance.requestContactExport(requestContactExport).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -1412,8 +1412,8 @@ Update contact attribute
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1427,13 +1427,13 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var attributeCategory = "attributeCategory_example"; // String | Category of the attribute
 
 var attributeName = "attributeName_example"; // String | Name of the existing attribute
 
-var updateAttribute = new BrevoNode.UpdateAttribute(); // UpdateAttribute | Values to update an attribute
+var updateAttribute = new Brevo.UpdateAttribute(); // UpdateAttribute | Values to update an attribute
 
 apiInstance.updateAttribute(attributeCategory, attributeName, updateAttribute).then(function() {
   console.log('API called successfully.');
@@ -1472,8 +1472,8 @@ Update multiple contacts
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1487,9 +1487,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
-var updateBatchContacts = new BrevoNode.UpdateBatchContacts(); // UpdateBatchContacts | Values to update multiple contacts
+var updateBatchContacts = new Brevo.UpdateBatchContacts(); // UpdateBatchContacts | Values to update multiple contacts
 
 apiInstance.updateBatchContacts(updateBatchContacts).then(function() {
   console.log('API called successfully.');
@@ -1526,8 +1526,8 @@ Update a contact
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1541,11 +1541,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var identifier = "identifier_example"; // String | Email (urlencoded) OR ID of the contact
 
-var updateContact = new BrevoNode.UpdateContact(); // UpdateContact | Values to update a contact
+var updateContact = new Brevo.UpdateContact(); // UpdateContact | Values to update a contact
 
 apiInstance.updateContact(identifier, updateContact).then(function() {
   console.log('API called successfully.');
@@ -1583,8 +1583,8 @@ Update a folder
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1598,11 +1598,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var folderId = 789; // Number | Id of the folder
 
-var updateFolder = new BrevoNode.CreateUpdateFolder(); // CreateUpdateFolder | Name of the folder
+var updateFolder = new Brevo.CreateUpdateFolder(); // CreateUpdateFolder | Name of the folder
 
 apiInstance.updateFolder(folderId, updateFolder).then(function() {
   console.log('API called successfully.');
@@ -1640,8 +1640,8 @@ Update a list
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1655,11 +1655,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ContactsApi();
+var apiInstance = new Brevo.ContactsApi();
 
 var listId = 789; // Number | Id of the list
 
-var updateList = new BrevoNode.UpdateList(); // UpdateList | Values to update a list
+var updateList = new Brevo.UpdateList(); // UpdateList | Values to update a list
 
 apiInstance.updateList(listId, updateList).then(function() {
   console.log('API called successfully.');

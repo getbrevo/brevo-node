@@ -1,4 +1,4 @@
-# BrevoNode.SendSmtpEmailReplyTo
+# Brevo.SendSmtpEmailReplyTo
 
 ## Properties
 Name | Type | Description | Notes

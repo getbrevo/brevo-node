@@ -1,4 +1,4 @@
-# BrevoNode.AbTestCampaignResultStatistics
+# Brevo.AbTestCampaignResultStatistics
 
 ## Properties
 Name | Type | Description | Notes

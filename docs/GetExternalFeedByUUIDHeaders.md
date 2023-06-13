@@ -1,4 +1,4 @@
-# BrevoNode.GetExternalFeedByUUIDHeaders
+# Brevo.GetExternalFeedByUUIDHeaders
 
 ## Properties
 Name | Type | Description | Notes

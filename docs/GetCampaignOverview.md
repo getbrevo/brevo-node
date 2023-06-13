@@ -1,4 +1,4 @@
-# BrevoNode.GetCampaignOverview
+# Brevo.GetCampaignOverview
 
 ## Properties
 Name | Type | Description | Notes
@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **Number** | ID of the campaign | 
 **name** | **String** | Name of the campaign | 
 **subject** | **String** | Subject of the campaign. Only available if `abTesting` flag of the campaign is `false` | [optional] 
+**previewText** | **String** | Preview text or preheader of the email campaign | [optional] 
 **type** | **String** | Type of campaign | 
 **status** | **String** | Status of the campaign | 
 **scheduledAt** | **String** | UTC date-time on which campaign is scheduled (YYYY-MM-DDTHH:mm:ss.SSSZ) | [optional] 

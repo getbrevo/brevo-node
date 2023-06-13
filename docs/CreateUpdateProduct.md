@@ -1,4 +1,4 @@
-# BrevoNode.CreateUpdateProduct
+# Brevo.CreateUpdateProduct
 
 ## Properties
 Name | Type | Description | Notes

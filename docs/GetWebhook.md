@@ -1,4 +1,4 @@
-# BrevoNode.GetWebhook
+# Brevo.GetWebhook
 
 ## Properties
 Name | Type | Description | Notes

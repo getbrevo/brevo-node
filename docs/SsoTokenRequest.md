@@ -1,4 +1,4 @@
-# BrevoNode.SsoTokenRequest
+# Brevo.SsoTokenRequest
 
 ## Properties
 Name | Type | Description | Notes

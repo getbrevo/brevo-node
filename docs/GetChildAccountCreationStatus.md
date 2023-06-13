@@ -1,4 +1,4 @@
-# BrevoNode.GetChildAccountCreationStatus
+# Brevo.GetChildAccountCreationStatus
 
 ## Properties
 Name | Type | Description | Notes

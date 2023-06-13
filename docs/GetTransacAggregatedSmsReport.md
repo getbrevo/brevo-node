@@ -1,4 +1,4 @@
-# BrevoNode.GetTransacAggregatedSmsReport
+# Brevo.GetTransacAggregatedSmsReport
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.CreatedProcessId
+# Brevo.CreatedProcessId
 
 ## Properties
 Name | Type | Description | Notes

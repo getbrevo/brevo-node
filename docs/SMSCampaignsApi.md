@@ -1,4 +1,4 @@
-# BrevoNode.SMSCampaignsApi
+# Brevo.SMSCampaignsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -24,8 +24,8 @@ Creates an SMS campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -39,9 +39,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
-var createSmsCampaign = new BrevoNode.CreateSmsCampaign(); // CreateSmsCampaign | Values to create an SMS Campaign
+var createSmsCampaign = new Brevo.CreateSmsCampaign(); // CreateSmsCampaign | Values to create an SMS Campaign
 
 apiInstance.createSmsCampaign(createSmsCampaign).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -78,8 +78,8 @@ Delete an SMS campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -93,7 +93,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var campaignId = 789; // Number | id of the SMS campaign
 
@@ -132,8 +132,8 @@ Get an SMS campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -147,7 +147,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var campaignId = 789; // Number | id of the SMS campaign
 
@@ -186,8 +186,8 @@ Returns the information for all your created SMS campaigns
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -201,7 +201,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var opts = { 
   'status': "status_example", // String | Status of campaign.
@@ -253,8 +253,8 @@ It returns the background process ID which on completion calls the notify URL th
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -268,12 +268,12 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var campaignId = 789; // Number | id of the campaign
 
 var opts = { 
-  'recipientExport': new BrevoNode.RequestSmsRecipientExport() // RequestSmsRecipientExport | Values to send for a recipient export request
+  'recipientExport': new Brevo.RequestSmsRecipientExport() // RequestSmsRecipientExport | Values to send for a recipient export request
 };
 apiInstance.requestSmsRecipientExport(campaignId, opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -311,8 +311,8 @@ Send your SMS campaign immediately
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -326,7 +326,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var campaignId = 789; // Number | id of the campaign
 
@@ -367,8 +367,8 @@ Send report of Sent and Archived campaign, to the specified email addresses, wit
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -382,11 +382,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var campaignId = 789; // Number | id of the campaign
 
-var sendReport = new BrevoNode.SendReport(); // SendReport | Values for send a report
+var sendReport = new Brevo.SendReport(); // SendReport | Values for send a report
 
 apiInstance.sendSmsReport(campaignId, sendReport).then(function() {
   console.log('API called successfully.');
@@ -424,8 +424,8 @@ Send a test SMS campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -439,11 +439,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var campaignId = 789; // Number | Id of the SMS campaign
 
-var phoneNumber = new BrevoNode.SendTestSms(); // SendTestSms | Mobile number of the recipient with the country code. This number must belong to one of your contacts in Brevo account and must not be blacklisted
+var phoneNumber = new Brevo.SendTestSms(); // SendTestSms | Mobile number of the recipient with the country code. This number must belong to one of your contacts in Brevo account and must not be blacklisted
 
 apiInstance.sendTestSms(campaignId, phoneNumber).then(function() {
   console.log('API called successfully.');
@@ -481,8 +481,8 @@ Update an SMS campaign
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -496,11 +496,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var campaignId = 789; // Number | id of the SMS campaign
 
-var updateSmsCampaign = new BrevoNode.UpdateSmsCampaign(); // UpdateSmsCampaign | Values to update an SMS Campaign
+var updateSmsCampaign = new Brevo.UpdateSmsCampaign(); // UpdateSmsCampaign | Values to update an SMS Campaign
 
 apiInstance.updateSmsCampaign(campaignId, updateSmsCampaign).then(function() {
   console.log('API called successfully.');
@@ -538,8 +538,8 @@ Update a campaign's status
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -553,11 +553,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SMSCampaignsApi();
+var apiInstance = new Brevo.SMSCampaignsApi();
 
 var campaignId = 789; // Number | id of the campaign
 
-var status = new BrevoNode.UpdateCampaignStatus(); // UpdateCampaignStatus | Status of the campaign.
+var status = new Brevo.UpdateCampaignStatus(); // UpdateCampaignStatus | Status of the campaign.
 
 apiInstance.updateSmsCampaignStatus(campaignId, status).then(function() {
   console.log('API called successfully.');

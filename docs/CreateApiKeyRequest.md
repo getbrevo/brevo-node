@@ -1,4 +1,4 @@
-# BrevoNode.CreateApiKeyRequest
+# Brevo.CreateApiKeyRequest
 
 ## Properties
 Name | Type | Description | Notes

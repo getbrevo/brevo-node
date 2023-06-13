@@ -1,4 +1,4 @@
-# BrevoNode.GetIps
+# Brevo.GetIps
 
 ## Properties
 Name | Type | Description | Notes

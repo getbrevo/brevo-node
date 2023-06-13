@@ -1,4 +1,4 @@
-# BrevoNode.SendSms
+# Brevo.SendSms
 
 ## Properties
 Name | Type | Description | Notes

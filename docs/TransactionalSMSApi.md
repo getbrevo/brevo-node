@@ -1,4 +1,4 @@
-# BrevoNode.TransactionalSMSApi
+# Brevo.TransactionalSMSApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -18,8 +18,8 @@ Get all your SMS activity (unaggregated events)
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -33,7 +33,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalSMSApi();
+var apiInstance = new Brevo.TransactionalSMSApi();
 
 var opts = { 
   'limit': 50, // Number | Number of documents per page
@@ -89,8 +89,8 @@ Get your SMS activity aggregated over a period of time
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -104,7 +104,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalSMSApi();
+var apiInstance = new Brevo.TransactionalSMSApi();
 
 var opts = { 
   'startDate': "startDate_example", // String | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report
@@ -150,8 +150,8 @@ Get your SMS activity aggregated per day
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -165,7 +165,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalSMSApi();
+var apiInstance = new Brevo.TransactionalSMSApi();
 
 var opts = { 
   'startDate': "startDate_example", // String | Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the report
@@ -213,8 +213,8 @@ Send SMS message to a mobile number
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -228,9 +228,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalSMSApi();
+var apiInstance = new Brevo.TransactionalSMSApi();
 
-var sendTransacSms = new BrevoNode.SendTransacSms(); // SendTransacSms | Values to send a transactional SMS
+var sendTransacSms = new Brevo.SendTransacSms(); // SendTransacSms | Values to send a transactional SMS
 
 apiInstance.sendTransacSms(sendTransacSms).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

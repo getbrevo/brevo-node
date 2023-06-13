@@ -1,4 +1,4 @@
-# BrevoNode.PostContactInfo
+# Brevo.PostContactInfo
 
 ## Properties
 Name | Type | Description | Notes

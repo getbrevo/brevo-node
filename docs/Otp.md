@@ -1,4 +1,4 @@
-# BrevoNode.Otp
+# Brevo.Otp
 
 ## Properties
 Name | Type | Description | Notes

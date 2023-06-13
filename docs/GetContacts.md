@@ -1,4 +1,4 @@
-# BrevoNode.GetContacts
+# Brevo.GetContacts
 
 ## Properties
 Name | Type | Description | Notes

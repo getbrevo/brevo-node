@@ -1,4 +1,4 @@
-# BrevoNode.PipelineStage
+# Brevo.PipelineStage
 
 ## Properties
 Name | Type | Description | Notes

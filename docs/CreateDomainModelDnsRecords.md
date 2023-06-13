@@ -1,4 +1,4 @@
-# BrevoNode.CreateDomainModelDnsRecords
+# Brevo.CreateDomainModelDnsRecords
 
 ## Properties
 Name | Type | Description | Notes

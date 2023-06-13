@@ -1,4 +1,4 @@
-# BrevoNode.GetWATemplatesTemplates
+# Brevo.GetWATemplatesTemplates
 
 ## Properties
 Name | Type | Description | Notes

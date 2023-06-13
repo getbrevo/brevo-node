@@ -1,4 +1,4 @@
-# BrevoNode.Body11
+# Brevo.Body11
 
 ## Properties
 Name | Type | Description | Notes

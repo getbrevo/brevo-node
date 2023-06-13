@@ -1,4 +1,4 @@
-# BrevoNode.DealAttributesInner
+# Brevo.DealAttributesInner
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.MasterAccountApi
+# Brevo.MasterAccountApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -25,8 +25,8 @@ This endpoint will provide the details of the master account.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -40,7 +40,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 apiInstance.corporateMasterAccountGet().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -75,8 +75,8 @@ This endpoint will provide the list all the sub-accounts of the master account.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -90,7 +90,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 
 var offset = 56; // Number | Index of the first sub-account in the page
 
@@ -132,8 +132,8 @@ Delete a sub-account
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -147,7 +147,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 
 var id = 789; // Number | Id of the sub-account organization to be deleted
 
@@ -188,8 +188,8 @@ This endpoint will provide the details for the specified sub-account company
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -203,7 +203,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 
 var id = 789; // Number | Id of the sub-account organization
 
@@ -244,8 +244,8 @@ This endpoint will update the sub-account plan
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -259,11 +259,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 
 var id = 789; // Number | Id of the sub-account organization
 
-var updatePlanDetails = new BrevoNode.SubAccountUpdatePlanRequest(); // SubAccountUpdatePlanRequest | Values to update a sub-account plan
+var updatePlanDetails = new Brevo.SubAccountUpdatePlanRequest(); // SubAccountUpdatePlanRequest | Values to update a sub-account plan
 
 apiInstance.corporateSubAccountIdPlanPut(id, updatePlanDetails).then(function() {
   console.log('API called successfully.');
@@ -303,8 +303,8 @@ This endpoint will generate an API v3 key for a sub account
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -318,9 +318,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 
-var createApiKeyRequest = new BrevoNode.CreateApiKeyRequest(); // CreateApiKeyRequest | Values to generate API key for sub-account
+var createApiKeyRequest = new Brevo.CreateApiKeyRequest(); // CreateApiKeyRequest | Values to generate API key for sub-account
 
 apiInstance.corporateSubAccountKeyPost(createApiKeyRequest).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -359,8 +359,8 @@ This endpoint will create a new sub-account under a master account
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -374,9 +374,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 
-var subAccountCreate = new BrevoNode.CreateSubAccount(); // CreateSubAccount | values to create new sub-account
+var subAccountCreate = new Brevo.CreateSubAccount(); // CreateSubAccount | values to create new sub-account
 
 apiInstance.corporateSubAccountPost(subAccountCreate).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -415,8 +415,8 @@ This endpoint generates an sso token to authenticate and access a sub-account of
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -430,9 +430,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 
-var ssoTokenRequest = new BrevoNode.SsoTokenRequest(); // SsoTokenRequest | Values to generate SSO token for sub-account
+var ssoTokenRequest = new Brevo.SsoTokenRequest(); // SsoTokenRequest | Values to generate SSO token for sub-account
 
 apiInstance.corporateSubAccountSsoTokenPost(ssoTokenRequest).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -469,8 +469,8 @@ Get user activity logs
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -484,7 +484,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.MasterAccountApi();
+var apiInstance = new Brevo.MasterAccountApi();
 
 var opts = { 
   'startDate': "startDate_example", // String | Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search.

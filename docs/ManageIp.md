@@ -1,4 +1,4 @@
-# BrevoNode.ManageIp
+# Brevo.ManageIp
 
 ## Properties
 Name | Type | Description | Notes

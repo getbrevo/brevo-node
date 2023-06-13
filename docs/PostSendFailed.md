@@ -1,4 +1,4 @@
-# BrevoNode.PostSendFailed
+# Brevo.PostSendFailed
 
 ## Properties
 Name | Type | Description | Notes

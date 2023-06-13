@@ -1,4 +1,4 @@
-# BrevoNode.GetAccountMarketingAutomation
+# Brevo.GetAccountMarketingAutomation
 
 ## Properties
 Name | Type | Description | Notes

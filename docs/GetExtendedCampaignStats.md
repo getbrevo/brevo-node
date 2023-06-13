@@ -1,4 +1,4 @@
-# BrevoNode.GetExtendedCampaignStats
+# Brevo.GetExtendedCampaignStats
 
 ## Properties
 Name | Type | Description | Notes

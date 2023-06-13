@@ -1,4 +1,4 @@
-# BrevoNode.CompaniesApi
+# Brevo.CompaniesApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -21,8 +21,8 @@ Get company attributes
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -36,7 +36,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.CompaniesApi();
+var apiInstance = new Brevo.CompaniesApi();
 apiInstance.companiesAttributesGet().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -69,8 +69,8 @@ Get all companies
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -84,7 +84,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.CompaniesApi();
+var apiInstance = new Brevo.CompaniesApi();
 
 var opts = { 
   'filters': "filters_example", // String | Filter by attrbutes. If you have filter for owner on your side please send it as {\"attributes.owner\":\"5b1a17d914b73d35a76ca0c7\"}
@@ -136,8 +136,8 @@ Delete a company
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -151,7 +151,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.CompaniesApi();
+var apiInstance = new Brevo.CompaniesApi();
 
 var id = "id_example"; // String | 
 
@@ -190,8 +190,8 @@ Get a company
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -205,7 +205,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.CompaniesApi();
+var apiInstance = new Brevo.CompaniesApi();
 
 var id = "id_example"; // String | 
 
@@ -244,8 +244,8 @@ Update a company
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -259,11 +259,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.CompaniesApi();
+var apiInstance = new Brevo.CompaniesApi();
 
 var id = "id_example"; // String | 
 
-var body = new BrevoNode.Body1(); // Body1 | Updated company details.
+var body = new Brevo.Body1(); // Body1 | Updated company details.
 
 apiInstance.companiesIdPatch(id, body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -301,8 +301,8 @@ Link and Unlink company with contacts and deals
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -316,11 +316,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.CompaniesApi();
+var apiInstance = new Brevo.CompaniesApi();
 
 var id = "id_example"; // String | 
 
-var body = new BrevoNode.Body2(); // Body2 | Linked / Unlinked contacts and deals ids.
+var body = new Brevo.Body2(); // Body2 | Linked / Unlinked contacts and deals ids.
 
 apiInstance.companiesLinkUnlinkIdPatch(id, body).then(function() {
   console.log('API called successfully.');
@@ -358,8 +358,8 @@ Create a company
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -373,9 +373,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.CompaniesApi();
+var apiInstance = new Brevo.CompaniesApi();
 
-var body = new BrevoNode.Body(); // Body | Company create data.
+var body = new Brevo.Body(); // Body | Company create data.
 
 apiInstance.companiesPost(body).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);

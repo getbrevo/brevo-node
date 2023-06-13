@@ -1,4 +1,4 @@
-# BrevoNode.SendersApi
+# Brevo.SendersApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -21,8 +21,8 @@ Create a new sender
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -36,10 +36,10 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SendersApi();
+var apiInstance = new Brevo.SendersApi();
 
 var opts = { 
-  'sender': new BrevoNode.CreateSender() // CreateSender | sender's name
+  'sender': new Brevo.CreateSender() // CreateSender | sender's name
 };
 apiInstance.createSender(opts).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -76,8 +76,8 @@ Delete a sender
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -91,7 +91,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SendersApi();
+var apiInstance = new Brevo.SendersApi();
 
 var senderId = 789; // Number | Id of the sender
 
@@ -130,8 +130,8 @@ Get all the dedicated IPs for your account
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -145,7 +145,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SendersApi();
+var apiInstance = new Brevo.SendersApi();
 apiInstance.getIps().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -178,8 +178,8 @@ Get all the dedicated IPs for a sender
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -193,7 +193,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SendersApi();
+var apiInstance = new Brevo.SendersApi();
 
 var senderId = 789; // Number | Id of the sender
 
@@ -232,8 +232,8 @@ Get the list of all your senders
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -247,7 +247,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SendersApi();
+var apiInstance = new Brevo.SendersApi();
 
 var opts = { 
   'ip': "ip_example", // String | Filter your senders for a specific ip (available for dedicated IP usage only)
@@ -289,8 +289,8 @@ Update a sender
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -304,12 +304,12 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SendersApi();
+var apiInstance = new Brevo.SendersApi();
 
 var senderId = 789; // Number | Id of the sender
 
 var opts = { 
-  'sender': new BrevoNode.UpdateSender() // UpdateSender | sender's name
+  'sender': new Brevo.UpdateSender() // UpdateSender | sender's name
 };
 apiInstance.updateSender(senderId, opts).then(function() {
   console.log('API called successfully.');
@@ -347,8 +347,8 @@ Update a sender
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -362,12 +362,12 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.SendersApi();
+var apiInstance = new Brevo.SendersApi();
 
 var senderId = 789; // Number | Id of the sender
 
 var opts = { 
-  'otp': new BrevoNode.Otp() // Otp | otp
+  'otp': new Brevo.Otp() // Otp | otp
 };
 apiInstance.validateSenderByOTP(senderId, opts).then(function() {
   console.log('API called successfully.');

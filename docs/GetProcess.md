@@ -1,4 +1,4 @@
-# BrevoNode.GetProcess
+# Brevo.GetProcess
 
 ## Properties
 Name | Type | Description | Notes

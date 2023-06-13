@@ -1,4 +1,4 @@
-# BrevoNode.RequestSmsRecipientExport
+# Brevo.RequestSmsRecipientExport
 
 ## Properties
 Name | Type | Description | Notes

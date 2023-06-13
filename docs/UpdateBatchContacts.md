@@ -1,4 +1,4 @@
-# BrevoNode.UpdateBatchContacts
+# Brevo.UpdateBatchContacts
 
 ## Properties
 Name | Type | Description | Notes

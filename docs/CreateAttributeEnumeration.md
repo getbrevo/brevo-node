@@ -1,4 +1,4 @@
-# BrevoNode.CreateAttributeEnumeration
+# Brevo.CreateAttributeEnumeration
 
 ## Properties
 Name | Type | Description | Notes

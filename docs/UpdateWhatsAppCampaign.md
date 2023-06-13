@@ -1,4 +1,4 @@
-# BrevoNode.UpdateWhatsAppCampaign
+# Brevo.UpdateWhatsAppCampaign
 
 ## Properties
 Name | Type | Description | Notes

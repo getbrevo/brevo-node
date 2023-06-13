@@ -1,4 +1,4 @@
-# BrevoNode.GetFolderLists
+# Brevo.GetFolderLists
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.SubAccountUpdatePlanRequestCredits
+# Brevo.SubAccountUpdatePlanRequestCredits
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# BrevoNode.GetChildInfoApiKeysV3
+# Brevo.GetChildInfoApiKeysV3
 
 ## Properties
 Name | Type | Description | Notes

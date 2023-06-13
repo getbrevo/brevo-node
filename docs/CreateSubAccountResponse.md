@@ -1,4 +1,4 @@
-# BrevoNode.CreateSubAccountResponse
+# Brevo.CreateSubAccountResponse
 
 ## Properties
 Name | Type | Description | Notes

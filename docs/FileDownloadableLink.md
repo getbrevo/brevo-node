@@ -1,4 +1,4 @@
-# BrevoNode.FileDownloadableLink
+# Brevo.FileDownloadableLink
 
 ## Properties
 Name | Type | Description | Notes

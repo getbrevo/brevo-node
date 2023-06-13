@@ -1,4 +1,4 @@
-# BrevoNode.CompanyAttributes
+# Brevo.CompanyAttributes
 
 ## Properties
 Name | Type | Description | Notes

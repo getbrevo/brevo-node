@@ -1,4 +1,4 @@
-# BrevoNode.CreateWebhook
+# Brevo.CreateWebhook
 
 ## Properties
 Name | Type | Description | Notes

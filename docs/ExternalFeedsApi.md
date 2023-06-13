@@ -1,4 +1,4 @@
-# BrevoNode.ExternalFeedsApi
+# Brevo.ExternalFeedsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createExternalFeed"></a>
 # **createExternalFeed**
-> InlineResponse2013 createExternalFeed(createExternalFeed)
+> InlineResponse2014 createExternalFeed(createExternalFeed)
 
 Create an external feed
 
@@ -21,8 +21,8 @@ This endpoint will create an external feed.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -36,9 +36,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ExternalFeedsApi();
+var apiInstance = new Brevo.ExternalFeedsApi();
 
-var createExternalFeed = new BrevoNode.CreateExternalFeed(); // CreateExternalFeed | Values to create a feed
+var createExternalFeed = new Brevo.CreateExternalFeed(); // CreateExternalFeed | Values to create a feed
 
 apiInstance.createExternalFeed(createExternalFeed).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2013**](InlineResponse2013.md)
+[**InlineResponse2014**](InlineResponse2014.md)
 
 ### Authorization
 
@@ -77,8 +77,8 @@ This endpoint will delete an external feed.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -92,7 +92,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ExternalFeedsApi();
+var apiInstance = new Brevo.ExternalFeedsApi();
 
 var uuid = "uuid_example"; // String | UUID of the feed to delete
 
@@ -133,8 +133,8 @@ This endpoint can fetch all created external feeds.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -148,7 +148,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ExternalFeedsApi();
+var apiInstance = new Brevo.ExternalFeedsApi();
 
 var opts = { 
   'search': "search_example", // String | Can be used to filter records by search keyword on feed name
@@ -202,8 +202,8 @@ This endpoint will update an external feed.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -217,7 +217,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ExternalFeedsApi();
+var apiInstance = new Brevo.ExternalFeedsApi();
 
 var uuid = "uuid_example"; // String | UUID of the feed to fetch
 
@@ -258,8 +258,8 @@ This endpoint will update an external feed.
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -273,11 +273,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.ExternalFeedsApi();
+var apiInstance = new Brevo.ExternalFeedsApi();
 
 var uuid = "uuid_example"; // String | UUID of the feed to update
 
-var updateExternalFeed = new BrevoNode.UpdateExternalFeed(); // UpdateExternalFeed | Values to update a feed
+var updateExternalFeed = new Brevo.UpdateExternalFeed(); // UpdateExternalFeed | Values to update a feed
 
 apiInstance.updateExternalFeed(uuid, updateExternalFeed).then(function() {
   console.log('API called successfully.');

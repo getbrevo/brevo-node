@@ -1,4 +1,4 @@
-# BrevoNode.BodyVariablesItems
+# Brevo.BodyVariablesItems
 
 ## Properties
 Name | Type | Description | Notes

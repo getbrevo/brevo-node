@@ -1,4 +1,4 @@
-# BrevoNode.GetDomainConfigurationModel
+# Brevo.GetDomainConfigurationModel
 
 ## Properties
 Name | Type | Description | Notes

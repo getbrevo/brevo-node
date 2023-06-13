@@ -1,4 +1,4 @@
-# BrevoNode.TransactionalEmailsApi
+# Brevo.TransactionalEmailsApi
 
 All URIs are relative to *https://api.brevo.com/v3*
 
@@ -38,8 +38,8 @@ Blocks a new domain in order to avoid messages being sent to the same
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -53,9 +53,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
-var blockDomain = new BrevoNode.BlockDomain(); // BlockDomain | 
+var blockDomain = new Brevo.BlockDomain(); // BlockDomain | 
 
 apiInstance.blockNewDomain(blockDomain).then(function() {
   console.log('API called successfully.');
@@ -92,8 +92,8 @@ Create an email template
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -107,9 +107,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
-var smtpTemplate = new BrevoNode.CreateSmtpTemplate(); // CreateSmtpTemplate | values to update in transactional email template
+var smtpTemplate = new Brevo.CreateSmtpTemplate(); // CreateSmtpTemplate | values to update in transactional email template
 
 apiInstance.createSmtpTemplate(smtpTemplate).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -148,8 +148,8 @@ Unblocks an existing domain from the list of blocked domains
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -163,7 +163,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var domain = "domain_example"; // String | The name of the domain to be deleted
 
@@ -204,8 +204,8 @@ Delete hardbounces. To use carefully (e.g. in case of temporary ISP failures)
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -219,10 +219,10 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var opts = { 
-  'deleteHardbounces': new BrevoNode.DeleteHardbounces() // DeleteHardbounces | values to delete hardbounces
+  'deleteHardbounces': new Brevo.DeleteHardbounces() // DeleteHardbounces | values to delete hardbounces
 };
 apiInstance.deleteHardbounces(opts).then(function() {
   console.log('API called successfully.');
@@ -261,8 +261,8 @@ Delete scheduled batch of emails by batchId or single scheduled email by message
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -276,7 +276,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var identifier = "identifier_example"; // String | The `batchId` of scheduled emails batch (Should be a valid UUIDv4) or the `messageId` of scheduled email.
 
@@ -315,8 +315,8 @@ Delete an inactive email template
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -330,7 +330,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var templateId = 789; // Number | id of the template
 
@@ -371,8 +371,8 @@ This endpoint will show the aggregated stats for past 90 days by default if `sta
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -386,7 +386,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var opts = { 
   'startDate': "startDate_example", // String | Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate
@@ -434,8 +434,8 @@ Get the list of blocked domains
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -449,7 +449,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 apiInstance.getBlockedDomains().then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
 }, function(error) {
@@ -484,8 +484,8 @@ This endpoint will show the aggregated stats for past 30 days by default if `sta
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -499,7 +499,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var opts = { 
   'limit': 2500, // Number | Number limitation for the result returned
@@ -561,8 +561,8 @@ Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -576,7 +576,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var batchId = "batchId_example"; // String | The batchId of scheduled emails batch (Should be a valid UUIDv4)
 
@@ -631,8 +631,8 @@ Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -646,7 +646,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var messageId = "messageId_example"; // String | The messageId of scheduled email
 
@@ -691,8 +691,8 @@ Get your transactional email activity aggregated per day
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -706,7 +706,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var opts = { 
   'limit': 10, // Number | Number of documents returned per page
@@ -758,8 +758,8 @@ Returns the template information
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -773,7 +773,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var templateId = 789; // Number | id of the template
 
@@ -812,8 +812,8 @@ Get the list of email templates
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -827,7 +827,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var opts = { 
   'templateStatus': true, // Boolean | Filter on the status of the template. Active = true, inactive = false
@@ -873,8 +873,8 @@ Get the list of blocked or unsubscribed transactional contacts
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -888,7 +888,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var opts = { 
   'startDate': "startDate_example", // String | Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts
@@ -938,8 +938,8 @@ Get the personalized content of a sent transactional email
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -953,7 +953,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var uuid = "uuid_example"; // String | Unique id of the transactional email that has been sent to a particular contact
 
@@ -994,8 +994,8 @@ This endpoint will show the list of emails for past 30 days by default. To retri
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1009,7 +1009,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var opts = { 
   'email': "email_example", // String | Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent.
@@ -1063,8 +1063,8 @@ Send a template to your test list
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1078,11 +1078,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var templateId = 789; // Number | Id of the template
 
-var sendTestEmail = new BrevoNode.SendTestEmail(); // SendTestEmail | 
+var sendTestEmail = new Brevo.SendTestEmail(); // SendTestEmail | 
 
 apiInstance.sendTestTemplate(templateId, sendTestEmail).then(function() {
   console.log('API called successfully.');
@@ -1120,8 +1120,8 @@ Send a transactional email
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1135,9 +1135,9 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
-var sendSmtpEmail = new BrevoNode.SendSmtpEmail(); // SendSmtpEmail | Values to send a transactional email
+var sendSmtpEmail = new Brevo.SendSmtpEmail(); // SendSmtpEmail | Values to send a transactional email
 
 apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
   console.log('API called successfully. Returned data: ' + data);
@@ -1174,8 +1174,8 @@ Unblock or resubscribe a transactional contact
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1189,7 +1189,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var email = "email_example"; // String | contact email (urlencoded) to unblock.
 
@@ -1228,8 +1228,8 @@ Delete an SMTP transactional log
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1243,7 +1243,7 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var messageId = "messageId_example"; // String | MessageId of the transactional log to delete
 
@@ -1282,8 +1282,8 @@ Update an email template
 
 ### Example
 ```javascript
-var BrevoNode = require('brevo-node');
-var defaultClient = BrevoNode.ApiClient.instance;
+var Brevo = require('brevo');
+var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
 var api-key = defaultClient.authentications['api-key'];
@@ -1297,11 +1297,11 @@ partner-key.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //partner-key.apiKeyPrefix = 'Token';
 
-var apiInstance = new BrevoNode.TransactionalEmailsApi();
+var apiInstance = new Brevo.TransactionalEmailsApi();
 
 var templateId = 789; // Number | id of the template
 
-var smtpTemplate = new BrevoNode.UpdateSmtpTemplate(); // UpdateSmtpTemplate | values to update in transactional email template
+var smtpTemplate = new Brevo.UpdateSmtpTemplate(); // UpdateSmtpTemplate | values to update in transactional email template
 
 apiInstance.updateSmtpTemplate(templateId, smtpTemplate).then(function() {
   console.log('API called successfully.');

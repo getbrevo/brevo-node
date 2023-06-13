@@ -1,4 +1,4 @@
-# BrevoNode.GetWhatsappCampaignOverview
+# Brevo.GetWhatsappCampaignOverview
 
 ## Properties
 Name | Type | Description | Notes

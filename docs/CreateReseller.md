@@ -1,4 +1,4 @@
-# BrevoNode.CreateReseller
+# Brevo.CreateReseller
 
 ## Properties
 Name | Type | Description | Notes
