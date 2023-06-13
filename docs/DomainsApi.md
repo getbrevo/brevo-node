@@ -19,7 +19,7 @@ Authenticate a domain
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -73,7 +73,7 @@ Create a new domain
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -128,7 +128,7 @@ Delete a domain
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -182,7 +182,7 @@ Validate domain configuration
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -236,7 +236,7 @@ Get the list of all your domains
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key

@@ -25,7 +25,7 @@ We recommend pinging this endpoint every minute for as long as the agent has to 
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -81,7 +81,7 @@ Only agents’ messages can be deleted.
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -135,7 +135,7 @@ Get a message
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -191,7 +191,7 @@ Only agents’ messages can be edited.
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -249,7 +249,7 @@ Send a message as an agent
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -303,7 +303,7 @@ Delete an automated message
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -357,7 +357,7 @@ Get an automated message
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -411,7 +411,7 @@ Update an automated message
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -470,7 +470,7 @@ Example of automated messages: order status, announce new features in your web a
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key

@@ -23,7 +23,7 @@ Get deal attributes
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -71,7 +71,7 @@ Get all deals
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -138,7 +138,7 @@ Delete a deal
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -192,7 +192,7 @@ Get a deal
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -246,7 +246,7 @@ Update a deal
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -303,7 +303,7 @@ Link and Unlink a deal with contacts and companies
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -360,7 +360,7 @@ Create a deal
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -416,7 +416,7 @@ This endpoint is deprecated. Prefer /crm/pipeline/details/{pipelineID} instead.
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -464,7 +464,7 @@ Get pipelines and their details
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key

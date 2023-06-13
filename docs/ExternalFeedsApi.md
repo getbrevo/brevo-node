@@ -21,7 +21,7 @@ This endpoint will create an external feed.
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -77,7 +77,7 @@ This endpoint will delete an external feed.
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -133,7 +133,7 @@ This endpoint can fetch all created external feeds.
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -202,7 +202,7 @@ This endpoint will update an external feed.
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -258,7 +258,7 @@ This endpoint will update an external feed.
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key

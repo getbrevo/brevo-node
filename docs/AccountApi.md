@@ -16,7 +16,7 @@ Get your account information, plan and credits details
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -64,7 +64,7 @@ Get user activity logs
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key

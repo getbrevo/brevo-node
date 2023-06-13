@@ -18,7 +18,7 @@ This endpoint will show the unaggregated statistics for WhatsApp activity (30 da
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
@@ -89,7 +89,7 @@ This endpoint is used to send a WhatsApp message. <br/>(**The first message you 
 
 ### Example
 ```javascript
-var Brevo = require('brevo');
+var Brevo = require('@getbrevo/brevo');
 var defaultClient = Brevo.ApiClient.instance;
 
 // Configure API key authorization: api-key
