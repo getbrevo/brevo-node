@@ -311,7 +311,7 @@
     this.getEmailCampaign = function(campaignId, opts) {
       return this.getEmailCampaignWithHttpInfo(campaignId, opts)
         .then(function(response_and_data) {
-          return response_and_data.data;
+          return JSON.parse(response_and_data.response.text);
         });
     }
 
