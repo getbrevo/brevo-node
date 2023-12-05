@@ -1,7 +1,7 @@
 {
     "name": "@getbrevo/brevo",
-    "version": "1.0.1",
-    "description": "Brevo_provide_a_RESTFul_API_that_can_be_used_with_any_languages__With_this_API_you_will_be_able_to_____Manage_your_campaigns_and_get_the_statistics____Manage_your_contacts____Send_transactional_Emails_and_SMS____and_much_more___You_can_download_our_wrappers_at_httpsgithub_comorgsbrevoPossible_responses___Code__Message____________________________________200___OK__Successful_Request_____201___OK__Successful_Creation____202___OK__Request_accepted____204___OK__Successful_UpdateDeletion_____400___Error__Bad_Request_____401___Error__Authentication_Needed_____402___Error__Not_enough_credit_plan_upgrade_needed_____403___Error__Permission_denied_____404___Error__Object_does_not_exist____405___Error__Method_not_allowed_____406___Error__Not_Acceptable__",
+    "version": "2.0.0-beta.4",
+    "description": "Typescript client for @getbrevo/brevo",
     "repository": {
         "type": "git",
         "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
@@ -10,8 +10,7 @@
     "types": "dist/api.d.ts",
     "scripts": {
         "clean": "rm -Rf node_modules/ *.js",
-        "build": "tsc",
-        "test": "npm run build && node dist/client.js"
+        "build": "tsc"
     },
     "author": "Brevo",
     "license": "MIT",

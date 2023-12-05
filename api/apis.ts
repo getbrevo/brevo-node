@@ -57,8 +57,6 @@ export class HttpError extends Error {
     }
 }
 
-console.log('hey form local')
-
 export { RequestFile } from '../model/models';
 
 export const APIS = [AccountApi, CompaniesApi, ContactsApi, ConversationsApi, CouponsApi, DealsApi, DomainsApi, EcommerceApi, EmailCampaignsApi, ExternalFeedsApi, FilesApi, InboundParsingApi, MasterAccountApi, NotesApi, ProcessApi, ResellerApi, SMSCampaignsApi, SendersApi, TasksApi, TransactionalEmailsApi, TransactionalSMSApi, TransactionalWhatsAppApi, UserApi, WebhooksApi, WhatsAppCampaignsApi];
