@@ -1,7 +1,7 @@
 {
     "name": "sib-api-v3-typescript",
     "version": "1.0.0",
-    "description": "NodeJS client for sib-api-v3-typescript",
+    "description": "Typescript client for APIv3 of Brevo",
     "repository": {
         "type": "git",
         "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
@@ -13,8 +13,8 @@
         "build": "tsc",
         "test": "npm run build && node dist/client.js"
     },
-    "author": "OpenAPI-Generator Contributors",
-    "license": "Unlicense",
+    "author": "Brevo",
+    "license": "MIT",
     "dependencies": {
         "bluebird": "^3.5.0",
         "request": "^2.81.0",
