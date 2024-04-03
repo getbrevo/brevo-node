@@ -28,47 +28,60 @@ yarn add @getbrevo/brevo
 
 Once you have [installed](#installation) the node module in your project, you can execute the following sample code JS code :
 
-```javascript
-const SibApiV3Sdk = require('@getbrevo/brevo');
+```ts
+import BrevoApi from "@getbrevo/brevo";
 
-let apiInstance = new SibApiV3Sdk.AccountApi();
-
-apiInstance.setApiKey(SibApiV3Sdk.AccountApiApiKeys.apiKey, 'YOUR API KEY')
-
-apiInstance.getAccount().then(function(data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-
-}, function(error) {
-  console.error(error);
+const brevo = new BrevoApi({
+  headers: {
+    "api-key": "YOUR_API_KEY",
+  },
 });
+
+brevo.account
+  .getAccount()
+  .then((data) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
-```javascript
-const SibApiV3Sdk = require('@getbrevo/brevo');
+```ts
+import BrevoApi from "@getbrevo/brevo";
 
-let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-
-let apiKey = apiInstance.authentications['apiKey'];
-apiKey.apiKey = 'YOUR API KEY';
-
-let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); 
-
-sendSmtpEmail.subject = "My {{params.subject}}";
-sendSmtpEmail.htmlContent = "<html><body><h1>This is my first transactional email {{params.parameter}}</h1></body></html>";
-sendSmtpEmail.sender = {"name":"John Doe","email":"example@example.com"};
-sendSmtpEmail.to = [{"email":"example@example.com","name":"Jane Doe"}];
-sendSmtpEmail.cc = [{"email":"example2@example2.com","name":"Janice Doe"}];
-sendSmtpEmail.bcc = [{"name":"John Doe","email":"example@example.com"}];
-sendSmtpEmail.replyTo = {"email":"replyto@domain.com","name":"John Doe"};
-sendSmtpEmail.headers = {"Some-Custom-Name":"unique-id-1234"};
-sendSmtpEmail.params = {"parameter":"My param value","subject":"New Subject"};
-
-apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-
-}, function(error) {
-  console.error(error);
+const brevo = new BrevoApi({
+  headers: {
+    "api-key": "YOUR_API_KEY",
+  },
 });
+
+brevo.smtp
+  .sendTransacEmail({
+    subject: "My {{params.subject}}",
+    htmlContent:
+      "<html><body><h1>This is my first transactional email {{params.parameter}}</h1></body></html>",
+    sender: {
+      name: "John Doe",
+      email: "example@example.com",
+    },
+    to: [{ email: "example@example.com", name: "Jane Doe" }],
+    cc: [{ email: "example2@example2.com", name: "Janice Doe" }],
+    bcc: [{ email: "example@example.com", name: "John Doe" }],
+    replyTo: { email: "replyto@domain.com", name: "John Doe" },
+    headers: { "Some-Custom-Name": "unique-id-1234" },
+    params: { parameter: "My param value", subject: "New Subject" },
+  })
+  .then((data) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
 For more examples, refer the [Endpoints Guide](https://developers.brevo.com/reference)
