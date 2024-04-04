@@ -9,6 +9,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepare": "tsc",
     "build": "tsc",
     "generate": "ts-node generate.ts"
   },
