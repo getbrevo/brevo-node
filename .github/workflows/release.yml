@@ -1,30 +1,18 @@
-name: Node.js Package
+name: Publish Package to npmjs
 on:
   release:
-    types: [created]
+    types: [published]
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Setup .npmrc file to publish to npm
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '14'
-          registry-url: 'https://registry.npmjs.org'
-      - run: npm install
-      # - run: npm publish --access public
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      # # Setup .npmrc file to publish to GitHub Packages
-      # - uses: actions/setup-node@v2
-      #   with:
-      #     registry-url: 'https://npm.pkg.github.com'
-      #     scope: '@getbrevo'
-      # # Publish to GitHub Packages
-      # - run: npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          node-version: "20.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn install --frozen-lockfile
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
