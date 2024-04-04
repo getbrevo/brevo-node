@@ -958,7 +958,7 @@ export interface GetWhatsappCampaignOverview {
   campaignStatus: "draft" | "scheduled" | "pending" | "approved" | "running" | "suspended" | "rejected" | "sent";
   /**
    * UTC date-time on which WhatsApp campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format
-   * @example "2024-04-03T18:18:49.106Z"
+   * @example "2024-01-22T09:25:00.000Z"
    */
   scheduledAt?: string;
   /**
@@ -970,12 +970,12 @@ export interface GetWhatsappCampaignOverview {
   template: WhatsappCampTemplate;
   /**
    * Creation UTC date-time of the WhatsApp campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)
-   * @example "2024-04-03T18:18:49.106Z"
+   * @example "2024-01-22T09:25:00.000Z"
    */
   createdAt: string;
   /**
    * UTC date-time of last modification of the WhatsApp campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)
-   * @example "2024-04-03T18:18:49.106Z"
+   * @example "2024-01-22T09:25:00.000Z"
    */
   modifiedAt: string;
 }
@@ -1082,12 +1082,12 @@ export interface GetWATemplates {
     errorReason?: string;
     /**
      * Creation UTC date-time of the whatsApp template (YYYY-MM-DDTHH:mm:ss.SSSZ)
-     * @example "2024-04-03T18:18:49.106Z"
+     * @example "2024-01-22T09:25:00.000Z"
      */
     createdAt: string;
     /**
      * UTC date-time of last modification of the whatsApp template (YYYY-MM-DDTHH:mm:ss.SSSZ)
-     * @example "2024-04-03T18:18:49.106Z"
+     * @example "2024-01-22T09:25:00.000Z"
      */
     modifiedAt: string;
   }[];
@@ -1124,7 +1124,7 @@ export interface GetWhatsappCampaigns {
     campaignStatus: "draft" | "scheduled" | "pending" | "approved" | "running" | "suspended" | "rejected" | "sent";
     /**
      * UTC date-time on which WhatsApp campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format
-     * @example "2024-04-03T18:18:49.106Z"
+     * @example "2024-01-22T09:25:00.000Z"
      */
     scheduledAt: string;
     /**
@@ -1147,12 +1147,12 @@ export interface GetWhatsappCampaigns {
     stats?: WhatsappCampStats;
     /**
      * Creation UTC date-time of the WhatsApp campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)
-     * @example "2024-04-03T18:18:49.106Z"
+     * @example "2024-01-22T09:25:00.000Z"
      */
     createdAt: string;
     /**
      * UTC date-time of last modification of the whatsApp template (YYYY-MM-DDTHH:mm:ss.SSSZ)
-     * @example "2024-04-03T18:18:49.106Z"
+     * @example "2024-01-22T09:25:00.000Z"
      */
     modifiedAt: string;
   }[];

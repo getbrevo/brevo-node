@@ -1,0 +1,29 @@
+name: Test
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.0
+      - name: Install dependencies
+        run: yarn install
+      - name: Generate API file
+        run: yarn generate
+      - name: Check generated files match
+        uses: tj-actions/verify-changed-files@v19
+        with:
+          files: |
+            src/Brevo.ts
+          fail-if-changed: true
+          fail-message: "Generate API file is different to the committed one. Please run `yarn generate` and commit the changes."
