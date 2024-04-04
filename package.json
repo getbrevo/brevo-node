@@ -1,6 +1,6 @@
 {
   "name": "@groupcards/brevo",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Typescript client for @getbrevo/brevo",
   "repository": {
     "type": "git",
