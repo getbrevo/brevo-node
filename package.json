@@ -1,10 +1,10 @@
 {
-  "name": "@groupcards/brevo",
-  "version": "2.0.2",
+  "name": "@getbrevo/brevo",
+  "version": "2.0.0",
   "description": "Typescript client for @getbrevo/brevo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+    "url": "https://github.com/getbrevo/brevo-node.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,6 +12,9 @@
     "prepare": "tsc",
     "build": "tsc",
     "generate": "ts-node generate.ts"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "author": "Brevo",
   "license": "MIT",

@@ -85,3 +85,7 @@ brevo.smtp
 ```
 
 For more examples, refer the [Endpoints Guide](https://developers.brevo.com/reference)
+
+## Contributing
+
+Please refer to the [CONTRIBUTING](CONTRIBUTING.md) file.
