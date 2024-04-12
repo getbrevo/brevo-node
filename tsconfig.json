@@ -7,5 +7,6 @@
     "skipLibCheck": true,
     "outDir": "dist",
     "declaration": true
-  }
+  },
+  "include": ["index.ts", "src/**/*.ts"]
 }
