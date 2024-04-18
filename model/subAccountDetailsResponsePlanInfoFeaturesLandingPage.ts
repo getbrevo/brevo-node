@@ -13,7 +13,7 @@
 import { RequestFile } from './models';
 
 /**
-* Landing page details
+* Landing page details / Not available on ENTv2
 */
 export class SubAccountDetailsResponsePlanInfoFeaturesLandingPage {
     /**

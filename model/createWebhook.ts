@@ -11,6 +11,8 @@
  */
 
 import { RequestFile } from './models';
+import { GetWebhookAuth } from './getWebhookAuth';
+import { GetWebhookHeadersInner } from './getWebhookHeadersInner';
 
 export class CreateWebhook {
     /**
@@ -33,6 +35,15 @@ export class CreateWebhook {
     * Inbound domain of webhook, required in case of event type `inbound`
     */
     'domain'?: string;
+    /**
+    * To send batched webhooks
+    */
+    'batched'?: boolean;
+    'auth'?: GetWebhookAuth;
+    /**
+    * Custom headers to be send with webhooks
+    */
+    'headers'?: Array<GetWebhookHeadersInner>;
 
     static discriminator: string | undefined = undefined;
 
@@ -61,6 +72,21 @@ export class CreateWebhook {
             "name": "domain",
             "baseName": "domain",
             "type": "string"
+        },
+        {
+            "name": "batched",
+            "baseName": "batched",
+            "type": "boolean"
+        },
+        {
+            "name": "auth",
+            "baseName": "auth",
+            "type": "GetWebhookAuth"
+        },
+        {
+            "name": "headers",
+            "baseName": "headers",
+            "type": "Array<GetWebhookHeadersInner>"
         }    ];
 
     static getAttributeTypeMap() {

@@ -23,6 +23,10 @@ export class CreateDomainModel {
     */
     'domainName'?: string;
     /**
+    * Domain Provider
+    */
+    'domainProvider'?: string;
+    /**
     * Success message
     */
     'message'?: string;
@@ -39,6 +43,11 @@ export class CreateDomainModel {
         {
             "name": "domainName",
             "baseName": "domain_name",
+            "type": "string"
+        },
+        {
+            "name": "domainProvider",
+            "baseName": "domain_provider",
             "type": "string"
         },
         {

@@ -11,6 +11,8 @@
  */
 
 import { RequestFile } from './models';
+import { GetWebhookAuth } from './getWebhookAuth';
+import { GetWebhookHeadersInner } from './getWebhookHeadersInner';
 
 export class GetWebhook {
     /**
@@ -38,6 +40,15 @@ export class GetWebhook {
     * Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)
     */
     'modifiedAt': string;
+    /**
+    * To send batched webhooks
+    */
+    'batched'?: boolean;
+    'auth'?: GetWebhookAuth;
+    /**
+    * Custom headers to be send with webhooks
+    */
+    'headers'?: Array<GetWebhookHeadersInner>;
 
     static discriminator: string | undefined = undefined;
 
@@ -76,6 +87,21 @@ export class GetWebhook {
             "name": "modifiedAt",
             "baseName": "modifiedAt",
             "type": "string"
+        },
+        {
+            "name": "batched",
+            "baseName": "batched",
+            "type": "boolean"
+        },
+        {
+            "name": "auth",
+            "baseName": "auth",
+            "type": "GetWebhookAuth"
+        },
+        {
+            "name": "headers",
+            "baseName": "headers",
+            "type": "Array<GetWebhookHeadersInner>"
         }    ];
 
     static getAttributeTypeMap() {

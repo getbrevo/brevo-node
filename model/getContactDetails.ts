@@ -16,7 +16,7 @@ export class GetContactDetails {
     /**
     * Email address of the contact for which you requested the details
     */
-    'email': string;
+    'email'?: string;
     /**
     * ID of the contact for which you requested the details
     */

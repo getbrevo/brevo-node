@@ -1136,8 +1136,10 @@ export class ContactsApi {
      * @param modifiedSince Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
      * @param createdSince Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
+     * @param segmentId Id of the segment. **Either listIds or segmentId can be passed.**
+     * @param listIds Ids of the list. **Either listIds or segmentId can be passed.**
      */
-    public async getContacts (limit?: number, offset?: number, modifiedSince?: string, createdSince?: string, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetContacts;  }> {
+    public async getContacts (limit?: number, offset?: number, modifiedSince?: string, createdSince?: string, sort?: 'asc' | 'desc', segmentId?: number, listIds?: Array<number>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetContacts;  }> {
         const localVarPath = this.basePath + '/contacts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1168,6 +1170,14 @@ export class ContactsApi {
 
         if (sort !== undefined) {
             localVarQueryParameters['sort'] = ObjectSerializer.serialize(sort, "'asc' | 'desc'");
+        }
+
+        if (segmentId !== undefined) {
+            localVarQueryParameters['segmentId'] = ObjectSerializer.serialize(segmentId, "number");
+        }
+
+        if (listIds !== undefined) {
+            localVarQueryParameters['listIds'] = ObjectSerializer.serialize(listIds, "Array<number>");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -1836,7 +1846,7 @@ export class ContactsApi {
         });
     }
     /**
-     * It returns the background process ID which on completion calls the notify URL that you have set in the input.
+     * It returns the background process ID which on completion calls the notify URL that you have set in the input.  **Note**: - Any contact attribute that doesn\'t exist in your account will be ignored at import end. 
      * @summary Import contacts
      * @param requestContactImport Values to import contacts in Brevo. To know more about the expected format, please have a look at &#x60;&#x60;https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns&#x60;&#x60;
      */

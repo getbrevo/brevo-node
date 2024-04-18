@@ -26,6 +26,7 @@ import { CreateUpdateProduct } from '../model/createUpdateProduct';
 import { ErrorModel } from '../model/errorModel';
 import { GetCategories } from '../model/getCategories';
 import { GetCategoryDetails } from '../model/getCategoryDetails';
+import { GetOrders } from '../model/getOrders';
 import { GetProductDetails } from '../model/getProductDetails';
 import { GetProducts } from '../model/getProducts';
 import { Order } from '../model/order';
@@ -622,14 +623,260 @@ export class EcommerceApi {
     }
     /**
      * 
+     * @summary Get detailed attribution metrics for a single Brevo campaign
+     * @param conversionSource The Brevo campaign type for which data will be retrieved
+     * @param conversionSourceId The Brevo campaign id for which data will be retrieved
+     */
+    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: any, conversionSourceId: any, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}'
+            .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
+            .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'conversionSource' is not null or undefined
+        if (conversionSource === null || conversionSource === undefined) {
+            throw new Error('Required parameter conversionSource was null or undefined when calling ecommerceAttributionMetricsConversionSourceConversionSourceIdGet.');
+        }
+
+        // verify required parameter 'conversionSourceId' is not null or undefined
+        if (conversionSourceId === null || conversionSourceId === undefined) {
+            throw new Error('Required parameter conversionSourceId was null or undefined when calling ecommerceAttributionMetricsConversionSourceConversionSourceIdGet.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * 
+     * @summary Get attribution metrics for one or more Brevo campaigns
+     * @param periodFrom When getting metrics for a specific period, define the starting datetime in RFC3339 format
+     * @param periodTo When getting metrics for a specific period, define the end datetime in RFC3339 format
+     * @param emailCampaignId The email campaign id(s) to get metrics for
+     */
+    public async ecommerceAttributionMetricsGet (periodFrom?: any, periodTo?: any, emailCampaignId?: any, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/ecommerce/attribution/metrics';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        if (periodFrom !== undefined) {
+            localVarQueryParameters['periodFrom'] = ObjectSerializer.serialize(periodFrom, "any");
+        }
+
+        if (periodTo !== undefined) {
+            localVarQueryParameters['periodTo'] = ObjectSerializer.serialize(periodTo, "any");
+        }
+
+        if (emailCampaignId !== undefined) {
+            localVarQueryParameters['emailCampaignId[]'] = ObjectSerializer.serialize(emailCampaignId, "any");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * 
+     * @summary Get attributed product sales for a single Brevo campaign
+     * @param conversionSource The Brevo campaign type for which data will be retrieved
+     * @param conversionSourceId The Brevo campaign id for which data will be retrieved
+     */
+    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: any, conversionSourceId: any, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/ecommerce/attribution/products/{conversionSource}/{conversionSourceId}'
+            .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
+            .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'conversionSource' is not null or undefined
+        if (conversionSource === null || conversionSource === undefined) {
+            throw new Error('Required parameter conversionSource was null or undefined when calling ecommerceAttributionProductsConversionSourceConversionSourceIdGet.');
+        }
+
+        // verify required parameter 'conversionSourceId' is not null or undefined
+        if (conversionSourceId === null || conversionSourceId === undefined) {
+            throw new Error('Required parameter conversionSourceId was null or undefined when calling ecommerceAttributionProductsConversionSourceConversionSourceIdGet.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * 
      * @summary Return all your categories
      * @param limit Number of documents per page
      * @param offset Index of the first document in the page
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param ids Filter by category ids
      * @param name Filter by category name
+     * @param modifiedSince Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+     * @param createdSince Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
      */
-    public async getCategories (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCategories;  }> {
+    public async getCategories (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCategories;  }> {
         const localVarPath = this.basePath + '/categories';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -660,6 +907,14 @@ export class EcommerceApi {
 
         if (name !== undefined) {
             localVarQueryParameters['name'] = ObjectSerializer.serialize(name, "string");
+        }
+
+        if (modifiedSince !== undefined) {
+            localVarQueryParameters['modifiedSince'] = ObjectSerializer.serialize(modifiedSince, "string");
+        }
+
+        if (createdSince !== undefined) {
+            localVarQueryParameters['createdSince'] = ObjectSerializer.serialize(createdSince, "string");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -789,6 +1044,99 @@ export class EcommerceApi {
         });
     }
     /**
+     * Get all the orders
+     * @summary Get order details
+     * @param limit Number of documents per page
+     * @param offset Index of the first document in the page
+     * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
+     * @param modifiedSince Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+     * @param createdSince Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+     */
+    public async getOrders (limit?: number, offset?: number, sort?: 'asc' | 'desc', modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrders;  }> {
+        const localVarPath = this.basePath + '/orders';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json', 'response'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        if (limit !== undefined) {
+            localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
+        }
+
+        if (offset !== undefined) {
+            localVarQueryParameters['offset'] = ObjectSerializer.serialize(offset, "number");
+        }
+
+        if (sort !== undefined) {
+            localVarQueryParameters['sort'] = ObjectSerializer.serialize(sort, "'asc' | 'desc'");
+        }
+
+        if (modifiedSince !== undefined) {
+            localVarQueryParameters['modifiedSince'] = ObjectSerializer.serialize(modifiedSince, "string");
+        }
+
+        if (createdSince !== undefined) {
+            localVarQueryParameters['createdSince'] = ObjectSerializer.serialize(createdSince, "string");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GetOrders;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "GetOrders");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
      * 
      * @summary Get a product\'s details
      * @param id Product ID
@@ -878,8 +1226,10 @@ export class EcommerceApi {
      * @param priceEq Price filter for products equals to particular amount
      * @param priceNe Price filter for products not equals to particular amount
      * @param categories Filter by category ids
+     * @param modifiedSince Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+     * @param createdSince Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      */
-    public async getProducts (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, priceLte?: number, priceGte?: number, priceLt?: number, priceGt?: number, priceEq?: number, priceNe?: number, categories?: Array<string>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetProducts;  }> {
+    public async getProducts (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, priceLte?: number, priceGte?: number, priceLt?: number, priceGt?: number, priceEq?: number, priceNe?: number, categories?: Array<string>, modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetProducts;  }> {
         const localVarPath = this.basePath + '/products';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -938,6 +1288,14 @@ export class EcommerceApi {
 
         if (categories !== undefined) {
             localVarQueryParameters['categories'] = ObjectSerializer.serialize(categories, "Array<string>");
+        }
+
+        if (modifiedSince !== undefined) {
+            localVarQueryParameters['modifiedSince'] = ObjectSerializer.serialize(modifiedSince, "string");
+        }
+
+        if (createdSince !== undefined) {
+            localVarQueryParameters['createdSince'] = ObjectSerializer.serialize(createdSince, "string");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

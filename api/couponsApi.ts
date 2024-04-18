@@ -327,8 +327,9 @@ export class CouponsApi {
      * @param limit Number of documents returned per page
      * @param offset Index of the first document on the page
      * @param sort Sort the results by creation time in ascending/descending order
+     * @param sortBy The field used to sort coupon collections
      */
-    public async getCouponCollections (limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCouponCollection;  }> {
+    public async getCouponCollections (limit?: number, offset?: number, sort?: 'asc' | 'desc', sortBy?: any, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCouponCollection;  }> {
         const localVarPath = this.basePath + '/couponCollections';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -351,6 +352,10 @@ export class CouponsApi {
 
         if (sort !== undefined) {
             localVarQueryParameters['sort'] = ObjectSerializer.serialize(sort, "'asc' | 'desc'");
+        }
+
+        if (sortBy !== undefined) {
+            localVarQueryParameters['sortBy'] = ObjectSerializer.serialize(sortBy, "any");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -410,7 +415,7 @@ export class CouponsApi {
      * @param id Id of the collection to update
      * @param updateCouponCollection Values to update the coupon collection
      */
-    public async updateCouponCollection (id: string, updateCouponCollection: UpdateCouponCollectionRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UpdateCouponCollection200Response;  }> {
+    public async updateCouponCollection (id: string, updateCouponCollection?: UpdateCouponCollectionRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UpdateCouponCollection200Response;  }> {
         const localVarPath = this.basePath + '/couponCollections/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -427,11 +432,6 @@ export class CouponsApi {
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling updateCouponCollection.');
-        }
-
-        // verify required parameter 'updateCouponCollection' is not null or undefined
-        if (updateCouponCollection === null || updateCouponCollection === undefined) {
-            throw new Error('Required parameter updateCouponCollection was null or undefined when calling updateCouponCollection.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

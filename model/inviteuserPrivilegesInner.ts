@@ -54,11 +54,13 @@ export namespace InviteuserPrivilegesInner {
         FacebookAds = <any> 'facebook_ads',
         LandingPages = <any> 'landing_pages',
         TransactionalEmails = <any> 'transactional_emails',
-        ApiKeys = <any> 'api_keys',
+        SmtpApi = <any> 'smtp_api',
         UserManagement = <any> 'user_management',
         SalesPlatform = <any> 'sales_platform',
         Phone = <any> 'phone',
-        Conversations = <any> 'conversations'
+        Conversations = <any> 'conversations',
+        SendersDomainsDedicatedIps = <any> 'senders_domains_dedicated_ips',
+        PushNotifications = <any> 'push_notifications'
     }
     export enum PermissionsEnum {
         CreateEditDelete = <any> 'create_edit_delete',
@@ -77,6 +79,16 @@ export namespace InviteuserPrivilegesInner {
         Access = <any> 'access',
         Assign = <any> 'assign',
         Configure = <any> 'configure',
+        ManageOwnedDealsTasksCompanies = <any> 'manage_owned_deals_tasks_companies',
+        ManageOthersDealsTasksCompanies = <any> 'manage_others_deals_tasks_companies',
+        Reports = <any> 'reports',
+        SendersManagement = <any> 'senders_management',
+        DomainsManagement = <any> 'domains_management',
+        DedicatedIpsManagement = <any> 'dedicated_ips_management',
+        Send = <any> 'send',
+        Smtp = <any> 'smtp',
+        ApiKeys = <any> 'api_keys',
+        AuthorizedIps = <any> 'authorized_ips',
         None = <any> 'none'
     }
 }

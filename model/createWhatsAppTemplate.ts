@@ -89,10 +89,10 @@ export class CreateWhatsAppTemplate {
 export namespace CreateWhatsAppTemplate {
     export enum CategoryEnum {
         Marketing = <any> 'MARKETING',
-        Transactional = <any> 'TRANSACTIONAL'
+        Utility = <any> 'UTILITY'
     }
     export enum SourceEnum {
         Automation = <any> 'Automation',
-        Conversation = <any> 'Conversation'
+        Conversations = <any> 'Conversations'
     }
 }

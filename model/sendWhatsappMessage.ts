@@ -26,6 +26,10 @@ export class SendWhatsappMessage {
     */
     'senderNumber': string;
     /**
+    * Pass the set of attributes to customize the template. For example, {\"FNAME\":\"Joe\", \"LNAME\":\"Doe\"}.
+    */
+    'params'?: object;
+    /**
     * List of phone numbers of the contacts
     */
     'contactNumbers': Array<string>;
@@ -47,6 +51,11 @@ export class SendWhatsappMessage {
             "name": "senderNumber",
             "baseName": "senderNumber",
             "type": "string"
+        },
+        {
+            "name": "params",
+            "baseName": "params",
+            "type": "object"
         },
         {
             "name": "contactNumbers",

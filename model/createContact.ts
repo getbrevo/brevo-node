@@ -22,7 +22,7 @@ export class CreateContact {
     */
     'extId'?: string;
     /**
-    * Pass the set of attributes and their values. The attribute\'s parameter should be passed in capital letter while creating a contact. These attributes must be present in your Brevo account. For eg. {\"FNAME\":\"Elly\", \"LNAME\":\"Roger\"}
+    * Pass the set of attributes and their values. The attribute\'s parameter should be passed in capital letter while creating a contact. Values that don\'t match the attribute type (e.g. text or string in a date attribute) will be ignored.These attributes must be present in your Brevo account. For eg. {\"FNAME\":\"Elly\", \"LNAME\":\"Roger\"}
     */
     'attributes'?: object;
     /**

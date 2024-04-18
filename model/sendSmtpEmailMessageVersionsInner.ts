@@ -38,6 +38,14 @@ export class SendSmtpEmailMessageVersionsInner {
     * Custom subject specific to message version 
     */
     'subject'?: string;
+    /**
+    * HTML body of the message. **Mandatory if \'templateId\' is not passed, ignored if \'templateId\' is passed** 
+    */
+    'htmlContent'?: string;
+    /**
+    * Plain Text body of the message. **Ignored if \'templateId\' is passed** 
+    */
+    'textContent'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -70,6 +78,16 @@ export class SendSmtpEmailMessageVersionsInner {
         {
             "name": "subject",
             "baseName": "subject",
+            "type": "string"
+        },
+        {
+            "name": "htmlContent",
+            "baseName": "htmlContent",
+            "type": "string"
+        },
+        {
+            "name": "textContent",
+            "baseName": "textContent",
             "type": "string"
         }    ];
 
