@@ -170,7 +170,7 @@ export class DealsApi {
     /**
      * 
      * @summary Get all deals
-     * @param filtersAttributesDealName Filter by attributes. If you have filter for owner on your side please send it as &#x60;filters[attributes.deal_owner]&#x60;.\&quot;
+     * @param filtersAttributesDealName Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering.
      * @param filtersLinkedCompaniesIds Filter by linked companies ids
      * @param filtersLinkedContactsIds Filter by linked companies ids
      * @param offset Index of the first document of the page

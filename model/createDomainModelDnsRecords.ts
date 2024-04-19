@@ -16,6 +16,7 @@ import { CreateDomainModelDnsRecordsDkimRecord } from './createDomainModelDnsRec
 export class CreateDomainModelDnsRecords {
     'dkimRecord'?: CreateDomainModelDnsRecordsDkimRecord;
     'brevoCode'?: CreateDomainModelDnsRecordsDkimRecord;
+    'dmarcRecord'?: CreateDomainModelDnsRecordsDkimRecord;
 
     static discriminator: string | undefined = undefined;
 
@@ -28,6 +29,11 @@ export class CreateDomainModelDnsRecords {
         {
             "name": "brevoCode",
             "baseName": "brevo_code",
+            "type": "CreateDomainModelDnsRecordsDkimRecord"
+        },
+        {
+            "name": "dmarcRecord",
+            "baseName": "dmarc_record",
             "type": "CreateDomainModelDnsRecordsDkimRecord"
         }    ];
 

@@ -567,8 +567,9 @@ export class WhatsAppCampaignsApi {
      * @param limit Number of documents per page
      * @param offset Index of the first document in the page
      * @param sort Sort the results in the ascending/descending order of record modification. Default order is **descending** if &#x60;sort&#x60; is not passed
+     * @param source source of the template
      */
-    public async getWhatsAppTemplates (startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetWATemplates;  }> {
+    public async getWhatsAppTemplates (startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', source?: 'Automation' | 'Conversations', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetWATemplates;  }> {
         const localVarPath = this.basePath + '/whatsappCampaigns/template-list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -599,6 +600,10 @@ export class WhatsAppCampaignsApi {
 
         if (sort !== undefined) {
             localVarQueryParameters['sort'] = ObjectSerializer.serialize(sort, "'asc' | 'desc'");
+        }
+
+        if (source !== undefined) {
+            localVarQueryParameters['source'] = ObjectSerializer.serialize(source, "'Automation' | 'Conversations'");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

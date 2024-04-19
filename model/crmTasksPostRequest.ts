@@ -39,7 +39,7 @@ export class CrmTasksPostRequest {
     */
     'done'?: boolean;
     /**
-    * User id to whom task is assigned
+    * To assign a task to a user you can use either the account email or ID.
     */
     'assignToId'?: string;
     /**

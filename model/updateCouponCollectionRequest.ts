@@ -16,7 +16,19 @@ export class UpdateCouponCollectionRequest {
     /**
     * A default coupon to be used in case there are no coupons left
     */
-    'defaultCoupon': string;
+    'defaultCoupon'?: string;
+    /**
+    * Specify an expiration date for the coupon collection in RFC3339 format. Use null to remove the expiration date.
+    */
+    'expirationDate'?: Date;
+    /**
+    * Send a notification alert (email) when the remaining days until the expiration date are equal or fall bellow this number. Use null to disable alerts.
+    */
+    'remainingDaysAlert'?: number;
+    /**
+    * Send a notification alert (email) when the remaining coupons count is equal or fall bellow this number. Use null to disable alerts.
+    */
+    'remainingCouponsAlert'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -25,6 +37,21 @@ export class UpdateCouponCollectionRequest {
             "name": "defaultCoupon",
             "baseName": "defaultCoupon",
             "type": "string"
+        },
+        {
+            "name": "expirationDate",
+            "baseName": "expirationDate",
+            "type": "Date"
+        },
+        {
+            "name": "remainingDaysAlert",
+            "baseName": "remainingDaysAlert",
+            "type": "number"
+        },
+        {
+            "name": "remainingCouponsAlert",
+            "baseName": "remainingCouponsAlert",
+            "type": "number"
         }    ];
 
     static getAttributeTypeMap() {

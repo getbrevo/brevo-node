@@ -26,9 +26,17 @@ export class MasterDetailsResponsePlanInfoFeaturesInner {
     */
     'quantity'?: number;
     /**
+    * Quantity with overages provided in the plan (only applicable on ENTv2)
+    */
+    'quantityWithOverages'?: number;
+    /**
     * Quantity consumed by master
     */
     'used'?: number;
+    /**
+    * Quantity consumed by sub-organizations over the admin plan limit (only applicable on ENTv2)
+    */
+    'usedOverages'?: number;
     /**
     * Quantity remaining in the plan
     */
@@ -53,8 +61,18 @@ export class MasterDetailsResponsePlanInfoFeaturesInner {
             "type": "number"
         },
         {
+            "name": "quantityWithOverages",
+            "baseName": "quantityWithOverages",
+            "type": "number"
+        },
+        {
             "name": "used",
             "baseName": "used",
+            "type": "number"
+        },
+        {
+            "name": "usedOverages",
+            "baseName": "usedOverages",
             "type": "number"
         },
         {

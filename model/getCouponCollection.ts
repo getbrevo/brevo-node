@@ -14,29 +14,41 @@ import { RequestFile } from './models';
 
 export class GetCouponCollection {
     /**
-    * The id of the collection
+    * The id of the collection.
     */
     'id': string;
     /**
-    * The name of the collection
+    * The name of the collection.
     */
     'name': string;
     /**
-    * The default coupon of the collection
+    * The default coupon of the collection.
     */
     'defaultCoupon': string;
     /**
-    * Datetime on which the collection was created
+    * Datetime on which the collection was created.
     */
     'createdAt': Date;
     /**
-    * Total coupons in the collection
+    * Total number of coupons in the collection.
     */
     'totalCoupons': number;
     /**
-    * Not sent coupons in the collection
+    * Number of coupons that have not been sent yet.
     */
     'remainingCoupons': number;
+    /**
+    * Expiration date for the coupon collection in RFC3339 format.
+    */
+    'expirationDate'?: Date;
+    /**
+    * If present, an email notification is going to be sent the defined amount of days before the expiration date.
+    */
+    'remainingDaysAlert'?: number;
+    /**
+    * If present, an email notification is going to be sent when the total number of available coupons falls below the defined threshold.
+    */
+    'remainingCouponsAlert'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -69,6 +81,21 @@ export class GetCouponCollection {
         {
             "name": "remainingCoupons",
             "baseName": "remainingCoupons",
+            "type": "number"
+        },
+        {
+            "name": "expirationDate",
+            "baseName": "expirationDate",
+            "type": "Date"
+        },
+        {
+            "name": "remainingDaysAlert",
+            "baseName": "remainingDaysAlert",
+            "type": "number"
+        },
+        {
+            "name": "remainingCouponsAlert",
+            "baseName": "remainingCouponsAlert",
             "type": "number"
         }    ];
 

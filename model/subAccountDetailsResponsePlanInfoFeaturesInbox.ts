@@ -13,7 +13,7 @@
 import { RequestFile } from './models';
 
 /**
-* Inbox details
+* Inbox details / Not available on ENTv2
 */
 export class SubAccountDetailsResponsePlanInfoFeaturesInbox {
     /**

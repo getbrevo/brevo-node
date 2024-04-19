@@ -16,6 +16,8 @@ export * from './ecommerceApi';
 import { EcommerceApi } from './ecommerceApi';
 export * from './emailCampaignsApi';
 import { EmailCampaignsApi } from './emailCampaignsApi';
+export * from './eventsApi';
+import { EventsApi } from './eventsApi';
 export * from './externalFeedsApi';
 import { ExternalFeedsApi } from './externalFeedsApi';
 export * from './filesApi';
@@ -26,6 +28,8 @@ export * from './masterAccountApi';
 import { MasterAccountApi } from './masterAccountApi';
 export * from './notesApi';
 import { NotesApi } from './notesApi';
+export * from './paymentsApi';
+import { PaymentsApi } from './paymentsApi';
 export * from './processApi';
 import { ProcessApi } from './processApi';
 export * from './resellerApi';
@@ -59,4 +63,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [AccountApi, CompaniesApi, ContactsApi, ConversationsApi, CouponsApi, DealsApi, DomainsApi, EcommerceApi, EmailCampaignsApi, ExternalFeedsApi, FilesApi, InboundParsingApi, MasterAccountApi, NotesApi, ProcessApi, ResellerApi, SMSCampaignsApi, SendersApi, TasksApi, TransactionalEmailsApi, TransactionalSMSApi, TransactionalWhatsAppApi, UserApi, WebhooksApi, WhatsAppCampaignsApi];
+export const APIS = [AccountApi, CompaniesApi, ContactsApi, ConversationsApi, CouponsApi, DealsApi, DomainsApi, EcommerceApi, EmailCampaignsApi, EventsApi, ExternalFeedsApi, FilesApi, InboundParsingApi, MasterAccountApi, NotesApi, PaymentsApi, ProcessApi, ResellerApi, SMSCampaignsApi, SendersApi, TasksApi, TransactionalEmailsApi, TransactionalSMSApi, TransactionalWhatsAppApi, UserApi, WebhooksApi, WhatsAppCampaignsApi];

@@ -103,7 +103,7 @@ export class TasksApi {
      * @param filterType Filter by task type (ID)
      * @param filterStatus Filter by task status
      * @param filterDate Filter by date
-     * @param filterAssignTo Filter by assignTo id
+     * @param filterAssignTo Filter by the \&quot;assignTo\&quot; ID. You can utilize account emails for the \&quot;assignTo\&quot; attribute.
      * @param filterContacts Filter by contact ids
      * @param filterDeals Filter by deals ids
      * @param filterCompanies Filter by companies ids
