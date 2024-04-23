@@ -1,5 +1,5 @@
 {
-  "name": "@getbrevo/brevo",
+  "name": "@groupcards/brevo",
   "version": "2.1.0",
   "description": "NodeJS client for @getbrevo/brevo",
   "repository": {
