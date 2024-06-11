@@ -26,31 +26,55 @@ yarn add @getbrevo/brevo
 
 ## Getting Started
 
-Once you have [installed](#installation) the node module in your project, you can execute the following sample code JS code :
 
-```javascript
-const SibApiV3Sdk = require('@getbrevo/brevo');
 
-let apiInstance = new SibApiV3Sdk.AccountApi();
+# We have two options:
+- First example is where **typescript is not supported** i.e. [v1.0.1]([url](https://www.npmjs.com/package/@getbrevo/brevo/v/1.0.1))
+- Second example is where **typescript is supported** i.e. [v2.1.1]([url](https://www.npmjs.com/package/@getbrevo/brevo/v/2.1.1))
 
-apiInstance.setApiKey(SibApiV3Sdk.AccountApiApiKeys.apiKey, 'YOUR API KEY')
 
-apiInstance.getAccount().then(function(data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+```shell
+-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------   Typescript not supported v1.0.1  ---------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+const brevo = require('@getbrevo/brevo');
+let defaultClient = brevo.ApiClient.instance;
 
-}, function(error) {
-  console.error(error);
-});
-```
-
-```javascript
-const SibApiV3Sdk = require('@getbrevo/brevo');
-
-let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-
-let apiKey = apiInstance.authentications['apiKey'];
+let apiKey = defaultClient.authentications['api-key'];
 apiKey.apiKey = 'YOUR API KEY';
 
+let apiInstance = new brevo.TransactionalEmailsApi();
+let sendSmtpEmail = new brevo.SendSmtpEmail();
+
+sendSmtpEmail.subject = "My {{params.subject}}";
+sendSmtpEmail.htmlContent = "<html><body><h1>Common: This is my first transactional email {{params.parameter}}</h1></body></html>";
+sendSmtpEmail.sender = { "name": "John", "email": "example@example.com" };
+sendSmtpEmail.to = [
+  { "email": "example@brevo.com", "name": "sample-name" }
+];
+sendSmtpEmail.replyTo = { "email": "example@brevo.com", "name": "sample-name" };
+sendSmtpEmail.headers = { "Some-Custom-Name": "unique-id-1234" };
+sendSmtpEmail.params = { "parameter": "My param value", "subject": "common subject" };
+
+
+apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
+  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+}, function (error) {
+  console.error(error);
+});```
+
+```
+-------------------------------------------------------------------------------------------------------------------------
+## Typescript supported with version v2.1.1
+
+```shell
+-------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------   Typescript supported with v2.1.1  --------------------------------------
+-------------------------------------------------------------------------------------------------------------------------
+const SibApiV3Sdk = require('@getbrevo/brevo');
+let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+let apiKey = apiInstance.authentications['apiKey'];
+apiKey.apiKey = 'YOUR API KEY';
 let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); 
 
 sendSmtpEmail.subject = "My {{params.subject}}";
@@ -64,6 +88,25 @@ sendSmtpEmail.headers = {"Some-Custom-Name":"unique-id-1234"};
 sendSmtpEmail.params = {"parameter":"My param value","subject":"New Subject"};
 
 apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
+  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+
+}, function(error) {
+  console.error(error);
+});```
+
+```
+-------------------------------------------------------------------------------------------------------------------------
+## GetAccount API example:
+
+```shell
+const SibApiV3Sdk = require('@getbrevo/brevo');
+
+let apiInstance = new SibApiV3Sdk.ContactsApi()
+
+let apiKey = apiInstance.authentications['apiKey'];
+apiKey.apiKey = 'YOUR API KEY';
+
+apiInstance.getAttributes().then(function(data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
 
 }, function(error) {
