@@ -61,7 +61,7 @@ apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
 }, function (error) {
   console.error(error);
-});```
+});
 
 ```
 -------------------------------------------------------------------------------------------------------------------------
@@ -92,7 +92,7 @@ apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
 
 }, function(error) {
   console.error(error);
-});```
+});
 
 ```
 -------------------------------------------------------------------------------------------------------------------------
@@ -111,7 +111,7 @@ apiInstance.getAttributes().then(function(data) {
 
 }, function(error) {
   console.error(error);
-});```
+});
 
 ```
 -------------------------------------------------------------------------------------------------------------------------
@@ -126,6 +126,24 @@ let apiKey = apiInstance.authentications['apiKey'];
 apiKey.apiKey = 'YOUR API KEY';
 
 apiInstance.getAccount().then(function(data) {
+  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+
+}, function(error) {
+  console.error(error);
+});
+
+```
+-------------------------------------------------------------------------------------------------------------------------
+## Get Contacts API example:
+```shell
+const SibApiV3Sdk = require('@getbrevo/brevo');
+
+let apiInstance = new SibApiV3Sdk.ContactsApi()
+
+let apiKey = apiInstance.authentications['apiKey'];
+apiKey.apiKey = 'YOUR API KEY';
+
+apiInstance.getContacts().then(function(data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
 
 }, function(error) {
