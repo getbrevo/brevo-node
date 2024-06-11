@@ -96,7 +96,7 @@ apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
 
 ```
 -------------------------------------------------------------------------------------------------------------------------
-## GetAccount API example:
+## Get Contact attributes API example:
 
 ```shell
 const SibApiV3Sdk = require('@getbrevo/brevo');
