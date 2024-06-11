@@ -111,6 +111,25 @@ apiInstance.getAttributes().then(function(data) {
 
 }, function(error) {
   console.error(error);
+});```
+
+```
+-------------------------------------------------------------------------------------------------------------------------
+## Get Account API example:
+
+```shell
+const SibApiV3Sdk = require('@getbrevo/brevo');
+
+let apiInstance = new SibApiV3Sdk.AccountApi()
+
+let apiKey = apiInstance.authentications['apiKey'];
+apiKey.apiKey = 'YOUR API KEY';
+
+apiInstance.getAccount().then(function(data) {
+  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+
+}, function(error) {
+  console.error(error);
 });
 ```
 
