@@ -71,26 +71,28 @@ apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
 -------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------   Typescript supported with v2.1.1  --------------------------------------
 -------------------------------------------------------------------------------------------------------------------------
-const SibApiV3Sdk = require('@getbrevo/brevo');
-let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+const brevo = require('@getbrevo/brevo');
+let apiInstance = new brevo.TransactionalEmailsApi();
+
 let apiKey = apiInstance.authentications['apiKey'];
 apiKey.apiKey = 'YOUR API KEY';
-let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); 
+
+let sendSmtpEmail = new brevo.SendSmtpEmail();
 
 sendSmtpEmail.subject = "My {{params.subject}}";
-sendSmtpEmail.htmlContent = "<html><body><h1>This is my first transactional email {{params.parameter}}</h1></body></html>";
-sendSmtpEmail.sender = {"name":"John Doe","email":"example@example.com"};
-sendSmtpEmail.to = [{"email":"example@example.com","name":"Jane Doe"}];
-sendSmtpEmail.cc = [{"email":"example2@example2.com","name":"Janice Doe"}];
-sendSmtpEmail.bcc = [{"name":"John Doe","email":"example@example.com"}];
-sendSmtpEmail.replyTo = {"email":"replyto@domain.com","name":"John Doe"};
-sendSmtpEmail.headers = {"Some-Custom-Name":"unique-id-1234"};
-sendSmtpEmail.params = {"parameter":"My param value","subject":"New Subject"};
+sendSmtpEmail.htmlContent = "<html><body><h1>Common: This is my first transactional email {{params.parameter}}</h1></body></html>";
+sendSmtpEmail.sender = { "name": "John", "email": "shubham.upadhyay@sendinblue.com" };
+sendSmtpEmail.to = [
+  { "email": "shubham.upadhyay@sendinblue.com", "name": "shubham upadhyay" }
+];
+sendSmtpEmail.replyTo = { "email": "shubham.upadhyay@sendinblue.com", "name": "Shubham Upadhyay" };
+sendSmtpEmail.headers = { "Some-Custom-Name": "unique-id-1234" };
+sendSmtpEmail.params = { "parameter": "My param value", "subject": "common subject" };
 
-apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
+
+apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
   console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-
-}, function(error) {
+}, function (error) {
   console.error(error);
 });
 
@@ -99,9 +101,9 @@ apiInstance.sendTransacEmail(sendSmtpEmail).then(function(data) {
 ## Get Contact attributes API example:
 
 ```shell
-const SibApiV3Sdk = require('@getbrevo/brevo');
+const brevo = require('@getbrevo/brevo');
 
-let apiInstance = new SibApiV3Sdk.ContactsApi()
+let apiInstance = new brevo.ContactsApi()
 
 let apiKey = apiInstance.authentications['apiKey'];
 apiKey.apiKey = 'YOUR API KEY';
@@ -118,9 +120,9 @@ apiInstance.getAttributes().then(function(data) {
 ## Get Account API example:
 
 ```shell
-const SibApiV3Sdk = require('@getbrevo/brevo');
+const brevo = require('@getbrevo/brevo');
 
-let apiInstance = new SibApiV3Sdk.AccountApi()
+let apiInstance = new brevo.AccountApi()
 
 let apiKey = apiInstance.authentications['apiKey'];
 apiKey.apiKey = 'YOUR API KEY';
@@ -136,9 +138,9 @@ apiInstance.getAccount().then(function(data) {
 -------------------------------------------------------------------------------------------------------------------------
 ## Get Contacts API example:
 ```shell
-const SibApiV3Sdk = require('@getbrevo/brevo');
+const brevo = require('@getbrevo/brevo');
 
-let apiInstance = new SibApiV3Sdk.ContactsApi()
+let apiInstance = new brevo.ContactsApi()
 
 let apiKey = apiInstance.authentications['apiKey'];
 apiKey.apiKey = 'YOUR API KEY';
