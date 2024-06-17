@@ -66,6 +66,8 @@ model/corporateGroupDetailsResponseUsersInner.ts
 model/corporateGroupPost201Response.ts
 model/corporateGroupPostRequest.ts
 model/corporateGroupUnlinkGroupIdSubAccountsPutRequest.ts
+model/corporateSubAccountIpAssociatePostRequest.ts
+model/corporateSubAccountIpDissociatePutRequest.ts
 model/corporateUserInvitationActionEmailPut200Response.ts
 model/createApiKeyRequest.ts
 model/createApiKeyResponse.ts
@@ -90,6 +92,7 @@ model/createExternalFeed201Response.ts
 model/createList.ts
 model/createModel.ts
 model/createPaymentRequest.ts
+model/createPaymentResponse.ts
 model/createProductModel.ts
 model/createReseller.ts
 model/createSender.ts
@@ -129,6 +132,11 @@ model/deal.ts
 model/dealAttributesInner.ts
 model/dealsList.ts
 model/deleteHardbounces.ts
+model/ecommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response.ts
+model/ecommerceAttributionMetricsGet200Response.ts
+model/ecommerceAttributionMetricsGet200ResponseTotals.ts
+model/ecommerceAttributionProductsConversionSourceConversionSourceIdGet200Response.ts
+model/ecommerceConfigDisplayCurrencyGet200Response.ts
 model/emailExportRecipients.ts
 model/errorModel.ts
 model/event.ts
@@ -348,9 +356,12 @@ model/ssoTokenRequest.ts
 model/ssoTokenRequestCorporate.ts
 model/subAccountAppsToggleRequest.ts
 model/subAccountDetailsResponse.ts
+model/subAccountDetailsResponseGroupsInner.ts
 model/subAccountDetailsResponsePlanInfo.ts
 model/subAccountDetailsResponsePlanInfoCredits.ts
 model/subAccountDetailsResponsePlanInfoCreditsEmails.ts
+model/subAccountDetailsResponsePlanInfoCreditsSms.ts
+model/subAccountDetailsResponsePlanInfoCreditsWpSubscribers.ts
 model/subAccountDetailsResponsePlanInfoFeatures.ts
 model/subAccountDetailsResponsePlanInfoFeaturesInbox.ts
 model/subAccountDetailsResponsePlanInfoFeaturesLandingPage.ts
@@ -360,6 +371,7 @@ model/subAccountUpdatePlanRequestCredits.ts
 model/subAccountUpdatePlanRequestFeatures.ts
 model/subAccountsResponse.ts
 model/subAccountsResponseSubAccountsInner.ts
+model/subAccountsResponseSubAccountsInnerGroupsInner.ts
 model/task.ts
 model/taskList.ts
 model/taskReminder.ts

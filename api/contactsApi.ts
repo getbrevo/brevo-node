@@ -1,6 +1,6 @@
 /**
  * Brevo API
- * Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+ * Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
  *
  * The version of the OpenAPI document: 3.0.0
  * Contact: contact@brevo.com
@@ -1138,8 +1138,9 @@ export class ContactsApi {
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param segmentId Id of the segment. **Either listIds or segmentId can be passed.**
      * @param listIds Ids of the list. **Either listIds or segmentId can be passed.**
+     * @param filter Filter the contacts on the basis of attributes. **Allowed operator: equals. (e.g. filter&#x3D;equals(FIRSTNAME,\&quot;Antoine\&quot;), filter&#x3D;equals(B1, true), filter&#x3D;equals(DOB, \&quot;1989-11-23\&quot;))** 
      */
-    public async getContacts (limit?: number, offset?: number, modifiedSince?: string, createdSince?: string, sort?: 'asc' | 'desc', segmentId?: number, listIds?: Array<number>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetContacts;  }> {
+    public async getContacts (limit?: number, offset?: number, modifiedSince?: string, createdSince?: string, sort?: 'asc' | 'desc', segmentId?: number, listIds?: Array<number>, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetContacts;  }> {
         const localVarPath = this.basePath + '/contacts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1178,6 +1179,10 @@ export class ContactsApi {
 
         if (listIds !== undefined) {
             localVarQueryParameters['listIds'] = ObjectSerializer.serialize(listIds, "Array<number>");
+        }
+
+        if (filter !== undefined) {
+            localVarQueryParameters['filter'] = ObjectSerializer.serialize(filter, "string");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

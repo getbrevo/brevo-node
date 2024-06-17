@@ -1,6 +1,6 @@
 /**
  * Brevo API
- * Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+ * Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
  *
  * The version of the OpenAPI document: 3.0.0
  * Contact: contact@brevo.com
@@ -15,8 +15,8 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
-import { CreateModel } from '../model/createModel';
 import { CreatePaymentRequest } from '../model/createPaymentRequest';
+import { CreatePaymentResponse } from '../model/createPaymentResponse';
 import { ErrorModel } from '../model/errorModel';
 import { GetPaymentRequest } from '../model/getPaymentRequest';
 
@@ -99,7 +99,7 @@ export class PaymentsApi {
      * @summary Create a payment request
      * @param createPaymentRquest Create a payment request 
      */
-    public async createPaymentRequest (createPaymentRquest: CreatePaymentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+    public async createPaymentRequest (createPaymentRquest: CreatePaymentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatePaymentResponse;  }> {
         const localVarPath = this.basePath + '/payments/requests';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -153,13 +153,13 @@ export class PaymentsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: CreatePaymentResponse;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "CreateModel");
+                            body = ObjectSerializer.deserialize(body, "CreatePaymentResponse");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

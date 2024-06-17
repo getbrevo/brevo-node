@@ -37,6 +37,8 @@ export * from './corporateGroupDetailsResponseUsersInner';
 export * from './corporateGroupPost201Response';
 export * from './corporateGroupPostRequest';
 export * from './corporateGroupUnlinkGroupIdSubAccountsPutRequest';
+export * from './corporateSubAccountIpAssociatePostRequest';
+export * from './corporateSubAccountIpDissociatePutRequest';
 export * from './corporateUserInvitationActionEmailPut200Response';
 export * from './createApiKeyRequest';
 export * from './createApiKeyResponse';
@@ -61,6 +63,7 @@ export * from './createExternalFeed201Response';
 export * from './createList';
 export * from './createModel';
 export * from './createPaymentRequest';
+export * from './createPaymentResponse';
 export * from './createProductModel';
 export * from './createReseller';
 export * from './createSender';
@@ -100,6 +103,11 @@ export * from './deal';
 export * from './dealAttributesInner';
 export * from './dealsList';
 export * from './deleteHardbounces';
+export * from './ecommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response';
+export * from './ecommerceAttributionMetricsGet200Response';
+export * from './ecommerceAttributionMetricsGet200ResponseTotals';
+export * from './ecommerceAttributionProductsConversionSourceConversionSourceIdGet200Response';
+export * from './ecommerceConfigDisplayCurrencyGet200Response';
 export * from './emailExportRecipients';
 export * from './errorModel';
 export * from './event';
@@ -318,9 +326,12 @@ export * from './ssoTokenRequest';
 export * from './ssoTokenRequestCorporate';
 export * from './subAccountAppsToggleRequest';
 export * from './subAccountDetailsResponse';
+export * from './subAccountDetailsResponseGroupsInner';
 export * from './subAccountDetailsResponsePlanInfo';
 export * from './subAccountDetailsResponsePlanInfoCredits';
 export * from './subAccountDetailsResponsePlanInfoCreditsEmails';
+export * from './subAccountDetailsResponsePlanInfoCreditsSms';
+export * from './subAccountDetailsResponsePlanInfoCreditsWpSubscribers';
 export * from './subAccountDetailsResponsePlanInfoFeatures';
 export * from './subAccountDetailsResponsePlanInfoFeaturesInbox';
 export * from './subAccountDetailsResponsePlanInfoFeaturesLandingPage';
@@ -330,6 +341,7 @@ export * from './subAccountUpdatePlanRequestCredits';
 export * from './subAccountUpdatePlanRequestFeatures';
 export * from './subAccountsResponse';
 export * from './subAccountsResponseSubAccountsInner';
+export * from './subAccountsResponseSubAccountsInnerGroupsInner';
 export * from './task';
 export * from './taskList';
 export * from './taskReminder';
@@ -413,6 +425,8 @@ import { CorporateGroupDetailsResponseUsersInner } from './corporateGroupDetails
 import { CorporateGroupPost201Response } from './corporateGroupPost201Response';
 import { CorporateGroupPostRequest } from './corporateGroupPostRequest';
 import { CorporateGroupUnlinkGroupIdSubAccountsPutRequest } from './corporateGroupUnlinkGroupIdSubAccountsPutRequest';
+import { CorporateSubAccountIpAssociatePostRequest } from './corporateSubAccountIpAssociatePostRequest';
+import { CorporateSubAccountIpDissociatePutRequest } from './corporateSubAccountIpDissociatePutRequest';
 import { CorporateUserInvitationActionEmailPut200Response } from './corporateUserInvitationActionEmailPut200Response';
 import { CreateApiKeyRequest } from './createApiKeyRequest';
 import { CreateApiKeyResponse } from './createApiKeyResponse';
@@ -437,6 +451,7 @@ import { CreateExternalFeed201Response } from './createExternalFeed201Response';
 import { CreateList } from './createList';
 import { CreateModel } from './createModel';
 import { CreatePaymentRequest } from './createPaymentRequest';
+import { CreatePaymentResponse } from './createPaymentResponse';
 import { CreateProductModel } from './createProductModel';
 import { CreateReseller } from './createReseller';
 import { CreateSender } from './createSender';
@@ -476,6 +491,11 @@ import { Deal } from './deal';
 import { DealAttributesInner } from './dealAttributesInner';
 import { DealsList } from './dealsList';
 import { DeleteHardbounces } from './deleteHardbounces';
+import { EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response } from './ecommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response';
+import { EcommerceAttributionMetricsGet200Response } from './ecommerceAttributionMetricsGet200Response';
+import { EcommerceAttributionMetricsGet200ResponseTotals } from './ecommerceAttributionMetricsGet200ResponseTotals';
+import { EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response } from './ecommerceAttributionProductsConversionSourceConversionSourceIdGet200Response';
+import { EcommerceConfigDisplayCurrencyGet200Response } from './ecommerceConfigDisplayCurrencyGet200Response';
 import { EmailExportRecipients } from './emailExportRecipients';
 import { ErrorModel } from './errorModel';
 import { Event } from './event';
@@ -694,9 +714,12 @@ import { SsoTokenRequest } from './ssoTokenRequest';
 import { SsoTokenRequestCorporate } from './ssoTokenRequestCorporate';
 import { SubAccountAppsToggleRequest } from './subAccountAppsToggleRequest';
 import { SubAccountDetailsResponse } from './subAccountDetailsResponse';
+import { SubAccountDetailsResponseGroupsInner } from './subAccountDetailsResponseGroupsInner';
 import { SubAccountDetailsResponsePlanInfo } from './subAccountDetailsResponsePlanInfo';
 import { SubAccountDetailsResponsePlanInfoCredits } from './subAccountDetailsResponsePlanInfoCredits';
 import { SubAccountDetailsResponsePlanInfoCreditsEmails } from './subAccountDetailsResponsePlanInfoCreditsEmails';
+import { SubAccountDetailsResponsePlanInfoCreditsSms } from './subAccountDetailsResponsePlanInfoCreditsSms';
+import { SubAccountDetailsResponsePlanInfoCreditsWpSubscribers } from './subAccountDetailsResponsePlanInfoCreditsWpSubscribers';
 import { SubAccountDetailsResponsePlanInfoFeatures } from './subAccountDetailsResponsePlanInfoFeatures';
 import { SubAccountDetailsResponsePlanInfoFeaturesInbox } from './subAccountDetailsResponsePlanInfoFeaturesInbox';
 import { SubAccountDetailsResponsePlanInfoFeaturesLandingPage } from './subAccountDetailsResponsePlanInfoFeaturesLandingPage';
@@ -706,6 +729,7 @@ import { SubAccountUpdatePlanRequestCredits } from './subAccountUpdatePlanReques
 import { SubAccountUpdatePlanRequestFeatures } from './subAccountUpdatePlanRequestFeatures';
 import { SubAccountsResponse } from './subAccountsResponse';
 import { SubAccountsResponseSubAccountsInner } from './subAccountsResponseSubAccountsInner';
+import { SubAccountsResponseSubAccountsInnerGroupsInner } from './subAccountsResponseSubAccountsInnerGroupsInner';
 import { Task } from './task';
 import { TaskList } from './taskList';
 import { TaskReminder } from './taskReminder';
@@ -766,6 +790,7 @@ let enumsMap: {[index: string]: any} = {
         "CreateWebhook.TypeEnum": CreateWebhook.TypeEnum,
         "CreateWhatsAppTemplate.CategoryEnum": CreateWhatsAppTemplate.CategoryEnum,
         "CreateWhatsAppTemplate.SourceEnum": CreateWhatsAppTemplate.SourceEnum,
+        "EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response.ConversionSourceEnum": EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response.ConversionSourceEnum,
         "EmailExportRecipients.RecipientsTypeEnum": EmailExportRecipients.RecipientsTypeEnum,
         "ErrorModel.CodeEnum": ErrorModel.CodeEnum,
         "ExportWebhooksHistory.TypeEnum": ExportWebhooksHistory.TypeEnum,
@@ -860,6 +885,8 @@ let typeMap: {[index: string]: any} = {
     "CorporateGroupPost201Response": CorporateGroupPost201Response,
     "CorporateGroupPostRequest": CorporateGroupPostRequest,
     "CorporateGroupUnlinkGroupIdSubAccountsPutRequest": CorporateGroupUnlinkGroupIdSubAccountsPutRequest,
+    "CorporateSubAccountIpAssociatePostRequest": CorporateSubAccountIpAssociatePostRequest,
+    "CorporateSubAccountIpDissociatePutRequest": CorporateSubAccountIpDissociatePutRequest,
     "CorporateUserInvitationActionEmailPut200Response": CorporateUserInvitationActionEmailPut200Response,
     "CreateApiKeyRequest": CreateApiKeyRequest,
     "CreateApiKeyResponse": CreateApiKeyResponse,
@@ -884,6 +911,7 @@ let typeMap: {[index: string]: any} = {
     "CreateList": CreateList,
     "CreateModel": CreateModel,
     "CreatePaymentRequest": CreatePaymentRequest,
+    "CreatePaymentResponse": CreatePaymentResponse,
     "CreateProductModel": CreateProductModel,
     "CreateReseller": CreateReseller,
     "CreateSender": CreateSender,
@@ -923,6 +951,11 @@ let typeMap: {[index: string]: any} = {
     "DealAttributesInner": DealAttributesInner,
     "DealsList": DealsList,
     "DeleteHardbounces": DeleteHardbounces,
+    "EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response": EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response,
+    "EcommerceAttributionMetricsGet200Response": EcommerceAttributionMetricsGet200Response,
+    "EcommerceAttributionMetricsGet200ResponseTotals": EcommerceAttributionMetricsGet200ResponseTotals,
+    "EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response": EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response,
+    "EcommerceConfigDisplayCurrencyGet200Response": EcommerceConfigDisplayCurrencyGet200Response,
     "EmailExportRecipients": EmailExportRecipients,
     "ErrorModel": ErrorModel,
     "Event": Event,
@@ -1141,9 +1174,12 @@ let typeMap: {[index: string]: any} = {
     "SsoTokenRequestCorporate": SsoTokenRequestCorporate,
     "SubAccountAppsToggleRequest": SubAccountAppsToggleRequest,
     "SubAccountDetailsResponse": SubAccountDetailsResponse,
+    "SubAccountDetailsResponseGroupsInner": SubAccountDetailsResponseGroupsInner,
     "SubAccountDetailsResponsePlanInfo": SubAccountDetailsResponsePlanInfo,
     "SubAccountDetailsResponsePlanInfoCredits": SubAccountDetailsResponsePlanInfoCredits,
     "SubAccountDetailsResponsePlanInfoCreditsEmails": SubAccountDetailsResponsePlanInfoCreditsEmails,
+    "SubAccountDetailsResponsePlanInfoCreditsSms": SubAccountDetailsResponsePlanInfoCreditsSms,
+    "SubAccountDetailsResponsePlanInfoCreditsWpSubscribers": SubAccountDetailsResponsePlanInfoCreditsWpSubscribers,
     "SubAccountDetailsResponsePlanInfoFeatures": SubAccountDetailsResponsePlanInfoFeatures,
     "SubAccountDetailsResponsePlanInfoFeaturesInbox": SubAccountDetailsResponsePlanInfoFeaturesInbox,
     "SubAccountDetailsResponsePlanInfoFeaturesLandingPage": SubAccountDetailsResponsePlanInfoFeaturesLandingPage,
@@ -1153,6 +1189,7 @@ let typeMap: {[index: string]: any} = {
     "SubAccountUpdatePlanRequestFeatures": SubAccountUpdatePlanRequestFeatures,
     "SubAccountsResponse": SubAccountsResponse,
     "SubAccountsResponseSubAccountsInner": SubAccountsResponseSubAccountsInner,
+    "SubAccountsResponseSubAccountsInnerGroupsInner": SubAccountsResponseSubAccountsInnerGroupsInner,
     "Task": Task,
     "TaskList": TaskList,
     "TaskReminder": TaskReminder,

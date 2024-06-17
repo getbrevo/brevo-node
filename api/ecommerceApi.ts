@@ -1,6 +1,6 @@
 /**
  * Brevo API
- * Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+ * Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
  *
  * The version of the OpenAPI document: 3.0.0
  * Contact: contact@brevo.com
@@ -23,6 +23,10 @@ import { CreateUpdateBatchProducts } from '../model/createUpdateBatchProducts';
 import { CreateUpdateBatchProductsModel } from '../model/createUpdateBatchProductsModel';
 import { CreateUpdateCategory } from '../model/createUpdateCategory';
 import { CreateUpdateProduct } from '../model/createUpdateProduct';
+import { EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response } from '../model/ecommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response';
+import { EcommerceAttributionMetricsGet200Response } from '../model/ecommerceAttributionMetricsGet200Response';
+import { EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response } from '../model/ecommerceAttributionProductsConversionSourceConversionSourceIdGet200Response';
+import { EcommerceConfigDisplayCurrencyGet200Response } from '../model/ecommerceConfigDisplayCurrencyGet200Response';
 import { ErrorModel } from '../model/errorModel';
 import { GetCategories } from '../model/getCategories';
 import { GetCategoryDetails } from '../model/getCategoryDetails';
@@ -627,7 +631,7 @@ export class EcommerceApi {
      * @param conversionSource The Brevo campaign type for which data will be retrieved
      * @param conversionSourceId The Brevo campaign id for which data will be retrieved
      */
-    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: any, conversionSourceId: any, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}'
             .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
             .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
@@ -687,12 +691,13 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -709,7 +714,7 @@ export class EcommerceApi {
      * @param periodTo When getting metrics for a specific period, define the end datetime in RFC3339 format
      * @param emailCampaignId The email campaign id(s) to get metrics for
      */
-    public async ecommerceAttributionMetricsGet (periodFrom?: any, periodTo?: any, emailCampaignId?: any, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async ecommerceAttributionMetricsGet (periodFrom?: Date, periodTo?: Date, emailCampaignId?: Array<number>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/metrics';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -723,15 +728,15 @@ export class EcommerceApi {
         let localVarFormParams: any = {};
 
         if (periodFrom !== undefined) {
-            localVarQueryParameters['periodFrom'] = ObjectSerializer.serialize(periodFrom, "any");
+            localVarQueryParameters['periodFrom'] = ObjectSerializer.serialize(periodFrom, "Date");
         }
 
         if (periodTo !== undefined) {
-            localVarQueryParameters['periodTo'] = ObjectSerializer.serialize(periodTo, "any");
+            localVarQueryParameters['periodTo'] = ObjectSerializer.serialize(periodTo, "Date");
         }
 
         if (emailCampaignId !== undefined) {
-            localVarQueryParameters['emailCampaignId[]'] = ObjectSerializer.serialize(emailCampaignId, "any");
+            localVarQueryParameters['emailCampaignId[]'] = ObjectSerializer.serialize(emailCampaignId, "Array<number>");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -769,12 +774,13 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "EcommerceAttributionMetricsGet200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -790,7 +796,7 @@ export class EcommerceApi {
      * @param conversionSource The Brevo campaign type for which data will be retrieved
      * @param conversionSourceId The Brevo campaign id for which data will be retrieved
      */
-    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: any, conversionSourceId: any, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/products/{conversionSource}/{conversionSourceId}'
             .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
             .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
@@ -850,12 +856,81 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * 
+     * @summary Get the ISO 4217 compliant display currency code for your Brevo account
+     */
+    public async ecommerceConfigDisplayCurrencyGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }> {
+        const localVarPath = this.basePath + '/ecommerce/config/displayCurrency';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "EcommerceConfigDisplayCurrencyGet200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -1340,6 +1415,81 @@ export class EcommerceApi {
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             body = ObjectSerializer.deserialize(body, "GetProducts");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * 
+     * @summary Set the ISO 4217 compliant display currency code for your Brevo account
+     * @param setConfigDisplayCurrency set ISO 4217 compliant display currency code payload
+     */
+    public async setConfigDisplayCurrency (setConfigDisplayCurrency: EcommerceConfigDisplayCurrencyGet200Response, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }> {
+        const localVarPath = this.basePath + '/ecommerce/config/displayCurrency';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'setConfigDisplayCurrency' is not null or undefined
+        if (setConfigDisplayCurrency === null || setConfigDisplayCurrency === undefined) {
+            throw new Error('Required parameter setConfigDisplayCurrency was null or undefined when calling setConfigDisplayCurrency.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(setConfigDisplayCurrency, "EcommerceConfigDisplayCurrencyGet200Response")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "EcommerceConfigDisplayCurrencyGet200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

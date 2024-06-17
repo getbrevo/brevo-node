@@ -1,6 +1,6 @@
 /**
  * Brevo API
- * Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  | 
+ * Brevo provide a RESTFul API that can be used with any languages. With this API, you will be able to :   - Manage your campaigns and get the statistics   - Manage your contacts   - Send transactional Emails and SMS   - and much more...  You can download our wrappers at https://github.com/orgs/brevo  **Possible responses**   | Code | Message |   | :-------------: | ------------- |   | 200  | OK. Successful Request  |   | 201  | OK. Successful Creation |   | 202  | OK. Request accepted |   | 204  | OK. Successful Update/Deletion  |   | 400  | Error. Bad Request  |   | 401  | Error. Authentication Needed  |   | 402  | Error. Not enough credit, plan upgrade needed  |   | 403  | Error. Permission denied  |   | 404  | Error. Object does not exist |   | 405  | Error. Method not allowed  |   | 406  | Error. Not Acceptable  |   | 422  | Error. Unprocessable Entity | 
  *
  * The version of the OpenAPI document: 3.0.0
  * Contact: contact@brevo.com
@@ -21,6 +21,14 @@ export class CrmDealsPostRequest {
     * Attributes for deal creation  To assign owner of a Deal you can send attributes.deal_owner and utilize the account email or ID.  If you want to create a deal on a specific pipeline and stage you can use the following attributes `pipeline` and `deal_stage`.  Pipeline and deal_stage are ids you can fetch using this endpoint `/crm/pipeline/details/{pipelineID}` 
     */
     'attributes'?: object;
+    /**
+    * Contact ids to be linked with deal
+    */
+    'linkedContactsIds'?: Array<number>;
+    /**
+    * Company ids to be linked with deal
+    */
+    'linkedCompaniesIds'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -34,6 +42,16 @@ export class CrmDealsPostRequest {
             "name": "attributes",
             "baseName": "attributes",
             "type": "object"
+        },
+        {
+            "name": "linkedContactsIds",
+            "baseName": "linkedContactsIds",
+            "type": "Array<number>"
+        },
+        {
+            "name": "linkedCompaniesIds",
+            "baseName": "linkedCompaniesIds",
+            "type": "Array<string>"
         }    ];
 
     static getAttributeTypeMap() {
