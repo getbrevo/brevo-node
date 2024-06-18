@@ -4,7 +4,7 @@
     "description": "NodeJS client for @getbrevo/brevo",
     "repository": {
         "type": "git",
-        "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+        "url": "https://github.com/getbrevo/brevo-node.git"
     },
     "main": "dist/api.js",
     "types": "dist/api.d.ts",
