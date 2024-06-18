@@ -6,7 +6,7 @@ Brevo's API exposes the entire Brevo features via a standardized programmatic in
 
 This is the wrapper for the API. It implements all the features of the API v3. It supports promises.
 
-Brevo's API matches the [OpenAPI v2 definition](https://www.openapis.org/). The specification can be downloaded [here](https://api.brevo.com/v3/swagger_definition.yml).
+Brevo's API matches the [OpenAPI v2 definition](https://www.openapis.org/). The specification can be downloaded [here](https://api.brevo.com/v3/swagger_definition_v3.yml).
 
 ## Installation
 
@@ -40,7 +40,7 @@ yarn add @getbrevo/brevo
 const brevo = require('@getbrevo/brevo');
 let defaultClient = brevo.ApiClient.instance;
 
-let apiKey = defaultClient.authentications['api-key'];
+let apiKey = defaultClient.authentications['apiKey'];
 apiKey.apiKey = 'YOUR API KEY';
 
 let apiInstance = new brevo.TransactionalEmailsApi();
