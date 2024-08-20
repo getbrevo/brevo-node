@@ -8278,6 +8278,8 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
     getContactInfo: (
       identifier: string | number,
       query?: {
+        /** email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute */
+        identifierType?: "email_id" | "phone_id" | "contact_id" | "ext_id";
         /** **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate */
         startDate?: string;
         /** **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. */
@@ -8303,10 +8305,18 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      * @request DELETE:/contacts/{identifier}
      * @secure
      */
-    deleteContact: (identifier: string | number, params: RequestParams = {}) =>
+    deleteContact: (
+      identifier: string | number,
+      query?: {
+        /** email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute */
+        identifierType?: "email_id" | "contact_id" | "ext_id";
+      },
+      params: RequestParams = {},
+    ) =>
       this.request<void, ErrorModel>({
         path: `/contacts/${identifier}`,
         method: "DELETE",
+        query: query,
         secure: true,
         ...params,
       }),
@@ -11082,6 +11092,64 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
         type: ContentType.Json,
         ...params,
       }),
+
+    /**
+     * @description Import companies from a CSV file with mapping options.
+     *
+     * @tags Companies
+     * @name ImportCreate
+     * @summary Import companies(creation and updation)
+     * @request POST:/companies/import
+     * @secure
+     */
+    importCreate: (
+      data: {
+        /**
+         * The CSV file to upload.The file should have the first row as the mapping attribute. Some default attribute names are
+         * (a) company_id [brevo mongoID to update deals]
+         * (b) associated_contact
+         * (c) associated_deal
+         * (f) any other attribute with internal name
+         * @format binary
+         * @example false
+         */
+        file?: File;
+        /**
+         * The mapping options in JSON format. Here is an example of the JSON structure:
+         * ```json
+         * {
+         *   "link_entities": true, // Determines whether to link related entities during the import process
+         *   "unlink_entities": false, // Determines whether to unlink related entities during the import process
+         *   "update_existing_records": true, // Determines whether to update based on company ID or treat every row as create
+         *   "unset_empty_attributes": false // Determines whether to unset a specific attribute during update if the values input is blank
+         * }
+         * ```
+         */
+        mapping?: object;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        {
+          /**
+           * The ID of the import process
+           * @example 50
+           */
+          processId?: number;
+        },
+        {
+          /** @example "Bad request : With reason" */
+          message?: string;
+        }
+      >({
+        path: `/companies/import`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.FormData,
+        format: "json",
+        ...params,
+      }),
   };
   crm = {
     /**
@@ -11397,29 +11465,18 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
          * @example false
          */
         file?: File;
-        /** The mapping options in JSON format. */
-        mapping?: {
-          /**
-           * Determines whether to link related entities during the import process.
-           * @example true
-           */
-          link_entities?: boolean;
-          /**
-           * Determines whether to unlink related entities during the import process.
-           * @example false
-           */
-          unlink_entities?: boolean;
-          /**
-           * Determines whether to update based on deal ID or treat every row as create
-           * @example true
-           */
-          update_existing_records?: boolean;
-          /**
-           * Determines whether unset a specific attribute during update if values input is blank
-           * @example false
-           */
-          unset_empty_attributes?: boolean;
-        };
+        /**
+         * The mapping options in JSON format. Here is an example of the JSON structure:
+         *   ```json
+         * {
+         *   "link_entities": true, // Determines whether to link related entities during the import process
+         *   "unlink_entities": false, // Determines whether to unlink related entities during the import process
+         *   "update_existing_records": true, // Determines whether to update based on company ID or treat every row as create
+         *   "unset_empty_attributes": false // Determines whether to unset a specific attribute during update if the values input is blank
+         * }
+         *  ```
+         */
+        mapping?: object;
       },
       params: RequestParams = {},
     ) =>
