@@ -6,7 +6,7 @@ Brevo's API exposes the entire Brevo features via a standardized programmatic in
 
 This is the wrapper for the API. It implements all the features of the API v3. It supports promises.
 
-Brevo's API matches the [OpenAPI v2 definition](https://www.openapis.org/). The specification can be downloaded [here](https://api.brevo.com/v3/swagger_definition.yml).
+Brevo's API matches the [OpenAPI v2 definition](https://www.openapis.org/). The specification can be downloaded [here](https://api.brevo.com/v3/swagger_definition_v3.yml).
 
 ## Installation
 
@@ -25,8 +25,6 @@ yarn add @getbrevo/brevo
 ```
 
 ## Getting Started
-
-Once you have [installed](#installation) the node module in your project, you can execute the following sample code JS code :
 
 ```ts
 import BrevoApi from "@getbrevo/brevo";
