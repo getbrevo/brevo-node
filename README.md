@@ -19,9 +19,9 @@ The following recommended installation requires [npm](https://npmjs.org/). If yo
 Then install it via:
 
 ```shell
-npm i @groupcards/brevo --save
+npm i @getbrevo/brevo --save
 # or
-yarn add @groupcards/brevo
+yarn add @getbrevo/brevo
 ```
 
 ## Getting Started
@@ -29,7 +29,7 @@ yarn add @groupcards/brevo
 Once you have [installed](#installation) the node module in your project, you can execute the following sample code JS code :
 
 ```ts
-import BrevoApi from "@groupcards/brevo";
+import BrevoApi from "@getbrevo/brevo";
 
 const brevo = new BrevoApi({
   headers: {
@@ -50,7 +50,7 @@ brevo.account
 ```
 
 ```ts
-import BrevoApi from "@groupcards/brevo";
+import BrevoApi from "@getbrevo/brevo";
 
 const brevo = new BrevoApi({
   headers: {

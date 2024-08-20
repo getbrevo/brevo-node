@@ -1,10 +1,10 @@
 {
-  "name": "@groupcards/brevo",
+  "name": "@getbrevo/brevo",
   "version": "2.1.2",
   "description": "NodeJS client for @getbrevo/brevo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/squareda/brevo-node.git"
+    "url": "https://github.com/getbrevo/brevo-node.git"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
