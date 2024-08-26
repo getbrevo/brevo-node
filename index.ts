@@ -1,1 +1,5 @@
-export { Brevo as default } from "./src/Brevo";
+import { Brevo } from "./src/Brevo";
+
+export default Brevo;
+
+module.exports = Brevo;
