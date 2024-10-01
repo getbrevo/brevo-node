@@ -74,8 +74,10 @@ apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
 const brevo = require('@getbrevo/brevo');
 let apiInstance = new brevo.TransactionalEmailsApi();
 
-let apiKey = apiInstance.authentications['apiKey'];
-apiKey.apiKey = 'YOUR API KEY';
+apiInstance.setApiKey(
+  brevo.TransactionalEmailsApiApiKeys.apiKey,
+  'YOUR API KEY'
+);
 
 let sendSmtpEmail = new brevo.SendSmtpEmail();
 
