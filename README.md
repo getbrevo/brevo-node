@@ -40,7 +40,7 @@ yarn add @getbrevo/brevo
 const brevo = require('@getbrevo/brevo');
 let defaultClient = brevo.ApiClient.instance;
 
-let apiKey = defaultClient.authentications['apiKey'];
+let apiKey = defaultClient.authentications['api-key'];
 apiKey.apiKey = 'YOUR API KEY';
 
 let apiInstance = new brevo.TransactionalEmailsApi();
@@ -104,7 +104,7 @@ const brevo = require('@getbrevo/brevo');
 
 let apiInstance = new brevo.ContactsApi()
 
-let apiKey = apiInstance.authentications['apiKey'];
+let apiKey = apiInstance.authentications['api-key'];
 apiKey.apiKey = 'YOUR API KEY';
 
 apiInstance.getAttributes().then(function(data) {
@@ -123,7 +123,7 @@ const brevo = require('@getbrevo/brevo');
 
 let apiInstance = new brevo.AccountApi()
 
-let apiKey = apiInstance.authentications['apiKey'];
+let apiKey = apiInstance.authentications['api-key'];
 apiKey.apiKey = 'YOUR API KEY';
 
 apiInstance.getAccount().then(function(data) {
@@ -141,7 +141,7 @@ const brevo = require('@getbrevo/brevo');
 
 let apiInstance = new brevo.ContactsApi()
 
-let apiKey = apiInstance.authentications['apiKey'];
+let apiKey = apiInstance.authentications['api-key'];
 apiKey.apiKey = 'YOUR API KEY';
 
 apiInstance.getContacts().then(function(data) {
