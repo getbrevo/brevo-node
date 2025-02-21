@@ -71,11 +71,10 @@ apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
 -------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------   Typescript supported with v2.1.1  --------------------------------------
 -------------------------------------------------------------------------------------------------------------------------
-const brevo = require('@getbrevo/brevo');
+import * as brevo from "@getbrevo/brevo";
 let apiInstance = new brevo.TransactionalEmailsApi();
 
-let apiKey = apiInstance.authentications['api-key'];
-apiKey.apiKey = 'YOUR API KEY';
+apiInstance.setApiKey(brevo.TransactionalEmailsApiApiKeys.apiKey, "YOUR API KEY");
 
 let sendSmtpEmail = new brevo.SendSmtpEmail();
 
