@@ -401,7 +401,8 @@ export interface Inviteuser {
       | "access"
       | "assign"
       | "configure"
-      | "manage_owned_deals_tasks"
+      | "create_edit_deals"
+      | "delete_deals"
       | "manage_others_deals_tasks"
       | "manage_owned_companies"
       | "manage_others_companies"
@@ -424,7 +425,10 @@ export interface InviteuserResponse {
    * @example "OK"
    */
   status: string;
-  /** Invoice id */
+  /**
+   * Invoice id
+   * @example "TEST-ID"
+   */
   invoice_id?: string;
 }
 
@@ -436,7 +440,10 @@ export interface UpdateUserResponse {
   status: string;
   /** Credit note */
   credit_notes?: string[];
-  /** Invoice id */
+  /**
+   * Invoice id
+   * @example "TEST-ID"
+   */
   invoice_id?: string;
 }
 
@@ -702,6 +709,31 @@ export interface ErrorModel {
    * @example "POST Method is not allowed on this path"
    */
   message: string;
+}
+
+export interface ContactErrorModel {
+  /**
+   * Error code displayed in case of a failure
+   * @example "duplicate_parameter"
+   */
+  code:
+    | "invalid_parameter"
+    | "missing_parameter"
+    | "document_not_found"
+    | "account_in_process"
+    | "duplicate_parameter"
+    | "method_not_allowed"
+    | "out_of_range";
+  /**
+   * Readable message associated to the failure
+   * @example "email is already associated with another Contact"
+   */
+  message: string;
+  /**
+   * Additional information about the error
+   * @example {"duplicate_identifiers":["email"]}
+   */
+  metadata?: object;
 }
 
 export interface GetProcesses {
@@ -1034,9 +1066,18 @@ export interface AddContactToListByIDs {
   ids?: number[];
 }
 
+export interface AddContactToListByExtIDs {
+  /**
+   * EXT_ID attributes to add to a list. You can pass a **maximum of 150 EXT_ID attributes** for addition in one request. **_If you need to add the emails in bulk, please prefer /contacts/import api._**
+   * @maxItems 150
+   * @minItems 1
+   */
+  extIds?: string[];
+}
+
 export interface RemoveContactFromListByEmails {
   /**
-   * **Required if 'all' is false and 'ids' is empty.** Emails to remove from a list. You can pass a **maximum of 150 emails** for removal in one request.
+   * **Required if 'all' is false and 'ids', 'extIds' are empty.** Emails to remove from a list. You can pass a **maximum of 150 emails** for removal in one request.
    * @maxItems 150
    * @minItems 1
    */
@@ -1045,7 +1086,7 @@ export interface RemoveContactFromListByEmails {
 
 export interface RemoveContactFromListByIDs {
   /**
-   * **Required if 'all' is false and 'emails' is empty.** IDs to remove from a list. You can pass a **maximum of 150 IDs** for removal in one request.
+   * **Required if 'all' is false and 'emails', 'extIds' are empty.** IDs to remove from a list. You can pass a **maximum of 150 IDs** for removal in one request.
    * @maxItems 150
    * @minItems 1
    */
@@ -1054,10 +1095,19 @@ export interface RemoveContactFromListByIDs {
 
 export interface RemoveContactFromListByAll {
   /**
-   * **Required if 'emails' and 'ids' are empty.** Remove all existing contacts from a list. A process will be created in this scenario. You can fetch the process details to know about the progress
+   * **Required if 'emails', 'extIds' and 'ids' are empty.** Remove all existing contacts from a list. A process will be created in this scenario. You can fetch the process details to know about the progress
    * @example true
    */
   all?: boolean;
+}
+
+export interface RemoveContactFromListByExtIDs {
+  /**
+   * **Required if 'all' is false, 'ids' and 'emails' are empty.** EXT_ID attributes to remove from a list. You can pass a **maximum of 150 EXT_ID attributes** for removal in one request.
+   * @maxItems 150
+   * @minItems 1
+   */
+  extIds?: string[];
 }
 
 export interface GetSmsCampaignOverview {
@@ -1455,6 +1505,1674 @@ export interface UpdateWhatsAppCampaign {
   };
 }
 
+export interface SubscriptionAggregateBalance {
+  /** Unique identifier for the balance definition). */
+  balanceDefinitionId?: string;
+  /** The amount of the balance. */
+  value?: number;
+}
+
+export interface SubscriptionBalances {
+  /** List of balance details associated with the contact. */
+  balances?: SubscriptionAggregateBalance[];
+  /** Unique identifier of the contact. */
+  contactId?: number;
+  /** Unique identifier of the loyalty program. */
+  loyaltyProgramId?: string;
+}
+
+export interface SubscriptionAttributedReward {
+  /** Reward code assigned to the contact. */
+  code?: string;
+  /** Unique identifier of the contact. */
+  contactId?: number;
+  /** Timestamp when the reward was created. */
+  createdAt?: string;
+  /** Expiration date of the reward. */
+  expirationDate?: string;
+  /** Unique identifier of the reward. */
+  id?: string;
+  /** Unique identifier of the loyalty program. */
+  loyaltyProgramId?: string;
+  /** Additional metadata related to the reward. */
+  meta?: Record<string, any>;
+  /** Unique identifier of the reward definition. */
+  rewardId?: string;
+  /** Timestamp when the reward was last updated. */
+  updatedAt?: string;
+}
+
+export interface SubscriptionTier {
+  /** Unique identifier of the contact. */
+  contactId?: number;
+  /** Timestamp when the tier was assigned. */
+  createdAt?: string;
+  /** Unique identifier of the group associated with the tier. */
+  groupId?: string;
+  /** Unique identifier of the loyalty program. */
+  loyaltyProgramId?: string;
+  /** Additional metadata related to the tier. */
+  meta?: Record<string, any>;
+  /** Unique identifier of the tier. */
+  tierId?: string;
+  /** Timestamp when the tier was last updated */
+  updatedAt?: string;
+}
+
+export interface SubscriptionHandlerInfo {
+  /** Balance details for the subscription. */
+  balance?: SubscriptionBalances;
+  /** List of members associated with the subscription. */
+  members?: MemberContact[];
+  /** List of rewards associated with the subscription. */
+  reward?: SubscriptionAttributedReward[];
+  /** List of tier assignments for the subscription. */
+  tier?: SubscriptionTier[];
+}
+
+export interface MemberContact {
+  /** Timestamp when the member was created. */
+  createdAt?: string;
+  /** Unique identifier of the member. */
+  memberContactId?: number;
+  /** Timestamp when the member was last updated. */
+  updatedAt?: string;
+}
+
+export interface SubscriptionMember {
+  /** Timestamp when the subscription member was created. */
+  createdAt?: string;
+  /** List of unique member contact IDs. */
+  memberContactIds?: number[];
+  /** Unique identifier of the organization. */
+  organizationId?: number;
+  /** Unique identifier of the subscription owner. */
+  ownerContactId?: number;
+  /** Timestamp when the subscription member was last updated. */
+  updatedAt?: string;
+}
+
+export interface Subscription {
+  /** Unique identifier of the contact. */
+  contactId?: number;
+  /** Timestamp when the subscription was created. */
+  createdAt?: string;
+  /** Unique identifier of the loyalty program. */
+  loyaltyProgramId?: string;
+  /** Unique identifier of the subscription. */
+  loyaltySubscriptionId?: string;
+  /** Unique identifier of the organization. */
+  organizationId?: number;
+  /** Timestamp when the subscription was last updated. */
+  updatedAt?: string;
+  /** Version number of the subscription. */
+  versionId?: number;
+}
+
+export interface AddSubscriptionMemberPayload {
+  /** Required if LoyaltySubscriptionId is not provided, must be greater than 0 */
+  contactId?: number;
+  /**
+   * Required if ContactId is not provided, max length 64
+   * @maxLength 64
+   */
+  loyaltySubscriptionId?: string;
+  /**
+   * Required, each item must be greater than or equal to 1
+   * @minItems 1
+   */
+  memberContactIds: number[];
+}
+
+export interface CreateLoyaltyProgramPayload {
+  /**
+   * Optional description of the loyalty program (max 256 chars).
+   * @maxLength 256
+   */
+  description?: string;
+  /** Optional unique document ID. */
+  documentId?: string;
+  /** Optional metadata related to the loyalty program. */
+  meta?: Record<string, any>;
+  /**
+   * Required name of the loyalty program (max 128 chars).
+   * @maxLength 128
+   */
+  name: string;
+}
+
+export interface CreateSubscriptionPayload {
+  /** Required contact ID; must be greater than 0. */
+  contactId: number;
+  /** Optional custom date-time format. */
+  creationDate?: string;
+  /**
+   * Optional subscription ID (max length 64).
+   * @maxLength 64
+   */
+  loyaltySubscriptionId?: string;
+}
+
+export interface LoyaltyProgramPage {
+  /** Loyalty Program list */
+  items?: LoyaltyProgram[];
+}
+
+export interface LoyaltyProgram {
+  /** Loyalty Program code count */
+  codeCount?: number;
+  /** Loyalty Program creation date */
+  createdAt?: string;
+  /** Loyalty Program description */
+  description?: string;
+  /** string */
+  documentId?: string;
+  /** Loyalty Program ID */
+  id?: string;
+  /** Loyalty Program meta data */
+  meta?: Record<string, any>;
+  /** Loyalty Program name */
+  name?: string;
+  /** string */
+  pattern?: string;
+  /** Loyalty Program state */
+  state?: "inactive" | "active";
+  /** Loyalty Program subscription generator ID */
+  subscriptionGeneratorId?: string;
+  /** Loyalty Program subscription pool ID */
+  subscriptionPoolId?: string;
+  /** Loyalty Program last modification date */
+  updatedAt?: string;
+}
+
+export interface CreateSubscriptionResponse {
+  /** Organization ID */
+  organizationId?: number;
+  /**
+   * Loyalty Program ID
+   * @format uuid
+   */
+  loyaltyProgramId?: string;
+  /** Version ID */
+  versionId?: number;
+  /** Contact ID */
+  contactId?: number;
+  /** Loyalty Subscription ID */
+  loyaltySubscriptionId?: string;
+  /**
+   * Subscription creation date
+   * @format date-time
+   */
+  createdAt?: string;
+  /**
+   * Subscription last modification date
+   * @format date-time
+   */
+  updatedAt?: string;
+}
+
+export interface UpdateLoyaltyProgramPayload {
+  /** Loyalty Program name */
+  name: string;
+  /** Loyalty Program description */
+  description?: string;
+  /** Loyalty Program meta data */
+  meta?: object;
+}
+
+export type ValidationErrors = LoyaltyProgramValidationError[];
+
+export interface LoyaltyProgramValidationError {
+  /** Path of data that failed validation */
+  path?: string;
+  /** Rule that failed validation */
+  rule?: string;
+  /** Validation error message */
+  error?: string;
+}
+
+export interface PatchLoyaltyProgramPayload {
+  /** Loyalty Program name */
+  name?: string;
+  /** Loyalty Program description */
+  description?: string;
+  /** Loyalty Program meta data */
+  meta?: object;
+}
+
+export interface MainAttributeRewardPayload {
+  /**
+   * Value of the selected reward config
+   * @format float64
+   */
+  value?: number;
+  /**
+   * Code generated to attribute reward to a contact
+   * @maxLength 128
+   */
+  code?: string;
+  /**
+   * Contact to attribute the reward
+   * @format int64
+   * @min 1
+   */
+  contactId?: number;
+  /** Reward expiration date */
+  expirationDate?: string;
+  /** One of contactId or loyaltySubscriptionId is required */
+  loyaltySubscriptionId?: string;
+  /** Offer meta information (key/value object) */
+  meta?: Record<string, any>;
+  /**
+   * Reward id
+   * @format uuid
+   */
+  rewardId: string;
+}
+
+export interface MainBillingPayload {
+  /** Address of the user */
+  address?: string;
+  /** City of the user */
+  city?: string;
+  /** Country code of the user */
+  countryCode?: string;
+  /** Payment method opted by the user */
+  paymentMethod?: string;
+  /**
+   * Phone number of the user
+   * @format int64
+   */
+  phone?: number;
+  /**
+   * Postal Code of user's location
+   * @format int64
+   */
+  postCode?: number;
+  /** Region where user resides */
+  region?: string;
+}
+
+export interface MainCodeCountHttpResponse {
+  /**
+   * Number of codes
+   * @format int64
+   */
+  count?: number;
+}
+
+export interface MainCreateRedeemPayload {
+  /**
+   * Unique identifier for the attributed reward
+   * @format uuid
+   */
+  attributedRewardId?: string;
+  /** Redemption code for the reward */
+  code?: string;
+  /**
+   * Unique identifier for the contact
+   * @format int64
+   * @min 1
+   */
+  contactId?: number;
+  /** Identifier for the loyalty subscription */
+  loyaltySubscriptionId?: string;
+  /** Additional metadata associated with the redeem request */
+  meta?: Record<string, any>;
+  /** Order details for the redemption */
+  order?: MainOrderPayload;
+  /**
+   * Unique identifier for the reward
+   * @format uuid
+   */
+  rewardId?: string;
+  /**
+   * Time to live in seconds for the redemption request
+   * @min 0
+   */
+  ttl?: number;
+}
+
+export interface MainCreateRewardPayload {
+  /**
+   * Internal name of the reward
+   * @maxLength 128
+   */
+  name: string;
+  /**
+   * Public facing description of the reward
+   * @maxLength 128
+   */
+  publicDescription?: string;
+  /**
+   * URL of the public image for the reward
+   * @format uri
+   */
+  publicImage?: string;
+  /**
+   * Public facing name of the reward
+   * @maxLength 128
+   */
+  publicName?: string;
+}
+
+export interface MainErrorResponse {
+  /** Error message indicating what went wrong */
+  message?: string;
+}
+
+export interface MainFilter {
+  /** Metadata key */
+  "metadata.key": string;
+  /** Metadata value */
+  "metadata.value": string;
+}
+
+export interface MainGenerator {
+  /** Timestamp when the reward was created */
+  createdAt?: string;
+  /** Public facing description of the reward */
+  description?: string;
+  /**
+   * Unique identifier for the reward
+   * @format uuid
+   */
+  id?: string;
+  /** Name of the reward */
+  name?: string;
+  /** Generated pattern */
+  pattern?: string;
+  /**
+   * Timestamp when the reward was created
+   * @format date-time
+   */
+  updatedAt?: string;
+}
+
+export interface MainGetContactRewardsPayload {
+  /**
+   * Contact to attribute the reward
+   * @min 1
+   */
+  contactId: number;
+  /**
+   * Number of documents per page
+   * @min 1
+   * @max 500
+   */
+  limit?: number;
+  /** Data to define the reward for that particular contact */
+  metadata?: MainFilter[];
+  /**
+   * Index of the first document in the page
+   * @min 0
+   */
+  offset?: number;
+  /** Unique identifier of the associated reward */
+  rewardId?: string;
+  /** Sort the documents in ascending or descending order */
+  sort?: "asc" | "desc";
+  /** Sort documents by field */
+  sortField?: "updatedAt" | "createdAt";
+}
+
+export interface MainIdentifiersPayload {
+  /** External identifier for the order */
+  ext_id?: string;
+  /** Identifier for the loyalty subscription */
+  loyalty_subscription_id?: string;
+}
+
+export interface MainLimit {
+  /**
+   * Timestamp when the reward limit was created
+   * @format date-time
+   */
+  createdAt?: string;
+  /** Unit of time for the reward limit's availability (e.g., day/week/month/year). */
+  durationUnit?: string;
+  /** Number of days/weeks/month/year for reward limit */
+  durationValue?: number;
+  /** Value of the limit */
+  limitValue?: number;
+  /** Unique identifier for the reward limit */
+  rewardLimitId?: string;
+  /** Select true to calculate all redeems/attributions from the previous value of selected durationUnit to the current time */
+  slidingSchedule?: boolean;
+  /** Type of reward */
+  type?: string;
+  /**
+   * Timestamp when the reward limit was created
+   * @format date-time
+   */
+  updatedAt?: string;
+}
+
+export interface MainModelContactReward {
+  /** Generated code */
+  code?: string;
+  /** Timestamp when the reward limit was consumed */
+  consumedAt?: string;
+  /** Timestamp when the reward limit was created */
+  createdAt?: string;
+  /** Reward expiration date */
+  expirationDate?: string;
+  /** Unique identifier for the contact */
+  id?: string;
+  /** Additional data for the reward */
+  meta?: Record<string, any>;
+  /** Unique identifier for the reward */
+  rewardId?: string;
+  /** Unit of the balance selected in the reward definition */
+  unit?: string;
+  /** Timestamp when the reward limit was updated */
+  updatedAt?: string;
+  /**
+   * Value of the selected reward config
+   * @format float64
+   */
+  value?: number;
+}
+
+export interface MainModelContactRewardsResp {
+  /**
+   * Contact id associated with the current reward
+   * @format int64
+   */
+  contactId?: number;
+  /** List of all the rewards for current contact */
+  contactRewards?: MainModelContactReward[];
+  /** Count of the rewards associated with the current contact */
+  count?: number;
+  /** Loyalty Program Id for the contact */
+  loyaltyProgramId?: string;
+  /** Loyalty Subscription Id for the contact */
+  loyaltySubscriptionId?: string;
+}
+
+export interface MainNodeResponse {
+  /** array[object] */
+  args?: MainNodeResponse[];
+  /** Array values for rule definition */
+  array?: MainNodeResponse[];
+  /** Boolean values for rule definition */
+  boolean?: boolean;
+  /** Description for rule definition */
+  description?: string;
+  /**
+   * Float values for rule definition
+   * @format float64
+   */
+  float?: number;
+  /**
+   * int64
+   * @format int64
+   */
+  int?: number;
+  /** Operator selected for rule definition */
+  op?: string;
+  /** Boolean values for rule definition */
+  string?: string;
+}
+
+export interface MainOrderPayload {
+  /**
+   * Total amount of the order
+   * @format float64
+   */
+  amount?: number;
+  /** Billing information for the order */
+  billing?: MainBillingPayload;
+  /**
+   * Unique identifier for the contact
+   * @format int64
+   */
+  contact_id?: number;
+  /** List of coupon codes applied to the order */
+  coupons?: string[];
+  /**
+   * Timestamp when the order was created
+   * @format date-time
+   */
+  createdAt?: string;
+  /**
+   * Email address associated with the order
+   * @format email
+   */
+  email?: string;
+  /** Unique identifier for the order */
+  id?: string;
+  /** Additional identifiers for the order */
+  identifiers?: MainIdentifiersPayload;
+  /** List of products in the order */
+  products?: MainProductPayload[];
+  /** Current status of the order */
+  status?: string;
+  /** Identifier for the store where the order was placed */
+  storeId?: string;
+  /**
+   * Timestamp when the order was last updated
+   * @format date-time
+   */
+  updatedAt?: string;
+}
+
+export interface MainProduct {
+  /** Timestamp when the product was created */
+  createdAt?: string;
+  /** URL of the product image */
+  imageRef?: string;
+  /** Unique identifier for the product */
+  productId?: string;
+  /** string */
+  value?: string;
+}
+
+export interface MainProductPayload {
+  /** List of categories the product belongs to */
+  category?: string[];
+  /**
+   * Price of the product
+   * @format float64
+   */
+  price?: number;
+  /** Unique identifier for the product */
+  productId?: string;
+  /**
+   * Quantity of the product
+   * @format float64
+   */
+  quantity?: number;
+  /** Identifier for the product variant */
+  variantId?: string;
+}
+
+export interface MainRedeem {
+  /**
+   * Timestamp when the redemption was cancelled
+   * @format date-time
+   */
+  cancelledAt?: string;
+  /**
+   * Timestamp when the redemption was completed
+   * @format date-time
+   */
+  completedAt?: string;
+  /**
+   * Unique identifier for the contact
+   * @format int64
+   */
+  contactId?: number;
+  /**
+   * Timestamp when the redemption was created
+   * @format date-time
+   */
+  createdAt?: string;
+  /**
+   * Unique identifier for the debit transaction
+   * @format uuid
+   */
+  debitTransactionId?: string;
+  /**
+   * Timestamp when the redemption expires
+   * @format date-time
+   */
+  expiresAt?: string;
+  /**
+   * Unique identifier for the redemption
+   * @format uuid
+   */
+  id?: string;
+  /**
+   * Unique identifier for the loyalty program
+   * @format uuid
+   */
+  loyaltyProgramId?: string;
+  /** Additional metadata associated with the redemption */
+  meta?: Record<string, any>;
+  /** Reason for rejection if the redemption was rejected */
+  rejectReason?: string;
+  /**
+   * Timestamp when the redemption was rejected
+   * @format date-time
+   */
+  rejectedAt?: string;
+  /**
+   * Unique identifier for the reward attribution
+   * @format uuid
+   */
+  rewardAttributionId?: string;
+  /** Current status of the redemption */
+  status?: string;
+  /**
+   * Timestamp when the redemption was last updated
+   * @format date-time
+   */
+  updatedAt?: string;
+}
+
+export interface MainResultParameterResponse {
+  /** Name of the rule */
+  name?: string;
+  /** Selected value of the parameter to define the rule */
+  value?: MainValueResponse;
+}
+
+export interface MainReward {
+  /** Maximum number of times a consumer can be attributed this reward */
+  attributionPerConsumer?: number;
+  /**
+   * Unique identifier for the balance definition
+   * @format uuid
+   */
+  balanceDefinitionId?: string;
+  /** Unique code for the reward */
+  code?: string;
+  /**
+   * Total number of codes generated
+   * @format int64
+   */
+  codeCount?: number;
+  /**
+   * Unique identifier for the code generator
+   * @format uuid
+   */
+  codeGeneratorId?: string;
+  /**
+   * Unique identifier for the code pool
+   * @format uuid
+   */
+  codePoolId?: string;
+  /** Configuration settings for the reward */
+  config?: string;
+  /**
+   * Timestamp when the reward was created
+   * @format date-time
+   */
+  createdAt?: string;
+  /**
+   * Disabled date of the reward
+   * @format date-time
+   */
+  disabledAt?: string;
+  /**
+   * End date of the reward validity
+   * @format date-time
+   */
+  endDate?: string;
+  /**
+   * Expiration date of the reward
+   * @format date-time
+   */
+  expirationDate?: string;
+  /**
+   * Select startOfPeriod to configure rewards expiry on start of day/week/month/year. Select endOfPeriod to configure reward expiry on end of day/week/month/year, else select noModification
+   * @default "noModification"
+   */
+  expirationModifier?: "startOfPeriod" | "endOfPeriod" | "noModification";
+  /** Unit of time for the rewards's availability (e.g., day/week/month/year). */
+  expirationUnit?: string;
+  /** Number of days/weeks/month/year for reward expiry */
+  expirationValue?: number;
+  /** object */
+  generator?: MainGenerator;
+  /**
+   * Unique identifier for the reward
+   * @format uuid
+   */
+  id?: string;
+  /** Attribution / Redeem Limits for the reward */
+  limits?: MainLimit[];
+  /**
+   * Id of the loyalty program to which the current reward belongs to
+   * @format uuid
+   */
+  loyaltyProgramId?: string;
+  /** Additional data for reward definition */
+  meta?: Record<string, any>;
+  /** Name of the reward */
+  name?: string;
+  /** Selected products for reward definition */
+  products?: MainProduct[];
+  /** Public description for the reward */
+  publicDescription?: string;
+  /** Public Image for the reward */
+  publicImage?: string;
+  /** Public name for the reward */
+  publicName?: string;
+  /** Defines the redeem limit for the consumer */
+  redeemPerConsumer?: number;
+  /** Rules defined to redeem a reward */
+  redeemRules?: string[];
+  /** object */
+  rewardConfigs?: MainRewardConfigurations;
+  /** Rule to define the reward */
+  rule?: MainRule;
+  /**
+   * Start date of attribution of the reward
+   * @format date-time
+   */
+  startDate?: string;
+  /** Id of the selected balance while redeeming / attributing a reward */
+  subtractBalanceDefinitionId?: string;
+  /** Strategy of the Balance while redeeming / attributing a reward */
+  subtractBalanceStrategy?: string;
+  /** Amount of balance to be selected while redeeming / attributing a reward */
+  subtractBalanceValue?: number;
+  /** Value to indicate to subtract full balance or not */
+  subtractTotalBalance?: boolean;
+  /** Defines the limit to which a consumer can attribute a reward */
+  totalAttribution?: number;
+  /** Defines the limit to which a consumer can redeem a reward */
+  totalRedeem?: number;
+  /** Id of the Rule to be updated for that reward */
+  triggerId?: string;
+  /** Selected unit of the balance */
+  unit?: string;
+  /** Timestamp for when this reward was last updated. */
+  updatedAt?: string;
+  /**
+   * Value of metric in selected config for reward definition
+   * @format float64
+   */
+  value?: number;
+  /** Type of config selected for reward definition */
+  valueType?: string;
+}
+
+export interface MainCreateRewardResponse {
+  /**
+   * Timestamp when the reward was created
+   * @format date-time
+   */
+  createdAt?: string;
+  /**
+   * Unique identifier for the reward
+   * @format uuid
+   */
+  id?: string;
+  /**
+   * Id of the loyalty program to which the current reward belongs to
+   * @format uuid
+   */
+  loyaltyProgramId?: string;
+  /** Name of the reward */
+  name?: string;
+  /** Public description for the reward */
+  publicDescription?: string;
+  /** Public Image for the reward */
+  publicImage?: string;
+  /** Public name for the reward */
+  publicName?: string;
+  /** Timestamp for when this reward was last updated. */
+  updatedAt?: string;
+}
+
+export interface MainRewardAttribution {
+  /**
+   * Value of the selected reward config
+   * @format float64
+   */
+  value?: number;
+  /** Generated code */
+  code?: string;
+  /** Timestamp for when this reward was consumed */
+  consumedAt?: string;
+  /**
+   * Id of the contact that attributed the reward
+   * @format int64
+   */
+  contactId?: number;
+  /**
+   * Timestamp for when this reward was created
+   * @format date-time
+   */
+  createdAt?: string;
+  /**
+   * Expiration date of the reward
+   * @format date-time
+   */
+  expirationDate?: string;
+  /**
+   * Unique identifier
+   * @format uuid
+   */
+  id?: string;
+  /** Loyalty Program Id to which attributed reward belongs */
+  loyaltyProgramId?: string;
+  /** Additional data to define the reward */
+  meta?: Record<string, any>;
+  /** Unique identifier for the reward */
+  rewardId?: string;
+  /**
+   * Timestamp for when this reward was updated
+   * @format date-time
+   */
+  updatedAt?: string;
+}
+
+export interface MainRewardConfigurations {
+  /** Attribution config of the reward */
+  attribution?: string;
+  /** Code config of the reward */
+  code?: string;
+  /** Value config of the reward */
+  value?: string;
+}
+
+export interface MainRewardPage {
+  /** Items for the current reward */
+  items?: MainRewardPageObj[];
+  /** Count of the associated parameter in current reward */
+  totalCount?: number;
+}
+
+export interface MainRewardPageObj {
+  /**
+   * Timestamp for when this reward was created
+   * @format date-time
+   */
+  createdAt?: string;
+  /**
+   * Timestamp for when this reward attribution ended
+   * @format date-time
+   */
+  endDate?: string;
+  /**
+   * Unique identifier for the reward
+   * @format uuid
+   */
+  id?: string;
+  /**
+   * Loyalty Program to which current reward is associated
+   * @format uuid
+   */
+  loyaltyProgramId?: string;
+  /** Name of the reward */
+  name?: string;
+  /** Public image of the reward */
+  publicImage?: string;
+  /**
+   * Timestamp for when this reward attribution started
+   * @format date-time
+   */
+  startDate?: string;
+  /** State of the reward */
+  state?: string;
+  /**
+   * Timestamp for when this reward attribution was updated
+   * @format date-time
+   */
+  updatedAt?: string;
+}
+
+export interface MainRewardValidate {
+  /** Boolean value to authorize a reward or not */
+  authorize?: boolean;
+}
+
+export interface MainRule {
+  /** Selected rule condition */
+  condition?: MainRuleConditionResponse;
+  /** Timestamp when the rule was created */
+  createdAt?: string;
+  /** Description of the rule */
+  description?: string;
+  /** Selected event in the rule */
+  event?: MainRuleEventResponse;
+  /** Metric to identify if it's an internal rule or not */
+  isInternal?: boolean;
+  /** Loyalty Program id to which current rule is associated */
+  loyaltyProgramId?: string;
+  /**
+   * Loyalty Version id to which current rule is associated
+   * @format int16
+   */
+  loyaltyVersionId?: number;
+  /** Additional data to define the rule */
+  meta?: Record<string, any>;
+  /** Rule name */
+  name?: string;
+  /** Results of the rule definition */
+  results?: MainRuleResultResponse[];
+  /** Unique identifier for the rule */
+  ruleId?: string;
+  /** Type of the rule */
+  ruleType?: string;
+  /** Timestamp when the rule was updated */
+  updatedAt?: string;
+}
+
+export interface MainRuleConditionResponse {
+  /** Metric to indicate AND between rules */
+  and?: MainRuleConditionResponse[];
+  /** Condition of the rule */
+  lhs?: MainValueResponse;
+  /** Selected operator for the rule */
+  op?: string;
+  /** Metric to indicate OR between rules */
+  or?: MainRuleConditionResponse[];
+  /** Action of the rule */
+  rhs?: MainValueResponse;
+}
+
+export interface MainRuleEventResponse {
+  /** Name of the event */
+  name?: string;
+  /** Source of the event */
+  source?: string;
+}
+
+export interface MainRuleResultResponse {
+  /** Action for the defined rule */
+  action?: string;
+  /** Parameters to define the reward */
+  parameters?: MainResultParameterResponse[];
+  /** Selected service to define the reward */
+  service?: string;
+}
+
+export interface MainValidateRewardPayload {
+  /**
+   * Unique identifier for the attributed reward
+   * @format uuid
+   */
+  attributedRewardId?: string;
+  /** Validation code for the reward */
+  code?: string;
+  /**
+   * Unique identifier for the contact
+   * @format int64
+   * @min 1
+   */
+  contactId?: number;
+  /** Identifier for the loyalty subscription */
+  loyaltySubscriptionId?: string;
+  /** Identifier for the point of sale */
+  pointOfSellId?: string;
+  /**
+   * Unique identifier for the reward
+   * @format uuid
+   */
+  rewardId?: string;
+}
+
+export interface MainValueResponse {
+  /** Array values to define the rule */
+  array?: MainValueResponse[];
+  /** Boolean values for rule definition */
+  boolean?: boolean;
+  /** string */
+  contactProperty?: string;
+  /** Selected date for rule definition */
+  date?: string;
+  /** Selected event property for rule definition */
+  eventProperty?: string;
+  /** Created expression for rule definition */
+  expression?: MainNodeResponse;
+  /**
+   * Boolean values for rule definition
+   * @format float64
+   */
+  number?: number;
+  /** String values for rule definition */
+  string?: string;
+}
+
+export interface MainVoucherRevokePayload {
+  /** List of attributed reward identifiers to be revoked */
+  attributedRewardIds: string[];
+}
+
+export interface AggregateBalance {
+  /** balance definition ID */
+  balanceDefinitionId?: string;
+  /** Unique identifier for the balance definition associated with this aggregate balance */
+  value?: number;
+}
+
+export interface Balance {
+  /** The current amount available in the balance */
+  amount?: number;
+  /** balance definition ID */
+  balanceDefinitionId?: string;
+  /** Timestamp of when the balance was last consumed */
+  consumedAt?: string;
+  /** contact ID */
+  contactId?: number;
+  /** Timestamp of when the balance was created */
+  createdAt?: string;
+  /** Expiration timestamp of the balance */
+  expiresAt?: string;
+  /** Unique identifier for the balance */
+  id?: string;
+  /** loyalty program ID */
+  loyaltyProgramId?: string;
+  /** organization ID */
+  organizationId?: number;
+}
+
+export interface BalanceDataPerContact {
+  contactId?: number;
+  loyaltySubscriptionId?: string;
+  updatedAt?: string;
+  value?: number;
+}
+
+export interface BalanceDefinition {
+  /** startOfPeriod depicts the balancy expiry on start of day/week/month/year. endOfPeriod depicts the balancy expiry on end of day/week/month/year */
+  balanceAvailabilityDurationModifier?: "startOfPeriod" | "endOfPeriod" | "noModification";
+  /** Unit of time for the balance's availability (e.g., day/week/month/year). */
+  balanceAvailabilityDurationUnit?: string;
+  /** Number of days/weeks/month/year for balance expiry */
+  balanceAvailabilityDurationValue?: number;
+  /**
+   * Date when the balance expires and can no longer be used, in dd/mm format. The balance will be expired when this date appears next in the calendar and only one of balanceExpirationDate or balance availability fields can be used.
+   * @format date-time
+   */
+  balanceExpirationDate?: string;
+  /** Partial enables partial credit of balance if maximum balance limit is reaching. Strict enables rejection of transaction if it will breach the max credit amount limit. */
+  balanceOptionAmountOvertakingStrategy?: string;
+  /** Rounding strategy for credit transactions. */
+  balanceOptionCreditRounding?: string;
+  /** Rounding strategy for debit transactions. */
+  balanceOptionDebitRounding?: string;
+  /**
+   * Timestamp of balance definition creation.
+   * @format date-time
+   */
+  createdAt?: string;
+  /** Timestamp of balance definition deletion (nullable). */
+  deletedAt?: string;
+  /** Short description of the balance definition. */
+  description?: string;
+  /** Unique identifier for the balance definition. */
+  id?: string;
+  /** Optional image reference URL. */
+  imageRef?: string;
+  /** Maximum allowable balance. */
+  maxAmount?: number;
+  /** Max credit allowed per operation. */
+  maxCreditAmountLimit?: number;
+  /** Max debit allowed per operation. */
+  maxDebitAmountLimit?: number;
+  /** Additional metadata for the balance definition. */
+  meta?: Record<string, any>;
+  /** Minimum allowable balance. */
+  minAmount?: number;
+  /** Name of the balance definition. */
+  name?: string;
+  /** Unit of balance (e.g., points, currency). */
+  unit?: string;
+  /** Timestamp of the last update. */
+  updatedAt?: string;
+}
+
+export interface BalanceDefinitionPage {
+  /** list of balance definitions */
+  items?: BalanceDefinition[];
+}
+
+export interface BalanceLimit {
+  /** balance definition ID */
+  balanceDefinitionId?: string;
+  /** Defines the type of constraint (e.g., transaction-based or amount-based). */
+  constraintType?: string;
+  /** Timestamp of when the balance limit was created. */
+  createdAt: string;
+  /** Time unit for the balance limit (day, week, month, year). */
+  durationUnit?: string;
+  /** Number of time units the balance limit applies to. */
+  durationValue?: number;
+  /** Unique identifier for the balance limit. */
+  id?: string;
+  /** Indicates if the limit resets periodically based on a sliding schedule. */
+  slidingSchedule?: boolean;
+  /** Specifies whether the limit applies to credit or debit transactions. */
+  transactionType?: string;
+  /** Timestamp of the last update to the balance limit. */
+  updatedAt: string;
+  /** The maximum allowed value for the defined constraint. */
+  value?: number;
+}
+
+export interface ContactBalancesResp {
+  balanceDefinitionId?: string;
+  balances?: BalanceDataPerContact[];
+  count?: number;
+  loyaltyProgramId?: string;
+}
+
+/** Payload for creating a new balance definition, specifying expiration rules, rounding strategies, and constraints. */
+export interface CreateBalanceDefinitionPayload {
+  /** Defines when the balance expires within the selected duration. */
+  balanceAvailabilityDurationModifier?: "noModification" | "startOfPeriod" | "endOfPeriod";
+  /** Unit of time for balance validity. */
+  balanceAvailabilityDurationUnit?: "day" | "week" | "month" | "year";
+  /** Number of time units before the balance expires. */
+  balanceAvailabilityDurationValue?: number;
+  /**
+   * Fixed expiration date (`dd/mm` format) as an alternative to duration-based expiry.
+   * @format date
+   */
+  balanceExpirationDate?: string;
+  /** Defines whether partial credit is allowed when reaching max balance. */
+  balanceOptionAmountOvertakingStrategy?: "strict" | "partial";
+  /** Defines rounding strategy for credit transactions. */
+  balanceOptionCreditRounding?: "lower" | "upper" | "natural";
+  /** Defines rounding strategy for debit transactions. */
+  balanceOptionDebitRounding?: "lower" | "upper" | "natural";
+  /**
+   * Short description of the balance definition.
+   * @maxLength 256
+   */
+  description?: string;
+  /** URL of an optional image reference. */
+  imageRef?: string;
+  /** Maximum allowable balance amount. */
+  maxAmount?: number;
+  /** Maximum credit allowed per operation. */
+  maxCreditAmountLimit?: number;
+  /** Maximum debit allowed per operation. */
+  maxDebitAmountLimit?: number;
+  /** Additional metadata for the balance definition. */
+  meta?: object;
+  /** Minimum allowable balance amount. */
+  minAmount?: number;
+  /**
+   * Name of the balance definition.
+   * @maxLength 128
+   */
+  name: string;
+  /** Unit of balance measurement. */
+  unit:
+    | "POINTS"
+    | "EUR"
+    | "USD"
+    | "MXN"
+    | "GBP"
+    | "INR"
+    | "CAD"
+    | "SGD"
+    | "RON"
+    | "JPY"
+    | "MYR"
+    | "CLP"
+    | "PEN"
+    | "MAD"
+    | "AUD"
+    | "CHF"
+    | "BRL";
+}
+
+/** Payload for setting transaction or amount-based limits on a balance. */
+export interface CreateBalanceLimitPayload {
+  /** Defines whether the limit applies to transaction count or amount. */
+  constraintType: "transaction" | "amount";
+  /** Unit of time for which the limit is applicable. */
+  durationUnit: "day" | "week" | "month" | "year";
+  /** Number of time units for the balance limit. */
+  durationValue: number;
+  /** Determines if the limit resets on a rolling schedule. */
+  slidingSchedule?: boolean;
+  /** Specifies whether the limit applies to credit or debit transactions. */
+  transactionType: "credit" | "debit";
+  /** Maximum allowed value for the specified constraint type. */
+  value: number;
+}
+
+/** Payload for creating a new balance linked to a specific balance definition. */
+export interface CreateBalancePayload {
+  /** Unique identifier (UUID) of the balance definition associated with the new balance. */
+  balanceDefinitionId: string;
+}
+
+/** Payload for creating an order linked to a balance definition. */
+export interface CreateOrderPayload {
+  /** Order amount (must be non-zero). */
+  amount: number;
+  /** Unique identifier (UUID) of the associated balance definition. */
+  balanceDefinitionId: string;
+  /**
+   * Unique identifier of the contact placing the order (must be ≥ 1).
+   * @min 1
+   */
+  contactId: number;
+  /** RFC3339 timestamp specifying when the order is due. */
+  dueAt: string;
+  /** Optional RFC3339 timestamp defining order expiration. */
+  expiresAt?: string;
+  /** Optional metadata associated with the order. */
+  meta?: Record<string, any>;
+  /** Specifies the origin of the order (`engine` or `user`). */
+  source: string;
+}
+
+/** Payload for creating a transaction, specifying balance details and optional expiration. */
+export interface CreateTransactionPayload {
+  /** Unique identifier for the loyalty subscription (required unless `contactId` is provided). */
+  LoyaltySubscriptionId?: string;
+  /** Transaction amount (must be provided). */
+  amount: number;
+  /** Whether the transaction should be automatically completed. */
+  autoComplete?: boolean;
+  /** Unique identifier (UUID) of the associated balance definition. */
+  balanceDefinitionId: string;
+  /** Optional expiry time for the balance in minutes (must be greater than 0 if provided). */
+  balanceExpiryInMinutes?: number;
+  /**
+   * Unique identifier of the contact involved in the transaction (required unless `LoyaltySubscriptionId` is provided).
+   * @min 1
+   */
+  contactId?: number;
+  /** Optional timestamp specifying when the transaction occurred. */
+  eventTime?: string;
+  /** Optional metadata associated with the transaction. */
+  meta?: Record<string, any>;
+  /** Optional time-to-live for the transaction (must be greater than 0 if provided). */
+  ttl?: number;
+}
+
+export interface ModelSubscriptionBalanceResp {
+  balance?: AggregateBalance[];
+}
+
+/** Represents an order linked to a balance definition, including amount, due date, and transaction details. */
+export interface BalanceOrder {
+  /** Order amount (must not be zero). */
+  amount: number;
+  /** Optional unique identifier (UUID) of the associated balance definition. */
+  balanceDefinitionId?: string;
+  /**
+   * Unique identifier of the contact placing the order (must be ≥ 1).
+   * @min 1
+   */
+  contactId: number;
+  /** RFC3339 timestamp indicating when the order was created. */
+  createdAt: string;
+  /** RFC3339 timestamp specifying when the order is due in the future. */
+  dueAt: string;
+  /** Optional RFC3339 timestamp defining order expiration in the future. */
+  expiresAt?: string;
+  /** Unique identifier for the balance order. */
+  id?: string;
+  /** Unique identifier of the loyalty program associated with the order. */
+  loyaltyProgramId: string;
+  /** Optional metadata associated with the order. */
+  meta?: Record<string, any>;
+  /** Optional RFC3339 timestamp indicating when the order was processed. */
+  processedAt?: string;
+  /** Optional reference to the associated transaction ID. */
+  transactionid?: string;
+  /** RFC3339 timestamp indicating the last update to the order. */
+  updatedAt: string;
+}
+
+/** Represents a transaction involving a balance, including status and timestamps. */
+export interface Transaction {
+  /** The transaction amount. */
+  amount?: number;
+  /** Unique identifier (UUID) of the associated balance definition. */
+  balanceDefinitionId?: string;
+  /** Timestamp when the transaction was canceled (nullable). */
+  cancelledAt?: string;
+  /** Timestamp when the transaction was completed (nullable). */
+  completedAt?: string;
+  /** Unique identifier of the contact associated with the transaction. */
+  contactId?: number;
+  /** Timestamp when the transaction was created. */
+  createdAt?: string;
+  /** Optional timestamp indicating when the transaction event occurred. */
+  eventTime?: string;
+  /** Expiry date of the transaction (nullable). */
+  expirationDate?: string;
+  /** Unique identifier (UUID) of the transaction. */
+  id?: string;
+  /** Unique identifier (UUID) of the associated loyalty program. */
+  loyaltyProgramId?: string;
+  /** Optional metadata associated with the transaction. */
+  meta?: Record<string, any>;
+  /** Reason for rejection if the transaction was declined (nullable). */
+  rejectReason?: string;
+  /** Timestamp when the transaction was rejected (nullable). */
+  rejectedAt?: string;
+  /** The current status of the transaction (e.g., pending, completed, rejected). */
+  status?: string;
+  /** Timestamp when the transaction was last updated. */
+  updatedAt?: string;
+}
+
+/** Represents a record of a past transaction, including status and key timestamps. */
+export interface TransactionHistory {
+  /** The transaction amount. */
+  amount?: number;
+  /** Expiration date of the balance associated with this transaction. */
+  balanceExpirationDate?: string;
+  /** Timestamp when the transaction was canceled, if applicable. */
+  cancelledAt?: string;
+  /** Timestamp when the transaction was successfully completed. */
+  completedAt?: string;
+  /** Timestamp when the transaction was initiated. */
+  createdAt?: string;
+  /** Unique identifier of the transaction. */
+  id?: string;
+  /** Optional metadata associated with the transaction. */
+  meta?: Record<string, any>;
+  /** Reason for rejection, if the transaction was declined. */
+  rejectReason?: string;
+  /** Timestamp when the transaction was rejected. */
+  rejectedAt?: string;
+  /** Current status of the transaction (e.g., pending, completed, rejected). */
+  status?: string;
+}
+
+/** Response containing transaction history details for a specific balance and contact. */
+export interface TransactionHistoryResp {
+  /** Unique identifier of the associated balance definition. */
+  balanceDefinitionId?: string;
+  /** Unique identifier of the contact related to the transactions. */
+  contactId?: number;
+  /** Total number of transactions in the history. */
+  count?: number;
+  /** Unique identifier of the associated loyalty program. */
+  loyaltyProgramId?: string;
+  /** List of past transactions associated with the balance. */
+  transactionHistory?: TransactionHistory[];
+}
+
+/** Payload for updating an existing balance definition, including expiry rules, rounding strategies, and constraints. */
+export interface UpdateBalanceDefinitionPayload {
+  /** Defines when the balance expires within the selected duration. */
+  balanceAvailabilityDurationModifier?: "noModification" | "startOfPeriod" | "endOfPeriod";
+  /** Unit of time for balance validity. */
+  balanceAvailabilityDurationUnit?: "day" | "week" | "month" | "year";
+  /** Number of time units before the balance expires. */
+  balanceAvailabilityDurationValue?: number;
+  /** Expiration date (`dd/mm` format) or empty if not applicable. */
+  balanceExpirationDate?: string;
+  /** Defines whether partial credit is allowed when reaching max balance. */
+  balanceOptionAmountOvertakingStrategy?: "strict" | "partial";
+  /** Rounding strategy for credit transactions. */
+  balanceOptionCreditRounding?: "lower" | "upper" | "natural";
+  /** Rounding strategy for debit transactions. */
+  balanceOptionDebitRounding?: "lower" | "upper" | "natural";
+  /**
+   * Short description of the balance definition.
+   * @maxLength 256
+   */
+  description?: string;
+  /** URL of an optional image reference. */
+  imageRef?: string;
+  /** Maximum allowable balance amount. */
+  maxAmount?: number;
+  /** Maximum credit allowed per operation. */
+  maxCreditAmountLimit?: number;
+  /** Maximum debit allowed per operation. */
+  maxDebitAmountLimit?: number;
+  /** Optional metadata for the balance definition. */
+  meta?: Record<string, any>;
+  /** Minimum allowable balance amount. */
+  minAmount?: number;
+  /**
+   * Name of the balance definition.
+   * @maxLength 128
+   */
+  name: string;
+  /** Unit of balance measurement. */
+  unit:
+    | "POINTS"
+    | "EUR"
+    | "USD"
+    | "MXN"
+    | "GBP"
+    | "INR"
+    | "CAD"
+    | "SGD"
+    | "RON"
+    | "JPY"
+    | "MYR"
+    | "CLP"
+    | "PEN"
+    | "MAD"
+    | "AUD"
+    | "CHF"
+    | "BRL";
+}
+
+/** Payload for updating an existing balance limit, specifying constraints on transactions or amounts. */
+export interface UpdateBalanceLimitPayload {
+  /** Defines whether the limit applies to transaction count or amount. */
+  constraintType: "transaction" | "amount";
+  /** Unit of time for which the limit is applicable. */
+  durationUnit: "day" | "week" | "month" | "year";
+  /** Number of time units for the balance limit. */
+  durationValue: number;
+  /** Determines if the limit resets on a rolling schedule. */
+  slidingSchedule?: boolean;
+  /** Specifies whether the limit applies to credit or debit transactions. */
+  transactionType: "credit" | "debit";
+  /** Maximum allowed value for the specified constraint type. */
+  value: number;
+}
+
+export interface CreateTierGroupRequest {
+  /** Name of the tier group */
+  name: string;
+  /**
+   * Select real_time to upgrade tier on real time balance updates. Select membership_anniversary to upgrade tier on subscription anniversary. Select tier_anniversary to upgrade tier on tier anniversary.
+   * @default "real_time"
+   */
+  upgradeStrategy?: "real_time" | "membership_anniversary" | "tier_anniversary";
+  /**
+   * Select real_time to downgrade tier on real time balance updates. Select membership_anniversary to downgrade tier on subscription anniversary. Select tier_anniversary to downgrade tier on tier anniversary.
+   * @default "real_time"
+   */
+  downgradeStrategy?: "real_time" | "membership_anniversary" | "tier_anniversary";
+  /** Order of the tiers in the group in ascending order */
+  tierOrder?: string[];
+}
+
+export interface UpdateTierGroupRequest {
+  /** Name of the tier group */
+  name: string;
+  /**
+   * Order of the tiers in the group in ascending order
+   * @example []
+   */
+  tierOrder: string[];
+  /**
+   * Select real_time to upgrade tier on real time balance updates. Select membership_anniversary to upgrade tier on subscription anniversary. Select tier_anniversary to upgrade tier on tier anniversary.
+   * @default "real_time"
+   */
+  upgradeStrategy: "real_time" | "membership_anniversary" | "tier_anniversary";
+  /**
+   * Select real_time to downgrade tier on real time balance updates. Select membership_anniversary to downgrade tier on subscription anniversary. Select tier_anniversary to downgrade tier on tier anniversary.
+   * @default "real_time"
+   */
+  downgradeStrategy: "real_time" | "membership_anniversary" | "tier_anniversary";
+}
+
+export interface TierGroup {
+  /**
+   * Tier group unique identifier
+   * @format uuid
+   */
+  id?: string;
+  /** Tier group name */
+  name?: string;
+  /**
+   * Order of the tiers in the group in ascending order
+   * @example []
+   */
+  tierOrder?: string[];
+  /**
+   * Associated loyalty program Id
+   * @format uuid
+   */
+  loyaltyProgramId?: string;
+  /**
+   * Select real_time to upgrade tier on real time balance updates. Select membership_anniversary to upgrade tier on subscription anniversary. Select tier_anniversary to upgrade tier on tier anniversary.
+   * @default "real_time"
+   */
+  upgradeStrategy?: "real_time" | "membership_anniversary" | "tier_anniversary";
+  /**
+   * Select real_time to downgrade tier on real time balance updates. Select membership_anniversary to downgrade tier on subscription anniversary. Select tier_anniversary to downgrade tier on tier anniversary.
+   * @default "real_time"
+   */
+  downgradeStrategy?: "real_time" | "membership_anniversary" | "tier_anniversary";
+  /**
+   * Timestamp when the tier group was created
+   * @format date-time
+   */
+  createdAt?: string;
+  /**
+   * Timestamp when the tier group was last updated
+   * @format date-time
+   */
+  updatedAt?: string;
+}
+
+export interface TierGroupPage {
+  items?: TierGroup[];
+}
+
+export interface ErrorResponse {
+  message?: string;
+}
+
+export interface UnauthorizedResponse {
+  /** Request Authentication Failed */
+  error?: string;
+}
+
+export interface LoyaltyTierPage {
+  items?: Tier[];
+}
+
+export interface Tier {
+  /**
+   * Tier id
+   * @format uuid
+   */
+  tierId?: string;
+  /** Tier name */
+  name?: string;
+  /** Tier image reference */
+  imageRef?: string;
+  /**
+   * Associated loyalty program Id
+   * @format uuid
+   */
+  loyaltyProgramId?: string;
+  /**
+   * Associated group Id
+   * @format uuid
+   */
+  groupId?: string;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** Conditions required to access this tier */
+  accessConditions?: {
+    /**
+     * Balance definition identifier
+     * @format uuid
+     */
+    balanceDefinitionId?: string;
+    /** Minimum value required to access this tier */
+    minimumValue?: number;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+  }[];
+  /** Rewards associated with this tier */
+  tierRewards?: {
+    /**
+     * Reward to be attributed on tier assignment
+     * @format uuid
+     */
+    rewardId?: string;
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+  }[];
+}
+
+export interface TierRequest {
+  /** Name of the tier to be created */
+  name: string;
+  /** Image of the tier */
+  imageRef?: string;
+  accessConditions: {
+    /**
+     * Balance definition identifier for accessing the tier
+     * @format uuid
+     */
+    balanceDefinitionId?: string;
+    /** Minimum value required to access the tier */
+    minimumValue?: number;
+  }[];
+  tierRewards?: {
+    /**
+     * Reward unique identifier
+     * @format uuid
+     */
+    rewardId?: string;
+  }[];
+}
+
+export interface TierRequestPutPayload {
+  /** Name of the tier to be created */
+  name: string;
+  /** Image of the tier */
+  imageRef?: string;
+  accessConditions: {
+    /**
+     * Balance definition identifier for accessing the tier
+     * @format uuid
+     */
+    balanceDefinitionId?: string;
+    /** Minimum value required to access the tier */
+    minimumValue?: number;
+  }[];
+  tierRewards: {
+    /**
+     * Reward unique identifier
+     * @format uuid
+     */
+    rewardId?: string;
+  }[];
+}
+
+export interface TierForContact {
+  /**
+   * Unique identifier for the assigned tier
+   * @format uuid
+   */
+  id?: string;
+  /**
+   * Associated loyalty program Id
+   * @format uuid
+   */
+  loyaltyProgramId?: string;
+  /**
+   * Group Id to which the tier is associated
+   * @format uuid
+   */
+  groupId?: string;
+  /** Contact to which the tier is assigned */
+  contactId?: number;
+  /** object */
+  meta?: Record<string, any>;
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+}
+
 export interface CreateModel {
   /**
    * ID of the object created
@@ -1637,6 +3355,14 @@ export interface ScheduleSmtpEmail {
    * @example "5c6cfa04-eed9-42c2-8b5c-6d470d978e9d"
    */
   batchId?: string;
+}
+
+export interface SendSmsAsync {
+  /**
+   * @format int64
+   * @example 1511882900176220
+   */
+  messageId: number;
 }
 
 export interface SendSms {
@@ -2188,6 +3914,12 @@ export interface GetWebhook {
    * @example "marketing"
    */
   type: "marketing" | "transactional";
+  /**
+   * channel of webhook
+   * @default "email"
+   * @example "email"
+   */
+  channel?: "sms" | "email";
   /**
    * Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)
    * @example "2016-12-01T12:50:00.000Z"
@@ -3365,6 +5097,22 @@ export interface CreateEmailCampaign {
    * @example "6313436b9ad40e23b371d095"
    */
   updateFormId?: string;
+  /** To reduce your carbon footprint, set an expiration date for your email. If supported, it will be automatically deleted from the recipient’s inbox, saving storage space and energy. Learn more about setting an email expiration date. For reference , ``https://help.brevo.com/hc/en-us/articles/4413566705298-Create-an-email-campaign`` */
+  emailExpirationDate?: {
+    /**
+     * Duration of the email expiry. maximum duration can be 3600 days or 480 weeks or 120 months.
+     * @format int64
+     * @min 1
+     * @max 3600
+     * @example 30
+     */
+    duration?: number;
+    /**
+     * unit of the duration
+     * @example "weeks"
+     */
+    unit?: "days" | "weeks" | "months";
+  };
 }
 
 export interface UpdateEmailCampaign {
@@ -3577,6 +5325,22 @@ export interface UpdateEmailCampaign {
    * @example "6313436b9ad40e23b371d095"
    */
   updateFormId?: string;
+  /** To reduce your carbon footprint, set an expiration date for your email. If supported, it will be automatically deleted from the recipient’s inbox, saving storage space and energy. */
+  emailExpirationDate?: {
+    /**
+     * Duration of the email expiry. maximum duration can be 3600 days or 480 weeks or 120 months.
+     * @format int64
+     * @min 1
+     * @max 3600
+     * @example 30
+     */
+    duration?: number;
+    /**
+     * unit of the duration
+     * @example "weeks"
+     */
+    unit?: "days" | "weeks" | "months";
+  };
 }
 
 export interface GetSharedTemplateUrl {
@@ -4009,6 +5773,10 @@ export interface CreateWebhook {
    * #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`, `unsubscribed`, `listAddition` & `delivered`
    * - Possible values for **Inbound** type webhook:
    * #### `inboundEmailProcessed`
+   * - Possible values for type **Transactional** and channel **SMS**
+   * #### `accepted`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`, `subscribe`,`sent`,`blacklisted`,`skip`
+   * - Possible values for type **Marketing**  channel **SMS**
+   * #### `sent`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`, `subscribe`,`skip`
    */
   events: (
     | "sent"
@@ -4035,6 +5803,12 @@ export interface CreateWebhook {
    * @example "marketing"
    */
   type?: "transactional" | "marketing" | "inbound";
+  /**
+   * channel of webhook
+   * @default "email"
+   * @example "sms"
+   */
+  channel?: "sms" | "email";
   /**
    * Inbound domain of webhook, required in case of event type `inbound`
    * @example "example.com"
@@ -4142,8 +5916,7 @@ export interface CreateDoiContact {
 
 export interface CreateContact {
   /**
-   * Email address of the user. **Mandatory if "SMS" field is not passed in "attributes" parameter**. Mobile Number in **SMS** field should be passed with proper country code. For example:
-   * **{"SMS":"+91xxxxxxxxxx"}** or **{"SMS":"0091xxxxxxxxxx"}**
+   * Email address of the user. **Mandatory if "ext_id"  & "SMS" field is not passed.**
    * @format email
    * @example "elly@example.com"
    */
@@ -4295,12 +6068,12 @@ export interface CreateAttribute {
   multiCategoryOptions?: string[];
   /**
    * Type of the attribute. **Use only if the attribute's category is 'normal', 'category' or 'transactional'**
-   * Type **boolean and multiple-choice** is only available if the category is **normal** attribute
+   * Type **user and multiple-choice** is only available if the category is **normal** attribute
    * Type **id** is only available if the category is **transactional** attribute
    * Type **category** is only available if the category is **category** attribute
    * @example "text"
    */
-  type?: "text" | "date" | "float" | "boolean" | "id" | "category" | "multiple-choice";
+  type?: "text" | "date" | "float" | "boolean" | "id" | "category" | "multiple-choice" | "user";
 }
 
 export interface UpdateAttribute {
@@ -4362,7 +6135,7 @@ export interface UpdateList {
 
 export interface RequestContactExport {
   /**
-   * List of all the attributes that you want to export. **These attributes must be present in your contact database.** For example:
+   * List of all the attributes that you want to export. **These attributes must be present in your contact database. It is required if exportMandatoryAttributes is set false. ** For example:
    * **['fname', 'lname', 'email']**
    */
   exportAttributes?: string[];
@@ -4422,6 +6195,22 @@ export interface RequestContactExport {
    * @example "http://requestb.in/173lyyx1"
    */
   notifyUrl?: string;
+  /**
+   * To avoid generating the email notification upon contact export, pass **true**
+   * @default false
+   * @example false
+   */
+  disableNotification?: boolean;
+  /**
+   * To export mandatory attributes like EMAIL, ADDED_TIME, MODIFIED_TIME
+   * @default true
+   * @example false
+   */
+  exportMandatoryAttributes?: boolean;
+  /** Export subscription status of contacts for email & sms marketting. Pass email_marketing to obtain the marketing email subscription status & sms_marketing to retrieve the marketing SMS status of the contact. */
+  exportSubscriptionStatus?: string[];
+  /** Export metadata of contacts such as _listIds, ADDED_TIME, MODIFIED_TIME. */
+  exportMetadata?: string[];
 }
 
 export interface RequestContactImport {
@@ -4615,8 +6404,8 @@ export interface SendTransacSms {
    */
   type?: "transactional" | "marketing";
   /**
-   * Tag of the message
-   * @example "accountValidation"
+   * A tag can have two types of values, either a string or an array of strings.
+   * @example ""tag1" OR ["tag1", "tag2"]"
    */
   tag?: string;
   /**
@@ -5327,6 +7116,32 @@ export interface SubAccountDetailsResponse {
          */
         remaining?: number;
       };
+      /** Whatsapp credits remaining on the sub-account */
+      whatsapp?: {
+        /**
+         * Quantity of whatsapp messaging limits provided
+         * @format int64
+         */
+        quantity?: number;
+        /**
+         * Available whatsapp messaging limits for use
+         * @format int64
+         */
+        remaining?: number;
+      };
+      /** externalFeeds credits remaining on the sub-account */
+      externalFeeds?: {
+        /**
+         * Quantity of externalFeeds messaging limits provided
+         * @format int64
+         */
+        quantity?: number;
+        /**
+         * Available externalFeeds messaging limits for use
+         * @format int64
+         */
+        remaining?: number;
+      };
     };
     /** Features available on the sub-account */
     features?: {
@@ -5356,15 +7171,28 @@ export interface SubAccountDetailsResponse {
          */
         remaining?: number;
       };
-      /** Multi-account details */
+      /** Marketing users to manage the marketing channels */
       users?: {
         /**
-         * Quantity of multi-account's provided
+         * Quantity of marketing users provided
          * @format int64
          */
         quantity?: number;
         /**
-         * Available multi-accounts for use
+         * Available marketing users for use
+         * @format int64
+         */
+        remaining?: number;
+      };
+      /** Sales and service users to use phone, sales and conversations */
+      salesUsers?: {
+        /**
+         * Quantity of sales users provided
+         * @format int64
+         */
+        quantity?: number;
+        /**
+         * Available sales users for use
          * @format int64
          */
         remaining?: number;
@@ -5377,7 +7205,7 @@ export interface SubAccountDetailsResponse {
 
 /**
  * Details of the plan to be changed
- * @example {"credits":{"email":5000,"sms":2000,"wpSubscribers":-1},"features":{"users":15,"landingPage":20,"inbox":10}}
+ * @example {"credits":{"email":5000,"sms":2000,"wpSubscribers":-1,"externalFeeds":1,"whatsapp":100},"features":{"users":15,"landingPage":20,"inbox":10,"salesUsers":6}}
  */
 export interface SubAccountUpdatePlanRequest {
   /** Credit details to update */
@@ -5397,6 +7225,16 @@ export interface SubAccountUpdatePlanRequest {
      * @format int64
      */
     wpSubscribers?: number;
+    /**
+     * Number of externalFeeds credits, possible values are 0 or 1 |available in ENTv2 only
+     * @format int64
+     */
+    externalFeeds?: number;
+    /**
+     * Number of whatsapp credits | Pass the value -1 for unlimited whatsapp in ENTv2 only
+     * @format float
+     */
+    whatsapp?: number;
   };
   /** Features details to update */
   features?: {
@@ -5415,6 +7253,66 @@ export interface SubAccountUpdatePlanRequest {
      * @format int64
      */
     inbox?: number;
+    /**
+     * Number of sales and service users | only available in ENT-V2
+     * @format int64
+     */
+    salesUsers?: number;
+  };
+}
+
+/**
+ * Details of the plan to be changed
+ * @example {"subAccountIds":[4534345,987893,876785],"credits":{"email":5000,"sms":2000,"wpSubscribers":-1,"externalFeeds":1,"whatsapp":100},"features":{"users":15,"landingPage":20,"salesUsers":6}}
+ */
+export interface SubAccountsUpdatePlanRequest {
+  /** List of sub-account ids */
+  subAccountIds?: number[];
+  /** Credit details to update */
+  credits?: {
+    /**
+     * Number of email credits | Pass the value -1 for unlimited emails in ENTv2 only
+     * @format int64
+     */
+    email?: number;
+    /**
+     * Number of SMS credits | Pass the value -1 for unlimited SMS in ENTv2 only
+     * @format float
+     */
+    sms?: number;
+    /**
+     * Number of Push credits, possible value is 0 and -1 | available in ENT-v2 only
+     * @format int64
+     */
+    wpSubscribers?: number;
+    /**
+     * Number of externalFeeds credits, possible values are 0 or 1 |available in ENTv2 only
+     * @format int64
+     */
+    externalFeeds?: number;
+    /**
+     * Number of whatsapp credits | Pass the value -1 for unlimited whatsapp in ENTv2 only
+     * @format float
+     */
+    whatsapp?: number;
+  };
+  /** Features details to update */
+  features?: {
+    /**
+     * Number of multi-users
+     * @format int64
+     */
+    users?: number;
+    /**
+     * Number of landing pages
+     * @format int64
+     */
+    landingPage?: number;
+    /**
+     * Number of sales and service users | only available in ENT-V2
+     * @format int64
+     */
+    salesUsers?: number;
   };
 }
 
@@ -5924,13 +7822,12 @@ export interface Event {
    * Properties of the event. Top level properties and nested properties can be used to better segment contacts and personalise workflow conditions. The following field type are supported: string, number, boolean (true/false), date (Timestamp e.g. "2024-01-24T17:39:57+01:00"). Keys are limited to 255 characters, alphanumerical characters and - _ only. Size is limited to 50Kb.
    * @example {"video_title":"Brevo — The most approachable CRM suite","vide_description":"Create your free account today!","duration":142,"autoplayed":false,"upload_date":"2023-11-24T12:09:10+01:00"}
    */
-  event_properties?: Record<string, string | number | object | any[]>;
+  event_properties?: Record<string, string | number | object | object[]>;
 }
 
 export interface ConversionSourceMetrics {
-  /** @format integer */
-  id: number;
-  conversionSource: "email_campaign";
+  id: string;
+  conversionSource: "email_campaign" | "sms_campaign" | "automation_workflow_email" | "automation_workflow_sms";
   /** @format integer */
   ordersCount: number;
   /** @format float */
@@ -6007,6 +7904,16 @@ export interface Order {
      * @example "loyalty_id_1"
      */
     loyalty_subscription_id?: string;
+    /**
+     * Phone number of the contact associated with the order
+     * @example "01559 032133"
+     */
+    phone_id?: string;
+    /**
+     * Email of the contact associated with the order
+     * @example "example@brevo.com"
+     */
+    email_id?: string;
   };
   products: {
     /**
@@ -6030,11 +7937,6 @@ export interface Order {
      */
     price: number;
   }[];
-  /**
-   * Email of the contact, Mandatory if "phone" field is not passed in "billing" parameter.
-   * @example "example@brevo.com"
-   */
-  email?: string;
   /** Billing details of an order. */
   billing?: {
     /**
@@ -6058,7 +7960,7 @@ export interface Order {
      */
     country?: string;
     /**
-     * Phone number to contact for further details about the order, Mandatory if "email" field is not passed.
+     * Billing phone number.
      * @example "01559 032133"
      */
     phone?: string;
@@ -6083,6 +7985,11 @@ export interface Order {
    * @example ["EASTER15OFF"]
    */
   coupons?: string[];
+  /**
+   * Meta data of order to store additional detal such as custom message, customer type, source.
+   * @example {"order_source":"Website","gift_message":"Happy Birthday!","customer_loyalty_tier":"Gold"}
+   */
+  metaInfo?: Record<string, string | number | boolean>;
 }
 
 export interface OrderBatch {
@@ -6389,7 +8296,7 @@ export interface CreateUpdateProduct {
    */
   parentId?: string;
   /**
-   * Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 10.
+   * Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 20.
    * @example {"description":"Shoes for sports","brand":"addidas"}
    */
   metaInfo?: Record<string, string | number>;
@@ -6458,7 +8365,7 @@ export interface CreateUpdateProducts {
    */
   parentId?: string;
   /**
-   * Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 10.
+   * Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 20.
    * @example {"description":"Shoes for sports","brand":"addidas"}
    */
   metaInfo?: Record<string, string | number>;
@@ -7931,7 +9838,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
           | "unsubscribed"
           | "error"
           | "loadedByProxy";
-        /** Filter the report for tags (serialized and urlencoded array) */
+        /** Filter the report for tags (serialized and urlencoded array). To pass multiple tags, a format of string separated by commas is used such as **"one, two, three"** */
         tags?: string;
         /** Filter on a specific message id */
         messageId?: string;
@@ -8213,7 +10120,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
         segmentId?: number;
         /** Ids of the list. **Either listIds or segmentId can be passed.** */
         listIds?: number[];
-        /** Filter the contacts on the basis of attributes. **Allowed operator: equals. (e.g. filter=equals(FIRSTNAME,"Antoine"), filter=equals(B1, true), filter=equals(DOB, "1989-11-23"))** */
+        /** Filter the contacts on the basis of attributes. **Allowed operator: equals. For multiple-choice options, the filter will apply an AND condition between the options. For category attributes, the filter will work with both id and value. (e.g. filter=equals(FIRSTNAME,"Antoine"), filter=equals(B1, true), filter=equals(DOB, "1989-11-23"), filter=equals(GENDER, "1"), filter=equals(GENDER, "MALE"), filter=equals(COUNTRY,"USA, INDIA")** */
         filter?: string;
       },
       params: RequestParams = {},
@@ -8228,7 +10135,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
-     * No description
+     * @description Creates new contacts on Brevo. Contacts can be created by passing either - <br><br> 1. email address of the contact (email_id),  <br> 2. phone number of the contact (to be passed as "SMS" field in "attributes" along with proper country code), For example- {"SMS":"+91xxxxxxxxxx"} or {"SMS":"0091xxxxxxxxxx"} <br> 3. ext_id <br>
      *
      * @tags Contacts
      * @name CreateContact
@@ -8237,7 +10144,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      * @secure
      */
     createContact: (data: CreateContact, params: RequestParams = {}) =>
-      this.request<CreateUpdateContactModel, ErrorModel>({
+      this.request<CreateUpdateContactModel, ContactErrorModel>({
         path: `/contacts`,
         method: "POST",
         body: data,
@@ -8267,7 +10174,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
-     * @description Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats ``https://developers.brevo.com/reference/contacts-7#getcontactstats`` endpoint with the appropriate date ranges.
+     * @description There are 2 ways to get a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL), phone_id (for SMS) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL, SMS and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute <br><br>Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats ``https://developers.brevo.com/reference/contacts-7#getcontactstats`` endpoint with the appropriate date ranges.
      *
      * @tags Contacts
      * @name GetContactInfo
@@ -8278,8 +10185,8 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
     getContactInfo: (
       identifier: string | number,
       query?: {
-        /** email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute */
-        identifierType?: "email_id" | "phone_id" | "contact_id" | "ext_id";
+        /** email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute */
+        identifierType?: "email_id" | "phone_id" | "contact_id" | "ext_id" | "whatsapp_id" | "landline_number_id";
         /** **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate */
         startDate?: string;
         /** **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. */
@@ -8297,7 +10204,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
-     * No description
+     * @description There are 2 ways to delete a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute.
      *
      * @tags Contacts
      * @name DeleteContact
@@ -8308,8 +10215,8 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
     deleteContact: (
       identifier: string | number,
       query?: {
-        /** email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute */
-        identifierType?: "email_id" | "contact_id" | "ext_id";
+        /** email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute */
+        identifierType?: "email_id" | "contact_id" | "ext_id" | "phone_id" | "whatsapp_id" | "landline_number_id";
       },
       params: RequestParams = {},
     ) =>
@@ -8322,7 +10229,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
-     * No description
+     * @description There are 2 ways to update a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
      *
      * @tags Contacts
      * @name UpdateContact
@@ -8330,10 +10237,19 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      * @request PUT:/contacts/{identifier}
      * @secure
      */
-    updateContact: (identifier: string | number, data: UpdateContact, params: RequestParams = {}) =>
-      this.request<void, ErrorModel>({
+    updateContact: (
+      identifier: string | number,
+      data: UpdateContact,
+      query?: {
+        /** email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute */
+        identifierType?: "email_id" | "contact_id" | "ext_id" | "phone_id" | "whatsapp_id" | "landline_number_id";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<void, ContactErrorModel>({
         path: `/contacts/${identifier}`,
         method: "PUT",
+        query: query,
         body: data,
         secure: true,
         type: ContentType.Json,
@@ -8506,7 +10422,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      * @secure
      */
     getFolders: (
-      query: {
+      query?: {
         /**
          * Number of documents per page
          * @format int64
@@ -8514,13 +10430,13 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
          * @max 50
          * @default 10
          */
-        limit: number;
+        limit?: number;
         /**
          * Index of the first document of the page
          * @format int64
          * @default 0
          */
-        offset: number;
+        offset?: number;
         /**
          * Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed
          * @default "desc"
@@ -8883,7 +10799,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      */
     addContactToList: (
       listId: number,
-      data: AddContactToListByEmails | AddContactToListByIDs,
+      data: AddContactToListByEmails | AddContactToListByIDs | AddContactToListByExtIDs,
       params: RequestParams = {},
     ) =>
       this.request<PostContactInfo, ErrorModel>({
@@ -8907,7 +10823,11 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      */
     removeContactFromList: (
       listId: number,
-      data: RemoveContactFromListByEmails | RemoveContactFromListByIDs | RemoveContactFromListByAll,
+      data:
+        | RemoveContactFromListByEmails
+        | RemoveContactFromListByIDs
+        | RemoveContactFromListByAll
+        | RemoveContactFromListByExtIDs,
       params: RequestParams = {},
     ) =>
       this.request<PostContactInfo, ErrorModel>({
@@ -9174,6 +11094,26 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
   };
   transactionalSms = {
+    /**
+     * No description
+     *
+     * @tags Transactional SMS
+     * @name SendAsyncTransactionalSms
+     * @summary Send SMS message asynchronously to a mobile number
+     * @request POST:/transactionalSMS/send
+     * @secure
+     */
+    sendAsyncTransactionalSms: (data: SendTransacSms, params: RequestParams = {}) =>
+      this.request<SendSmsAsync, ErrorModel>({
+        path: `/transactionalSMS/send`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
     /**
      * No description
      *
@@ -9564,6 +11504,1222 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       this.request<GetWhatsAppConfig, ErrorModel>({
         path: `/whatsappCampaigns/config`,
         method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+  };
+  loyalty = {
+    /**
+     * @description Returns list of loyalty programs
+     *
+     * @tags Program
+     * @name GetLpList
+     * @summary Get loyalty program list
+     * @request GET:/loyalty/config/programs
+     * @secure
+     */
+    getLpList: (
+      query?: {
+        /** Number of documents per page */
+        limit?: number;
+        /** Index of the first document in the page */
+        offset?: number;
+        /** Sort documents by field */
+        sort_field?: "name" | "created_at" | "updated_at";
+        /** Sort documents by field */
+        sort?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<LoyaltyProgramPage, ErrorResponse>({
+        path: `/loyalty/config/programs`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Creates loyalty program
+     *
+     * @tags Program
+     * @name CreateNewLp
+     * @summary Create loyalty program
+     * @request POST:/loyalty/config/programs
+     * @secure
+     */
+    createNewLp: (data: CreateLoyaltyProgramPayload, params: RequestParams = {}) =>
+      this.request<LoyaltyProgram, ErrorResponse>({
+        path: `/loyalty/config/programs`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns loyalty program
+     *
+     * @tags Program
+     * @name GetLoyaltyProgramInfo
+     * @summary Get loyalty program Info
+     * @request GET:/loyalty/config/programs/{pid}
+     * @secure
+     */
+    getLoyaltyProgramInfo: (pid: string, params: RequestParams = {}) =>
+      this.request<LoyaltyProgram, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Updates loyalty program
+     *
+     * @tags Program
+     * @name UpdateLoyaltyProgram
+     * @summary Update loyalty program
+     * @request PUT:/loyalty/config/programs/{pid}
+     * @secure
+     */
+    updateLoyaltyProgram: (pid: string, data: UpdateLoyaltyProgramPayload, params: RequestParams = {}) =>
+      this.request<LoyaltyProgram, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Partially updates loyalty program
+     *
+     * @tags Program
+     * @name PartiallyUpdateLoyaltyProgram
+     * @summary Partially update loyalty program
+     * @request PATCH:/loyalty/config/programs/{pid}
+     * @secure
+     */
+    partiallyUpdateLoyaltyProgram: (pid: string, data: PatchLoyaltyProgramPayload, params: RequestParams = {}) =>
+      this.request<LoyaltyProgram, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}`,
+        method: "PATCH",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Deletes Loyalty Program
+     *
+     * @tags Program
+     * @name DeleteLoyaltyProgram
+     * @summary Delete Loyalty Program
+     * @request DELETE:/loyalty/config/programs/{pid}
+     * @secure
+     */
+    deleteLoyaltyProgram: (pid: string, params: RequestParams = {}) =>
+      this.request<void, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}`,
+        method: "DELETE",
+        secure: true,
+        ...params,
+      }),
+
+    /**
+     * @description Publishes loyalty program
+     *
+     * @tags Program
+     * @name PublishLoyaltyProgram
+     * @summary Publish loyalty program
+     * @request POST:/loyalty/config/programs/{pid}/publish
+     * @secure
+     */
+    publishLoyaltyProgram: (pid: string, params: RequestParams = {}) =>
+      this.request<void, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}/publish`,
+        method: "POST",
+        secure: true,
+        ...params,
+      }),
+
+    /**
+     * @description Subscribes to a loyalty program
+     *
+     * @tags Program
+     * @name SubscribeToLoyaltyProgram
+     * @summary Create subscription
+     * @request POST:/loyalty/config/programs/{pid}/subscriptions
+     * @secure
+     */
+    subscribeToLoyaltyProgram: (pid: string, data: CreateSubscriptionPayload, params: RequestParams = {}) =>
+      this.request<Subscription, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}/subscriptions`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Add member to a subscription
+     *
+     * @tags Program
+     * @name SubscribeMemberToASubscription
+     * @summary Create subscription member
+     * @request POST:/loyalty/config/programs/{pid}/subscription-members
+     * @secure
+     */
+    subscribeMemberToASubscription: (pid: string, data: AddSubscriptionMemberPayload, params: RequestParams = {}) =>
+      this.request<SubscriptionMember, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}/subscription-members`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Deletes member from a subscription
+     *
+     * @tags Program
+     * @name DeleteContactMembers
+     * @summary Delete subscription member
+     * @request DELETE:/loyalty/config/programs/{pid}/subscription-members
+     * @secure
+     */
+    deleteContactMembers: (
+      pid: string,
+      query: {
+        /** Comma-separated list of member contact IDs to delete from the subscription. */
+        memberContactIds: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<void, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}/subscription-members`,
+        method: "DELETE",
+        query: query,
+        secure: true,
+        ...params,
+      }),
+
+    /**
+     * @description Get Information of balances, tiers, rewards and subscription members for a subscription
+     *
+     * @tags Program
+     * @name GetParameterSubscriptionInfo
+     * @summary Get Subscription Data
+     * @request GET:/loyalty/config/programs/{pid}/account-info
+     * @secure
+     */
+    getParameterSubscriptionInfo: (
+      pid: string,
+      query?: {
+        /** The contact ID to filter by. */
+        contactId?: string;
+        /** A list of filter parameters for querying the subscription info. */
+        params?: string;
+        /** The loyalty subscription ID to filter by. */
+        loyaltySubscriptionId?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<SubscriptionHandlerInfo, ErrorResponse>({
+        path: `/loyalty/config/programs/${pid}/account-info`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Get code count
+     *
+     * @tags Reward
+     * @name GetCodeCount
+     * @summary Get code count
+     * @request GET:/loyalty/offer/programs/{pid}/code-pools/{cpid}/codes-count
+     * @secure
+     */
+    getCodeCount: (pid: string, cpid: string, params: RequestParams = {}) =>
+      this.request<MainCodeCountHttpResponse, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/code-pools/${cpid}/codes-count`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Get voucher for a contact
+     *
+     * @tags Reward
+     * @name OfferProgramsVouchersDetail
+     * @summary Get voucher for a contact
+     * @request GET:/loyalty/offer/programs/{pid}/vouchers
+     * @secure
+     */
+    offerProgramsVouchersDetail: (
+      pid: string,
+      query: {
+        /**
+         * Page size
+         * @min 1
+         * @max 100
+         * @default 25
+         */
+        limit?: number;
+        /**
+         * Pagination offset
+         * @default 0
+         */
+        offset?: number;
+        /**
+         * Sort order
+         * @default "desc"
+         */
+        sort?: "asc" | "desc";
+        /**
+         * Sort field
+         * @default "updatedAt"
+         */
+        sortField?: "updatedAt" | "createdAt";
+        /**
+         * Contact ID
+         * @min 1
+         */
+        contactId: number;
+        /** Metadata value for a Key filter */
+        metadata_key_value?: string;
+        /** Reward ID */
+        rewardId?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<MainModelContactRewardsResp, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/vouchers`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns a reward page
+     *
+     * @tags Reward
+     * @name OfferProgramsOffersDetail
+     * @summary Get Reward Page API
+     * @request GET:/loyalty/offer/programs/{pid}/offers
+     * @secure
+     */
+    offerProgramsOffersDetail: (
+      pid: string,
+      query?: {
+        /**
+         * Page size
+         * @min 1
+         * @max 100
+         * @default 25
+         */
+        limit?: number;
+        /**
+         * Pagination offset
+         * @default 0
+         */
+        offset?: number;
+        /**
+         * State of the reward
+         * @default "all"
+         */
+        state?: string;
+        /**
+         * Version
+         * @default "draft"
+         */
+        version?: "active" | "draft";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<MainRewardPage, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/offers`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Creates a new reward in the loyalty program.
+     *
+     * @tags Reward
+     * @name CreateReward
+     * @summary Create a reward
+     * @request POST:/loyalty/offer/programs/{pid}/offers
+     * @secure
+     */
+    createReward: (pid: string, data: MainCreateRewardPayload, params: RequestParams = {}) =>
+      this.request<MainCreateRewardResponse, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/offers`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns reward information.
+     *
+     * @tags Reward
+     * @name OfferProgramsRewardsDetail
+     * @summary Get reward information
+     * @request GET:/loyalty/offer/programs/{pid}/rewards/{rid}
+     * @secure
+     */
+    offerProgramsRewardsDetail: (
+      pid: string,
+      rid: string,
+      query?: {
+        /**
+         * Version
+         * @default "draft"
+         */
+        version?: "active" | "draft";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<MainReward, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/rewards/${rid}`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Create a voucher and attribute it to a specific membership.
+     *
+     * @tags Reward
+     * @name CreateVoucher
+     * @summary Create a voucher
+     * @request POST:/loyalty/offer/programs/{pid}/rewards/attribute
+     * @secure
+     */
+    createVoucher: (pid: string, data: MainAttributeRewardPayload, params: RequestParams = {}) =>
+      this.request<MainRewardAttribution, string | MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/rewards/attribute`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Creates a request to redeem a voucher.
+     *
+     * @tags Reward
+     * @name RedeemVoucher
+     * @summary Create redeem voucher request
+     * @request POST:/loyalty/offer/programs/{pid}/rewards/redeem
+     * @secure
+     */
+    redeemVoucher: (pid: string, data: MainCreateRedeemPayload, params: RequestParams = {}) =>
+      this.request<MainRedeem, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/rewards/redeem`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Completes voucher redeem request.
+     *
+     * @tags Reward
+     * @name CompleteRedeemTransaction
+     * @summary Complete redeem voucher request
+     * @request POST:/loyalty/offer/programs/{pid}/rewards/redeem/{tid}/complete
+     * @secure
+     */
+    completeRedeemTransaction: (pid: string, tid: string, params: RequestParams = {}) =>
+      this.request<MainRedeem, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/rewards/redeem/${tid}/complete`,
+        method: "POST",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Revoke attributed vouchers.
+     *
+     * @tags Reward
+     * @name RevokeVouchers
+     * @summary Revoke vouchers
+     * @request DELETE:/loyalty/offer/programs/{pid}/rewards/revoke
+     * @secure
+     */
+    revokeVouchers: (
+      pid: string,
+      query?: {
+        /** Reward Attribution IDs (comma seperated) */
+        attributedRewardIds?: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<void, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/rewards/revoke`,
+        method: "DELETE",
+        query: query,
+        secure: true,
+        ...params,
+      }),
+
+    /**
+     * @description Validates a reward.
+     *
+     * @tags Reward
+     * @name ValidateReward
+     * @summary Validate a reward
+     * @request POST:/loyalty/offer/programs/{pid}/rewards/validate
+     * @secure
+     */
+    validateReward: (pid: string, data: MainValidateRewardPayload, params: RequestParams = {}) =>
+      this.request<MainRewardValidate, MainErrorResponse>({
+        path: `/loyalty/offer/programs/${pid}/rewards/validate`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns balance definition page
+     *
+     * @tags Balance
+     * @name GetBalanceDefinitionList
+     * @summary Get balance definition list
+     * @request GET:/loyalty/balance/programs/{pid}/balance-definitions
+     * @secure
+     */
+    getBalanceDefinitionList: (
+      pid: string,
+      query?: {
+        /**
+         * Limit the number of records returned
+         * @min 1
+         * @max 500
+         * @default 200
+         */
+        limit?: number;
+        /**
+         * Offset to paginate records
+         * @min 0
+         * @default 0
+         */
+        offset?: number;
+        /**
+         * Field to sort by
+         * @default "updated_at"
+         */
+        sortField?: "name" | "created_at" | "updated_at";
+        /**
+         * Sort direction
+         * @default "desc"
+         */
+        sort?: "asc" | "desc";
+        /**
+         * Version
+         * @default "draft"
+         */
+        version?: "active" | "draft";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<BalanceDefinitionPage, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Creates balance definition and returns information
+     *
+     * @tags Balance
+     * @name BalanceProgramsBalanceDefinitionsCreate
+     * @summary Create balance definition
+     * @request POST:/loyalty/balance/programs/{pid}/balance-definitions
+     * @secure
+     */
+    balanceProgramsBalanceDefinitionsCreate: (
+      pid: string,
+      data: CreateBalanceDefinitionPayload,
+      params: RequestParams = {},
+    ) =>
+      this.request<BalanceDefinition, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns balance definition
+     *
+     * @tags Balance
+     * @name GetBalanceDefinition
+     * @summary Get balance definition
+     * @request GET:/loyalty/balance/programs/{pid}/balance-definitions/{bdid}
+     * @secure
+     */
+    getBalanceDefinition: (
+      pid: string,
+      bdid: string,
+      query?: {
+        /**
+         * Version
+         * @default "draft"
+         */
+        version?: "active" | "draft";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<BalanceDefinition, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions/${bdid}`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Updates Balance definition
+     *
+     * @tags Balance
+     * @name UpdateBalanceDefinition
+     * @summary Update balance definition
+     * @request PUT:/loyalty/balance/programs/{pid}/balance-definitions/{bdid}
+     * @secure
+     */
+    updateBalanceDefinition: (
+      pid: string,
+      bdid: string,
+      data: UpdateBalanceDefinitionPayload,
+      params: RequestParams = {},
+    ) =>
+      this.request<BalanceDefinition, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions/${bdid}`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Delete Balance definition
+     *
+     * @tags Balance
+     * @name DeleteBalanceDefinition
+     * @summary Delete balance definition
+     * @request DELETE:/loyalty/balance/programs/{pid}/balance-definitions/{bdid}
+     * @secure
+     */
+    deleteBalanceDefinition: (pid: string, bdid: string, params: RequestParams = {}) =>
+      this.request<void, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions/${bdid}`,
+        method: "DELETE",
+        secure: true,
+        ...params,
+      }),
+
+    /**
+     * @description Creates balance limit and sends the created UUID along with the data
+     *
+     * @tags Balance
+     * @name CreateBalanceLimit
+     * @summary Create balance limits
+     * @request POST:/loyalty/balance/programs/{pid}/balance-definitions/{bdid}/limits
+     * @secure
+     */
+    createBalanceLimit: (pid: string, bdid: string, data: CreateBalanceLimitPayload, params: RequestParams = {}) =>
+      this.request<BalanceLimit, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions/${bdid}/limits`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Fetches balance limits and send the created UUID along with the data
+     *
+     * @tags Balance
+     * @name GetBalanceLimit
+     * @summary Get balance limits
+     * @request GET:/loyalty/balance/programs/{pid}/balance-definitions/{bdid}/limits/{blid}
+     * @secure
+     */
+    getBalanceLimit: (
+      pid: string,
+      bdid: string,
+      blid: string,
+      query?: {
+        /**
+         * Version
+         * @default "draft"
+         */
+        version?: "active" | "draft";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<BalanceLimit, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions/${bdid}/limits/${blid}`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Delete balance limit
+     *
+     * @tags Balance
+     * @name DeleteBalanceLimit
+     * @summary Delete balance limit
+     * @request DELETE:/loyalty/balance/programs/{pid}/balance-definitions/{bdid}/limits/{blid}
+     * @secure
+     */
+    deleteBalanceLimit: (pid: string, bdid: string, blid: string, params: RequestParams = {}) =>
+      this.request<void, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions/${bdid}/limits/${blid}`,
+        method: "DELETE",
+        secure: true,
+        ...params,
+      }),
+
+    /**
+     * @description Updates balance limit
+     *
+     * @tags Balance
+     * @name UpdateBalanceLimit
+     * @summary Updates balance limit
+     * @request PUT:/loyalty/balance/programs/{pid}/balance-definitions/{bdid}/limits/{blid}
+     * @secure
+     */
+    updateBalanceLimit: (
+      pid: string,
+      bdid: string,
+      blid: string,
+      data: UpdateBalanceLimitPayload,
+      params: RequestParams = {},
+    ) =>
+      this.request<BalanceLimit, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/balance-definitions/${bdid}/limits/${blid}`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns subscription balances
+     *
+     * @tags Balance
+     * @name GetSubscriptionBalances
+     * @summary Get subscription balances
+     * @request GET:/loyalty/balance/programs/{pid}/subscriptions/{cid}/balances
+     * @secure
+     */
+    getSubscriptionBalances: (cid: string, pid: string, params: RequestParams = {}) =>
+      this.request<ModelSubscriptionBalanceResp, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/subscriptions/${cid}/balances`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Creates a balance for a contact
+     *
+     * @tags Balance
+     * @name BalanceProgramsSubscriptionsBalancesCreate
+     * @summary Create subscription balances
+     * @request POST:/loyalty/balance/programs/{pid}/subscriptions/{cid}/balances
+     * @secure
+     */
+    balanceProgramsSubscriptionsBalancesCreate: (
+      pid: string,
+      cid: string,
+      data: CreateBalancePayload,
+      params: RequestParams = {},
+    ) =>
+      this.request<Balance, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/subscriptions/${cid}/balances`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns balance list
+     *
+     * @tags Balance
+     * @name GetContactBalances
+     * @summary Get balance list
+     * @request GET:/loyalty/balance/programs/{pid}/contact-balances
+     * @secure
+     */
+    getContactBalances: (pid: string, params: RequestParams = {}) =>
+      this.request<ContactBalancesResp, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/contact-balances`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Creates new transaction and returns information
+     *
+     * @tags Balance
+     * @name BeginTransaction
+     * @summary Create new transaction
+     * @request POST:/loyalty/balance/programs/{pid}/transactions
+     * @secure
+     */
+    beginTransaction: (pid: string, data: CreateTransactionPayload, params: RequestParams = {}) =>
+      this.request<Transaction, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/transactions`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Completes transaction
+     *
+     * @tags Balance
+     * @name CompleteTransaction
+     * @summary Complete transaction
+     * @request POST:/loyalty/balance/programs/{pid}/transactions/{tid}/complete
+     * @secure
+     */
+    completeTransaction: (pid: string, tid: string, params: RequestParams = {}) =>
+      this.request<Transaction, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/transactions/${tid}/complete`,
+        method: "POST",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Cancels transaction
+     *
+     * @tags Balance
+     * @name CancelTransaction
+     * @summary Cancel transaction
+     * @request POST:/loyalty/balance/programs/{pid}/transactions/{tid}/cancel
+     * @secure
+     */
+    cancelTransaction: (pid: string, tid: string, params: RequestParams = {}) =>
+      this.request<Transaction, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/transactions/${tid}/cancel`,
+        method: "POST",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns created order
+     *
+     * @tags Balance
+     * @name CreateBalanceOrder
+     * @summary Create balance order
+     * @request POST:/loyalty/balance/programs/{pid}/create-order
+     * @secure
+     */
+    createBalanceOrder: (pid: string, data: CreateOrderPayload, params: RequestParams = {}) =>
+      this.request<BalanceOrder, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/create-order`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns Active Balances
+     *
+     * @tags Balance
+     * @name BalanceProgramsActiveBalanceDetail
+     * @summary Get Active Balances API
+     * @request GET:/loyalty/balance/programs/{pid}/active-balance
+     * @secure
+     */
+    balanceProgramsActiveBalanceDetail: (
+      pid: string,
+      query: {
+        /**
+         * Limit
+         * @min 1
+         * @max 500
+         */
+        limit?: number;
+        /**
+         * Offset
+         * @min 0
+         */
+        offset?: number;
+        /** Sort Field */
+        sort_field?: string;
+        /** Sort Order */
+        sort?: string;
+        /**
+         * Contact ID
+         * @min 1
+         */
+        contact_id: number;
+        /**
+         * Balance Definition ID
+         * @format uuid
+         */
+        balance_definition_id: string;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<BalanceLimit, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/active-balance`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns transaction history
+     *
+     * @tags Balance
+     * @name BalanceProgramsTransactionHistoryDetail
+     * @summary Get Transaction History API
+     * @request GET:/loyalty/balance/programs/{pid}/transaction-history
+     * @secure
+     */
+    balanceProgramsTransactionHistoryDetail: (
+      pid: string,
+      query: {
+        /**
+         * Limit the number of records returned
+         * @default 20
+         */
+        limit?: number;
+        /**
+         * Skip a number of records
+         * @default 0
+         */
+        offset?: number;
+        /**
+         * Field to sort by
+         * @default "created_at"
+         */
+        sort_field?: "name" | "created_at" | "updated_at";
+        /**
+         * Sort order, either asc or desc
+         * @default "desc"
+         */
+        sort?: "asc" | "desc";
+        /**
+         * Contact ID
+         * @default 0
+         */
+        contact_id: number;
+        /**
+         * Balance Definition ID
+         * @format uuid
+         */
+        balance_definition_id: string;
+        /** Filters to apply */
+        filters?: string[];
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<TransactionHistoryResp, ErrorResponse>({
+        path: `/loyalty/balance/programs/${pid}/transaction-history`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Creates a new tier group in a loyalty program. *(The changes will take effect with the next publication of the loyalty program)*
+     *
+     * @tags Tier
+     * @name CreateTierGroup
+     * @summary Create a tier group
+     * @request POST:/loyalty/tier/programs/{pid}/tier-groups
+     * @secure
+     */
+    createTierGroup: (pid: string, data: CreateTierGroupRequest, params: RequestParams = {}) =>
+      this.request<TierGroup, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tier-groups`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns the list of tier groups defined within the loyalty program.
+     *
+     * @tags Tier
+     * @name GetListOfTierGroups
+     * @summary List tier groups
+     * @request GET:/loyalty/tier/programs/{pid}/tier-groups
+     * @secure
+     */
+    getListOfTierGroups: (
+      pid: string,
+      query?: {
+        /**
+         * Select 'active' to retrieve list of all tier groups which are live for clients. Select draft to retrieve list of all non deleted tier groups.
+         * @default "draft"
+         */
+        version?: "active" | "draft";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<TierGroupPage, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tier-groups`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Updates a tier group from a loyalty program. *(The changes will take effect with the next publication of the loyalty program)*
+     *
+     * @tags Tier
+     * @name UpdateTierGroup
+     * @summary Update tier group
+     * @request PUT:/loyalty/tier/programs/{pid}/tier-groups/{gid}
+     * @secure
+     */
+    updateTierGroup: (pid: string, gid: string, data: UpdateTierGroupRequest, params: RequestParams = {}) =>
+      this.request<TierGroup, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tier-groups/${gid}`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Deletes a tier group from a loyalty program. *(The changes will take effect with the next publication of the loyalty program)*
+     *
+     * @tags Tier
+     * @name DeleteTierGroup
+     * @summary Delete tier group
+     * @request DELETE:/loyalty/tier/programs/{pid}/tier-groups/{gid}
+     * @secure
+     */
+    deleteTierGroup: (pid: string, gid: string, params: RequestParams = {}) =>
+      this.request<string, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tier-groups/${gid}`,
+        method: "DELETE",
+        secure: true,
+        ...params,
+      }),
+
+    /**
+     * @description Returns tier group information.
+     *
+     * @tags Tier
+     * @name GetTierGroup
+     * @summary Get tier group
+     * @request GET:/loyalty/tier/programs/{pid}/tier-groups/{gid}
+     * @secure
+     */
+    getTierGroup: (
+      pid: string,
+      gid: string,
+      query?: {
+        /**
+         * Select active to retrieve active version of tier group. Select draft to retrieve latest changes in tier group.
+         * @default "draft"
+         */
+        version?: "active" | "draft";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<TierGroup, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tier-groups/${gid}`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Returns the list of tiers defined within the loyalty program.
+     *
+     * @tags Tier
+     * @name GetLoyaltyProgramTier
+     * @summary List tiers
+     * @request GET:/loyalty/tier/programs/{pid}/tiers
+     * @secure
+     */
+    getLoyaltyProgramTier: (
+      pid: string,
+      query?: {
+        /**
+         * Select 'active' to retrieve list of all tiers which are live for clients. Select draft to retrieve list of all non deleted tiers.
+         * @default "draft"
+         */
+        version?: "active" | "draft";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<LoyaltyTierPage, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tiers`,
+        method: "GET",
+        query: query,
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Creates a new tier in a loyalty program tier group. *(The changes will take effect with the next publication of the loyalty program)*
+     *
+     * @tags Tier
+     * @name CreateTierForTierGroup
+     * @summary Create a tier
+     * @request POST:/loyalty/tier/programs/{pid}/tier-groups/{gid}/tiers
+     * @secure
+     */
+    createTierForTierGroup: (pid: string, gid: string, data: TierRequest, params: RequestParams = {}) =>
+      this.request<Tier, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tier-groups/${gid}/tiers`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Deletes a tier from a loyalty program tier group. *(The changes will take effect with the next publication of the loyalty program)*
+     *
+     * @tags Tier
+     * @name DeleteTier
+     * @summary Delete tier
+     * @request DELETE:/loyalty/tier/programs/{pid}/tiers/{tid}
+     * @secure
+     */
+    deleteTier: (pid: string, tid: string, params: RequestParams = {}) =>
+      this.request<string, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tiers/${tid}`,
+        method: "DELETE",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Modifies an existing tier for the specified tier group *(The changes will take effect with the next publication of the loyalty program)*
+     *
+     * @tags Tier
+     * @name UpdateTier
+     * @summary Update tier
+     * @request PUT:/loyalty/tier/programs/{pid}/tiers/{tid}
+     * @secure
+     */
+    updateTier: (pid: string, tid: string, data: TierRequestPutPayload, params: RequestParams = {}) =>
+      this.request<Tier, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/tiers/${tid}`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description Manually assigns a tier to a specific membership.
+     *
+     * @tags Tier
+     * @name AddSubscriptionToTier
+     * @summary Assign a tier
+     * @request POST:/loyalty/tier/programs/{pid}/contacts/{cid}/tiers/{tid}
+     * @secure
+     */
+    addSubscriptionToTier: (pid: string, cid: string, tid: string, params: RequestParams = {}) =>
+      this.request<TierForContact, ErrorResponse>({
+        path: `/loyalty/tier/programs/${pid}/contacts/${cid}/tiers/${tid}`,
+        method: "POST",
         secure: true,
         format: "json",
         ...params,
@@ -9961,6 +13117,8 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
         startDate?: string;
         /** Mandatory if startDate is used. Enter end date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. */
         endDate?: string;
+        /** Enter the user's email address to filter their activity in the account. */
+        email?: string;
         /**
          * Number of documents per page
          * @format int64
@@ -10060,7 +13218,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
-     * @description `Feature` - A Feature represents a specific functionality like Email campaign, Deals, Calls, Automations, etc. on Brevo. While inviting a user, determine which feature you want to manage access to. You must specify the feature accurately to avoid errors. `Permission` - A Permission defines the level of access or control a user has over a specific feature. While inviting user, decide on the permission level required for the selected feature. Make sure the chosen permission is related to the selected feature. Features and their respective permissions are as below: - `email_campaigns`: - "create_edit_delete" - "send_schedule_suspend" - `sms_campaigns`: - "create_edit_delete" - "send_schedule_suspend" - `contacts`: - "view" - "create_edit_delete" - "import" - "export" - "list_and_attributes" - "forms" - `templates`: - "create_edit_delete" - "activate_deactivate" - `workflows`: - "create_edit_delete" - "activate_deactivate_pause" - "settings" - `facebook_ads`: - "create_edit_delete" - "schedule_pause" - `landing_pages`: - "all" - `transactional_emails`: - "settings" - "logs" - `smtp_api`: - "smtp" - "api_keys" - "authorized_ips" - `user_management`: - "all" - `sales_platform`: - "manage_owned_deals_tasks" - "manage_others_deals_tasks" - "reports" - "settings" - `phone`: - "all" - `conversations`: - "access" - "assign" - "configure" - `senders_domains_dedicated_ips`: - "senders_management" - "domains_management" - "dedicated_ips_management" - `push_notifications`: - "view" - "create_edit_delete" - "send" - "settings" - `companies`: - "manage_owned_companies" - "manage_other_companies" - "settings" **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it's assumed that all permissions will be there for the invited user. - The availability of feature and its permission depends on your current plan. Please select the features and permissions accordingly.
+     * @description `Feature` - A Feature represents a specific functionality like Email campaign, Deals, Calls, Automations, etc. on Brevo. While inviting a user, determine which feature you want to manage access to. You must specify the feature accurately to avoid errors. `Permission` - A Permission defines the level of access or control a user has over a specific feature. While inviting user, decide on the permission level required for the selected feature. Make sure the chosen permission is related to the selected feature. Features and their respective permissions are as below: - `email_campaigns`: - "create_edit_delete" - "send_schedule_suspend" - `sms_campaigns`: - "create_edit_delete" - "send_schedule_suspend" - `contacts`: - "view" - "create_edit_delete" - "import" - "export" - "list_and_attributes" - "forms" - `templates`: - "create_edit_delete" - "activate_deactivate" - `workflows`: - "create_edit_delete" - "activate_deactivate_pause" - "settings" - `facebook_ads`: - "create_edit_delete" - "schedule_pause" - `landing_pages`: - "all" - `transactional_emails`: - "settings" - "logs" - `smtp_api`: - "smtp" - "api_keys" - "authorized_ips" - `user_management`: - "all" - `sales_platform`: - "create_edit_deals" - "delete_deals" - "manage_others_deals_tasks" - "reports" - "settings" - `phone`: - "all" - `conversations`: - "access" - "assign" - "configure" - `senders_domains_dedicated_ips`: - "senders_management" - "domains_management" - "dedicated_ips_management" - `push_notifications`: - "view" - "create_edit_delete" - "send" - "settings" - `companies`: - "manage_owned_companies" - "manage_other_companies" - "settings" **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it's assumed that all permissions will be there for the invited user. - The availability of feature and its permission depends on your current plan. Please select the features and permissions accordingly.
      *
      * @tags User
      * @name Inviteuser
@@ -10080,7 +13238,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
-     * @description `Feature` - A Feature represents a specific functionality like Email campaign, Deals, Calls, Automations, etc. on Brevo. While inviting a user, determine which feature you want to manage access to. You must specify the feature accurately to avoid errors. `Permission` - A Permission defines the level of access or control a user has over a specific feature. While inviting user, decide on the permission level required for the selected feature. Make sure the chosen permission is related to the selected feature. Features and their respective permissions are as below: - `email_campaigns`: - "create_edit_delete" - "send_schedule_suspend" - `sms_campaigns`: - "create_edit_delete" - "send_schedule_suspend" - `contacts`: - "view" - "create_edit_delete" - "import" - "export" - "list_and_attributes" - "forms" - `templates`: - "create_edit_delete" - "activate_deactivate" - `workflows`: - "create_edit_delete" - "activate_deactivate_pause" - "settings" - `facebook_ads`: - "create_edit_delete" - "schedule_pause" - `landing_pages`: - "all" - `transactional_emails`: - "settings" - "logs" - `smtp_api`: - "smtp" - "api_keys" - "authorized_ips" - `user_management`: - "all" - `sales_platform`: - "manage_owned_deals_tasks" - "manage_others_deals_tasks" - "reports" - "settings" - `phone`: - "all" - `conversations`: - "access" - "assign" - "configure" - `senders_domains_dedicated_ips`: - "senders_management" - "domains_management" - "dedicated_ips_management" - `push_notifications`: - "view" - "create_edit_delete" - "send" - "settings" - `companies`: - "manage_owned_companies" - "manage_other_companies" - "settings" **Note**: - The privileges array remains the same as in the send invitation; the user simply needs to provide the permissions that need to be updated. - The availability of feature and its permission depends on your current plan. Please select the features and permissions accordingly.
+     * @description `Feature` - A Feature represents a specific functionality like Email campaign, Deals, Calls, Automations, etc. on Brevo. While inviting a user, determine which feature you want to manage access to. You must specify the feature accurately to avoid errors. `Permission` - A Permission defines the level of access or control a user has over a specific feature. While inviting user, decide on the permission level required for the selected feature. Make sure the chosen permission is related to the selected feature. Features and their respective permissions are as below: - `email_campaigns`: - "create_edit_delete" - "send_schedule_suspend" - `sms_campaigns`: - "create_edit_delete" - "send_schedule_suspend" - `contacts`: - "view" - "create_edit_delete" - "import" - "export" - "list_and_attributes" - "forms" - `templates`: - "create_edit_delete" - "activate_deactivate" - `workflows`: - "create_edit_delete" - "activate_deactivate_pause" - "settings" - `facebook_ads`: - "create_edit_delete" - "schedule_pause" - `landing_pages`: - "all" - `transactional_emails`: - "settings" - "logs" - `smtp_api`: - "smtp" - "api_keys" - "authorized_ips" - `user_management`: - "all" - `sales_platform`: - "create_edit_deals" - "delete_deals" - "manage_others_deals_tasks" - "reports" - "settings" - `phone`: - "all" - `conversations`: - "access" - "assign" - "configure" - `senders_domains_dedicated_ips`: - "senders_management" - "domains_management" - "dedicated_ips_management" - `push_notifications`: - "view" - "create_edit_delete" - "send" - "settings" - `companies`: - "manage_owned_companies" - "manage_other_companies" - "settings" **Note**: - The privileges array remains the same as in the send invitation; the user simply needs to provide the permissions that need to be updated. - The availability of feature and its permission depends on your current plan. Please select the features and permissions accordingly.
      *
      * @tags User
      * @name EditUserPermission
@@ -10353,6 +13511,25 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
+     * @description This endpoint will update multiple sub-accounts plan. On the Corporate solution new version v2, you can set an unlimited number of credits in your sub-organization. Please pass the value “-1" to set the consumable in unlimited mode.
+     *
+     * @tags Master account
+     * @name SubAccountsPlanUpdate
+     * @summary Update sub-accounts plan
+     * @request PUT:/corporate/subAccounts/plan
+     * @secure
+     */
+    subAccountsPlanUpdate: (data: SubAccountsUpdatePlanRequest, params: RequestParams = {}) =>
+      this.request<void, ErrorModel>({
+        path: `/corporate/subAccounts/plan`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        ...params,
+      }),
+
+    /**
      * @description This endpoint generates an SSO token to authenticate and access the admin account using the endpoint https://account-app.brevo.com/account/login/corporate/sso/[token], where [token] will be replaced by the actual token.
      *
      * @tags Master account
@@ -10554,6 +13731,31 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
+     * @description This endpoint allows you to retrieve the list of active IPs on your Admin account
+     *
+     * @tags Master account
+     * @name GetCorporate
+     * @summary List of all IPs
+     * @request GET:/corporate/ip
+     * @secure
+     */
+    getCorporate: (params: RequestParams = {}) =>
+      this.request<
+        {
+          ip?: string;
+          domain?: string;
+          transactional?: boolean;
+        }[],
+        any
+      >({
+        path: `/corporate/ip`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
      * @description This endpoint allows to associate an IP to sub-accounts
      *
      * @tags Master account
@@ -10719,7 +13921,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
-     * @description `This endpoint allows you to invite a member to manage the Admin account Features and their respective permissions are as below: - `my_plan`: - "all" - `api`: - "none" - `user_management`: - "all" - `app_management` | Not available in ENTv2: - "all" - `sub_organization_groups` - "create" - "edit_delete" - `create_sub_organizations` - "all" - `manage_sub_organizations` - "all" - `analytics` - "download_data" - "create_alerts" - `security` - "all" **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it's assumed that all permissions will be there for the invited admin user.
+     * @description `This endpoint allows you to invite a member to manage the Admin account Features and their respective permissions are as below: - `my_plan`: - "all" - `api`: - "none" - `user_management`: - "all" - `app_management` | Not available in ENTv2: - "all" - `sub_organization_groups` - "create" - "edit_delete" - `create_sub_organizations` - "all" - `manage_sub_organizations` - "all" - `analytics` - "download_data" - "create_alerts" - "my_looks" - "explore_create" - `security` - "all" **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it's assumed that all permissions will be there for the invited admin user.
      *
      * @tags Master account
      * @name InviteAdminUser
@@ -10803,7 +14005,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
       }),
 
     /**
-     * No description
+     * @description This endpoint will provide the list of admin user permissions
      *
      * @tags Master account
      * @name GetCorporateUserPermission
@@ -10817,6 +14019,65 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
         method: "GET",
         secure: true,
         format: "json",
+        ...params,
+      }),
+
+    /**
+     * @description This endpoint will allow you to change the permissions of Admin users of your Admin account
+     *
+     * @tags Master account
+     * @name UserPermissionsUpdate
+     * @summary Change admin user permissions
+     * @request PUT:/corporate/user/{email}/permissions
+     * @secure
+     */
+    userPermissionsUpdate: (
+      email: string,
+      data: {
+        /**
+         * All access to the features
+         * @example true
+         */
+        all_features_access: true | false;
+        privileges: {
+          /**
+           * feature name
+           * @example "user_management"
+           */
+          feature?:
+            | "user_management"
+            | "api"
+            | "my_plan"
+            | "apps_management"
+            | "analytics"
+            | "sub_organization_groups"
+            | "create_sub_organizations"
+            | "manage_sub_organizations"
+            | "security";
+          /**
+           * Permission for the feature
+           * @example ["all"]
+           */
+          permissions?: (
+            | "all"
+            | "none"
+            | "create"
+            | "edit_delete"
+            | "create_alerts"
+            | "download_data"
+            | "my_looks"
+            | "explore_create"
+          )[];
+        }[];
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<void, ErrorModel>({
+        path: `/corporate/user/${email}/permissions`,
+        method: "PUT",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
         ...params,
       }),
 
@@ -10870,6 +14131,10 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
          * @format objectID
          */
         linkedDealsIds?: string;
+        /** Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
+        modifiedSince?: string;
+        /** Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
+        createdSince?: string;
         /**
          * Index of the first document of the page
          * @format int64
@@ -11018,6 +14283,16 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
          * @example 91
          */
         countryCode?: number;
+        /**
+         * Warning - Using PATCH on linkedContactIds replaces the list of linked contacts. Omitted IDs will be removed.
+         * @example [1,2,3]
+         */
+        linkedContactsIds?: number[];
+        /**
+         * Warning - Using PATCH on linkedDealsIds replaces the list of linked contacts. Omitted IDs will be removed.
+         * @example ["61a5ce58c5d4795761045990","61a5ce58c5d4795761045991","61a5ce58c5d4795761045992"]
+         */
+        linkedDealsIds?: string[];
       },
       params: RequestParams = {},
     ) =>
@@ -11027,24 +14302,6 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
         body: data,
         secure: true,
         type: ContentType.Json,
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags Companies
-     * @name AttributesList
-     * @summary Get company attributes
-     * @request GET:/companies/attributes
-     * @secure
-     */
-    attributesList: (params: RequestParams = {}) =>
-      this.request<CompanyAttributes, any>({
-        path: `/companies/attributes`,
-        method: "GET",
-        secure: true,
         format: "json",
         ...params,
       }),
@@ -11153,6 +14410,82 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
   };
   crm = {
     /**
+     * No description
+     *
+     * @tags Companies, Deals
+     * @name AttributesCreate
+     * @summary Create a company/deal attribute
+     * @request POST:/crm/attributes
+     * @secure
+     */
+    attributesCreate: (
+      data: {
+        /**
+         * The label for the attribute (max 50 characters, cannot be empty)
+         * @example "Attribute Label"
+         */
+        label: string;
+        /**
+         * The type of attribute (must be one of the defined enums)
+         * @example "single-select"
+         */
+        attributeType: "text" | "user" | "number" | "single-select" | "date" | "boolean" | "multi-choice";
+        /**
+         * A description of the attribute
+         * @example "This is a sample attribute description."
+         */
+        description?: string;
+        /**
+         * Options for multi-choice or single-select attributes
+         * @example ["Option 1","Option 2","Option 3"]
+         */
+        optionsLabels?: string[];
+        /**
+         * The type of object the attribute belongs to (prefilled with `companies` or `deal`, mandatory)
+         * @example "companies,deal"
+         */
+        objectType: "companies" | "deals";
+      },
+      params: RequestParams = {},
+    ) =>
+      this.request<
+        {
+          /**
+           * Unique ID of the created attribute
+           * @example "61a5cd07ca1347c82306ad07"
+           */
+          id: string;
+        },
+        ErrorModel
+      >({
+        path: `/crm/attributes`,
+        method: "POST",
+        body: data,
+        secure: true,
+        type: ContentType.Json,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags Companies
+     * @name AttributesCompaniesList
+     * @summary Get company attributes
+     * @request GET:/crm/attributes/companies
+     * @secure
+     */
+    attributesCompaniesList: (params: RequestParams = {}) =>
+      this.request<CompanyAttributes, any>({
+        path: `/crm/attributes/companies`,
+        method: "GET",
+        secure: true,
+        format: "json",
+        ...params,
+      }),
+
+    /**
      * @description This endpoint is deprecated. Prefer /crm/pipeline/details/{pipelineID} instead.
      *
      * @tags Deals
@@ -11242,6 +14575,10 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
         "filters[linkedCompaniesIds]"?: string;
         /** Filter by linked companies ids */
         "filters[linkedContactsIds]"?: string;
+        /** Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
+        modifiedSince?: string;
+        /** Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
+        createdSince?: string;
         /**
          * Index of the first document of the page
          * @format int64
@@ -11388,6 +14725,16 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
          * @example {"deal_owner":"6093d2425a9b436e9519d034","amount":12}
          */
         attributes?: object;
+        /**
+         * Warning - Using PATCH on linkedContactIds replaces the list of linked contacts. Omitted IDs will be removed.
+         * @example [1,2,3]
+         */
+        linkedContactIds?: number[];
+        /**
+         * Warning - Using PATCH on linkedCompaniesIds replaces the list of linked contacts. Omitted IDs will be removed.
+         * @example ["61a5ce58c5d4795761045990","61a5ce58c5d4795761045991","61a5ce58c5d4795761045992"]
+         */
+        linkedCompaniesIds?: string[];
       },
       params: RequestParams = {},
     ) =>
@@ -12340,7 +15687,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      *
      * @tags Ecommerce
      * @name AttributionMetricsList
-     * @summary Get attribution metrics for one or more Brevo campaigns
+     * @summary Get attribution metrics for one or more Brevo campaigns or workflows
      * @request GET:/ecommerce/attribution/metrics
      * @secure
      */
@@ -12358,8 +15705,14 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
          * @example "2022-01-03T00:00:00Z"
          */
         periodTo?: string;
-        /** The email campaign id(s) to get metrics for */
-        "emailCampaignId[]"?: number[];
+        /** The email campaign ID(s) to get metrics for */
+        "emailCampaignId[]"?: string[];
+        /** The SMS campaign ID(s) to get metrics for */
+        "smsCampaignId[]"?: string[];
+        /** The automation workflow ID(s) to get email attribution metrics for */
+        "automationWorkflowEmailId[]"?: string[];
+        /** The automation workflow ID(s) to get SMS attribution metrics for */
+        "automationWorkflowSmsId[]"?: string[];
       },
       params: RequestParams = {},
     ) =>
@@ -12367,7 +15720,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
         {
           /**
            * List of conversion attribution metrics
-           * @example [{"id":2,"conversionSource":"email_campaign","ordersCount":300,"revenue":900,"averageBasket":3},{"id":1,"conversionSource":"email_campaign","ordersCount":200,"revenue":800,"averageBasket":4}]
+           * @example [{"id":"sale1","conversionSource":"email_campaign","ordersCount":300,"revenue":900,"averageBasket":3},{"id":"sale2","conversionSource":"sms_campaign","ordersCount":200,"revenue":800,"averageBasket":4}]
            */
           results: ConversionSourceMetrics[];
           /**
@@ -12398,13 +15751,13 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      *
      * @tags Ecommerce
      * @name AttributionMetricsDetail
-     * @summary Get detailed attribution metrics for a single Brevo campaign
+     * @summary Get detailed attribution metrics for a single Brevo campaign or workflow
      * @request GET:/ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}
      * @secure
      */
     attributionMetricsDetail: (
-      conversionSource: "email_campaign",
-      conversionSourceId: number,
+      conversionSource: "email_campaign" | "sms_campaign" | "automation_workflow_email" | "automation_workflow_sms",
+      conversionSourceId: string,
       params: RequestParams = {},
     ) =>
       this.request<
@@ -12426,13 +15779,13 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
      *
      * @tags Ecommerce
      * @name AttributionProductsDetail
-     * @summary Get attributed product sales for a single Brevo campaign
+     * @summary Get attributed product sales for a single Brevo campaign or workflow
      * @request GET:/ecommerce/attribution/products/{conversionSource}/{conversionSourceId}
      * @secure
      */
     attributionProductsDetail: (
-      conversionSource: "email_campaign",
-      conversionSourceId: number,
+      conversionSource: "email_campaign" | "sms_campaign" | "automation_workflow_email" | "automation_workflow_sms",
+      conversionSourceId: string,
       params: RequestParams = {},
     ) =>
       this.request<
@@ -12996,7 +16349,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
          */
         collectionId: string;
         /**
-         * @maxItems 1000
+         * @maxItems 10000
          * @minItems 1
          * @uniqueItems true
          */
@@ -13059,7 +16412,7 @@ export class Brevo<SecurityDataType extends unknown> extends HttpClient<Security
          * Number limitation for the result returned
          * @format int64
          * @min 0
-         * @max 5000
+         * @max 10000
          * @default 2500
          */
         limit?: number;
