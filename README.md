@@ -26,131 +26,64 @@ yarn add @getbrevo/brevo
 
 ## Getting Started
 
+```ts
+import BrevoApi from "@getbrevo/brevo";
 
-
-# We have two options:
-- First example is where **typescript is not supported** i.e. [v1.0.1]([url](https://www.npmjs.com/package/@getbrevo/brevo/v/1.0.1))
-- Second example is where **typescript is supported** i.e. [v2.1.1]([url](https://www.npmjs.com/package/@getbrevo/brevo/v/2.1.1))
-
-
-```shell
--------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------   Typescript not supported v1.0.1  ---------------------------------------
--------------------------------------------------------------------------------------------------------------------------
-const brevo = require('@getbrevo/brevo');
-let defaultClient = brevo.ApiClient.instance;
-
-let apiKey = defaultClient.authentications['api-key'];
-apiKey.apiKey = 'YOUR API KEY';
-
-let apiInstance = new brevo.TransactionalEmailsApi();
-let sendSmtpEmail = new brevo.SendSmtpEmail();
-
-sendSmtpEmail.subject = "My {{params.subject}}";
-sendSmtpEmail.htmlContent = "<html><body><h1>Common: This is my first transactional email {{params.parameter}}</h1></body></html>";
-sendSmtpEmail.sender = { "name": "John", "email": "example@example.com" };
-sendSmtpEmail.to = [
-  { "email": "example@brevo.com", "name": "sample-name" }
-];
-sendSmtpEmail.replyTo = { "email": "example@brevo.com", "name": "sample-name" };
-sendSmtpEmail.headers = { "Some-Custom-Name": "unique-id-1234" };
-sendSmtpEmail.params = { "parameter": "My param value", "subject": "common subject" };
-
-
-apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-}, function (error) {
-  console.error(error);
+const brevo = new BrevoApi({
+  headers: {
+    "api-key": "YOUR_API_KEY",
+  },
 });
 
+brevo.account
+  .getAccount()
+  .then((data) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
--------------------------------------------------------------------------------------------------------------------------
-## Typescript supported with version v2.1.1
 
-```shell
--------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------   Typescript supported with v2.1.1  --------------------------------------
--------------------------------------------------------------------------------------------------------------------------
-const brevo = require('@getbrevo/brevo');
-let apiInstance = new brevo.TransactionalEmailsApi();
+```ts
+import BrevoApi from "@getbrevo/brevo";
 
-let apiKey = apiInstance.authentications['api-key'];
-apiKey.apiKey = 'YOUR API KEY';
-
-let sendSmtpEmail = new brevo.SendSmtpEmail();
-
-sendSmtpEmail.subject = "My {{params.subject}}";
-sendSmtpEmail.htmlContent = "<html><body><h1>Common: This is my first transactional email {{params.parameter}}</h1></body></html>";
-sendSmtpEmail.sender = { "name": "John", "email": "shubham.upadhyay@sendinblue.com" };
-sendSmtpEmail.to = [
-  { "email": "shubham.upadhyay@sendinblue.com", "name": "shubham upadhyay" }
-];
-sendSmtpEmail.replyTo = { "email": "shubham.upadhyay@sendinblue.com", "name": "Shubham Upadhyay" };
-sendSmtpEmail.headers = { "Some-Custom-Name": "unique-id-1234" };
-sendSmtpEmail.params = { "parameter": "My param value", "subject": "common subject" };
-
-
-apiInstance.sendTransacEmail(sendSmtpEmail).then(function (data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-}, function (error) {
-  console.error(error);
+const brevo = new BrevoApi({
+  headers: {
+    "api-key": "YOUR_API_KEY",
+  },
 });
 
-```
--------------------------------------------------------------------------------------------------------------------------
-## Get Contact attributes API example:
-
-```shell
-const brevo = require('@getbrevo/brevo');
-
-let apiInstance = new brevo.ContactsApi()
-
-let apiKey = apiInstance.authentications['api-key'];
-apiKey.apiKey = 'YOUR API KEY';
-
-apiInstance.getAttributes().then(function(data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-
-}, function(error) {
-  console.error(error);
-});
-
-```
--------------------------------------------------------------------------------------------------------------------------
-## Get Account API example:
-
-```shell
-const brevo = require('@getbrevo/brevo');
-
-let apiInstance = new brevo.AccountApi()
-
-let apiKey = apiInstance.authentications['api-key'];
-apiKey.apiKey = 'YOUR API KEY';
-
-apiInstance.getAccount().then(function(data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-
-}, function(error) {
-  console.error(error);
-});
-
-```
--------------------------------------------------------------------------------------------------------------------------
-## Get Contacts API example:
-```shell
-const brevo = require('@getbrevo/brevo');
-
-let apiInstance = new brevo.ContactsApi()
-
-let apiKey = apiInstance.authentications['api-key'];
-apiKey.apiKey = 'YOUR API KEY';
-
-apiInstance.getContacts().then(function(data) {
-  console.log('API called successfully. Returned data: ' + JSON.stringify(data));
-
-}, function(error) {
-  console.error(error);
-});
+brevo.smtp
+  .sendTransacEmail({
+    subject: "My {{params.subject}}",
+    htmlContent:
+      "<html><body><h1>This is my first transactional email {{params.parameter}}</h1></body></html>",
+    sender: {
+      name: "John Doe",
+      email: "example@example.com",
+    },
+    to: [{ email: "example@example.com", name: "Jane Doe" }],
+    cc: [{ email: "example2@example2.com", name: "Janice Doe" }],
+    bcc: [{ email: "example@example.com", name: "John Doe" }],
+    replyTo: { email: "replyto@domain.com", name: "John Doe" },
+    headers: { "Some-Custom-Name": "unique-id-1234" },
+    params: { parameter: "My param value", subject: "New Subject" },
+  })
+  .then((data) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
 For more examples, refer the [Endpoints Guide](https://developers.brevo.com/reference)
+
+## Contributing
+
+Please refer to the [CONTRIBUTING](CONTRIBUTING.md) file.
