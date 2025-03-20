@@ -11,6 +11,8 @@
  */
 
 import { RequestFile } from './models';
+import { EventContactPropertiesValue } from './eventContactPropertiesValue';
+import { EventEventPropertiesValue } from './eventEventPropertiesValue';
 import { EventIdentifiers } from './eventIdentifiers';
 
 export class Event {
@@ -26,11 +28,11 @@ export class Event {
     /**
     * Properties defining the state of the contact associated to this event. Useful to update contact attributes defined in your contacts database while passing the event. For example: **\"FIRSTNAME\": \"Jane\" , \"AGE\": 37**
     */
-    'contactProperties'?: object;
+    'contactProperties'?: { [key: string]: EventContactPropertiesValue; };
     /**
     * Properties of the event. Top level properties and nested properties can be used to better segment contacts and personalise workflow conditions. The following field type are supported: string, number, boolean (true/false), date (Timestamp e.g. \"2024-01-24T17:39:57+01:00\"). Keys are limited to 255 characters, alphanumerical characters and - _ only. Size is limited to 50Kb.
     */
-    'eventProperties'?: object;
+    'eventProperties'?: { [key: string]: EventEventPropertiesValue; };
 
     static discriminator: string | undefined = undefined;
 
@@ -53,12 +55,12 @@ export class Event {
         {
             "name": "contactProperties",
             "baseName": "contact_properties",
-            "type": "object"
+            "type": "{ [key: string]: EventContactPropertiesValue; }"
         },
         {
             "name": "eventProperties",
             "baseName": "event_properties",
-            "type": "object"
+            "type": "{ [key: string]: EventEventPropertiesValue; }"
         }    ];
 
     static getAttributeTypeMap() {

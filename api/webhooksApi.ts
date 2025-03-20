@@ -19,7 +19,7 @@ import { CreateModel } from '../model/createModel';
 import { CreateWebhook } from '../model/createWebhook';
 import { CreatedProcessId } from '../model/createdProcessId';
 import { ErrorModel } from '../model/errorModel';
-import { ExportWebhooksHistory } from '../model/exportWebhooksHistory';
+import { ExportWebhooksHistoryRequest } from '../model/exportWebhooksHistoryRequest';
 import { GetWebhook } from '../model/getWebhook';
 import { GetWebhooks } from '../model/getWebhooks';
 import { UpdateWebhook } from '../model/updateWebhook';
@@ -36,8 +36,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum WebhooksApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class WebhooksApi {
@@ -47,8 +46,7 @@ export class WebhooksApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -136,11 +134,8 @@ export class WebhooksApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -211,11 +206,8 @@ export class WebhooksApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -250,9 +242,9 @@ export class WebhooksApi {
     /**
      * This endpoint will submit a request to get the history of webhooks in the CSV file. The link to download the CSV file will be sent to the webhook that was provided in the notifyURL.
      * @summary Export all webhook events
-     * @param exportWebhookHistory Values to submit for webhooks history
+     * @param exportWebhooksHistoryRequest Values to submit for webhooks history
      */
-    public async exportWebhooksHistory (exportWebhookHistory: ExportWebhooksHistory, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }> {
+    public async exportWebhooksHistory (exportWebhooksHistoryRequest: ExportWebhooksHistoryRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }> {
         const localVarPath = this.basePath + '/webhooks/export';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -265,9 +257,9 @@ export class WebhooksApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'exportWebhookHistory' is not null or undefined
-        if (exportWebhookHistory === null || exportWebhookHistory === undefined) {
-            throw new Error('Required parameter exportWebhookHistory was null or undefined when calling exportWebhooksHistory.');
+        // verify required parameter 'exportWebhooksHistoryRequest' is not null or undefined
+        if (exportWebhooksHistoryRequest === null || exportWebhooksHistoryRequest === undefined) {
+            throw new Error('Required parameter exportWebhooksHistoryRequest was null or undefined when calling exportWebhooksHistory.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -281,15 +273,12 @@ export class WebhooksApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(exportWebhookHistory, "ExportWebhooksHistory")
+            body: ObjectSerializer.serialize(exportWebhooksHistoryRequest, "ExportWebhooksHistoryRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -360,11 +349,8 @@ export class WebhooksApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -438,11 +424,8 @@ export class WebhooksApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -520,11 +503,8 @@ export class WebhooksApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

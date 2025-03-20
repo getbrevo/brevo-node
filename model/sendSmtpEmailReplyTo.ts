@@ -13,7 +13,7 @@
 import { RequestFile } from './models';
 
 /**
-* Email (required), along with name (optional), on which transactional mail recipients will be able to reply back. For example, {\"email\":\"ann6533@example.com\", \"name\":\"Ann\"}.
+* Email (**required**), along with name (_optional_), on which transactional mail recipients will be able to reply back. For example, **{\"email\":\"ann6533@example.com\", \"name\":\"Ann\"}** 
 */
 export class SendSmtpEmailReplyTo {
     /**
@@ -21,7 +21,7 @@ export class SendSmtpEmailReplyTo {
     */
     'email': string;
     /**
-    * Name in reply to. Maximum allowed characters are 70.
+    * Name in reply to. **Maximum allowed characters are 70**. 
     */
     'name'?: string;
 

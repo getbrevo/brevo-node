@@ -13,7 +13,7 @@
 import { RequestFile } from './models';
 
 /**
-* Sender details including id or email and name (optional). Only one of either Sender\'s email or Sender\'s ID shall be passed in one request at a time. For example `{\"name\":\"xyz\", \"email\":\"example@abc.com\"}` , `{\"name\":\"xyz\", \"id\":123}`
+* Sender details including id or email and name (_optional_). Only one of either Sender\'s email or Sender\'s ID shall be passed in one request at a time. For example: **{\"name\":\"xyz\", \"email\":\"example@abc.com\"}** **{\"name\":\"xyz\", \"id\":123}** 
 */
 export class CreateEmailCampaignSender {
     /**
@@ -23,9 +23,9 @@ export class CreateEmailCampaignSender {
     /**
     * Sender email
     */
-    'email': string;
+    'email'?: string;
     /**
-    * Select the sender for the campaign on the basis of sender id. In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email).
+    * Select the sender for the campaign on the basis of sender id. _In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)_. 
     */
     'id'?: number;
 

@@ -16,11 +16,11 @@ export class CreateApiKeyResponse {
     /**
     * Status of the API operation.
     */
-    'status'?: string;
+    'status': string;
     /**
-    * API Key
+    * API key
     */
-    'key'?: string;
+    'key': string;
 
     static discriminator: string | undefined = undefined;
 

@@ -24,7 +24,7 @@ export class CreateSmtpTemplate {
     */
     'templateName': string;
     /**
-    * Body of the message (HTML version). The field must have more than 10 characters. REQUIRED if htmlUrl is empty
+    * Body of the message (HTML version). The field must have more than 10 characters. **REQUIRED if htmlUrl is empty** 
     */
     'htmlContent'?: string;
     /**
@@ -40,11 +40,11 @@ export class CreateSmtpTemplate {
     */
     'replyTo'?: string;
     /**
-    * To personalize the «To» Field. If you want to include the first name and last name of your recipient, add {FNAME} {LNAME}. These contact attributes must already exist in your Brevo account. If input parameter \'params\' used please use {{contact.FNAME}} {{contact.LNAME}} for personalization
+    * To personalize the **To** Field. If you want to include the first name and last name of your recipient, add **{FNAME} {LNAME}**. These contact attributes must already exist in your Brevo account. If input parameter **params** used please use **{{contact.FNAME}} {{contact.LNAME}}** for personalization 
     */
     'toField'?: string;
     /**
-    * Absolute url of the attachment (no local file). Extension allowed: xlsx, xls, ods, docx, docm, doc, csv, pdf, txt, gif, jpg, jpeg, png, tif, tiff, rtf, bmp, cgm, css, shtml, html, htm, zip, xml, ppt, pptx, tar, ez, ics, mobi, msg, pub and eps
+    * Absolute url of the attachment (**no local file**). Extension allowed: #### xlsx, xls, ods, docx, docm, doc, csv, pdf, txt, gif, jpg, jpeg, png, tif, tiff, rtf, bmp, cgm, css, shtml, html, htm, zip, xml, ppt, pptx, tar, ez, ics, mobi, msg, pub and eps\' 
     */
     'attachmentUrl'?: string;
     /**

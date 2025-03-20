@@ -19,20 +19,20 @@ export class CreateSmsCampaign {
     */
     'name': string;
     /**
-    * Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters**
+    * Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters** 
     */
     'sender': string;
     /**
-    * Content of the message. The maximum characters used per SMS is 160, if used more than that, it will be counted as more than one SMS
+    * Content of the message. The **maximum characters used per SMS is 160**, if used more than that, it will be counted as more than one SMS 
     */
     'content': string;
     'recipients'?: CreateSmsCampaignRecipients;
     /**
-    * UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
+    * UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
     */
     'scheduledAt'?: string;
     /**
-    * Format of the message. It indicates whether the content should be treated as unicode or not.
+    * Format of the message. It indicates whether the content should be treated as unicode or not. 
     */
     'unicodeEnabled'?: boolean = false;
     /**

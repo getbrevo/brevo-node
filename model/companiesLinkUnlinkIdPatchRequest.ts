@@ -22,11 +22,11 @@ export class CompaniesLinkUnlinkIdPatchRequest {
     */
     'unlinkContactIds'?: Array<number>;
     /**
-    * Deals ids for deals to be linked with company
+    * Deal ids for deals to be linked with company
     */
     'linkDealsIds'?: Array<string>;
     /**
-    * Deals ids for deals to be unlinked from company
+    * Deal ids for deals to be unlinked from company
     */
     'unlinkDealsIds'?: Array<string>;
 

@@ -25,8 +25,7 @@ import { GetAggregatedReport } from '../model/getAggregatedReport';
 import { GetBlockedDomains } from '../model/getBlockedDomains';
 import { GetEmailEventReport } from '../model/getEmailEventReport';
 import { GetReports } from '../model/getReports';
-import { GetScheduledEmailByBatchId } from '../model/getScheduledEmailByBatchId';
-import { GetScheduledEmailByMessageId } from '../model/getScheduledEmailByMessageId';
+import { GetScheduledEmailById200Response } from '../model/getScheduledEmailById200Response';
 import { GetSmtpTemplateOverview } from '../model/getSmtpTemplateOverview';
 import { GetSmtpTemplates } from '../model/getSmtpTemplates';
 import { GetTransacBlockedContacts } from '../model/getTransacBlockedContacts';
@@ -50,8 +49,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum TransactionalEmailsApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class TransactionalEmailsApi {
@@ -61,8 +59,7 @@ export class TransactionalEmailsApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -115,7 +112,7 @@ export class TransactionalEmailsApi {
     /**
      * Blocks a new domain in order to avoid messages being sent to the same
      * @summary Add a new domain to the list of blocked domains
-     * @param blockDomain 
+     * @param blockDomain Name of the domain to be blocked
      */
     public async blockNewDomain (blockDomain: BlockDomain, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smtp/blockedDomains';
@@ -150,11 +147,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -189,9 +183,9 @@ export class TransactionalEmailsApi {
     /**
      * 
      * @summary Create an email template
-     * @param smtpTemplate values to update in transactional email template
+     * @param createSmtpTemplate values to update in transactional email template
      */
-    public async createSmtpTemplate (smtpTemplate: CreateSmtpTemplate, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+    public async createSmtpTemplate (createSmtpTemplate: CreateSmtpTemplate, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
         const localVarPath = this.basePath + '/smtp/templates';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -204,9 +198,9 @@ export class TransactionalEmailsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'smtpTemplate' is not null or undefined
-        if (smtpTemplate === null || smtpTemplate === undefined) {
-            throw new Error('Required parameter smtpTemplate was null or undefined when calling createSmtpTemplate.');
+        // verify required parameter 'createSmtpTemplate' is not null or undefined
+        if (createSmtpTemplate === null || createSmtpTemplate === undefined) {
+            throw new Error('Required parameter createSmtpTemplate was null or undefined when calling createSmtpTemplate.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -220,15 +214,12 @@ export class TransactionalEmailsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(smtpTemplate, "CreateSmtpTemplate")
+            body: ObjectSerializer.serialize(createSmtpTemplate, "CreateSmtpTemplate")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -299,11 +290,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -368,11 +356,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -442,11 +427,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -516,11 +498,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -555,9 +534,9 @@ export class TransactionalEmailsApi {
     /**
      * This endpoint will show the aggregated stats for past 90 days by default if `startDate` and `endDate` OR `days` is not passed. The date range can not exceed 90 days
      * @summary Get your transactional email activity aggregated over a period of time
-     * @param startDate Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate
-     * @param endDate Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate
-     * @param days Number of days in the past including today (positive integer). Not compatible with \&#39;startDate\&#39; and \&#39;endDate\&#39;
+     * @param startDate **Mandatory if endDate is used.** Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate 
+     * @param endDate **Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate 
+     * @param days Number of days in the past including today (positive integer). _Not compatible with \&#39;startDate\&#39; and \&#39;endDate\&#39;_ 
      * @param tag Tag of the emails
      */
     public async getAggregatedSmtpReport (startDate?: string, endDate?: string, days?: number, tag?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetAggregatedReport;  }> {
@@ -603,11 +582,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -671,11 +647,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -713,12 +686,12 @@ export class TransactionalEmailsApi {
      * @summary Get all your transactional email activity (unaggregated events)
      * @param limit Number limitation for the result returned
      * @param offset Beginning point in the list to retrieve from.
-     * @param startDate Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate
-     * @param endDate Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate
-     * @param days Number of days in the past including today (positive integer). Not compatible with \&#39;startDate\&#39; and \&#39;endDate\&#39;
+     * @param startDate **Mandatory if endDate is used.** Starting date of the report (YYYY-MM-DD). Must be lower than equal to endDate 
+     * @param endDate **Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate 
+     * @param days Number of days in the past including today (positive integer). _Not compatible with \&#39;startDate\&#39; and \&#39;endDate\&#39;_ 
      * @param email Filter the report for a specific email addresses
      * @param event Filter the report for a specific event type
-     * @param tags Filter the report for tags (serialized and urlencoded array)
+     * @param tags Filter the report for tags (serialized and urlencoded array). To pass multiple tags, a format of string separated by commas is used such as **\&quot;one, two, three\&quot;**
      * @param messageId Filter on a specific message id
      * @param templateId Filter on a specific template id
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
@@ -794,11 +767,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -832,19 +802,19 @@ export class TransactionalEmailsApi {
         });
     }
     /**
-     * Fetch scheduled batch of emails by batchId (Can retrieve data upto 30 days old)
-     * @summary Fetch scheduled emails by batchId
-     * @param batchId The batchId of scheduled emails batch (Should be a valid UUIDv4)
+     * Fetch scheduled batch of emails by batchId or single scheduled email by messageId (Can retrieve data upto 30 days old)
+     * @summary Fetch scheduled emails by batchId or messageId
+     * @param identifier The &#x60;batchId&#x60; of scheduled emails batch (Should be a valid UUIDv4) or the &#x60;messageId&#x60; of scheduled email.
      * @param startDate Mandatory if &#x60;endDate&#x60; is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date.
      * @param endDate Mandatory if &#x60;startDate&#x60; is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month.
-     * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
-     * @param status Filter the records by &#x60;status&#x60; of the scheduled email batch or message.
-     * @param limit Number of documents returned per page
-     * @param offset Index of the first document on the page
+     * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed. Not valid when identifier is &#x60;messageId&#x60;.
+     * @param status Filter the records by &#x60;status&#x60; of the scheduled email batch or message. Not valid when identifier is &#x60;messageId&#x60;.
+     * @param limit Number of documents returned per page. Not valid when identifier is &#x60;messageId&#x60;.
+     * @param offset Index of the first document on the page.  Not valid when identifier is &#x60;messageId&#x60;.
      */
-    public async getScheduledEmailByBatchId (batchId: string, startDate?: string, endDate?: string, sort?: 'asc' | 'desc', status?: 'processed' | 'inProgress' | 'queued', limit?: number, offset?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetScheduledEmailByBatchId;  }> {
-        const localVarPath = this.basePath + '/smtp/emailStatus/{batchId}'
-            .replace('{' + 'batchId' + '}', encodeURIComponent(String(batchId)));
+    public async getScheduledEmailById (identifier: string, startDate?: string, endDate?: string, sort?: 'asc' | 'desc', status?: 'processed' | 'inProgress' | 'queued', limit?: number, offset?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetScheduledEmailById200Response;  }> {
+        const localVarPath = this.basePath + '/smtp/emailStatus/{identifier}'
+            .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -856,9 +826,9 @@ export class TransactionalEmailsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'batchId' is not null or undefined
-        if (batchId === null || batchId === undefined) {
-            throw new Error('Required parameter batchId was null or undefined when calling getScheduledEmailByBatchId.');
+        // verify required parameter 'identifier' is not null or undefined
+        if (identifier === null || identifier === undefined) {
+            throw new Error('Required parameter identifier was null or undefined when calling getScheduledEmailById.');
         }
 
         if (startDate !== undefined) {
@@ -899,11 +869,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -920,98 +887,13 @@ export class TransactionalEmailsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetScheduledEmailByBatchId;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: GetScheduledEmailById200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetScheduledEmailByBatchId");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * Fetch scheduled email by messageId (Can retrieve data upto 30 days old)
-     * @summary Fetch scheduled email by messageId
-     * @param messageId The messageId of scheduled email
-     * @param startDate Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date.
-     * @param endDate Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month.
-     */
-    public async getScheduledEmailByMessageId (messageId: string, startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetScheduledEmailByMessageId;  }> {
-        const localVarPath = this.basePath + '/smtp/emailStatus/{messageId}'
-            .replace('{' + 'messageId' + '}', encodeURIComponent(String(messageId)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'messageId' is not null or undefined
-        if (messageId === null || messageId === undefined) {
-            throw new Error('Required parameter messageId was null or undefined when calling getScheduledEmailByMessageId.');
-        }
-
-        if (startDate !== undefined) {
-            localVarQueryParameters['startDate'] = ObjectSerializer.serialize(startDate, "string");
-        }
-
-        if (endDate !== undefined) {
-            localVarQueryParameters['endDate'] = ObjectSerializer.serialize(endDate, "string");
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: GetScheduledEmailByMessageId;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetScheduledEmailByMessageId");
+                            body = ObjectSerializer.deserialize(body, "GetScheduledEmailById200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -1026,9 +908,9 @@ export class TransactionalEmailsApi {
      * @summary Get your transactional email activity aggregated per day
      * @param limit Number of documents returned per page
      * @param offset Index of the first document on the page
-     * @param startDate Mandatory if endDate is used. Starting date of the report (YYYY-MM-DD)
-     * @param endDate Mandatory if startDate is used. Ending date of the report (YYYY-MM-DD)
-     * @param days Number of days in the past including today (positive integer). Not compatible with \&#39;startDate\&#39; and \&#39;endDate\&#39;
+     * @param startDate **Mandatory if endDate is used.** Starting date of the report (YYYY-MM-DD) 
+     * @param endDate **Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD) 
+     * @param days Number of days in the past including today (positive integer). _Not compatible with \&#39;startDate\&#39; and \&#39;endDate\&#39;_ 
      * @param tag Tag of the emails
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      */
@@ -1087,11 +969,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1162,11 +1041,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1250,11 +1126,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1290,8 +1163,8 @@ export class TransactionalEmailsApi {
     /**
      * 
      * @summary Get the list of blocked or unsubscribed transactional contacts
-     * @param startDate Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts
-     * @param endDate Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts
+     * @param startDate **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) from which you want to fetch the blocked or unsubscribed contacts 
+     * @param endDate **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) till which you want to fetch the blocked or unsubscribed contacts 
      * @param limit Number of documents returned per page
      * @param offset Index of the first document on the page
      * @param senders Comma separated list of emails of the senders from which contacts are blocked or unsubscribed
@@ -1348,11 +1221,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1423,11 +1293,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1463,11 +1330,11 @@ export class TransactionalEmailsApi {
     /**
      * This endpoint will show the list of emails for past 30 days by default. To retrieve emails before that time, please pass startDate and endDate in query filters.
      * @summary Get the list of transactional emails on the basis of allowed filters
-     * @param email Mandatory if templateId and messageId are not passed in query filters. Email address to which transactional email has been sent.
-     * @param templateId Mandatory if email and messageId are not passed in query filters. Id of the template that was used to compose transactional email.
-     * @param messageId Mandatory if templateId and email are not passed in query filters. Message ID of the transactional email sent.
-     * @param startDate Mandatory if endDate is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Maximum time period that can be selected is one month.
-     * @param endDate Mandatory if startDate is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month.
+     * @param email **Mandatory if templateId and messageId are not passed in query filters.** Email address to which transactional email has been sent. 
+     * @param templateId **Mandatory if email and messageId are not passed in query filters.** Id of the template that was used to compose transactional email. 
+     * @param messageId **Mandatory if templateId and email are not passed in query filters.** Message ID of the transactional email sent. 
+     * @param startDate **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) from which you want to fetch the list. **Maximum time period that can be selected is one month**. 
+     * @param endDate **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) till which you want to fetch the list. **Maximum time period that can be selected is one month.** 
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param limit Number of documents returned per page
      * @param offset Index of the first document in the page
@@ -1531,11 +1398,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1613,11 +1477,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1687,11 +1548,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1762,11 +1620,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1836,11 +1691,8 @@ export class TransactionalEmailsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1876,9 +1728,9 @@ export class TransactionalEmailsApi {
      * 
      * @summary Update an email template
      * @param templateId id of the template
-     * @param smtpTemplate values to update in transactional email template
+     * @param updateSmtpTemplate values to update in transactional email template
      */
-    public async updateSmtpTemplate (templateId: number, smtpTemplate: UpdateSmtpTemplate, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateSmtpTemplate (templateId: number, updateSmtpTemplate: UpdateSmtpTemplate, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smtp/templates/{templateId}'
             .replace('{' + 'templateId' + '}', encodeURIComponent(String(templateId)));
         let localVarQueryParameters: any = {};
@@ -1897,9 +1749,9 @@ export class TransactionalEmailsApi {
             throw new Error('Required parameter templateId was null or undefined when calling updateSmtpTemplate.');
         }
 
-        // verify required parameter 'smtpTemplate' is not null or undefined
-        if (smtpTemplate === null || smtpTemplate === undefined) {
-            throw new Error('Required parameter smtpTemplate was null or undefined when calling updateSmtpTemplate.');
+        // verify required parameter 'updateSmtpTemplate' is not null or undefined
+        if (updateSmtpTemplate === null || updateSmtpTemplate === undefined) {
+            throw new Error('Required parameter updateSmtpTemplate was null or undefined when calling updateSmtpTemplate.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -1913,15 +1765,12 @@ export class TransactionalEmailsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(smtpTemplate, "UpdateSmtpTemplate")
+            body: ObjectSerializer.serialize(updateSmtpTemplate, "UpdateSmtpTemplate")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

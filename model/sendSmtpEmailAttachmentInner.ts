@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 
 export class SendSmtpEmailAttachmentInner {
     /**
-    * Absolute url of the attachment (no local file).
+    * Absolute url of the attachment (**no local file**). 
     */
     'url'?: string;
     /**
@@ -22,7 +22,7 @@ export class SendSmtpEmailAttachmentInner {
     */
     'content'?: string;
     /**
-    * Required if content is passed. Name of the attachment
+    * **Required if content is passed**. Name of the attachment 
     */
     'name'?: string;
 

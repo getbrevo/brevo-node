@@ -16,14 +16,14 @@ export class Otp {
     /**
     * 6 digit OTP received on email
     */
-    'name'?: number;
+    'otp': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "name",
-            "baseName": "name",
+            "name": "otp",
+            "baseName": "otp",
             "type": "number"
         }    ];
 

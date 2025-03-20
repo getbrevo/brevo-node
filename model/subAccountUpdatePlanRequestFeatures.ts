@@ -21,13 +21,17 @@ export class SubAccountUpdatePlanRequestFeatures {
     */
     'users'?: number;
     /**
-    * Number of landing pages / Not required on ENTv2
+    * Number of landing pages
     */
     'landingPage'?: number;
     /**
     * Number of inboxes / Not required on ENTv2
     */
     'inbox'?: number;
+    /**
+    * Number of sales and service users | only available in ENT-V2
+    */
+    'salesUsers'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -45,6 +49,11 @@ export class SubAccountUpdatePlanRequestFeatures {
         {
             "name": "inbox",
             "baseName": "inbox",
+            "type": "number"
+        },
+        {
+            "name": "salesUsers",
+            "baseName": "salesUsers",
             "type": "number"
         }    ];
 

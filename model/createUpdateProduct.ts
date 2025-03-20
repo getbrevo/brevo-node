@@ -11,6 +11,7 @@
  */
 
 import { RequestFile } from './models';
+import { GetContactInfoIdentifierParameter } from './getContactInfoIdentifierParameter';
 
 export class CreateUpdateProduct {
     /**
@@ -46,9 +47,9 @@ export class CreateUpdateProduct {
     */
     'parentId'?: string;
     /**
-    * Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 10.
+    * Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 20.
     */
-    'metaInfo'?: { [key: string]: string; };
+    'metaInfo'?: { [key: string]: GetContactInfoIdentifierParameter; };
     /**
     * Facilitate to update the existing category in the same request (updateEnabled = true)
     */
@@ -108,7 +109,7 @@ export class CreateUpdateProduct {
         {
             "name": "metaInfo",
             "baseName": "metaInfo",
-            "type": "{ [key: string]: string; }"
+            "type": "{ [key: string]: GetContactInfoIdentifierParameter; }"
         },
         {
             "name": "updateEnabled",

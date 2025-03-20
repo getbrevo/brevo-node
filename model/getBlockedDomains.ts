@@ -12,9 +12,6 @@
 
 import { RequestFile } from './models';
 
-/**
-* list of blocked domains
-*/
 export class GetBlockedDomains {
     /**
     * List of all blocked domains

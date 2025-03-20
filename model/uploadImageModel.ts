@@ -16,7 +16,7 @@ export class UploadImageModel {
     /**
     * URL of the image uploaded
     */
-    'url': string;
+    'url'?: string;
 
     static discriminator: string | undefined = undefined;
 

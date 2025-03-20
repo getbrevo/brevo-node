@@ -18,7 +18,7 @@ export class SendSmtpEmailBccInner {
     */
     'email': string;
     /**
-    * Name of the recipient in bcc. Maximum allowed characters are 70.
+    * Name of the recipient in bcc. **Maximum allowed characters are 70**. 
     */
     'name'?: string;
 

@@ -32,7 +32,7 @@ export class UpdateBatchContactsContactsInner {
     /**
     * Pass the set of attributes to be updated. **These attributes must be present in your account**. To update existing email address of a contact with the new one please pass EMAIL in attribtes. For example, **{ \"EMAIL\":\"newemail@domain.com\", \"FNAME\":\"Ellie\", \"LNAME\":\"Roger\"}**. Keep in mind transactional attributes can be updated the same way as normal attributes. Mobile Number in **SMS** field should be passed with proper country code. For example: **{\"SMS\":\"+91xxxxxxxxxx\"} or {\"SMS\":\"0091xxxxxxxxxx\"}** 
     */
-    'attributes'?: { [key: string]: object; };
+    'attributes'?: { [key: string]: any; };
     /**
     * Set/unset this field to blacklist/allow the contact for emails (emailBlacklisted = true)
     */
@@ -80,7 +80,7 @@ export class UpdateBatchContactsContactsInner {
         {
             "name": "attributes",
             "baseName": "attributes",
-            "type": "{ [key: string]: object; }"
+            "type": "{ [key: string]: any; }"
         },
         {
             "name": "emailBlacklisted",

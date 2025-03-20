@@ -11,10 +11,12 @@
  */
 
 import { RequestFile } from './models';
+import { PostContactInfoContactsFailure } from './postContactInfoContactsFailure';
+import { PostContactInfoContactsSuccess } from './postContactInfoContactsSuccess';
 
 export class PostContactInfoContacts {
-    'success'?: Array<string>;
-    'failure'?: Array<string>;
+    'success'?: PostContactInfoContactsSuccess;
+    'failure'?: PostContactInfoContactsFailure;
     /**
     * Displays the count of total number of contacts removed from list when user opts for \"all\" option.
     */
@@ -30,12 +32,12 @@ export class PostContactInfoContacts {
         {
             "name": "success",
             "baseName": "success",
-            "type": "Array<string>"
+            "type": "PostContactInfoContactsSuccess"
         },
         {
             "name": "failure",
             "baseName": "failure",
-            "type": "Array<string>"
+            "type": "PostContactInfoContactsFailure"
         },
         {
             "name": "total",

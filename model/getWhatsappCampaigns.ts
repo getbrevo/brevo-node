@@ -16,7 +16,7 @@ import { GetWhatsappCampaignsCampaignsInner } from './getWhatsappCampaignsCampai
 export class GetWhatsappCampaigns {
     'campaigns'?: Array<GetWhatsappCampaignsCampaignsInner>;
     /**
-    * Number of WhatsApp campaigns retrived
+    * Number of WhatsApp campaigns retrieved
     */
     'count'?: number;
 

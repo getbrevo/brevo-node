@@ -17,7 +17,7 @@ import { RequestFile } from './models';
 */
 export class Company {
     /**
-    * Unique company id
+    * Unique comoany id
     */
     'id'?: string;
     /**

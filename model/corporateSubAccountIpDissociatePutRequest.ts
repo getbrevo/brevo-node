@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 
 export class CorporateSubAccountIpDissociatePutRequest {
     /**
-    * IP Address
+    * IP address
     */
     'ip': string;
     /**

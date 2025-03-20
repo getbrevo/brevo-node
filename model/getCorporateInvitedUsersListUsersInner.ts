@@ -15,7 +15,7 @@ import { GetCorporateInvitedUsersListUsersInnerFeatureAccess } from './getCorpor
 import { GetCorporateInvitedUsersListUsersInnerGroups } from './getCorporateInvitedUsersListUsersInnerGroups';
 
 export class GetCorporateInvitedUsersListUsersInner {
-    'groups': GetCorporateInvitedUsersListUsersInnerGroups;
+    'groups'?: GetCorporateInvitedUsersListUsersInnerGroups;
     /**
     * Email address of the user.
     */

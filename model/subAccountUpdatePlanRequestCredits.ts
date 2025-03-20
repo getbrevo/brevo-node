@@ -17,17 +17,25 @@ import { RequestFile } from './models';
 */
 export class SubAccountUpdatePlanRequestCredits {
     /**
-    * Number of email credits
+    * Number of email credits | Pass the value -1 for unlimited emails in ENTv2 only
     */
     'email'?: number;
     /**
-    * Number of SMS credits | available in ENT-v2 only
+    * Number of SMS credits | Pass the value -1 for unlimited SMS in ENTv2 only
     */
     'sms'?: number;
     /**
     * Number of Push credits, possible value is 0 and -1 | available in ENT-v2 only
     */
     'wpSubscribers'?: number;
+    /**
+    * Number of externalFeeds credits, possible values are 0 or 1 |available in ENTv2 only
+    */
+    'externalFeeds'?: number;
+    /**
+    * Number of whatsapp credits | Pass the value -1 for unlimited whatsapp in ENTv2 only
+    */
+    'whatsapp'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -45,6 +53,16 @@ export class SubAccountUpdatePlanRequestCredits {
         {
             "name": "wpSubscribers",
             "baseName": "wpSubscribers",
+            "type": "number"
+        },
+        {
+            "name": "externalFeeds",
+            "baseName": "externalFeeds",
+            "type": "number"
+        },
+        {
+            "name": "whatsapp",
+            "baseName": "whatsapp",
             "type": "number"
         }    ];
 

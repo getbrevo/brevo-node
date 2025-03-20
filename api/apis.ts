@@ -1,5 +1,7 @@
 export * from './accountApi';
 import { AccountApi } from './accountApi';
+export * from './balanceApi';
+import { BalanceApi } from './balanceApi';
 export * from './companiesApi';
 import { CompaniesApi } from './companiesApi';
 export * from './contactsApi';
@@ -16,8 +18,8 @@ export * from './ecommerceApi';
 import { EcommerceApi } from './ecommerceApi';
 export * from './emailCampaignsApi';
 import { EmailCampaignsApi } from './emailCampaignsApi';
-export * from './eventsApi';
-import { EventsApi } from './eventsApi';
+export * from './eventApi';
+import { EventApi } from './eventApi';
 export * from './externalFeedsApi';
 import { ExternalFeedsApi } from './externalFeedsApi';
 export * from './filesApi';
@@ -32,14 +34,18 @@ export * from './paymentsApi';
 import { PaymentsApi } from './paymentsApi';
 export * from './processApi';
 import { ProcessApi } from './processApi';
-export * from './resellerApi';
-import { ResellerApi } from './resellerApi';
+export * from './programApi';
+import { ProgramApi } from './programApi';
+export * from './rewardApi';
+import { RewardApi } from './rewardApi';
 export * from './sMSCampaignsApi';
 import { SMSCampaignsApi } from './sMSCampaignsApi';
 export * from './sendersApi';
 import { SendersApi } from './sendersApi';
 export * from './tasksApi';
 import { TasksApi } from './tasksApi';
+export * from './tierApi';
+import { TierApi } from './tierApi';
 export * from './transactionalEmailsApi';
 import { TransactionalEmailsApi } from './transactionalEmailsApi';
 export * from './transactionalSMSApi';
@@ -63,4 +69,4 @@ export class HttpError extends Error {
 
 export { RequestFile } from '../model/models';
 
-export const APIS = [AccountApi, CompaniesApi, ContactsApi, ConversationsApi, CouponsApi, DealsApi, DomainsApi, EcommerceApi, EmailCampaignsApi, EventsApi, ExternalFeedsApi, FilesApi, InboundParsingApi, MasterAccountApi, NotesApi, PaymentsApi, ProcessApi, ResellerApi, SMSCampaignsApi, SendersApi, TasksApi, TransactionalEmailsApi, TransactionalSMSApi, TransactionalWhatsAppApi, UserApi, WebhooksApi, WhatsAppCampaignsApi];
+export const APIS = [AccountApi, BalanceApi, CompaniesApi, ContactsApi, ConversationsApi, CouponsApi, DealsApi, DomainsApi, EcommerceApi, EmailCampaignsApi, EventApi, ExternalFeedsApi, FilesApi, InboundParsingApi, MasterAccountApi, NotesApi, PaymentsApi, ProcessApi, ProgramApi, RewardApi, SMSCampaignsApi, SendersApi, TasksApi, TierApi, TransactionalEmailsApi, TransactionalSMSApi, TransactionalWhatsAppApi, UserApi, WebhooksApi, WhatsAppCampaignsApi];

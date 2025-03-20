@@ -74,18 +74,12 @@ export class GetExtendedCampaignOverview {
     * utm parameter associated with campaign
     */
     'utmCampaignValue'?: string;
-    /**
-    * source of utm parameter
-    */
     'utmSource'?: string;
-    /**
-    * medium parameter
-    */
     'utmMedium'?: string;
     /**
-    * utm id
+    * utm id activate
     */
-    'utmID'?: number;
+    'utmIDActive'?: boolean;
     /**
     * Retrieved the status of test email sending. (true=Test email has been sent  false=Test email has not been sent)
     */
@@ -237,9 +231,9 @@ export class GetExtendedCampaignOverview {
             "type": "string"
         },
         {
-            "name": "utmID",
-            "baseName": "utmID",
-            "type": "number"
+            "name": "utmIDActive",
+            "baseName": "utmIDActive",
+            "type": "boolean"
         },
         {
             "name": "testSent",

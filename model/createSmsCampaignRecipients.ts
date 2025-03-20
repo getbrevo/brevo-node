@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 
 export class CreateSmsCampaignRecipients {
     /**
-    * Lists Ids to send the campaign to. REQUIRED if scheduledAt is not empty
+    * Lists Ids to send the campaign to. **REQUIRED if scheduledAt is not empty** 
     */
     'listIds': Array<number>;
     /**

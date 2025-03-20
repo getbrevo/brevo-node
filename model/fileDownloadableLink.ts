@@ -12,11 +12,14 @@
 
 import { RequestFile } from './models';
 
+/**
+* Downloadable file link
+*/
 export class FileDownloadableLink {
     /**
     * A unique link to download the requested file.
     */
-    'fileUrl': string;
+    'fileUrl'?: string;
 
     static discriminator: string | undefined = undefined;
 

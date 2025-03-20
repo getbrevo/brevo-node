@@ -22,7 +22,7 @@ export class GetInboundEmailEventsByUuid {
     /**
     * Date when email was delivered successfully to client’s webhook
     */
-    'deliveredAt'?: Date;
+    'deliveredAt'?: Date | null;
     /**
     * Recipient’s email address
     */

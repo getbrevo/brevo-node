@@ -19,10 +19,10 @@ import { CreateModel } from '../model/createModel';
 import { CreateWhatsAppCampaign } from '../model/createWhatsAppCampaign';
 import { CreateWhatsAppTemplate } from '../model/createWhatsAppTemplate';
 import { ErrorModel } from '../model/errorModel';
-import { GetWATemplates } from '../model/getWATemplates';
 import { GetWhatsAppConfig } from '../model/getWhatsAppConfig';
 import { GetWhatsappCampaignOverview } from '../model/getWhatsappCampaignOverview';
 import { GetWhatsappCampaigns } from '../model/getWhatsappCampaigns';
+import { GetWhatsappTemplates } from '../model/getWhatsappTemplates';
 import { UpdateWhatsAppCampaign } from '../model/updateWhatsAppCampaign';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -37,8 +37,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum WhatsAppCampaignsApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class WhatsAppCampaignsApi {
@@ -48,8 +47,7 @@ export class WhatsAppCampaignsApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -102,9 +100,9 @@ export class WhatsAppCampaignsApi {
     /**
      * 
      * @summary Create and Send a WhatsApp campaign
-     * @param whatsAppCampaigns Values to create a campaign
+     * @param createWhatsAppCampaign Values to create a WhatsApp Campaign
      */
-    public async createWhatsAppCampaign (whatsAppCampaigns: CreateWhatsAppCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+    public async createWhatsAppCampaign (createWhatsAppCampaign: CreateWhatsAppCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
         const localVarPath = this.basePath + '/whatsappCampaigns';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -117,9 +115,9 @@ export class WhatsAppCampaignsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'whatsAppCampaigns' is not null or undefined
-        if (whatsAppCampaigns === null || whatsAppCampaigns === undefined) {
-            throw new Error('Required parameter whatsAppCampaigns was null or undefined when calling createWhatsAppCampaign.');
+        // verify required parameter 'createWhatsAppCampaign' is not null or undefined
+        if (createWhatsAppCampaign === null || createWhatsAppCampaign === undefined) {
+            throw new Error('Required parameter createWhatsAppCampaign was null or undefined when calling createWhatsAppCampaign.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -133,15 +131,12 @@ export class WhatsAppCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(whatsAppCampaigns, "CreateWhatsAppCampaign")
+            body: ObjectSerializer.serialize(createWhatsAppCampaign, "CreateWhatsAppCampaign")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -177,10 +172,10 @@ export class WhatsAppCampaignsApi {
     /**
      * 
      * @summary Create a WhatsApp template
-     * @param whatsAppTemplates Values to create a template
+     * @param createWhatsAppTemplate Values to create a WhatsApp template
      */
-    public async createWhatsAppTemplate (whatsAppTemplates: CreateWhatsAppTemplate, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
-        const localVarPath = this.basePath + '/whatsppCampaigns/template';
+    public async createWhatsAppTemplate (createWhatsAppTemplate: CreateWhatsAppTemplate, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+        const localVarPath = this.basePath + '/whatsappCampaigns/template';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
         const produces = ['application/json'];
@@ -192,9 +187,9 @@ export class WhatsAppCampaignsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'whatsAppTemplates' is not null or undefined
-        if (whatsAppTemplates === null || whatsAppTemplates === undefined) {
-            throw new Error('Required parameter whatsAppTemplates was null or undefined when calling createWhatsAppTemplate.');
+        // verify required parameter 'createWhatsAppTemplate' is not null or undefined
+        if (createWhatsAppTemplate === null || createWhatsAppTemplate === undefined) {
+            throw new Error('Required parameter createWhatsAppTemplate was null or undefined when calling createWhatsAppTemplate.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -208,15 +203,12 @@ export class WhatsAppCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(whatsAppTemplates, "CreateWhatsAppTemplate")
+            body: ObjectSerializer.serialize(createWhatsAppTemplate, "CreateWhatsAppTemplate")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -287,11 +279,8 @@ export class WhatsAppCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -361,11 +350,8 @@ export class WhatsAppCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -401,8 +387,8 @@ export class WhatsAppCampaignsApi {
     /**
      * 
      * @summary Return all your created WhatsApp campaigns
-     * @param startDate **Mandatory if endDate is used**. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the campaigns created. **Prefer to pass your timezone in date-time format for accurate result** 
-     * @param endDate **Mandatory if startDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the campaigns created. **Prefer to pass your timezone in date-time format for accurate result** 
+     * @param startDate **Mandatory if endDate is used**. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the WhatsApp campaigns created. **Prefer to pass your timezone in date-time format for accurate result** 
+     * @param endDate **Mandatory if startDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the WhatsApp campaigns created. **Prefer to pass your timezone in date-time format for accurate result** 
      * @param limit Number of documents per page
      * @param offset Index of the first document in the page
      * @param sort Sort the results in the ascending/descending order of record modification. Default order is **descending** if &#x60;sort&#x60; is not passed
@@ -454,11 +440,8 @@ export class WhatsAppCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -522,11 +505,8 @@ export class WhatsAppCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -569,7 +549,7 @@ export class WhatsAppCampaignsApi {
      * @param sort Sort the results in the ascending/descending order of record modification. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param source source of the template
      */
-    public async getWhatsAppTemplates (startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', source?: 'Automation' | 'Conversations', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetWATemplates;  }> {
+    public async getWhatsAppTemplates (startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', source?: 'Automation' | 'Conversations', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetWhatsappTemplates;  }> {
         const localVarPath = this.basePath + '/whatsappCampaigns/template-list';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -620,11 +600,8 @@ export class WhatsAppCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -641,13 +618,13 @@ export class WhatsAppCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetWATemplates;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: GetWhatsappTemplates;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetWATemplates");
+                            body = ObjectSerializer.deserialize(body, "GetWhatsappTemplates");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -660,7 +637,7 @@ export class WhatsAppCampaignsApi {
     /**
      * 
      * @summary Send your WhatsApp template for approval
-     * @param templateId id of the campaign
+     * @param templateId id of the template
      */
     public async sendWhatsAppTemplateApproval (templateId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/whatsappCampaigns/template/approval/{templateId}'
@@ -695,11 +672,8 @@ export class WhatsAppCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -734,10 +708,10 @@ export class WhatsAppCampaignsApi {
     /**
      * 
      * @summary Update a WhatsApp campaign
-     * @param campaignId Id of the campaign
-     * @param whatsAppCampaign values to update WhatsApp Campaign
+     * @param campaignId id of the campaign
+     * @param updateWhatsAppCampaign Values to update a WhatsApp Campaign
      */
-    public async updateWhatsAppCampaign (campaignId: number, whatsAppCampaign?: UpdateWhatsAppCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateWhatsAppCampaign (campaignId: number, updateWhatsAppCampaign: UpdateWhatsAppCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/whatsappCampaigns/{campaignId}'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -756,6 +730,11 @@ export class WhatsAppCampaignsApi {
             throw new Error('Required parameter campaignId was null or undefined when calling updateWhatsAppCampaign.');
         }
 
+        // verify required parameter 'updateWhatsAppCampaign' is not null or undefined
+        if (updateWhatsAppCampaign === null || updateWhatsAppCampaign === undefined) {
+            throw new Error('Required parameter updateWhatsAppCampaign was null or undefined when calling updateWhatsAppCampaign.');
+        }
+
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -767,15 +746,12 @@ export class WhatsAppCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(whatsAppCampaign, "UpdateWhatsAppCampaign")
+            body: ObjectSerializer.serialize(updateWhatsAppCampaign, "UpdateWhatsAppCampaign")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

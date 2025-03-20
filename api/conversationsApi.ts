@@ -19,7 +19,6 @@ import { ConversationsAgentOnlinePingPostRequest } from '../model/conversationsA
 import { ConversationsMessage } from '../model/conversationsMessage';
 import { ConversationsMessagesIdPutRequest } from '../model/conversationsMessagesIdPutRequest';
 import { ConversationsMessagesPostRequest } from '../model/conversationsMessagesPostRequest';
-import { ConversationsPushedMessagesIdPutRequest } from '../model/conversationsPushedMessagesIdPutRequest';
 import { ConversationsPushedMessagesPostRequest } from '../model/conversationsPushedMessagesPostRequest';
 import { ErrorModel } from '../model/errorModel';
 
@@ -35,8 +34,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum ConversationsApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class ConversationsApi {
@@ -46,8 +44,7 @@ export class ConversationsApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -100,9 +97,9 @@ export class ConversationsApi {
     /**
      * We recommend pinging this endpoint every minute for as long as the agent has to be considered online.
      * @summary Sets agent’s status to online for 2-3 minutes
-     * @param body Agent fields.
+     * @param conversationsAgentOnlinePingPostRequest 
      */
-    public async conversationsAgentOnlinePingPost (body: ConversationsAgentOnlinePingPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async conversationsAgentOnlinePingPost (conversationsAgentOnlinePingPostRequest: ConversationsAgentOnlinePingPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/conversations/agentOnlinePing';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -115,9 +112,9 @@ export class ConversationsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling conversationsAgentOnlinePingPost.');
+        // verify required parameter 'conversationsAgentOnlinePingPostRequest' is not null or undefined
+        if (conversationsAgentOnlinePingPostRequest === null || conversationsAgentOnlinePingPostRequest === undefined) {
+            throw new Error('Required parameter conversationsAgentOnlinePingPostRequest was null or undefined when calling conversationsAgentOnlinePingPost.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -131,15 +128,12 @@ export class ConversationsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "ConversationsAgentOnlinePingPostRequest")
+            body: ObjectSerializer.serialize(conversationsAgentOnlinePingPostRequest, "ConversationsAgentOnlinePingPostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -209,11 +203,8 @@ export class ConversationsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -283,11 +274,8 @@ export class ConversationsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -324,9 +312,9 @@ export class ConversationsApi {
      * Only agents’ messages can be edited.
      * @summary Update a message sent by an agent
      * @param id ID of the message
-     * @param body 
+     * @param conversationsMessagesIdPutRequest 
      */
-    public async conversationsMessagesIdPut (id: string, body?: ConversationsMessagesIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsMessagesIdPut (id: string, conversationsMessagesIdPutRequest: ConversationsMessagesIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/messages/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -345,6 +333,11 @@ export class ConversationsApi {
             throw new Error('Required parameter id was null or undefined when calling conversationsMessagesIdPut.');
         }
 
+        // verify required parameter 'conversationsMessagesIdPutRequest' is not null or undefined
+        if (conversationsMessagesIdPutRequest === null || conversationsMessagesIdPutRequest === undefined) {
+            throw new Error('Required parameter conversationsMessagesIdPutRequest was null or undefined when calling conversationsMessagesIdPut.');
+        }
+
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -356,15 +349,12 @@ export class ConversationsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "ConversationsMessagesIdPutRequest")
+            body: ObjectSerializer.serialize(conversationsMessagesIdPutRequest, "ConversationsMessagesIdPutRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -400,9 +390,9 @@ export class ConversationsApi {
     /**
      * 
      * @summary Send a message as an agent
-     * @param body Message fields.
+     * @param conversationsMessagesPostRequest 
      */
-    public async conversationsMessagesPost (body: ConversationsMessagesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsMessagesPost (conversationsMessagesPostRequest: ConversationsMessagesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/messages';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -415,9 +405,9 @@ export class ConversationsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling conversationsMessagesPost.');
+        // verify required parameter 'conversationsMessagesPostRequest' is not null or undefined
+        if (conversationsMessagesPostRequest === null || conversationsMessagesPostRequest === undefined) {
+            throw new Error('Required parameter conversationsMessagesPostRequest was null or undefined when calling conversationsMessagesPost.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -431,15 +421,12 @@ export class ConversationsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "ConversationsMessagesPostRequest")
+            body: ObjectSerializer.serialize(conversationsMessagesPostRequest, "ConversationsMessagesPostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -510,11 +497,8 @@ export class ConversationsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -584,11 +568,8 @@ export class ConversationsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -625,9 +606,9 @@ export class ConversationsApi {
      * 
      * @summary Update an automated message
      * @param id ID of the message
-     * @param body 
+     * @param conversationsMessagesIdPutRequest 
      */
-    public async conversationsPushedMessagesIdPut (id: string, body: ConversationsPushedMessagesIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsPushedMessagesIdPut (id: string, conversationsMessagesIdPutRequest: ConversationsMessagesIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/pushedMessages/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -646,9 +627,9 @@ export class ConversationsApi {
             throw new Error('Required parameter id was null or undefined when calling conversationsPushedMessagesIdPut.');
         }
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling conversationsPushedMessagesIdPut.');
+        // verify required parameter 'conversationsMessagesIdPutRequest' is not null or undefined
+        if (conversationsMessagesIdPutRequest === null || conversationsMessagesIdPutRequest === undefined) {
+            throw new Error('Required parameter conversationsMessagesIdPutRequest was null or undefined when calling conversationsPushedMessagesIdPut.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -662,15 +643,12 @@ export class ConversationsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "ConversationsPushedMessagesIdPutRequest")
+            body: ObjectSerializer.serialize(conversationsMessagesIdPutRequest, "ConversationsMessagesIdPutRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -706,9 +684,9 @@ export class ConversationsApi {
     /**
      * Example of automated messages: order status, announce new features in your web app, etc.
      * @summary Send an automated message to a visitor
-     * @param body 
+     * @param conversationsPushedMessagesPostRequest 
      */
-    public async conversationsPushedMessagesPost (body: ConversationsPushedMessagesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsPushedMessagesPost (conversationsPushedMessagesPostRequest: ConversationsPushedMessagesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/pushedMessages';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -721,9 +699,9 @@ export class ConversationsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling conversationsPushedMessagesPost.');
+        // verify required parameter 'conversationsPushedMessagesPostRequest' is not null or undefined
+        if (conversationsPushedMessagesPostRequest === null || conversationsPushedMessagesPostRequest === undefined) {
+            throw new Error('Required parameter conversationsPushedMessagesPostRequest was null or undefined when calling conversationsPushedMessagesPost.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -737,15 +715,12 @@ export class ConversationsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "ConversationsPushedMessagesPostRequest")
+            body: ObjectSerializer.serialize(conversationsPushedMessagesPostRequest, "ConversationsPushedMessagesPostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

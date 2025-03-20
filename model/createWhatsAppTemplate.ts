@@ -26,7 +26,7 @@ export class CreateWhatsAppTemplate {
     */
     'category': CreateWhatsAppTemplate.CategoryEnum;
     /**
-    * Absolute url of the media file **(no local file)** for the header. **Use this field in you want to add media in Template header and headerText is empty.** Allowed extensions for media files are: #### jpeg | png | mp4 | pdf 
+    * Absolute url of the media file **(no local file)** for the header. **Use this field in you want to add media in Template header and headerText is empty**. Allowed extensions for media files are: #### jpeg | png | mp4 | pdf 
     */
     'mediaUrl'?: string;
     /**
@@ -34,7 +34,7 @@ export class CreateWhatsAppTemplate {
     */
     'bodyText': string;
     /**
-    * Text content of the header in the template.  **Maximum allowed characters are 45** **Use this field to add text content in template header and if mediaUrl is empty** 
+    * Text content of the header in the template. **Maximum allowed characters are 45** **Use this field to add text content in template header and if mediaUrl is empty** 
     */
     'headerText'?: string;
     /**

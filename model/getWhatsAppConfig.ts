@@ -26,9 +26,9 @@ export class GetWhatsAppConfig {
     */
     'phoneNumberQuality'?: GetWhatsAppConfig.PhoneNumberQualityEnum;
     /**
-    * Status information related to WhatsApp Api account
+    * Status information related to WhatsApp API account
     */
-    'whatsappBusinessAccountStatus'?: string;
+    'whatsappBusinessAccountStatus'?: GetWhatsAppConfig.WhatsappBusinessAccountStatusEnum;
     /**
     * Verification status information of the Business account
     */
@@ -59,7 +59,7 @@ export class GetWhatsAppConfig {
         {
             "name": "whatsappBusinessAccountStatus",
             "baseName": "whatsappBusinessAccountStatus",
-            "type": "string"
+            "type": "GetWhatsAppConfig.WhatsappBusinessAccountStatusEnum"
         },
         {
             "name": "businessStatus",
@@ -82,6 +82,11 @@ export namespace GetWhatsAppConfig {
         Green = <any> 'GREEN',
         Yellow = <any> 'YELLOW',
         Red = <any> 'RED'
+    }
+    export enum WhatsappBusinessAccountStatusEnum {
+        Approved = <any> 'APPROVED',
+        Pending = <any> 'PENDING',
+        Rejected = <any> 'REJECTED'
     }
     export enum PhoneNumberNameStatusEnum {
         Approved = <any> 'APPROVED',

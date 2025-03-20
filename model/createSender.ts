@@ -23,7 +23,7 @@ export class CreateSender {
     */
     'email': string;
     /**
-    * Mandatory in case of dedicated IP, IPs to associate to the sender
+    * **Mandatory in case of dedicated IP**. IPs to associate to the sender 
     */
     'ips'?: Array<CreateSenderIpsInner>;
 

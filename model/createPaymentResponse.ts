@@ -16,7 +16,7 @@ export class CreatePaymentResponse {
     /**
     * ID of the object created
     */
-    'id': string;
+    'id': number;
     /**
     * URL of the payment request created
     */
@@ -28,7 +28,7 @@ export class CreatePaymentResponse {
         {
             "name": "id",
             "baseName": "id",
-            "type": "string"
+            "type": "number"
         },
         {
             "name": "url",

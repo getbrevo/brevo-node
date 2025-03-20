@@ -17,6 +17,10 @@ export class CreatedBatchId {
     * Batch ID of the request
     */
     'batchId': number;
+    /**
+    * Number of orders
+    */
+    'count'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -24,6 +28,11 @@ export class CreatedBatchId {
         {
             "name": "batchId",
             "baseName": "batchId",
+            "type": "number"
+        },
+        {
+            "name": "count",
+            "baseName": "count",
             "type": "number"
         }    ];
 

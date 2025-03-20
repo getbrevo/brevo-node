@@ -84,6 +84,7 @@ export namespace GetPaymentRequest {
     export enum StatusEnum {
         Created = <any> 'created',
         Sent = <any> 'sent',
-        ReminderSentPaid = <any> 'reminderSent - paid'
+        ReminderSent = <any> 'reminderSent',
+        Paid = <any> 'paid'
     }
 }

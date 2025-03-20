@@ -18,13 +18,13 @@ import { PipelineStage } from './pipelineStage';
 */
 export class Pipeline {
     /**
+    * Pipeline name
+    */
+    'pipelineName'?: string;
+    /**
     * Pipeline id
     */
     'pipeline'?: string;
-    /**
-    * Pipeline Name
-    */
-    'pipelineName'?: string;
     /**
     * List of stages
     */
@@ -34,13 +34,13 @@ export class Pipeline {
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "pipeline",
-            "baseName": "pipeline",
+            "name": "pipelineName",
+            "baseName": "pipeline_name",
             "type": "string"
         },
         {
-            "name": "pipelineName",
-            "baseName": "pipeline_name",
+            "name": "pipeline",
+            "baseName": "pipeline",
             "type": "string"
         },
         {

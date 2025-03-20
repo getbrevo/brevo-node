@@ -11,6 +11,7 @@
  */
 
 import { RequestFile } from './models';
+import { UpdateEmailCampaignEmailExpirationDate } from './updateEmailCampaignEmailExpirationDate';
 import { UpdateEmailCampaignRecipients } from './updateEmailCampaignRecipients';
 import { UpdateEmailCampaignSender } from './updateEmailCampaignSender';
 
@@ -25,15 +26,15 @@ export class UpdateEmailCampaign {
     */
     'name'?: string;
     /**
-    * Body of the message (HTML version). If the campaign is designed using Drag & Drop editor via HTML content, then the design page will not have Drag & Drop editor access for that campaign. REQUIRED if htmlUrl is empty
+    * Body of the message (HTML version). If the campaign is designed using Drag & Drop editor via HTML content, then the design page will not have Drag & Drop editor access for that campaign. **REQUIRED if htmlUrl is empty** 
     */
     'htmlContent'?: string;
     /**
-    * Url which contents the body of the email message. REQUIRED if htmlContent is empty
+    * Url which contents the body of the email message. **REQUIRED if htmlContent is empty** 
     */
     'htmlUrl'?: string;
     /**
-    * UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part).
+    * UTC date-time on which the campaign has to run (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** If sendAtBestTime is set to true, your campaign will be sent according to the date passed (ignoring the time part). 
     */
     'scheduledAt'?: string;
     /**
@@ -49,16 +50,16 @@ export class UpdateEmailCampaign {
     */
     'replyTo'?: string;
     /**
-    * To personalize the «To» Field. If you want to include the first name and last name of your recipient, add {FNAME} {LNAME}. These contact attributes must already exist in your Brevo account. If input parameter \'params\' used please use {{contact.FNAME}} {{contact.LNAME}} for personalization
+    * To personalize the **To** Field. If you want to include the first name and last name of your recipient, add **{FNAME} {LNAME}**. These contact attributes must already exist in your Brevo account. If input parameter **params** used please use **{{contact.FNAME}} {{contact.LNAME}}** for personalization 
     */
     'toField'?: string;
     'recipients'?: UpdateEmailCampaignRecipients;
     /**
-    * Absolute url of the attachment (no local file). Extension allowed: xlsx, xls, ods, docx, docm, doc, csv, pdf, txt, gif, jpg, jpeg, png, tif, tiff, rtf, bmp, cgm, css, shtml, html, htm, zip, xml, ppt, pptx, tar, ez, ics, mobi, msg, pub and eps
+    * Absolute url of the attachment (no local file). Extension allowed: #### xlsx, xls, ods, docx, docm, doc, csv, pdf, txt, gif, jpg, jpeg, png, tif, tiff, rtf, bmp, cgm, css, shtml, html, htm, zip, xml, ppt, pptx, tar, ez, ics, mobi, msg, pub and eps\' 
     */
     'attachmentUrl'?: string;
     /**
-    * Status of inline image. inlineImageActivation = false means image can’t be embedded, & inlineImageActivation = true means image can be embedded, in the email. You cannot send a campaign of more than 4MB with images embedded in the email. Campaigns with the images embedded in the email must be sent to less than 5000 contacts.
+    * Status of inline image. inlineImageActivation = false means image can’t be embedded, & inlineImageActivation = true means image can be embedded, in the email. You cannot send a campaign of more than **4MB** with images embedded in the email. Campaigns with the images embedded in the email _must be sent to less than 5000 contacts_. 
     */
     'inlineImageActivation'?: boolean = false;
     /**
@@ -66,7 +67,7 @@ export class UpdateEmailCampaign {
     */
     'mirrorActive'?: boolean;
     /**
-    * FOR TRIGGER ONLY ! Type of trigger campaign.recurring = false means contact can receive the same Trigger campaign only once, & recurring = true means contact can receive the same Trigger campaign several times
+    * **FOR TRIGGER ONLY !** Type of trigger campaign.recurring = false means contact can receive the same Trigger campaign only once, & recurring = true means contact can receive the same Trigger campaign several times 
     */
     'recurring'?: boolean = false;
     /**
@@ -82,57 +83,58 @@ export class UpdateEmailCampaign {
     */
     'utmCampaign'?: string;
     /**
-    * Pass the set of attributes to customize the type \'classic\' campaign. For example, {\"FNAME\":\"Joe\", \"LNAME\":\"Doe\"}. The \'params\' field will get updated, only if the campaign is in New Template Language, else ignored. The New Template Language is dependent on the values of \'subject\', \'htmlContent/htmlUrl\', \'sender.name\' & \'toField\'
+    * Pass the set of attributes to customize the type classic campaign. For example: **{\"FNAME\":\"Joe\", \"LNAME\":\"Doe\"}**. Only available if **type** is **classic**. It\'s considered only if campaign is in _New Template Language format_. The New Template Language is dependent on the values of **subject, htmlContent/htmlUrl, sender.name & toField** 
     */
-    'params'?: object;
+    'params'?: { [key: string]: any; };
     /**
-    * Set this to true if you want to send your campaign at best time. Note:- if true, warmup ip will be disabled.
+    * Set this to true if you want to send your campaign at best time. Note:- **if true, warmup ip will be disabled.** 
     */
     'sendAtBestTime'?: boolean;
     /**
-    * Status of A/B Test. abTesting = false means it is disabled, & abTesting = true means it is enabled. \'subjectA\', \'subjectB\', \'splitRule\', \'winnerCriteria\' & \'winnerDelay\' will be considered if abTesting is set to true. \'subject\' if passed is ignored.  Can be set to true only if \'sendAtBestTime\' is \'false\'. You will be able to set up two subject lines for your campaign and send them to a random sample of your total recipients. Half of the test group will receive version A, and the other half will receive version B
+    * Status of A/B Test. abTesting = false means it is disabled & abTesting = true means it is enabled. **subjectA, subjectB, splitRule, winnerCriteria & winnerDelay** will be considered when abTesting is set to true. subjectA & subjectB are mandatory together & subject if passed is ignored. **Can be set to true only if sendAtBestTime is false**. You will be able to set up two subject lines for your campaign and send them to a random sample of your total recipients. Half of the test group will receive version A, and the other half will receive version B 
     */
     'abTesting'?: boolean = false;
     /**
-    * Subject A of the campaign. Considered if abTesting = true. subjectA & subjectB should have unique value
+    * Subject A of the campaign. **Mandatory if abTesting = true**. subjectA & subjectB should have unique value 
     */
     'subjectA'?: string;
     /**
-    * Subject B of the campaign. Considered if abTesting = true. subjectA & subjectB should have unique value
+    * Subject B of the campaign. **Mandatory if abTesting = true**. subjectA & subjectB should have unique value 
     */
     'subjectB'?: string;
     /**
-    * Add the size of your test groups. Considered if abTesting = true. We\'ll send version A and B to a random sample of recipients, and then the winning version to everyone else
+    * Add the size of your test groups. **Mandatory if abTesting = true & \'recipients\' is passed**. We\'ll send version A and B to a random sample of recipients, and then the winning version to everyone else 
     */
     'splitRule'?: number;
     /**
-    * Choose the metrics that will determinate the winning version. Considered if \'splitRule\' >= 1 and < 50. If splitRule = 50, \'winnerCriteria\' is ignored if passed or alreday exist in record
+    * Choose the metrics that will determinate the winning version. **Mandatory if _splitRule_ >= 1 and < 50**. If splitRule = 50, `winnerCriteria` is ignored if passed 
     */
     'winnerCriteria'?: UpdateEmailCampaign.WinnerCriteriaEnum;
     /**
-    * Choose the duration of the test in hours. Maximum is 7 days, pass 24*7 = 168 hours. The winning version will be sent at the end of the test. Considered if \'splitRule\' >= 1 and < 50. If splitRule = 50, \'winnerDelay\' is ignored if passed or alreday exist in record
+    * Choose the duration of the test in hours. Maximum is 7 days, pass 24*7 = 168 hours. The winning version will be sent at the end of the test. **Mandatory if _splitRule_ >= 1 and < 50**. If splitRule = 50, `winnerDelay` is ignored if passed 
     */
     'winnerDelay'?: number;
     /**
-    * Available for dedicated ip clients. Set this to true if you wish to warm up your ip.
+    * **Available for dedicated ip clients**. Set this to true if you wish to warm up your ip. 
     */
     'ipWarmupEnable'?: boolean = false;
     /**
-    * Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000.
+    * Set an initial quota greater than 1 for warming up your ip. We recommend you set a value of 3000. 
     */
     'initialQuota'?: number;
     /**
-    * Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%.
+    * Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%. 
     */
     'increaseRate'?: number;
     /**
-    * Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page.
+    * Enter an unsubscription page id. The page id is a 24 digit alphanumeric id that can be found in the URL when editing the page. 
     */
     'unsubscriptionPageId'?: string;
     /**
-    * Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form.
+    * **Mandatory if templateId is used containing the {{ update_profile }} tag**. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form. 
     */
     'updateFormId'?: string;
+    'emailExpirationDate'?: UpdateEmailCampaignEmailExpirationDate;
 
     static discriminator: string | undefined = undefined;
 
@@ -230,7 +232,7 @@ export class UpdateEmailCampaign {
         {
             "name": "params",
             "baseName": "params",
-            "type": "object"
+            "type": "{ [key: string]: any; }"
         },
         {
             "name": "sendAtBestTime",
@@ -291,6 +293,11 @@ export class UpdateEmailCampaign {
             "name": "updateFormId",
             "baseName": "updateFormId",
             "type": "string"
+        },
+        {
+            "name": "emailExpirationDate",
+            "baseName": "emailExpirationDate",
+            "type": "UpdateEmailCampaignEmailExpirationDate"
         }    ];
 
     static getAttributeTypeMap() {

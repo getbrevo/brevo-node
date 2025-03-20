@@ -42,7 +42,7 @@ export class GetCouponCollection {
     */
     'expirationDate'?: Date;
     /**
-    * If present, an email notification is going to be sent the defined amount of days before the expiration date.
+    * If present, an email notification is going to be sent the defined amount of days before to the expiration date.
     */
     'remainingDaysAlert'?: number;
     /**

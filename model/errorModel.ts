@@ -49,7 +49,6 @@ export namespace ErrorModel {
         CampaignProcessing = <any> 'campaign_processing',
         CampaignSent = <any> 'campaign_sent',
         DocumentNotFound = <any> 'document_not_found',
-        ResellerPermissionDenied = <any> 'reseller_permission_denied',
         NotEnoughCredits = <any> 'not_enough_credits',
         PermissionDenied = <any> 'permission_denied',
         DuplicateParameter = <any> 'duplicate_parameter',

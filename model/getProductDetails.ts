@@ -62,13 +62,13 @@ export class GetProductDetails {
     */
     's3ThumbAnalytics': string;
     /**
-    * Meta data of product such as description, vendor, producer, stock level, etc.
-    */
-    'metaInfo'?: object;
-    /**
     * S3 thumbnail url of original image in 600x400 dimension for editor section
     */
     's3ThumbEditor': string;
+    /**
+    * Meta data of product such as description, vendor, producer, stock level, etc.
+    */
+    'metaInfo'?: object;
     /**
     * product deleted from the shop\'s database
     */
@@ -138,14 +138,14 @@ export class GetProductDetails {
             "type": "string"
         },
         {
-            "name": "metaInfo",
-            "baseName": "metaInfo",
-            "type": "object"
-        },
-        {
             "name": "s3ThumbEditor",
             "baseName": "s3ThumbEditor",
             "type": "string"
+        },
+        {
+            "name": "metaInfo",
+            "baseName": "metaInfo",
+            "type": "object"
         },
         {
             "name": "isDeleted",

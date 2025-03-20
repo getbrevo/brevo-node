@@ -23,7 +23,7 @@ export class CreateExternalFeed {
     */
     'url': string;
     /**
-    * Auth type of the feed:   * `basic`   * `token`   * `noAuth` 
+    * Auth type of the feed:  * `basic`  * `token`  * `noAuth` 
     */
     'authType'?: CreateExternalFeed.AuthTypeEnum = CreateExternalFeed.AuthTypeEnum.NoAuth;
     /**
@@ -45,7 +45,7 @@ export class CreateExternalFeed {
     /**
     * Maximum number of retries on the feed url
     */
-    'maxRetries'?: number;
+    'maxRetries'?: number = 5;
     /**
     * Toggle caching of feed url response
     */

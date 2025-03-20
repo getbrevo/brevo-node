@@ -19,15 +19,15 @@ export class GetInvitedUsersListUsersInnerFeatureAccess {
     /**
     * Marketing features accessiblity.
     */
-    'marketing'?: object;
+    'marketing'?: string;
     /**
     * Conversations features accessiblity.
     */
-    'conversations'?: object;
+    'conversations'?: string;
     /**
     * CRM features accessiblity.
     */
-    'crm'?: object;
+    'crm'?: string;
 
     static discriminator: string | undefined = undefined;
 
@@ -35,17 +35,17 @@ export class GetInvitedUsersListUsersInnerFeatureAccess {
         {
             "name": "marketing",
             "baseName": "marketing",
-            "type": "object"
+            "type": "string"
         },
         {
             "name": "conversations",
             "baseName": "conversations",
-            "type": "object"
+            "type": "string"
         },
         {
             "name": "crm",
             "baseName": "crm",
-            "type": "object"
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {

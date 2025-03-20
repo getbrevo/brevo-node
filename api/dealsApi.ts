@@ -15,6 +15,10 @@ import localVarRequest from 'request';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
+import { CompaniesImportPost200Response } from '../model/companiesImportPost200Response';
+import { CompaniesImportPost400Response } from '../model/companiesImportPost400Response';
+import { CrmAttributesPost200Response } from '../model/crmAttributesPost200Response';
+import { CrmAttributesPostRequest } from '../model/crmAttributesPostRequest';
 import { CrmDealsIdPatchRequest } from '../model/crmDealsIdPatchRequest';
 import { CrmDealsLinkUnlinkIdPatchRequest } from '../model/crmDealsLinkUnlinkIdPatchRequest';
 import { CrmDealsPost201Response } from '../model/crmDealsPost201Response';
@@ -37,8 +41,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum DealsApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class DealsApi {
@@ -48,8 +51,7 @@ export class DealsApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -130,11 +132,8 @@ export class DealsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -169,20 +168,93 @@ export class DealsApi {
     }
     /**
      * 
+     * @summary Create a company/deal attribute
+     * @param crmAttributesPostRequest Attribute creation data for a company/deal.
+     */
+    public async crmAttributesPost (crmAttributesPostRequest: CrmAttributesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CrmAttributesPost200Response;  }> {
+        const localVarPath = this.basePath + '/crm/attributes';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'crmAttributesPostRequest' is not null or undefined
+        if (crmAttributesPostRequest === null || crmAttributesPostRequest === undefined) {
+            throw new Error('Required parameter crmAttributesPostRequest was null or undefined when calling crmAttributesPost.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(crmAttributesPostRequest, "CrmAttributesPostRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: CrmAttributesPost200Response;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "CrmAttributesPost200Response");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * 
      * @summary Get all deals
      * @param filtersAttributesDealName Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering.
      * @param filtersLinkedCompaniesIds Filter by linked companies ids
      * @param filtersLinkedContactsIds Filter by linked companies ids
+     * @param modifiedSince Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
+     * @param createdSince Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
      * @param offset Index of the first document of the page
      * @param limit Number of documents per page
      * @param sort Sort the results in the ascending/descending order. Default order is **descending** by creation if &#x60;sort&#x60; is not passed
-     * @param sortBy The field used to sort field names.
      */
-    public async crmDealsGet (filtersAttributesDealName?: string, filtersLinkedCompaniesIds?: string, filtersLinkedContactsIds?: string, offset?: number, limit?: number, sort?: 'asc' | 'desc', sortBy?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: DealsList;  }> {
+    public async crmDealsGet (filtersAttributesDealName?: string, filtersLinkedCompaniesIds?: string, filtersLinkedContactsIds?: string, modifiedSince?: string, createdSince?: string, offset?: number, limit?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: DealsList;  }> {
         const localVarPath = this.basePath + '/crm/deals';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json', 'response'];
+        const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -203,6 +275,14 @@ export class DealsApi {
             localVarQueryParameters['filters[linkedContactsIds]'] = ObjectSerializer.serialize(filtersLinkedContactsIds, "string");
         }
 
+        if (modifiedSince !== undefined) {
+            localVarQueryParameters['modifiedSince'] = ObjectSerializer.serialize(modifiedSince, "string");
+        }
+
+        if (createdSince !== undefined) {
+            localVarQueryParameters['createdSince'] = ObjectSerializer.serialize(createdSince, "string");
+        }
+
         if (offset !== undefined) {
             localVarQueryParameters['offset'] = ObjectSerializer.serialize(offset, "number");
         }
@@ -213,10 +293,6 @@ export class DealsApi {
 
         if (sort !== undefined) {
             localVarQueryParameters['sort'] = ObjectSerializer.serialize(sort, "'asc' | 'desc'");
-        }
-
-        if (sortBy !== undefined) {
-            localVarQueryParameters['sortBy'] = ObjectSerializer.serialize(sortBy, "string");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -233,11 +309,8 @@ export class DealsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -308,11 +381,8 @@ export class DealsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -382,11 +452,8 @@ export class DealsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -423,9 +490,9 @@ export class DealsApi {
      * 
      * @summary Update a deal
      * @param id 
-     * @param body Updated deal details.
+     * @param crmDealsIdPatchRequest Updated deal details.
      */
-    public async crmDealsIdPatch (id: string, body: CrmDealsIdPatchRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async crmDealsIdPatch (id: string, crmDealsIdPatchRequest: CrmDealsIdPatchRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/crm/deals/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -444,9 +511,9 @@ export class DealsApi {
             throw new Error('Required parameter id was null or undefined when calling crmDealsIdPatch.');
         }
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling crmDealsIdPatch.');
+        // verify required parameter 'crmDealsIdPatchRequest' is not null or undefined
+        if (crmDealsIdPatchRequest === null || crmDealsIdPatchRequest === undefined) {
+            throw new Error('Required parameter crmDealsIdPatchRequest was null or undefined when calling crmDealsIdPatch.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -460,15 +527,12 @@ export class DealsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "CrmDealsIdPatchRequest")
+            body: ObjectSerializer.serialize(crmDealsIdPatchRequest, "CrmDealsIdPatchRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -501,17 +565,93 @@ export class DealsApi {
         });
     }
     /**
+     * Import deals from a CSV file with mapping options.
+     * @summary Import deals(creation and updation)
+     * @param file The CSV file to upload.The file should have the first row as the mapping attribute. Some default attribute names are (a) deal_id [brevo mongoID to update deals] (b) associated_contact (c) associated_company (f) any other attribute with internal name 
+     * @param mapping The mapping options in JSON format. Here is an example of the JSON structure:   &#x60;&#x60;&#x60;json {   \\\&quot;link_entities\\\&quot;: true, // Determines whether to link related entities during the import process   \\\&quot;unlink_entities\\\&quot;: false, // Determines whether to unlink related entities during the import process   \\\&quot;update_existing_records\\\&quot;: true, // Determines whether to update based on company ID or treat every row as create   \\\&quot;unset_empty_attributes\\\&quot;: false // Determines whether to unset a specific attribute during update if the values input is blank }  &#x60;&#x60;&#x60; 
+     */
+    public async crmDealsImportPost (file?: RequestFile, mapping?: object, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CompaniesImportPost200Response;  }> {
+        const localVarPath = this.basePath + '/crm/deals/import';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        if (file !== undefined) {
+            localVarFormParams['file'] = file;
+        }
+        localVarUseFormData = true;
+
+        if (mapping !== undefined) {
+            localVarFormParams['mapping'] = ObjectSerializer.serialize(mapping, "object");
+        }
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: CompaniesImportPost200Response;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "CompaniesImportPost200Response");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
      * 
      * @summary Link and Unlink a deal with contacts and companies
      * @param id 
-     * @param body Linked / Unlinked contacts and companies ids.
+     * @param crmDealsLinkUnlinkIdPatchRequest Linked / Unlinked contacts and companies ids.
      */
-    public async crmDealsLinkUnlinkIdPatch (id: string, body: CrmDealsLinkUnlinkIdPatchRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async crmDealsLinkUnlinkIdPatch (id: string, crmDealsLinkUnlinkIdPatchRequest: CrmDealsLinkUnlinkIdPatchRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/crm/deals/link-unlink/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json', 'response'];
+        const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -525,9 +665,9 @@ export class DealsApi {
             throw new Error('Required parameter id was null or undefined when calling crmDealsLinkUnlinkIdPatch.');
         }
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling crmDealsLinkUnlinkIdPatch.');
+        // verify required parameter 'crmDealsLinkUnlinkIdPatchRequest' is not null or undefined
+        if (crmDealsLinkUnlinkIdPatchRequest === null || crmDealsLinkUnlinkIdPatchRequest === undefined) {
+            throw new Error('Required parameter crmDealsLinkUnlinkIdPatchRequest was null or undefined when calling crmDealsLinkUnlinkIdPatch.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -541,15 +681,12 @@ export class DealsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "CrmDealsLinkUnlinkIdPatchRequest")
+            body: ObjectSerializer.serialize(crmDealsLinkUnlinkIdPatchRequest, "CrmDealsLinkUnlinkIdPatchRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -584,9 +721,9 @@ export class DealsApi {
     /**
      * 
      * @summary Create a deal
-     * @param body Deal create data.
+     * @param crmDealsPostRequest Deal create data.
      */
-    public async crmDealsPost (body: CrmDealsPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CrmDealsPost201Response;  }> {
+    public async crmDealsPost (crmDealsPostRequest: CrmDealsPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CrmDealsPost201Response;  }> {
         const localVarPath = this.basePath + '/crm/deals';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -599,9 +736,9 @@ export class DealsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling crmDealsPost.');
+        // verify required parameter 'crmDealsPostRequest' is not null or undefined
+        if (crmDealsPostRequest === null || crmDealsPostRequest === undefined) {
+            throw new Error('Required parameter crmDealsPostRequest was null or undefined when calling crmDealsPost.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -615,15 +752,12 @@ export class DealsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "CrmDealsPostRequest")
+            body: ObjectSerializer.serialize(crmDealsPostRequest, "CrmDealsPostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -687,11 +821,8 @@ export class DealsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -727,6 +858,8 @@ export class DealsApi {
     /**
      * This endpoint is deprecated. Prefer /crm/pipeline/details/{pipelineID} instead.
      * @summary Get pipeline stages
+     *
+     * @deprecated
      */
     public async crmPipelineDetailsGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Pipeline;  }> {
         const localVarPath = this.basePath + '/crm/pipeline/details';
@@ -755,11 +888,8 @@ export class DealsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -830,11 +960,8 @@ export class DealsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

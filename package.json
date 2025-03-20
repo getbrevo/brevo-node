@@ -1,28 +1,20 @@
 {
-    "name": "@getbrevo/brevo",
-    "version": "2.2.0",
-    "description": "NodeJS client for @getbrevo/brevo",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/getbrevo/brevo-node.git"
-    },
-    "main": "dist/api.js",
-    "types": "dist/api.d.ts",
-    "scripts": {
-        "clean": "rm -Rf node_modules/ *.js",
-        "build": "tsc"
-    },
-    "author": "Brevo",
-    "license": "MIT",
-    "dependencies": {
-        "bluebird": "^3.5.0",
-        "request": "^2.81.0",
-        "rewire": "^7.0.0"
-    },
-    "devDependencies": {
-        "@types/bluebird": "^3.5.33",
-        "@types/node": "^12.20.55",
-        "@types/request": "^2.48.8",
-        "typescript": "^4.0"
-    }
+  "name": "brevo-node",
+  "version": "1.1.0",
+  "description": "",
+  "homepage": "https://github.com/getbrevo/brevo-node#readme",
+  "bugs": {
+    "url": "https://github.com/getbrevo/brevo-node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getbrevo/brevo-node.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "api.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

@@ -32,8 +32,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum PaymentsApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class PaymentsApi {
@@ -43,8 +42,7 @@ export class PaymentsApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -97,13 +95,13 @@ export class PaymentsApi {
     /**
      * 
      * @summary Create a payment request
-     * @param createPaymentRquest Create a payment request 
+     * @param createPaymentRequest Create a payment request 
      */
-    public async createPaymentRequest (createPaymentRquest: CreatePaymentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatePaymentResponse;  }> {
+    public async createPaymentRequest (createPaymentRequest: CreatePaymentRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatePaymentResponse;  }> {
         const localVarPath = this.basePath + '/payments/requests';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json', 'response'];
+        const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -112,9 +110,9 @@ export class PaymentsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'createPaymentRquest' is not null or undefined
-        if (createPaymentRquest === null || createPaymentRquest === undefined) {
-            throw new Error('Required parameter createPaymentRquest was null or undefined when calling createPaymentRequest.');
+        // verify required parameter 'createPaymentRequest' is not null or undefined
+        if (createPaymentRequest === null || createPaymentRequest === undefined) {
+            throw new Error('Required parameter createPaymentRequest was null or undefined when calling createPaymentRequest.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -128,15 +126,12 @@ export class PaymentsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(createPaymentRquest, "CreatePaymentRequest")
+            body: ObjectSerializer.serialize(createPaymentRequest, "CreatePaymentRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -207,11 +202,8 @@ export class PaymentsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -281,11 +273,8 @@ export class PaymentsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

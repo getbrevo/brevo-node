@@ -11,8 +11,6 @@
  */
 
 import { RequestFile } from './models';
-import { GetWebhookAuth } from './getWebhookAuth';
-import { GetWebhookHeadersInner } from './getWebhookHeadersInner';
 
 export class GetWebhook {
     /**
@@ -33,6 +31,10 @@ export class GetWebhook {
     */
     'type': GetWebhook.TypeEnum;
     /**
+    * channel of webhook
+    */
+    'channel'?: GetWebhook.ChannelEnum = GetWebhook.ChannelEnum.Email;
+    /**
     * Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ)
     */
     'createdAt': string;
@@ -41,14 +43,14 @@ export class GetWebhook {
     */
     'modifiedAt': string;
     /**
-    * To send batched webhooks
+    * Batching configuration of the webhook, we send batched webhooks if its true
     */
     'batched'?: boolean;
-    'auth'?: GetWebhookAuth;
     /**
-    * Custom headers to be send with webhooks
+    * Authentication header to be send with the webhook requests
     */
-    'headers'?: Array<GetWebhookHeadersInner>;
+    'auth'?: object;
+    'headers'?: Array<object>;
 
     static discriminator: string | undefined = undefined;
 
@@ -79,6 +81,11 @@ export class GetWebhook {
             "type": "GetWebhook.TypeEnum"
         },
         {
+            "name": "channel",
+            "baseName": "channel",
+            "type": "GetWebhook.ChannelEnum"
+        },
+        {
             "name": "createdAt",
             "baseName": "createdAt",
             "type": "string"
@@ -96,12 +103,12 @@ export class GetWebhook {
         {
             "name": "auth",
             "baseName": "auth",
-            "type": "GetWebhookAuth"
+            "type": "object"
         },
         {
             "name": "headers",
             "baseName": "headers",
-            "type": "Array<GetWebhookHeadersInner>"
+            "type": "Array<object>"
         }    ];
 
     static getAttributeTypeMap() {
@@ -113,5 +120,9 @@ export namespace GetWebhook {
     export enum TypeEnum {
         Marketing = <any> 'marketing',
         Transactional = <any> 'transactional'
+    }
+    export enum ChannelEnum {
+        Sms = <any> 'sms',
+        Email = <any> 'email'
     }
 }
