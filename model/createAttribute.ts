@@ -15,19 +15,23 @@ import { CreateAttributeEnumerationInner } from './createAttributeEnumerationInn
 
 export class CreateAttribute {
     /**
-    * Value of the attribute. Use only if the attribute\'s category is \'calculated\' or \'global\'
+    * Value of the attribute. **Use only if the attribute\'s category is \'calculated\' or \'global\'** 
     */
     'value'?: string;
     /**
-    * Type of the attribute. Use only if the attribute\'s category is \'calculated\' or \'global\'
+    * Type of the attribute. **Use only if the attribute\'s category is \'calculated\' or \'global\'** 
     */
     'isRecurring'?: boolean;
     /**
-    * List of values and labels that the attribute can take. Use only if the attribute\'s category is \"category\". For example, [{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]
+    * List of values and labels that the attribute can take. **Use only if the attribute\'s category is \"category\"**. For example: **[{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]** 
     */
     'enumeration'?: Array<CreateAttributeEnumerationInner>;
     /**
-    * Type of the attribute. Use only if the attribute\'s category is \'normal\', \'category\' or \'transactional\' ( type \'boolean\' is only available if the category is \'normal\' attribute, type \'id\' is only available if the category is \'transactional\' attribute & type \'category\' is only available if the category is \'category\' attribute )
+    * List of options you want to add for multiple-choice attribute. **Use only if the attribute\'s category is \"normal\" and attribute\'s type is \"multiple-choice\".** For example: **[\"USA\",\"INDIA\"]** 
+    */
+    'multiCategoryOptions'?: Array<string>;
+    /**
+    * Type of the attribute. **Use only if the attribute\'s category is \'normal\', \'category\' or \'transactional\'** Type **user and multiple-choice** is only available if the category is **normal** attribute Type **id** is only available if the category is **transactional** attribute Type **category** is only available if the category is **category** attribute 
     */
     'type'?: CreateAttribute.TypeEnum;
 
@@ -50,6 +54,11 @@ export class CreateAttribute {
             "type": "Array<CreateAttributeEnumerationInner>"
         },
         {
+            "name": "multiCategoryOptions",
+            "baseName": "multiCategoryOptions",
+            "type": "Array<string>"
+        },
+        {
             "name": "type",
             "baseName": "type",
             "type": "CreateAttribute.TypeEnum"
@@ -67,6 +76,8 @@ export namespace CreateAttribute {
         Float = <any> 'float',
         Boolean = <any> 'boolean',
         Id = <any> 'id',
-        Category = <any> 'category'
+        Category = <any> 'category',
+        MultipleChoice = <any> 'multiple-choice',
+        User = <any> 'user'
     }
 }

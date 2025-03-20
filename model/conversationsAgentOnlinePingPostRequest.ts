@@ -16,19 +16,19 @@ export class ConversationsAgentOnlinePingPostRequest {
     /**
     * agent ID. It can be found on agent’s page or received <a href=\"https://developers.brevo.com/docs/conversations-webhooks\">from a webhook</a>. Alternatively, you can use `agentEmail` + `agentName` + `receivedFrom` instead (all 3 fields required).
     */
-    'agentId'?: string;
+    'agentId'?: any | null;
     /**
     * mark your messages to distinguish messages created by you from the others.
     */
-    'receivedFrom'?: string;
+    'receivedFrom'?: any | null;
     /**
     * agent email. When sending online pings from a standalone system, it’s hard to maintain a 1-to-1 relationship between the users of both systems. In this case, an agent can be specified by their email address. If there’s no agent with the specified email address in your Brevo organization, a dummy agent will be created automatically.
     */
-    'agentEmail'?: string;
+    'agentEmail'?: any | null;
     /**
-    * agent name.
+    * agent name
     */
-    'agentName'?: string;
+    'agentName'?: any | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -36,22 +36,22 @@ export class ConversationsAgentOnlinePingPostRequest {
         {
             "name": "agentId",
             "baseName": "agentId",
-            "type": "string"
+            "type": "any"
         },
         {
             "name": "receivedFrom",
             "baseName": "receivedFrom",
-            "type": "string"
+            "type": "any"
         },
         {
             "name": "agentEmail",
             "baseName": "agentEmail",
-            "type": "string"
+            "type": "any"
         },
         {
             "name": "agentName",
             "baseName": "agentName",
-            "type": "string"
+            "type": "any"
         }    ];
 
     static getAttributeTypeMap() {

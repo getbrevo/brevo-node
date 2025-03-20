@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 
 export class SendTransacSms {
     /**
-    * Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters**
+    * Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters** 
     */
     'sender': string;
     /**
@@ -22,7 +22,7 @@ export class SendTransacSms {
     */
     'recipient': string;
     /**
-    * Content of the message. If more than 160 characters long, will be sent as multiple text messages
+    * Content of the message. If more than **160 characters** long, will be sent as multiple text messages 
     */
     'content': string;
     /**
@@ -30,7 +30,7 @@ export class SendTransacSms {
     */
     'type'?: SendTransacSms.TypeEnum = SendTransacSms.TypeEnum.Transactional;
     /**
-    * Tag of the message
+    * A tag can have two types of values, either a string or an array of strings.
     */
     'tag'?: string;
     /**
@@ -38,7 +38,7 @@ export class SendTransacSms {
     */
     'webUrl'?: string;
     /**
-    * Format of the message. It indicates whether the content should be treated as unicode or not.
+    * Format of the message. It indicates whether the content should be treated as unicode or not. 
     */
     'unicodeEnabled'?: boolean = false;
     /**

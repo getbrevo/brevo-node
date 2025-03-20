@@ -16,13 +16,18 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { CorporateGroupDetailsResponse } from '../model/corporateGroupDetailsResponse';
+import { CorporateGroupIdPutRequest } from '../model/corporateGroupIdPutRequest';
 import { CorporateGroupPost201Response } from '../model/corporateGroupPost201Response';
 import { CorporateGroupPostRequest } from '../model/corporateGroupPostRequest';
 import { CorporateGroupUnlinkGroupIdSubAccountsPutRequest } from '../model/corporateGroupUnlinkGroupIdSubAccountsPutRequest';
+import { CorporateIpGet200ResponseInner } from '../model/corporateIpGet200ResponseInner';
+import { CorporateSsoTokenPostRequest } from '../model/corporateSsoTokenPostRequest';
 import { CorporateSubAccountIpAssociatePostRequest } from '../model/corporateSubAccountIpAssociatePostRequest';
 import { CorporateSubAccountIpDissociatePutRequest } from '../model/corporateSubAccountIpDissociatePutRequest';
+import { CorporateSubAccountKeyPostRequest } from '../model/corporateSubAccountKeyPostRequest';
+import { CorporateSubAccountSsoTokenPostRequest } from '../model/corporateSubAccountSsoTokenPostRequest';
+import { CorporateUserEmailPermissionsPutRequest } from '../model/corporateUserEmailPermissionsPutRequest';
 import { CorporateUserInvitationActionEmailPut200Response } from '../model/corporateUserInvitationActionEmailPut200Response';
-import { CreateApiKeyRequest } from '../model/createApiKeyRequest';
 import { CreateApiKeyResponse } from '../model/createApiKeyResponse';
 import { CreateSubAccount } from '../model/createSubAccount';
 import { CreateSubAccountResponse } from '../model/createSubAccountResponse';
@@ -34,12 +39,11 @@ import { GetSsoToken } from '../model/getSsoToken';
 import { GetSubAccountGroups200ResponseInner } from '../model/getSubAccountGroups200ResponseInner';
 import { InviteAdminUser } from '../model/inviteAdminUser';
 import { MasterDetailsResponse } from '../model/masterDetailsResponse';
-import { SsoTokenRequest } from '../model/ssoTokenRequest';
-import { SsoTokenRequestCorporate } from '../model/ssoTokenRequestCorporate';
 import { SubAccountAppsToggleRequest } from '../model/subAccountAppsToggleRequest';
 import { SubAccountDetailsResponse } from '../model/subAccountDetailsResponse';
 import { SubAccountUpdatePlanRequest } from '../model/subAccountUpdatePlanRequest';
 import { SubAccountsResponse } from '../model/subAccountsResponse';
+import { SubAccountsUpdatePlanRequest } from '../model/subAccountsUpdatePlanRequest';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -53,8 +57,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum MasterAccountApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class MasterAccountApi {
@@ -64,8 +67,7 @@ export class MasterAccountApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -153,11 +155,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -227,11 +226,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -265,12 +261,12 @@ export class MasterAccountApi {
         });
     }
     /**
-     * This endpoint allows you to update a group of sub-accounts
+     * This endpoint allows to update a group of sub-accounts
      * @summary Update a group of sub-accounts
      * @param id Id of the group
-     * @param body Group details to be updated.
+     * @param corporateGroupIdPutRequest Group details to be updated.
      */
-    public async corporateGroupIdPut (id: string, body: CorporateGroupPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async corporateGroupIdPut (id: string, corporateGroupIdPutRequest: CorporateGroupIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/corporate/group/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -289,9 +285,9 @@ export class MasterAccountApi {
             throw new Error('Required parameter id was null or undefined when calling corporateGroupIdPut.');
         }
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling corporateGroupIdPut.');
+        // verify required parameter 'corporateGroupIdPutRequest' is not null or undefined
+        if (corporateGroupIdPutRequest === null || corporateGroupIdPutRequest === undefined) {
+            throw new Error('Required parameter corporateGroupIdPutRequest was null or undefined when calling corporateGroupIdPut.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -305,15 +301,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "CorporateGroupPostRequest")
+            body: ObjectSerializer.serialize(corporateGroupIdPutRequest, "CorporateGroupIdPutRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -347,10 +340,10 @@ export class MasterAccountApi {
     }
     /**
      * This endpoint allows to create a group of sub-accounts
-     * @summary Create a new group of sub-accounts
-     * @param body Group details to be created.
+     * @summary Create a group of sub-accounts
+     * @param corporateGroupPostRequest 
      */
-    public async corporateGroupPost (body: CorporateGroupPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CorporateGroupPost201Response;  }> {
+    public async corporateGroupPost (corporateGroupPostRequest?: CorporateGroupPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CorporateGroupPost201Response;  }> {
         const localVarPath = this.basePath + '/corporate/group';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -363,11 +356,6 @@ export class MasterAccountApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling corporateGroupPost.');
-        }
-
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -379,15 +367,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "CorporateGroupPostRequest")
+            body: ObjectSerializer.serialize(corporateGroupPostRequest, "CorporateGroupPostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -423,10 +408,10 @@ export class MasterAccountApi {
     /**
      * This endpoint allows you to remove a sub-organization from a group.
      * @summary Delete sub-account from group
-     * @param groupId Id of the group
-     * @param body List of sub-account ids
+     * @param groupId Group id
+     * @param corporateGroupUnlinkGroupIdSubAccountsPutRequest List of sub-account ids
      */
-    public async corporateGroupUnlinkGroupIdSubAccountsPut (groupId: string, body: CorporateGroupUnlinkGroupIdSubAccountsPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async corporateGroupUnlinkGroupIdSubAccountsPut (groupId: string, corporateGroupUnlinkGroupIdSubAccountsPutRequest: CorporateGroupUnlinkGroupIdSubAccountsPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/corporate/group/unlink/{groupId}/subAccounts'
             .replace('{' + 'groupId' + '}', encodeURIComponent(String(groupId)));
         let localVarQueryParameters: any = {};
@@ -445,9 +430,9 @@ export class MasterAccountApi {
             throw new Error('Required parameter groupId was null or undefined when calling corporateGroupUnlinkGroupIdSubAccountsPut.');
         }
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling corporateGroupUnlinkGroupIdSubAccountsPut.');
+        // verify required parameter 'corporateGroupUnlinkGroupIdSubAccountsPutRequest' is not null or undefined
+        if (corporateGroupUnlinkGroupIdSubAccountsPutRequest === null || corporateGroupUnlinkGroupIdSubAccountsPutRequest === undefined) {
+            throw new Error('Required parameter corporateGroupUnlinkGroupIdSubAccountsPutRequest was null or undefined when calling corporateGroupUnlinkGroupIdSubAccountsPut.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -461,15 +446,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "CorporateGroupUnlinkGroupIdSubAccountsPutRequest")
+            body: ObjectSerializer.serialize(corporateGroupUnlinkGroupIdSubAccountsPutRequest, "CorporateGroupUnlinkGroupIdSubAccountsPutRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -492,6 +474,71 @@ export class MasterAccountApi {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * This endpoint allows you to retrieve the list of active IPs on your Admin account
+     * @summary List of all IPs
+     */
+    public async corporateIpGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<CorporateIpGet200ResponseInner>;  }> {
+        const localVarPath = this.basePath + '/corporate/ip';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Array<CorporateIpGet200ResponseInner>;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "Array<CorporateIpGet200ResponseInner>");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -532,11 +579,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -572,9 +616,9 @@ export class MasterAccountApi {
     /**
      * This endpoint generates an SSO token to authenticate and access the admin account using the endpoint https://account-app.brevo.com/account/login/corporate/sso/[token], where [token] will be replaced by the actual token.
      * @summary Generate SSO token to access admin account
-     * @param ssoTokenRequestCorporate User email of admin account
+     * @param corporateSsoTokenPostRequest 
      */
-    public async corporateSsoTokenPost (ssoTokenRequestCorporate: SsoTokenRequestCorporate, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSsoToken;  }> {
+    public async corporateSsoTokenPost (corporateSsoTokenPostRequest?: CorporateSsoTokenPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSsoToken;  }> {
         const localVarPath = this.basePath + '/corporate/ssoToken';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -587,11 +631,6 @@ export class MasterAccountApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'ssoTokenRequestCorporate' is not null or undefined
-        if (ssoTokenRequestCorporate === null || ssoTokenRequestCorporate === undefined) {
-            throw new Error('Required parameter ssoTokenRequestCorporate was null or undefined when calling corporateSsoTokenPost.');
-        }
-
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -603,15 +642,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(ssoTokenRequestCorporate, "SsoTokenRequestCorporate")
+            body: ObjectSerializer.serialize(corporateSsoTokenPostRequest, "CorporateSsoTokenPostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -695,11 +731,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -733,12 +766,12 @@ export class MasterAccountApi {
         });
     }
     /**
-     * API endpoint for the Corporate owner to enable/disable applications on the sub-account
+     * API endpoints for the Corporate owner to enable/disable applications on the sub-account
      * @summary Enable/disable sub-account application(s)
      * @param id Id of the sub-account organization (mandatory)
-     * @param toggleApplications List of applications to activate or deactivate on a sub-account
+     * @param subAccountAppsToggleRequest List of applications to activate or deactivate on a sub-account
      */
-    public async corporateSubAccountIdApplicationsTogglePut (id: number, toggleApplications: SubAccountAppsToggleRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async corporateSubAccountIdApplicationsTogglePut (id: number, subAccountAppsToggleRequest: SubAccountAppsToggleRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/corporate/subAccount/{id}/applications/toggle'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -757,9 +790,9 @@ export class MasterAccountApi {
             throw new Error('Required parameter id was null or undefined when calling corporateSubAccountIdApplicationsTogglePut.');
         }
 
-        // verify required parameter 'toggleApplications' is not null or undefined
-        if (toggleApplications === null || toggleApplications === undefined) {
-            throw new Error('Required parameter toggleApplications was null or undefined when calling corporateSubAccountIdApplicationsTogglePut.');
+        // verify required parameter 'subAccountAppsToggleRequest' is not null or undefined
+        if (subAccountAppsToggleRequest === null || subAccountAppsToggleRequest === undefined) {
+            throw new Error('Required parameter subAccountAppsToggleRequest was null or undefined when calling corporateSubAccountIdApplicationsTogglePut.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -773,15 +806,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(toggleApplications, "SubAccountAppsToggleRequest")
+            body: ObjectSerializer.serialize(subAccountAppsToggleRequest, "SubAccountAppsToggleRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -851,11 +881,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -925,11 +952,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -966,9 +990,9 @@ export class MasterAccountApi {
      * This endpoint will update the sub-account plan. On the Corporate solution new version v2, you can set an unlimited number of credits in your sub-organization. Please pass the value “-1\" to set the consumable in unlimited mode.
      * @summary Update sub-account plan
      * @param id Id of the sub-account organization
-     * @param updatePlanDetails Values to update a sub-account plan
+     * @param subAccountUpdatePlanRequest Values to update a sub-account plan
      */
-    public async corporateSubAccountIdPlanPut (id: number, updatePlanDetails: SubAccountUpdatePlanRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async corporateSubAccountIdPlanPut (id: number, subAccountUpdatePlanRequest: SubAccountUpdatePlanRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/corporate/subAccount/{id}/plan'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -987,9 +1011,9 @@ export class MasterAccountApi {
             throw new Error('Required parameter id was null or undefined when calling corporateSubAccountIdPlanPut.');
         }
 
-        // verify required parameter 'updatePlanDetails' is not null or undefined
-        if (updatePlanDetails === null || updatePlanDetails === undefined) {
-            throw new Error('Required parameter updatePlanDetails was null or undefined when calling corporateSubAccountIdPlanPut.');
+        // verify required parameter 'subAccountUpdatePlanRequest' is not null or undefined
+        if (subAccountUpdatePlanRequest === null || subAccountUpdatePlanRequest === undefined) {
+            throw new Error('Required parameter subAccountUpdatePlanRequest was null or undefined when calling corporateSubAccountIdPlanPut.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -1003,15 +1027,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(updatePlanDetails, "SubAccountUpdatePlanRequest")
+            body: ObjectSerializer.serialize(subAccountUpdatePlanRequest, "SubAccountUpdatePlanRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1046,9 +1067,9 @@ export class MasterAccountApi {
     /**
      * This endpoint allows to associate an IP to sub-accounts
      * @summary Associate an IP to sub-accounts
-     * @param body Ip address association details
+     * @param corporateSubAccountIpAssociatePostRequest 
      */
-    public async corporateSubAccountIpAssociatePost (body: CorporateSubAccountIpAssociatePostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: object;  }> {
+    public async corporateSubAccountIpAssociatePost (corporateSubAccountIpAssociatePostRequest?: CorporateSubAccountIpAssociatePostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: object;  }> {
         const localVarPath = this.basePath + '/corporate/subAccount/ip/associate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1061,11 +1082,6 @@ export class MasterAccountApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling corporateSubAccountIpAssociatePost.');
-        }
-
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -1077,15 +1093,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "CorporateSubAccountIpAssociatePostRequest")
+            body: ObjectSerializer.serialize(corporateSubAccountIpAssociatePostRequest, "CorporateSubAccountIpAssociatePostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1120,10 +1133,10 @@ export class MasterAccountApi {
     }
     /**
      * This endpoint allows to dissociate an IP from sub-accounts
-     * @summary Dissociate an IP from sub-accounts
-     * @param body Ip address dissociation details
+     * @summary Dissociate an IP to sub-accounts
+     * @param corporateSubAccountIpDissociatePutRequest 
      */
-    public async corporateSubAccountIpDissociatePut (body: CorporateSubAccountIpDissociatePutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async corporateSubAccountIpDissociatePut (corporateSubAccountIpDissociatePutRequest?: CorporateSubAccountIpDissociatePutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/corporate/subAccount/ip/dissociate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1136,11 +1149,6 @@ export class MasterAccountApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling corporateSubAccountIpDissociatePut.');
-        }
-
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -1152,15 +1160,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "CorporateSubAccountIpDissociatePutRequest")
+            body: ObjectSerializer.serialize(corporateSubAccountIpDissociatePutRequest, "CorporateSubAccountIpDissociatePutRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1195,9 +1200,9 @@ export class MasterAccountApi {
     /**
      * This endpoint will generate an API v3 key for a sub account
      * @summary Create an API key for a sub-account
-     * @param createApiKeyRequest Values to generate API key for sub-account
+     * @param corporateSubAccountKeyPostRequest 
      */
-    public async corporateSubAccountKeyPost (createApiKeyRequest: CreateApiKeyRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateApiKeyResponse;  }> {
+    public async corporateSubAccountKeyPost (corporateSubAccountKeyPostRequest?: CorporateSubAccountKeyPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateApiKeyResponse;  }> {
         const localVarPath = this.basePath + '/corporate/subAccount/key';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1210,11 +1215,6 @@ export class MasterAccountApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'createApiKeyRequest' is not null or undefined
-        if (createApiKeyRequest === null || createApiKeyRequest === undefined) {
-            throw new Error('Required parameter createApiKeyRequest was null or undefined when calling corporateSubAccountKeyPost.');
-        }
-
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -1226,15 +1226,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(createApiKeyRequest, "CreateApiKeyRequest")
+            body: ObjectSerializer.serialize(corporateSubAccountKeyPostRequest, "CorporateSubAccountKeyPostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1270,9 +1267,9 @@ export class MasterAccountApi {
     /**
      * This endpoint will create a new sub-account under a master account
      * @summary Create a new sub-account under a master account.
-     * @param subAccountCreate values to create new sub-account
+     * @param createSubAccount Request body with sub-account organization name
      */
-    public async corporateSubAccountPost (subAccountCreate: CreateSubAccount, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateSubAccountResponse;  }> {
+    public async corporateSubAccountPost (createSubAccount: CreateSubAccount, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateSubAccountResponse;  }> {
         const localVarPath = this.basePath + '/corporate/subAccount';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1285,9 +1282,9 @@ export class MasterAccountApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'subAccountCreate' is not null or undefined
-        if (subAccountCreate === null || subAccountCreate === undefined) {
-            throw new Error('Required parameter subAccountCreate was null or undefined when calling corporateSubAccountPost.');
+        // verify required parameter 'createSubAccount' is not null or undefined
+        if (createSubAccount === null || createSubAccount === undefined) {
+            throw new Error('Required parameter createSubAccount was null or undefined when calling corporateSubAccountPost.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -1301,15 +1298,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(subAccountCreate, "CreateSubAccount")
+            body: ObjectSerializer.serialize(createSubAccount, "CreateSubAccount")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1345,9 +1339,9 @@ export class MasterAccountApi {
     /**
      * This endpoint generates an sso token to authenticate and access a sub-account of the master using the account endpoint https://account-app.brevo.com/account/login/sub-account/sso/[token], where [token] will be replaced by the actual token.
      * @summary Generate SSO token to access sub-account
-     * @param ssoTokenRequest Values to generate SSO token for sub-account
+     * @param corporateSubAccountSsoTokenPostRequest 
      */
-    public async corporateSubAccountSsoTokenPost (ssoTokenRequest: SsoTokenRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSsoToken;  }> {
+    public async corporateSubAccountSsoTokenPost (corporateSubAccountSsoTokenPostRequest?: CorporateSubAccountSsoTokenPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSsoToken;  }> {
         const localVarPath = this.basePath + '/corporate/subAccount/ssoToken';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1360,11 +1354,6 @@ export class MasterAccountApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'ssoTokenRequest' is not null or undefined
-        if (ssoTokenRequest === null || ssoTokenRequest === undefined) {
-            throw new Error('Required parameter ssoTokenRequest was null or undefined when calling corporateSubAccountSsoTokenPost.');
-        }
-
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -1376,15 +1365,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(ssoTokenRequest, "SsoTokenRequest")
+            body: ObjectSerializer.serialize(corporateSubAccountSsoTokenPostRequest, "CorporateSubAccountSsoTokenPostRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1418,12 +1404,161 @@ export class MasterAccountApi {
         });
     }
     /**
-     * This endpoint will allow the user to:  - Resend an admin user invitation - Cancel an admin user invitation 
+     * This endpoint will update multiple sub-accounts plan. On the Corporate solution new version v2, you can set an unlimited number of credits in your sub-organization. Please pass the value “-1\" to set the consumable in unlimited mode.
+     * @summary Update sub-accounts plan
+     * @param subAccountsUpdatePlanRequest Values to update sub-accounts plan
+     */
+    public async corporateSubAccountsPlanPut (subAccountsUpdatePlanRequest: SubAccountsUpdatePlanRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/corporate/subAccounts/plan';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'subAccountsUpdatePlanRequest' is not null or undefined
+        if (subAccountsUpdatePlanRequest === null || subAccountsUpdatePlanRequest === undefined) {
+            throw new Error('Required parameter subAccountsUpdatePlanRequest was null or undefined when calling corporateSubAccountsPlanPut.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'PUT',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(subAccountsUpdatePlanRequest, "SubAccountsUpdatePlanRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * This endpoint will allow you to change the permissions of Admin users of your Admin account
+     * @summary Change admin user permissions
+     * @param email Email address of Admin user
+     * @param corporateUserEmailPermissionsPutRequest Values to update an admin user permissions
+     */
+    public async corporateUserEmailPermissionsPut (email: string, corporateUserEmailPermissionsPutRequest: CorporateUserEmailPermissionsPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/corporate/user/{email}/permissions'
+            .replace('{' + 'email' + '}', encodeURIComponent(String(email)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'email' is not null or undefined
+        if (email === null || email === undefined) {
+            throw new Error('Required parameter email was null or undefined when calling corporateUserEmailPermissionsPut.');
+        }
+
+        // verify required parameter 'corporateUserEmailPermissionsPutRequest' is not null or undefined
+        if (corporateUserEmailPermissionsPutRequest === null || corporateUserEmailPermissionsPutRequest === undefined) {
+            throw new Error('Required parameter corporateUserEmailPermissionsPutRequest was null or undefined when calling corporateUserEmailPermissionsPut.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'PUT',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(corporateUserEmailPermissionsPutRequest, "CorporateUserEmailPermissionsPutRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * This endpoint will allow the user to: - Resend an admin user invitation - Cancel an admin user invitation 
      * @summary Resend / cancel admin user invitation
      * @param action Action to be performed (cancel / resend)
      * @param email Email address of the recipient
      */
-    public async corporateUserInvitationActionEmailPut (action: string, email: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CorporateUserInvitationActionEmailPut200Response;  }> {
+    public async corporateUserInvitationActionEmailPut (action: 'resend' | 'cancel', email: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CorporateUserInvitationActionEmailPut200Response;  }> {
         const localVarPath = this.basePath + '/corporate/user/invitation/{action}/{email}'
             .replace('{' + 'action' + '}', encodeURIComponent(String(action)))
             .replace('{' + 'email' + '}', encodeURIComponent(String(email)));
@@ -1462,11 +1597,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1537,11 +1669,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1578,10 +1707,11 @@ export class MasterAccountApi {
      * @summary Get user activity logs
      * @param startDate Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search.
      * @param endDate Mandatory if startDate is used. Enter end date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month.
+     * @param email Enter the user\&#39;s email address to filter their activity in the account.
      * @param limit Number of documents per page
      * @param offset Index of the first document in the page.
      */
-    public async getAccountActivity (startDate?: string, endDate?: string, limit?: number, offset?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetAccountActivity;  }> {
+    public async getAccountActivity (startDate?: string, endDate?: string, email?: string, limit?: number, offset?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetAccountActivity;  }> {
         const localVarPath = this.basePath + '/organization/activities';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1600,6 +1730,10 @@ export class MasterAccountApi {
 
         if (endDate !== undefined) {
             localVarQueryParameters['endDate'] = ObjectSerializer.serialize(endDate, "string");
+        }
+
+        if (email !== undefined) {
+            localVarQueryParameters['email'] = ObjectSerializer.serialize(email, "string");
         }
 
         if (limit !== undefined) {
@@ -1624,11 +1758,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1692,11 +1823,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1730,9 +1858,9 @@ export class MasterAccountApi {
         });
     }
     /**
-     * 
+     * This endpoint will provide the list of admin user permissions
      * @summary Check admin user permissions
-     * @param email Email of the invited user
+     * @param email Email of the invited user.
      */
     public async getCorporateUserPermission (email: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCorporateUserPermission;  }> {
         const localVarPath = this.basePath + '/corporate/user/{email}/permissions'
@@ -1767,11 +1895,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1835,11 +1960,8 @@ export class MasterAccountApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1873,11 +1995,11 @@ export class MasterAccountApi {
         });
     }
     /**
-     * `This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - `my_plan`:   - \"all\" - `api`:   - \"none\" - `user_management`:   - \"all\" - `app_management` | Not available in ENTv2:   - \"all\"  **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it\'s assumed that all permissions will be there for the invited admin user. 
+     * `This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - `my_plan`:   - \"all\" - `api`:   - \"none\" - `user_management`:   - \"all\" - `app_management` | Not available in ENTv2:   - \"all\" - `sub_organization_groups`   - \"create\"   - \"edit_delete\" - `create_sub_organizations`   - \"all\" - `manage_sub_organizations`   - \"all\" - `analytics`   - \"download_data\"   - \"create_alerts\"   - \"my_looks\"   - \"explore_create\" - `security`   - \"all\"  **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it\'s assumed that all permissions will be there for the invited admin user. 
      * @summary Send invitation to an admin user
-     * @param sendInvitation Payload to send an invitation
+     * @param inviteAdminUser Payload to send an invitation
      */
-    public async inviteAdminUser (sendInvitation: InviteAdminUser, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: InviteAdminUser;  }> {
+    public async inviteAdminUser (inviteAdminUser: InviteAdminUser, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CorporateGroupPost201Response;  }> {
         const localVarPath = this.basePath + '/corporate/user/invitation/send';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1890,9 +2012,9 @@ export class MasterAccountApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'sendInvitation' is not null or undefined
-        if (sendInvitation === null || sendInvitation === undefined) {
-            throw new Error('Required parameter sendInvitation was null or undefined when calling inviteAdminUser.');
+        // verify required parameter 'inviteAdminUser' is not null or undefined
+        if (inviteAdminUser === null || inviteAdminUser === undefined) {
+            throw new Error('Required parameter inviteAdminUser was null or undefined when calling inviteAdminUser.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -1906,15 +2028,12 @@ export class MasterAccountApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(sendInvitation, "InviteAdminUser")
+            body: ObjectSerializer.serialize(inviteAdminUser, "InviteAdminUser")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1931,13 +2050,13 @@ export class MasterAccountApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: InviteAdminUser;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: CorporateGroupPost201Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "InviteAdminUser");
+                            body = ObjectSerializer.deserialize(body, "CorporateGroupPost201Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

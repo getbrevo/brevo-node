@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 
 export class CorporateSubAccountIpAssociatePostRequest {
     /**
-    * IP Address
+    * IP address
     */
     'ip': string;
     /**

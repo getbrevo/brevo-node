@@ -11,6 +11,7 @@
  */
 
 import { RequestFile } from './models';
+import { TaskReminder } from './taskReminder';
 
 export class CrmTasksIdPatchRequest {
     /**
@@ -53,6 +54,7 @@ export class CrmTasksIdPatchRequest {
     * Companies ids for companies a task is linked to
     */
     'companiesIds'?: Array<string>;
+    'reminder'?: TaskReminder;
 
     static discriminator: string | undefined = undefined;
 
@@ -106,6 +108,11 @@ export class CrmTasksIdPatchRequest {
             "name": "companiesIds",
             "baseName": "companiesIds",
             "type": "Array<string>"
+        },
+        {
+            "name": "reminder",
+            "baseName": "reminder",
+            "type": "TaskReminder"
         }    ];
 
     static getAttributeTypeMap() {

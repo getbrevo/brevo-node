@@ -18,7 +18,7 @@ export class SendSmtpEmailToInner {
     */
     'email': string;
     /**
-    * Name of the recipient. Maximum allowed characters are 70.
+    * Name of the recipient. **Maximum allowed characters are 70**. 
     */
     'name'?: string;
 

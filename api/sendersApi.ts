@@ -36,8 +36,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum SendersApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class SendersApi {
@@ -47,8 +46,7 @@ export class SendersApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -131,11 +129,8 @@ export class SendersApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -206,11 +201,8 @@ export class SendersApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -273,11 +265,8 @@ export class SendersApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -348,11 +337,8 @@ export class SendersApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -388,7 +374,7 @@ export class SendersApi {
     /**
      * 
      * @summary Get the list of all your senders
-     * @param ip Filter your senders for a specific ip (available for dedicated IP usage only)
+     * @param ip Filter your senders for a specific ip. **Available for dedicated IP usage only** 
      * @param domain Filter your senders for a specific domain
      */
     public async getSenders (ip?: string, domain?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSendersList;  }> {
@@ -426,11 +412,8 @@ export class SendersApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -503,11 +486,8 @@ export class SendersApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -541,11 +521,11 @@ export class SendersApi {
     }
     /**
      * 
-     * @summary Update a sender
+     * @summary Validate Sender using OTP
      * @param senderId Id of the sender
-     * @param otp otp
+     * @param sender otp
      */
-    public async validateSenderByOTP (senderId: number, otp?: Otp, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async validateSenderByOTP (senderId: number, sender?: Otp, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/senders/{senderId}/validate'
             .replace('{' + 'senderId' + '}', encodeURIComponent(String(senderId)));
         let localVarQueryParameters: any = {};
@@ -575,15 +555,12 @@ export class SendersApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(otp, "Otp")
+            body: ObjectSerializer.serialize(sender, "Otp")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

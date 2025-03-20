@@ -11,8 +11,6 @@
  */
 
 import { RequestFile } from './models';
-import { GetWebhookAuth } from './getWebhookAuth';
-import { GetWebhookHeadersInner } from './getWebhookHeadersInner';
 
 export class CreateWebhook {
     /**
@@ -24,7 +22,7 @@ export class CreateWebhook {
     */
     'description'?: string;
     /**
-    * - Events triggering the webhook. Possible values for **Transactional** type webhook: #### `sent` OR `request`, `delivered`, `hardBounce`, `softBounce`, `blocked`, `spam`, `invalid`, `deferred`, `click`, `opened`, `uniqueOpened` and `unsubscribed` - Possible values for **Marketing** type webhook: #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`, `unsubscribed`, `listAddition` & `delivered` - Possible values for **Inbound** type webhook: #### `inboundEmailProcessed` 
+    * - Events triggering the webhook. Possible values for **Transactional** type webhook: #### `sent` OR `request`, `delivered`, `hardBounce`, `softBounce`, `blocked`, `spam`, `invalid`, `deferred`, `click`, `opened`, `uniqueOpened` and `unsubscribed` - Possible values for **Marketing** type webhook: #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`, `unsubscribed`, `listAddition` & `delivered` - Possible values for **Inbound** type webhook: #### `inboundEmailProcessed` - Possible values for type **Transactional** and channel **SMS** #### `accepted`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`, `subscribe`,`sent`,`blacklisted`,`skip` - Possible values for type **Marketing**  channel **SMS** #### `sent`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`, `subscribe`,`skip` 
     */
     'events': Array<CreateWebhook.EventsEnum>;
     /**
@@ -32,18 +30,22 @@ export class CreateWebhook {
     */
     'type'?: CreateWebhook.TypeEnum = CreateWebhook.TypeEnum.Transactional;
     /**
+    * channel of webhook
+    */
+    'channel'?: CreateWebhook.ChannelEnum = CreateWebhook.ChannelEnum.Email;
+    /**
     * Inbound domain of webhook, required in case of event type `inbound`
     */
     'domain'?: string;
     /**
-    * To send batched webhooks
+    * Batching configuration of the webhook, we send batched webhooks if its true
     */
     'batched'?: boolean;
-    'auth'?: GetWebhookAuth;
     /**
-    * Custom headers to be send with webhooks
+    * Authentication header to be send with the webhook requests
     */
-    'headers'?: Array<GetWebhookHeadersInner>;
+    'auth'?: object;
+    'headers'?: Array<object>;
 
     static discriminator: string | undefined = undefined;
 
@@ -69,6 +71,11 @@ export class CreateWebhook {
             "type": "CreateWebhook.TypeEnum"
         },
         {
+            "name": "channel",
+            "baseName": "channel",
+            "type": "CreateWebhook.ChannelEnum"
+        },
+        {
             "name": "domain",
             "baseName": "domain",
             "type": "string"
@@ -81,12 +88,12 @@ export class CreateWebhook {
         {
             "name": "auth",
             "baseName": "auth",
-            "type": "GetWebhookAuth"
+            "type": "object"
         },
         {
             "name": "headers",
             "baseName": "headers",
-            "type": "Array<GetWebhookHeadersInner>"
+            "type": "Array<object>"
         }    ];
 
     static getAttributeTypeMap() {
@@ -118,5 +125,9 @@ export namespace CreateWebhook {
         Transactional = <any> 'transactional',
         Marketing = <any> 'marketing',
         Inbound = <any> 'inbound'
+    }
+    export enum ChannelEnum {
+        Sms = <any> 'sms',
+        Email = <any> 'email'
     }
 }

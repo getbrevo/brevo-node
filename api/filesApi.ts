@@ -31,8 +31,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum FilesApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class FilesApi {
@@ -42,8 +41,7 @@ export class FilesApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -159,11 +157,8 @@ export class FilesApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -234,11 +229,8 @@ export class FilesApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -309,11 +301,8 @@ export class FilesApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -383,11 +372,8 @@ export class FilesApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -424,9 +410,9 @@ export class FilesApi {
      * 
      * @summary Upload a file
      * @param file File data to create a file.
-     * @param dealId Deal id linked to a file
-     * @param contactId Contact id linked to a file
-     * @param companyId Company id linked to a file
+     * @param dealId 
+     * @param contactId 
+     * @param companyId 
      */
     public async crmFilesPost (file: RequestFile, dealId?: string, contactId?: number, companyId?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: FileData;  }> {
         const localVarPath = this.basePath + '/crm/files';
@@ -477,11 +463,8 @@ export class FilesApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

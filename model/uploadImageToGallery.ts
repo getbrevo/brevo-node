@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 
 export class UploadImageToGallery {
     /**
-    * The absolute url of the image (no local file). Maximum allowed size for image is 2MB. Allowed extensions for images are - jpeg, jpg, png, bmp, gif.
+    * The absolute url of the image (**no local file**). Maximum allowed size for image is **2MB**. Allowed extensions for images are: #### jpeg, jpg, png, bmp, gif. 
     */
     'imageUrl': string;
     /**

@@ -24,7 +24,7 @@ export class UpdateCouponCollection200Response {
     /**
     * The default coupon of the collection
     */
-    'defaultCoupon'?: string;
+    'defaultCoupon': string;
 
     static discriminator: string | undefined = undefined;
 

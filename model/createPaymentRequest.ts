@@ -26,7 +26,7 @@ export class CreatePaymentRequest {
     */
     'contactId': number;
     /**
-    * description of payment request. 
+    * description of payment request 
     */
     'description'?: string;
     'notification'?: Notification;

@@ -21,7 +21,7 @@ export class Cart {
     */
     'currency': Cart.CurrencyEnum;
     /**
-    * Payment amount, in cents.  e.g. if you want to request €12.00, then the amount in cents is 1200. 
+    * Payment amount, in cents. e.g. if you want to request €12.00, then the amount in cents is 1200. 
     */
     'specificAmount': number;
 

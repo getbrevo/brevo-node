@@ -11,6 +11,7 @@
  */
 
 import { RequestFile } from './models';
+import { CreateDoiContactAttributesValue } from './createDoiContactAttributesValue';
 
 export class CreateDoiContact {
     /**
@@ -18,9 +19,9 @@ export class CreateDoiContact {
     */
     'email': string;
     /**
-    * Pass the set of attributes and their values. These attributes must be present in your Brevo account. For eg. {\'FNAME\':\'Elly\', \'LNAME\':\'Roger\'}
+    * Pass the set of attributes and their values. **These attributes must be present in your Brevo account**. For eg. **{\'FNAME\':\'Elly\', \'LNAME\':\'Roger\', \'COUNTRIES\':[\'India\',\'China\']}** 
     */
-    'attributes'?: object;
+    'attributes'?: { [key: string]: CreateDoiContactAttributesValue; };
     /**
     * Lists under user account where contact should be added
     */
@@ -34,7 +35,7 @@ export class CreateDoiContact {
     */
     'templateId': number;
     /**
-    * URL of the web page that user will be redirected to after clicking on the double opt in URL. When editing your DOI template you can reference this URL by using the tag {{ params.DOIurl }}.
+    * URL of the web page that user will be redirected to after clicking on the double opt in URL. When editing your DOI template you can reference this URL by using the tag **{{ params.DOIurl }}**. 
     */
     'redirectionUrl': string;
 
@@ -49,7 +50,7 @@ export class CreateDoiContact {
         {
             "name": "attributes",
             "baseName": "attributes",
-            "type": "object"
+            "type": "{ [key: string]: CreateDoiContactAttributesValue; }"
         },
         {
             "name": "includeListIds",

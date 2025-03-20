@@ -27,9 +27,6 @@ export class SubAccountDetailsResponse {
     * Sub-account company name
     */
     'companyName'?: string;
-    /**
-    * List of group(s) associated with the sub-account
-    */
     'groups'?: Array<SubAccountDetailsResponseGroupsInner>;
     'planInfo'?: SubAccountDetailsResponsePlanInfo;
 

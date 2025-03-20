@@ -16,7 +16,7 @@ export class PostSendSmsTestFailed {
     /**
     * Response code
     */
-    'code': number;
+    'code': string;
     /**
     * Response message
     */
@@ -30,7 +30,7 @@ export class PostSendSmsTestFailed {
         {
             "name": "code",
             "baseName": "code",
-            "type": "number"
+            "type": "string"
         },
         {
             "name": "message",

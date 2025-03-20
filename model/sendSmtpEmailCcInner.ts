@@ -18,7 +18,7 @@ export class SendSmtpEmailCcInner {
     */
     'email': string;
     /**
-    * Name of the recipient in cc. Maximum allowed characters are 70.
+    * Name of the recipient in cc. **Maximum allowed characters are 70**. 
     */
     'name'?: string;
 

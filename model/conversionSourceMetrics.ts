@@ -13,7 +13,7 @@
 import { RequestFile } from './models';
 
 export class ConversionSourceMetrics {
-    'id': number;
+    'id': string;
     'conversionSource': ConversionSourceMetrics.ConversionSourceEnum;
     'ordersCount': number;
     'revenue': number;
@@ -25,7 +25,7 @@ export class ConversionSourceMetrics {
         {
             "name": "id",
             "baseName": "id",
-            "type": "number"
+            "type": "string"
         },
         {
             "name": "conversionSource",
@@ -55,6 +55,9 @@ export class ConversionSourceMetrics {
 
 export namespace ConversionSourceMetrics {
     export enum ConversionSourceEnum {
-        EmailCampaign = <any> 'email_campaign'
+        EmailCampaign = <any> 'email_campaign',
+        SmsCampaign = <any> 'sms_campaign',
+        AutomationWorkflowEmail = <any> 'automation_workflow_email',
+        AutomationWorkflowSms = <any> 'automation_workflow_sms'
     }
 }

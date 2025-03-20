@@ -44,8 +44,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum EmailCampaignsApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class EmailCampaignsApi {
@@ -55,8 +54,7 @@ export class EmailCampaignsApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -109,9 +107,9 @@ export class EmailCampaignsApi {
     /**
      * 
      * @summary Create an email campaign
-     * @param emailCampaigns Values to create a campaign
+     * @param createEmailCampaign Values to create a campaign
      */
-    public async createEmailCampaign (emailCampaigns: CreateEmailCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+    public async createEmailCampaign (createEmailCampaign: CreateEmailCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
         const localVarPath = this.basePath + '/emailCampaigns';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -124,9 +122,9 @@ export class EmailCampaignsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'emailCampaigns' is not null or undefined
-        if (emailCampaigns === null || emailCampaigns === undefined) {
-            throw new Error('Required parameter emailCampaigns was null or undefined when calling createEmailCampaign.');
+        // verify required parameter 'createEmailCampaign' is not null or undefined
+        if (createEmailCampaign === null || createEmailCampaign === undefined) {
+            throw new Error('Required parameter createEmailCampaign was null or undefined when calling createEmailCampaign.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -140,15 +138,12 @@ export class EmailCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(emailCampaigns, "CreateEmailCampaign")
+            body: ObjectSerializer.serialize(createEmailCampaign, "CreateEmailCampaign")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -219,11 +214,8 @@ export class EmailCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -259,9 +251,9 @@ export class EmailCampaignsApi {
      * 
      * @summary Export the recipients of an email campaign
      * @param campaignId Id of the campaign
-     * @param recipientExport Values to send for a recipient export request
+     * @param emailExportRecipients Values to send for a recipient export request
      */
-    public async emailExportRecipients (campaignId: number, recipientExport?: EmailExportRecipients, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }> {
+    public async emailExportRecipients (campaignId: number, emailExportRecipients?: EmailExportRecipients, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/exportRecipients'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -291,15 +283,12 @@ export class EmailCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(recipientExport, "EmailExportRecipients")
+            body: ObjectSerializer.serialize(emailExportRecipients, "EmailExportRecipients")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -370,11 +359,8 @@ export class EmailCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -450,11 +436,8 @@ export class EmailCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -493,8 +476,8 @@ export class EmailCampaignsApi {
      * @param type Filter on the type of the campaigns
      * @param status Filter on the status of the campaign
      * @param statistics Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.This option only returns data for events occurred in the last 6 months.For older campaigns, it’s advisable to use the **Get Campaign Report** endpoint.
-     * @param startDate Mandatory if endDate is used. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either \&#39;status\&#39; not passed and if passed is set to \&#39;sent\&#39; )
-     * @param endDate Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. Prefer to pass your timezone in date-time format for accurate result ( only available if either \&#39;status\&#39; not passed and if passed is set to \&#39;sent\&#39; )
+     * @param startDate **Mandatory if endDate is used**. Starting (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. **Prefer to pass your timezone in date-time format for accurate result** ( only available if either \&#39;status\&#39; not passed and if passed is set to \&#39;sent\&#39; ) 
+     * @param endDate **Mandatory if startDate is used**. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to filter the sent email campaigns. **Prefer to pass your timezone in date-time format for accurate result** ( only available if either \&#39;status\&#39; not passed and if passed is set to \&#39;sent\&#39; ) 
      * @param limit Number of documents per page
      * @param offset Index of the first document in the page
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
@@ -504,7 +487,7 @@ export class EmailCampaignsApi {
         const localVarPath = this.basePath + '/emailCampaigns';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json', 'applications/json'];
+        const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -563,11 +546,8 @@ export class EmailCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -638,11 +618,8 @@ export class EmailCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -713,11 +690,8 @@ export class EmailCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -794,11 +768,8 @@ export class EmailCampaignsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -834,9 +805,9 @@ export class EmailCampaignsApi {
      * 
      * @summary Send an email campaign to your test list
      * @param campaignId Id of the campaign
-     * @param emailTo 
+     * @param sendTestEmail 
      */
-    public async sendTestEmail (campaignId: number, emailTo: SendTestEmail, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async sendTestEmail (campaignId: number, sendTestEmail: SendTestEmail, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/sendTest'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -855,9 +826,9 @@ export class EmailCampaignsApi {
             throw new Error('Required parameter campaignId was null or undefined when calling sendTestEmail.');
         }
 
-        // verify required parameter 'emailTo' is not null or undefined
-        if (emailTo === null || emailTo === undefined) {
-            throw new Error('Required parameter emailTo was null or undefined when calling sendTestEmail.');
+        // verify required parameter 'sendTestEmail' is not null or undefined
+        if (sendTestEmail === null || sendTestEmail === undefined) {
+            throw new Error('Required parameter sendTestEmail was null or undefined when calling sendTestEmail.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -871,15 +842,12 @@ export class EmailCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(emailTo, "SendTestEmail")
+            body: ObjectSerializer.serialize(sendTestEmail, "SendTestEmail")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -915,9 +883,9 @@ export class EmailCampaignsApi {
      * 
      * @summary Update an email campaign status
      * @param campaignId Id of the campaign
-     * @param status Status of the campaign
+     * @param updateCampaignStatus Status of the campaign
      */
-    public async updateCampaignStatus (campaignId: number, status: UpdateCampaignStatus, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateCampaignStatus (campaignId: number, updateCampaignStatus: UpdateCampaignStatus, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/status'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -936,9 +904,9 @@ export class EmailCampaignsApi {
             throw new Error('Required parameter campaignId was null or undefined when calling updateCampaignStatus.');
         }
 
-        // verify required parameter 'status' is not null or undefined
-        if (status === null || status === undefined) {
-            throw new Error('Required parameter status was null or undefined when calling updateCampaignStatus.');
+        // verify required parameter 'updateCampaignStatus' is not null or undefined
+        if (updateCampaignStatus === null || updateCampaignStatus === undefined) {
+            throw new Error('Required parameter updateCampaignStatus was null or undefined when calling updateCampaignStatus.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -952,15 +920,12 @@ export class EmailCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(status, "UpdateCampaignStatus")
+            body: ObjectSerializer.serialize(updateCampaignStatus, "UpdateCampaignStatus")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -996,9 +961,9 @@ export class EmailCampaignsApi {
      * 
      * @summary Update an email campaign
      * @param campaignId Id of the campaign
-     * @param emailCampaign Values to update a campaign
+     * @param updateEmailCampaign Values to update a campaign
      */
-    public async updateEmailCampaign (campaignId: number, emailCampaign: UpdateEmailCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateEmailCampaign (campaignId: number, updateEmailCampaign: UpdateEmailCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -1017,9 +982,9 @@ export class EmailCampaignsApi {
             throw new Error('Required parameter campaignId was null or undefined when calling updateEmailCampaign.');
         }
 
-        // verify required parameter 'emailCampaign' is not null or undefined
-        if (emailCampaign === null || emailCampaign === undefined) {
-            throw new Error('Required parameter emailCampaign was null or undefined when calling updateEmailCampaign.');
+        // verify required parameter 'updateEmailCampaign' is not null or undefined
+        if (updateEmailCampaign === null || updateEmailCampaign === undefined) {
+            throw new Error('Required parameter updateEmailCampaign was null or undefined when calling updateEmailCampaign.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -1033,15 +998,12 @@ export class EmailCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(emailCampaign, "UpdateEmailCampaign")
+            body: ObjectSerializer.serialize(updateEmailCampaign, "UpdateEmailCampaign")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1076,9 +1038,9 @@ export class EmailCampaignsApi {
     /**
      * 
      * @summary Upload an image to your account\'s image gallery
-     * @param uploadImage Parameters to upload an image
+     * @param uploadImageToGallery Parameters to upload an image
      */
-    public async uploadImageToGallery (uploadImage: UploadImageToGallery, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UploadImageModel;  }> {
+    public async uploadImageToGallery (uploadImageToGallery: UploadImageToGallery, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UploadImageModel;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/images';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1091,9 +1053,9 @@ export class EmailCampaignsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'uploadImage' is not null or undefined
-        if (uploadImage === null || uploadImage === undefined) {
-            throw new Error('Required parameter uploadImage was null or undefined when calling uploadImageToGallery.');
+        // verify required parameter 'uploadImageToGallery' is not null or undefined
+        if (uploadImageToGallery === null || uploadImageToGallery === undefined) {
+            throw new Error('Required parameter uploadImageToGallery was null or undefined when calling uploadImageToGallery.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -1107,15 +1069,12 @@ export class EmailCampaignsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(uploadImage, "UploadImageToGallery")
+            body: ObjectSerializer.serialize(uploadImageToGallery, "UploadImageToGallery")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

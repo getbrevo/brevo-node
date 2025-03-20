@@ -49,7 +49,7 @@ export class GetExternalFeedByUUID {
     /**
     * Maximum number of retries on the feed url
     */
-    'maxRetries': number;
+    'maxRetries': number = 5;
     /**
     * Toggle caching of feed url response
     */

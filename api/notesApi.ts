@@ -32,8 +32,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum NotesApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class NotesApi {
@@ -43,8 +42,7 @@ export class NotesApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -109,7 +107,7 @@ export class NotesApi {
         const localVarPath = this.basePath + '/crm/notes';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json', 'response'];
+        const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -160,11 +158,8 @@ export class NotesApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -235,11 +230,8 @@ export class NotesApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -309,11 +301,8 @@ export class NotesApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -350,9 +339,9 @@ export class NotesApi {
      * 
      * @summary Update a note
      * @param id Note ID to update
-     * @param body Note data to update a note
+     * @param noteData Note data to update a note.
      */
-    public async crmNotesIdPatch (id: string, body: NoteData, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async crmNotesIdPatch (id: string, noteData: NoteData, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/crm/notes/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -371,9 +360,9 @@ export class NotesApi {
             throw new Error('Required parameter id was null or undefined when calling crmNotesIdPatch.');
         }
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling crmNotesIdPatch.');
+        // verify required parameter 'noteData' is not null or undefined
+        if (noteData === null || noteData === undefined) {
+            throw new Error('Required parameter noteData was null or undefined when calling crmNotesIdPatch.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -387,15 +376,12 @@ export class NotesApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "NoteData")
+            body: ObjectSerializer.serialize(noteData, "NoteData")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -430,9 +416,9 @@ export class NotesApi {
     /**
      * 
      * @summary Create a note
-     * @param body Note data to create a note.
+     * @param noteData Note data to create a note.
      */
-    public async crmNotesPost (body: NoteData, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: NoteId;  }> {
+    public async crmNotesPost (noteData: NoteData, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: NoteId;  }> {
         const localVarPath = this.basePath + '/crm/notes';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -445,9 +431,9 @@ export class NotesApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling crmNotesPost.');
+        // verify required parameter 'noteData' is not null or undefined
+        if (noteData === null || noteData === undefined) {
+            throw new Error('Required parameter noteData was null or undefined when calling crmNotesPost.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -461,15 +447,12 @@ export class NotesApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(body, "NoteData")
+            body: ObjectSerializer.serialize(noteData, "NoteData")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

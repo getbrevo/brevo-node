@@ -17,11 +17,11 @@ import { RequestFile } from './models';
 */
 export class RequestContactImportNewList {
     /**
-    * List with listName will be created first and users will be imported in it (Mandatory if listIds is empty).
+    * List with listName will be created first and users will be imported in it. **Mandatory if listIds is empty**. 
     */
     'listName'?: string;
     /**
-    * Id of the folder where this new list shall be created (Mandatory if listName is not empty).
+    * Id of the folder where this new list shall be created. **Mandatory if listName is not empty** 
     */
     'folderId'?: number;
 

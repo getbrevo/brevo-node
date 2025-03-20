@@ -35,8 +35,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum CouponsApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class CouponsApi {
@@ -46,8 +45,7 @@ export class CouponsApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -100,9 +98,9 @@ export class CouponsApi {
     /**
      * 
      * @summary Create а coupon collection
-     * @param createCouponCollection Values to create a coupon collection
+     * @param createCouponCollectionRequest Values to create a coupon collection
      */
-    public async createCouponCollection (createCouponCollection: CreateCouponCollectionRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateCouponCollection201Response;  }> {
+    public async createCouponCollection (createCouponCollectionRequest: CreateCouponCollectionRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateCouponCollection201Response;  }> {
         const localVarPath = this.basePath + '/couponCollections';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -115,9 +113,9 @@ export class CouponsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'createCouponCollection' is not null or undefined
-        if (createCouponCollection === null || createCouponCollection === undefined) {
-            throw new Error('Required parameter createCouponCollection was null or undefined when calling createCouponCollection.');
+        // verify required parameter 'createCouponCollectionRequest' is not null or undefined
+        if (createCouponCollectionRequest === null || createCouponCollectionRequest === undefined) {
+            throw new Error('Required parameter createCouponCollectionRequest was null or undefined when calling createCouponCollection.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -131,15 +129,12 @@ export class CouponsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(createCouponCollection, "CreateCouponCollectionRequest")
+            body: ObjectSerializer.serialize(createCouponCollectionRequest, "CreateCouponCollectionRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -175,9 +170,9 @@ export class CouponsApi {
     /**
      * 
      * @summary Create coupons for a coupon collection
-     * @param createCoupons Values to create coupons
+     * @param createCouponsRequest Values to create coupons
      */
-    public async createCoupons (createCoupons: CreateCouponsRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async createCoupons (createCouponsRequest: CreateCouponsRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/coupons';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -190,9 +185,9 @@ export class CouponsApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'createCoupons' is not null or undefined
-        if (createCoupons === null || createCoupons === undefined) {
-            throw new Error('Required parameter createCoupons was null or undefined when calling createCoupons.');
+        // verify required parameter 'createCouponsRequest' is not null or undefined
+        if (createCouponsRequest === null || createCouponsRequest === undefined) {
+            throw new Error('Required parameter createCouponsRequest was null or undefined when calling createCoupons.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -206,15 +201,12 @@ export class CouponsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(createCoupons, "CreateCouponsRequest")
+            body: ObjectSerializer.serialize(createCouponsRequest, "CreateCouponsRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -256,7 +248,7 @@ export class CouponsApi {
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json', 'response'];
+        const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -284,11 +276,8 @@ export class CouponsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -333,7 +322,7 @@ export class CouponsApi {
         const localVarPath = this.basePath + '/couponCollections';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json', 'response'];
+        const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -372,11 +361,8 @@ export class CouponsApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -413,9 +399,9 @@ export class CouponsApi {
      * 
      * @summary Update a coupon collection by id
      * @param id Id of the collection to update
-     * @param updateCouponCollection Values to update the coupon collection
+     * @param updateCouponCollectionRequest Values to update the coupon collection
      */
-    public async updateCouponCollection (id: string, updateCouponCollection?: UpdateCouponCollectionRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UpdateCouponCollection200Response;  }> {
+    public async updateCouponCollection (id: string, updateCouponCollectionRequest?: UpdateCouponCollectionRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UpdateCouponCollection200Response;  }> {
         const localVarPath = this.basePath + '/couponCollections/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -445,15 +431,12 @@ export class CouponsApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(updateCouponCollection, "UpdateCouponCollectionRequest")
+            body: ObjectSerializer.serialize(updateCouponCollectionRequest, "UpdateCouponCollectionRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

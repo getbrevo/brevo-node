@@ -49,10 +49,19 @@ export namespace InviteAdminUserPrivilegesInner {
         MyPlan = <any> 'my_plan',
         Api = <any> 'api',
         UserManagement = <any> 'user_management',
-        AppManagement = <any> 'app_management'
+        AppManagement = <any> 'app_management',
+        SubOrganizationGroups = <any> 'sub_organization_groups',
+        CreateSubOrganizations = <any> 'create_sub_organizations',
+        ManageSubOrganizations = <any> 'manage_sub_organizations',
+        Analytics = <any> 'analytics',
+        Security = <any> 'security'
     }
     export enum PermissionsEnum {
         All = <any> 'all',
-        None = <any> 'none'
+        None = <any> 'none',
+        Create = <any> 'create',
+        EditDelete = <any> 'edit_delete',
+        DownloadData = <any> 'download_data',
+        CreateAlerts = <any> 'create_alerts'
     }
 }

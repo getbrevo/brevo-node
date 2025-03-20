@@ -27,7 +27,7 @@ export class TaskReminder {
     /**
     * Type of task reminder e.g email, push
     */
-    'types': Array<string>;
+    'types': Array<TaskReminder.TypesEnum>;
 
     static discriminator: string | undefined = undefined;
 
@@ -45,7 +45,7 @@ export class TaskReminder {
         {
             "name": "types",
             "baseName": "types",
-            "type": "Array<string>"
+            "type": "Array<TaskReminder.TypesEnum>"
         }    ];
 
     static getAttributeTypeMap() {
@@ -59,5 +59,9 @@ export namespace TaskReminder {
         Hours = <any> 'hours',
         Weeks = <any> 'weeks',
         Days = <any> 'days'
+    }
+    export enum TypesEnum {
+        Email = <any> 'email',
+        Push = <any> 'push'
     }
 }

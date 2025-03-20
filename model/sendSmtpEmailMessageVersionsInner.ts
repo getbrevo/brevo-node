@@ -13,27 +13,27 @@
 import { RequestFile } from './models';
 import { SendSmtpEmailBccInner } from './sendSmtpEmailBccInner';
 import { SendSmtpEmailCcInner } from './sendSmtpEmailCcInner';
-import { SendSmtpEmailMessageVersionsInnerReplyTo } from './sendSmtpEmailMessageVersionsInnerReplyTo';
-import { SendSmtpEmailMessageVersionsInnerToInner } from './sendSmtpEmailMessageVersionsInnerToInner';
+import { SendSmtpEmailReplyTo } from './sendSmtpEmailReplyTo';
+import { SendSmtpEmailToInner } from './sendSmtpEmailToInner';
 
 export class SendSmtpEmailMessageVersionsInner {
     /**
-    * List of email addresses and names (_optional_) of the recipients. For example, [{\"name\":\"Jimmy\", \"email\":\"jimmy98@example.com\"}, {\"name\":\"Joe\", \"email\":\"joe@example.com\"}]
+    * List of email addresses and names (_optional_) of the recipients. For example, **[{\"name\":\"Jimmy\", \"email\":\"jimmy98@example.com\"}, {\"name\":\"Joe\", \"email\":\"joe@example.com\"}]** 
     */
-    'to': Array<SendSmtpEmailMessageVersionsInnerToInner>;
+    'to': Array<SendSmtpEmailToInner>;
     /**
-    * Pass the set of attributes to customize the template. For example, {\"FNAME\":\"Joe\", \"LNAME\":\"Doe\"}. It\'s considered only if template is in New Template Language format.
+    * Pass the set of attributes to customize the template. For example, **{\"FNAME\":\"Joe\", \"LNAME\":\"Doe\"}**. It\'s **considered only if template is in New Template Language format**. 
     */
-    'params'?: { [key: string]: object; };
+    'params'?: { [key: string]: any; };
     /**
-    * List of email addresses and names (optional) of the recipients in bcc
+    * List of email addresses and names (_optional_) of the recipients in bcc 
     */
     'bcc'?: Array<SendSmtpEmailBccInner>;
     /**
-    * List of email addresses and names (optional) of the recipients in cc
+    * List of email addresses and names (_optional_) of the recipients in cc 
     */
     'cc'?: Array<SendSmtpEmailCcInner>;
-    'replyTo'?: SendSmtpEmailMessageVersionsInnerReplyTo;
+    'replyTo'?: SendSmtpEmailReplyTo;
     /**
     * Custom subject specific to message version 
     */
@@ -53,12 +53,12 @@ export class SendSmtpEmailMessageVersionsInner {
         {
             "name": "to",
             "baseName": "to",
-            "type": "Array<SendSmtpEmailMessageVersionsInnerToInner>"
+            "type": "Array<SendSmtpEmailToInner>"
         },
         {
             "name": "params",
             "baseName": "params",
-            "type": "{ [key: string]: object; }"
+            "type": "{ [key: string]: any; }"
         },
         {
             "name": "bcc",
@@ -73,7 +73,7 @@ export class SendSmtpEmailMessageVersionsInner {
         {
             "name": "replyTo",
             "baseName": "replyTo",
-            "type": "SendSmtpEmailMessageVersionsInnerReplyTo"
+            "type": "SendSmtpEmailReplyTo"
         },
         {
             "name": "subject",

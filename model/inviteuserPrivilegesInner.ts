@@ -60,7 +60,8 @@ export namespace InviteuserPrivilegesInner {
         Phone = <any> 'phone',
         Conversations = <any> 'conversations',
         SendersDomainsDedicatedIps = <any> 'senders_domains_dedicated_ips',
-        PushNotifications = <any> 'push_notifications'
+        PushNotifications = <any> 'push_notifications',
+        Companies = <any> 'companies'
     }
     export enum PermissionsEnum {
         CreateEditDelete = <any> 'create_edit_delete',
@@ -79,8 +80,11 @@ export namespace InviteuserPrivilegesInner {
         Access = <any> 'access',
         Assign = <any> 'assign',
         Configure = <any> 'configure',
-        ManageOwnedDealsTasksCompanies = <any> 'manage_owned_deals_tasks_companies',
-        ManageOthersDealsTasksCompanies = <any> 'manage_others_deals_tasks_companies',
+        CreateEditDeals = <any> 'create_edit_deals',
+        DeleteDeals = <any> 'delete_deals',
+        ManageOthersDealsTasks = <any> 'manage_others_deals_tasks',
+        ManageOwnedCompanies = <any> 'manage_owned_companies',
+        ManageOthersCompanies = <any> 'manage_others_companies',
         Reports = <any> 'reports',
         SendersManagement = <any> 'senders_management',
         DomainsManagement = <any> 'domains_management',

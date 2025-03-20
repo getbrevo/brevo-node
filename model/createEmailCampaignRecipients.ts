@@ -21,11 +21,11 @@ export class CreateEmailCampaignRecipients {
     */
     'exclusionListIds'?: Array<number>;
     /**
-    * Mandatory if scheduledAt is not empty. List Ids to send the campaign to
+    * **Mandatory if scheduledAt is not empty**. List Ids to send the campaign to 
     */
     'listIds'?: Array<number>;
     /**
-    * Mandatory if listIds are not used. Segment ids to send the campaign to.
+    * **Mandatory if listIds are not used**. Segment ids to send the campaign to. 
     */
     'segmentIds'?: Array<number>;
 

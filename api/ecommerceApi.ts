@@ -23,6 +23,7 @@ import { CreateUpdateBatchProducts } from '../model/createUpdateBatchProducts';
 import { CreateUpdateBatchProductsModel } from '../model/createUpdateBatchProductsModel';
 import { CreateUpdateCategory } from '../model/createUpdateCategory';
 import { CreateUpdateProduct } from '../model/createUpdateProduct';
+import { CreatedBatchId } from '../model/createdBatchId';
 import { EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response } from '../model/ecommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response';
 import { EcommerceAttributionMetricsGet200Response } from '../model/ecommerceAttributionMetricsGet200Response';
 import { EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response } from '../model/ecommerceAttributionProductsConversionSourceConversionSourceIdGet200Response';
@@ -30,7 +31,6 @@ import { EcommerceConfigDisplayCurrencyGet200Response } from '../model/ecommerce
 import { ErrorModel } from '../model/errorModel';
 import { GetCategories } from '../model/getCategories';
 import { GetCategoryDetails } from '../model/getCategoryDetails';
-import { GetOrders } from '../model/getOrders';
 import { GetProductDetails } from '../model/getProductDetails';
 import { GetProducts } from '../model/getProducts';
 import { Order } from '../model/order';
@@ -48,8 +48,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum EcommerceApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class EcommerceApi {
@@ -59,8 +58,7 @@ export class EcommerceApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -115,7 +113,7 @@ export class EcommerceApi {
      * @summary Create orders in batch
      * @param orderBatch 
      */
-    public async createBatchOrder (orderBatch: OrderBatch, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async createBatchOrder (orderBatch: OrderBatch, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedBatchId;  }> {
         const localVarPath = this.basePath + '/orders/status/batch';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -148,11 +146,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -169,12 +164,13 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body: CreatedBatchId;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "CreatedBatchId");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -222,11 +218,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -296,11 +289,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -371,11 +361,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -446,11 +433,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -521,11 +505,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -589,11 +570,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -627,11 +605,11 @@ export class EcommerceApi {
     }
     /**
      * 
-     * @summary Get detailed attribution metrics for a single Brevo campaign
-     * @param conversionSource The Brevo campaign type for which data will be retrieved
-     * @param conversionSourceId The Brevo campaign id for which data will be retrieved
+     * @summary Get detailed attribution metrics for a single Brevo campaign or workflow
+     * @param conversionSource The Brevo campaign type or workflow type for which data will be retrieved
+     * @param conversionSourceId The Brevo campaign or automation workflow id for which data will be retrieved
      */
-    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }> {
+    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign' | 'sms_campaign' | 'automation_workflow_email' | 'automation_workflow_sms', conversionSourceId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}'
             .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
             .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
@@ -670,11 +648,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -709,12 +684,15 @@ export class EcommerceApi {
     }
     /**
      * 
-     * @summary Get attribution metrics for one or more Brevo campaigns
+     * @summary Get attribution metrics for one or more Brevo campaigns or workflows
      * @param periodFrom When getting metrics for a specific period, define the starting datetime in RFC3339 format
      * @param periodTo When getting metrics for a specific period, define the end datetime in RFC3339 format
-     * @param emailCampaignId The email campaign id(s) to get metrics for
+     * @param emailCampaignId The email campaign ID(s) to get metrics for
+     * @param smsCampaignId The SMS campaign ID(s) to get metrics for
+     * @param automationWorkflowEmailId The automation workflow ID(s) to get email attribution metrics for
+     * @param automationWorkflowSmsId The automation workflow ID(s) to get SMS attribution metrics for
      */
-    public async ecommerceAttributionMetricsGet (periodFrom?: Date, periodTo?: Date, emailCampaignId?: Array<number>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }> {
+    public async ecommerceAttributionMetricsGet (periodFrom?: Date, periodTo?: Date, emailCampaignId?: Array<string>, smsCampaignId?: Array<string>, automationWorkflowEmailId?: Array<string>, automationWorkflowSmsId?: Array<string>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/metrics';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -736,7 +714,19 @@ export class EcommerceApi {
         }
 
         if (emailCampaignId !== undefined) {
-            localVarQueryParameters['emailCampaignId[]'] = ObjectSerializer.serialize(emailCampaignId, "Array<number>");
+            localVarQueryParameters['emailCampaignId[]'] = ObjectSerializer.serialize(emailCampaignId, "Array<string>");
+        }
+
+        if (smsCampaignId !== undefined) {
+            localVarQueryParameters['smsCampaignId[]'] = ObjectSerializer.serialize(smsCampaignId, "Array<string>");
+        }
+
+        if (automationWorkflowEmailId !== undefined) {
+            localVarQueryParameters['automationWorkflowEmailId[]'] = ObjectSerializer.serialize(automationWorkflowEmailId, "Array<string>");
+        }
+
+        if (automationWorkflowSmsId !== undefined) {
+            localVarQueryParameters['automationWorkflowSmsId[]'] = ObjectSerializer.serialize(automationWorkflowSmsId, "Array<string>");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -753,11 +743,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -792,11 +779,11 @@ export class EcommerceApi {
     }
     /**
      * 
-     * @summary Get attributed product sales for a single Brevo campaign
-     * @param conversionSource The Brevo campaign type for which data will be retrieved
-     * @param conversionSourceId The Brevo campaign id for which data will be retrieved
+     * @summary Get attributed product sales for a single Brevo campaign or workflow
+     * @param conversionSource The Brevo campaign or automation workflow type for which data will be retrieved
+     * @param conversionSourceId The Brevo campaign or automation workflow id for which data will be retrieved
      */
-    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }> {
+    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign' | 'sms_campaign' | 'automation_workflow_email' | 'automation_workflow_sms', conversionSourceId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/products/{conversionSource}/{conversionSourceId}'
             .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
             .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
@@ -835,11 +822,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -903,11 +887,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -948,8 +929,8 @@ export class EcommerceApi {
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param ids Filter by category ids
      * @param name Filter by category name
-     * @param modifiedSince Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
-     * @param createdSince Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+     * @param modifiedSince Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+     * @param createdSince Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      */
     public async getCategories (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCategories;  }> {
         const localVarPath = this.basePath + '/categories';
@@ -1006,11 +987,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1081,11 +1059,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1127,11 +1102,11 @@ export class EcommerceApi {
      * @param modifiedSince Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      * @param createdSince Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      */
-    public async getOrders (limit?: number, offset?: number, sort?: 'asc' | 'desc', modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrders;  }> {
+    public async getOrders (limit?: number, offset?: number, sort?: 'asc' | 'desc', modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json', 'response'];
+        const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -1174,11 +1149,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1195,13 +1167,12 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetOrders;  }>((resolve, reject) => {
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "GetOrders");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));
@@ -1249,11 +1220,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1300,7 +1268,7 @@ export class EcommerceApi {
      * @param priceGt Price filter for products greater than particular amount
      * @param priceEq Price filter for products equals to particular amount
      * @param priceNe Price filter for products not equals to particular amount
-     * @param categories Filter by category ids
+     * @param categories Filter by product categories
      * @param modifiedSince Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      * @param createdSince Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      */
@@ -1387,11 +1355,8 @@ export class EcommerceApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -1427,9 +1392,9 @@ export class EcommerceApi {
     /**
      * 
      * @summary Set the ISO 4217 compliant display currency code for your Brevo account
-     * @param setConfigDisplayCurrency set ISO 4217 compliant display currency code payload
+     * @param ecommerceConfigDisplayCurrencyGet200Response set ISO 4217 compliant display currency code payload
      */
-    public async setConfigDisplayCurrency (setConfigDisplayCurrency: EcommerceConfigDisplayCurrencyGet200Response, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }> {
+    public async setConfigDisplayCurrency (ecommerceConfigDisplayCurrencyGet200Response?: EcommerceConfigDisplayCurrencyGet200Response, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/config/displayCurrency';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1442,11 +1407,6 @@ export class EcommerceApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'setConfigDisplayCurrency' is not null or undefined
-        if (setConfigDisplayCurrency === null || setConfigDisplayCurrency === undefined) {
-            throw new Error('Required parameter setConfigDisplayCurrency was null or undefined when calling setConfigDisplayCurrency.');
-        }
-
         (<any>Object).assign(localVarHeaderParams, options.headers);
 
         let localVarUseFormData = false;
@@ -1458,15 +1418,12 @@ export class EcommerceApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(setConfigDisplayCurrency, "EcommerceConfigDisplayCurrencyGet200Response")
+            body: ObjectSerializer.serialize(ecommerceConfigDisplayCurrencyGet200Response, "EcommerceConfigDisplayCurrencyGet200Response")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

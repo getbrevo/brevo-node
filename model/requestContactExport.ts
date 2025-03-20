@@ -15,7 +15,7 @@ import { RequestContactExportCustomContactFilter } from './requestContactExportC
 
 export class RequestContactExport {
     /**
-    * List of all the attributes that you want to export. These attributes must be present in your contact database. For example, [\'fname\', \'lname\', \'email\'].
+    * List of all the attributes that you want to export. **These attributes must be present in your contact database. It is required if exportMandatoryAttributes is set false. ** For example: **[\'fname\', \'lname\', \'email\']** 
     */
     'exportAttributes'?: Array<string>;
     'customContactFilter': RequestContactExportCustomContactFilter;
@@ -23,6 +23,22 @@ export class RequestContactExport {
     * Webhook that will be called once the export process is finished. For reference, https://help.brevo.com/hc/en-us/articles/360007666479
     */
     'notifyUrl'?: string;
+    /**
+    * To avoid generating the email notification upon contact export, pass **true**
+    */
+    'disableNotification'?: boolean = false;
+    /**
+    * To export mandatory attributes like EMAIL, ADDED_TIME, MODIFIED_TIME
+    */
+    'exportMandatoryAttributes'?: boolean = true;
+    /**
+    * Export subscription status of contacts for email & sms marketting. Pass email_marketing to obtain the marketing email subscription status & sms_marketing to retrieve the marketing SMS status of the contact.
+    */
+    'exportSubscriptionStatus'?: Array<string>;
+    /**
+    * Export metadata of contacts such as _listIds, ADDED_TIME, MODIFIED_TIME.
+    */
+    'exportMetadata'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -41,6 +57,26 @@ export class RequestContactExport {
             "name": "notifyUrl",
             "baseName": "notifyUrl",
             "type": "string"
+        },
+        {
+            "name": "disableNotification",
+            "baseName": "disableNotification",
+            "type": "boolean"
+        },
+        {
+            "name": "exportMandatoryAttributes",
+            "baseName": "exportMandatoryAttributes",
+            "type": "boolean"
+        },
+        {
+            "name": "exportSubscriptionStatus",
+            "baseName": "exportSubscriptionStatus",
+            "type": "Array<string>"
+        },
+        {
+            "name": "exportMetadata",
+            "baseName": "exportMetadata",
+            "type": "Array<string>"
         }    ];
 
     static getAttributeTypeMap() {

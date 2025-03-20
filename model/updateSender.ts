@@ -23,7 +23,7 @@ export class UpdateSender {
     */
     'email'?: string;
     /**
-    * Only in case of dedicated IP, IPs to associate to the sender. If passed, will replace all the existing IPs.
+    * **Only in case of dedicated IP**. IPs to associate to the sender. If passed, will replace all the existing IPs. 
     */
     'ips'?: Array<CreateSenderIpsInner>;
 

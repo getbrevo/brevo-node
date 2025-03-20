@@ -5,13 +5,24 @@ export * from './abTestCampaignResultClickedLinks';
 export * from './abTestCampaignResultStatistics';
 export * from './abTestVersionClicksInner';
 export * from './abTestVersionStats';
-export * from './addChildDomain';
-export * from './addContactToList';
-export * from './addCredits';
+export * from './addContactToListByEmails';
+export * from './addContactToListByExtIDs';
+export * from './addContactToListByIDs';
+export * from './addContactToListRequest';
+export * from './addSubscriptionMemberPayload';
+export * from './aggregateBalance';
 export * from './authenticateDomainModel';
+export * from './balance';
+export * from './balanceDataPerContact';
+export * from './balanceDefinition';
+export * from './balanceDefinitionPage';
+export * from './balanceLimit';
+export * from './balanceOrder';
 export * from './blockDomain';
 export * from './cart';
 export * from './companiesIdPatchRequest';
+export * from './companiesImportPost200Response';
+export * from './companiesImportPost400Response';
 export * from './companiesLinkUnlinkIdPatchRequest';
 export * from './companiesList';
 export * from './companiesPost200Response';
@@ -20,13 +31,14 @@ export * from './company';
 export * from './companyAttributesInner';
 export * from './componentItems';
 export * from './configuration';
+export * from './contactBalancesResp';
+export * from './contactErrorModel';
 export * from './conversationsAgentOnlinePingPostRequest';
 export * from './conversationsMessage';
 export * from './conversationsMessageFile';
 export * from './conversationsMessageFileImageInfo';
 export * from './conversationsMessagesIdPutRequest';
 export * from './conversationsMessagesPostRequest';
-export * from './conversationsPushedMessagesIdPutRequest';
 export * from './conversationsPushedMessagesPostRequest';
 export * from './conversionSourceMetrics';
 export * from './conversionSourceProduct';
@@ -34,38 +46,49 @@ export * from './corporateGroupDetailsResponse';
 export * from './corporateGroupDetailsResponseGroup';
 export * from './corporateGroupDetailsResponseSubAccountsInner';
 export * from './corporateGroupDetailsResponseUsersInner';
+export * from './corporateGroupIdPutRequest';
 export * from './corporateGroupPost201Response';
 export * from './corporateGroupPostRequest';
 export * from './corporateGroupUnlinkGroupIdSubAccountsPutRequest';
+export * from './corporateIpGet200ResponseInner';
+export * from './corporateSsoTokenPostRequest';
 export * from './corporateSubAccountIpAssociatePostRequest';
 export * from './corporateSubAccountIpDissociatePutRequest';
+export * from './corporateSubAccountKeyPostRequest';
+export * from './corporateSubAccountSsoTokenPostRequest';
+export * from './corporateUserEmailPermissionsPutRequest';
+export * from './corporateUserEmailPermissionsPutRequestPrivilegesInner';
 export * from './corporateUserInvitationActionEmailPut200Response';
-export * from './createApiKeyRequest';
 export * from './createApiKeyResponse';
 export * from './createAttribute';
 export * from './createAttributeEnumerationInner';
+export * from './createBalanceDefinitionPayload';
+export * from './createBalanceLimitPayload';
+export * from './createBalancePayload';
 export * from './createCategoryModel';
-export * from './createChild';
 export * from './createContact';
 export * from './createCouponCollection201Response';
 export * from './createCouponCollectionRequest';
 export * from './createCouponsRequest';
 export * from './createDoiContact';
+export * from './createDoiContactAttributesValue';
 export * from './createDomain';
 export * from './createDomainModel';
 export * from './createDomainModelDnsRecords';
 export * from './createDomainModelDnsRecordsDkimRecord';
 export * from './createEmailCampaign';
+export * from './createEmailCampaignEmailExpirationDate';
 export * from './createEmailCampaignRecipients';
 export * from './createEmailCampaignSender';
 export * from './createExternalFeed';
 export * from './createExternalFeed201Response';
 export * from './createList';
+export * from './createLoyaltyProgramPayload';
 export * from './createModel';
+export * from './createOrderPayload';
 export * from './createPaymentRequest';
 export * from './createPaymentResponse';
 export * from './createProductModel';
-export * from './createReseller';
 export * from './createSender';
 export * from './createSenderIpsInner';
 export * from './createSenderModel';
@@ -76,6 +99,10 @@ export * from './createSmtpTemplate';
 export * from './createSmtpTemplateSender';
 export * from './createSubAccount';
 export * from './createSubAccountResponse';
+export * from './createSubscriptionPayload';
+export * from './createSubscriptionResponse';
+export * from './createTierGroupRequest';
+export * from './createTransactionPayload';
 export * from './createUpdateBatchCategory';
 export * from './createUpdateBatchCategoryModel';
 export * from './createUpdateBatchProducts';
@@ -92,6 +119,8 @@ export * from './createWhatsAppCampaignRecipients';
 export * from './createWhatsAppTemplate';
 export * from './createdBatchId';
 export * from './createdProcessId';
+export * from './crmAttributesPost200Response';
+export * from './crmAttributesPostRequest';
 export * from './crmDealsIdPatchRequest';
 export * from './crmDealsLinkUnlinkIdPatchRequest';
 export * from './crmDealsPost201Response';
@@ -110,9 +139,13 @@ export * from './ecommerceAttributionProductsConversionSourceConversionSourceIdG
 export * from './ecommerceConfigDisplayCurrencyGet200Response';
 export * from './emailExportRecipients';
 export * from './errorModel';
+export * from './errorResponse';
 export * from './event';
+export * from './eventContactPropertiesValue';
+export * from './eventEventPropertiesValue';
 export * from './eventIdentifiers';
 export * from './exportWebhooksHistory';
+export * from './exportWebhooksHistoryRequest';
 export * from './fileData';
 export * from './fileDownloadableLink';
 export * from './getAccount';
@@ -134,27 +167,14 @@ export * from './getCampaignRecipients';
 export * from './getCampaignStats';
 export * from './getCategories';
 export * from './getCategoryDetails';
-export * from './getChildAccountCreationStatus';
-export * from './getChildDomain';
-export * from './getChildInfo';
-export * from './getChildInfoAllOfApiKeys';
-export * from './getChildInfoAllOfApiKeysV2';
-export * from './getChildInfoAllOfApiKeysV3';
-export * from './getChildInfoAllOfCredits';
-export * from './getChildInfoAllOfStatistics';
-export * from './getChildrenList';
-export * from './getChildrenListChildrenInner';
 export * from './getClient';
 export * from './getContactCampaignStats';
 export * from './getContactCampaignStatsClickedInner';
-export * from './getContactCampaignStatsClickedInnerLinksInner';
-export * from './getContactCampaignStatsMessagesSentInner';
 export * from './getContactCampaignStatsOpenedInner';
 export * from './getContactCampaignStatsTransacAttributesInner';
 export * from './getContactCampaignStatsUnsubscriptions';
-export * from './getContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner';
-export * from './getContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner';
 export * from './getContactDetails';
+export * from './getContactInfoIdentifierParameter';
 export * from './getContacts';
 export * from './getCorporateInvitedUsersList';
 export * from './getCorporateInvitedUsersListUsersInner';
@@ -209,8 +229,6 @@ export * from './getIpsFromSender';
 export * from './getList';
 export * from './getLists';
 export * from './getListsListsInner';
-export * from './getOrders';
-export * from './getOrdersOrdersInner';
 export * from './getPaymentRequest';
 export * from './getProcess';
 export * from './getProcesses';
@@ -220,9 +238,9 @@ export * from './getReports';
 export * from './getReportsReportsInner';
 export * from './getScheduledEmailByBatchId';
 export * from './getScheduledEmailByBatchIdBatchesInner';
+export * from './getScheduledEmailById200Response';
 export * from './getScheduledEmailByMessageId';
 export * from './getSegments';
-export * from './getSegmentsSegments';
 export * from './getSendersList';
 export * from './getSendersListSendersInner';
 export * from './getSendersListSendersInnerIpsInner';
@@ -252,11 +270,7 @@ export * from './getTransacSmsReport';
 export * from './getTransacSmsReportReportsInner';
 export * from './getUserPermission';
 export * from './getUserPermissionPrivilegesInner';
-export * from './getWATemplates';
-export * from './getWATemplatesTemplatesInner';
 export * from './getWebhook';
-export * from './getWebhookAuth';
-export * from './getWebhookHeadersInner';
 export * from './getWebhooks';
 export * from './getWhatsAppConfig';
 export * from './getWhatsappCampaignOverview';
@@ -264,17 +278,58 @@ export * from './getWhatsappCampaigns';
 export * from './getWhatsappCampaignsCampaignsInner';
 export * from './getWhatsappEventReport';
 export * from './getWhatsappEventReportEventsInner';
+export * from './getWhatsappTemplates';
+export * from './getWhatsappTemplatesTemplatesInner';
 export * from './inviteAdminUser';
 export * from './inviteAdminUserPrivilegesInner';
 export * from './inviteuser';
 export * from './inviteuserPrivilegesInner';
-export * from './manageIp';
+export * from './inviteuserResponse';
+export * from './loyaltyProgram';
+export * from './loyaltyProgramPage';
+export * from './loyaltyProgramValidationError';
+export * from './loyaltyTierPage';
+export * from './mainAttributeRewardPayload';
+export * from './mainBillingPayload';
+export * from './mainCodeCountHttpResponse';
+export * from './mainCreateRedeemPayload';
+export * from './mainCreateRewardPayload';
+export * from './mainCreateRewardResponse';
+export * from './mainErrorResponse';
+export * from './mainFilter';
+export * from './mainGenerator';
+export * from './mainGetContactRewardsPayload';
+export * from './mainIdentifiersPayload';
+export * from './mainLimit';
+export * from './mainModelContactReward';
+export * from './mainModelContactRewardsResp';
+export * from './mainNodeResponse';
+export * from './mainOrderPayload';
+export * from './mainProduct';
+export * from './mainProductPayload';
+export * from './mainRedeem';
+export * from './mainResultParameterResponse';
+export * from './mainReward';
+export * from './mainRewardAttribution';
+export * from './mainRewardConfigurations';
+export * from './mainRewardPage';
+export * from './mainRewardPageObj';
+export * from './mainRewardValidate';
+export * from './mainRule';
+export * from './mainRuleConditionResponse';
+export * from './mainRuleEventResponse';
+export * from './mainRuleResultResponse';
+export * from './mainValidateRewardPayload';
+export * from './mainValueResponse';
+export * from './mainVoucherRevokePayload';
 export * from './masterDetailsResponse';
 export * from './masterDetailsResponseBillingInfo';
 export * from './masterDetailsResponseBillingInfoAddress';
 export * from './masterDetailsResponseBillingInfoName';
 export * from './masterDetailsResponsePlanInfo';
 export * from './masterDetailsResponsePlanInfoFeaturesInner';
+export * from './memberContact';
+export * from './modelSubscriptionBalanceResp';
 export * from './note';
 export * from './noteData';
 export * from './noteId';
@@ -282,21 +337,28 @@ export * from './notification';
 export * from './order';
 export * from './orderBatch';
 export * from './orderBilling';
+export * from './orderIdentifiers';
+export * from './orderMetaInfoValue';
 export * from './orderProductsInner';
 export * from './otp';
+export * from './patchLoyaltyProgramPayload';
 export * from './pipeline';
 export * from './pipelineStage';
 export * from './postContactInfo';
 export * from './postContactInfoContacts';
+export * from './postContactInfoContactsFailure';
+export * from './postContactInfoContactsSuccess';
 export * from './postSendFailed';
 export * from './postSendSmsTestFailed';
 export * from './putRevokeUserPermission';
+export * from './putRevokeUserPermissionResponse';
 export * from './putresendcancelinvitation';
-export * from './remainingCreditModel';
-export * from './remainingCreditModelChild';
-export * from './remainingCreditModelReseller';
-export * from './removeContactFromList';
-export * from './removeCredits';
+export * from './putresendcancelinvitationResponse';
+export * from './removeContactFromListByAll';
+export * from './removeContactFromListByEmails';
+export * from './removeContactFromListByExtIDs';
+export * from './removeContactFromListByIDs';
+export * from './removeContactFromListRequest';
 export * from './requestContactExport';
 export * from './requestContactExportCustomContactFilter';
 export * from './requestContactImport';
@@ -307,34 +369,36 @@ export * from './scheduleSmtpEmail';
 export * from './sendReport';
 export * from './sendReportEmail';
 export * from './sendSms';
+export * from './sendSmsAsync';
 export * from './sendSmtpEmail';
 export * from './sendSmtpEmailAttachmentInner';
 export * from './sendSmtpEmailBccInner';
 export * from './sendSmtpEmailCcInner';
 export * from './sendSmtpEmailMessageVersionsInner';
-export * from './sendSmtpEmailMessageVersionsInnerReplyTo';
-export * from './sendSmtpEmailMessageVersionsInnerToInner';
 export * from './sendSmtpEmailReplyTo';
 export * from './sendSmtpEmailSender';
 export * from './sendSmtpEmailToInner';
 export * from './sendTestEmail';
 export * from './sendTestSms';
 export * from './sendTransacSms';
-export * from './sendWhatsappMessage';
 export * from './sendWhatsappMessage201Response';
-export * from './ssoTokenRequest';
-export * from './ssoTokenRequestCorporate';
+export * from './sendWhatsappMessageRequest';
+export * from './sendWhatsappMessageTemplate';
+export * from './sendWhatsappMessageText';
 export * from './subAccountAppsToggleRequest';
 export * from './subAccountDetailsResponse';
 export * from './subAccountDetailsResponseGroupsInner';
 export * from './subAccountDetailsResponsePlanInfo';
 export * from './subAccountDetailsResponsePlanInfoCredits';
 export * from './subAccountDetailsResponsePlanInfoCreditsEmails';
+export * from './subAccountDetailsResponsePlanInfoCreditsExternalFeeds';
 export * from './subAccountDetailsResponsePlanInfoCreditsSms';
+export * from './subAccountDetailsResponsePlanInfoCreditsWhatsapp';
 export * from './subAccountDetailsResponsePlanInfoCreditsWpSubscribers';
 export * from './subAccountDetailsResponsePlanInfoFeatures';
 export * from './subAccountDetailsResponsePlanInfoFeaturesInbox';
 export * from './subAccountDetailsResponsePlanInfoFeaturesLandingPage';
+export * from './subAccountDetailsResponsePlanInfoFeaturesSalesUsers';
 export * from './subAccountDetailsResponsePlanInfoFeaturesUsers';
 export * from './subAccountUpdatePlanRequest';
 export * from './subAccountUpdatePlanRequestCredits';
@@ -342,31 +406,57 @@ export * from './subAccountUpdatePlanRequestFeatures';
 export * from './subAccountsResponse';
 export * from './subAccountsResponseSubAccountsInner';
 export * from './subAccountsResponseSubAccountsInnerGroupsInner';
+export * from './subAccountsUpdatePlanRequest';
+export * from './subAccountsUpdatePlanRequestFeatures';
+export * from './subscription';
+export * from './subscriptionAggregateBalance';
+export * from './subscriptionAttributedReward';
+export * from './subscriptionBalances';
+export * from './subscriptionHandlerInfo';
+export * from './subscriptionMember';
+export * from './subscriptionTier';
 export * from './task';
 export * from './taskList';
 export * from './taskReminder';
 export * from './taskTypes';
+export * from './tier';
+export * from './tierAccessConditionsInner';
+export * from './tierForContact';
+export * from './tierGroup';
+export * from './tierGroupPage';
+export * from './tierRequest';
+export * from './tierRequestAccessConditionsInner';
+export * from './tierRequestPutPayload';
+export * from './tierRequestTierRewardsInner';
+export * from './tierTierRewardsInner';
+export * from './transaction';
+export * from './transactionHistory';
+export * from './transactionHistoryResp';
+export * from './unauthorizedResponse';
 export * from './updateAttribute';
 export * from './updateAttributeEnumerationInner';
+export * from './updateBalanceDefinitionPayload';
+export * from './updateBalanceLimitPayload';
 export * from './updateBatchContacts';
 export * from './updateBatchContactsContactsInner';
 export * from './updateBatchContactsModel';
 export * from './updateCampaignStatus';
-export * from './updateChild';
-export * from './updateChildAccountStatus';
-export * from './updateChildDomain';
 export * from './updateContact';
 export * from './updateCouponCollection200Response';
 export * from './updateCouponCollectionRequest';
 export * from './updateEmailCampaign';
+export * from './updateEmailCampaignEmailExpirationDate';
 export * from './updateEmailCampaignRecipients';
 export * from './updateEmailCampaignSender';
 export * from './updateExternalFeed';
 export * from './updateList';
+export * from './updateLoyaltyProgramPayload';
 export * from './updateSender';
 export * from './updateSmsCampaign';
 export * from './updateSmtpTemplate';
 export * from './updateSmtpTemplateSender';
+export * from './updateTierGroupRequest';
+export * from './updateUserResponse';
 export * from './updateWebhook';
 export * from './updateWhatsAppCampaign';
 export * from './uploadImageModel';
@@ -393,13 +483,24 @@ import { AbTestCampaignResultClickedLinks } from './abTestCampaignResultClickedL
 import { AbTestCampaignResultStatistics } from './abTestCampaignResultStatistics';
 import { AbTestVersionClicksInner } from './abTestVersionClicksInner';
 import { AbTestVersionStats } from './abTestVersionStats';
-import { AddChildDomain } from './addChildDomain';
-import { AddContactToList } from './addContactToList';
-import { AddCredits } from './addCredits';
+import { AddContactToListByEmails } from './addContactToListByEmails';
+import { AddContactToListByExtIDs } from './addContactToListByExtIDs';
+import { AddContactToListByIDs } from './addContactToListByIDs';
+import { AddContactToListRequest } from './addContactToListRequest';
+import { AddSubscriptionMemberPayload } from './addSubscriptionMemberPayload';
+import { AggregateBalance } from './aggregateBalance';
 import { AuthenticateDomainModel } from './authenticateDomainModel';
+import { Balance } from './balance';
+import { BalanceDataPerContact } from './balanceDataPerContact';
+import { BalanceDefinition } from './balanceDefinition';
+import { BalanceDefinitionPage } from './balanceDefinitionPage';
+import { BalanceLimit } from './balanceLimit';
+import { BalanceOrder } from './balanceOrder';
 import { BlockDomain } from './blockDomain';
 import { Cart } from './cart';
 import { CompaniesIdPatchRequest } from './companiesIdPatchRequest';
+import { CompaniesImportPost200Response } from './companiesImportPost200Response';
+import { CompaniesImportPost400Response } from './companiesImportPost400Response';
 import { CompaniesLinkUnlinkIdPatchRequest } from './companiesLinkUnlinkIdPatchRequest';
 import { CompaniesList } from './companiesList';
 import { CompaniesPost200Response } from './companiesPost200Response';
@@ -408,13 +509,14 @@ import { Company } from './company';
 import { CompanyAttributesInner } from './companyAttributesInner';
 import { ComponentItems } from './componentItems';
 import { Configuration } from './configuration';
+import { ContactBalancesResp } from './contactBalancesResp';
+import { ContactErrorModel } from './contactErrorModel';
 import { ConversationsAgentOnlinePingPostRequest } from './conversationsAgentOnlinePingPostRequest';
 import { ConversationsMessage } from './conversationsMessage';
 import { ConversationsMessageFile } from './conversationsMessageFile';
 import { ConversationsMessageFileImageInfo } from './conversationsMessageFileImageInfo';
 import { ConversationsMessagesIdPutRequest } from './conversationsMessagesIdPutRequest';
 import { ConversationsMessagesPostRequest } from './conversationsMessagesPostRequest';
-import { ConversationsPushedMessagesIdPutRequest } from './conversationsPushedMessagesIdPutRequest';
 import { ConversationsPushedMessagesPostRequest } from './conversationsPushedMessagesPostRequest';
 import { ConversionSourceMetrics } from './conversionSourceMetrics';
 import { ConversionSourceProduct } from './conversionSourceProduct';
@@ -422,38 +524,49 @@ import { CorporateGroupDetailsResponse } from './corporateGroupDetailsResponse';
 import { CorporateGroupDetailsResponseGroup } from './corporateGroupDetailsResponseGroup';
 import { CorporateGroupDetailsResponseSubAccountsInner } from './corporateGroupDetailsResponseSubAccountsInner';
 import { CorporateGroupDetailsResponseUsersInner } from './corporateGroupDetailsResponseUsersInner';
+import { CorporateGroupIdPutRequest } from './corporateGroupIdPutRequest';
 import { CorporateGroupPost201Response } from './corporateGroupPost201Response';
 import { CorporateGroupPostRequest } from './corporateGroupPostRequest';
 import { CorporateGroupUnlinkGroupIdSubAccountsPutRequest } from './corporateGroupUnlinkGroupIdSubAccountsPutRequest';
+import { CorporateIpGet200ResponseInner } from './corporateIpGet200ResponseInner';
+import { CorporateSsoTokenPostRequest } from './corporateSsoTokenPostRequest';
 import { CorporateSubAccountIpAssociatePostRequest } from './corporateSubAccountIpAssociatePostRequest';
 import { CorporateSubAccountIpDissociatePutRequest } from './corporateSubAccountIpDissociatePutRequest';
+import { CorporateSubAccountKeyPostRequest } from './corporateSubAccountKeyPostRequest';
+import { CorporateSubAccountSsoTokenPostRequest } from './corporateSubAccountSsoTokenPostRequest';
+import { CorporateUserEmailPermissionsPutRequest } from './corporateUserEmailPermissionsPutRequest';
+import { CorporateUserEmailPermissionsPutRequestPrivilegesInner } from './corporateUserEmailPermissionsPutRequestPrivilegesInner';
 import { CorporateUserInvitationActionEmailPut200Response } from './corporateUserInvitationActionEmailPut200Response';
-import { CreateApiKeyRequest } from './createApiKeyRequest';
 import { CreateApiKeyResponse } from './createApiKeyResponse';
 import { CreateAttribute } from './createAttribute';
 import { CreateAttributeEnumerationInner } from './createAttributeEnumerationInner';
+import { CreateBalanceDefinitionPayload } from './createBalanceDefinitionPayload';
+import { CreateBalanceLimitPayload } from './createBalanceLimitPayload';
+import { CreateBalancePayload } from './createBalancePayload';
 import { CreateCategoryModel } from './createCategoryModel';
-import { CreateChild } from './createChild';
 import { CreateContact } from './createContact';
 import { CreateCouponCollection201Response } from './createCouponCollection201Response';
 import { CreateCouponCollectionRequest } from './createCouponCollectionRequest';
 import { CreateCouponsRequest } from './createCouponsRequest';
 import { CreateDoiContact } from './createDoiContact';
+import { CreateDoiContactAttributesValue } from './createDoiContactAttributesValue';
 import { CreateDomain } from './createDomain';
 import { CreateDomainModel } from './createDomainModel';
 import { CreateDomainModelDnsRecords } from './createDomainModelDnsRecords';
 import { CreateDomainModelDnsRecordsDkimRecord } from './createDomainModelDnsRecordsDkimRecord';
 import { CreateEmailCampaign } from './createEmailCampaign';
+import { CreateEmailCampaignEmailExpirationDate } from './createEmailCampaignEmailExpirationDate';
 import { CreateEmailCampaignRecipients } from './createEmailCampaignRecipients';
 import { CreateEmailCampaignSender } from './createEmailCampaignSender';
 import { CreateExternalFeed } from './createExternalFeed';
 import { CreateExternalFeed201Response } from './createExternalFeed201Response';
 import { CreateList } from './createList';
+import { CreateLoyaltyProgramPayload } from './createLoyaltyProgramPayload';
 import { CreateModel } from './createModel';
+import { CreateOrderPayload } from './createOrderPayload';
 import { CreatePaymentRequest } from './createPaymentRequest';
 import { CreatePaymentResponse } from './createPaymentResponse';
 import { CreateProductModel } from './createProductModel';
-import { CreateReseller } from './createReseller';
 import { CreateSender } from './createSender';
 import { CreateSenderIpsInner } from './createSenderIpsInner';
 import { CreateSenderModel } from './createSenderModel';
@@ -464,6 +577,10 @@ import { CreateSmtpTemplate } from './createSmtpTemplate';
 import { CreateSmtpTemplateSender } from './createSmtpTemplateSender';
 import { CreateSubAccount } from './createSubAccount';
 import { CreateSubAccountResponse } from './createSubAccountResponse';
+import { CreateSubscriptionPayload } from './createSubscriptionPayload';
+import { CreateSubscriptionResponse } from './createSubscriptionResponse';
+import { CreateTierGroupRequest } from './createTierGroupRequest';
+import { CreateTransactionPayload } from './createTransactionPayload';
 import { CreateUpdateBatchCategory } from './createUpdateBatchCategory';
 import { CreateUpdateBatchCategoryModel } from './createUpdateBatchCategoryModel';
 import { CreateUpdateBatchProducts } from './createUpdateBatchProducts';
@@ -480,6 +597,8 @@ import { CreateWhatsAppCampaignRecipients } from './createWhatsAppCampaignRecipi
 import { CreateWhatsAppTemplate } from './createWhatsAppTemplate';
 import { CreatedBatchId } from './createdBatchId';
 import { CreatedProcessId } from './createdProcessId';
+import { CrmAttributesPost200Response } from './crmAttributesPost200Response';
+import { CrmAttributesPostRequest } from './crmAttributesPostRequest';
 import { CrmDealsIdPatchRequest } from './crmDealsIdPatchRequest';
 import { CrmDealsLinkUnlinkIdPatchRequest } from './crmDealsLinkUnlinkIdPatchRequest';
 import { CrmDealsPost201Response } from './crmDealsPost201Response';
@@ -498,9 +617,13 @@ import { EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Res
 import { EcommerceConfigDisplayCurrencyGet200Response } from './ecommerceConfigDisplayCurrencyGet200Response';
 import { EmailExportRecipients } from './emailExportRecipients';
 import { ErrorModel } from './errorModel';
+import { ErrorResponse } from './errorResponse';
 import { Event } from './event';
+import { EventContactPropertiesValue } from './eventContactPropertiesValue';
+import { EventEventPropertiesValue } from './eventEventPropertiesValue';
 import { EventIdentifiers } from './eventIdentifiers';
 import { ExportWebhooksHistory } from './exportWebhooksHistory';
+import { ExportWebhooksHistoryRequest } from './exportWebhooksHistoryRequest';
 import { FileData } from './fileData';
 import { FileDownloadableLink } from './fileDownloadableLink';
 import { GetAccount } from './getAccount';
@@ -522,27 +645,14 @@ import { GetCampaignRecipients } from './getCampaignRecipients';
 import { GetCampaignStats } from './getCampaignStats';
 import { GetCategories } from './getCategories';
 import { GetCategoryDetails } from './getCategoryDetails';
-import { GetChildAccountCreationStatus } from './getChildAccountCreationStatus';
-import { GetChildDomain } from './getChildDomain';
-import { GetChildInfo } from './getChildInfo';
-import { GetChildInfoAllOfApiKeys } from './getChildInfoAllOfApiKeys';
-import { GetChildInfoAllOfApiKeysV2 } from './getChildInfoAllOfApiKeysV2';
-import { GetChildInfoAllOfApiKeysV3 } from './getChildInfoAllOfApiKeysV3';
-import { GetChildInfoAllOfCredits } from './getChildInfoAllOfCredits';
-import { GetChildInfoAllOfStatistics } from './getChildInfoAllOfStatistics';
-import { GetChildrenList } from './getChildrenList';
-import { GetChildrenListChildrenInner } from './getChildrenListChildrenInner';
 import { GetClient } from './getClient';
 import { GetContactCampaignStats } from './getContactCampaignStats';
 import { GetContactCampaignStatsClickedInner } from './getContactCampaignStatsClickedInner';
-import { GetContactCampaignStatsClickedInnerLinksInner } from './getContactCampaignStatsClickedInnerLinksInner';
-import { GetContactCampaignStatsMessagesSentInner } from './getContactCampaignStatsMessagesSentInner';
 import { GetContactCampaignStatsOpenedInner } from './getContactCampaignStatsOpenedInner';
 import { GetContactCampaignStatsTransacAttributesInner } from './getContactCampaignStatsTransacAttributesInner';
 import { GetContactCampaignStatsUnsubscriptions } from './getContactCampaignStatsUnsubscriptions';
-import { GetContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner } from './getContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner';
-import { GetContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner } from './getContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner';
 import { GetContactDetails } from './getContactDetails';
+import { GetContactInfoIdentifierParameter } from './getContactInfoIdentifierParameter';
 import { GetContacts } from './getContacts';
 import { GetCorporateInvitedUsersList } from './getCorporateInvitedUsersList';
 import { GetCorporateInvitedUsersListUsersInner } from './getCorporateInvitedUsersListUsersInner';
@@ -597,8 +707,6 @@ import { GetIpsFromSender } from './getIpsFromSender';
 import { GetList } from './getList';
 import { GetLists } from './getLists';
 import { GetListsListsInner } from './getListsListsInner';
-import { GetOrders } from './getOrders';
-import { GetOrdersOrdersInner } from './getOrdersOrdersInner';
 import { GetPaymentRequest } from './getPaymentRequest';
 import { GetProcess } from './getProcess';
 import { GetProcesses } from './getProcesses';
@@ -608,9 +716,9 @@ import { GetReports } from './getReports';
 import { GetReportsReportsInner } from './getReportsReportsInner';
 import { GetScheduledEmailByBatchId } from './getScheduledEmailByBatchId';
 import { GetScheduledEmailByBatchIdBatchesInner } from './getScheduledEmailByBatchIdBatchesInner';
+import { GetScheduledEmailById200Response } from './getScheduledEmailById200Response';
 import { GetScheduledEmailByMessageId } from './getScheduledEmailByMessageId';
 import { GetSegments } from './getSegments';
-import { GetSegmentsSegments } from './getSegmentsSegments';
 import { GetSendersList } from './getSendersList';
 import { GetSendersListSendersInner } from './getSendersListSendersInner';
 import { GetSendersListSendersInnerIpsInner } from './getSendersListSendersInnerIpsInner';
@@ -640,11 +748,7 @@ import { GetTransacSmsReport } from './getTransacSmsReport';
 import { GetTransacSmsReportReportsInner } from './getTransacSmsReportReportsInner';
 import { GetUserPermission } from './getUserPermission';
 import { GetUserPermissionPrivilegesInner } from './getUserPermissionPrivilegesInner';
-import { GetWATemplates } from './getWATemplates';
-import { GetWATemplatesTemplatesInner } from './getWATemplatesTemplatesInner';
 import { GetWebhook } from './getWebhook';
-import { GetWebhookAuth } from './getWebhookAuth';
-import { GetWebhookHeadersInner } from './getWebhookHeadersInner';
 import { GetWebhooks } from './getWebhooks';
 import { GetWhatsAppConfig } from './getWhatsAppConfig';
 import { GetWhatsappCampaignOverview } from './getWhatsappCampaignOverview';
@@ -652,17 +756,58 @@ import { GetWhatsappCampaigns } from './getWhatsappCampaigns';
 import { GetWhatsappCampaignsCampaignsInner } from './getWhatsappCampaignsCampaignsInner';
 import { GetWhatsappEventReport } from './getWhatsappEventReport';
 import { GetWhatsappEventReportEventsInner } from './getWhatsappEventReportEventsInner';
+import { GetWhatsappTemplates } from './getWhatsappTemplates';
+import { GetWhatsappTemplatesTemplatesInner } from './getWhatsappTemplatesTemplatesInner';
 import { InviteAdminUser } from './inviteAdminUser';
 import { InviteAdminUserPrivilegesInner } from './inviteAdminUserPrivilegesInner';
 import { Inviteuser } from './inviteuser';
 import { InviteuserPrivilegesInner } from './inviteuserPrivilegesInner';
-import { ManageIp } from './manageIp';
+import { InviteuserResponse } from './inviteuserResponse';
+import { LoyaltyProgram } from './loyaltyProgram';
+import { LoyaltyProgramPage } from './loyaltyProgramPage';
+import { LoyaltyProgramValidationError } from './loyaltyProgramValidationError';
+import { LoyaltyTierPage } from './loyaltyTierPage';
+import { MainAttributeRewardPayload } from './mainAttributeRewardPayload';
+import { MainBillingPayload } from './mainBillingPayload';
+import { MainCodeCountHttpResponse } from './mainCodeCountHttpResponse';
+import { MainCreateRedeemPayload } from './mainCreateRedeemPayload';
+import { MainCreateRewardPayload } from './mainCreateRewardPayload';
+import { MainCreateRewardResponse } from './mainCreateRewardResponse';
+import { MainErrorResponse } from './mainErrorResponse';
+import { MainFilter } from './mainFilter';
+import { MainGenerator } from './mainGenerator';
+import { MainGetContactRewardsPayload } from './mainGetContactRewardsPayload';
+import { MainIdentifiersPayload } from './mainIdentifiersPayload';
+import { MainLimit } from './mainLimit';
+import { MainModelContactReward } from './mainModelContactReward';
+import { MainModelContactRewardsResp } from './mainModelContactRewardsResp';
+import { MainNodeResponse } from './mainNodeResponse';
+import { MainOrderPayload } from './mainOrderPayload';
+import { MainProduct } from './mainProduct';
+import { MainProductPayload } from './mainProductPayload';
+import { MainRedeem } from './mainRedeem';
+import { MainResultParameterResponse } from './mainResultParameterResponse';
+import { MainReward } from './mainReward';
+import { MainRewardAttribution } from './mainRewardAttribution';
+import { MainRewardConfigurations } from './mainRewardConfigurations';
+import { MainRewardPage } from './mainRewardPage';
+import { MainRewardPageObj } from './mainRewardPageObj';
+import { MainRewardValidate } from './mainRewardValidate';
+import { MainRule } from './mainRule';
+import { MainRuleConditionResponse } from './mainRuleConditionResponse';
+import { MainRuleEventResponse } from './mainRuleEventResponse';
+import { MainRuleResultResponse } from './mainRuleResultResponse';
+import { MainValidateRewardPayload } from './mainValidateRewardPayload';
+import { MainValueResponse } from './mainValueResponse';
+import { MainVoucherRevokePayload } from './mainVoucherRevokePayload';
 import { MasterDetailsResponse } from './masterDetailsResponse';
 import { MasterDetailsResponseBillingInfo } from './masterDetailsResponseBillingInfo';
 import { MasterDetailsResponseBillingInfoAddress } from './masterDetailsResponseBillingInfoAddress';
 import { MasterDetailsResponseBillingInfoName } from './masterDetailsResponseBillingInfoName';
 import { MasterDetailsResponsePlanInfo } from './masterDetailsResponsePlanInfo';
 import { MasterDetailsResponsePlanInfoFeaturesInner } from './masterDetailsResponsePlanInfoFeaturesInner';
+import { MemberContact } from './memberContact';
+import { ModelSubscriptionBalanceResp } from './modelSubscriptionBalanceResp';
 import { Note } from './note';
 import { NoteData } from './noteData';
 import { NoteId } from './noteId';
@@ -670,21 +815,28 @@ import { Notification } from './notification';
 import { Order } from './order';
 import { OrderBatch } from './orderBatch';
 import { OrderBilling } from './orderBilling';
+import { OrderIdentifiers } from './orderIdentifiers';
+import { OrderMetaInfoValue } from './orderMetaInfoValue';
 import { OrderProductsInner } from './orderProductsInner';
 import { Otp } from './otp';
+import { PatchLoyaltyProgramPayload } from './patchLoyaltyProgramPayload';
 import { Pipeline } from './pipeline';
 import { PipelineStage } from './pipelineStage';
 import { PostContactInfo } from './postContactInfo';
 import { PostContactInfoContacts } from './postContactInfoContacts';
+import { PostContactInfoContactsFailure } from './postContactInfoContactsFailure';
+import { PostContactInfoContactsSuccess } from './postContactInfoContactsSuccess';
 import { PostSendFailed } from './postSendFailed';
 import { PostSendSmsTestFailed } from './postSendSmsTestFailed';
 import { PutRevokeUserPermission } from './putRevokeUserPermission';
+import { PutRevokeUserPermissionResponse } from './putRevokeUserPermissionResponse';
 import { Putresendcancelinvitation } from './putresendcancelinvitation';
-import { RemainingCreditModel } from './remainingCreditModel';
-import { RemainingCreditModelChild } from './remainingCreditModelChild';
-import { RemainingCreditModelReseller } from './remainingCreditModelReseller';
-import { RemoveContactFromList } from './removeContactFromList';
-import { RemoveCredits } from './removeCredits';
+import { PutresendcancelinvitationResponse } from './putresendcancelinvitationResponse';
+import { RemoveContactFromListByAll } from './removeContactFromListByAll';
+import { RemoveContactFromListByEmails } from './removeContactFromListByEmails';
+import { RemoveContactFromListByExtIDs } from './removeContactFromListByExtIDs';
+import { RemoveContactFromListByIDs } from './removeContactFromListByIDs';
+import { RemoveContactFromListRequest } from './removeContactFromListRequest';
 import { RequestContactExport } from './requestContactExport';
 import { RequestContactExportCustomContactFilter } from './requestContactExportCustomContactFilter';
 import { RequestContactImport } from './requestContactImport';
@@ -695,34 +847,36 @@ import { ScheduleSmtpEmail } from './scheduleSmtpEmail';
 import { SendReport } from './sendReport';
 import { SendReportEmail } from './sendReportEmail';
 import { SendSms } from './sendSms';
+import { SendSmsAsync } from './sendSmsAsync';
 import { SendSmtpEmail } from './sendSmtpEmail';
 import { SendSmtpEmailAttachmentInner } from './sendSmtpEmailAttachmentInner';
 import { SendSmtpEmailBccInner } from './sendSmtpEmailBccInner';
 import { SendSmtpEmailCcInner } from './sendSmtpEmailCcInner';
 import { SendSmtpEmailMessageVersionsInner } from './sendSmtpEmailMessageVersionsInner';
-import { SendSmtpEmailMessageVersionsInnerReplyTo } from './sendSmtpEmailMessageVersionsInnerReplyTo';
-import { SendSmtpEmailMessageVersionsInnerToInner } from './sendSmtpEmailMessageVersionsInnerToInner';
 import { SendSmtpEmailReplyTo } from './sendSmtpEmailReplyTo';
 import { SendSmtpEmailSender } from './sendSmtpEmailSender';
 import { SendSmtpEmailToInner } from './sendSmtpEmailToInner';
 import { SendTestEmail } from './sendTestEmail';
 import { SendTestSms } from './sendTestSms';
 import { SendTransacSms } from './sendTransacSms';
-import { SendWhatsappMessage } from './sendWhatsappMessage';
 import { SendWhatsappMessage201Response } from './sendWhatsappMessage201Response';
-import { SsoTokenRequest } from './ssoTokenRequest';
-import { SsoTokenRequestCorporate } from './ssoTokenRequestCorporate';
+import { SendWhatsappMessageRequest } from './sendWhatsappMessageRequest';
+import { SendWhatsappMessageTemplate } from './sendWhatsappMessageTemplate';
+import { SendWhatsappMessageText } from './sendWhatsappMessageText';
 import { SubAccountAppsToggleRequest } from './subAccountAppsToggleRequest';
 import { SubAccountDetailsResponse } from './subAccountDetailsResponse';
 import { SubAccountDetailsResponseGroupsInner } from './subAccountDetailsResponseGroupsInner';
 import { SubAccountDetailsResponsePlanInfo } from './subAccountDetailsResponsePlanInfo';
 import { SubAccountDetailsResponsePlanInfoCredits } from './subAccountDetailsResponsePlanInfoCredits';
 import { SubAccountDetailsResponsePlanInfoCreditsEmails } from './subAccountDetailsResponsePlanInfoCreditsEmails';
+import { SubAccountDetailsResponsePlanInfoCreditsExternalFeeds } from './subAccountDetailsResponsePlanInfoCreditsExternalFeeds';
 import { SubAccountDetailsResponsePlanInfoCreditsSms } from './subAccountDetailsResponsePlanInfoCreditsSms';
+import { SubAccountDetailsResponsePlanInfoCreditsWhatsapp } from './subAccountDetailsResponsePlanInfoCreditsWhatsapp';
 import { SubAccountDetailsResponsePlanInfoCreditsWpSubscribers } from './subAccountDetailsResponsePlanInfoCreditsWpSubscribers';
 import { SubAccountDetailsResponsePlanInfoFeatures } from './subAccountDetailsResponsePlanInfoFeatures';
 import { SubAccountDetailsResponsePlanInfoFeaturesInbox } from './subAccountDetailsResponsePlanInfoFeaturesInbox';
 import { SubAccountDetailsResponsePlanInfoFeaturesLandingPage } from './subAccountDetailsResponsePlanInfoFeaturesLandingPage';
+import { SubAccountDetailsResponsePlanInfoFeaturesSalesUsers } from './subAccountDetailsResponsePlanInfoFeaturesSalesUsers';
 import { SubAccountDetailsResponsePlanInfoFeaturesUsers } from './subAccountDetailsResponsePlanInfoFeaturesUsers';
 import { SubAccountUpdatePlanRequest } from './subAccountUpdatePlanRequest';
 import { SubAccountUpdatePlanRequestCredits } from './subAccountUpdatePlanRequestCredits';
@@ -730,31 +884,57 @@ import { SubAccountUpdatePlanRequestFeatures } from './subAccountUpdatePlanReque
 import { SubAccountsResponse } from './subAccountsResponse';
 import { SubAccountsResponseSubAccountsInner } from './subAccountsResponseSubAccountsInner';
 import { SubAccountsResponseSubAccountsInnerGroupsInner } from './subAccountsResponseSubAccountsInnerGroupsInner';
+import { SubAccountsUpdatePlanRequest } from './subAccountsUpdatePlanRequest';
+import { SubAccountsUpdatePlanRequestFeatures } from './subAccountsUpdatePlanRequestFeatures';
+import { Subscription } from './subscription';
+import { SubscriptionAggregateBalance } from './subscriptionAggregateBalance';
+import { SubscriptionAttributedReward } from './subscriptionAttributedReward';
+import { SubscriptionBalances } from './subscriptionBalances';
+import { SubscriptionHandlerInfo } from './subscriptionHandlerInfo';
+import { SubscriptionMember } from './subscriptionMember';
+import { SubscriptionTier } from './subscriptionTier';
 import { Task } from './task';
 import { TaskList } from './taskList';
 import { TaskReminder } from './taskReminder';
 import { TaskTypes } from './taskTypes';
+import { Tier } from './tier';
+import { TierAccessConditionsInner } from './tierAccessConditionsInner';
+import { TierForContact } from './tierForContact';
+import { TierGroup } from './tierGroup';
+import { TierGroupPage } from './tierGroupPage';
+import { TierRequest } from './tierRequest';
+import { TierRequestAccessConditionsInner } from './tierRequestAccessConditionsInner';
+import { TierRequestPutPayload } from './tierRequestPutPayload';
+import { TierRequestTierRewardsInner } from './tierRequestTierRewardsInner';
+import { TierTierRewardsInner } from './tierTierRewardsInner';
+import { Transaction } from './transaction';
+import { TransactionHistory } from './transactionHistory';
+import { TransactionHistoryResp } from './transactionHistoryResp';
+import { UnauthorizedResponse } from './unauthorizedResponse';
 import { UpdateAttribute } from './updateAttribute';
 import { UpdateAttributeEnumerationInner } from './updateAttributeEnumerationInner';
+import { UpdateBalanceDefinitionPayload } from './updateBalanceDefinitionPayload';
+import { UpdateBalanceLimitPayload } from './updateBalanceLimitPayload';
 import { UpdateBatchContacts } from './updateBatchContacts';
 import { UpdateBatchContactsContactsInner } from './updateBatchContactsContactsInner';
 import { UpdateBatchContactsModel } from './updateBatchContactsModel';
 import { UpdateCampaignStatus } from './updateCampaignStatus';
-import { UpdateChild } from './updateChild';
-import { UpdateChildAccountStatus } from './updateChildAccountStatus';
-import { UpdateChildDomain } from './updateChildDomain';
 import { UpdateContact } from './updateContact';
 import { UpdateCouponCollection200Response } from './updateCouponCollection200Response';
 import { UpdateCouponCollectionRequest } from './updateCouponCollectionRequest';
 import { UpdateEmailCampaign } from './updateEmailCampaign';
+import { UpdateEmailCampaignEmailExpirationDate } from './updateEmailCampaignEmailExpirationDate';
 import { UpdateEmailCampaignRecipients } from './updateEmailCampaignRecipients';
 import { UpdateEmailCampaignSender } from './updateEmailCampaignSender';
 import { UpdateExternalFeed } from './updateExternalFeed';
 import { UpdateList } from './updateList';
+import { UpdateLoyaltyProgramPayload } from './updateLoyaltyProgramPayload';
 import { UpdateSender } from './updateSender';
 import { UpdateSmsCampaign } from './updateSmsCampaign';
 import { UpdateSmtpTemplate } from './updateSmtpTemplate';
 import { UpdateSmtpTemplateSender } from './updateSmtpTemplateSender';
+import { UpdateTierGroupRequest } from './updateTierGroupRequest';
+import { UpdateUserResponse } from './updateUserResponse';
 import { UpdateWebhook } from './updateWebhook';
 import { UpdateWhatsAppCampaign } from './updateWhatsAppCampaign';
 import { UploadImageModel } from './uploadImageModel';
@@ -778,23 +958,44 @@ let primitives = [
 let enumsMap: {[index: string]: any} = {
         "AbTestCampaignResult.WinningVersionEnum": AbTestCampaignResult.WinningVersionEnum,
         "AbTestCampaignResult.WinningCriteriaEnum": AbTestCampaignResult.WinningCriteriaEnum,
+        "BalanceDefinition.BalanceAvailabilityDurationModifierEnum": BalanceDefinition.BalanceAvailabilityDurationModifierEnum,
         "Cart.CurrencyEnum": Cart.CurrencyEnum,
+        "ContactErrorModel.CodeEnum": ContactErrorModel.CodeEnum,
         "ConversationsMessage.TypeEnum": ConversationsMessage.TypeEnum,
         "ConversionSourceMetrics.ConversionSourceEnum": ConversionSourceMetrics.ConversionSourceEnum,
+        "CorporateSubAccountSsoTokenPostRequest.TargetEnum": CorporateSubAccountSsoTokenPostRequest.TargetEnum,
+        "CorporateUserEmailPermissionsPutRequestPrivilegesInner.FeatureEnum": CorporateUserEmailPermissionsPutRequestPrivilegesInner.FeatureEnum,
+        "CorporateUserEmailPermissionsPutRequestPrivilegesInner.PermissionsEnum": CorporateUserEmailPermissionsPutRequestPrivilegesInner.PermissionsEnum,
         "CreateAttribute.TypeEnum": CreateAttribute.TypeEnum,
-        "CreateChild.LanguageEnum": CreateChild.LanguageEnum,
+        "CreateBalanceDefinitionPayload.BalanceAvailabilityDurationModifierEnum": CreateBalanceDefinitionPayload.BalanceAvailabilityDurationModifierEnum,
+        "CreateBalanceDefinitionPayload.BalanceAvailabilityDurationUnitEnum": CreateBalanceDefinitionPayload.BalanceAvailabilityDurationUnitEnum,
+        "CreateBalanceDefinitionPayload.BalanceOptionAmountOvertakingStrategyEnum": CreateBalanceDefinitionPayload.BalanceOptionAmountOvertakingStrategyEnum,
+        "CreateBalanceDefinitionPayload.BalanceOptionCreditRoundingEnum": CreateBalanceDefinitionPayload.BalanceOptionCreditRoundingEnum,
+        "CreateBalanceDefinitionPayload.BalanceOptionDebitRoundingEnum": CreateBalanceDefinitionPayload.BalanceOptionDebitRoundingEnum,
+        "CreateBalanceDefinitionPayload.UnitEnum": CreateBalanceDefinitionPayload.UnitEnum,
+        "CreateBalanceLimitPayload.ConstraintTypeEnum": CreateBalanceLimitPayload.ConstraintTypeEnum,
+        "CreateBalanceLimitPayload.DurationUnitEnum": CreateBalanceLimitPayload.DurationUnitEnum,
+        "CreateBalanceLimitPayload.TransactionTypeEnum": CreateBalanceLimitPayload.TransactionTypeEnum,
         "CreateEmailCampaign.WinnerCriteriaEnum": CreateEmailCampaign.WinnerCriteriaEnum,
+        "CreateEmailCampaignEmailExpirationDate.UnitEnum": CreateEmailCampaignEmailExpirationDate.UnitEnum,
         "CreateExternalFeed.AuthTypeEnum": CreateExternalFeed.AuthTypeEnum,
         "CreateSubAccount.LanguageEnum": CreateSubAccount.LanguageEnum,
+        "CreateTierGroupRequest.UpgradeStrategyEnum": CreateTierGroupRequest.UpgradeStrategyEnum,
+        "CreateTierGroupRequest.DowngradeStrategyEnum": CreateTierGroupRequest.DowngradeStrategyEnum,
         "CreateWebhook.EventsEnum": CreateWebhook.EventsEnum,
         "CreateWebhook.TypeEnum": CreateWebhook.TypeEnum,
+        "CreateWebhook.ChannelEnum": CreateWebhook.ChannelEnum,
         "CreateWhatsAppTemplate.CategoryEnum": CreateWhatsAppTemplate.CategoryEnum,
         "CreateWhatsAppTemplate.SourceEnum": CreateWhatsAppTemplate.SourceEnum,
+        "CrmAttributesPostRequest.AttributeTypeEnum": CrmAttributesPostRequest.AttributeTypeEnum,
+        "CrmAttributesPostRequest.ObjectTypeEnum": CrmAttributesPostRequest.ObjectTypeEnum,
         "EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response.ConversionSourceEnum": EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response.ConversionSourceEnum,
         "EmailExportRecipients.RecipientsTypeEnum": EmailExportRecipients.RecipientsTypeEnum,
         "ErrorModel.CodeEnum": ErrorModel.CodeEnum,
         "ExportWebhooksHistory.TypeEnum": ExportWebhooksHistory.TypeEnum,
         "ExportWebhooksHistory.EventEnum": ExportWebhooksHistory.EventEnum,
+        "ExportWebhooksHistoryRequest.TypeEnum": ExportWebhooksHistoryRequest.TypeEnum,
+        "ExportWebhooksHistoryRequest.EventEnum": ExportWebhooksHistoryRequest.EventEnum,
         "GetAccountAllOfPlan.TypeEnum": GetAccountAllOfPlan.TypeEnum,
         "GetAccountAllOfPlan.CreditsTypeEnum": GetAccountAllOfPlan.CreditsTypeEnum,
         "GetAllExternalFeedsFeedsInner.AuthTypeEnum": GetAllExternalFeedsFeedsInner.AuthTypeEnum,
@@ -814,6 +1015,7 @@ let enumsMap: {[index: string]: any} = {
         "GetPaymentRequest.StatusEnum": GetPaymentRequest.StatusEnum,
         "GetProcess.StatusEnum": GetProcess.StatusEnum,
         "GetScheduledEmailByBatchIdBatchesInner.StatusEnum": GetScheduledEmailByBatchIdBatchesInner.StatusEnum,
+        "GetScheduledEmailById200Response.StatusEnum": GetScheduledEmailById200Response.StatusEnum,
         "GetScheduledEmailByMessageId.StatusEnum": GetScheduledEmailByMessageId.StatusEnum,
         "GetSmsCampaign.StatusEnum": GetSmsCampaign.StatusEnum,
         "GetSmsCampaignOverview.StatusEnum": GetSmsCampaignOverview.StatusEnum,
@@ -821,7 +1023,9 @@ let enumsMap: {[index: string]: any} = {
         "GetSmsEventReportEventsInner.EventEnum": GetSmsEventReportEventsInner.EventEnum,
         "GetTransacBlockedContactsContactsInnerReason.CodeEnum": GetTransacBlockedContactsContactsInnerReason.CodeEnum,
         "GetWebhook.TypeEnum": GetWebhook.TypeEnum,
+        "GetWebhook.ChannelEnum": GetWebhook.ChannelEnum,
         "GetWhatsAppConfig.PhoneNumberQualityEnum": GetWhatsAppConfig.PhoneNumberQualityEnum,
+        "GetWhatsAppConfig.WhatsappBusinessAccountStatusEnum": GetWhatsAppConfig.WhatsappBusinessAccountStatusEnum,
         "GetWhatsAppConfig.PhoneNumberNameStatusEnum": GetWhatsAppConfig.PhoneNumberNameStatusEnum,
         "GetWhatsappCampaignOverview.CampaignStatusEnum": GetWhatsappCampaignOverview.CampaignStatusEnum,
         "GetWhatsappCampaignsCampaignsInner.CampaignStatusEnum": GetWhatsappCampaignsCampaignsInner.CampaignStatusEnum,
@@ -830,6 +1034,10 @@ let enumsMap: {[index: string]: any} = {
         "InviteAdminUserPrivilegesInner.PermissionsEnum": InviteAdminUserPrivilegesInner.PermissionsEnum,
         "InviteuserPrivilegesInner.FeatureEnum": InviteuserPrivilegesInner.FeatureEnum,
         "InviteuserPrivilegesInner.PermissionsEnum": InviteuserPrivilegesInner.PermissionsEnum,
+        "LoyaltyProgram.StateEnum": LoyaltyProgram.StateEnum,
+        "MainGetContactRewardsPayload.SortEnum": MainGetContactRewardsPayload.SortEnum,
+        "MainGetContactRewardsPayload.SortFieldEnum": MainGetContactRewardsPayload.SortFieldEnum,
+        "MainReward.ExpirationModifierEnum": MainReward.ExpirationModifierEnum,
         "MasterDetailsResponsePlanInfo.PlanPeriodEnum": MasterDetailsResponsePlanInfo.PlanPeriodEnum,
         "Notification.ChannelEnum": Notification.ChannelEnum,
         "RequestContactExportCustomContactFilter.ActionForContactsEnum": RequestContactExportCustomContactFilter.ActionForContactsEnum,
@@ -838,11 +1046,25 @@ let enumsMap: {[index: string]: any} = {
         "RequestSmsRecipientExport.RecipientsTypeEnum": RequestSmsRecipientExport.RecipientsTypeEnum,
         "SendReport.LanguageEnum": SendReport.LanguageEnum,
         "SendTransacSms.TypeEnum": SendTransacSms.TypeEnum,
-        "SsoTokenRequest.TargetEnum": SsoTokenRequest.TargetEnum,
         "TaskReminder.UnitEnum": TaskReminder.UnitEnum,
+        "TaskReminder.TypesEnum": TaskReminder.TypesEnum,
+        "TierGroup.UpgradeStrategyEnum": TierGroup.UpgradeStrategyEnum,
+        "TierGroup.DowngradeStrategyEnum": TierGroup.DowngradeStrategyEnum,
+        "UpdateBalanceDefinitionPayload.BalanceAvailabilityDurationModifierEnum": UpdateBalanceDefinitionPayload.BalanceAvailabilityDurationModifierEnum,
+        "UpdateBalanceDefinitionPayload.BalanceAvailabilityDurationUnitEnum": UpdateBalanceDefinitionPayload.BalanceAvailabilityDurationUnitEnum,
+        "UpdateBalanceDefinitionPayload.BalanceOptionAmountOvertakingStrategyEnum": UpdateBalanceDefinitionPayload.BalanceOptionAmountOvertakingStrategyEnum,
+        "UpdateBalanceDefinitionPayload.BalanceOptionCreditRoundingEnum": UpdateBalanceDefinitionPayload.BalanceOptionCreditRoundingEnum,
+        "UpdateBalanceDefinitionPayload.BalanceOptionDebitRoundingEnum": UpdateBalanceDefinitionPayload.BalanceOptionDebitRoundingEnum,
+        "UpdateBalanceDefinitionPayload.UnitEnum": UpdateBalanceDefinitionPayload.UnitEnum,
+        "UpdateBalanceLimitPayload.ConstraintTypeEnum": UpdateBalanceLimitPayload.ConstraintTypeEnum,
+        "UpdateBalanceLimitPayload.DurationUnitEnum": UpdateBalanceLimitPayload.DurationUnitEnum,
+        "UpdateBalanceLimitPayload.TransactionTypeEnum": UpdateBalanceLimitPayload.TransactionTypeEnum,
         "UpdateCampaignStatus.StatusEnum": UpdateCampaignStatus.StatusEnum,
         "UpdateEmailCampaign.WinnerCriteriaEnum": UpdateEmailCampaign.WinnerCriteriaEnum,
+        "UpdateEmailCampaignEmailExpirationDate.UnitEnum": UpdateEmailCampaignEmailExpirationDate.UnitEnum,
         "UpdateExternalFeed.AuthTypeEnum": UpdateExternalFeed.AuthTypeEnum,
+        "UpdateTierGroupRequest.UpgradeStrategyEnum": UpdateTierGroupRequest.UpgradeStrategyEnum,
+        "UpdateTierGroupRequest.DowngradeStrategyEnum": UpdateTierGroupRequest.DowngradeStrategyEnum,
         "UpdateWebhook.EventsEnum": UpdateWebhook.EventsEnum,
         "UpdateWhatsAppCampaign.CampaignStatusEnum": UpdateWhatsAppCampaign.CampaignStatusEnum,
 }
@@ -853,13 +1075,24 @@ let typeMap: {[index: string]: any} = {
     "AbTestCampaignResultStatistics": AbTestCampaignResultStatistics,
     "AbTestVersionClicksInner": AbTestVersionClicksInner,
     "AbTestVersionStats": AbTestVersionStats,
-    "AddChildDomain": AddChildDomain,
-    "AddContactToList": AddContactToList,
-    "AddCredits": AddCredits,
+    "AddContactToListByEmails": AddContactToListByEmails,
+    "AddContactToListByExtIDs": AddContactToListByExtIDs,
+    "AddContactToListByIDs": AddContactToListByIDs,
+    "AddContactToListRequest": AddContactToListRequest,
+    "AddSubscriptionMemberPayload": AddSubscriptionMemberPayload,
+    "AggregateBalance": AggregateBalance,
     "AuthenticateDomainModel": AuthenticateDomainModel,
+    "Balance": Balance,
+    "BalanceDataPerContact": BalanceDataPerContact,
+    "BalanceDefinition": BalanceDefinition,
+    "BalanceDefinitionPage": BalanceDefinitionPage,
+    "BalanceLimit": BalanceLimit,
+    "BalanceOrder": BalanceOrder,
     "BlockDomain": BlockDomain,
     "Cart": Cart,
     "CompaniesIdPatchRequest": CompaniesIdPatchRequest,
+    "CompaniesImportPost200Response": CompaniesImportPost200Response,
+    "CompaniesImportPost400Response": CompaniesImportPost400Response,
     "CompaniesLinkUnlinkIdPatchRequest": CompaniesLinkUnlinkIdPatchRequest,
     "CompaniesList": CompaniesList,
     "CompaniesPost200Response": CompaniesPost200Response,
@@ -868,13 +1101,14 @@ let typeMap: {[index: string]: any} = {
     "CompanyAttributesInner": CompanyAttributesInner,
     "ComponentItems": ComponentItems,
     "Configuration": Configuration,
+    "ContactBalancesResp": ContactBalancesResp,
+    "ContactErrorModel": ContactErrorModel,
     "ConversationsAgentOnlinePingPostRequest": ConversationsAgentOnlinePingPostRequest,
     "ConversationsMessage": ConversationsMessage,
     "ConversationsMessageFile": ConversationsMessageFile,
     "ConversationsMessageFileImageInfo": ConversationsMessageFileImageInfo,
     "ConversationsMessagesIdPutRequest": ConversationsMessagesIdPutRequest,
     "ConversationsMessagesPostRequest": ConversationsMessagesPostRequest,
-    "ConversationsPushedMessagesIdPutRequest": ConversationsPushedMessagesIdPutRequest,
     "ConversationsPushedMessagesPostRequest": ConversationsPushedMessagesPostRequest,
     "ConversionSourceMetrics": ConversionSourceMetrics,
     "ConversionSourceProduct": ConversionSourceProduct,
@@ -882,38 +1116,49 @@ let typeMap: {[index: string]: any} = {
     "CorporateGroupDetailsResponseGroup": CorporateGroupDetailsResponseGroup,
     "CorporateGroupDetailsResponseSubAccountsInner": CorporateGroupDetailsResponseSubAccountsInner,
     "CorporateGroupDetailsResponseUsersInner": CorporateGroupDetailsResponseUsersInner,
+    "CorporateGroupIdPutRequest": CorporateGroupIdPutRequest,
     "CorporateGroupPost201Response": CorporateGroupPost201Response,
     "CorporateGroupPostRequest": CorporateGroupPostRequest,
     "CorporateGroupUnlinkGroupIdSubAccountsPutRequest": CorporateGroupUnlinkGroupIdSubAccountsPutRequest,
+    "CorporateIpGet200ResponseInner": CorporateIpGet200ResponseInner,
+    "CorporateSsoTokenPostRequest": CorporateSsoTokenPostRequest,
     "CorporateSubAccountIpAssociatePostRequest": CorporateSubAccountIpAssociatePostRequest,
     "CorporateSubAccountIpDissociatePutRequest": CorporateSubAccountIpDissociatePutRequest,
+    "CorporateSubAccountKeyPostRequest": CorporateSubAccountKeyPostRequest,
+    "CorporateSubAccountSsoTokenPostRequest": CorporateSubAccountSsoTokenPostRequest,
+    "CorporateUserEmailPermissionsPutRequest": CorporateUserEmailPermissionsPutRequest,
+    "CorporateUserEmailPermissionsPutRequestPrivilegesInner": CorporateUserEmailPermissionsPutRequestPrivilegesInner,
     "CorporateUserInvitationActionEmailPut200Response": CorporateUserInvitationActionEmailPut200Response,
-    "CreateApiKeyRequest": CreateApiKeyRequest,
     "CreateApiKeyResponse": CreateApiKeyResponse,
     "CreateAttribute": CreateAttribute,
     "CreateAttributeEnumerationInner": CreateAttributeEnumerationInner,
+    "CreateBalanceDefinitionPayload": CreateBalanceDefinitionPayload,
+    "CreateBalanceLimitPayload": CreateBalanceLimitPayload,
+    "CreateBalancePayload": CreateBalancePayload,
     "CreateCategoryModel": CreateCategoryModel,
-    "CreateChild": CreateChild,
     "CreateContact": CreateContact,
     "CreateCouponCollection201Response": CreateCouponCollection201Response,
     "CreateCouponCollectionRequest": CreateCouponCollectionRequest,
     "CreateCouponsRequest": CreateCouponsRequest,
     "CreateDoiContact": CreateDoiContact,
+    "CreateDoiContactAttributesValue": CreateDoiContactAttributesValue,
     "CreateDomain": CreateDomain,
     "CreateDomainModel": CreateDomainModel,
     "CreateDomainModelDnsRecords": CreateDomainModelDnsRecords,
     "CreateDomainModelDnsRecordsDkimRecord": CreateDomainModelDnsRecordsDkimRecord,
     "CreateEmailCampaign": CreateEmailCampaign,
+    "CreateEmailCampaignEmailExpirationDate": CreateEmailCampaignEmailExpirationDate,
     "CreateEmailCampaignRecipients": CreateEmailCampaignRecipients,
     "CreateEmailCampaignSender": CreateEmailCampaignSender,
     "CreateExternalFeed": CreateExternalFeed,
     "CreateExternalFeed201Response": CreateExternalFeed201Response,
     "CreateList": CreateList,
+    "CreateLoyaltyProgramPayload": CreateLoyaltyProgramPayload,
     "CreateModel": CreateModel,
+    "CreateOrderPayload": CreateOrderPayload,
     "CreatePaymentRequest": CreatePaymentRequest,
     "CreatePaymentResponse": CreatePaymentResponse,
     "CreateProductModel": CreateProductModel,
-    "CreateReseller": CreateReseller,
     "CreateSender": CreateSender,
     "CreateSenderIpsInner": CreateSenderIpsInner,
     "CreateSenderModel": CreateSenderModel,
@@ -924,6 +1169,10 @@ let typeMap: {[index: string]: any} = {
     "CreateSmtpTemplateSender": CreateSmtpTemplateSender,
     "CreateSubAccount": CreateSubAccount,
     "CreateSubAccountResponse": CreateSubAccountResponse,
+    "CreateSubscriptionPayload": CreateSubscriptionPayload,
+    "CreateSubscriptionResponse": CreateSubscriptionResponse,
+    "CreateTierGroupRequest": CreateTierGroupRequest,
+    "CreateTransactionPayload": CreateTransactionPayload,
     "CreateUpdateBatchCategory": CreateUpdateBatchCategory,
     "CreateUpdateBatchCategoryModel": CreateUpdateBatchCategoryModel,
     "CreateUpdateBatchProducts": CreateUpdateBatchProducts,
@@ -940,6 +1189,8 @@ let typeMap: {[index: string]: any} = {
     "CreateWhatsAppTemplate": CreateWhatsAppTemplate,
     "CreatedBatchId": CreatedBatchId,
     "CreatedProcessId": CreatedProcessId,
+    "CrmAttributesPost200Response": CrmAttributesPost200Response,
+    "CrmAttributesPostRequest": CrmAttributesPostRequest,
     "CrmDealsIdPatchRequest": CrmDealsIdPatchRequest,
     "CrmDealsLinkUnlinkIdPatchRequest": CrmDealsLinkUnlinkIdPatchRequest,
     "CrmDealsPost201Response": CrmDealsPost201Response,
@@ -958,9 +1209,13 @@ let typeMap: {[index: string]: any} = {
     "EcommerceConfigDisplayCurrencyGet200Response": EcommerceConfigDisplayCurrencyGet200Response,
     "EmailExportRecipients": EmailExportRecipients,
     "ErrorModel": ErrorModel,
+    "ErrorResponse": ErrorResponse,
     "Event": Event,
+    "EventContactPropertiesValue": EventContactPropertiesValue,
+    "EventEventPropertiesValue": EventEventPropertiesValue,
     "EventIdentifiers": EventIdentifiers,
     "ExportWebhooksHistory": ExportWebhooksHistory,
+    "ExportWebhooksHistoryRequest": ExportWebhooksHistoryRequest,
     "FileData": FileData,
     "FileDownloadableLink": FileDownloadableLink,
     "GetAccount": GetAccount,
@@ -982,27 +1237,14 @@ let typeMap: {[index: string]: any} = {
     "GetCampaignStats": GetCampaignStats,
     "GetCategories": GetCategories,
     "GetCategoryDetails": GetCategoryDetails,
-    "GetChildAccountCreationStatus": GetChildAccountCreationStatus,
-    "GetChildDomain": GetChildDomain,
-    "GetChildInfo": GetChildInfo,
-    "GetChildInfoAllOfApiKeys": GetChildInfoAllOfApiKeys,
-    "GetChildInfoAllOfApiKeysV2": GetChildInfoAllOfApiKeysV2,
-    "GetChildInfoAllOfApiKeysV3": GetChildInfoAllOfApiKeysV3,
-    "GetChildInfoAllOfCredits": GetChildInfoAllOfCredits,
-    "GetChildInfoAllOfStatistics": GetChildInfoAllOfStatistics,
-    "GetChildrenList": GetChildrenList,
-    "GetChildrenListChildrenInner": GetChildrenListChildrenInner,
     "GetClient": GetClient,
     "GetContactCampaignStats": GetContactCampaignStats,
     "GetContactCampaignStatsClickedInner": GetContactCampaignStatsClickedInner,
-    "GetContactCampaignStatsClickedInnerLinksInner": GetContactCampaignStatsClickedInnerLinksInner,
-    "GetContactCampaignStatsMessagesSentInner": GetContactCampaignStatsMessagesSentInner,
     "GetContactCampaignStatsOpenedInner": GetContactCampaignStatsOpenedInner,
     "GetContactCampaignStatsTransacAttributesInner": GetContactCampaignStatsTransacAttributesInner,
     "GetContactCampaignStatsUnsubscriptions": GetContactCampaignStatsUnsubscriptions,
-    "GetContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner": GetContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner,
-    "GetContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner": GetContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner,
     "GetContactDetails": GetContactDetails,
+    "GetContactInfoIdentifierParameter": GetContactInfoIdentifierParameter,
     "GetContacts": GetContacts,
     "GetCorporateInvitedUsersList": GetCorporateInvitedUsersList,
     "GetCorporateInvitedUsersListUsersInner": GetCorporateInvitedUsersListUsersInner,
@@ -1057,8 +1299,6 @@ let typeMap: {[index: string]: any} = {
     "GetList": GetList,
     "GetLists": GetLists,
     "GetListsListsInner": GetListsListsInner,
-    "GetOrders": GetOrders,
-    "GetOrdersOrdersInner": GetOrdersOrdersInner,
     "GetPaymentRequest": GetPaymentRequest,
     "GetProcess": GetProcess,
     "GetProcesses": GetProcesses,
@@ -1068,9 +1308,9 @@ let typeMap: {[index: string]: any} = {
     "GetReportsReportsInner": GetReportsReportsInner,
     "GetScheduledEmailByBatchId": GetScheduledEmailByBatchId,
     "GetScheduledEmailByBatchIdBatchesInner": GetScheduledEmailByBatchIdBatchesInner,
+    "GetScheduledEmailById200Response": GetScheduledEmailById200Response,
     "GetScheduledEmailByMessageId": GetScheduledEmailByMessageId,
     "GetSegments": GetSegments,
-    "GetSegmentsSegments": GetSegmentsSegments,
     "GetSendersList": GetSendersList,
     "GetSendersListSendersInner": GetSendersListSendersInner,
     "GetSendersListSendersInnerIpsInner": GetSendersListSendersInnerIpsInner,
@@ -1100,11 +1340,7 @@ let typeMap: {[index: string]: any} = {
     "GetTransacSmsReportReportsInner": GetTransacSmsReportReportsInner,
     "GetUserPermission": GetUserPermission,
     "GetUserPermissionPrivilegesInner": GetUserPermissionPrivilegesInner,
-    "GetWATemplates": GetWATemplates,
-    "GetWATemplatesTemplatesInner": GetWATemplatesTemplatesInner,
     "GetWebhook": GetWebhook,
-    "GetWebhookAuth": GetWebhookAuth,
-    "GetWebhookHeadersInner": GetWebhookHeadersInner,
     "GetWebhooks": GetWebhooks,
     "GetWhatsAppConfig": GetWhatsAppConfig,
     "GetWhatsappCampaignOverview": GetWhatsappCampaignOverview,
@@ -1112,17 +1348,58 @@ let typeMap: {[index: string]: any} = {
     "GetWhatsappCampaignsCampaignsInner": GetWhatsappCampaignsCampaignsInner,
     "GetWhatsappEventReport": GetWhatsappEventReport,
     "GetWhatsappEventReportEventsInner": GetWhatsappEventReportEventsInner,
+    "GetWhatsappTemplates": GetWhatsappTemplates,
+    "GetWhatsappTemplatesTemplatesInner": GetWhatsappTemplatesTemplatesInner,
     "InviteAdminUser": InviteAdminUser,
     "InviteAdminUserPrivilegesInner": InviteAdminUserPrivilegesInner,
     "Inviteuser": Inviteuser,
     "InviteuserPrivilegesInner": InviteuserPrivilegesInner,
-    "ManageIp": ManageIp,
+    "InviteuserResponse": InviteuserResponse,
+    "LoyaltyProgram": LoyaltyProgram,
+    "LoyaltyProgramPage": LoyaltyProgramPage,
+    "LoyaltyProgramValidationError": LoyaltyProgramValidationError,
+    "LoyaltyTierPage": LoyaltyTierPage,
+    "MainAttributeRewardPayload": MainAttributeRewardPayload,
+    "MainBillingPayload": MainBillingPayload,
+    "MainCodeCountHttpResponse": MainCodeCountHttpResponse,
+    "MainCreateRedeemPayload": MainCreateRedeemPayload,
+    "MainCreateRewardPayload": MainCreateRewardPayload,
+    "MainCreateRewardResponse": MainCreateRewardResponse,
+    "MainErrorResponse": MainErrorResponse,
+    "MainFilter": MainFilter,
+    "MainGenerator": MainGenerator,
+    "MainGetContactRewardsPayload": MainGetContactRewardsPayload,
+    "MainIdentifiersPayload": MainIdentifiersPayload,
+    "MainLimit": MainLimit,
+    "MainModelContactReward": MainModelContactReward,
+    "MainModelContactRewardsResp": MainModelContactRewardsResp,
+    "MainNodeResponse": MainNodeResponse,
+    "MainOrderPayload": MainOrderPayload,
+    "MainProduct": MainProduct,
+    "MainProductPayload": MainProductPayload,
+    "MainRedeem": MainRedeem,
+    "MainResultParameterResponse": MainResultParameterResponse,
+    "MainReward": MainReward,
+    "MainRewardAttribution": MainRewardAttribution,
+    "MainRewardConfigurations": MainRewardConfigurations,
+    "MainRewardPage": MainRewardPage,
+    "MainRewardPageObj": MainRewardPageObj,
+    "MainRewardValidate": MainRewardValidate,
+    "MainRule": MainRule,
+    "MainRuleConditionResponse": MainRuleConditionResponse,
+    "MainRuleEventResponse": MainRuleEventResponse,
+    "MainRuleResultResponse": MainRuleResultResponse,
+    "MainValidateRewardPayload": MainValidateRewardPayload,
+    "MainValueResponse": MainValueResponse,
+    "MainVoucherRevokePayload": MainVoucherRevokePayload,
     "MasterDetailsResponse": MasterDetailsResponse,
     "MasterDetailsResponseBillingInfo": MasterDetailsResponseBillingInfo,
     "MasterDetailsResponseBillingInfoAddress": MasterDetailsResponseBillingInfoAddress,
     "MasterDetailsResponseBillingInfoName": MasterDetailsResponseBillingInfoName,
     "MasterDetailsResponsePlanInfo": MasterDetailsResponsePlanInfo,
     "MasterDetailsResponsePlanInfoFeaturesInner": MasterDetailsResponsePlanInfoFeaturesInner,
+    "MemberContact": MemberContact,
+    "ModelSubscriptionBalanceResp": ModelSubscriptionBalanceResp,
     "Note": Note,
     "NoteData": NoteData,
     "NoteId": NoteId,
@@ -1130,21 +1407,28 @@ let typeMap: {[index: string]: any} = {
     "Order": Order,
     "OrderBatch": OrderBatch,
     "OrderBilling": OrderBilling,
+    "OrderIdentifiers": OrderIdentifiers,
+    "OrderMetaInfoValue": OrderMetaInfoValue,
     "OrderProductsInner": OrderProductsInner,
     "Otp": Otp,
+    "PatchLoyaltyProgramPayload": PatchLoyaltyProgramPayload,
     "Pipeline": Pipeline,
     "PipelineStage": PipelineStage,
     "PostContactInfo": PostContactInfo,
     "PostContactInfoContacts": PostContactInfoContacts,
+    "PostContactInfoContactsFailure": PostContactInfoContactsFailure,
+    "PostContactInfoContactsSuccess": PostContactInfoContactsSuccess,
     "PostSendFailed": PostSendFailed,
     "PostSendSmsTestFailed": PostSendSmsTestFailed,
     "PutRevokeUserPermission": PutRevokeUserPermission,
+    "PutRevokeUserPermissionResponse": PutRevokeUserPermissionResponse,
     "Putresendcancelinvitation": Putresendcancelinvitation,
-    "RemainingCreditModel": RemainingCreditModel,
-    "RemainingCreditModelChild": RemainingCreditModelChild,
-    "RemainingCreditModelReseller": RemainingCreditModelReseller,
-    "RemoveContactFromList": RemoveContactFromList,
-    "RemoveCredits": RemoveCredits,
+    "PutresendcancelinvitationResponse": PutresendcancelinvitationResponse,
+    "RemoveContactFromListByAll": RemoveContactFromListByAll,
+    "RemoveContactFromListByEmails": RemoveContactFromListByEmails,
+    "RemoveContactFromListByExtIDs": RemoveContactFromListByExtIDs,
+    "RemoveContactFromListByIDs": RemoveContactFromListByIDs,
+    "RemoveContactFromListRequest": RemoveContactFromListRequest,
     "RequestContactExport": RequestContactExport,
     "RequestContactExportCustomContactFilter": RequestContactExportCustomContactFilter,
     "RequestContactImport": RequestContactImport,
@@ -1155,34 +1439,36 @@ let typeMap: {[index: string]: any} = {
     "SendReport": SendReport,
     "SendReportEmail": SendReportEmail,
     "SendSms": SendSms,
+    "SendSmsAsync": SendSmsAsync,
     "SendSmtpEmail": SendSmtpEmail,
     "SendSmtpEmailAttachmentInner": SendSmtpEmailAttachmentInner,
     "SendSmtpEmailBccInner": SendSmtpEmailBccInner,
     "SendSmtpEmailCcInner": SendSmtpEmailCcInner,
     "SendSmtpEmailMessageVersionsInner": SendSmtpEmailMessageVersionsInner,
-    "SendSmtpEmailMessageVersionsInnerReplyTo": SendSmtpEmailMessageVersionsInnerReplyTo,
-    "SendSmtpEmailMessageVersionsInnerToInner": SendSmtpEmailMessageVersionsInnerToInner,
     "SendSmtpEmailReplyTo": SendSmtpEmailReplyTo,
     "SendSmtpEmailSender": SendSmtpEmailSender,
     "SendSmtpEmailToInner": SendSmtpEmailToInner,
     "SendTestEmail": SendTestEmail,
     "SendTestSms": SendTestSms,
     "SendTransacSms": SendTransacSms,
-    "SendWhatsappMessage": SendWhatsappMessage,
     "SendWhatsappMessage201Response": SendWhatsappMessage201Response,
-    "SsoTokenRequest": SsoTokenRequest,
-    "SsoTokenRequestCorporate": SsoTokenRequestCorporate,
+    "SendWhatsappMessageRequest": SendWhatsappMessageRequest,
+    "SendWhatsappMessageTemplate": SendWhatsappMessageTemplate,
+    "SendWhatsappMessageText": SendWhatsappMessageText,
     "SubAccountAppsToggleRequest": SubAccountAppsToggleRequest,
     "SubAccountDetailsResponse": SubAccountDetailsResponse,
     "SubAccountDetailsResponseGroupsInner": SubAccountDetailsResponseGroupsInner,
     "SubAccountDetailsResponsePlanInfo": SubAccountDetailsResponsePlanInfo,
     "SubAccountDetailsResponsePlanInfoCredits": SubAccountDetailsResponsePlanInfoCredits,
     "SubAccountDetailsResponsePlanInfoCreditsEmails": SubAccountDetailsResponsePlanInfoCreditsEmails,
+    "SubAccountDetailsResponsePlanInfoCreditsExternalFeeds": SubAccountDetailsResponsePlanInfoCreditsExternalFeeds,
     "SubAccountDetailsResponsePlanInfoCreditsSms": SubAccountDetailsResponsePlanInfoCreditsSms,
+    "SubAccountDetailsResponsePlanInfoCreditsWhatsapp": SubAccountDetailsResponsePlanInfoCreditsWhatsapp,
     "SubAccountDetailsResponsePlanInfoCreditsWpSubscribers": SubAccountDetailsResponsePlanInfoCreditsWpSubscribers,
     "SubAccountDetailsResponsePlanInfoFeatures": SubAccountDetailsResponsePlanInfoFeatures,
     "SubAccountDetailsResponsePlanInfoFeaturesInbox": SubAccountDetailsResponsePlanInfoFeaturesInbox,
     "SubAccountDetailsResponsePlanInfoFeaturesLandingPage": SubAccountDetailsResponsePlanInfoFeaturesLandingPage,
+    "SubAccountDetailsResponsePlanInfoFeaturesSalesUsers": SubAccountDetailsResponsePlanInfoFeaturesSalesUsers,
     "SubAccountDetailsResponsePlanInfoFeaturesUsers": SubAccountDetailsResponsePlanInfoFeaturesUsers,
     "SubAccountUpdatePlanRequest": SubAccountUpdatePlanRequest,
     "SubAccountUpdatePlanRequestCredits": SubAccountUpdatePlanRequestCredits,
@@ -1190,31 +1476,57 @@ let typeMap: {[index: string]: any} = {
     "SubAccountsResponse": SubAccountsResponse,
     "SubAccountsResponseSubAccountsInner": SubAccountsResponseSubAccountsInner,
     "SubAccountsResponseSubAccountsInnerGroupsInner": SubAccountsResponseSubAccountsInnerGroupsInner,
+    "SubAccountsUpdatePlanRequest": SubAccountsUpdatePlanRequest,
+    "SubAccountsUpdatePlanRequestFeatures": SubAccountsUpdatePlanRequestFeatures,
+    "Subscription": Subscription,
+    "SubscriptionAggregateBalance": SubscriptionAggregateBalance,
+    "SubscriptionAttributedReward": SubscriptionAttributedReward,
+    "SubscriptionBalances": SubscriptionBalances,
+    "SubscriptionHandlerInfo": SubscriptionHandlerInfo,
+    "SubscriptionMember": SubscriptionMember,
+    "SubscriptionTier": SubscriptionTier,
     "Task": Task,
     "TaskList": TaskList,
     "TaskReminder": TaskReminder,
     "TaskTypes": TaskTypes,
+    "Tier": Tier,
+    "TierAccessConditionsInner": TierAccessConditionsInner,
+    "TierForContact": TierForContact,
+    "TierGroup": TierGroup,
+    "TierGroupPage": TierGroupPage,
+    "TierRequest": TierRequest,
+    "TierRequestAccessConditionsInner": TierRequestAccessConditionsInner,
+    "TierRequestPutPayload": TierRequestPutPayload,
+    "TierRequestTierRewardsInner": TierRequestTierRewardsInner,
+    "TierTierRewardsInner": TierTierRewardsInner,
+    "Transaction": Transaction,
+    "TransactionHistory": TransactionHistory,
+    "TransactionHistoryResp": TransactionHistoryResp,
+    "UnauthorizedResponse": UnauthorizedResponse,
     "UpdateAttribute": UpdateAttribute,
     "UpdateAttributeEnumerationInner": UpdateAttributeEnumerationInner,
+    "UpdateBalanceDefinitionPayload": UpdateBalanceDefinitionPayload,
+    "UpdateBalanceLimitPayload": UpdateBalanceLimitPayload,
     "UpdateBatchContacts": UpdateBatchContacts,
     "UpdateBatchContactsContactsInner": UpdateBatchContactsContactsInner,
     "UpdateBatchContactsModel": UpdateBatchContactsModel,
     "UpdateCampaignStatus": UpdateCampaignStatus,
-    "UpdateChild": UpdateChild,
-    "UpdateChildAccountStatus": UpdateChildAccountStatus,
-    "UpdateChildDomain": UpdateChildDomain,
     "UpdateContact": UpdateContact,
     "UpdateCouponCollection200Response": UpdateCouponCollection200Response,
     "UpdateCouponCollectionRequest": UpdateCouponCollectionRequest,
     "UpdateEmailCampaign": UpdateEmailCampaign,
+    "UpdateEmailCampaignEmailExpirationDate": UpdateEmailCampaignEmailExpirationDate,
     "UpdateEmailCampaignRecipients": UpdateEmailCampaignRecipients,
     "UpdateEmailCampaignSender": UpdateEmailCampaignSender,
     "UpdateExternalFeed": UpdateExternalFeed,
     "UpdateList": UpdateList,
+    "UpdateLoyaltyProgramPayload": UpdateLoyaltyProgramPayload,
     "UpdateSender": UpdateSender,
     "UpdateSmsCampaign": UpdateSmsCampaign,
     "UpdateSmtpTemplate": UpdateSmtpTemplate,
     "UpdateSmtpTemplateSender": UpdateSmtpTemplateSender,
+    "UpdateTierGroupRequest": UpdateTierGroupRequest,
+    "UpdateUserResponse": UpdateUserResponse,
     "UpdateWebhook": UpdateWebhook,
     "UpdateWhatsAppCampaign": UpdateWhatsAppCampaign,
     "UploadImageModel": UploadImageModel,
@@ -1223,6 +1535,23 @@ let typeMap: {[index: string]: any} = {
     "WhatsappCampStats": WhatsappCampStats,
     "WhatsappCampTemplate": WhatsappCampTemplate,
 }
+
+// Check if a string starts with another string without using es6 features
+function startsWith(str: string, match: string): boolean {
+    return str.substring(0, match.length) === match;
+}
+
+// Check if a string ends with another string without using es6 features
+function endsWith(str: string, match: string): boolean {
+    return str.length >= match.length && str.substring(str.length - match.length) === match;
+}
+
+const nullableSuffix = " | null";
+const optionalSuffix = " | undefined";
+const arrayPrefix = "Array<";
+const arraySuffix = ">";
+const mapPrefix = "{ [key: string]: ";
+const mapSuffix = "; }";
 
 export class ObjectSerializer {
     public static findCorrectType(data: any, expectedType: string) {
@@ -1260,18 +1589,33 @@ export class ObjectSerializer {
         }
     }
 
-    public static serialize(data: any, type: string) {
+    public static serialize(data: any, type: string): any {
         if (data == undefined) {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             return data;
-        } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
-            let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
-            subType = subType.substring(0, subType.length - 1); // Type> => Type
+        } else if (endsWith(type, nullableSuffix)) {
+            let subType: string = type.slice(0, -nullableSuffix.length); // Type | null => Type
+            return ObjectSerializer.serialize(data, subType);
+        } else if (endsWith(type, optionalSuffix)) {
+            let subType: string = type.slice(0, -optionalSuffix.length); // Type | undefined => Type
+            return ObjectSerializer.serialize(data, subType);
+        } else if (startsWith(type, arrayPrefix)) {
+            let subType: string = type.slice(arrayPrefix.length, -arraySuffix.length); // Array<Type> => Type
             let transformedData: any[] = [];
             for (let index = 0; index < data.length; index++) {
                 let datum = data[index];
                 transformedData.push(ObjectSerializer.serialize(datum, subType));
+            }
+            return transformedData;
+        } else if (startsWith(type, mapPrefix)) {
+            let subType: string = type.slice(mapPrefix.length, -mapSuffix.length); // { [key: string]: Type; } => Type
+            let transformedData: { [key: string]: any } = {};
+            for (let key in data) {
+                transformedData[key] = ObjectSerializer.serialize(
+                    data[key],
+                    subType,
+                );
             }
             return transformedData;
         } else if (type === "Date") {
@@ -1298,20 +1642,35 @@ export class ObjectSerializer {
         }
     }
 
-    public static deserialize(data: any, type: string) {
+    public static deserialize(data: any, type: string): any {
         // polymorphism may change the actual type.
         type = ObjectSerializer.findCorrectType(data, type);
         if (data == undefined) {
             return data;
         } else if (primitives.indexOf(type.toLowerCase()) !== -1) {
             return data;
-        } else if (type.lastIndexOf("Array<", 0) === 0) { // string.startsWith pre es6
-            let subType: string = type.replace("Array<", ""); // Array<Type> => Type>
-            subType = subType.substring(0, subType.length - 1); // Type> => Type
+        } else if (endsWith(type, nullableSuffix)) {
+            let subType: string = type.slice(0, -nullableSuffix.length); // Type | null => Type
+            return ObjectSerializer.deserialize(data, subType);
+        } else if (endsWith(type, optionalSuffix)) {
+            let subType: string = type.slice(0, -optionalSuffix.length); // Type | undefined => Type
+            return ObjectSerializer.deserialize(data, subType);
+        } else if (startsWith(type, arrayPrefix)) {
+            let subType: string = type.slice(arrayPrefix.length, -arraySuffix.length); // Array<Type> => Type
             let transformedData: any[] = [];
             for (let index = 0; index < data.length; index++) {
                 let datum = data[index];
                 transformedData.push(ObjectSerializer.deserialize(datum, subType));
+            }
+            return transformedData;
+        } else if (startsWith(type, mapPrefix)) {
+            let subType: string = type.slice(mapPrefix.length, -mapSuffix.length); // { [key: string]: Type; } => Type
+            let transformedData: { [key: string]: any } = {};
+            for (let key in data) {
+                transformedData[key] = ObjectSerializer.deserialize(
+                    data[key],
+                    subType,
+                );
             }
             return transformedData;
         } else if (type === "Date") {

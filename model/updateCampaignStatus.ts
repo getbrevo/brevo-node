@@ -17,7 +17,7 @@ import { RequestFile } from './models';
 */
 export class UpdateCampaignStatus {
     /**
-    * Note:- replicateTemplate status will be available only for template type campaigns.
+    * Note:- **replicateTemplate** status will be available **only for template type campaigns.** 
     */
     'status'?: UpdateCampaignStatus.StatusEnum;
 

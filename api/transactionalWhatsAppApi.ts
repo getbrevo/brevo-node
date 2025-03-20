@@ -17,8 +17,8 @@ import http from 'http';
 /* tslint:disable:no-unused-locals */
 import { ErrorModel } from '../model/errorModel';
 import { GetWhatsappEventReport } from '../model/getWhatsappEventReport';
-import { SendWhatsappMessage } from '../model/sendWhatsappMessage';
 import { SendWhatsappMessage201Response } from '../model/sendWhatsappMessage201Response';
+import { SendWhatsappMessageRequest } from '../model/sendWhatsappMessageRequest';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -32,8 +32,7 @@ let defaultBasePath = 'https://api.brevo.com/v3';
 // ===============================================
 
 export enum TransactionalWhatsAppApiApiKeys {
-    apiKey,
-    partnerKey,
+    api-key,
 }
 
 export class TransactionalWhatsAppApi {
@@ -43,8 +42,7 @@ export class TransactionalWhatsAppApi {
 
     protected authentications = {
         'default': <Authentication>new VoidAuth(),
-        'apiKey': new ApiKeyAuth('header', 'api-key'),
-        'partnerKey': new ApiKeyAuth('header', 'partner-key'),
+        'api-key': new ApiKeyAuth('header', 'api-key'),
     }
 
     protected interceptors: Interceptor[] = [];
@@ -165,11 +163,8 @@ export class TransactionalWhatsAppApi {
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
@@ -205,9 +200,9 @@ export class TransactionalWhatsAppApi {
     /**
      * This endpoint is used to send a WhatsApp message. <br/>(**The first message you send using the API must contain a Template ID. You must create a template on WhatsApp on the Brevo platform to fetch the Template ID.**)
      * @summary Send a WhatsApp message
-     * @param sendWhatsappMessage Values to send WhatsApp message
+     * @param sendWhatsappMessageRequest Values to send WhatsApp message
      */
-    public async sendWhatsappMessage (sendWhatsappMessage: SendWhatsappMessage, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SendWhatsappMessage201Response;  }> {
+    public async sendWhatsappMessage (sendWhatsappMessageRequest: SendWhatsappMessageRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: SendWhatsappMessage201Response;  }> {
         const localVarPath = this.basePath + '/whatsapp/sendMessage';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -220,9 +215,9 @@ export class TransactionalWhatsAppApi {
         }
         let localVarFormParams: any = {};
 
-        // verify required parameter 'sendWhatsappMessage' is not null or undefined
-        if (sendWhatsappMessage === null || sendWhatsappMessage === undefined) {
-            throw new Error('Required parameter sendWhatsappMessage was null or undefined when calling sendWhatsappMessage.');
+        // verify required parameter 'sendWhatsappMessageRequest' is not null or undefined
+        if (sendWhatsappMessageRequest === null || sendWhatsappMessageRequest === undefined) {
+            throw new Error('Required parameter sendWhatsappMessageRequest was null or undefined when calling sendWhatsappMessage.');
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -236,15 +231,12 @@ export class TransactionalWhatsAppApi {
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(sendWhatsappMessage, "SendWhatsappMessage")
+            body: ObjectSerializer.serialize(sendWhatsappMessageRequest, "SendWhatsappMessageRequest")
         };
 
         let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        if (this.authentications.api-key.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.api-key.applyToRequest(localVarRequestOptions));
         }
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 

@@ -12,7 +12,9 @@
 
 import { RequestFile } from './models';
 import { SubAccountDetailsResponsePlanInfoCreditsEmails } from './subAccountDetailsResponsePlanInfoCreditsEmails';
+import { SubAccountDetailsResponsePlanInfoCreditsExternalFeeds } from './subAccountDetailsResponsePlanInfoCreditsExternalFeeds';
 import { SubAccountDetailsResponsePlanInfoCreditsSms } from './subAccountDetailsResponsePlanInfoCreditsSms';
+import { SubAccountDetailsResponsePlanInfoCreditsWhatsapp } from './subAccountDetailsResponsePlanInfoCreditsWhatsapp';
 import { SubAccountDetailsResponsePlanInfoCreditsWpSubscribers } from './subAccountDetailsResponsePlanInfoCreditsWpSubscribers';
 
 /**
@@ -22,6 +24,8 @@ export class SubAccountDetailsResponsePlanInfoCredits {
     'emails'?: SubAccountDetailsResponsePlanInfoCreditsEmails;
     'sms'?: SubAccountDetailsResponsePlanInfoCreditsSms;
     'wpSubscribers'?: SubAccountDetailsResponsePlanInfoCreditsWpSubscribers;
+    'whatsapp'?: SubAccountDetailsResponsePlanInfoCreditsWhatsapp;
+    'externalFeeds'?: SubAccountDetailsResponsePlanInfoCreditsExternalFeeds;
 
     static discriminator: string | undefined = undefined;
 
@@ -40,6 +44,16 @@ export class SubAccountDetailsResponsePlanInfoCredits {
             "name": "wpSubscribers",
             "baseName": "wpSubscribers",
             "type": "SubAccountDetailsResponsePlanInfoCreditsWpSubscribers"
+        },
+        {
+            "name": "whatsapp",
+            "baseName": "whatsapp",
+            "type": "SubAccountDetailsResponsePlanInfoCreditsWhatsapp"
+        },
+        {
+            "name": "externalFeeds",
+            "baseName": "externalFeeds",
+            "type": "SubAccountDetailsResponsePlanInfoCreditsExternalFeeds"
         }    ];
 
     static getAttributeTypeMap() {

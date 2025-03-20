@@ -44,7 +44,7 @@ export class WhatsappCampStats {
         },
         {
             "name": "notSent",
-            "baseName": "not_sent",
+            "baseName": "notSent",
             "type": "number"
         }    ];
 

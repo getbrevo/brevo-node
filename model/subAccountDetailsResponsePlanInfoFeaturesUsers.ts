@@ -13,15 +13,15 @@
 import { RequestFile } from './models';
 
 /**
-* Multi-account details
+* Marketing users to manage the marketing channels
 */
 export class SubAccountDetailsResponsePlanInfoFeaturesUsers {
     /**
-    * Quantity of multi-account\'s provided
+    * Quantity of marketing users provided
     */
     'quantity'?: number;
     /**
-    * Available multi-accounts for use
+    * Available marketing users for use
     */
     'remaining'?: number;
 

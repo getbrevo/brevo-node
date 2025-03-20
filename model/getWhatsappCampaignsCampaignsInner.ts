@@ -35,7 +35,7 @@ export class GetWhatsappCampaignsCampaignsInner {
     */
     'scheduledAt': string;
     /**
-    * Error reason in the campaign creation
+    * Error Reason associated with the WhatsApp campaign sending
     */
     'errorReason'?: string;
     /**
@@ -48,11 +48,11 @@ export class GetWhatsappCampaignsCampaignsInner {
     'readPercentage'?: number;
     'stats'?: WhatsappCampStats;
     /**
-    * Creation UTC date-time of the WhatsApp campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)
+    * Creation UTC date-time of the WhatsApp template (YYYY-MM-DDTHH:mm:ss.SSSZ)
     */
     'createdAt': string;
     /**
-    * UTC date-time of last modification of the whatsapp template (YYYY-MM-DDTHH:mm:ss.SSSZ)
+    * UTC date-time of last modification of the WhatsApp template (YYYY-MM-DDTHH:mm:ss.SSSZ)
     */
     'modifiedAt': string;
 

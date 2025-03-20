@@ -16,7 +16,7 @@ export class PostSendFailed {
     /**
     * Response code
     */
-    'code': number;
+    'code': string;
     /**
     * Response message
     */
@@ -31,7 +31,7 @@ export class PostSendFailed {
         {
             "name": "code",
             "baseName": "code",
-            "type": "number"
+            "type": "string"
         },
         {
             "name": "message",

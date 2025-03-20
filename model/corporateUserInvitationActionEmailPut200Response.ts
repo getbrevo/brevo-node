@@ -13,6 +13,9 @@
 import { RequestFile } from './models';
 
 export class CorporateUserInvitationActionEmailPut200Response {
+    /**
+    * Action success message
+    */
     'message'?: string;
 
     static discriminator: string | undefined = undefined;
