@@ -21,6 +21,7 @@ import { CorporateGroupPostRequest } from '../model/corporateGroupPostRequest';
 import { CorporateGroupUnlinkGroupIdSubAccountsPutRequest } from '../model/corporateGroupUnlinkGroupIdSubAccountsPutRequest';
 import { CorporateSubAccountIpAssociatePostRequest } from '../model/corporateSubAccountIpAssociatePostRequest';
 import { CorporateSubAccountIpDissociatePutRequest } from '../model/corporateSubAccountIpDissociatePutRequest';
+import { CorporateUserEmailPermissionsPutRequest } from '../model/corporateUserEmailPermissionsPutRequest';
 import { CorporateUserInvitationActionEmailPut200Response } from '../model/corporateUserInvitationActionEmailPut200Response';
 import { CreateApiKeyRequest } from '../model/createApiKeyRequest';
 import { CreateApiKeyResponse } from '../model/createApiKeyResponse';
@@ -40,6 +41,7 @@ import { SubAccountAppsToggleRequest } from '../model/subAccountAppsToggleReques
 import { SubAccountDetailsResponse } from '../model/subAccountDetailsResponse';
 import { SubAccountUpdatePlanRequest } from '../model/subAccountUpdatePlanRequest';
 import { SubAccountsResponse } from '../model/subAccountsResponse';
+import { SubAccountsUpdatePlanRequest } from '../model/subAccountsUpdatePlanRequest';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
 import { HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -462,6 +464,73 @@ export class MasterAccountApi {
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "CorporateGroupUnlinkGroupIdSubAccountsPutRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * This endpoint allows you to retrieve the list of active IPs on your Admin account
+     * @summary List of all IPs
+     */
+    public async corporateIpGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/corporate/ip';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
         };
 
         let authenticationPromise = Promise.resolve();
@@ -1418,7 +1487,162 @@ export class MasterAccountApi {
         });
     }
     /**
-     * This endpoint will allow the user to:  - Resend an admin user invitation - Cancel an admin user invitation 
+     * This endpoint will update multiple sub-accounts plan. On the Corporate solution new version v2, you can set an unlimited number of credits in your sub-organization. Please pass the value “-1\" to set the consumable in unlimited mode.
+     * @summary Update sub-accounts plan
+     * @param updatePlanDetails Values to update sub-accounts plan
+     */
+    public async corporateSubAccountsPlanPut (updatePlanDetails: SubAccountsUpdatePlanRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/corporate/subAccounts/plan';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'updatePlanDetails' is not null or undefined
+        if (updatePlanDetails === null || updatePlanDetails === undefined) {
+            throw new Error('Required parameter updatePlanDetails was null or undefined when calling corporateSubAccountsPlanPut.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'PUT',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(updatePlanDetails, "SubAccountsUpdatePlanRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * This endpoint will allow you to change the permissions of Admin users of your Admin account
+     * @summary Change admin user permissions
+     * @param email Email address of Admin user
+     * @param body Values to update an admin user permissions
+     */
+    public async corporateUserEmailPermissionsPut (email: string, body: CorporateUserEmailPermissionsPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+        const localVarPath = this.basePath + '/corporate/user/{email}/permissions'
+            .replace('{' + 'email' + '}', encodeURIComponent(String(email)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'email' is not null or undefined
+        if (email === null || email === undefined) {
+            throw new Error('Required parameter email was null or undefined when calling corporateUserEmailPermissionsPut.');
+        }
+
+        // verify required parameter 'body' is not null or undefined
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling corporateUserEmailPermissionsPut.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'PUT',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(body, "CorporateUserEmailPermissionsPutRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * This endpoint will allow the user to: - Resend an admin user invitation - Cancel an admin user invitation 
      * @summary Resend / cancel admin user invitation
      * @param action Action to be performed (cancel / resend)
      * @param email Email address of the recipient
@@ -1578,10 +1802,11 @@ export class MasterAccountApi {
      * @summary Get user activity logs
      * @param startDate Mandatory if endDate is used. Enter start date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month. Additionally, you can retrieve activity logs from the past 12 months from the date of your search.
      * @param endDate Mandatory if startDate is used. Enter end date in UTC date (YYYY-MM-DD) format to filter the activity in your account. Maximum time period that can be selected is one month.
+     * @param email Enter the user\&#39;s email address to filter their activity in the account.
      * @param limit Number of documents per page
      * @param offset Index of the first document in the page.
      */
-    public async getAccountActivity (startDate?: string, endDate?: string, limit?: number, offset?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetAccountActivity;  }> {
+    public async getAccountActivity (startDate?: string, endDate?: string, email?: string, limit?: number, offset?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetAccountActivity;  }> {
         const localVarPath = this.basePath + '/organization/activities';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1600,6 +1825,10 @@ export class MasterAccountApi {
 
         if (endDate !== undefined) {
             localVarQueryParameters['endDate'] = ObjectSerializer.serialize(endDate, "string");
+        }
+
+        if (email !== undefined) {
+            localVarQueryParameters['email'] = ObjectSerializer.serialize(email, "string");
         }
 
         if (limit !== undefined) {
@@ -1730,7 +1959,7 @@ export class MasterAccountApi {
         });
     }
     /**
-     * 
+     * This endpoint will provide the list of admin user permissions
      * @summary Check admin user permissions
      * @param email Email of the invited user
      */
@@ -1873,7 +2102,7 @@ export class MasterAccountApi {
         });
     }
     /**
-     * `This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - `my_plan`:   - \"all\" - `api`:   - \"none\" - `user_management`:   - \"all\" - `app_management` | Not available in ENTv2:   - \"all\"  **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it\'s assumed that all permissions will be there for the invited admin user. 
+     * `This endpoint allows you to invite a member to manage the Admin account  Features and their respective permissions are as below:  - `my_plan`:   - \"all\" - `api`:   - \"none\" - `user_management`:   - \"all\" - `app_management` | Not available in ENTv2:   - \"all\" - `sub_organization_groups`   - \"create\"   - \"edit_delete\" - `create_sub_organizations`   - \"all\" - `manage_sub_organizations`   - \"all\" - `analytics`   - \"download_data\"   - \"create_alerts\"   - \"my_looks\"   - \"explore_create\" - `security`   - \"all\"  **Note**: - If `all_features_access: false` then only privileges are required otherwise if `true` then it\'s assumed that all permissions will be there for the invited admin user. 
      * @summary Send invitation to an admin user
      * @param sendInvitation Payload to send an invitation
      */

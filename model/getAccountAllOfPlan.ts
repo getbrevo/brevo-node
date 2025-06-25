@@ -26,17 +26,13 @@ export class GetAccountAllOfPlan {
     */
     'credits': number;
     /**
-    * Date of the period from which the plan will start (only available for \"subscription\" and \"reseller\" plan type)
+    * Date of the period from which the plan will start (only available for \"subscription\" plan type)
     */
     'startDate'?: string;
     /**
-    * Date of the period from which the plan will end (only available for \"subscription\" and \"reseller\" plan type)
+    * Date of the period from which the plan will end (only available for \"subscription\" plan type)
     */
     'endDate'?: string;
-    /**
-    * Only in case of reseller account. It implies the total number of child accounts you can add to your account.
-    */
-    'userLimit'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -65,11 +61,6 @@ export class GetAccountAllOfPlan {
             "name": "endDate",
             "baseName": "endDate",
             "type": "string"
-        },
-        {
-            "name": "userLimit",
-            "baseName": "userLimit",
-            "type": "number"
         }    ];
 
     static getAttributeTypeMap() {
@@ -82,8 +73,7 @@ export namespace GetAccountAllOfPlan {
         PayAsYouGo = <any> 'payAsYouGo',
         Free = <any> 'free',
         Subscription = <any> 'subscription',
-        Sms = <any> 'sms',
-        Reseller = <any> 'reseller'
+        Sms = <any> 'sms'
     }
     export enum CreditsTypeEnum {
         SendLimit = <any> 'sendLimit'

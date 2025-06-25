@@ -14,7 +14,7 @@ import { RequestFile } from './models';
 
 export class CreateContact {
     /**
-    * Email address of the user. Mandatory if \"SMS\" field is not passed in \"attributes\" parameter. Mobile Number in \"SMS\" field should be passed with proper country code. For example {\"SMS\":\"+91xxxxxxxxxx\"} or {\"SMS\":\"0091xxxxxxxxxx\"}
+    * Email address of the user. **Mandatory if \"ext_id\"  & \"SMS\" field is not passed.**
     */
     'email'?: string;
     /**
@@ -22,9 +22,9 @@ export class CreateContact {
     */
     'extId'?: string;
     /**
-    * Pass the set of attributes and their values. The attribute\'s parameter should be passed in capital letter while creating a contact. Values that don\'t match the attribute type (e.g. text or string in a date attribute) will be ignored.These attributes must be present in your Brevo account. For eg. {\"FNAME\":\"Elly\", \"LNAME\":\"Roger\"}
+    * Pass the set of attributes and their values. These attributes must be present in your Brevo account. For eg. {\'FNAME\':\'Elly\', \'LNAME\':\'Roger\', \'COUNTRIES\':[\'India\',\'China\']}
     */
-    'attributes'?: object;
+    'attributes'?: { [key: string]: object; };
     /**
     * Set this field to blacklist the contact for emails (emailBlacklisted = true)
     */
@@ -62,7 +62,7 @@ export class CreateContact {
         {
             "name": "attributes",
             "baseName": "attributes",
-            "type": "object"
+            "type": "{ [key: string]: object; }"
         },
         {
             "name": "emailBlacklisted",

@@ -32,6 +32,26 @@ export class GetCorporateUserPermissionFeatureAccess {
     * Permission on apps management
     */
     'appsManagement'?: Array<string>;
+    /**
+    * Permission on groups
+    */
+    'subOrganizationGroups'?: Array<string>;
+    /**
+    * Permission on create sub-accounts
+    */
+    'createSubOrganizations'?: Array<string>;
+    /**
+    * Permission on manage sub-accounts
+    */
+    'manageSubOrganizations'?: Array<string>;
+    /**
+    * Permission on analytics
+    */
+    'analytics'?: Array<string>;
+    /**
+    * Permission on security
+    */
+    'security'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -54,6 +74,31 @@ export class GetCorporateUserPermissionFeatureAccess {
         {
             "name": "appsManagement",
             "baseName": "apps_management",
+            "type": "Array<string>"
+        },
+        {
+            "name": "subOrganizationGroups",
+            "baseName": "sub_organization_groups",
+            "type": "Array<string>"
+        },
+        {
+            "name": "createSubOrganizations",
+            "baseName": "create_sub_organizations",
+            "type": "Array<string>"
+        },
+        {
+            "name": "manageSubOrganizations",
+            "baseName": "manage_sub_organizations",
+            "type": "Array<string>"
+        },
+        {
+            "name": "analytics",
+            "baseName": "analytics",
+            "type": "Array<string>"
+        },
+        {
+            "name": "security",
+            "baseName": "security",
             "type": "Array<string>"
         }    ];
 

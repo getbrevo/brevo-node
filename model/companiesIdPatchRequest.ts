@@ -25,6 +25,14 @@ export class CompaniesIdPatchRequest {
     * Country code if phone_number is passed in attributes.
     */
     'countryCode'?: number;
+    /**
+    * Warning - Using PATCH on linkedContactIds replaces the list of linked contacts. Omitted IDs will be removed.
+    */
+    'linkedContactsIds'?: Array<number>;
+    /**
+    * Warning - Using PATCH on linkedDealsIds replaces the list of linked contacts. Omitted IDs will be removed.
+    */
+    'linkedDealsIds'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -43,6 +51,16 @@ export class CompaniesIdPatchRequest {
             "name": "countryCode",
             "baseName": "countryCode",
             "type": "number"
+        },
+        {
+            "name": "linkedContactsIds",
+            "baseName": "linkedContactsIds",
+            "type": "Array<number>"
+        },
+        {
+            "name": "linkedDealsIds",
+            "baseName": "linkedDealsIds",
+            "type": "Array<string>"
         }    ];
 
     static getAttributeTypeMap() {

@@ -34,6 +34,10 @@ export class GetAttributesAttributesInner {
     * Calculated value formula
     */
     'calculatedValue'?: string;
+    /**
+    * Parameter only available for \"multiple-choice\" type attributes.
+    */
+    'multiCategoryOptions'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -62,6 +66,11 @@ export class GetAttributesAttributesInner {
             "name": "calculatedValue",
             "baseName": "calculatedValue",
             "type": "string"
+        },
+        {
+            "name": "multiCategoryOptions",
+            "baseName": "multiCategoryOptions",
+            "type": "Array<string>"
         }    ];
 
     static getAttributeTypeMap() {
@@ -82,6 +91,8 @@ export namespace GetAttributesAttributesInner {
         Date = <any> 'date',
         Float = <any> 'float',
         Id = <any> 'id',
-        Boolean = <any> 'boolean'
+        Boolean = <any> 'boolean',
+        MultipleChoice = <any> 'multiple-choice',
+        User = <any> 'user'
     }
 }

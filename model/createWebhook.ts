@@ -24,13 +24,17 @@ export class CreateWebhook {
     */
     'description'?: string;
     /**
-    * - Events triggering the webhook. Possible values for **Transactional** type webhook: #### `sent` OR `request`, `delivered`, `hardBounce`, `softBounce`, `blocked`, `spam`, `invalid`, `deferred`, `click`, `opened`, `uniqueOpened` and `unsubscribed` - Possible values for **Marketing** type webhook: #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`, `unsubscribed`, `listAddition` & `delivered` - Possible values for **Inbound** type webhook: #### `inboundEmailProcessed` 
+    * - Events triggering the webhook. Possible values for **Transactional** type webhook: #### `sent` OR `request`, `delivered`, `hardBounce`, `softBounce`, `blocked`, `spam`, `invalid`, `deferred`, `click`, `opened`, `uniqueOpened` and `unsubscribed` - Possible values for **Marketing** type webhook: #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`, `unsubscribed`, `listAddition` & `delivered` - Possible values for **Inbound** type webhook: #### `inboundEmailProcessed` - Possible values for type **Transactional** and channel **SMS** #### `accepted`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`, `subscribe`,`sent`,`blacklisted`,`skip` - Possible values for type **Marketing**  channel **SMS** #### `sent`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`, `subscribe`,`skip` 
     */
     'events': Array<CreateWebhook.EventsEnum>;
     /**
     * Type of the webhook
     */
     'type'?: CreateWebhook.TypeEnum = CreateWebhook.TypeEnum.Transactional;
+    /**
+    * channel of webhook
+    */
+    'channel'?: CreateWebhook.ChannelEnum = CreateWebhook.ChannelEnum.Email;
     /**
     * Inbound domain of webhook, required in case of event type `inbound`
     */
@@ -67,6 +71,11 @@ export class CreateWebhook {
             "name": "type",
             "baseName": "type",
             "type": "CreateWebhook.TypeEnum"
+        },
+        {
+            "name": "channel",
+            "baseName": "channel",
+            "type": "CreateWebhook.ChannelEnum"
         },
         {
             "name": "domain",
@@ -118,5 +127,9 @@ export namespace CreateWebhook {
         Transactional = <any> 'transactional',
         Marketing = <any> 'marketing',
         Inbound = <any> 'inbound'
+    }
+    export enum ChannelEnum {
+        Sms = <any> 'sms',
+        Email = <any> 'email'
     }
 }

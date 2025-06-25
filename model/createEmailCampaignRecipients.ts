@@ -28,6 +28,10 @@ export class CreateEmailCampaignRecipients {
     * Mandatory if listIds are not used. Segment ids to send the campaign to.
     */
     'segmentIds'?: Array<number>;
+    /**
+    * Segment ids which have to be excluded from a campaign. 
+    */
+    'exclusionSegmentIds'?: Array<number>;
 
     static discriminator: string | undefined = undefined;
 
@@ -45,6 +49,11 @@ export class CreateEmailCampaignRecipients {
         {
             "name": "segmentIds",
             "baseName": "segmentIds",
+            "type": "Array<number>"
+        },
+        {
+            "name": "exclusionSegmentIds",
+            "baseName": "exclusionSegmentIds",
             "type": "Array<number>"
         }    ];
 
