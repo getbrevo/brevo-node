@@ -12,6 +12,7 @@
 
 import { RequestFile } from './models';
 import { OrderBilling } from './orderBilling';
+import { OrderIdentifiers } from './orderIdentifiers';
 import { OrderProductsInner } from './orderProductsInner';
 
 export class Order {
@@ -35,16 +36,21 @@ export class Order {
     * Total amount of the order, including all shipping expenses, tax and the price of items.
     */
     'amount': number;
-    'products': Array<OrderProductsInner>;
     /**
-    * Email of the contact, Mandatory if \"phone\" field is not passed in \"billing\" parameter.
+    * ID of store where the order is placed
     */
-    'email'?: string;
+    'storeId'?: string;
+    'identifiers'?: OrderIdentifiers;
+    'products': Array<OrderProductsInner>;
     'billing'?: OrderBilling;
     /**
     * Coupons applied to the order. Stored case insensitive.
     */
     'coupons'?: Array<string>;
+    /**
+    * Meta data of order to store additional detal such as custom message, customer type, source.
+    */
+    'metaInfo'?: { [key: string]: object; };
 
     static discriminator: string | undefined = undefined;
 
@@ -75,14 +81,19 @@ export class Order {
             "type": "number"
         },
         {
+            "name": "storeId",
+            "baseName": "storeId",
+            "type": "string"
+        },
+        {
+            "name": "identifiers",
+            "baseName": "identifiers",
+            "type": "OrderIdentifiers"
+        },
+        {
             "name": "products",
             "baseName": "products",
             "type": "Array<OrderProductsInner>"
-        },
-        {
-            "name": "email",
-            "baseName": "email",
-            "type": "string"
         },
         {
             "name": "billing",
@@ -93,6 +104,11 @@ export class Order {
             "name": "coupons",
             "baseName": "coupons",
             "type": "Array<string>"
+        },
+        {
+            "name": "metaInfo",
+            "baseName": "metaInfo",
+            "type": "{ [key: string]: object; }"
         }    ];
 
     static getAttributeTypeMap() {

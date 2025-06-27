@@ -13,6 +13,7 @@
 import { RequestFile } from './models';
 import { SubAccountDetailsResponsePlanInfoFeaturesInbox } from './subAccountDetailsResponsePlanInfoFeaturesInbox';
 import { SubAccountDetailsResponsePlanInfoFeaturesLandingPage } from './subAccountDetailsResponsePlanInfoFeaturesLandingPage';
+import { SubAccountDetailsResponsePlanInfoFeaturesSalesUsers } from './subAccountDetailsResponsePlanInfoFeaturesSalesUsers';
 import { SubAccountDetailsResponsePlanInfoFeaturesUsers } from './subAccountDetailsResponsePlanInfoFeaturesUsers';
 
 /**
@@ -22,6 +23,7 @@ export class SubAccountDetailsResponsePlanInfoFeatures {
     'inbox'?: SubAccountDetailsResponsePlanInfoFeaturesInbox;
     'landingPage'?: SubAccountDetailsResponsePlanInfoFeaturesLandingPage;
     'users'?: SubAccountDetailsResponsePlanInfoFeaturesUsers;
+    'salesUsers'?: SubAccountDetailsResponsePlanInfoFeaturesSalesUsers;
 
     static discriminator: string | undefined = undefined;
 
@@ -40,6 +42,11 @@ export class SubAccountDetailsResponsePlanInfoFeatures {
             "name": "users",
             "baseName": "users",
             "type": "SubAccountDetailsResponsePlanInfoFeaturesUsers"
+        },
+        {
+            "name": "salesUsers",
+            "baseName": "salesUsers",
+            "type": "SubAccountDetailsResponsePlanInfoFeaturesSalesUsers"
         }    ];
 
     static getAttributeTypeMap() {

@@ -28,6 +28,10 @@ export class UpdateEmailCampaignRecipients {
     * Mandatory if listIds are not used. Campaign should only be updated with segmentIds if segmentIds were used to create it. Segment ids to send the campaign to.
     */
     'segmentIds'?: Array<number>;
+    /**
+    * Segment ids which have to be excluded from a campaign. 
+    */
+    'exclusionSegmentIds'?: Array<number>;
 
     static discriminator: string | undefined = undefined;
 
@@ -45,6 +49,11 @@ export class UpdateEmailCampaignRecipients {
         {
             "name": "segmentIds",
             "baseName": "segmentIds",
+            "type": "Array<number>"
+        },
+        {
+            "name": "exclusionSegmentIds",
+            "baseName": "exclusionSegmentIds",
             "type": "Array<number>"
         }    ];
 

@@ -18,9 +18,9 @@ export class CreateDoiContact {
     */
     'email': string;
     /**
-    * Pass the set of attributes and their values. These attributes must be present in your Brevo account. For eg. {\'FNAME\':\'Elly\', \'LNAME\':\'Roger\'}
+    * Pass the set of attributes and their values. These attributes must be present in your Brevo account. For eg. {\'FNAME\':\'Elly\', \'LNAME\':\'Roger\', \'COUNTRIES\':[\'India\',\'China\']}
     */
-    'attributes'?: object;
+    'attributes'?: { [key: string]: object; };
     /**
     * Lists under user account where contact should be added
     */
@@ -49,7 +49,7 @@ export class CreateDoiContact {
         {
             "name": "attributes",
             "baseName": "attributes",
-            "type": "object"
+            "type": "{ [key: string]: object; }"
         },
         {
             "name": "includeListIds",

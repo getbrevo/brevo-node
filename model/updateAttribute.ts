@@ -19,9 +19,13 @@ export class UpdateAttribute {
     */
     'value'?: string;
     /**
-    * List of the values and labels that the attribute can take. Use only if the attribute\'s category is \"category\". For example, [{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]
+    * List of the values and labels that the attribute can take. Use only if the attribute\'s category is \"category\". None of the category options can exceed max 200 characters. For example, [{\"value\":1, \"label\":\"male\"}, {\"value\":2, \"label\":\"female\"}]
     */
     'enumeration'?: Array<UpdateAttributeEnumerationInner>;
+    /**
+    * Use this option to add multiple-choice attributes options only if the attribute\'s category is \"normal\". **This option is specifically designed for updating multiple-choice attributes. None of the multicategory options can exceed max 200 characters **. For example: **[\"USA\",\"INDIA\"]** 
+    */
+    'multiCategoryOptions'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -35,6 +39,11 @@ export class UpdateAttribute {
             "name": "enumeration",
             "baseName": "enumeration",
             "type": "Array<UpdateAttributeEnumerationInner>"
+        },
+        {
+            "name": "multiCategoryOptions",
+            "baseName": "multiCategoryOptions",
+            "type": "Array<string>"
         }    ];
 
     static getAttributeTypeMap() {

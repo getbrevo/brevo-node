@@ -11,10 +11,10 @@
  */
 
 import { RequestFile } from './models';
-import { GetSegmentsSegments } from './getSegmentsSegments';
+import { GetSegment } from './getSegment';
 
 export class GetSegments {
-    'segments'?: GetSegmentsSegments;
+    'segments'?: Array<GetSegment>;
     /**
     * Number of Segments available in your account
     */
@@ -26,7 +26,7 @@ export class GetSegments {
         {
             "name": "segments",
             "baseName": "segments",
-            "type": "GetSegmentsSegments"
+            "type": "Array<GetSegment>"
         },
         {
             "name": "count",

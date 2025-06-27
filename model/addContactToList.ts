@@ -14,13 +14,17 @@ import { RequestFile } from './models';
 
 export class AddContactToList {
     /**
-    * Mandatory if IDs are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
+    * Mandatory if IDs, EXT_ID attributes are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
     */
     'emails'?: Array<string>;
     /**
-    * Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
+    * Mandatory if Emails, EXT_ID attributes are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 ids for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
     */
     'ids'?: Array<number>;
+    /**
+    * Mandatory if Emails, IDs are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 extIds for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
+    */
+    'extIds'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -34,6 +38,11 @@ export class AddContactToList {
             "name": "ids",
             "baseName": "ids",
             "type": "Array<number>"
+        },
+        {
+            "name": "extIds",
+            "baseName": "extIds",
+            "type": "Array<string>"
         }    ];
 
     static getAttributeTypeMap() {

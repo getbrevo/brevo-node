@@ -11,9 +11,7 @@
  */
 
 import { RequestFile } from './models';
-import { GetCampaignRecipients } from './getCampaignRecipients';
 import { GetExtendedCampaignOverviewAllOfSender } from './getExtendedCampaignOverviewAllOfSender';
-import { GetExtendedCampaignStats } from './getExtendedCampaignStats';
 
 export class GetEmailCampaign {
     /**
@@ -149,8 +147,8 @@ export class GetEmailCampaign {
     * Total number of non-delivered campaigns for a particular campaign id.
     */
     'returnBounce'?: number;
-    'recipients': GetCampaignRecipients;
-    'statistics': GetExtendedCampaignStats;
+    'recipients': object;
+    'statistics': object;
 
     static discriminator: string | undefined = undefined;
 
@@ -328,12 +326,12 @@ export class GetEmailCampaign {
         {
             "name": "recipients",
             "baseName": "recipients",
-            "type": "GetCampaignRecipients"
+            "type": "object"
         },
         {
             "name": "statistics",
             "baseName": "statistics",
-            "type": "GetExtendedCampaignStats"
+            "type": "object"
         }    ];
 
     static getAttributeTypeMap() {

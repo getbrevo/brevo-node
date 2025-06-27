@@ -32,6 +32,26 @@ export class GetCorporateInvitedUsersListUsersInnerFeatureAccess {
     * Apps management accessiblity | Not available in ENTv2
     */
     'appsManagement'?: Array<string>;
+    /**
+    * Group creation, modification or deletion accessibility
+    */
+    'subOrganizationGroups'?: Array<string>;
+    /**
+    * Authorization to create sub-organization in the admin account. If the user creating the sub-organization, belongs to a group, the user must choose a group at the sub-organization creation.
+    */
+    'createSubOrganizations'?: Array<string>;
+    /**
+    * Authorization to manage and access sub-organizations in the admin account.
+    */
+    'manageSubOrganizations'?: Array<string>;
+    /**
+    * Analytics dashboard accessibility
+    */
+    'analytics'?: Array<string>;
+    /**
+    * Security page accessibility
+    */
+    'security'?: Array<string>;
 
     static discriminator: string | undefined = undefined;
 
@@ -54,6 +74,31 @@ export class GetCorporateInvitedUsersListUsersInnerFeatureAccess {
         {
             "name": "appsManagement",
             "baseName": "apps_management",
+            "type": "Array<string>"
+        },
+        {
+            "name": "subOrganizationGroups",
+            "baseName": "sub_organization_groups",
+            "type": "Array<string>"
+        },
+        {
+            "name": "createSubOrganizations",
+            "baseName": "create_sub_organizations",
+            "type": "Array<string>"
+        },
+        {
+            "name": "manageSubOrganizations",
+            "baseName": "manage_sub_organizations",
+            "type": "Array<string>"
+        },
+        {
+            "name": "analytics",
+            "baseName": "analytics",
+            "type": "Array<string>"
+        },
+        {
+            "name": "security",
+            "baseName": "security",
             "type": "Array<string>"
         }    ];
 

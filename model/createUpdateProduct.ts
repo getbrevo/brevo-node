@@ -46,7 +46,7 @@ export class CreateUpdateProduct {
     */
     'parentId'?: string;
     /**
-    * Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 10.
+    * Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 20.
     */
     'metaInfo'?: { [key: string]: string; };
     /**
