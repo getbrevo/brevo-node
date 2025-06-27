@@ -11,6 +11,8 @@
  */
 
 import { RequestFile } from './models';
+import { GetCampaignRecipients } from './getCampaignRecipients';
+import { GetSmsCampaignStats } from './getSmsCampaignStats';
 
 export class GetSmsCampaign {
     /**
@@ -45,8 +47,8 @@ export class GetSmsCampaign {
     * UTC date-time of last modification of the SMS campaign (YYYY-MM-DDTHH:mm:ss.SSSZ)
     */
     'modifiedAt': string;
-    'recipients': object;
-    'statistics': object;
+    'recipients': GetCampaignRecipients;
+    'statistics': GetSmsCampaignStats;
 
     static discriminator: string | undefined = undefined;
 
@@ -94,12 +96,12 @@ export class GetSmsCampaign {
         {
             "name": "recipients",
             "baseName": "recipients",
-            "type": "object"
+            "type": "GetCampaignRecipients"
         },
         {
             "name": "statistics",
             "baseName": "statistics",
-            "type": "object"
+            "type": "GetSmsCampaignStats"
         }    ];
 
     static getAttributeTypeMap() {

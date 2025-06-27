@@ -11,18 +11,18 @@
  */
 
 import { RequestFile } from './models';
-import { GetExtendedContactDetailsAllOfStatisticsUnsubscriptionsAdminUnsubscription } from './getExtendedContactDetailsAllOfStatisticsUnsubscriptionsAdminUnsubscription';
-import { GetExtendedContactDetailsAllOfStatisticsUnsubscriptionsUserUnsubscription } from './getExtendedContactDetailsAllOfStatisticsUnsubscriptionsUserUnsubscription';
+import { GetContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner } from './getContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner';
+import { GetContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner } from './getContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner';
 
 export class GetContactCampaignStatsUnsubscriptions {
     /**
     * Contact has unsubscribed via the unsubscription link in the email
     */
-    'userUnsubscription': Array<GetExtendedContactDetailsAllOfStatisticsUnsubscriptionsUserUnsubscription>;
+    'userUnsubscription': Array<GetContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner>;
     /**
     * Contact has been unsubscribed from the administrator
     */
-    'adminUnsubscription': Array<GetExtendedContactDetailsAllOfStatisticsUnsubscriptionsAdminUnsubscription>;
+    'adminUnsubscription': Array<GetContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner>;
 
     static discriminator: string | undefined = undefined;
 
@@ -30,12 +30,12 @@ export class GetContactCampaignStatsUnsubscriptions {
         {
             "name": "userUnsubscription",
             "baseName": "userUnsubscription",
-            "type": "Array<GetExtendedContactDetailsAllOfStatisticsUnsubscriptionsUserUnsubscription>"
+            "type": "Array<GetContactCampaignStatsUnsubscriptionsUserUnsubscriptionInner>"
         },
         {
             "name": "adminUnsubscription",
             "baseName": "adminUnsubscription",
-            "type": "Array<GetExtendedContactDetailsAllOfStatisticsUnsubscriptionsAdminUnsubscription>"
+            "type": "Array<GetContactCampaignStatsUnsubscriptionsAdminUnsubscriptionInner>"
         }    ];
 
     static getAttributeTypeMap() {

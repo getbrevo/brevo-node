@@ -16,9 +16,6 @@ import { GetDeviceBrowserStats } from './getDeviceBrowserStats';
 import { GetStatsByDevice } from './getStatsByDevice';
 
 export class GetExtendedCampaignStats {
-    /**
-    * Overall statistics of the campaign
-    */
     'globalStats': GetCampaignStats;
     /**
     * List-wise statistics of the campaign.

@@ -11,7 +11,6 @@
  */
 
 import { RequestFile } from './models';
-import { SendTransacSmsTag } from './sendTransacSmsTag';
 
 export class SendTransacSms {
     /**
@@ -30,7 +29,10 @@ export class SendTransacSms {
     * Type of the SMS. Marketing SMS messages are those sent typically with marketing content. Transactional SMS messages are sent to individuals and are triggered in response to some action, such as a sign-up, purchase, etc.
     */
     'type'?: SendTransacSms.TypeEnum = SendTransacSms.TypeEnum.Transactional;
-    'tag'?: SendTransacSmsTag;
+    /**
+    * Tag of the message
+    */
+    'tag'?: string;
     /**
     * Webhook to call for each event triggered by the message (delivered etc.)
     */
@@ -70,7 +72,7 @@ export class SendTransacSms {
         {
             "name": "tag",
             "baseName": "tag",
-            "type": "SendTransacSmsTag"
+            "type": "string"
         },
         {
             "name": "webUrl",

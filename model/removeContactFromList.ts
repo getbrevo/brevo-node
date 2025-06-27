@@ -14,19 +14,15 @@ import { RequestFile } from './models';
 
 export class RemoveContactFromList {
     /**
-    * Required if \'all\' is false and EXT_ID attributes, IDs are not passed. Emails to remove from a list. You can pass a maximum of 150 emails for removal in one request.
+    * Required if \'all\' is false. Emails to remove from a list. You can pass a maximum of 150 emails for removal in one request.
     */
     'emails'?: Array<string>;
     /**
-    * Mandatory if Emails, EXT_ID attributes are not passed, ignored otherwise. Contact IDs to add to a list. You can pass a maximum of 150 Ids for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
+    * Mandatory if Emails are not passed, ignored otherwise. Emails to add to a list. You can pass a maximum of 150 emails for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
     */
     'ids'?: Array<number>;
     /**
-    * Mandatory if \'all\' is false and Emails, IDs are not passed, ignored otherwise. EXT_ID attributes to add to a list. You can pass a maximum of 150 extIds for addition in one request. If you need to add the emails in bulk, please prefer /contacts/import api.
-    */
-    'extIds'?: Array<string>;
-    /**
-    * Required if none of \'emails\', EXT_ID attributes or \'ids\' are passed. Remove all existing contacts from a list.  A process will be created in this scenario. You can fetch the process details to know about the progress
+    * Required if none of \'emails\' or \'ids\' are passed. Remove all existing contacts from a list.  A process will be created in this scenario. You can fetch the process details to know about the progress
     */
     'all'?: boolean;
 
@@ -42,11 +38,6 @@ export class RemoveContactFromList {
             "name": "ids",
             "baseName": "ids",
             "type": "Array<number>"
-        },
-        {
-            "name": "extIds",
-            "baseName": "extIds",
-            "type": "Array<string>"
         },
         {
             "name": "all",

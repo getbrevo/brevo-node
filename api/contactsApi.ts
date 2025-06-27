@@ -16,7 +16,6 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { AddContactToList } from '../model/addContactToList';
-import { ContactErrorModel } from '../model/contactErrorModel';
 import { CreateAttribute } from '../model/createAttribute';
 import { CreateContact } from '../model/createContact';
 import { CreateDoiContact } from '../model/createDoiContact';
@@ -123,7 +122,7 @@ export class ContactsApi {
      * 
      * @summary Add existing contacts to a list
      * @param listId Id of the list
-     * @param contactEmails Emails addresses OR IDs OR EXT_ID attributes of the contacts
+     * @param contactEmails Emails addresses OR IDs of the contacts
      */
     public async addContactToList (listId: number, contactEmails: AddContactToList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PostContactInfo;  }> {
         const localVarPath = this.basePath + '/contacts/lists/{listId}/contacts/add'
@@ -290,7 +289,7 @@ export class ContactsApi {
         });
     }
     /**
-     * Creates new contacts on Brevo. Contacts can be created by passing either - <br><br> 1. email address of the contact (email_id),  <br> 2. phone number of the contact (to be passed as \"SMS\" field in \"attributes\" along with proper country code), For example- {\"SMS\":\"+91xxxxxxxxxx\"} or {\"SMS\":\"0091xxxxxxxxxx\"} <br> 3. ext_id <br>
+     * 
      * @summary Create a contact
      * @param createContact Values to create a contact
      */
@@ -670,12 +669,11 @@ export class ContactsApi {
         });
     }
     /**
-     * There are 2 ways to delete a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute.
+     * 
      * @summary Delete a contact
-     * @param identifier Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded)
-     * @param identifierType email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
+     * @param identifier Email (urlencoded) OR ID of the contact
      */
-    public async deleteContact (identifier: string, identifierType?: 'email_id' | 'contact_id' | 'ext_id' | 'phone_id' | 'whatsapp_id' | 'landline_number_id', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteContact (identifier: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/{identifier}'
             .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
         let localVarQueryParameters: any = {};
@@ -692,10 +690,6 @@ export class ContactsApi {
         // verify required parameter 'identifier' is not null or undefined
         if (identifier === null || identifier === undefined) {
             throw new Error('Required parameter identifier was null or undefined when calling deleteContact.');
-        }
-
-        if (identifierType !== undefined) {
-            localVarQueryParameters['identifierType'] = ObjectSerializer.serialize(identifierType, "'email_id' | 'contact_id' | 'ext_id' | 'phone_id' | 'whatsapp_id' | 'landline_number_id'");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -898,94 +892,6 @@ export class ContactsApi {
     }
     /**
      * 
-     * @summary Delete a multiple-choice attribute option
-     * @param attributeType Type of the attribute
-     * @param multipleChoiceAttribute Name of the existing multiple-choice attribute
-     * @param multipleChoiceAttributeOption Name of the existing multiple-choice attribute option that you want to delete
-     */
-    public async deleteMultiAttributeOptions (attributeType: 'multiple-choice', multipleChoiceAttribute: string, multipleChoiceAttributeOption: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
-        const localVarPath = this.basePath + '/contacts/attributes/{attributeType}/{multipleChoiceAttribute}/{multipleChoiceAttributeOption}'
-            .replace('{' + 'attributeType' + '}', encodeURIComponent(String(attributeType)))
-            .replace('{' + 'multipleChoiceAttribute' + '}', encodeURIComponent(String(multipleChoiceAttribute)))
-            .replace('{' + 'multipleChoiceAttributeOption' + '}', encodeURIComponent(String(multipleChoiceAttributeOption)));
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'attributeType' is not null or undefined
-        if (attributeType === null || attributeType === undefined) {
-            throw new Error('Required parameter attributeType was null or undefined when calling deleteMultiAttributeOptions.');
-        }
-
-        // verify required parameter 'multipleChoiceAttribute' is not null or undefined
-        if (multipleChoiceAttribute === null || multipleChoiceAttribute === undefined) {
-            throw new Error('Required parameter multipleChoiceAttribute was null or undefined when calling deleteMultiAttributeOptions.');
-        }
-
-        // verify required parameter 'multipleChoiceAttributeOption' is not null or undefined
-        if (multipleChoiceAttributeOption === null || multipleChoiceAttributeOption === undefined) {
-            throw new Error('Required parameter multipleChoiceAttributeOption was null or undefined when calling deleteMultiAttributeOptions.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'DELETE',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * 
      * @summary List all attributes
      */
     public async getAttributes (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetAttributes;  }> {
@@ -1053,14 +959,13 @@ export class ContactsApi {
         });
     }
     /**
-     * There are 2 ways to get a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL), phone_id (for SMS) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL, SMS and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute <br><br>Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats ``https://developers.brevo.com/reference/contacts-7#getcontactstats`` endpoint with the appropriate date ranges.
+     * Along with the contact details, this endpoint will show the statistics of contact for the recent 90 days by default. To fetch the earlier statistics, please use Get contact campaign stats (https://developers.brevo.com/reference/contacts-7#getcontactstats) endpoint with the appropriate date ranges.
      * @summary Get a contact\'s details
-     * @param identifier Email (urlencoded) OR ID of the contact OR its SMS attribute value OR EXT_ID attribute (urlencoded)
-     * @param identifierType email_id for Email, phone_id for SMS attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute
+     * @param identifier Email (urlencoded) OR ID of the contact OR its SMS attribute value
      * @param startDate **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate 
      * @param endDate **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. 
      */
-    public async getContactInfo (identifier: string, identifierType?: 'email_id' | 'phone_id' | 'contact_id' | 'ext_id' | 'whatsapp_id' | 'landline_number_id', startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetExtendedContactDetails;  }> {
+    public async getContactInfo (identifier: string, startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetExtendedContactDetails;  }> {
         const localVarPath = this.basePath + '/contacts/{identifier}'
             .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
         let localVarQueryParameters: any = {};
@@ -1077,10 +982,6 @@ export class ContactsApi {
         // verify required parameter 'identifier' is not null or undefined
         if (identifier === null || identifier === undefined) {
             throw new Error('Required parameter identifier was null or undefined when calling getContactInfo.');
-        }
-
-        if (identifierType !== undefined) {
-            localVarQueryParameters['identifierType'] = ObjectSerializer.serialize(identifierType, "'email_id' | 'phone_id' | 'contact_id' | 'ext_id' | 'whatsapp_id' | 'landline_number_id'");
         }
 
         if (startDate !== undefined) {
@@ -1237,7 +1138,7 @@ export class ContactsApi {
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param segmentId Id of the segment. **Either listIds or segmentId can be passed.**
      * @param listIds Ids of the list. **Either listIds or segmentId can be passed.**
-     * @param filter Filter the contacts on the basis of attributes. **Allowed operator: equals. For multiple-choice options, the filter will apply an AND condition between the options. For category attributes, the filter will work with both id and value. (e.g. filter&#x3D;equals(FIRSTNAME,\&quot;Antoine\&quot;), filter&#x3D;equals(B1, true), filter&#x3D;equals(DOB, \&quot;1989-11-23\&quot;), filter&#x3D;equals(GENDER, \&quot;1\&quot;), filter&#x3D;equals(GENDER, \&quot;MALE\&quot;), filter&#x3D;equals(COUNTRY,\&quot;USA, INDIA\&quot;)** 
+     * @param filter Filter the contacts on the basis of attributes. **Allowed operator: equals. (e.g. filter&#x3D;equals(FIRSTNAME,\&quot;Antoine\&quot;), filter&#x3D;equals(B1, true), filter&#x3D;equals(DOB, \&quot;1989-11-23\&quot;))** 
      */
     public async getContacts (limit?: number, offset?: number, modifiedSince?: string, createdSince?: string, sort?: 'asc' | 'desc', segmentId?: number, listIds?: Array<number>, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetContacts;  }> {
         const localVarPath = this.basePath + '/contacts';
@@ -1602,7 +1503,7 @@ export class ContactsApi {
      * @param offset Index of the first document of the page
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      */
-    public async getFolders (limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetFolders;  }> {
+    public async getFolders (limit: number, offset: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetFolders;  }> {
         const localVarPath = this.basePath + '/contacts/folders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1614,6 +1515,16 @@ export class ContactsApi {
             localVarHeaderParams.Accept = produces.join(',');
         }
         let localVarFormParams: any = {};
+
+        // verify required parameter 'limit' is not null or undefined
+        if (limit === null || limit === undefined) {
+            throw new Error('Required parameter limit was null or undefined when calling getFolders.');
+        }
+
+        // verify required parameter 'offset' is not null or undefined
+        if (offset === null || offset === undefined) {
+            throw new Error('Required parameter offset was null or undefined when calling getFolders.');
+        }
 
         if (limit !== undefined) {
             localVarQueryParameters['limit'] = ObjectSerializer.serialize(limit, "number");
@@ -2018,7 +1929,7 @@ export class ContactsApi {
      * 
      * @summary Delete a contact from a list
      * @param listId Id of the list
-     * @param contactEmails Emails addresses OR IDs OR EXT_ID attributes of the contacts
+     * @param contactEmails Emails addresses OR IDs of the contacts
      */
     public async removeContactFromList (listId: number, contactEmails: RemoveContactFromList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PostContactInfo;  }> {
         const localVarPath = this.basePath + '/contacts/lists/{listId}/contacts/remove'
@@ -2178,7 +2089,7 @@ export class ContactsApi {
      * @param attributeName Name of the existing attribute
      * @param updateAttribute Values to update an attribute
      */
-    public async updateAttribute (attributeCategory: 'category' | 'calculated' | 'global' | 'normal', attributeName: string, updateAttribute: UpdateAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateAttribute (attributeCategory: 'category' | 'calculated' | 'global', attributeName: string, updateAttribute: UpdateAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/attributes/{attributeCategory}/{attributeName}'
             .replace('{' + 'attributeCategory' + '}', encodeURIComponent(String(attributeCategory)))
             .replace('{' + 'attributeName' + '}', encodeURIComponent(String(attributeName)));
@@ -2334,13 +2245,12 @@ export class ContactsApi {
         });
     }
     /**
-     * There are 2 ways to update a contact <br><br> Option 1- https://api.brevo.com/v3/contacts/{identifier} <br><br> Option 2- https://api.brevo.com/v3/contacts/{identifier}?identifierType={} <br> <br> Option 1 only works if identifierType is email_id (for EMAIL) or contact_id (for ID of the contact),where you can directly pass the value of EMAIL and ID of the contact.   <br><br> Option 2 works for all identifierType, use email_id for EMAIL attribute, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
+     * 
      * @summary Update a contact
-     * @param identifier Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) OR its SMS attribute value OR its WHATSAPP attribute value OR its LANDLINE attribute value
+     * @param identifier Email (urlencoded) OR ID of the contact
      * @param updateContact Values to update a contact
-     * @param identifierType email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute
      */
-    public async updateContact (identifier: string, updateContact: UpdateContact, identifierType?: 'email_id' | 'contact_id' | 'ext_id' | 'phone_id' | 'whatsapp_id' | 'landline_number_id', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateContact (identifier: string, updateContact: UpdateContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/{identifier}'
             .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
         let localVarQueryParameters: any = {};
@@ -2362,10 +2272,6 @@ export class ContactsApi {
         // verify required parameter 'updateContact' is not null or undefined
         if (updateContact === null || updateContact === undefined) {
             throw new Error('Required parameter updateContact was null or undefined when calling updateContact.');
-        }
-
-        if (identifierType !== undefined) {
-            localVarQueryParameters['identifierType'] = ObjectSerializer.serialize(identifierType, "'email_id' | 'contact_id' | 'ext_id' | 'phone_id' | 'whatsapp_id' | 'landline_number_id'");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

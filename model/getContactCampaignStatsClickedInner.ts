@@ -11,14 +11,14 @@
  */
 
 import { RequestFile } from './models';
-import { GetExtendedContactDetailsAllOfStatisticsLinks } from './getExtendedContactDetailsAllOfStatisticsLinks';
+import { GetContactCampaignStatsClickedInnerLinksInner } from './getContactCampaignStatsClickedInnerLinksInner';
 
 export class GetContactCampaignStatsClickedInner {
     /**
     * ID of the campaign which generated the event
     */
     'campaignId': number;
-    'links': Array<GetExtendedContactDetailsAllOfStatisticsLinks>;
+    'links': Array<GetContactCampaignStatsClickedInnerLinksInner>;
 
     static discriminator: string | undefined = undefined;
 
@@ -31,7 +31,7 @@ export class GetContactCampaignStatsClickedInner {
         {
             "name": "links",
             "baseName": "links",
-            "type": "Array<GetExtendedContactDetailsAllOfStatisticsLinks>"
+            "type": "Array<GetContactCampaignStatsClickedInnerLinksInner>"
         }    ];
 
     static getAttributeTypeMap() {

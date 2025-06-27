@@ -29,13 +29,9 @@ export class RequestContactExportCustomContactFilter {
     */
     'actionForSmsCampaigns'?: RequestContactExportCustomContactFilter.ActionForSmsCampaignsEnum;
     /**
-    * ID of the list. This is mandatory if actionForContacts is specified and segmentId is not provided. Either segmentId or listId must be included.
+    * Mandatory if actionForContacts is passed, ignored otherwise. Id of the list for which the corresponding action shall be applied in the filter.
     */
     'listId'?: number;
-    /**
-    * ID of the segment. This is mandatory if actionForContacts is specified and listId is not provided. Either segmentId or listId must be included. 
-    */
-    'segmentId'?: number;
     /**
     * Considered only if actionForEmailCampaigns is passed, ignored otherwise. Mandatory if action is one of the following - openers, nonOpeners, clickers, nonClickers, unsubscribed. The id of the email campaign for which the corresponding action shall be applied in the filter.
     */
@@ -66,11 +62,6 @@ export class RequestContactExportCustomContactFilter {
         {
             "name": "listId",
             "baseName": "listId",
-            "type": "number"
-        },
-        {
-            "name": "segmentId",
-            "baseName": "segmentId",
             "type": "number"
         },
         {
