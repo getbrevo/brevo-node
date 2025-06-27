@@ -12,24 +12,24 @@
 
 import { RequestFile } from './models';
 import { GetContactCampaignStatsClickedInner } from './getContactCampaignStatsClickedInner';
+import { GetContactCampaignStatsMessagesSentInner } from './getContactCampaignStatsMessagesSentInner';
 import { GetContactCampaignStatsOpenedInner } from './getContactCampaignStatsOpenedInner';
 import { GetContactCampaignStatsTransacAttributesInner } from './getContactCampaignStatsTransacAttributesInner';
 import { GetContactCampaignStatsUnsubscriptions } from './getContactCampaignStatsUnsubscriptions';
-import { GetExtendedContactDetailsAllOfStatisticsMessagesSent } from './getExtendedContactDetailsAllOfStatisticsMessagesSent';
 
 /**
 * Campaign Statistics for the contact
 */
 export class GetContactCampaignStats {
-    'messagesSent'?: Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>;
-    'hardBounces'?: Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>;
-    'softBounces'?: Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>;
-    'complaints'?: Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>;
+    'messagesSent'?: Array<GetContactCampaignStatsMessagesSentInner>;
+    'hardBounces'?: Array<GetContactCampaignStatsMessagesSentInner>;
+    'softBounces'?: Array<GetContactCampaignStatsMessagesSentInner>;
+    'complaints'?: Array<GetContactCampaignStatsMessagesSentInner>;
     'unsubscriptions'?: GetContactCampaignStatsUnsubscriptions;
     'opened'?: Array<GetContactCampaignStatsOpenedInner>;
     'clicked'?: Array<GetContactCampaignStatsClickedInner>;
     'transacAttributes'?: Array<GetContactCampaignStatsTransacAttributesInner>;
-    'delivered'?: Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>;
+    'delivered'?: Array<GetContactCampaignStatsMessagesSentInner>;
 
     static discriminator: string | undefined = undefined;
 
@@ -37,22 +37,22 @@ export class GetContactCampaignStats {
         {
             "name": "messagesSent",
             "baseName": "messagesSent",
-            "type": "Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>"
+            "type": "Array<GetContactCampaignStatsMessagesSentInner>"
         },
         {
             "name": "hardBounces",
             "baseName": "hardBounces",
-            "type": "Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>"
+            "type": "Array<GetContactCampaignStatsMessagesSentInner>"
         },
         {
             "name": "softBounces",
             "baseName": "softBounces",
-            "type": "Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>"
+            "type": "Array<GetContactCampaignStatsMessagesSentInner>"
         },
         {
             "name": "complaints",
             "baseName": "complaints",
-            "type": "Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>"
+            "type": "Array<GetContactCampaignStatsMessagesSentInner>"
         },
         {
             "name": "unsubscriptions",
@@ -77,7 +77,7 @@ export class GetContactCampaignStats {
         {
             "name": "delivered",
             "baseName": "delivered",
-            "type": "Array<GetExtendedContactDetailsAllOfStatisticsMessagesSent>"
+            "type": "Array<GetContactCampaignStatsMessagesSentInner>"
         }    ];
 
     static getAttributeTypeMap() {

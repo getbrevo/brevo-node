@@ -16,16 +16,12 @@ import http from 'http';
 
 /* tslint:disable:no-unused-locals */
 import { CompaniesIdPatchRequest } from '../model/companiesIdPatchRequest';
-import { CompaniesImportPost200Response } from '../model/companiesImportPost200Response';
-import { CompaniesImportPost400Response } from '../model/companiesImportPost400Response';
 import { CompaniesLinkUnlinkIdPatchRequest } from '../model/companiesLinkUnlinkIdPatchRequest';
 import { CompaniesList } from '../model/companiesList';
 import { CompaniesPost200Response } from '../model/companiesPost200Response';
 import { CompaniesPostRequest } from '../model/companiesPostRequest';
 import { Company } from '../model/company';
 import { CompanyAttributesInner } from '../model/companyAttributesInner';
-import { CrmAttributesPost200Response } from '../model/crmAttributesPost200Response';
-import { CrmAttributesPostRequest } from '../model/crmAttributesPostRequest';
 import { ErrorModel } from '../model/errorModel';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -104,18 +100,84 @@ export class CompaniesApi {
 
     /**
      * 
+     * @summary Get company attributes
+     */
+    public async companiesAttributesGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<CompanyAttributesInner>;  }> {
+        const localVarPath = this.basePath + '/companies/attributes';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        if (this.authentications.apiKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications.partnerKey.apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Array<CompanyAttributesInner>;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            body = ObjectSerializer.deserialize(body, "Array<CompanyAttributesInner>");
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * 
      * @summary Get all companies
      * @param filters Filter by attrbutes. If you have filter for owner on your side please send it as {\&quot;attributes.owner\&quot;:\&quot;5b1a17d914b73d35a76ca0c7\&quot;}
      * @param linkedContactsIds Filter by linked contacts ids
      * @param linkedDealsIds Filter by linked deals ids
-     * @param modifiedSince Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
-     * @param createdSince Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result.
      * @param page Index of the first document of the page
      * @param limit Number of documents per page
      * @param sort Sort the results in the ascending/descending order. Default order is **descending** by creation if &#x60;sort&#x60; is not passed
      * @param sortBy The field used to sort field names.
      */
-    public async companiesGet (filters?: string, linkedContactsIds?: number, linkedDealsIds?: string, modifiedSince?: string, createdSince?: string, page?: number, limit?: number, sort?: 'asc' | 'desc', sortBy?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CompaniesList;  }> {
+    public async companiesGet (filters?: string, linkedContactsIds?: number, linkedDealsIds?: string, page?: number, limit?: number, sort?: 'asc' | 'desc', sortBy?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CompaniesList;  }> {
         const localVarPath = this.basePath + '/companies';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -138,14 +200,6 @@ export class CompaniesApi {
 
         if (linkedDealsIds !== undefined) {
             localVarQueryParameters['linkedDealsIds'] = ObjectSerializer.serialize(linkedDealsIds, "string");
-        }
-
-        if (modifiedSince !== undefined) {
-            localVarQueryParameters['modifiedSince'] = ObjectSerializer.serialize(modifiedSince, "string");
-        }
-
-        if (createdSince !== undefined) {
-            localVarQueryParameters['createdSince'] = ObjectSerializer.serialize(createdSince, "string");
         }
 
         if (page !== undefined) {
@@ -447,95 +501,6 @@ export class CompaniesApi {
         });
     }
     /**
-     * Import companies from a CSV file with mapping options.
-     * @summary Import companies(creation and updation)
-     * @param file The CSV file to upload.The file should have the first row as the mapping attribute. Some default attribute names are (a) company_id [brevo mongoID to update deals] (b) associated_contact (c) associated_deal (f) any other attribute with internal name 
-     * @param mapping The mapping options in JSON format.   json    {       \\\&quot;link_entities\\\&quot;: true, // Determines whether to link related entities during the import process       \\\&quot;unlink_entities\\\&quot;: false, //Determines whether to unlink related entities during the import process.       \\\&quot;update_existing_records\\\&quot;: true, // Determines whether to update based on company ID or treat every row as create       \\\&quot;unset_empty_attributes\\\&quot;: false // Determines whether unset a specific attribute during update if values input is blank       \\\&quot;use_company_identifier\\\&quot;: false // Determines whether to use company name as identifier     } 
-     */
-    public async companiesImportPost (file: RequestFile, mapping: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CompaniesImportPost200Response;  }> {
-        const localVarPath = this.basePath + '/companies/import';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'file' is not null or undefined
-        if (file === null || file === undefined) {
-            throw new Error('Required parameter file was null or undefined when calling companiesImportPost.');
-        }
-
-        // verify required parameter 'mapping' is not null or undefined
-        if (mapping === null || mapping === undefined) {
-            throw new Error('Required parameter mapping was null or undefined when calling companiesImportPost.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        if (file !== undefined) {
-            localVarFormParams['file'] = file;
-        }
-        localVarUseFormData = true;
-
-        if (mapping !== undefined) {
-            localVarFormParams['mapping'] = ObjectSerializer.serialize(mapping, "string");
-        }
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: CompaniesImportPost200Response;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "CompaniesImportPost200Response");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
      * 
      * @summary Link and Unlink company with contacts and deals
      * @param id 
@@ -682,149 +647,6 @@ export class CompaniesApi {
                     } else {
                         if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
                             body = ObjectSerializer.deserialize(body, "CompaniesPost200Response");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * 
-     * @summary Get company attributes
-     */
-    public async crmAttributesCompaniesGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<CompanyAttributesInner>;  }> {
-        const localVarPath = this.basePath + '/crm/attributes/companies';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'GET',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: Array<CompanyAttributesInner>;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "Array<CompanyAttributesInner>");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * 
-     * @summary Create a deal/company attribute
-     * @param body Attribute creation data for company
-     */
-    public async crmAttributesPost (body: CrmAttributesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CrmAttributesPost200Response;  }> {
-        const localVarPath = this.basePath + '/crm/attributes';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'body' is not null or undefined
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling crmAttributesPost.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(body, "CrmAttributesPostRequest")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: CrmAttributesPost200Response;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "CrmAttributesPost200Response");
                             resolve({ response: response, body: body });
                         } else {
                             reject(new HttpError(response, body, response.statusCode));

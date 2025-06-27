@@ -33,7 +33,7 @@ export class OrderBilling {
     */
     'country'?: string;
     /**
-    * Billing phone number.
+    * Phone number to contact for further details about the order, Mandatory if \"email\" field is not passed.
     */
     'phone'?: string;
     /**

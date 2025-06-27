@@ -500,7 +500,7 @@ export class EmailCampaignsApi {
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param excludeHtmlContent Use this flag to exclude htmlContent from the response body. If set to **true**, htmlContent field will be returned as empty string in the response body
      */
-    public async getEmailCampaigns (type?: 'classic' | 'trigger', status?: 'suspended' | 'archive' | 'sent' | 'queued' | 'draft' | 'inProcess' | 'inReview', statistics?: 'globalStats' | 'linksStats' | 'statsByDomain', startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', excludeHtmlContent?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetEmailCampaigns;  }> {
+    public async getEmailCampaigns (type?: 'classic' | 'trigger', status?: 'suspended' | 'archive' | 'sent' | 'queued' | 'draft' | 'inProcess', statistics?: 'globalStats' | 'linksStats' | 'statsByDomain', startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', excludeHtmlContent?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetEmailCampaigns;  }> {
         const localVarPath = this.basePath + '/emailCampaigns';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -518,7 +518,7 @@ export class EmailCampaignsApi {
         }
 
         if (status !== undefined) {
-            localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'suspended' | 'archive' | 'sent' | 'queued' | 'draft' | 'inProcess' | 'inReview'");
+            localVarQueryParameters['status'] = ObjectSerializer.serialize(status, "'suspended' | 'archive' | 'sent' | 'queued' | 'draft' | 'inProcess'");
         }
 
         if (statistics !== undefined) {

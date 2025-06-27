@@ -77,14 +77,6 @@ export class GetCampaignStats {
     * Total number of non-delivered campaigns for a particular campaign id.
     */
     'returnBounce'?: number;
-    /**
-    * Percentage of recipients who open the email out of your total number of recipients. Depending on your Campaign settings, they may include Apple MPP opens.
-    */
-    'opensRate': number;
-    /**
-    * Numbers of times your email has been opened automatically through Apple MPP.
-    */
-    'appleMppOpens': number;
 
     static discriminator: string | undefined = undefined;
 
@@ -167,16 +159,6 @@ export class GetCampaignStats {
         {
             "name": "returnBounce",
             "baseName": "returnBounce",
-            "type": "number"
-        },
-        {
-            "name": "opensRate",
-            "baseName": "opensRate",
-            "type": "number"
-        },
-        {
-            "name": "appleMppOpens",
-            "baseName": "appleMppOpens",
             "type": "number"
         }    ];
 

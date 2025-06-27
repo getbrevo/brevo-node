@@ -12,7 +12,6 @@
 
 import { RequestFile } from './models';
 import { OrderBilling } from './orderBilling';
-import { OrderIdentifiers } from './orderIdentifiers';
 import { OrderProductsInner } from './orderProductsInner';
 
 export class GetOrdersOrdersInner {
@@ -36,21 +35,16 @@ export class GetOrdersOrdersInner {
     * Total amount of the order, including all shipping expenses, tax and the price of items.
     */
     'amount': number;
-    /**
-    * ID of store where the order is placed
-    */
-    'storeId'?: string;
-    'identifiers'?: OrderIdentifiers;
     'products': Array<OrderProductsInner>;
+    /**
+    * Email of the contact, Mandatory if \"phone\" field is not passed in \"billing\" parameter.
+    */
+    'email'?: string;
     'billing'?: OrderBilling;
     /**
     * Coupons applied to the order. Stored case insensitive.
     */
     'coupons'?: Array<string>;
-    /**
-    * Meta data of order to store additional detal such as custom message, customer type, source.
-    */
-    'metaInfo'?: { [key: string]: object; };
     /**
     * Contact ID for the order
     */
@@ -85,19 +79,14 @@ export class GetOrdersOrdersInner {
             "type": "number"
         },
         {
-            "name": "storeId",
-            "baseName": "storeId",
-            "type": "string"
-        },
-        {
-            "name": "identifiers",
-            "baseName": "identifiers",
-            "type": "OrderIdentifiers"
-        },
-        {
             "name": "products",
             "baseName": "products",
             "type": "Array<OrderProductsInner>"
+        },
+        {
+            "name": "email",
+            "baseName": "email",
+            "type": "string"
         },
         {
             "name": "billing",
@@ -108,11 +97,6 @@ export class GetOrdersOrdersInner {
             "name": "coupons",
             "baseName": "coupons",
             "type": "Array<string>"
-        },
-        {
-            "name": "metaInfo",
-            "baseName": "metaInfo",
-            "type": "{ [key: string]: object; }"
         },
         {
             "name": "contactId",

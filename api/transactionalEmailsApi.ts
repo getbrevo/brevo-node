@@ -21,7 +21,6 @@ import { CreateSmtpEmail } from '../model/createSmtpEmail';
 import { CreateSmtpTemplate } from '../model/createSmtpTemplate';
 import { DeleteHardbounces } from '../model/deleteHardbounces';
 import { ErrorModel } from '../model/errorModel';
-import { FetchTemplatePreview } from '../model/fetchTemplatePreview';
 import { GetAggregatedReport } from '../model/getAggregatedReport';
 import { GetBlockedDomains } from '../model/getBlockedDomains';
 import { GetEmailEventReport } from '../model/getEmailEventReport';
@@ -37,7 +36,6 @@ import { PostSendFailed } from '../model/postSendFailed';
 import { ScheduleSmtpEmail } from '../model/scheduleSmtpEmail';
 import { SendSmtpEmail } from '../model/sendSmtpEmail';
 import { SendTestEmail } from '../model/sendTestEmail';
-import { TemplatePreview } from '../model/templatePreview';
 import { UpdateSmtpTemplate } from '../model/updateSmtpTemplate';
 
 import { ObjectSerializer, Authentication, VoidAuth, Interceptor } from '../model/models';
@@ -1572,81 +1570,6 @@ export class TransactionalEmailsApi {
     }
     /**
      * 
-     * @summary Generate the rendered preview of transactional template
-     * @param fetchTemplatePreview Values to fetch Template preview
-     */
-    public async postPreviewSmtpEmailTemplates (fetchTemplatePreview: FetchTemplatePreview, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: TemplatePreview;  }> {
-        const localVarPath = this.basePath + '/smtp/template/preview';
-        let localVarQueryParameters: any = {};
-        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
-        const produces = ['application/json'];
-        // give precedence to 'application/json'
-        if (produces.indexOf('application/json') >= 0) {
-            localVarHeaderParams.Accept = 'application/json';
-        } else {
-            localVarHeaderParams.Accept = produces.join(',');
-        }
-        let localVarFormParams: any = {};
-
-        // verify required parameter 'fetchTemplatePreview' is not null or undefined
-        if (fetchTemplatePreview === null || fetchTemplatePreview === undefined) {
-            throw new Error('Required parameter fetchTemplatePreview was null or undefined when calling postPreviewSmtpEmailTemplates.');
-        }
-
-        (<any>Object).assign(localVarHeaderParams, options.headers);
-
-        let localVarUseFormData = false;
-
-        let localVarRequestOptions: localVarRequest.Options = {
-            method: 'POST',
-            qs: localVarQueryParameters,
-            headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(fetchTemplatePreview, "FetchTemplatePreview")
-        };
-
-        let authenticationPromise = Promise.resolve();
-        if (this.authentications.apiKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.apiKey.applyToRequest(localVarRequestOptions));
-        }
-        if (this.authentications.partnerKey.apiKey) {
-            authenticationPromise = authenticationPromise.then(() => this.authentications.partnerKey.applyToRequest(localVarRequestOptions));
-        }
-        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
-
-        let interceptorPromise = authenticationPromise;
-        for (const interceptor of this.interceptors) {
-            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
-        }
-
-        return interceptorPromise.then(() => {
-            if (Object.keys(localVarFormParams).length) {
-                if (localVarUseFormData) {
-                    (<any>localVarRequestOptions).formData = localVarFormParams;
-                } else {
-                    localVarRequestOptions.form = localVarFormParams;
-                }
-            }
-            return new Promise<{ response: http.IncomingMessage; body: TemplatePreview;  }>((resolve, reject) => {
-                localVarRequest(localVarRequestOptions, (error, response, body) => {
-                    if (error) {
-                        reject(error);
-                    } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "TemplatePreview");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
-                    }
-                });
-            });
-        });
-    }
-    /**
-     * 
      * @summary Send a template to your test list
      * @param templateId Id of the template
      * @param sendTestEmail 
@@ -1878,7 +1801,7 @@ export class TransactionalEmailsApi {
     /**
      * 
      * @summary Delete an SMTP transactional log
-     * @param identifier MessageId of the transactional log(s) to delete
+     * @param identifier MessageId or Email of the transactional log(s) to delete
      */
     public async smtpLogIdentifierDelete (identifier: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smtp/log/{identifier}'

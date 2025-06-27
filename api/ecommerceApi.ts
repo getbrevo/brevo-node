@@ -627,11 +627,11 @@ export class EcommerceApi {
     }
     /**
      * 
-     * @summary Get detailed attribution metrics for a single Brevo campaign or workflow
-     * @param conversionSource The Brevo campaign type or workflow type for which data will be retrieved
-     * @param conversionSourceId The Brevo campaign or automation workflow id for which data will be retrieved
+     * @summary Get detailed attribution metrics for a single Brevo campaign
+     * @param conversionSource The Brevo campaign type for which data will be retrieved
+     * @param conversionSourceId The Brevo campaign id for which data will be retrieved
      */
-    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign' | 'sms_campaign' | 'automation_workflow_email' | 'automation_workflow_sms', conversionSourceId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }> {
+    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}'
             .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
             .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
@@ -709,15 +709,12 @@ export class EcommerceApi {
     }
     /**
      * 
-     * @summary Get attribution metrics for one or more Brevo campaigns or workflows
+     * @summary Get attribution metrics for one or more Brevo campaigns
      * @param periodFrom When getting metrics for a specific period, define the starting datetime in RFC3339 format
      * @param periodTo When getting metrics for a specific period, define the end datetime in RFC3339 format
-     * @param emailCampaignId The email campaign ID(s) to get metrics for
-     * @param smsCampaignId The SMS campaign ID(s) to get metrics for
-     * @param automationWorkflowEmailId The automation workflow ID(s) to get email attribution metrics for
-     * @param automationWorkflowSmsId The automation workflow ID(s) to get SMS attribution metrics for
+     * @param emailCampaignId The email campaign id(s) to get metrics for
      */
-    public async ecommerceAttributionMetricsGet (periodFrom?: Date, periodTo?: Date, emailCampaignId?: Array<string>, smsCampaignId?: Array<string>, automationWorkflowEmailId?: Array<string>, automationWorkflowSmsId?: Array<string>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }> {
+    public async ecommerceAttributionMetricsGet (periodFrom?: Date, periodTo?: Date, emailCampaignId?: Array<number>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/metrics';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -739,19 +736,7 @@ export class EcommerceApi {
         }
 
         if (emailCampaignId !== undefined) {
-            localVarQueryParameters['emailCampaignId[]'] = ObjectSerializer.serialize(emailCampaignId, "Array<string>");
-        }
-
-        if (smsCampaignId !== undefined) {
-            localVarQueryParameters['smsCampaignId[]'] = ObjectSerializer.serialize(smsCampaignId, "Array<string>");
-        }
-
-        if (automationWorkflowEmailId !== undefined) {
-            localVarQueryParameters['automationWorkflowEmailId[]'] = ObjectSerializer.serialize(automationWorkflowEmailId, "Array<string>");
-        }
-
-        if (automationWorkflowSmsId !== undefined) {
-            localVarQueryParameters['automationWorkflowSmsId[]'] = ObjectSerializer.serialize(automationWorkflowSmsId, "Array<string>");
+            localVarQueryParameters['emailCampaignId[]'] = ObjectSerializer.serialize(emailCampaignId, "Array<number>");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -807,11 +792,11 @@ export class EcommerceApi {
     }
     /**
      * 
-     * @summary Get attributed product sales for a single Brevo campaign or workflow
-     * @param conversionSource The Brevo campaign or automation workflow type for which data will be retrieved
-     * @param conversionSourceId The Brevo campaign or automation workflow id for which data will be retrieved
+     * @summary Get attributed product sales for a single Brevo campaign
+     * @param conversionSource The Brevo campaign type for which data will be retrieved
+     * @param conversionSourceId The Brevo campaign id for which data will be retrieved
      */
-    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign' | 'sms_campaign' | 'automation_workflow_email' | 'automation_workflow_sms', conversionSourceId: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }> {
+    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/products/{conversionSource}/{conversionSourceId}'
             .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
             .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
@@ -963,8 +948,8 @@ export class EcommerceApi {
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param ids Filter by category ids
      * @param name Filter by category name
-     * @param modifiedSince Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
-     * @param createdSince Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
+     * @param modifiedSince Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
+     * @param createdSince Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
      */
     public async getCategories (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCategories;  }> {
         const localVarPath = this.basePath + '/categories';

@@ -11,7 +11,6 @@
  */
 
 import { RequestFile } from './models';
-import { CreateEmailCampaignEmailExpirationDate } from './createEmailCampaignEmailExpirationDate';
 import { CreateEmailCampaignRecipients } from './createEmailCampaignRecipients';
 import { CreateEmailCampaignSender } from './createEmailCampaignSender';
 
@@ -134,7 +133,6 @@ export class CreateEmailCampaign {
     * Mandatory if templateId is used containing the {{ update_profile }} tag. Enter an update profile form id. The form id is a 24 digit alphanumeric id that can be found in the URL when editing the form. If not entered, then the default update profile form will be used.
     */
     'updateFormId'?: string;
-    'emailExpirationDate'?: CreateEmailCampaignEmailExpirationDate;
 
     static discriminator: string | undefined = undefined;
 
@@ -293,11 +291,6 @@ export class CreateEmailCampaign {
             "name": "updateFormId",
             "baseName": "updateFormId",
             "type": "string"
-        },
-        {
-            "name": "emailExpirationDate",
-            "baseName": "emailExpirationDate",
-            "type": "CreateEmailCampaignEmailExpirationDate"
         }    ];
 
     static getAttributeTypeMap() {
