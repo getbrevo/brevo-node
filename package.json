@@ -1,6 +1,6 @@
 {
     "name": "@getbrevo/brevo",
-    "version": "2.2.0",
+    "version": "2.5.0",
     "description": "NodeJS client for @getbrevo/brevo",
     "repository": {
         "type": "git",
