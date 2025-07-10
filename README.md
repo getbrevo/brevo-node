@@ -1,6 +1,6 @@
 # Brevo Node SDK
 
-> ⚠️ **Important Notice**: This is the current official version but we are currently working on rebuilding our Node library from scratch.
+> ⚠️ **Important Notice**: This is the current stable version but we are currently working on rebuilding our Node library from scratch.
 
 ## Overview
 
@@ -51,7 +51,7 @@ let message = new SendSmtpEmail();
 message.subject = "First email";
 message.textContent = "Hello world!";
 message.sender = { name: "John Doe", email: "john.doe@example.com" };
-message.to = [{ email: "anne.doe@.com", name: "Anne Doe" }];
+message.to = [{ email: "jane.smith@example.com", name: "Jane Smith" }];
 ```
 
 #### Send the message
@@ -95,10 +95,10 @@ contactAPI.authentications.apiKey.apiKey = "xkeysib-xxxxxx"
 
 ```javascript
 let contact = new CreateContact();
-contact.email = "mourraille@me.com";
+contact.email = "alice.johnson@example.com";
 contact.attributes = {
-  FIRSTNAME: "mauricio",
-  LASTNAME: "mourraille",
+  FIRSTNAME: "Alice",
+  LASTNAME: "Johnson",
 };
 ```
 
@@ -160,8 +160,8 @@ let emailAPI = new TransactionalEmailsApi();
 let message = new SendSmtpEmail();
 message.subject = "First email";
 message.textContent = "Hello world!";
-message.sender = { name: "Mauricio", email: "hi@mourraille.com" };
-message.to = [{ email: "mourraille@me.com", name: "mauricio mourraille" }];
+message.sender = { name: "Bob Wilson", email: "bob.wilson@example.com" };
+message.to = [{ email: "sarah.davis@example.com", name: "Sarah Davis" }];
 ```
 
 #### Send the message
@@ -208,10 +208,10 @@ let contactAPI = new ContactsApi();
 
 ```typescript
 let contact = new CreateContact();
-contact.email = "mourraille@me.com";
+contact.email = "michael.brown@example.com";
 contact.attributes = {
-  FIRSTNAME: { value: "mauricio" },
-  LASTNAME: { value: "mourraille" },
+  FIRSTNAME: { value: "Michael" },
+  LASTNAME: { value: "Brown" },
 };
 ```
 
