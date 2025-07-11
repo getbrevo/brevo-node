@@ -1,0 +1,34 @@
+# Exclude test files and folders
+/tests/
+/examples/
+
+# Exclude configuration and build scripts
+.git/
+.gitignore
+.eslintrc.js
+.eslintrc
+.eslintignore
+.prettierrc
+jest.config.js
+tsconfig.json
+tsup.config.ts
+ROADMAP.md
+swagger.yml
+git_push.sh
+package-lock.json
+.openapi-generator/
+.swagger-codegen/
+ts-sdk.zip
+
+# Exclude source files if only dist/ is needed
+src/
+
+# Exclude other unnecessary files
+*.log
+*.ts
+
+# Allow dist and essential files
+!dist/
+!README.md
+!LICENSE.md
+!package.json
