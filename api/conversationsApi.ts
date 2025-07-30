@@ -11,8 +11,7 @@
  */
 
 
-import localVarRequest from 'request';
-import http from 'http';
+import localVarRequest, { RequestOptions, IncomingMessage } from '../requestCompat';
 
 /* tslint:disable:no-unused-locals */
 import { ConversationsAgentOnlinePingPostRequest } from '../model/conversationsAgentOnlinePingPostRequest';
@@ -102,7 +101,7 @@ export class ConversationsApi {
      * @summary Sets agent’s status to online for 2-3 minutes
      * @param body Agent fields.
      */
-    public async conversationsAgentOnlinePingPost (body: ConversationsAgentOnlinePingPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async conversationsAgentOnlinePingPost (body: ConversationsAgentOnlinePingPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/conversations/agentOnlinePing';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -124,11 +123,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "ConversationsAgentOnlinePingPostRequest")
@@ -156,7 +155,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -176,7 +175,7 @@ export class ConversationsApi {
      * @summary Delete a message sent by an agent
      * @param id ID of the message
      */
-    public async conversationsMessagesIdDelete (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async conversationsMessagesIdDelete (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/conversations/messages/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -199,11 +198,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -230,7 +229,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -250,7 +249,7 @@ export class ConversationsApi {
      * @summary Get a message
      * @param id ID of the message
      */
-    public async conversationsMessagesIdGet (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsMessagesIdGet (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/messages/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -273,11 +272,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -304,7 +303,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -326,7 +325,7 @@ export class ConversationsApi {
      * @param id ID of the message
      * @param body 
      */
-    public async conversationsMessagesIdPut (id: string, body?: ConversationsMessagesIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsMessagesIdPut (id: string, body?: ConversationsMessagesIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/messages/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -349,11 +348,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "ConversationsMessagesIdPutRequest")
@@ -381,7 +380,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -402,7 +401,7 @@ export class ConversationsApi {
      * @summary Send a message as an agent
      * @param body Message fields.
      */
-    public async conversationsMessagesPost (body: ConversationsMessagesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsMessagesPost (body: ConversationsMessagesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/messages';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -424,11 +423,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "ConversationsMessagesPostRequest")
@@ -456,7 +455,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -477,7 +476,7 @@ export class ConversationsApi {
      * @summary Delete an automated message
      * @param id ID of the message
      */
-    public async conversationsPushedMessagesIdDelete (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async conversationsPushedMessagesIdDelete (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/conversations/pushedMessages/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -500,11 +499,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -531,7 +530,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -551,7 +550,7 @@ export class ConversationsApi {
      * @summary Get an automated message
      * @param id ID of the message sent previously
      */
-    public async conversationsPushedMessagesIdGet (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsPushedMessagesIdGet (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/pushedMessages/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -574,11 +573,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -605,7 +604,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -627,7 +626,7 @@ export class ConversationsApi {
      * @param id ID of the message
      * @param body 
      */
-    public async conversationsPushedMessagesIdPut (id: string, body: ConversationsPushedMessagesIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsPushedMessagesIdPut (id: string, body: ConversationsPushedMessagesIdPutRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/pushedMessages/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -655,11 +654,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "ConversationsPushedMessagesIdPutRequest")
@@ -687,7 +686,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -708,7 +707,7 @@ export class ConversationsApi {
      * @summary Send an automated message to a visitor
      * @param body 
      */
-    public async conversationsPushedMessagesPost (body: ConversationsPushedMessagesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }> {
+    public async conversationsPushedMessagesPost (body: ConversationsPushedMessagesPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: ConversationsMessage;  }> {
         const localVarPath = this.basePath + '/conversations/pushedMessages';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -730,11 +729,11 @@ export class ConversationsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "ConversationsPushedMessagesPostRequest")
@@ -762,7 +761,7 @@ export class ConversationsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: ConversationsMessage;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);

@@ -11,8 +11,7 @@
  */
 
 
-import localVarRequest from 'request';
-import http from 'http';
+import localVarRequest, { RequestOptions, IncomingMessage } from '../requestCompat';
 
 /* tslint:disable:no-unused-locals */
 import { CrmDealsIdPatchRequest } from '../model/crmDealsIdPatchRequest';
@@ -103,7 +102,7 @@ export class DealsApi {
      * 
      * @summary Get deal attributes
      */
-    public async crmAttributesDealsGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<DealAttributesInner>;  }> {
+    public async crmAttributesDealsGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: Array<DealAttributesInner>;  }> {
         const localVarPath = this.basePath + '/crm/attributes/deals';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -120,11 +119,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -151,7 +150,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Array<DealAttributesInner>;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: Array<DealAttributesInner>;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -178,7 +177,7 @@ export class DealsApi {
      * @param sort Sort the results in the ascending/descending order. Default order is **descending** by creation if &#x60;sort&#x60; is not passed
      * @param sortBy The field used to sort field names.
      */
-    public async crmDealsGet (filtersAttributesDealName?: string, filtersLinkedCompaniesIds?: string, filtersLinkedContactsIds?: string, offset?: number, limit?: number, sort?: 'asc' | 'desc', sortBy?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: DealsList;  }> {
+    public async crmDealsGet (filtersAttributesDealName?: string, filtersLinkedCompaniesIds?: string, filtersLinkedContactsIds?: string, offset?: number, limit?: number, sort?: 'asc' | 'desc', sortBy?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: DealsList;  }> {
         const localVarPath = this.basePath + '/crm/deals';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -223,11 +222,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -254,7 +253,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: DealsList;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: DealsList;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -275,7 +274,7 @@ export class DealsApi {
      * @summary Delete a deal
      * @param id 
      */
-    public async crmDealsIdDelete (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async crmDealsIdDelete (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/crm/deals/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -298,11 +297,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -329,7 +328,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -349,7 +348,7 @@ export class DealsApi {
      * @summary Get a deal
      * @param id 
      */
-    public async crmDealsIdGet (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Deal;  }> {
+    public async crmDealsIdGet (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: Deal;  }> {
         const localVarPath = this.basePath + '/crm/deals/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -372,11 +371,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -403,7 +402,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Deal;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: Deal;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -425,7 +424,7 @@ export class DealsApi {
      * @param id 
      * @param body Updated deal details.
      */
-    public async crmDealsIdPatch (id: string, body: CrmDealsIdPatchRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async crmDealsIdPatch (id: string, body: CrmDealsIdPatchRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/crm/deals/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -453,11 +452,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PATCH',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "CrmDealsIdPatchRequest")
@@ -485,7 +484,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -506,7 +505,7 @@ export class DealsApi {
      * @param id 
      * @param body Linked / Unlinked contacts and companies ids.
      */
-    public async crmDealsLinkUnlinkIdPatch (id: string, body: CrmDealsLinkUnlinkIdPatchRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async crmDealsLinkUnlinkIdPatch (id: string, body: CrmDealsLinkUnlinkIdPatchRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/crm/deals/link-unlink/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -534,11 +533,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PATCH',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "CrmDealsLinkUnlinkIdPatchRequest")
@@ -566,7 +565,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -586,7 +585,7 @@ export class DealsApi {
      * @summary Create a deal
      * @param body Deal create data.
      */
-    public async crmDealsPost (body: CrmDealsPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CrmDealsPost201Response;  }> {
+    public async crmDealsPost (body: CrmDealsPostRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CrmDealsPost201Response;  }> {
         const localVarPath = this.basePath + '/crm/deals';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -608,11 +607,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(body, "CrmDealsPostRequest")
@@ -640,7 +639,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CrmDealsPost201Response;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CrmDealsPost201Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -660,7 +659,7 @@ export class DealsApi {
      * 
      * @summary Get all pipelines
      */
-    public async crmPipelineDetailsAllGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<Pipeline>;  }> {
+    public async crmPipelineDetailsAllGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: Array<Pipeline>;  }> {
         const localVarPath = this.basePath + '/crm/pipeline/details/all';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -677,11 +676,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -708,7 +707,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Array<Pipeline>;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: Array<Pipeline>;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -728,7 +727,7 @@ export class DealsApi {
      * This endpoint is deprecated. Prefer /crm/pipeline/details/{pipelineID} instead.
      * @summary Get pipeline stages
      */
-    public async crmPipelineDetailsGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Pipeline;  }> {
+    public async crmPipelineDetailsGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: Pipeline;  }> {
         const localVarPath = this.basePath + '/crm/pipeline/details';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -745,11 +744,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -776,7 +775,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Pipeline;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: Pipeline;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -797,7 +796,7 @@ export class DealsApi {
      * @summary Get a pipeline
      * @param pipelineID 
      */
-    public async crmPipelineDetailsPipelineIDGet (pipelineID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Array<Pipeline>;  }> {
+    public async crmPipelineDetailsPipelineIDGet (pipelineID: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: Array<Pipeline>;  }> {
         const localVarPath = this.basePath + '/crm/pipeline/details/{pipelineID}'
             .replace('{' + 'pipelineID' + '}', encodeURIComponent(String(pipelineID)));
         let localVarQueryParameters: any = {};
@@ -820,11 +819,11 @@ export class DealsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -851,7 +850,7 @@ export class DealsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: Array<Pipeline>;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: Array<Pipeline>;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);

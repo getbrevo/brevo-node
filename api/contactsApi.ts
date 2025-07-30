@@ -11,10 +11,7 @@
  */
 
 
-import localVarRequest from 'request';
-import http from 'http';
-
-/* tslint:disable:no-unused-locals */
+import localVarRequest, { RequestOptions, IncomingMessage } from '../requestCompat';
 import { AddContactToList } from '../model/addContactToList';
 import { CreateAttribute } from '../model/createAttribute';
 import { CreateContact } from '../model/createContact';
@@ -124,7 +121,7 @@ export class ContactsApi {
      * @param listId Id of the list
      * @param contactEmails Emails addresses OR IDs of the contacts
      */
-    public async addContactToList (listId: number, contactEmails: AddContactToList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PostContactInfo;  }> {
+    public async addContactToList (listId: number, contactEmails: AddContactToList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: PostContactInfo;  }> {
         const localVarPath = this.basePath + '/contacts/lists/{listId}/contacts/add'
             .replace('{' + 'listId' + '}', encodeURIComponent(String(listId)));
         let localVarQueryParameters: any = {};
@@ -152,11 +149,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(contactEmails, "AddContactToList")
@@ -184,7 +181,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: PostContactInfo;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: PostContactInfo;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -207,7 +204,7 @@ export class ContactsApi {
      * @param attributeName Name of the attribute
      * @param createAttribute Values to create an attribute
      */
-    public async createAttribute (attributeCategory: 'normal' | 'transactional' | 'category' | 'calculated' | 'global', attributeName: string, createAttribute: CreateAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async createAttribute (attributeCategory: 'normal' | 'transactional' | 'category' | 'calculated' | 'global', attributeName: string, createAttribute: CreateAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/attributes/{attributeCategory}/{attributeName}'
             .replace('{' + 'attributeCategory' + '}', encodeURIComponent(String(attributeCategory)))
             .replace('{' + 'attributeName' + '}', encodeURIComponent(String(attributeName)));
@@ -241,11 +238,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createAttribute, "CreateAttribute")
@@ -273,7 +270,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -293,7 +290,7 @@ export class ContactsApi {
      * @summary Create a contact
      * @param createContact Values to create a contact
      */
-    public async createContact (createContact: CreateContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateUpdateContactModel;  }> {
+    public async createContact (createContact: CreateContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateUpdateContactModel;  }> {
         const localVarPath = this.basePath + '/contacts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -315,11 +312,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createContact, "CreateContact")
@@ -347,7 +344,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateUpdateContactModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateUpdateContactModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -368,7 +365,7 @@ export class ContactsApi {
      * @summary Create Contact via DOI (Double-Opt-In) Flow
      * @param createDoiContact Values to create the Double opt-in (DOI) contact
      */
-    public async createDoiContact (createDoiContact: CreateDoiContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async createDoiContact (createDoiContact: CreateDoiContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/doubleOptinConfirmation';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -390,11 +387,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createDoiContact, "CreateDoiContact")
@@ -422,7 +419,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -442,7 +439,7 @@ export class ContactsApi {
      * @summary Create a folder
      * @param createFolder Name of the folder
      */
-    public async createFolder (createFolder: CreateUpdateFolder, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+    public async createFolder (createFolder: CreateUpdateFolder, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateModel;  }> {
         const localVarPath = this.basePath + '/contacts/folders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -464,11 +461,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createFolder, "CreateUpdateFolder")
@@ -496,7 +493,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -517,7 +514,7 @@ export class ContactsApi {
      * @summary Create a list
      * @param createList Values to create a list
      */
-    public async createList (createList: CreateList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+    public async createList (createList: CreateList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateModel;  }> {
         const localVarPath = this.basePath + '/contacts/lists';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -539,11 +536,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createList, "CreateList")
@@ -571,7 +568,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -593,7 +590,7 @@ export class ContactsApi {
      * @param attributeCategory Category of the attribute
      * @param attributeName Name of the existing attribute
      */
-    public async deleteAttribute (attributeCategory: 'normal' | 'transactional' | 'category' | 'calculated' | 'global', attributeName: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteAttribute (attributeCategory: 'normal' | 'transactional' | 'category' | 'calculated' | 'global', attributeName: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/attributes/{attributeCategory}/{attributeName}'
             .replace('{' + 'attributeCategory' + '}', encodeURIComponent(String(attributeCategory)))
             .replace('{' + 'attributeName' + '}', encodeURIComponent(String(attributeName)));
@@ -622,11 +619,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -653,7 +650,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -673,7 +670,7 @@ export class ContactsApi {
      * @summary Delete a contact
      * @param identifier Email (urlencoded) OR ID of the contact
      */
-    public async deleteContact (identifier: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteContact (identifier: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/{identifier}'
             .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
         let localVarQueryParameters: any = {};
@@ -696,11 +693,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -727,7 +724,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -747,7 +744,7 @@ export class ContactsApi {
      * @summary Delete a folder (and all its lists)
      * @param folderId Id of the folder
      */
-    public async deleteFolder (folderId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteFolder (folderId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/folders/{folderId}'
             .replace('{' + 'folderId' + '}', encodeURIComponent(String(folderId)));
         let localVarQueryParameters: any = {};
@@ -770,11 +767,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -801,7 +798,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -821,7 +818,7 @@ export class ContactsApi {
      * @summary Delete a list
      * @param listId Id of the list
      */
-    public async deleteList (listId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteList (listId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/lists/{listId}'
             .replace('{' + 'listId' + '}', encodeURIComponent(String(listId)));
         let localVarQueryParameters: any = {};
@@ -844,11 +841,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -875,7 +872,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -894,7 +891,7 @@ export class ContactsApi {
      * 
      * @summary List all attributes
      */
-    public async getAttributes (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetAttributes;  }> {
+    public async getAttributes (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetAttributes;  }> {
         const localVarPath = this.basePath + '/contacts/attributes';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -911,11 +908,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -942,7 +939,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetAttributes;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetAttributes;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -965,7 +962,7 @@ export class ContactsApi {
      * @param startDate **Mandatory if endDate is used.** Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate 
      * @param endDate **Mandatory if startDate is used.** Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. 
      */
-    public async getContactInfo (identifier: string, startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetExtendedContactDetails;  }> {
+    public async getContactInfo (identifier: string, startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetExtendedContactDetails;  }> {
         const localVarPath = this.basePath + '/contacts/{identifier}'
             .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
         let localVarQueryParameters: any = {};
@@ -996,11 +993,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1027,7 +1024,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetExtendedContactDetails;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetExtendedContactDetails;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1050,7 +1047,7 @@ export class ContactsApi {
      * @param startDate Mandatory if endDate is used. Starting date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be lower than equal to endDate
      * @param endDate Mandatory if startDate is used. Ending date (YYYY-MM-DD) of the statistic events specific to campaigns. Must be greater than equal to startDate. Maximum difference between startDate and endDate should not be greater than 90 days
      */
-    public async getContactStats (identifier: string, startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetContactCampaignStats;  }> {
+    public async getContactStats (identifier: string, startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetContactCampaignStats;  }> {
         const localVarPath = this.basePath + '/contacts/{identifier}/campaignStats'
             .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
         let localVarQueryParameters: any = {};
@@ -1081,11 +1078,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1112,7 +1109,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetContactCampaignStats;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetContactCampaignStats;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1140,7 +1137,7 @@ export class ContactsApi {
      * @param listIds Ids of the list. **Either listIds or segmentId can be passed.**
      * @param filter Filter the contacts on the basis of attributes. **Allowed operator: equals. (e.g. filter&#x3D;equals(FIRSTNAME,\&quot;Antoine\&quot;), filter&#x3D;equals(B1, true), filter&#x3D;equals(DOB, \&quot;1989-11-23\&quot;))** 
      */
-    public async getContacts (limit?: number, offset?: number, modifiedSince?: string, createdSince?: string, sort?: 'asc' | 'desc', segmentId?: number, listIds?: Array<number>, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetContacts;  }> {
+    public async getContacts (limit?: number, offset?: number, modifiedSince?: string, createdSince?: string, sort?: 'asc' | 'desc', segmentId?: number, listIds?: Array<number>, filter?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetContacts;  }> {
         const localVarPath = this.basePath + '/contacts';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1189,11 +1186,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1220,7 +1217,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetContacts;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetContacts;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1245,7 +1242,7 @@ export class ContactsApi {
      * @param offset Index of the first document of the page
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      */
-    public async getContactsFromList (listId: number, modifiedSince?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetContacts;  }> {
+    public async getContactsFromList (listId: number, modifiedSince?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetContacts;  }> {
         const localVarPath = this.basePath + '/contacts/lists/{listId}/contacts'
             .replace('{' + 'listId' + '}', encodeURIComponent(String(listId)));
         let localVarQueryParameters: any = {};
@@ -1284,11 +1281,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1315,7 +1312,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetContacts;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetContacts;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1336,7 +1333,7 @@ export class ContactsApi {
      * @summary Returns a folder\'s details
      * @param folderId id of the folder
      */
-    public async getFolder (folderId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetFolder;  }> {
+    public async getFolder (folderId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetFolder;  }> {
         const localVarPath = this.basePath + '/contacts/folders/{folderId}'
             .replace('{' + 'folderId' + '}', encodeURIComponent(String(folderId)));
         let localVarQueryParameters: any = {};
@@ -1359,11 +1356,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1390,7 +1387,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetFolder;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetFolder;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1414,7 +1411,7 @@ export class ContactsApi {
      * @param offset Index of the first document of the page
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      */
-    public async getFolderLists (folderId: number, limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetFolderLists;  }> {
+    public async getFolderLists (folderId: number, limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetFolderLists;  }> {
         const localVarPath = this.basePath + '/contacts/folders/{folderId}/lists'
             .replace('{' + 'folderId' + '}', encodeURIComponent(String(folderId)));
         let localVarQueryParameters: any = {};
@@ -1449,11 +1446,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1480,7 +1477,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetFolderLists;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetFolderLists;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1503,7 +1500,7 @@ export class ContactsApi {
      * @param offset Index of the first document of the page
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      */
-    public async getFolders (limit: number, offset: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetFolders;  }> {
+    public async getFolders (limit: number, offset: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetFolders;  }> {
         const localVarPath = this.basePath + '/contacts/folders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1542,11 +1539,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1573,7 +1570,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetFolders;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetFolders;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1596,7 +1593,7 @@ export class ContactsApi {
      * @param startDate Mandatory if endDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
      * @param endDate Mandatory if startDate is used. Ending (urlencoded) UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) to aggregate the sent email campaigns for a specific list id.Prefer to pass your timezone in date-time format for accurate result
      */
-    public async getList (listId: number, startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetExtendedList;  }> {
+    public async getList (listId: number, startDate?: string, endDate?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetExtendedList;  }> {
         const localVarPath = this.basePath + '/contacts/lists/{listId}'
             .replace('{' + 'listId' + '}', encodeURIComponent(String(listId)));
         let localVarQueryParameters: any = {};
@@ -1627,11 +1624,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1658,7 +1655,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetExtendedList;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetExtendedList;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1681,7 +1678,7 @@ export class ContactsApi {
      * @param offset Index of the first document of the page
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      */
-    public async getLists (limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetLists;  }> {
+    public async getLists (limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetLists;  }> {
         const localVarPath = this.basePath + '/contacts/lists';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1710,11 +1707,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1741,7 +1738,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetLists;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetLists;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1764,7 +1761,7 @@ export class ContactsApi {
      * @param offset Index of the first document of the page
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      */
-    public async getSegments (limit: number, offset: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSegments;  }> {
+    public async getSegments (limit: number, offset: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetSegments;  }> {
         const localVarPath = this.basePath + '/contacts/segments';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1803,11 +1800,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1834,7 +1831,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetSegments;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetSegments;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1855,7 +1852,7 @@ export class ContactsApi {
      * @summary Import contacts
      * @param requestContactImport Values to import contacts in Brevo. To know more about the expected format, please have a look at &#x60;&#x60;https://help.brevo.com/hc/en-us/articles/209499265-Build-contacts-lists-for-your-email-marketing-campaigns&#x60;&#x60;
      */
-    public async importContacts (requestContactImport: RequestContactImport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }> {
+    public async importContacts (requestContactImport: RequestContactImport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreatedProcessId;  }> {
         const localVarPath = this.basePath + '/contacts/import';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1877,14 +1874,14 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(requestContactImport, "RequestContactImport")
+            data: ObjectSerializer.serialize(requestContactImport, "RequestContactImport")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -1909,7 +1906,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreatedProcessId;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1931,7 +1928,7 @@ export class ContactsApi {
      * @param listId Id of the list
      * @param contactEmails Emails addresses OR IDs of the contacts
      */
-    public async removeContactFromList (listId: number, contactEmails: RemoveContactFromList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: PostContactInfo;  }> {
+    public async removeContactFromList (listId: number, contactEmails: RemoveContactFromList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: PostContactInfo;  }> {
         const localVarPath = this.basePath + '/contacts/lists/{listId}/contacts/remove'
             .replace('{' + 'listId' + '}', encodeURIComponent(String(listId)));
         let localVarQueryParameters: any = {};
@@ -1959,11 +1956,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(contactEmails, "RemoveContactFromList")
@@ -1991,7 +1988,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: PostContactInfo;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: PostContactInfo;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -2012,7 +2009,7 @@ export class ContactsApi {
      * @summary Export contacts
      * @param requestContactExport Values to request a contact export
      */
-    public async requestContactExport (requestContactExport: RequestContactExport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }> {
+    public async requestContactExport (requestContactExport: RequestContactExport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreatedProcessId;  }> {
         const localVarPath = this.basePath + '/contacts/export';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -2034,14 +2031,14 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
-            body: ObjectSerializer.serialize(requestContactExport, "RequestContactExport")
+            data: ObjectSerializer.serialize(requestContactExport, "RequestContactExport")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -2066,7 +2063,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreatedProcessId;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -2089,7 +2086,7 @@ export class ContactsApi {
      * @param attributeName Name of the existing attribute
      * @param updateAttribute Values to update an attribute
      */
-    public async updateAttribute (attributeCategory: 'category' | 'calculated' | 'global', attributeName: string, updateAttribute: UpdateAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateAttribute (attributeCategory: 'category' | 'calculated' | 'global', attributeName: string, updateAttribute: UpdateAttribute, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/attributes/{attributeCategory}/{attributeName}'
             .replace('{' + 'attributeCategory' + '}', encodeURIComponent(String(attributeCategory)))
             .replace('{' + 'attributeName' + '}', encodeURIComponent(String(attributeName)));
@@ -2123,11 +2120,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateAttribute, "UpdateAttribute")
@@ -2155,7 +2152,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -2175,7 +2172,7 @@ export class ContactsApi {
      * @summary Update multiple contacts
      * @param updateBatchContacts Values to update multiple contacts
      */
-    public async updateBatchContacts (updateBatchContacts: UpdateBatchContacts, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateBatchContacts (updateBatchContacts: UpdateBatchContacts, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/batch';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -2197,11 +2194,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateBatchContacts, "UpdateBatchContacts")
@@ -2229,7 +2226,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -2250,7 +2247,7 @@ export class ContactsApi {
      * @param identifier Email (urlencoded) OR ID of the contact
      * @param updateContact Values to update a contact
      */
-    public async updateContact (identifier: string, updateContact: UpdateContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateContact (identifier: string, updateContact: UpdateContact, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/{identifier}'
             .replace('{' + 'identifier' + '}', encodeURIComponent(String(identifier)));
         let localVarQueryParameters: any = {};
@@ -2278,11 +2275,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateContact, "UpdateContact")
@@ -2310,7 +2307,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -2331,7 +2328,7 @@ export class ContactsApi {
      * @param folderId Id of the folder
      * @param updateFolder Name of the folder
      */
-    public async updateFolder (folderId: number, updateFolder: CreateUpdateFolder, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateFolder (folderId: number, updateFolder: CreateUpdateFolder, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/folders/{folderId}'
             .replace('{' + 'folderId' + '}', encodeURIComponent(String(folderId)));
         let localVarQueryParameters: any = {};
@@ -2359,11 +2356,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateFolder, "CreateUpdateFolder")
@@ -2391,7 +2388,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -2412,7 +2409,7 @@ export class ContactsApi {
      * @param listId Id of the list
      * @param updateList Values to update a list
      */
-    public async updateList (listId: number, updateList: UpdateList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateList (listId: number, updateList: UpdateList, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/contacts/lists/{listId}'
             .replace('{' + 'listId' + '}', encodeURIComponent(String(listId)));
         let localVarQueryParameters: any = {};
@@ -2440,11 +2437,11 @@ export class ContactsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateList, "UpdateList")
@@ -2472,7 +2469,7 @@ export class ContactsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);

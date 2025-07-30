@@ -11,7 +11,7 @@
  */
 
 
-import localVarRequest from 'request';
+import localVarRequest, { RequestOptions } from '../requestCompat';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
@@ -119,11 +119,11 @@ export class EventsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(event, "Event")
