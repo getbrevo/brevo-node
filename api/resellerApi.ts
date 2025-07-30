@@ -11,7 +11,7 @@
  */
 
 
-import localVarRequest from 'request';
+import localVarRequest, { RequestOptions } from '../requestCompat';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
@@ -140,11 +140,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(addCredits, "AddCredits")
@@ -222,11 +222,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(ip, "ManageIp")
@@ -303,11 +303,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(addChildDomain, "AddChildDomain")
@@ -372,11 +372,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(resellerChild, "CreateChild")
@@ -455,11 +455,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -529,11 +529,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -609,11 +609,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(ip, "ManageIp")
@@ -684,11 +684,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -759,11 +759,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -834,11 +834,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -912,11 +912,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -987,11 +987,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1068,11 +1068,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(removeCredits, "RemoveCredits")
@@ -1150,11 +1150,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateChildAccountStatus, "UpdateChildAccountStatus")
@@ -1238,11 +1238,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateChildDomain, "UpdateChildDomain")
@@ -1319,11 +1319,11 @@ export class ResellerApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(resellerChild, "UpdateChild")

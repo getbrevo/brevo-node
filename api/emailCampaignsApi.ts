@@ -11,7 +11,7 @@
  */
 
 
-import localVarRequest from 'request';
+import localVarRequest, { RequestOptions, IncomingMessage } from '../requestCompat';
 import http from 'http';
 
 /* tslint:disable:no-unused-locals */
@@ -111,7 +111,7 @@ export class EmailCampaignsApi {
      * @summary Create an email campaign
      * @param emailCampaigns Values to create a campaign
      */
-    public async createEmailCampaign (emailCampaigns: CreateEmailCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+    public async createEmailCampaign (emailCampaigns: CreateEmailCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateModel;  }> {
         const localVarPath = this.basePath + '/emailCampaigns';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -133,14 +133,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(emailCampaigns, "CreateEmailCampaign")
+            url: localVarPath,
+            data: ObjectSerializer.serialize(emailCampaigns, "CreateEmailCampaign")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -165,17 +163,17 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
+                    } else if (response && response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                        body = ObjectSerializer.deserialize(body, "CreateModel");
+                        resolve({ response: response, body: body });
+                    } else if (response) {
+                        reject(new HttpError(response, body, response.statusCode));
                     } else {
-                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
-                            body = ObjectSerializer.deserialize(body, "CreateModel");
-                            resolve({ response: response, body: body });
-                        } else {
-                            reject(new HttpError(response, body, response.statusCode));
-                        }
+                        reject(new Error('No response received'));
                     }
                 });
             });
@@ -186,7 +184,7 @@ export class EmailCampaignsApi {
      * @summary Delete an email campaign
      * @param campaignId id of the campaign
      */
-    public async deleteEmailCampaign (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteEmailCampaign (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -209,13 +207,11 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
+            url: localVarPath
         };
 
         let authenticationPromise = Promise.resolve();
@@ -240,7 +236,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -261,7 +257,7 @@ export class EmailCampaignsApi {
      * @param campaignId Id of the campaign
      * @param recipientExport Values to send for a recipient export request
      */
-    public async emailExportRecipients (campaignId: number, recipientExport?: EmailExportRecipients, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }> {
+    public async emailExportRecipients (campaignId: number, recipientExport?: EmailExportRecipients, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreatedProcessId;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/exportRecipients'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -284,14 +280,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(recipientExport, "EmailExportRecipients")
+            url: localVarPath,
+            data: ObjectSerializer.serialize(recipientExport, "EmailExportRecipients")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -316,7 +310,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreatedProcessId;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -337,7 +331,7 @@ export class EmailCampaignsApi {
      * @summary Get an A/B test email campaign results
      * @param campaignId Id of the A/B test campaign
      */
-    public async getAbTestCampaignResult (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: AbTestCampaignResult;  }> {
+    public async getAbTestCampaignResult (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: AbTestCampaignResult;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/abTestCampaignResult'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -360,13 +354,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(campaignId, "number")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -391,7 +384,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: AbTestCampaignResult;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: AbTestCampaignResult;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -413,7 +406,7 @@ export class EmailCampaignsApi {
      * @param campaignId Id of the campaign
      * @param statistics Filter on the type of statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response.
      */
-    public async getEmailCampaign (campaignId: number, statistics?: 'globalStats' | 'linksStats' | 'statsByDomain' | 'statsByDevice' | 'statsByBrowser', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetEmailCampaign;  }> {
+    public async getEmailCampaign (campaignId: number, statistics?: 'globalStats' | 'linksStats' | 'statsByDomain' | 'statsByDevice' | 'statsByBrowser', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetEmailCampaign;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -440,13 +433,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(campaignId, "number")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -471,7 +463,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetEmailCampaign;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetEmailCampaign;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -500,7 +492,7 @@ export class EmailCampaignsApi {
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      * @param excludeHtmlContent Use this flag to exclude htmlContent from the response body. If set to **true**, htmlContent field will be returned as empty string in the response body
      */
-    public async getEmailCampaigns (type?: 'classic' | 'trigger', status?: 'suspended' | 'archive' | 'sent' | 'queued' | 'draft' | 'inProcess', statistics?: 'globalStats' | 'linksStats' | 'statsByDomain', startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', excludeHtmlContent?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetEmailCampaigns;  }> {
+    public async getEmailCampaigns (type?: 'classic' | 'trigger', status?: 'suspended' | 'archive' | 'sent' | 'queued' | 'draft' | 'inProcess', statistics?: 'globalStats' | 'linksStats' | 'statsByDomain', startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', excludeHtmlContent?: boolean, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetEmailCampaigns;  }> {
         const localVarPath = this.basePath + '/emailCampaigns';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -553,13 +545,11 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
+            url: localVarPath
         };
 
         let authenticationPromise = Promise.resolve();
@@ -584,7 +574,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetEmailCampaigns;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetEmailCampaigns;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -605,7 +595,7 @@ export class EmailCampaignsApi {
      * @summary Get a shared template url
      * @param campaignId Id of the campaign or template
      */
-    public async getSharedTemplateUrl (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSharedTemplateUrl;  }> {
+    public async getSharedTemplateUrl (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetSharedTemplateUrl;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/sharedUrl'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -628,13 +618,11 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
+            url: localVarPath
         };
 
         let authenticationPromise = Promise.resolve();
@@ -659,7 +647,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetSharedTemplateUrl;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetSharedTemplateUrl;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -680,7 +668,7 @@ export class EmailCampaignsApi {
      * @summary Send an email campaign immediately, based on campaignId
      * @param campaignId Id of the campaign
      */
-    public async sendEmailCampaignNow (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async sendEmailCampaignNow (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/sendNow'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -703,13 +691,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
+            url: localVarPath,
+            data: ObjectSerializer.serialize(campaignId, "number")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -734,7 +721,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -755,7 +742,7 @@ export class EmailCampaignsApi {
      * @param campaignId Id of the campaign
      * @param sendReport Values for send a report
      */
-    public async sendReport (campaignId: number, sendReport: SendReport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async sendReport (campaignId: number, sendReport: SendReport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/sendReport'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -783,14 +770,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(sendReport, "SendReport")
+            url: localVarPath,
+            data: ObjectSerializer.serialize(sendReport, "SendReport")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -815,7 +800,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -836,7 +821,7 @@ export class EmailCampaignsApi {
      * @param campaignId Id of the campaign
      * @param emailTo 
      */
-    public async sendTestEmail (campaignId: number, emailTo: SendTestEmail, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async sendTestEmail (campaignId: number, emailTo: SendTestEmail, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/sendTest'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -864,14 +849,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(emailTo, "SendTestEmail")
+            url: localVarPath,
+            data: ObjectSerializer.serialize(emailTo, "SendTestEmail")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -896,7 +879,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -917,7 +900,7 @@ export class EmailCampaignsApi {
      * @param campaignId Id of the campaign
      * @param status Status of the campaign
      */
-    public async updateCampaignStatus (campaignId: number, status: UpdateCampaignStatus, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateCampaignStatus (campaignId: number, status: UpdateCampaignStatus, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}/status'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -945,14 +928,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(status, "UpdateCampaignStatus")
+            url: localVarPath,
+            data: ObjectSerializer.serialize(status, "UpdateCampaignStatus")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -977,7 +958,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -998,7 +979,7 @@ export class EmailCampaignsApi {
      * @param campaignId Id of the campaign
      * @param emailCampaign Values to update a campaign
      */
-    public async updateEmailCampaign (campaignId: number, emailCampaign: UpdateEmailCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateEmailCampaign (campaignId: number, emailCampaign: UpdateEmailCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/{campaignId}'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -1026,14 +1007,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(emailCampaign, "UpdateEmailCampaign")
+            url: localVarPath,
+            data: ObjectSerializer.serialize(emailCampaign, "UpdateEmailCampaign")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -1058,7 +1037,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1078,7 +1057,7 @@ export class EmailCampaignsApi {
      * @summary Upload an image to your account\'s image gallery
      * @param uploadImage Parameters to upload an image
      */
-    public async uploadImageToGallery (uploadImage: UploadImageToGallery, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: UploadImageModel;  }> {
+    public async uploadImageToGallery (uploadImage: UploadImageToGallery, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: UploadImageModel;  }> {
         const localVarPath = this.basePath + '/emailCampaigns/images';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1100,14 +1079,12 @@ export class EmailCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
-            useQuerystring: this._useQuerystring,
-            json: true,
-            body: ObjectSerializer.serialize(uploadImage, "UploadImageToGallery")
+            url: localVarPath,
+            data: ObjectSerializer.serialize(uploadImage, "UploadImageToGallery")
         };
 
         let authenticationPromise = Promise.resolve();
@@ -1132,7 +1109,7 @@ export class EmailCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: UploadImageModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: UploadImageModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);

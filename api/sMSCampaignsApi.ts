@@ -11,8 +11,7 @@
  */
 
 
-import localVarRequest from 'request';
-import http from 'http';
+import localVarRequest, { RequestOptions, IncomingMessage } from '../requestCompat';
 
 /* tslint:disable:no-unused-locals */
 import { CreateModel } from '../model/createModel';
@@ -107,7 +106,7 @@ export class SMSCampaignsApi {
      * @summary Creates an SMS campaign
      * @param createSmsCampaign Values to create an SMS Campaign
      */
-    public async createSmsCampaign (createSmsCampaign: CreateSmsCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateModel;  }> {
+    public async createSmsCampaign (createSmsCampaign: CreateSmsCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateModel;  }> {
         const localVarPath = this.basePath + '/smsCampaigns';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -129,11 +128,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createSmsCampaign, "CreateSmsCampaign")
@@ -161,7 +160,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -182,7 +181,7 @@ export class SMSCampaignsApi {
      * @summary Delete an SMS campaign
      * @param campaignId id of the SMS campaign
      */
-    public async deleteSmsCampaign (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async deleteSmsCampaign (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smsCampaigns/{campaignId}'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -205,11 +204,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'DELETE',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -236,7 +235,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -256,7 +255,7 @@ export class SMSCampaignsApi {
      * @summary Get an SMS campaign
      * @param campaignId id of the SMS campaign
      */
-    public async getSmsCampaign (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSmsCampaign;  }> {
+    public async getSmsCampaign (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetSmsCampaign;  }> {
         const localVarPath = this.basePath + '/smsCampaigns/{campaignId}'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -279,11 +278,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -310,7 +309,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetSmsCampaign;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetSmsCampaign;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -336,7 +335,7 @@ export class SMSCampaignsApi {
      * @param offset Beginning point in the list to retrieve from.
      * @param sort Sort the results in the ascending/descending order of record creation. Default order is **descending** if &#x60;sort&#x60; is not passed
      */
-    public async getSmsCampaigns (status?: 'suspended' | 'archive' | 'sent' | 'queued' | 'draft' | 'inProcess', startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSmsCampaigns;  }> {
+    public async getSmsCampaigns (status?: 'suspended' | 'archive' | 'sent' | 'queued' | 'draft' | 'inProcess', startDate?: string, endDate?: string, limit?: number, offset?: number, sort?: 'asc' | 'desc', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetSmsCampaigns;  }> {
         const localVarPath = this.basePath + '/smsCampaigns';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -377,11 +376,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -408,7 +407,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetSmsCampaigns;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetSmsCampaigns;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -430,7 +429,7 @@ export class SMSCampaignsApi {
      * @param campaignId id of the campaign
      * @param recipientExport Values to send for a recipient export request
      */
-    public async requestSmsRecipientExport (campaignId: number, recipientExport?: RequestSmsRecipientExport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }> {
+    public async requestSmsRecipientExport (campaignId: number, recipientExport?: RequestSmsRecipientExport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreatedProcessId;  }> {
         const localVarPath = this.basePath + '/smsCampaigns/{campaignId}/exportRecipients'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -453,11 +452,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(recipientExport, "RequestSmsRecipientExport")
@@ -485,7 +484,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreatedProcessId;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreatedProcessId;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -506,7 +505,7 @@ export class SMSCampaignsApi {
      * @summary Send your SMS campaign immediately
      * @param campaignId id of the campaign
      */
-    public async sendSmsCampaignNow (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async sendSmsCampaignNow (campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smsCampaigns/{campaignId}/sendNow'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -529,11 +528,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -560,7 +559,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -581,7 +580,7 @@ export class SMSCampaignsApi {
      * @param campaignId id of the campaign
      * @param sendReport Values for send a report
      */
-    public async sendSmsReport (campaignId: number, sendReport: SendReport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async sendSmsReport (campaignId: number, sendReport: SendReport, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smsCampaigns/{campaignId}/sendReport'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -609,11 +608,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(sendReport, "SendReport")
@@ -641,7 +640,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -662,7 +661,7 @@ export class SMSCampaignsApi {
      * @param campaignId Id of the SMS campaign
      * @param phoneNumber Mobile number of the recipient with the country code. This number must belong to one of your contacts in Brevo account and must not be blacklisted
      */
-    public async sendTestSms (campaignId: number, phoneNumber: SendTestSms, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async sendTestSms (campaignId: number, phoneNumber: SendTestSms, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smsCampaigns/{campaignId}/sendTest'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -690,11 +689,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(phoneNumber, "SendTestSms")
@@ -722,7 +721,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -743,7 +742,7 @@ export class SMSCampaignsApi {
      * @param campaignId id of the SMS campaign
      * @param updateSmsCampaign Values to update an SMS Campaign
      */
-    public async updateSmsCampaign (campaignId: number, updateSmsCampaign: UpdateSmsCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateSmsCampaign (campaignId: number, updateSmsCampaign: UpdateSmsCampaign, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smsCampaigns/{campaignId}'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -771,11 +770,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(updateSmsCampaign, "UpdateSmsCampaign")
@@ -803,7 +802,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -824,7 +823,7 @@ export class SMSCampaignsApi {
      * @param campaignId id of the campaign
      * @param status Status of the campaign.
      */
-    public async updateSmsCampaignStatus (campaignId: number, status: UpdateCampaignStatus, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async updateSmsCampaignStatus (campaignId: number, status: UpdateCampaignStatus, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/smsCampaigns/{campaignId}/status'
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -852,11 +851,11 @@ export class SMSCampaignsApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'PUT',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(status, "UpdateCampaignStatus")
@@ -884,7 +883,7 @@ export class SMSCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);

@@ -11,8 +11,7 @@
  */
 
 
-import localVarRequest from 'request';
-import http from 'http';
+import localVarRequest, { RequestOptions, IncomingMessage } from '../requestCompat';
 
 /* tslint:disable:no-unused-locals */
 import { CreateCategoryModel } from '../model/createCategoryModel';
@@ -115,7 +114,7 @@ export class EcommerceApi {
      * @summary Create orders in batch
      * @param orderBatch 
      */
-    public async createBatchOrder (orderBatch: OrderBatch, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async createBatchOrder (orderBatch: OrderBatch, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/orders/status/batch';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -137,11 +136,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(orderBatch, "OrderBatch")
@@ -169,7 +168,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -189,7 +188,7 @@ export class EcommerceApi {
      * @summary Managing the status of the order
      * @param order 
      */
-    public async createOrder (order: Order, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async createOrder (order: Order, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/orders/status';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -211,11 +210,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(order, "Order")
@@ -243,7 +242,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -263,7 +262,7 @@ export class EcommerceApi {
      * @summary Create categories in batch
      * @param createUpdateBatchCategory Values to create a batch of categories
      */
-    public async createUpdateBatchCategory (createUpdateBatchCategory: CreateUpdateBatchCategory, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateUpdateBatchCategoryModel;  }> {
+    public async createUpdateBatchCategory (createUpdateBatchCategory: CreateUpdateBatchCategory, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateUpdateBatchCategoryModel;  }> {
         const localVarPath = this.basePath + '/categories/batch';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -285,11 +284,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createUpdateBatchCategory, "CreateUpdateBatchCategory")
@@ -317,7 +316,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateUpdateBatchCategoryModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateUpdateBatchCategoryModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -338,7 +337,7 @@ export class EcommerceApi {
      * @summary Create products in batch
      * @param createUpdateBatchProducts Values to create a batch of products
      */
-    public async createUpdateBatchProducts (createUpdateBatchProducts: CreateUpdateBatchProducts, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateUpdateBatchProductsModel;  }> {
+    public async createUpdateBatchProducts (createUpdateBatchProducts: CreateUpdateBatchProducts, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateUpdateBatchProductsModel;  }> {
         const localVarPath = this.basePath + '/products/batch';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -360,11 +359,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createUpdateBatchProducts, "CreateUpdateBatchProducts")
@@ -392,7 +391,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateUpdateBatchProductsModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateUpdateBatchProductsModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -413,7 +412,7 @@ export class EcommerceApi {
      * @summary Create/Update a category
      * @param createUpdateCategory Values to create/update a category
      */
-    public async createUpdateCategory (createUpdateCategory: CreateUpdateCategory, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateCategoryModel;  }> {
+    public async createUpdateCategory (createUpdateCategory: CreateUpdateCategory, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateCategoryModel;  }> {
         const localVarPath = this.basePath + '/categories';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -435,11 +434,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createUpdateCategory, "CreateUpdateCategory")
@@ -467,7 +466,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateCategoryModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateCategoryModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -488,7 +487,7 @@ export class EcommerceApi {
      * @summary Create/Update a product
      * @param createUpdateProduct Values to create/update a product
      */
-    public async createUpdateProduct (createUpdateProduct: CreateUpdateProduct, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateProductModel;  }> {
+    public async createUpdateProduct (createUpdateProduct: CreateUpdateProduct, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: CreateProductModel;  }> {
         const localVarPath = this.basePath + '/products';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -510,11 +509,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(createUpdateProduct, "CreateUpdateProduct")
@@ -542,7 +541,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: CreateProductModel;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: CreateProductModel;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -562,7 +561,7 @@ export class EcommerceApi {
      * Getting access to Brevo eCommerce.
      * @summary Activate the eCommerce app
      */
-    public async ecommerceActivatePost (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body?: any;  }> {
+    public async ecommerceActivatePost (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body?: any;  }> {
         const localVarPath = this.basePath + '/ecommerce/activate';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -579,11 +578,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -610,7 +609,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body?: any;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body?: any;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -631,7 +630,7 @@ export class EcommerceApi {
      * @param conversionSource The Brevo campaign type for which data will be retrieved
      * @param conversionSourceId The Brevo campaign id for which data will be retrieved
      */
-    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }> {
+    public async ecommerceAttributionMetricsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/metrics/{conversionSource}/{conversionSourceId}'
             .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
             .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
@@ -660,11 +659,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -691,7 +690,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: EcommerceAttributionMetricsConversionSourceConversionSourceIdGet200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -714,7 +713,7 @@ export class EcommerceApi {
      * @param periodTo When getting metrics for a specific period, define the end datetime in RFC3339 format
      * @param emailCampaignId The email campaign id(s) to get metrics for
      */
-    public async ecommerceAttributionMetricsGet (periodFrom?: Date, periodTo?: Date, emailCampaignId?: Array<number>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }> {
+    public async ecommerceAttributionMetricsGet (periodFrom?: Date, periodTo?: Date, emailCampaignId?: Array<number>, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/metrics';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -743,11 +742,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -774,7 +773,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: EcommerceAttributionMetricsGet200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -796,7 +795,7 @@ export class EcommerceApi {
      * @param conversionSource The Brevo campaign type for which data will be retrieved
      * @param conversionSourceId The Brevo campaign id for which data will be retrieved
      */
-    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }> {
+    public async ecommerceAttributionProductsConversionSourceConversionSourceIdGet (conversionSource: 'email_campaign', conversionSourceId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/attribution/products/{conversionSource}/{conversionSourceId}'
             .replace('{' + 'conversionSource' + '}', encodeURIComponent(String(conversionSource)))
             .replace('{' + 'conversionSourceId' + '}', encodeURIComponent(String(conversionSourceId)));
@@ -825,11 +824,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -856,7 +855,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: EcommerceAttributionProductsConversionSourceConversionSourceIdGet200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -876,7 +875,7 @@ export class EcommerceApi {
      * 
      * @summary Get the ISO 4217 compliant display currency code for your Brevo account
      */
-    public async ecommerceConfigDisplayCurrencyGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }> {
+    public async ecommerceConfigDisplayCurrencyGet (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/config/displayCurrency';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -893,11 +892,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -924,7 +923,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -951,7 +950,7 @@ export class EcommerceApi {
      * @param modifiedSince Filter (urlencoded) the categories modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
      * @param createdSince Filter (urlencoded) the categories created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**         
      */
-    public async getCategories (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCategories;  }> {
+    public async getCategories (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetCategories;  }> {
         const localVarPath = this.basePath + '/categories';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -996,11 +995,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1027,7 +1026,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetCategories;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetCategories;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1048,7 +1047,7 @@ export class EcommerceApi {
      * @summary Get a category details
      * @param id Category ID
      */
-    public async getCategoryInfo (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetCategoryDetails;  }> {
+    public async getCategoryInfo (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetCategoryDetails;  }> {
         const localVarPath = this.basePath + '/categories/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -1071,11 +1070,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1102,7 +1101,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetCategoryDetails;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetCategoryDetails;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1127,7 +1126,7 @@ export class EcommerceApi {
      * @param modifiedSince Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      * @param createdSince Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      */
-    public async getOrders (limit?: number, offset?: number, sort?: 'asc' | 'desc', modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetOrders;  }> {
+    public async getOrders (limit?: number, offset?: number, sort?: 'asc' | 'desc', modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetOrders;  }> {
         const localVarPath = this.basePath + '/orders';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1164,11 +1163,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1195,7 +1194,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetOrders;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetOrders;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1216,7 +1215,7 @@ export class EcommerceApi {
      * @summary Get a product\'s details
      * @param id Product ID
      */
-    public async getProductInfo (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetProductDetails;  }> {
+    public async getProductInfo (id: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetProductDetails;  }> {
         const localVarPath = this.basePath + '/products/{id}'
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
         let localVarQueryParameters: any = {};
@@ -1239,11 +1238,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1270,7 +1269,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetProductDetails;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetProductDetails;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1304,7 +1303,7 @@ export class EcommerceApi {
      * @param modifiedSince Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      * @param createdSince Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** 
      */
-    public async getProducts (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, priceLte?: number, priceGte?: number, priceLt?: number, priceGt?: number, priceEq?: number, priceNe?: number, categories?: Array<string>, modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetProducts;  }> {
+    public async getProducts (limit?: number, offset?: number, sort?: 'asc' | 'desc', ids?: Array<string>, name?: string, priceLte?: number, priceGte?: number, priceLt?: number, priceGt?: number, priceEq?: number, priceNe?: number, categories?: Array<string>, modifiedSince?: string, createdSince?: string, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: GetProducts;  }> {
         const localVarPath = this.basePath + '/products';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1377,11 +1376,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'GET',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
         };
@@ -1408,7 +1407,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: GetProducts;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: GetProducts;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
@@ -1429,7 +1428,7 @@ export class EcommerceApi {
      * @summary Set the ISO 4217 compliant display currency code for your Brevo account
      * @param setConfigDisplayCurrency set ISO 4217 compliant display currency code payload
      */
-    public async setConfigDisplayCurrency (setConfigDisplayCurrency: EcommerceConfigDisplayCurrencyGet200Response, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }> {
+    public async setConfigDisplayCurrency (setConfigDisplayCurrency: EcommerceConfigDisplayCurrencyGet200Response, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }> {
         const localVarPath = this.basePath + '/ecommerce/config/displayCurrency';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1451,11 +1450,11 @@ export class EcommerceApi {
 
         let localVarUseFormData = false;
 
-        let localVarRequestOptions: localVarRequest.Options = {
+        let localVarRequestOptions: RequestOptions = {
             method: 'POST',
-            qs: localVarQueryParameters,
+            params: localVarQueryParameters,
             headers: localVarHeaderParams,
-            uri: localVarPath,
+            url: localVarPath,
             useQuerystring: this._useQuerystring,
             json: true,
             body: ObjectSerializer.serialize(setConfigDisplayCurrency, "EcommerceConfigDisplayCurrencyGet200Response")
@@ -1483,7 +1482,7 @@ export class EcommerceApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
-            return new Promise<{ response: http.IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }>((resolve, reject) => {
+            return new Promise<{ response: IncomingMessage; body: EcommerceConfigDisplayCurrencyGet200Response;  }>((resolve, reject) => {
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
