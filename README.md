@@ -225,6 +225,131 @@ contactAPI.createContact(contact).then(res => {
 });
 ```
 
+# Concerning v3.0.0 and above:
+> [!IMPORTANT]
+> There has been a change in the usage of this library after v3.0.0 which is not backward compatible.
+
+### Installation
+
+```npm i @getbrevo/brevo --save```
+
+### Import packages
+
+```import { CreateContact, ContactsApi } from "@getbrevo/brevo";```
+
+### Instantiate API with your credentials
+
+```
+let contactAPI = new ContactsApi();
+(contactAPI as any).authentications.apiKey.apiKey = "xkeysib-xxxxxxxxx";
+```
+
+### Build your contact
+
+```let contact = new CreateContact();
+contact.email = "michael.brown@example.com";
+contact.attributes = {
+  FIRSTNAME: { value: "Michael" },
+  LASTNAME: { value: "Brown" }
+};
+```
+
+### Create the contact
+
+```contactAPI.createContact(contact).then(res => {
+  console.log(JSON.stringify(res.body));
+}).catch(err => {
+  console.error("Error creating contact:", err.body);
+});
+```
+
+### Similar other examples:
+
+```typescript
+
+import { TransactionalEmailsApi, TransactionalEmailsApiApiKeys } from '@getbrevo/brevo';
+
+const transactionalEmailsApi = new TransactionalEmailsApi();
+transactionalEmailsApi.setApiKey(TransactionalEmailsApiApiKeys.apiKey, 'xkeysib-API_KEY');
+
+async function sendTransactionalEmail() {
+  try {
+    const result = await transactionalEmailsApi.sendTransacEmail({
+      to: [
+        { email: 'sampleemail@gmail.com', name: 'John doe' },
+      ],
+      subject: 'Hello from Brevo SDK!',
+      htmlContent: '<h1>This is a transactional email sent using the Brevo SDK.</h1>',
+      textContent: 'This is a transactional email sent using the Brevo SDK.',
+      sender: { email: 'sampleemail@gmail.com', name: 'John doe' },
+    });
+    console.log('Email sent! Message ID:', result.body.messageId);
+  } catch (error) {
+    console.error('Failed to send email:', error);
+  }
+}
+
+sendTransactionalEmail(); 
+```
+
+```typescript
+
+import { DealsApi, DealsApiApiKeys } from '@getbrevo/brevo';
+
+const dealsApi = new DealsApi();
+dealsApi.setApiKey(DealsApiApiKeys.apiKey, 'xkeysib-YOUR_API_KEY');
+
+async function getDeals() {
+  try {
+    const response = await dealsApi.crmDealsGet()
+    console.log('Deals info:', response.body);
+  } catch (error) {
+    console.error('Failed to get account info:', error);
+  }
+}
+
+getDeals();
+```
+
+```typescript
+
+import { AccountApi, AccountApiApiKeys } from '@getbrevo/brevo';
+
+const accountApi = new AccountApi();
+accountApi.setApiKey(AccountApiApiKeys.apiKey, 'xkeysib-YOUR_API_KEY');
+
+async function getAccount() {
+  try {
+    const response = await accountApi.getAccount();
+    console.log('Account info:', response.body);
+  } catch (error) {
+    console.error('Failed to get account info:', error);
+  }
+}
+
+getAccount();
+```
+
+```typescript
+
+import { ContactsApi, ContactsApiApiKeys } from '@getbrevo/brevo';
+
+const contactsApi = new ContactsApi();
+contactsApi.setApiKey(ContactsApiApiKeys.apiKey, 'xkeysib-YOUR_API_KEY');
+
+async function getContacts(limit: number, offset: number) {
+  try {
+    const result = await contactsApi.getContacts(limit, offset);
+    console.log('Contacts:', result.body);
+  } catch (error) {
+    console.error('Failed to get contacts:', error);
+  }
+}
+
+getContacts(10, 0); // Example: get first 10 contacts 
+```
+
+
 ## Support
 
 For questions and support, please refer to our [documentation](https://developers.brevo.com) or contact our support team.
