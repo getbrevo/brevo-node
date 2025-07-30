@@ -225,7 +225,9 @@ contactAPI.createContact(contact).then(res => {
 });
 ```
 
-# For v3.0.0 where Axios is used instead of request package the driver function will be as follows:
+# Concerning v3.0.0 and above:
+> [!IMPORTANT]
+> There has been a change in the usage of this library after v3.0.0 which is not backward compatible.
 
 ### Installation
 
