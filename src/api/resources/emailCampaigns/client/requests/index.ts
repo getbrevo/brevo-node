@@ -1,0 +1,13 @@
+export { CreateEmailCampaignRequest } from "./CreateEmailCampaignRequest.js";
+export type { DeleteEmailCampaignRequest } from "./DeleteEmailCampaignRequest.js";
+export { EmailExportRecipientsRequest } from "./EmailExportRecipientsRequest.js";
+export type { GetAbTestCampaignResultRequest } from "./GetAbTestCampaignResultRequest.js";
+export type { GetEmailCampaignRequest } from "./GetEmailCampaignRequest.js";
+export type { GetEmailCampaignsRequest } from "./GetEmailCampaignsRequest.js";
+export type { GetSharedTemplateUrlRequest } from "./GetSharedTemplateUrlRequest.js";
+export type { SendEmailCampaignNowRequest } from "./SendEmailCampaignNowRequest.js";
+export type { SendReportRequest } from "./SendReportRequest.js";
+export type { SendTestEmailRequest } from "./SendTestEmailRequest.js";
+export type { UpdateCampaignStatusRequest } from "./UpdateCampaignStatusRequest.js";
+export { UpdateEmailCampaignRequest } from "./UpdateEmailCampaignRequest.js";
+export type { UploadImageToGalleryRequest } from "./UploadImageToGalleryRequest.js";

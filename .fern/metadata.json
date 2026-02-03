@@ -1,0 +1,19 @@
+{
+    "cliVersion": "3.57.1",
+    "generatorName": "fernapi/fern-typescript-sdk",
+    "generatorVersion": "3.46.3",
+    "generatorConfig": {
+        "generateWireTests": true,
+        "namespaceExport": "Brevo",
+        "fetchSupport": "native",
+        "packageJson": {
+            "description": "Brevo SDK for Node.js with TypeScript support.",
+            "author": {
+                "name": "Brevo",
+                "url": "https://brevo.com",
+                "email": "support@brevo.com"
+            }
+        }
+    },
+    "sdkVersion": "0.0.52"
+}
