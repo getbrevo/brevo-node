@@ -350,6 +350,33 @@ getContacts(10, 0); // Example: get first 10 contacts
 ```
 
 
+## Publishing to npm
+
+This package is published to npm automatically from GitHub using **OIDC (trusted publishing)**—no long-lived npm tokens are used in CI.
+
+### One-time setup: Add a trusted publisher on npmjs.com
+
+Before the first OIDC publish, a maintainer with npm package access must add this repository as a trusted publisher:
+
+1. Open [npmjs.com](https://www.npmjs.com) and go to the **@getbrevo/brevo** package.
+2. Go to **Package settings** and find the **Trusted Publisher** section.
+3. Click **Add trusted publisher** and select **GitHub Actions**.
+4. Fill in:
+   - **Organization or user**: `getbrevo` (or the GitHub org/user that owns the repo)
+   - **Repository**: `brevo-node` (or `getbrevo/brevo-node` if full name is required)
+   - **Workflow filename**: `release.yml`
+   - **Environment name**: leave blank unless you use GitHub environments
+
+5. Save. See [npm’s trusted publishing docs](https://docs.npmjs.com/trusted-publishers) for details.
+
+### How to release
+
+1. Create a new **GitHub Release** (with a version tag, e.g. `v3.0.2`).
+2. The workflow [`.github/workflows/release.yml`](.github/workflows/release.yml) runs on `release: types: [created]`.
+3. It checks out the release tag, installs dependencies, builds, and runs `npm publish --access public` using OIDC.
+
+No `NPM_TOKEN` or other secrets are required in the repository.
+
 ## Support
 
 For questions and support, please refer to our [documentation](https://developers.brevo.com) or contact our support team.
