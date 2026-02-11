@@ -50,9 +50,9 @@ export function normalizeClientOptions<T extends BaseClientOptions = BaseClientO
     const headers = mergeHeaders(
         {
             "X-Fern-Language": "JavaScript",
-            "X-Fern-SDK-Name": "",
-            "X-Fern-SDK-Version": "0.0.54",
-            "User-Agent": "/0.0.54",
+            "X-Fern-SDK-Name": "getbrevo/brevo",
+            "X-Fern-SDK-Version": "0.0.56",
+            "User-Agent": "getbrevo/brevo/0.0.56",
             "X-Fern-Runtime": core.RUNTIME.type,
             "X-Fern-Runtime-Version": core.RUNTIME.version,
         },
