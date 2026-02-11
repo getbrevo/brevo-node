@@ -1,8 +1,11 @@
 {
-    "name": "getbrevo/brevo",
-    "version": "0.0.56",
+    "name": "@getbrevo/brevo",
+    "version": "3.0.2",
     "private": false,
-    "repository": "git+https://github.com/getbrevo/brevo-node",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/getbrevo/brevo-node.git"
+    },
     "type": "commonjs",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.mjs",
