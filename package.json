@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "version": "4.0.0",
+    "name": "@getbrevo/brevo",
+    "version": "4.1.0",
     "private": false,
     "repository": {
         "type": "git",
