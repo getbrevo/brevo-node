@@ -13,13 +13,13 @@
 ## Installation
 
 ```bash
-npm install getbrevo/brevo@^4.0.0
+npm install getbrevo/brevo@^4.0.1
 ```
 
 ## Quick Start
 
 ```typescript
-import { BrevoClient } from 'getbrevo/brevo@^4.0.0';
+import { BrevoClient } from 'getbrevo/brevo';
 
 const brevo = new BrevoClient({
   apiKey: 'your-api-key',
@@ -54,7 +54,7 @@ const brevo = new BrevoClient({
 The SDK throws specific error types based on HTTP status codes.
 
 ```typescript
-import { BrevoError, UnauthorizedError, TooManyRequestsError } from 'getbrevo/brevo@^4.0.0';
+import { BrevoError, UnauthorizedError, TooManyRequestsError } from 'getbrevo/brevo';
 
 try {
   await brevo.transactionalEmails.sendTransacEmail({...});
@@ -241,7 +241,7 @@ URL.revokeObjectURL(url);
 All request and response types are exported.
 
 ```typescript
-import { Brevo } from 'getbrevo/brevo@^4.0.0';
+import { Brevo } from 'getbrevo/brevo';
 
 const request: Brevo.SendTransacEmailRequest = {
   subject: "First email",
@@ -256,7 +256,7 @@ const request: Brevo.SendTransacEmailRequest = {
 ## Logging
 
 ```typescript
-import { BrevoClient, logging } from 'getbrevo/brevo@^4.0.0';
+import { BrevoClient, logging } from 'getbrevo/brevo';
 
 const brevo = new BrevoClient({
   apiKey: 'your-api-key',
@@ -391,7 +391,7 @@ emailAPI.sendTransacEmail(message);
 
 **v4.x:**
 ```typescript
-import { BrevoClient } from 'getbrevo/brevo@^4.0.0';
+import { BrevoClient } from 'getbrevo/brevo';
 
 const brevo = new BrevoClient({
   apiKey: 'xkeysib-xxx'
