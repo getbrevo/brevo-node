@@ -1,6 +1,8 @@
 # Brevo Node SDK
 
-> ⚠️ **Important Notice**: This is the current stable version but we are currently working on rebuilding our Node library from scratch.
+> ⚠️ **Legacy Notice**: This package contains the legacy Node SDK (v3.x.x). The new, improved version (v4.x.x) is now available and is not backward compatible.
+>This version will continue to receive maintenance and security updates, but we strongly recommend migrating to the latest SDK.
+>Learn more and find migration details here: https://developers.brevo.com/docs/api-clients/node-js
 
 ## Overview
 
