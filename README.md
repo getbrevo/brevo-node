@@ -28,13 +28,13 @@ Our current library is not fully compatible with all modern Node.js and TypeScri
 #### Installation
 
 ```bash
-npm i @getbrevo/brevo^3.0.1^3.0.1 --save
+npm i @getbrevo/brevo^3.0.1 --save
 ```
 
 #### Import packages
 
 ```javascript
-import { TransactionalEmailsApi, SendSmtpEmail } from "@getbrevo/brevo^3.0.1^3.0.1";
+import { TransactionalEmailsApi, SendSmtpEmail } from "@getbrevo/brevo^3.0.1";
 ```
 
 #### Instantiate API with your credentials
@@ -75,13 +75,13 @@ emailAPI.sendTransacEmail(message).then(res => {
 #### Installation
 
 ```bash
-npm i @getbrevo/brevo^3.0.1^3.0.1 --save
+npm i @getbrevo/brevo^3.0.1 --save
 ```
 
 #### Import packages
 
 ```javascript
-import { CreateContact, ContactsApi } from "@getbrevo/brevo^3.0.1^3.0.1";
+import { CreateContact, ContactsApi } from "@getbrevo/brevo^3.0.1";
 ```
 
 #### Instantiate API with your credentials
@@ -138,13 +138,13 @@ We recommend using the following TypeScript configuration for optimal compatibil
 #### Installation
 
 ```bash
-npm i @getbrevo/brevo^3.0.1^3.0.1 --save
+npm i @getbrevo/brevo^3.0.1 --save
 ```
 
 #### Import packages
 
 ```typescript
-import { TransactionalEmailsApi, SendSmtpEmail } from "@getbrevo/brevo^3.0.1^3.0.1";
+import { TransactionalEmailsApi, SendSmtpEmail } from "@getbrevo/brevo^3.0.1";
 ```
 
 #### Instantiate API with your credentials
