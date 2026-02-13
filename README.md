@@ -28,13 +28,13 @@ Our current library is not fully compatible with all modern Node.js and TypeScri
 #### Installation
 
 ```bash
-npm i @getbrevo/brevo --save
+npm i @getbrevo/brevo^3.0.1^3.0.1 --save
 ```
 
 #### Import packages
 
 ```javascript
-import { TransactionalEmailsApi, SendSmtpEmail } from "@getbrevo/brevo";
+import { TransactionalEmailsApi, SendSmtpEmail } from "@getbrevo/brevo^3.0.1^3.0.1";
 ```
 
 #### Instantiate API with your credentials
@@ -75,13 +75,13 @@ emailAPI.sendTransacEmail(message).then(res => {
 #### Installation
 
 ```bash
-npm i @getbrevo/brevo --save
+npm i @getbrevo/brevo^3.0.1^3.0.1 --save
 ```
 
 #### Import packages
 
 ```javascript
-import { CreateContact, ContactsApi } from "@getbrevo/brevo";
+import { CreateContact, ContactsApi } from "@getbrevo/brevo^3.0.1^3.0.1";
 ```
 
 #### Instantiate API with your credentials
@@ -138,13 +138,13 @@ We recommend using the following TypeScript configuration for optimal compatibil
 #### Installation
 
 ```bash
-npm i @getbrevo/brevo --save
+npm i @getbrevo/brevo^3.0.1^3.0.1 --save
 ```
 
 #### Import packages
 
 ```typescript
-import { TransactionalEmailsApi, SendSmtpEmail } from "@getbrevo/brevo";
+import { TransactionalEmailsApi, SendSmtpEmail } from "@getbrevo/brevo^3.0.1^3.0.1";
 ```
 
 #### Instantiate API with your credentials
@@ -188,13 +188,13 @@ emailAPI
 #### Installation
 
 ```bash
-npm i @getbrevo/brevo --save
+npm i @getbrevo/brevo^3.0.1 --save
 ```
 
 #### Import packages
 
 ```typescript
-import { CreateContact, ContactsApi } from "@getbrevo/brevo";
+import { CreateContact, ContactsApi } from "@getbrevo/brevo^3.0.1";
 ```
 
 #### Instantiate API with your credentials
@@ -231,11 +231,11 @@ contactAPI.createContact(contact).then(res => {
 
 ### Installation
 
-```npm i @getbrevo/brevo --save```
+```npm i @getbrevo/brevo^3.0.1 --save```
 
 ### Import packages
 
-```import { CreateContact, ContactsApi } from "@getbrevo/brevo";```
+```import { CreateContact, ContactsApi } from "@getbrevo/brevo^3.0.1";```
 
 ### Instantiate API with your credentials
 
@@ -267,7 +267,7 @@ contact.attributes = {
 
 ```typescript
 
-import { TransactionalEmailsApi, TransactionalEmailsApiApiKeys } from '@getbrevo/brevo';
+import { TransactionalEmailsApi, TransactionalEmailsApiApiKeys } from '@getbrevo/brevo^3.0.1';
 
 const transactionalEmailsApi = new TransactionalEmailsApi();
 transactionalEmailsApi.setApiKey(TransactionalEmailsApiApiKeys.apiKey, 'xkeysib-API_KEY');
@@ -294,7 +294,7 @@ sendTransactionalEmail();
 
 ```typescript
 
-import { DealsApi, DealsApiApiKeys } from '@getbrevo/brevo';
+import { DealsApi, DealsApiApiKeys } from '@getbrevo/brevo^3.0.1';
 
 const dealsApi = new DealsApi();
 dealsApi.setApiKey(DealsApiApiKeys.apiKey, 'xkeysib-YOUR_API_KEY');
@@ -313,7 +313,7 @@ getDeals();
 
 ```typescript
 
-import { AccountApi, AccountApiApiKeys } from '@getbrevo/brevo';
+import { AccountApi, AccountApiApiKeys } from '@getbrevo/brevo^3.0.1';
 
 const accountApi = new AccountApi();
 accountApi.setApiKey(AccountApiApiKeys.apiKey, 'xkeysib-YOUR_API_KEY');
@@ -332,7 +332,7 @@ getAccount();
 
 ```typescript
 
-import { ContactsApi, ContactsApiApiKeys } from '@getbrevo/brevo';
+import { ContactsApi, ContactsApiApiKeys } from '@getbrevo/brevo^3.0.1';
 
 const contactsApi = new ContactsApi();
 contactsApi.setApiKey(ContactsApiApiKeys.apiKey, 'xkeysib-YOUR_API_KEY');
