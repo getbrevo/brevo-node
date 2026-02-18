@@ -864,20 +864,18 @@ describe("TierClient", () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
-        const rawResponseBody = "string";
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tier-groups/gid")
             .respondWith()
             .statusCode(200)
-            .jsonBody(rawResponseBody)
             .build();
 
         const response = await client.tier.deleteTierGroup({
             pid: "pid",
             gid: "gid",
         });
-        expect(response).toEqual("string");
+        expect(response).toEqual(undefined);
     });
 
     test("deleteTierGroup (2)", async () => {
@@ -1533,20 +1531,13 @@ describe("TierClient", () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
-        const rawResponseBody = "string";
-        server
-            .mockEndpoint()
-            .delete("/loyalty/tier/programs/pid/tiers/tid")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
+        server.mockEndpoint().delete("/loyalty/tier/programs/pid/tiers/tid").respondWith().statusCode(200).build();
 
         const response = await client.tier.deleteTier({
             pid: "pid",
             tid: "tid",
         });
-        expect(response).toEqual("string");
+        expect(response).toEqual(undefined);
     });
 
     test("deleteTier (2)", async () => {

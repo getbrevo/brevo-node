@@ -11497,7 +11497,7 @@ await client.tier.updateTierGroup({
 </dl>
 </details>
 
-<details><summary><code>client.tier.<a href="/src/api/resources/tier/client/Client.ts">deleteTierGroup</a>({ ...params }) -> string</code></summary>
+<details><summary><code>client.tier.<a href="/src/api/resources/tier/client/Client.ts">deleteTierGroup</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -11765,7 +11765,7 @@ await client.tier.updateTier({
 </dl>
 </details>
 
-<details><summary><code>client.tier.<a href="/src/api/resources/tier/client/Client.ts">deleteTier</a>({ ...params }) -> string</code></summary>
+<details><summary><code>client.tier.<a href="/src/api/resources/tier/client/Client.ts">deleteTier</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 

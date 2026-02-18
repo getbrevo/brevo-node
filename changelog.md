@@ -1,3 +1,14 @@
+## 5.0.0 - 2026-02-18
+* fix: update delete tier operations to return void instead of string
+* Change deleteTierGroup and deleteTier methods to return void instead of string, which better reflects the actual API behavior for delete operations. This aligns the return types with the expected void response when deletion operations complete successfully.
+* Key changes:
+* Update deleteTierGroup return type from HttpResponsePromise<string> to HttpResponsePromise<void>
+* Update deleteTier return type from HttpResponsePromise<string> to HttpResponsePromise<void>
+* Modify internal implementation to return undefined data instead of response body
+* Update test expectations to assert undefined response instead of string
+* Remove unnecessary mock response bodies in test setup
+* 🌿 Generated with Fern
+
 ## 4.1.0 - 2026-02-11
 * feat: add npm publish workflow and configure package metadata
 * Add automated publishing workflow with tag-based deployment that publishes to npm with proper versioning support for alpha, beta, and stable releases. Configure package name and SDK metadata headers for proper identification.

@@ -509,14 +509,14 @@ export class TierClient {
     public deleteTierGroup(
         request: Brevo.DeleteTierGroupRequest,
         requestOptions?: TierClient.RequestOptions,
-    ): core.HttpResponsePromise<string> {
+    ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__deleteTierGroup(request, requestOptions));
     }
 
     private async __deleteTierGroup(
         request: Brevo.DeleteTierGroupRequest,
         requestOptions?: TierClient.RequestOptions,
-    ): Promise<core.WithRawResponse<string>> {
+    ): Promise<core.WithRawResponse<void>> {
         const { pid, gid } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -541,7 +541,7 @@ export class TierClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as string, rawResponse: _response.rawResponse };
+            return { data: undefined, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -876,14 +876,14 @@ export class TierClient {
     public deleteTier(
         request: Brevo.DeleteTierRequest,
         requestOptions?: TierClient.RequestOptions,
-    ): core.HttpResponsePromise<string> {
+    ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__deleteTier(request, requestOptions));
     }
 
     private async __deleteTier(
         request: Brevo.DeleteTierRequest,
         requestOptions?: TierClient.RequestOptions,
-    ): Promise<core.WithRawResponse<string>> {
+    ): Promise<core.WithRawResponse<void>> {
         const { pid, tid } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -908,7 +908,7 @@ export class TierClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as string, rawResponse: _response.rawResponse };
+            return { data: undefined, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
