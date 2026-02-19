@@ -13,7 +13,7 @@
 ## Installation
 
 ```bash
-npm install getbrevo/brevo@^4.0.1
+npm install getbrevo/brevo
 ```
 
 ## Quick Start
