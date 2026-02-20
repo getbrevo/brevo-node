@@ -2,15 +2,15 @@
 
 export interface GetCorporateSubAccountIdResponse {
     /** Sub-account company name */
-    companyName?: string;
+    companyName?: string | undefined;
     /** Email id of the sub-account organization */
-    email?: string;
+    email?: string | undefined;
     /** List of groups associated with the sub-account */
-    groups?: GetCorporateSubAccountIdResponse.Groups.Item[];
+    groups?: GetCorporateSubAccountIdResponse.Groups.Item[] | undefined;
     /** Name of the sub-account user */
-    name?: string;
+    name?: string | undefined;
     /** Sub-account plan details */
-    planInfo?: GetCorporateSubAccountIdResponse.PlanInfo;
+    planInfo?: GetCorporateSubAccountIdResponse.PlanInfo | undefined;
 }
 
 export namespace GetCorporateSubAccountIdResponse {
@@ -19,9 +19,9 @@ export namespace GetCorporateSubAccountIdResponse {
     export namespace Groups {
         export interface Item {
             /** Group id */
-            id?: string;
+            id?: string | undefined;
             /** Name of the group */
-            name?: string;
+            name?: string | undefined;
         }
     }
 
@@ -30,11 +30,11 @@ export namespace GetCorporateSubAccountIdResponse {
      */
     export interface PlanInfo {
         /** Credits quota and remaining credits on the sub-account */
-        credits?: PlanInfo.Credits;
+        credits?: PlanInfo.Credits | undefined;
         /** Features available on the sub-account */
-        features?: PlanInfo.Features;
+        features?: PlanInfo.Features | undefined;
         /** type of the plan */
-        planType?: string;
+        planType?: string | undefined;
     }
 
     export namespace PlanInfo {
@@ -43,15 +43,15 @@ export namespace GetCorporateSubAccountIdResponse {
          */
         export interface Credits {
             /** Email credits remaining on the sub-account */
-            emails?: Credits.Emails;
+            emails?: Credits.Emails | undefined;
             /** externalFeeds credits remaining on the sub-account */
-            externalFeeds?: Credits.ExternalFeeds;
+            externalFeeds?: Credits.ExternalFeeds | undefined;
             /** SMS credits remaining on the sub-account */
-            sms?: Credits.Sms;
+            sms?: Credits.Sms | undefined;
             /** Whatsapp credits remaining on the sub-account */
-            whatsapp?: Credits.Whatsapp;
+            whatsapp?: Credits.Whatsapp | undefined;
             /** Push credits remaining on the sub-account */
-            wpSubscribers?: Credits.WpSubscribers;
+            wpSubscribers?: Credits.WpSubscribers | undefined;
         }
 
         export namespace Credits {
@@ -60,9 +60,9 @@ export namespace GetCorporateSubAccountIdResponse {
              */
             export interface Emails {
                 /** Quantity of email messaging limits provided */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available email messaging limits for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
 
             /**
@@ -73,9 +73,9 @@ export namespace GetCorporateSubAccountIdResponse {
                  * Quantity of externalFeeds messaging limits
                  * provided
                  */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available externalFeeds messaging limits for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
 
             /**
@@ -83,9 +83,9 @@ export namespace GetCorporateSubAccountIdResponse {
              */
             export interface Sms {
                 /** Quantity of SMS messaging limits provided */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available SMS messaging limits for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
 
             /**
@@ -93,9 +93,9 @@ export namespace GetCorporateSubAccountIdResponse {
              */
             export interface Whatsapp {
                 /** Quantity of whatsapp messaging limits provided */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available whatsapp messaging limits for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
 
             /**
@@ -103,9 +103,9 @@ export namespace GetCorporateSubAccountIdResponse {
              */
             export interface WpSubscribers {
                 /** Quantity of Push sending limits provided */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available Push sending limits for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
         }
 
@@ -114,16 +114,16 @@ export namespace GetCorporateSubAccountIdResponse {
          */
         export interface Features {
             /** Inbox details / Not applicable on ENTv2 */
-            inbox?: Features.Inbox;
+            inbox?: Features.Inbox | undefined;
             /** Landing page details / Not applicable on ENTv2 */
-            landingPage?: Features.LandingPage;
+            landingPage?: Features.LandingPage | undefined;
             /**
              * Sales and service users to use phone, sales and
              * conversations
              */
-            salesUsers?: Features.SalesUsers;
+            salesUsers?: Features.SalesUsers | undefined;
             /** Marketing users to manage the marketing channels */
-            users?: Features.Users;
+            users?: Features.Users | undefined;
         }
 
         export namespace Features {
@@ -132,9 +132,9 @@ export namespace GetCorporateSubAccountIdResponse {
              */
             export interface Inbox {
                 /** Quantity of inbox provided */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available inboxes for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
 
             /**
@@ -142,9 +142,9 @@ export namespace GetCorporateSubAccountIdResponse {
              */
             export interface LandingPage {
                 /** Quantity of landing pages provided */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available landing pages for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
 
             /**
@@ -153,9 +153,9 @@ export namespace GetCorporateSubAccountIdResponse {
              */
             export interface SalesUsers {
                 /** Quantity of sales users provided */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available sales users for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
 
             /**
@@ -163,9 +163,9 @@ export namespace GetCorporateSubAccountIdResponse {
              */
             export interface Users {
                 /** Quantity of marketing users provided */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Available marketing users for use */
-                remaining?: number;
+                remaining?: number | undefined;
             }
         }
     }

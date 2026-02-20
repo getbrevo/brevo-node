@@ -2,19 +2,19 @@
 
 export interface CreateRewardResponse {
     /** Timestamp when the reward was created */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Unique identifier for the reward */
-    id?: string;
+    id?: string | undefined;
     /** Id of the loyalty program to which the current reward belongs to */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** Name of the reward */
-    name?: string;
+    name?: string | undefined;
     /** Public description for the reward */
-    publicDescription?: string;
+    publicDescription?: string | undefined;
     /** Public Image for the reward */
-    publicImage?: string;
+    publicImage?: string | undefined;
     /** Public name for the reward */
-    publicName?: string;
+    publicName?: string | undefined;
     /** Timestamp for when this reward was last updated. */
-    updatedAt?: string;
+    updatedAt?: string | undefined;
 }

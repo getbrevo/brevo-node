@@ -2,6 +2,6 @@
 
 export interface SendTransacEmailResponse {
     /** Message ID of the transactional email sent */
-    messageId?: string;
-    messageIds?: string[];
+    messageId?: string | undefined;
+    messageIds?: string[] | undefined;
 }

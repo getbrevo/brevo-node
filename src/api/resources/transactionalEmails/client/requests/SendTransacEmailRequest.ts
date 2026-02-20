@@ -74,11 +74,11 @@ export namespace SendTransacEmailRequest {
     export namespace Attachment {
         export interface Item {
             /** Base64-encoded attachment data */
-            content?: string;
+            content?: string | undefined;
             /** Attachment filename. Required when `content` is provided. */
-            name?: string;
+            name?: string | undefined;
             /** Absolute URL of the attachment. Local file paths are not supported. */
-            url?: string;
+            url?: string | undefined;
         }
     }
 
@@ -89,7 +89,7 @@ export namespace SendTransacEmailRequest {
             /** BCC recipient email address */
             email: string;
             /** Display name of the BCC recipient. Maximum length is 70 characters. */
-            name?: string;
+            name?: string | undefined;
         }
     }
 
@@ -100,7 +100,7 @@ export namespace SendTransacEmailRequest {
             /** CC recipient email address */
             email: string;
             /** Display name of the CC recipient. Maximum length is 70 characters. */
-            name?: string;
+            name?: string | undefined;
         }
     }
 
@@ -109,19 +109,19 @@ export namespace SendTransacEmailRequest {
     export namespace MessageVersions {
         export interface Item {
             /** Array of BCC recipient objects. Each object contains an email address and an optional name. */
-            bcc?: Item.Bcc.Item[];
+            bcc?: Item.Bcc.Item[] | undefined;
             /** Array of CC recipient objects. Each object contains an email address and an optional name. */
-            cc?: Item.Cc.Item[];
+            cc?: Item.Cc.Item[] | undefined;
             /** HTML body content of the email. Required when `templateId` is not provided. Ignored when `templateId` is provided. */
-            htmlContent?: string;
+            htmlContent?: string | undefined;
             /** Key-value pairs for template variable substitution. Only applicable when the template uses the New Template Language format. */
-            params?: Record<string, unknown>;
+            params?: Record<string, unknown> | undefined;
             /** Reply-to email address (required) and optional display name. Recipients will use this address when replying to the email. */
-            replyTo?: Item.ReplyTo;
+            replyTo?: Item.ReplyTo | undefined;
             /** Email subject line for this message version */
-            subject?: string;
+            subject?: string | undefined;
             /** Plain text body content of the email. Ignored when `templateId` is provided. */
-            textContent?: string;
+            textContent?: string | undefined;
             /** Array of recipient objects. Each object contains an email address and an optional display name. */
             to: Item.To.Item[];
         }
@@ -134,7 +134,7 @@ export namespace SendTransacEmailRequest {
                     /** BCC recipient email address */
                     email: string;
                     /** Display name of the BCC recipient. Maximum length is 70 characters. */
-                    name?: string;
+                    name?: string | undefined;
                 }
             }
 
@@ -145,7 +145,7 @@ export namespace SendTransacEmailRequest {
                     /** CC recipient email address */
                     email: string;
                     /** Display name of the CC recipient. Maximum length is 70 characters. */
-                    name?: string;
+                    name?: string | undefined;
                 }
             }
 
@@ -156,7 +156,7 @@ export namespace SendTransacEmailRequest {
                 /** Email address in reply to */
                 email: string;
                 /** Display name for the reply-to address. Maximum length is 70 characters. */
-                name?: string;
+                name?: string | undefined;
             }
 
             export type To = To.Item[];
@@ -166,7 +166,7 @@ export namespace SendTransacEmailRequest {
                     /** Email address of the recipient */
                     email: string;
                     /** Display name of the recipient. Maximum length is 70 characters. */
-                    name?: string;
+                    name?: string | undefined;
                 }
             }
         }
@@ -179,7 +179,7 @@ export namespace SendTransacEmailRequest {
         /** Email address in reply to */
         email: string;
         /** Display name for the reply-to address. Maximum length is 70 characters. */
-        name?: string;
+        name?: string | undefined;
     }
 
     /**
@@ -187,11 +187,11 @@ export namespace SendTransacEmailRequest {
      */
     export interface Sender {
         /** Sender email address. Required when `id` is not provided. */
-        email?: string;
+        email?: string | undefined;
         /** Sender identifier. Required when `email` is not provided. Use this field to select a sender with a specific IP pool (dedicated IP users only). */
-        id?: number;
+        id?: number | undefined;
         /** Display name of the sender. Maximum length is 70 characters. Only applicable when `email` is provided. */
-        name?: string;
+        name?: string | undefined;
     }
 
     export type To = To.Item[];
@@ -201,7 +201,7 @@ export namespace SendTransacEmailRequest {
             /** Email address of the recipient */
             email: string;
             /** Display name of the recipient. Maximum length is 70 characters. */
-            name?: string;
+            name?: string | undefined;
         }
     }
 }

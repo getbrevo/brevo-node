@@ -40,9 +40,9 @@ export namespace UpdateWebhookRequest {
      */
     export interface Auth {
         /** Webhook authentication token */
-        token?: string;
+        token?: string | undefined;
         /** Type of authentication */
-        type?: string;
+        type?: string | undefined;
     }
 
     export type Events = Events.Item[];
@@ -75,9 +75,9 @@ export namespace UpdateWebhookRequest {
     export namespace Headers {
         export interface Item {
             /** Header key name */
-            key?: string;
+            key?: string | undefined;
             /** Header value */
-            value?: string;
+            value?: string | undefined;
         }
     }
 }

@@ -13,11 +13,11 @@ export interface GetListResponse {
     totalSubscribers: number;
     /** Number of unique contacts in the list */
     uniqueSubscribers: number;
-    campaignStats?: GetListResponse.CampaignStats.Item[];
+    campaignStats?: GetListResponse.CampaignStats.Item[] | undefined;
     /** Creation UTC date-time of the list (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     createdAt: string;
     /** Status telling if the list is dynamic or not (true=dynamic, false=not dynamic) */
-    dynamicList?: boolean;
+    dynamicList?: boolean | undefined;
     /** ID of the folder */
     folderId: number;
 }

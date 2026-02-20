@@ -2,5 +2,5 @@
 
 export interface CreateUpdateProductResponse {
     /** ID of the Product when a new product is created */
-    id?: number;
+    id?: number | undefined;
 }

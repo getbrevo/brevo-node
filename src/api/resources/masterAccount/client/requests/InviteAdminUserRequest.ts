@@ -27,9 +27,9 @@ export namespace InviteAdminUserRequest {
          */
         export interface Item {
             /** Feature name */
-            feature?: Item.Feature;
+            feature?: Item.Feature | undefined;
             /** Permissions for a given feature */
-            permissions?: Item.Permissions.Item[];
+            permissions?: Item.Permissions.Item[] | undefined;
         }
 
         export namespace Item {

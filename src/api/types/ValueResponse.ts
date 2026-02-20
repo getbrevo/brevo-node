@@ -4,19 +4,19 @@ import type * as Brevo from "../index.js";
 
 export interface ValueResponse {
     /** Array values to define the rule */
-    array?: Brevo.ValueResponse[];
+    array?: Brevo.ValueResponse[] | undefined;
     /** Boolean values for rule definition */
-    boolean?: boolean;
+    boolean?: boolean | undefined;
     /** string */
-    contactProperty?: string;
+    contactProperty?: string | undefined;
     /** Selected date for rule definition */
-    date?: string;
+    date?: string | undefined;
     /** Selected event property for rule definition */
-    eventProperty?: string;
+    eventProperty?: string | undefined;
     /** Created expression for rule definition */
-    expression?: Brevo.NodeResponse;
+    expression?: Brevo.NodeResponse | undefined;
     /** Boolean values for rule definition */
-    number?: number;
+    number?: number | undefined;
     /** String values for rule definition */
-    string?: string;
+    string?: string | undefined;
 }

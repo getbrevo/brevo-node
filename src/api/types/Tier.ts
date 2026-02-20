@@ -2,21 +2,21 @@
 
 export interface Tier {
     /** Conditions required to access this tier */
-    accessConditions?: Tier.AccessConditions.Item[];
-    createdAt?: string;
+    accessConditions?: Tier.AccessConditions.Item[] | undefined;
+    createdAt?: string | undefined;
     /** Associated group Id */
-    groupId?: string;
+    groupId?: string | undefined;
     /** Tier image reference */
-    imageRef?: string;
+    imageRef?: string | undefined;
     /** Associated loyalty program Id */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** Tier name */
-    name?: string;
+    name?: string | undefined;
     /** Tier id */
-    tierId?: string;
+    tierId?: string | undefined;
     /** Rewards associated with this tier */
-    tierRewards?: Tier.TierRewards.Item[];
-    updatedAt?: string;
+    tierRewards?: Tier.TierRewards.Item[] | undefined;
+    updatedAt?: string | undefined;
 }
 
 export namespace Tier {
@@ -25,11 +25,11 @@ export namespace Tier {
     export namespace AccessConditions {
         export interface Item {
             /** Balance definition identifier */
-            balanceDefinitionId?: string;
-            createdAt?: string;
+            balanceDefinitionId?: string | undefined;
+            createdAt?: string | undefined;
             /** Minimum value required to access this tier */
-            minimumValue?: number;
-            updatedAt?: string;
+            minimumValue?: number | undefined;
+            updatedAt?: string | undefined;
         }
     }
 
@@ -37,10 +37,10 @@ export namespace Tier {
 
     export namespace TierRewards {
         export interface Item {
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** Reward to be attributed on tier assignment */
-            rewardId?: string;
-            updatedAt?: string;
+            rewardId?: string | undefined;
+            updatedAt?: string | undefined;
         }
     }
 }

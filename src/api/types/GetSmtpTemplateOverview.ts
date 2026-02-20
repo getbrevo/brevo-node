@@ -4,7 +4,7 @@ export interface GetSmtpTemplateOverview {
     /** Creation UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     createdAt: string;
     /** It is true if template is a valid Double opt-in (DOI) template, otherwise it is false. This field will be available only in case of single template detail call. */
-    doiTemplate?: boolean;
+    doiTemplate?: boolean | undefined;
     /** HTML content of the template */
     htmlContent: string;
     /** ID of the template */
@@ -31,10 +31,10 @@ export interface GetSmtpTemplateOverview {
 export namespace GetSmtpTemplateOverview {
     export interface Sender {
         /** From email for the template */
-        email?: string;
+        email?: string | undefined;
         /** Sender id of the template */
-        id?: string;
+        id?: string | undefined;
         /** From email for the template */
-        name?: string;
+        name?: string | undefined;
     }
 }

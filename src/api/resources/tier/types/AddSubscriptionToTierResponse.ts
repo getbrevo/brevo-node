@@ -2,15 +2,15 @@
 
 export interface AddSubscriptionToTierResponse {
     /** Contact to which the tier is assigned */
-    contactId?: number;
-    createdAt?: string;
+    contactId?: number | undefined;
+    createdAt?: string | undefined;
     /** Group Id to which the tier is associated */
-    groupId?: string;
+    groupId?: string | undefined;
     /** Unique identifier for the assigned tier */
-    id?: string;
+    id?: string | undefined;
     /** Associated loyalty program Id */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** object */
-    meta?: Record<string, unknown>;
-    updatedAt?: string;
+    meta?: Record<string, unknown> | undefined;
+    updatedAt?: string | undefined;
 }

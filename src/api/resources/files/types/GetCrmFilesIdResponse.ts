@@ -5,5 +5,5 @@
  */
 export interface GetCrmFilesIdResponse {
     /** A unique link to download the requested file. */
-    fileUrl?: string;
+    fileUrl?: string | undefined;
 }

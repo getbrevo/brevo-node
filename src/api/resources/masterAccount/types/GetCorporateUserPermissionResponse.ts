@@ -19,21 +19,21 @@ export namespace GetCorporateUserPermissionResponse {
      */
     export interface FeatureAccess {
         /** Permission on analytics */
-        analytics?: string[];
+        analytics?: string[] | undefined;
         /** Permission on api keys */
-        api_keys?: string[];
+        api_keys?: string[] | undefined;
         /** Permission on apps management */
-        apps_management?: string[];
+        apps_management?: string[] | undefined;
         /** Permission on create sub-accounts */
-        create_sub_organizations?: string[];
+        create_sub_organizations?: string[] | undefined;
         /** Permission on manage sub-accounts */
-        manage_sub_organizations?: string[];
+        manage_sub_organizations?: string[] | undefined;
         /** Permission on my plan */
-        my_plan?: string[];
+        my_plan?: string[] | undefined;
         /** Permission on groups */
-        sub_organization_groups?: string[];
+        sub_organization_groups?: string[] | undefined;
         /** Permission on user management */
-        user_management?: string[];
+        user_management?: string[] | undefined;
     }
 
     export type Groups = Groups.Item[];
@@ -44,9 +44,9 @@ export namespace GetCorporateUserPermissionResponse {
          */
         export interface Item {
             /** group identifier */
-            id?: string;
+            id?: string | undefined;
             /** Group name */
-            name?: string;
+            name?: string | undefined;
         }
     }
 }

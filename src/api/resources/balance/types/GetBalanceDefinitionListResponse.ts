@@ -4,5 +4,5 @@ import type * as Brevo from "../../../index.js";
 
 export interface GetBalanceDefinitionListResponse {
     /** list of balance definitions */
-    items?: Brevo.BalanceDefinition[];
+    items?: Brevo.BalanceDefinition[] | undefined;
 }

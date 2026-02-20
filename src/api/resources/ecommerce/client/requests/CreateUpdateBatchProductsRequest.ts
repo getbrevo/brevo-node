@@ -22,29 +22,29 @@ export namespace CreateUpdateBatchProductsRequest {
     export namespace Products {
         export interface Item {
             /** Category ID-s of the product */
-            categories?: string[];
+            categories?: string[] | undefined;
             /** UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) of the product deleted from the shop's database */
-            deletedAt?: string;
+            deletedAt?: string | undefined;
             /** Product ID for which you requested the details */
             id: string;
             /** Absolute URL to the cover image of the product */
-            imageUrl?: string;
+            imageUrl?: string | undefined;
             /** product deleted from the shop's database */
-            isDeleted?: boolean;
+            isDeleted?: boolean | undefined;
             /** Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 20. */
-            metaInfo?: Record<string, Item.MetaInfo.Value>;
+            metaInfo?: Record<string, Item.MetaInfo.Value> | undefined;
             /** Mandatory in case of creation**. Name of the product for which you requested the details */
             name: string;
             /** Parent product id of the product */
-            parentId?: string;
+            parentId?: string | undefined;
             /** Price of the product */
-            price?: number;
+            price?: number | undefined;
             /** Product identifier from the shop */
-            sku?: string;
+            sku?: string | undefined;
             /** Current stock value of the product from the shop's database */
-            stock?: number;
+            stock?: number | undefined;
             /** URL to the product */
-            url?: string;
+            url?: string | undefined;
         }
 
         export namespace Item {

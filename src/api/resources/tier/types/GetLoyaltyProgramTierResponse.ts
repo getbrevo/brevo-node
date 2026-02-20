@@ -3,5 +3,5 @@
 import type * as Brevo from "../../../index.js";
 
 export interface GetLoyaltyProgramTierResponse {
-    items?: Brevo.Tier[];
+    items?: Brevo.Tier[] | undefined;
 }

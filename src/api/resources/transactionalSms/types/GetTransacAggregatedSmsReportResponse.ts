@@ -2,25 +2,25 @@
 
 export interface GetTransacAggregatedSmsReportResponse {
     /** Number of accepted SMS for the timeframe */
-    accepted?: number;
+    accepted?: number | undefined;
     /** Number of blocked contact for the timeframe */
-    blocked?: number;
+    blocked?: number | undefined;
     /** Number of delivered SMS for the timeframe */
-    delivered?: number;
+    delivered?: number | undefined;
     /** Number of hardbounces for the timeframe */
-    hardBounces?: number;
+    hardBounces?: number | undefined;
     /** Time frame of the report */
-    range?: string;
+    range?: string | undefined;
     /** Number of rejected SMS for the timeframe */
-    rejected?: number;
+    rejected?: number | undefined;
     /** Number of answered SMS for the timeframe */
-    replied?: number;
+    replied?: number | undefined;
     /** Number of requests for the timeframe */
-    requests?: number;
+    requests?: number | undefined;
     /** Number of skipped SMS for the timeframe */
-    skipped?: number;
+    skipped?: number | undefined;
     /** Number of softbounces for the timeframe */
-    softBounces?: number;
+    softBounces?: number | undefined;
     /** Number of unsubscription for the timeframe */
-    unsubscribed?: number;
+    unsubscribed?: number | undefined;
 }

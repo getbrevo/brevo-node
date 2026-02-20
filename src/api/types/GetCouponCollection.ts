@@ -6,7 +6,7 @@ export interface GetCouponCollection {
     /** The default coupon of the collection. */
     defaultCoupon: string;
     /** Expiration date for the coupon collection in RFC3339 format. */
-    expirationDate?: string;
+    expirationDate?: string | undefined;
     /** The id of the collection. */
     id: string;
     /** The name of the collection. */
@@ -14,9 +14,9 @@ export interface GetCouponCollection {
     /** Number of coupons that have not been sent yet. */
     remainingCoupons: number;
     /** If present, an email notification is going to be sent when the total number of available coupons falls below the defined threshold. */
-    remainingCouponsAlert?: number;
+    remainingCouponsAlert?: number | undefined;
     /** If present, an email notification is going to be sent the defined amount of days before to the expiration date. */
-    remainingDaysAlert?: number;
+    remainingDaysAlert?: number | undefined;
     /** Total number of coupons in the collection. */
     totalCoupons: number;
 }

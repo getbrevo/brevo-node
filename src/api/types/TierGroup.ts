@@ -2,21 +2,21 @@
 
 export interface TierGroup {
     /** Timestamp when the tier group was created */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Select real_time to downgrade tier on real time balance updates. Select membership_anniversary to downgrade tier on subscription anniversary. Select tier_anniversary to downgrade tier on tier anniversary. */
-    downgradeStrategy?: TierGroup.DowngradeStrategy;
+    downgradeStrategy?: TierGroup.DowngradeStrategy | undefined;
     /** Tier group unique identifier */
-    id?: string;
+    id?: string | undefined;
     /** Associated loyalty program Id */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** Tier group name */
-    name?: string;
+    name?: string | undefined;
     /** Order of the tiers in the group in ascending order */
-    tierOrder?: string[];
+    tierOrder?: string[] | undefined;
     /** Timestamp when the tier group was last updated */
-    updatedAt?: string;
+    updatedAt?: string | undefined;
     /** Select real_time to upgrade tier on real time balance updates. Select membership_anniversary to upgrade tier on subscription anniversary. Select tier_anniversary to upgrade tier on tier anniversary. */
-    upgradeStrategy?: TierGroup.UpgradeStrategy;
+    upgradeStrategy?: TierGroup.UpgradeStrategy | undefined;
 }
 
 export namespace TierGroup {

@@ -2,20 +2,20 @@
 
 export interface GetWebhook {
     /** Authentication header to be send with the webhook requests */
-    auth?: Record<string, unknown>;
+    auth?: Record<string, unknown> | undefined;
     /**
      * Batching configuration of the webhook, we send batched webhooks if its
      * true
      */
-    batched?: boolean;
+    batched?: boolean | undefined;
     /** channel of webhook */
-    channel?: GetWebhook.Channel;
+    channel?: GetWebhook.Channel | undefined;
     /** Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     createdAt: string;
     /** Description of the webhook */
     description: string;
     events: string[];
-    headers?: Record<string, unknown>[];
+    headers?: Record<string, unknown>[] | undefined;
     /** ID of the webhook */
     id: number;
     /** Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) */

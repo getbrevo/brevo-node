@@ -4,5 +4,5 @@ export interface CreateBatchOrderResponse {
     /** Batch ID of the request */
     batchId: number;
     /** Number of orders */
-    count?: number;
+    count?: number | undefined;
 }

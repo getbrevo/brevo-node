@@ -26,10 +26,10 @@ export namespace CreateWhatsAppCampaignRequest {
      */
     export interface Recipients {
         /** List ids to exclude from the campaign */
-        excludedListIds?: number[];
+        excludedListIds?: number[] | undefined;
         /** **Mandatory if scheduledAt is not empty**. List Ids to send the campaign to */
-        listIds?: number[];
+        listIds?: number[] | undefined;
         /** **Mandatory if listIds are not used**. Segment ids to send the campaign to. */
-        segments?: number[];
+        segments?: number[] | undefined;
     }
 }

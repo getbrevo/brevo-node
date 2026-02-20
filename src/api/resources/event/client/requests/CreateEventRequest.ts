@@ -36,17 +36,17 @@ export namespace CreateEventRequest {
      */
     export interface Identifiers {
         /** Internal unique contact ID. When present, this takes priority over all other identifiers for event attribution and contact resolution. */
-        contact_id?: number;
+        contact_id?: number | undefined;
         /** Email Id associated with the event */
-        email_id?: string;
+        email_id?: string | undefined;
         /** ext_id associated with the event */
-        ext_id?: string;
+        ext_id?: string | undefined;
         /** landline_number associated with the event */
-        landline_number_id?: string;
+        landline_number_id?: string | undefined;
         /** SMS associated with the event */
-        phone_id?: string;
+        phone_id?: string | undefined;
         /** whatsapp associated with the event */
-        whatsapp_id?: string;
+        whatsapp_id?: string | undefined;
     }
 
     /**
@@ -54,9 +54,9 @@ export namespace CreateEventRequest {
      */
     export interface Object_ {
         /** Identifiers for the object. */
-        identifiers?: Object_.Identifiers;
+        identifiers?: Object_.Identifiers | undefined;
         /** Type of object (e.g., subscription, vehicle, etc.) */
-        type?: string;
+        type?: string | undefined;
     }
 
     export namespace Object_ {
@@ -65,9 +65,9 @@ export namespace CreateEventRequest {
          */
         export interface Identifiers {
             /** External object ID */
-            ext_id?: string;
+            ext_id?: string | undefined;
             /** Internal object ID */
-            id?: string;
+            id?: string | undefined;
         }
     }
 }

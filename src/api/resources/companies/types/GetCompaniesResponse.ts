@@ -7,5 +7,5 @@ import type * as Brevo from "../../../index.js";
  */
 export interface GetCompaniesResponse {
     /** List of companies */
-    items?: Brevo.Company[];
+    items?: Brevo.Company[] | undefined;
 }

@@ -81,9 +81,9 @@ export namespace UpdateEmailCampaignRequest {
      */
     export interface EmailExpirationDate {
         /** Duration of the email expiry. maximum duration can be 3600 days or 480 weeks or 120 months. */
-        duration?: number;
+        duration?: number | undefined;
         /** unit of the duration */
-        unit?: EmailExpirationDate.Unit;
+        unit?: EmailExpirationDate.Unit | undefined;
     }
 
     export namespace EmailExpirationDate {
@@ -101,13 +101,13 @@ export namespace UpdateEmailCampaignRequest {
      */
     export interface Recipients {
         /** List ids which have to be excluded from a campaign */
-        exclusionListIds?: number[];
+        exclusionListIds?: number[] | undefined;
         /** Segment ids which have to be excluded from a campaign. */
-        exclusionSegmentIds?: number[];
+        exclusionSegmentIds?: number[] | undefined;
         /** Lists Ids to send the campaign to. **Campaign should only be updated with listIds if listIds were used to create it. REQUIRED if already not present in campaign and scheduledAt is not empty** */
-        listIds?: number[];
+        listIds?: number[] | undefined;
         /** **Mandatory if listIds are not used. Campaign should only be updated with segmentIds if segmentIds were used to create it.** Segment ids to send the campaign to. */
-        segmentIds?: number[];
+        segmentIds?: number[] | undefined;
     }
 
     /**
@@ -115,11 +115,11 @@ export namespace UpdateEmailCampaignRequest {
      */
     export interface Sender {
         /** Sender email from which the campaign emails are sent */
-        email?: string;
+        email?: string | undefined;
         /** Select the sender for the campaign on the basis of sender id. **In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)**. */
-        id?: number;
+        id?: number | undefined;
         /** Sender Name from which the campaign emails are sent */
-        name?: string;
+        name?: string | undefined;
     }
 
     /** Choose the metrics that will determinate the winning version. **Mandatory if _splitRule_ >= 1 and < 50**. If splitRule = 50, `winnerCriteria` is ignored if passed */

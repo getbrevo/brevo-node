@@ -6,12 +6,12 @@ export interface PostContactInfo {
 
 export namespace PostContactInfo {
     export interface Contacts {
-        failure?: Contacts.Failure;
+        failure?: Contacts.Failure | undefined;
         /** Id of the process created to remove contacts from list when user opts for "all" option. */
-        processId?: number;
-        success?: Contacts.Success;
+        processId?: number | undefined;
+        success?: Contacts.Success | undefined;
         /** Displays the count of total number of contacts removed from list when user opts for "all" option. */
-        total?: number;
+        total?: number | undefined;
     }
 
     export namespace Contacts {

@@ -5,17 +5,17 @@
  */
 export interface FileData {
     /** Account id of user which created the file */
-    authorId?: string;
+    authorId?: string | undefined;
     /** Company id linked to a file */
-    companyId?: string;
+    companyId?: string | undefined;
     /** Contact id of contact on which file is uploaded */
-    contactId?: number;
+    contactId?: number | undefined;
     /** File created date/time */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Deal id linked to a file */
-    dealId?: string;
+    dealId?: string | undefined;
     /** Name of uploaded file */
-    name?: string;
+    name?: string | undefined;
     /** Size of file in bytes */
-    size?: number;
+    size?: number | undefined;
 }

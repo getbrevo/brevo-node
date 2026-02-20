@@ -37,10 +37,10 @@ export namespace UpdateSmtpTemplateRequest {
      */
     export interface Sender {
         /** Email of the sender */
-        email?: string;
+        email?: string | undefined;
         /** Select the sender for the template on the basis of sender id. _In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)_. */
-        id?: number;
+        id?: number | undefined;
         /** Name of the sender */
-        name?: string;
+        name?: string | undefined;
     }
 }

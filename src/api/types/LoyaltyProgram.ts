@@ -2,29 +2,29 @@
 
 export interface LoyaltyProgram {
     /** Loyalty Program code count */
-    codeCount?: number;
+    codeCount?: number | undefined;
     /** Loyalty Program creation date */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Loyalty Program description */
-    description?: string;
+    description?: string | undefined;
     /** string */
-    documentId?: string;
+    documentId?: string | undefined;
     /** Loyalty Program ID */
-    id?: string;
+    id?: string | undefined;
     /** Loyalty Program meta data */
-    meta?: Record<string, unknown>;
+    meta?: Record<string, unknown> | undefined;
     /** Loyalty Program name */
-    name?: string;
+    name?: string | undefined;
     /** string */
-    pattern?: string;
+    pattern?: string | undefined;
     /** Loyalty Program state */
-    state?: LoyaltyProgram.State;
+    state?: LoyaltyProgram.State | undefined;
     /** Loyalty Program subscription generator ID */
-    subscriptionGeneratorId?: string;
+    subscriptionGeneratorId?: string | undefined;
     /** Loyalty Program subscription pool ID */
-    subscriptionPoolId?: string;
+    subscriptionPoolId?: string | undefined;
     /** Loyalty Program last modification date */
-    updatedAt?: string;
+    updatedAt?: string | undefined;
 }
 
 export namespace LoyaltyProgram {

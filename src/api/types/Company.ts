@@ -5,11 +5,11 @@
  */
 export interface Company {
     /** Company attributes with values */
-    attributes?: Record<string, unknown>;
+    attributes?: Record<string, unknown> | undefined;
     /** Unique company id */
-    id?: string;
+    id?: string | undefined;
     /** Contact ids for contacts linked to this company */
-    linkedContactsIds?: number[];
+    linkedContactsIds?: number[] | undefined;
     /** Deals ids for companies linked to this company */
-    linkedDealsIds?: string[];
+    linkedDealsIds?: string[] | undefined;
 }

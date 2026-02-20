@@ -2,9 +2,9 @@
 
 export interface GetSegmentsResponse {
     /** Number of Segments in your account */
-    count?: number;
+    count?: number | undefined;
     /** Listing of all the segments available in your account */
-    segments?: GetSegmentsResponse.Segments.Item[];
+    segments?: GetSegmentsResponse.Segments.Item[] | undefined;
 }
 
 export namespace GetSegmentsResponse {
@@ -19,7 +19,7 @@ export namespace GetSegmentsResponse {
             /** Name of the Segment */
             segmentName: string;
             /** Updation UTC date-time of the segment (YYYY-MM-DDTHH:mm:ss.SSSZ) */
-            updatedAt?: string;
+            updatedAt?: string | undefined;
         }
     }
 }

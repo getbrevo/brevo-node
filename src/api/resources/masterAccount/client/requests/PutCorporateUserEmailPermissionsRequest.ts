@@ -52,9 +52,9 @@ export namespace PutCorporateUserEmailPermissionsRequest {
          */
         export interface Item {
             /** feature name */
-            feature?: Item.Feature;
+            feature?: Item.Feature | undefined;
             /** Permission for the feature */
-            permissions?: Item.Permissions.Item[];
+            permissions?: Item.Permissions.Item[] | undefined;
         }
 
         export namespace Item {

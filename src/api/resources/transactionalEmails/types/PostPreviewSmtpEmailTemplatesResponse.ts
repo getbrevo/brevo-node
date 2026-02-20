@@ -2,14 +2,14 @@
 
 export interface PostPreviewSmtpEmailTemplatesResponse {
     /** Sender email address */
-    fromEmail?: string;
+    fromEmail?: string | undefined;
     /** Sender Name */
-    fromName?: string;
+    fromName?: string | undefined;
     /** Html content of the template */
-    html?: string;
+    html?: string | undefined;
     /** Preview text of the template */
-    previewText?: string;
+    previewText?: string | undefined;
     /** subject of the template */
-    subject?: string;
-    usedFeedNames?: string[];
+    subject?: string | undefined;
+    usedFeedNames?: string[] | undefined;
 }

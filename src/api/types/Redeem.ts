@@ -2,31 +2,31 @@
 
 export interface Redeem {
     /** Timestamp when the redemption was cancelled */
-    cancelledAt?: string;
+    cancelledAt?: string | undefined;
     /** Timestamp when the redemption was completed */
-    completedAt?: string;
+    completedAt?: string | undefined;
     /** Unique identifier for the contact */
-    contactId?: number;
+    contactId?: number | undefined;
     /** Timestamp when the redemption was created */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Unique identifier for the debit transaction */
-    debitTransactionId?: string;
+    debitTransactionId?: string | undefined;
     /** Timestamp when the redemption expires */
-    expiresAt?: string;
+    expiresAt?: string | undefined;
     /** Unique identifier for the redemption */
-    id?: string;
+    id?: string | undefined;
     /** Unique identifier for the loyalty program */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** Additional metadata associated with the redemption */
-    meta?: Record<string, unknown>;
+    meta?: Record<string, unknown> | undefined;
     /** Reason for rejection if the redemption was rejected */
-    rejectReason?: string;
+    rejectReason?: string | undefined;
     /** Timestamp when the redemption was rejected */
-    rejectedAt?: string;
+    rejectedAt?: string | undefined;
     /** Unique identifier for the reward attribution */
-    rewardAttributionId?: string;
+    rewardAttributionId?: string | undefined;
     /** Current status of the redemption */
-    status?: string;
+    status?: string | undefined;
     /** Timestamp when the redemption was last updated */
-    updatedAt?: string;
+    updatedAt?: string | undefined;
 }

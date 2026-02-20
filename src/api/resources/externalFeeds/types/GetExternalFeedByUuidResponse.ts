@@ -10,11 +10,11 @@ export interface GetExternalFeedByUuidResponse {
     /** Authentication type for accessing the feed */
     authType: GetExternalFeedByUuidResponse.AuthType;
     /** Username for basic authentication (null if not using basic auth) */
-    username?: string | null;
+    username?: (string | null) | undefined;
     /** Password for basic authentication (null if not using basic auth) */
-    password?: string | null;
+    password?: (string | null) | undefined;
     /** Token for token-based authentication (null if not using token auth) */
-    token?: string | null;
+    token?: (string | null) | undefined;
     /** Whether personalization is enabled for this feed */
     personalization: boolean;
     /** Default attribute name for personalization fallback (empty string if not set) */
@@ -22,7 +22,7 @@ export interface GetExternalFeedByUuidResponse {
     /** Default contact email for personalization fallback (empty string if not set) */
     defaultContact: string;
     /** Custom HTTP headers for the feed request */
-    headers?: GetExternalFeedByUuidResponse.Headers.Item[] | null;
+    headers?: (GetExternalFeedByUuidResponse.Headers.Item[] | null) | undefined;
     /** Maximum number of retry attempts for failed requests */
     maxRetries: number;
     /** Whether to cache the feed response */

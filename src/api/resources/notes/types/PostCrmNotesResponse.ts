@@ -5,5 +5,5 @@
  */
 export interface PostCrmNotesResponse {
     /** Unique note Id */
-    id?: string;
+    id?: string | undefined;
 }

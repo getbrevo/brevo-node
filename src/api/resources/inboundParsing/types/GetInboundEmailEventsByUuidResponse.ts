@@ -2,21 +2,21 @@
 
 export interface GetInboundEmailEventsByUuidResponse {
     /** List of attachments of the email. This will be present only after the processing is done. */
-    attachments?: GetInboundEmailEventsByUuidResponse.Attachments.Item[];
+    attachments?: GetInboundEmailEventsByUuidResponse.Attachments.Item[] | undefined;
     /** Date when email was delivered successfully to client_dev’s webhook */
-    deliveredAt?: string | null;
+    deliveredAt?: (string | null) | undefined;
     /** List of events/logs that describe the lifecycle of the email on SIB platform */
-    logs?: GetInboundEmailEventsByUuidResponse.Logs.Item[];
+    logs?: GetInboundEmailEventsByUuidResponse.Logs.Item[] | undefined;
     /** Value of the Message-ID header. This will be present only after the processing is done. */
-    messageId?: string;
+    messageId?: string | undefined;
     /** Date when email was received on SMTP relay */
-    receivedAt?: string;
+    receivedAt?: string | undefined;
     /** Recipient’s email address */
-    recipient?: string;
+    recipient?: string | undefined;
     /** Sender’s email address */
-    sender?: string;
+    sender?: string | undefined;
     /** Value of the Subject header. This will be present only after the processing is done. */
-    subject?: string;
+    subject?: string | undefined;
 }
 
 export namespace GetInboundEmailEventsByUuidResponse {
@@ -25,13 +25,13 @@ export namespace GetInboundEmailEventsByUuidResponse {
     export namespace Attachments {
         export interface Item {
             /** value of the Content-ID header of the attachment. */
-            contentId?: string;
+            contentId?: string | undefined;
             /** size of the attachment in bytes */
-            contentLength?: number;
+            contentLength?: number | undefined;
             /** value of the Content-Type header of the attachment */
-            contentType?: string;
+            contentType?: string | undefined;
             /** filename specified in the Content-Disposition header of the attachment */
-            name?: string;
+            name?: string | undefined;
         }
     }
 
@@ -40,9 +40,9 @@ export namespace GetInboundEmailEventsByUuidResponse {
     export namespace Logs {
         export interface Item {
             /** Date of the event */
-            date?: string;
+            date?: string | undefined;
             /** Type of the event */
-            type?: Item.Type;
+            type?: Item.Type | undefined;
         }
 
         export namespace Item {

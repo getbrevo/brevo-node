@@ -2,7 +2,7 @@
 
 export interface GetInvitedUsersListResponse {
     /** Get invited users list */
-    users?: GetInvitedUsersListResponse.Users.Item[];
+    users?: GetInvitedUsersListResponse.Users.Item[] | undefined;
 }
 
 export namespace GetInvitedUsersListResponse {
@@ -26,11 +26,11 @@ export namespace GetInvitedUsersListResponse {
              */
             export interface FeatureAccess {
                 /** Conversations features accessiblity. */
-                conversations?: string;
+                conversations?: string | undefined;
                 /** CRM features accessiblity. */
-                crm?: string;
+                crm?: string | undefined;
                 /** Marketing features accessiblity. */
-                marketing?: string;
+                marketing?: string | undefined;
             }
         }
     }

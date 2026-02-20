@@ -6,11 +6,11 @@ export interface CreateDomainResponse {
     /** Domain name */
     domain_name: string;
     /** Detected domain provider */
-    domain_provider?: string;
+    domain_provider?: string | undefined;
     /** Success message with next steps */
     message: string;
     /** DNS records required for domain authentication */
-    dns_records?: CreateDomainResponse.DnsRecords;
+    dns_records?: CreateDomainResponse.DnsRecords | undefined;
 }
 
 export namespace CreateDomainResponse {

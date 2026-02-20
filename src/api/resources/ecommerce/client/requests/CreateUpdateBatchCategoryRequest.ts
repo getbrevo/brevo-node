@@ -21,15 +21,15 @@ export namespace CreateUpdateBatchCategoryRequest {
     export namespace Categories {
         export interface Item {
             /** UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) of the category deleted from the shop's database */
-            deletedAt?: string;
+            deletedAt?: string | undefined;
             /** Unique Category ID as saved in the shop */
             id: string;
             /** category deleted from the shop's database */
-            isDeleted?: boolean;
+            isDeleted?: boolean | undefined;
             /** **Mandatory in case of creation**. Name of the Category, as displayed in the shop */
-            name?: string;
+            name?: string | undefined;
             /** URL to the category */
-            url?: string;
+            url?: string | undefined;
         }
     }
 }

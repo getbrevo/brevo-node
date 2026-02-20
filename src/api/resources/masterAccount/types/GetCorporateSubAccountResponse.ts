@@ -2,8 +2,8 @@
 
 export interface GetCorporateSubAccountResponse {
     /** Total number of subaccounts */
-    count?: number;
-    subAccounts?: GetCorporateSubAccountResponse.SubAccounts.Item[];
+    count?: number | undefined;
+    subAccounts?: GetCorporateSubAccountResponse.SubAccounts.Item[] | undefined;
 }
 
 export namespace GetCorporateSubAccountResponse {
@@ -29,9 +29,9 @@ export namespace GetCorporateSubAccountResponse {
             export namespace Groups {
                 export interface Item {
                     /** Group identifier */
-                    id?: string;
+                    id?: string | undefined;
                     /** Name of the group */
-                    name?: string;
+                    name?: string | undefined;
                 }
             }
         }

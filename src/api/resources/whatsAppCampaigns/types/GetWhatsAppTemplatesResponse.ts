@@ -2,8 +2,8 @@
 
 export interface GetWhatsAppTemplatesResponse {
     /** Number of whatsApp templates retrieved */
-    count?: number;
-    templates?: GetWhatsAppTemplatesResponse.Templates.Item[];
+    count?: number | undefined;
+    templates?: GetWhatsAppTemplatesResponse.Templates.Item[] | undefined;
 }
 
 export namespace GetWhatsAppTemplatesResponse {
@@ -16,7 +16,7 @@ export namespace GetWhatsAppTemplatesResponse {
             /** Creation UTC date-time of the whatsApp template (YYYY-MM-DDTHH:mm:ss.SSSZ) */
             createdAt: string;
             /** Error reason in the template creation */
-            errorReason?: string;
+            errorReason?: string | undefined;
             /** ID of the whatsApp template */
             id: number;
             /** Language in which template exists */

@@ -2,5 +2,5 @@
 
 export interface CreateUpdateFolder {
     /** Name of the folder */
-    name?: string;
+    name?: string | undefined;
 }

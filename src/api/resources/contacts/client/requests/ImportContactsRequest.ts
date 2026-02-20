@@ -35,8 +35,8 @@ export namespace ImportContactsRequest {
     export namespace JsonBody {
         export interface Item {
             /** List of attributes to be imported */
-            attributes?: Record<string, unknown>;
-            email?: string;
+            attributes?: Record<string, unknown> | undefined;
+            email?: string | undefined;
         }
     }
 
@@ -45,8 +45,8 @@ export namespace ImportContactsRequest {
      */
     export interface NewList {
         /** Id of the folder where this new list shall be created. **Mandatory if listName is not empty** */
-        folderId?: number;
+        folderId?: number | undefined;
         /** List with listName will be created first and users will be imported in it. **Mandatory if listIds is empty**. */
-        listName?: string;
+        listName?: string | undefined;
     }
 }

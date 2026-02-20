@@ -5,11 +5,11 @@
  */
 export interface NoteData {
     /** Company Ids linked to a note */
-    companyIds?: string[];
+    companyIds?: string[] | undefined;
     /** Contact Ids linked to a note */
-    contactIds?: number[];
+    contactIds?: number[] | undefined;
     /** Deal Ids linked to a note */
-    dealIds?: string[];
+    dealIds?: string[] | undefined;
     /** Text content of a note */
     text: string;
 }

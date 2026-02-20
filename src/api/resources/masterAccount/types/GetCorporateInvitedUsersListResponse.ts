@@ -2,7 +2,7 @@
 
 export interface GetCorporateInvitedUsersListResponse {
     /** Get invited users list */
-    users?: GetCorporateInvitedUsersListResponse.Users.Item[];
+    users?: GetCorporateInvitedUsersListResponse.Users.Item[] | undefined;
 }
 
 export namespace GetCorporateInvitedUsersListResponse {
@@ -32,35 +32,35 @@ export namespace GetCorporateInvitedUsersListResponse {
              */
             export interface FeatureAccess {
                 /** Analytics dashboard accessibility */
-                analytics?: string[];
+                analytics?: string[] | undefined;
                 /** Api keys accessiblity. */
-                api_keys?: string[];
+                api_keys?: string[] | undefined;
                 /**
                  * Apps management accessiblity | Not available in
                  * ENTv2
                  */
-                apps_management?: string[];
+                apps_management?: string[] | undefined;
                 /**
                  * Authorization to create sub-organization in the
                  * admin account. If the user creating the
                  * sub-organization, belongs to a group, the user must
                  * choose a group at the sub-organization creation.
                  */
-                create_sub_organizations?: string[];
+                create_sub_organizations?: string[] | undefined;
                 /**
                  * Authorization to manage and access sub-organizations
                  * in the admin account.
                  */
-                manage_sub_organizations?: string[];
+                manage_sub_organizations?: string[] | undefined;
                 /** My plan accessiblity. */
-                my_plan?: string[];
+                my_plan?: string[] | undefined;
                 /**
                  * Group creation, modification or deletion
                  * accessibility
                  */
-                sub_organization_groups?: string[];
+                sub_organization_groups?: string[] | undefined;
                 /** User management accessiblity. */
-                user_management?: string[];
+                user_management?: string[] | undefined;
             }
 
             /**
@@ -68,9 +68,9 @@ export namespace GetCorporateInvitedUsersListResponse {
              */
             export interface Groups {
                 /** group id */
-                id?: string;
+                id?: string | undefined;
                 /** group name */
-                name?: string;
+                name?: string | undefined;
             }
         }
     }

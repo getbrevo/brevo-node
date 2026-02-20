@@ -3,9 +3,9 @@
 import type * as Brevo from "../../../index.js";
 
 export interface GetWhatsAppCampaignsResponse {
-    campaigns?: GetWhatsAppCampaignsResponse.Campaigns.Item[];
+    campaigns?: GetWhatsAppCampaignsResponse.Campaigns.Item[] | undefined;
     /** Number of WhatsApp campaigns retrieved */
-    count?: number;
+    count?: number | undefined;
 }
 
 export namespace GetWhatsAppCampaignsResponse {
@@ -20,18 +20,18 @@ export namespace GetWhatsAppCampaignsResponse {
             /** Creation UTC date-time of the WhatsApp campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) */
             createdAt: string;
             /** Error Reason associated with the WhatsApp campaign sending */
-            errorReason?: string;
+            errorReason?: string | undefined;
             /** ID of the WhatsApp Campaign */
             id: number;
             /** Count of invalidated contacts */
-            invalidatedContacts?: number;
+            invalidatedContacts?: number | undefined;
             /** UTC date-time of last modification of the WhatsApp campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) */
             modifiedAt: string;
             /** Read percentage of the the whatsapp campaign created */
-            readPercentage?: number;
+            readPercentage?: number | undefined;
             /** UTC date-time on which WhatsApp campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format */
             scheduledAt: string;
-            stats?: Brevo.WhatsappCampStats;
+            stats?: Brevo.WhatsappCampStats | undefined;
             /** Id of the WhatsApp template */
             templateId: string;
         }

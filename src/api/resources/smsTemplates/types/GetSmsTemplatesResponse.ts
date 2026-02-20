@@ -2,8 +2,8 @@
 
 export interface GetSmsTemplatesResponse {
     /** Count of transactional sms templates */
-    count?: number;
-    templates?: GetSmsTemplatesResponse.Templates.Item[];
+    count?: number | undefined;
+    templates?: GetSmsTemplatesResponse.Templates.Item[] | undefined;
 }
 
 export namespace GetSmsTemplatesResponse {
@@ -12,29 +12,29 @@ export namespace GetSmsTemplatesResponse {
     export namespace Templates {
         export interface Item {
             /** ID of the template */
-            id?: number;
+            id?: number | undefined;
             /** Name of the template */
-            name?: string;
+            name?: string | undefined;
             /** URL shortening is enabled */
-            short_url_enabled?: boolean;
+            short_url_enabled?: boolean | undefined;
             /** message content for the sms */
-            message?: string;
+            message?: string | undefined;
             /** Manage US compliance */
-            compliance?: Item.Compliance;
+            compliance?: Item.Compliance | undefined;
             /** Enable Unicode encryption. */
-            encryption?: boolean;
+            encryption?: boolean | undefined;
             /** Support unicode characters in the sms. */
-            unicode_sms?: boolean;
+            unicode_sms?: boolean | undefined;
             /** file name of the media. */
-            media_file?: string;
+            media_file?: string | undefined;
             /** file size in bytes. */
-            media_file_size?: string;
+            media_file_size?: string | undefined;
             /** URL of the image. */
-            media_url?: string;
+            media_url?: string | undefined;
             /** Creation UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ) */
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** Creation UTC date-time of the template (YYYY-MM-DDTHH:mm:ss.SSSZ) */
-            updatedAt?: string;
+            updatedAt?: string | undefined;
         }
 
         export namespace Item {
@@ -43,11 +43,11 @@ export namespace GetSmsTemplatesResponse {
              */
             export interface Compliance {
                 /** US compliance is enabled. */
-                compliance_toggle?: boolean;
+                compliance_toggle?: boolean | undefined;
                 /** A recognizable prefix will ensure your audience knows who you are. Recommended by the U.S. carriers. */
-                organisation_prefix?: string;
+                organisation_prefix?: string | undefined;
                 /** Instructions to unsubscribe from future communications. Must include STOP keyword. */
-                stop_keyword?: string;
+                stop_keyword?: string | undefined;
             }
         }
     }

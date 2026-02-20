@@ -77,7 +77,7 @@ export namespace UpdateSenderRequest {
              * If it's not passed, the sending will be equally balanced
              * on all IPs.
              */
-            weight?: number;
+            weight?: number | undefined;
         }
     }
 }

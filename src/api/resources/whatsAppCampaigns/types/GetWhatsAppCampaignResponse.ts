@@ -14,10 +14,10 @@ export interface GetWhatsAppCampaignResponse {
     /** UTC date-time of last modification of the WhatsApp campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     modifiedAt: string;
     /** UTC date-time on which WhatsApp campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format */
-    scheduledAt?: string;
+    scheduledAt?: string | undefined;
     /** Sender of the WhatsApp Campaign */
     senderNumber: string;
-    stats?: Brevo.WhatsappCampStats;
+    stats?: Brevo.WhatsappCampStats | undefined;
     template: GetWhatsAppCampaignResponse.Template;
 }
 
@@ -37,23 +37,23 @@ export namespace GetWhatsAppCampaignResponse {
 
     export interface Template {
         /** array of variables item variables */
-        body_variables?: Brevo.VariablesItems[];
-        button_type?: string;
+        body_variables?: Brevo.VariablesItems[] | undefined;
+        button_type?: string | undefined;
         /** description of the template */
-        category?: string;
+        category?: string | undefined;
         /** array of component item objects */
-        components?: Template.Components.Item[];
-        contains_button?: boolean;
-        display_header?: boolean;
+        components?: Template.Components.Item[] | undefined;
+        contains_button?: boolean | undefined;
+        display_header?: boolean | undefined;
         /** type of header */
-        header_type?: string;
+        header_type?: string | undefined;
         /** array of variables item object */
-        header_variables?: Brevo.VariablesItems[];
-        hide_footer?: boolean;
+        header_variables?: Brevo.VariablesItems[] | undefined;
+        hide_footer?: boolean | undefined;
         /** language of the template */
-        language?: string;
+        language?: string | undefined;
         /** name of the template */
-        name?: string;
+        name?: string | undefined;
     }
 
     export namespace Template {
@@ -61,8 +61,8 @@ export namespace GetWhatsAppCampaignResponse {
 
         export namespace Components {
             export interface Item {
-                text?: string;
-                type?: string;
+                text?: string | undefined;
+                type?: string | undefined;
             }
         }
     }

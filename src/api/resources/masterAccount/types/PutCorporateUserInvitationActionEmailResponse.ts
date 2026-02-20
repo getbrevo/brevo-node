@@ -2,5 +2,5 @@
 
 export interface PutCorporateUserInvitationActionEmailResponse {
     /** Action success message */
-    message?: string;
+    message?: string | undefined;
 }

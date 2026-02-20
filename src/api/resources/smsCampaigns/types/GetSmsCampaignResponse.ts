@@ -14,7 +14,7 @@ export interface GetSmsCampaignResponse {
     /** Name of the SMS Campaign */
     name: string;
     /** UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format */
-    scheduledAt?: string;
+    scheduledAt?: string | undefined;
     /** Sender of the SMS Campaign */
     sender: string;
     /** Status of the SMS Campaign */

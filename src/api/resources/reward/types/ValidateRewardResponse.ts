@@ -2,5 +2,5 @@
 
 export interface ValidateRewardResponse {
     /** Boolean value to authorize a reward or not */
-    authorize?: boolean;
+    authorize?: boolean | undefined;
 }

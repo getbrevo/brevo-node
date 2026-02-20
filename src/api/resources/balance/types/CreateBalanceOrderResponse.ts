@@ -7,7 +7,7 @@ export interface CreateBalanceOrderResponse {
     /** Order amount (must not be zero). */
     amount: number;
     /** Optional unique identifier (UUID) of the associated balance definition. */
-    balanceDefinitionId?: string;
+    balanceDefinitionId?: string | undefined;
     /** Unique identifier of the contact placing the order (must be ≥ 1). */
     contactId: number;
     /** RFC3339 timestamp indicating when the order was created. */
@@ -15,17 +15,17 @@ export interface CreateBalanceOrderResponse {
     /** RFC3339 timestamp specifying when the order is due in the future. */
     dueAt: string;
     /** Optional RFC3339 timestamp defining order expiration in the future. */
-    expiresAt?: string;
+    expiresAt?: string | undefined;
     /** Unique identifier for the balance order. */
-    id?: string;
+    id?: string | undefined;
     /** Unique identifier of the loyalty program associated with the order. */
     loyaltyProgramId: string;
     /** Optional metadata associated with the order. */
-    meta?: Record<string, unknown>;
+    meta?: Record<string, unknown> | undefined;
     /** Optional RFC3339 timestamp indicating when the order was processed. */
-    processedAt?: string;
+    processedAt?: string | undefined;
     /** Optional reference to the associated transaction ID. */
-    transactionid?: string;
+    transactionid?: string | undefined;
     /** RFC3339 timestamp indicating the last update to the order. */
     updatedAt: string;
 }

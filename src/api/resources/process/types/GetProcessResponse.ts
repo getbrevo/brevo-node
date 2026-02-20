@@ -8,15 +8,15 @@ export interface GetProcessResponse {
     /** Current status of the process */
     status: GetProcessResponse.Status;
     /** Additional process information (for completed processes) */
-    info?: GetProcessResponse.Info | null;
+    info?: (GetProcessResponse.Info | null) | undefined;
     /** Download URL for completed export processes */
-    export_url?: string | null;
+    export_url?: (string | null) | undefined;
     /** Error message for failed processes */
-    error?: string | null;
+    error?: (string | null) | undefined;
     /** Process creation timestamp */
-    created_at?: string | null;
+    created_at?: (string | null) | undefined;
     /** Process completion timestamp */
-    completed_at?: string | null;
+    completed_at?: (string | null) | undefined;
 }
 
 export namespace GetProcessResponse {
@@ -46,9 +46,9 @@ export namespace GetProcessResponse {
      */
     export interface Info {
         /** Import process details */
-        import?: Info.Import;
+        import?: Info.Import | undefined;
         /** Export process details */
-        export?: Info.Export;
+        export?: Info.Export | undefined;
     }
 
     export namespace Info {
@@ -57,19 +57,19 @@ export namespace GetProcessResponse {
          */
         export interface Import {
             /** Number of invalid email addresses */
-            invalid_emails?: number | null;
+            invalid_emails?: (number | null) | undefined;
             /** Number of duplicate contact IDs */
-            duplicate_contact_id?: number | null;
+            duplicate_contact_id?: (number | null) | undefined;
             /** Number of duplicate external IDs */
-            duplicate_ext_id?: number | null;
+            duplicate_ext_id?: (number | null) | undefined;
             /** Number of duplicate email IDs */
-            duplicate_email_id?: number | null;
+            duplicate_email_id?: (number | null) | undefined;
             /** Number of duplicate phone numbers */
-            duplicate_phone_id?: number | null;
+            duplicate_phone_id?: (number | null) | undefined;
             /** Number of duplicate WhatsApp numbers */
-            duplicate_whatsapp_id?: number | null;
+            duplicate_whatsapp_id?: (number | null) | undefined;
             /** Number of duplicate landline numbers */
-            duplicate_landline_number_id?: number | null;
+            duplicate_landline_number_id?: (number | null) | undefined;
         }
 
         /**
@@ -77,9 +77,9 @@ export namespace GetProcessResponse {
          */
         export interface Export {
             /** Total number of exported records */
-            total_records?: number;
+            total_records?: number | undefined;
             /** Size of exported file in bytes */
-            file_size?: number;
+            file_size?: number | undefined;
         }
     }
 }

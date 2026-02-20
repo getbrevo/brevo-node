@@ -2,9 +2,9 @@
 
 export interface GetListsResponse {
     /** Number of lists in your account */
-    count?: number;
+    count?: number | undefined;
     /** Listing of all the lists available in your account */
-    lists?: GetListsResponse.Lists.Item[];
+    lists?: GetListsResponse.Lists.Item[] | undefined;
 }
 
 export namespace GetListsResponse {

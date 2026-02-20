@@ -29,9 +29,9 @@ export namespace UpdateTierRequest {
     export namespace AccessConditions {
         export interface Item {
             /** Balance definition identifier for accessing the tier */
-            balanceDefinitionId?: string;
+            balanceDefinitionId?: string | undefined;
             /** Minimum value required to access the tier */
-            minimumValue?: number;
+            minimumValue?: number | undefined;
         }
     }
 
@@ -40,7 +40,7 @@ export namespace UpdateTierRequest {
     export namespace TierRewards {
         export interface Item {
             /** Reward unique identifier */
-            rewardId?: string;
+            rewardId?: string | undefined;
         }
     }
 }

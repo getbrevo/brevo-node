@@ -53,9 +53,9 @@ export namespace CreateWebhookRequest {
      */
     export interface Auth {
         /** Webhook authentication token */
-        token?: string;
+        token?: string | undefined;
         /** Type of authentication */
-        type?: string;
+        type?: string | undefined;
     }
 
     /** channel of webhook */
@@ -94,9 +94,9 @@ export namespace CreateWebhookRequest {
     export namespace Headers {
         export interface Item {
             /** Header key name */
-            key?: string;
+            key?: string | undefined;
             /** Header value */
-            value?: string;
+            value?: string | undefined;
         }
     }
 

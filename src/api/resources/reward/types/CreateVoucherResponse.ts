@@ -2,25 +2,25 @@
 
 export interface CreateVoucherResponse {
     /** Generated code */
-    code?: string;
+    code?: string | undefined;
     /** Timestamp for when this reward was consumed */
-    consumedAt?: string;
+    consumedAt?: string | undefined;
     /** Id of the contact that attributed the reward */
-    contactId?: number;
+    contactId?: number | undefined;
     /** Timestamp for when this reward was created */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Expiration date of the reward */
-    expirationDate?: string;
+    expirationDate?: string | undefined;
     /** Unique identifier */
-    id?: string;
+    id?: string | undefined;
     /** Loyalty Program Id to which attributed reward belongs */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** Additional data to define the reward */
-    meta?: Record<string, unknown>;
+    meta?: Record<string, unknown> | undefined;
     /** Unique identifier for the reward */
-    rewardId?: string;
+    rewardId?: string | undefined;
     /** Timestamp for when this reward was updated */
-    updatedAt?: string;
+    updatedAt?: string | undefined;
     /** Value of the selected reward config */
-    value?: number;
+    value?: number | undefined;
 }

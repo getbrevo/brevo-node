@@ -5,7 +5,7 @@
  */
 export interface GetCrmTasktypesResponse {
     /** Id of task type */
-    id?: string;
+    id?: string | undefined;
     /** Title of task type */
-    title?: string;
+    title?: string | undefined;
 }

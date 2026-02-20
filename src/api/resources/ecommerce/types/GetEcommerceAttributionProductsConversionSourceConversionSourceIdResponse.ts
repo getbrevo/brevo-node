@@ -11,13 +11,13 @@ export namespace GetEcommerceAttributionProductsConversionSourceConversionSource
     export namespace Products {
         export interface Item {
             id: string;
-            imageUrl?: string;
-            name?: string;
-            ordersCount?: number;
-            price?: number;
-            revenue?: number;
-            sku?: string;
-            url?: string;
+            imageUrl?: string | undefined;
+            name?: string | undefined;
+            ordersCount?: number | undefined;
+            price?: number | undefined;
+            revenue?: number | undefined;
+            sku?: string | undefined;
+            url?: string | undefined;
         }
     }
 }

@@ -2,5 +2,5 @@
 
 export interface GetCodeCountResponse {
     /** Number of codes */
-    count?: number;
+    count?: number | undefined;
 }

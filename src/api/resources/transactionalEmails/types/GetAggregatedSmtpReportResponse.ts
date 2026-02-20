@@ -2,29 +2,29 @@
 
 export interface GetAggregatedSmtpReportResponse {
     /** Number of blocked contact emails for the timeframe */
-    blocked?: number;
+    blocked?: number | undefined;
     /** Number of clicks for the timeframe */
-    clicks?: number;
+    clicks?: number | undefined;
     /** Number of delivered emails for the timeframe */
-    delivered?: number;
+    delivered?: number | undefined;
     /** Number of hardbounces for the timeframe */
-    hardBounces?: number;
+    hardBounces?: number | undefined;
     /** Number of invalid emails for the timeframe */
-    invalid?: number;
+    invalid?: number | undefined;
     /** Number of openings for the timeframe */
-    opens?: number;
+    opens?: number | undefined;
     /** Time frame of the report */
-    range?: string;
+    range?: string | undefined;
     /** Number of requests for the timeframe */
-    requests?: number;
+    requests?: number | undefined;
     /** Number of softbounces for the timeframe */
-    softBounces?: number;
+    softBounces?: number | undefined;
     /** Number of complaint (spam report) for the timeframe */
-    spamReports?: number;
+    spamReports?: number | undefined;
     /** Number of unique clicks for the timeframe */
-    uniqueClicks?: number;
+    uniqueClicks?: number | undefined;
     /** Number of unique openings for the timeframe */
-    uniqueOpens?: number;
+    uniqueOpens?: number | undefined;
     /** Number of unsubscribed emails for the timeframe */
-    unsubscribed?: number;
+    unsubscribed?: number | undefined;
 }

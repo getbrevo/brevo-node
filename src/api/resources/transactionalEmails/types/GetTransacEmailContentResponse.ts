@@ -14,7 +14,7 @@ export interface GetTransacEmailContentResponse {
     /** Subject of the sent email */
     subject: string;
     /** Id of the template */
-    templateId?: number;
+    templateId?: number | undefined;
 }
 
 export namespace GetTransacEmailContentResponse {

@@ -2,23 +2,23 @@
 
 export interface GetParameterSubscriptionInfoResponse {
     /** Balance details for the subscription. */
-    balance?: GetParameterSubscriptionInfoResponse.Balance;
+    balance?: GetParameterSubscriptionInfoResponse.Balance | undefined;
     /** List of members associated with the subscription. */
-    members?: GetParameterSubscriptionInfoResponse.Members.Item[];
+    members?: GetParameterSubscriptionInfoResponse.Members.Item[] | undefined;
     /** List of rewards associated with the subscription. */
-    reward?: GetParameterSubscriptionInfoResponse.Reward.Item[];
+    reward?: GetParameterSubscriptionInfoResponse.Reward.Item[] | undefined;
     /** List of tier assignments for the subscription. */
-    tier?: GetParameterSubscriptionInfoResponse.Tier.Item[];
+    tier?: GetParameterSubscriptionInfoResponse.Tier.Item[] | undefined;
 }
 
 export namespace GetParameterSubscriptionInfoResponse {
     export interface Balance {
         /** List of balance details associated with the contact. */
-        balances?: Balance.Balances.Item[];
+        balances?: Balance.Balances.Item[] | undefined;
         /** Unique identifier of the contact. */
-        contactId?: number;
+        contactId?: number | undefined;
         /** Unique identifier of the loyalty program. */
-        loyaltyProgramId?: string;
+        loyaltyProgramId?: string | undefined;
     }
 
     export namespace Balance {
@@ -27,9 +27,9 @@ export namespace GetParameterSubscriptionInfoResponse {
         export namespace Balances {
             export interface Item {
                 /** Unique identifier for the balance definition). */
-                balanceDefinitionId?: string;
+                balanceDefinitionId?: string | undefined;
                 /** The amount of the balance. */
-                value?: number;
+                value?: number | undefined;
             }
         }
     }
@@ -39,11 +39,11 @@ export namespace GetParameterSubscriptionInfoResponse {
     export namespace Members {
         export interface Item {
             /** Timestamp when the member was created. */
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** Unique identifier of the member. */
-            memberContactId?: number;
+            memberContactId?: number | undefined;
             /** Timestamp when the member was last updated. */
-            updatedAt?: string;
+            updatedAt?: string | undefined;
         }
     }
 
@@ -52,23 +52,23 @@ export namespace GetParameterSubscriptionInfoResponse {
     export namespace Reward {
         export interface Item {
             /** Reward code assigned to the contact. */
-            code?: string;
+            code?: string | undefined;
             /** Unique identifier of the contact. */
-            contactId?: number;
+            contactId?: number | undefined;
             /** Timestamp when the reward was created. */
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** Expiration date of the reward. */
-            expirationDate?: string;
+            expirationDate?: string | undefined;
             /** Unique identifier of the reward. */
-            id?: string;
+            id?: string | undefined;
             /** Unique identifier of the loyalty program. */
-            loyaltyProgramId?: string;
+            loyaltyProgramId?: string | undefined;
             /** Additional metadata related to the reward. */
-            meta?: Record<string, unknown>;
+            meta?: Record<string, unknown> | undefined;
             /** Unique identifier of the reward definition. */
-            rewardId?: string;
+            rewardId?: string | undefined;
             /** Timestamp when the reward was last updated. */
-            updatedAt?: string;
+            updatedAt?: string | undefined;
         }
     }
 
@@ -77,19 +77,19 @@ export namespace GetParameterSubscriptionInfoResponse {
     export namespace Tier {
         export interface Item {
             /** Unique identifier of the contact. */
-            contactId?: number;
+            contactId?: number | undefined;
             /** Timestamp when the tier was assigned. */
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** Unique identifier of the group associated with the tier. */
-            groupId?: string;
+            groupId?: string | undefined;
             /** Unique identifier of the loyalty program. */
-            loyaltyProgramId?: string;
+            loyaltyProgramId?: string | undefined;
             /** Additional metadata related to the tier. */
-            meta?: Record<string, unknown>;
+            meta?: Record<string, unknown> | undefined;
             /** Unique identifier of the tier. */
-            tierId?: string;
+            tierId?: string | undefined;
             /** Timestamp when the tier was last updated */
-            updatedAt?: string;
+            updatedAt?: string | undefined;
         }
     }
 }

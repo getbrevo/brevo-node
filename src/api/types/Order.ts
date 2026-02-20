@@ -4,22 +4,22 @@ export interface Order {
     /** Total amount of the order, including all shipping expenses, tax and the price of items. */
     amount: number;
     /** Billing details of an order. */
-    billing?: Order.Billing;
+    billing?: Order.Billing | undefined;
     /** Coupons applied to the order. Stored case insensitive. */
-    coupons?: string[];
+    coupons?: string[] | undefined;
     /** Event occurrence UTC date-time (YYYY-MM-DDTHH:mm:ssZ), when order is actually created. */
     createdAt: string;
     /** Unique ID of the order. */
     id: string;
     /** Identifies the contact associated with the order. */
-    identifiers?: Order.Identifiers;
+    identifiers?: Order.Identifiers | undefined;
     /** Meta data of order to store additional detal such as custom message, customer type, source. */
-    metaInfo?: Record<string, Order.MetaInfo.Value>;
+    metaInfo?: Record<string, Order.MetaInfo.Value> | undefined;
     products: Order.Products.Item[];
     /** State of the order. */
     status: string;
     /** ID of store where the order is placed */
-    storeId?: string;
+    storeId?: string | undefined;
     /** Event updated UTC date-time (YYYY-MM-DDTHH:mm:ssZ), when the status of the order is actually changed/updated. */
     updatedAt: string;
 }
@@ -30,21 +30,21 @@ export namespace Order {
      */
     export interface Billing {
         /** Full billing address. */
-        address?: string;
+        address?: string | undefined;
         /** Exact city of the address. */
-        city?: string;
+        city?: string | undefined;
         /** Billing country name. */
-        country?: string;
+        country?: string | undefined;
         /** Billing country 2-letter ISO code. */
-        countryCode?: string;
+        countryCode?: string | undefined;
         /** How the visitor will pay for the item(s), e.g. paypal, check, etc. */
-        paymentMethod?: string;
+        paymentMethod?: string | undefined;
         /** Billing phone number. */
-        phone?: string;
+        phone?: string | undefined;
         /** Postcode for delivery and billing. */
-        postCode?: string;
+        postCode?: string | undefined;
         /** Exact region (state/province) for delivery and billing. */
-        region?: string;
+        region?: string | undefined;
     }
 
     /**
@@ -52,13 +52,13 @@ export namespace Order {
      */
     export interface Identifiers {
         /** Email of the contact associated with the order */
-        email_id?: string;
+        email_id?: string | undefined;
         /** ext_id associated with the order */
-        ext_id?: string;
+        ext_id?: string | undefined;
         /** loyalty_subscription_id associated with the order */
-        loyalty_subscription_id?: string;
+        loyalty_subscription_id?: string | undefined;
         /** Phone number of the contact associated with the order */
-        phone_id?: string;
+        phone_id?: string | undefined;
     }
 
     export namespace MetaInfo {
@@ -79,7 +79,7 @@ export namespace Order {
             /** How many pieces of the product the visitor has added to the cart. */
             quantity: number;
             /** Product ID of the red color shirts. */
-            variantId?: string;
+            variantId?: string | undefined;
         }
     }
 }

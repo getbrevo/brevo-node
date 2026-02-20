@@ -2,9 +2,9 @@
 
 export interface EditUserPermissionResponse {
     /** Credit note */
-    credit_notes?: string[];
+    credit_notes?: string[] | undefined;
     /** Invoice id */
-    invoice_id?: string;
+    invoice_id?: string | undefined;
     /** Status of the API operation. */
     status: string;
 }

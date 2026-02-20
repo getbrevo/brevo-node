@@ -2,17 +2,17 @@
 
 export interface GetWhatsAppConfigResponse {
     /** Verification status information of the Business account */
-    businessStatus?: string;
+    businessStatus?: string | undefined;
     /** Status of the name associated with WhatsApp Phone number */
-    phoneNumberNameStatus?: GetWhatsAppConfigResponse.PhoneNumberNameStatus;
+    phoneNumberNameStatus?: GetWhatsAppConfigResponse.PhoneNumberNameStatus | undefined;
     /** Quality status of phone number associated with WhatsApp account. There are three quality ratings. example - **High (GREEN) , Medium (YELLOW) and Low(RED)** */
-    phoneNumberQuality?: GetWhatsAppConfigResponse.PhoneNumberQuality;
+    phoneNumberQuality?: GetWhatsAppConfigResponse.PhoneNumberQuality | undefined;
     /** Sending limit of the WhatsApp account */
-    sendingLimit?: string;
+    sendingLimit?: string | undefined;
     /** Id of the WhatsApp business account */
-    whatsappBusinessAccountId?: string;
+    whatsappBusinessAccountId?: string | undefined;
     /** Status information related to WhatsApp Api account */
-    whatsappBusinessAccountStatus?: GetWhatsAppConfigResponse.WhatsappBusinessAccountStatus;
+    whatsappBusinessAccountStatus?: GetWhatsAppConfigResponse.WhatsappBusinessAccountStatus | undefined;
 }
 
 export namespace GetWhatsAppConfigResponse {

@@ -4,5 +4,5 @@ export interface CreatePaymentRequestResponse {
     /** ID of the object created */
     id: number;
     /** URL of the payment request created */
-    url?: string;
+    url?: string | undefined;
 }

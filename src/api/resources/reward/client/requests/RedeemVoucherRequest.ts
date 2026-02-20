@@ -30,54 +30,54 @@ export interface RedeemVoucherRequest {
 export namespace RedeemVoucherRequest {
     export interface Order {
         /** Total amount of the order */
-        amount?: number;
+        amount?: number | undefined;
         /** Billing information for the order */
-        billing?: Order.Billing;
+        billing?: Order.Billing | undefined;
         /** Unique identifier for the contact */
-        contact_id?: number;
+        contact_id?: number | undefined;
         /** List of coupon codes applied to the order */
-        coupons?: string[];
+        coupons?: string[] | undefined;
         /** Timestamp when the order was created */
-        createdAt?: string;
+        createdAt?: string | undefined;
         /** Email address associated with the order */
-        email?: string;
+        email?: string | undefined;
         /** Unique identifier for the order */
-        id?: string;
+        id?: string | undefined;
         /** Additional identifiers for the order */
-        identifiers?: Order.Identifiers;
+        identifiers?: Order.Identifiers | undefined;
         /** List of products in the order */
-        products?: Order.Products.Item[];
+        products?: Order.Products.Item[] | undefined;
         /** Current status of the order */
-        status?: string;
+        status?: string | undefined;
         /** Identifier for the store where the order was placed */
-        storeId?: string;
+        storeId?: string | undefined;
         /** Timestamp when the order was last updated */
-        updatedAt?: string;
+        updatedAt?: string | undefined;
     }
 
     export namespace Order {
         export interface Billing {
             /** Address of the user */
-            address?: string;
+            address?: string | undefined;
             /** City of the user */
-            city?: string;
+            city?: string | undefined;
             /** Country code of the user */
-            countryCode?: string;
+            countryCode?: string | undefined;
             /** Payment method opted by the user */
-            paymentMethod?: string;
+            paymentMethod?: string | undefined;
             /** Phone number of the user */
-            phone?: number;
+            phone?: number | undefined;
             /** Postal Code of user's location */
-            postCode?: number;
+            postCode?: number | undefined;
             /** Region where user resides */
-            region?: string;
+            region?: string | undefined;
         }
 
         export interface Identifiers {
             /** External identifier for the order */
-            ext_id?: string;
+            ext_id?: string | undefined;
             /** Identifier for the loyalty subscription */
-            loyalty_subscription_id?: string;
+            loyalty_subscription_id?: string | undefined;
         }
 
         export type Products = Products.Item[];
@@ -85,15 +85,15 @@ export namespace RedeemVoucherRequest {
         export namespace Products {
             export interface Item {
                 /** List of categories the product belongs to */
-                category?: string[];
+                category?: string[] | undefined;
                 /** Price of the product */
-                price?: number;
+                price?: number | undefined;
                 /** Unique identifier for the product */
-                productId?: string;
+                productId?: string | undefined;
                 /** Quantity of the product */
-                quantity?: number;
+                quantity?: number | undefined;
                 /** Identifier for the product variant */
-                variantId?: string;
+                variantId?: string | undefined;
             }
         }
     }

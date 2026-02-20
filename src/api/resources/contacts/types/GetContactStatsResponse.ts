@@ -4,15 +4,15 @@
  * Campaign Statistics for the contact
  */
 export interface GetContactStatsResponse {
-    clicked?: GetContactStatsResponse.Clicked.Item[];
-    complaints?: GetContactStatsResponse.Complaints.Item[];
-    delivered?: GetContactStatsResponse.Delivered.Item[];
-    hardBounces?: GetContactStatsResponse.HardBounces.Item[];
-    messagesSent?: GetContactStatsResponse.MessagesSent.Item[];
-    opened?: GetContactStatsResponse.Opened.Item[];
-    softBounces?: GetContactStatsResponse.SoftBounces.Item[];
-    transacAttributes?: GetContactStatsResponse.TransacAttributes.Item[];
-    unsubscriptions?: GetContactStatsResponse.Unsubscriptions;
+    clicked?: GetContactStatsResponse.Clicked.Item[] | undefined;
+    complaints?: GetContactStatsResponse.Complaints.Item[] | undefined;
+    delivered?: GetContactStatsResponse.Delivered.Item[] | undefined;
+    hardBounces?: GetContactStatsResponse.HardBounces.Item[] | undefined;
+    messagesSent?: GetContactStatsResponse.MessagesSent.Item[] | undefined;
+    opened?: GetContactStatsResponse.Opened.Item[] | undefined;
+    softBounces?: GetContactStatsResponse.SoftBounces.Item[] | undefined;
+    transacAttributes?: GetContactStatsResponse.TransacAttributes.Item[] | undefined;
+    unsubscriptions?: GetContactStatsResponse.Unsubscriptions | undefined;
 }
 
 export namespace GetContactStatsResponse {
@@ -141,7 +141,7 @@ export namespace GetContactStatsResponse {
                 /** UTC date-time of the event */
                 eventTime: string;
                 /** IP from which the user has been unsubscribed */
-                ip?: string;
+                ip?: string | undefined;
             }
         }
 
@@ -154,7 +154,7 @@ export namespace GetContactStatsResponse {
                 /** UTC date-time of the event */
                 eventTime: string;
                 /** IP from which the user has unsubscribed */
-                ip?: string;
+                ip?: string | undefined;
             }
         }
     }

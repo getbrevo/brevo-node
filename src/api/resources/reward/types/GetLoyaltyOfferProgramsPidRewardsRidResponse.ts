@@ -4,85 +4,85 @@ import type * as Brevo from "../../../index.js";
 
 export interface GetLoyaltyOfferProgramsPidRewardsRidResponse {
     /** Maximum number of times a consumer can be attributed this reward */
-    attributionPerConsumer?: number;
+    attributionPerConsumer?: number | undefined;
     /** Unique identifier for the balance definition */
-    balanceDefinitionId?: string;
+    balanceDefinitionId?: string | undefined;
     /** Unique code for the reward */
-    code?: string;
+    code?: string | undefined;
     /** Total number of codes generated */
-    codeCount?: number;
+    codeCount?: number | undefined;
     /** Unique identifier for the code generator */
-    codeGeneratorId?: string;
+    codeGeneratorId?: string | undefined;
     /** Unique identifier for the code pool */
-    codePoolId?: string;
+    codePoolId?: string | undefined;
     /** Configuration settings for the reward */
-    config?: string;
+    config?: string | undefined;
     /** Timestamp when the reward was created */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Disabled date of the reward */
-    disabledAt?: string;
+    disabledAt?: string | undefined;
     /** End date of the reward validity */
-    endDate?: string;
+    endDate?: string | undefined;
     /** Expiration date of the reward */
-    expirationDate?: string;
+    expirationDate?: string | undefined;
     /** Select startOfPeriod to configure rewards expiry on start of day/week/month/year. Select endOfPeriod to configure reward expiry on end of day/week/month/year, else select noModification */
-    expirationModifier?: GetLoyaltyOfferProgramsPidRewardsRidResponse.ExpirationModifier;
+    expirationModifier?: GetLoyaltyOfferProgramsPidRewardsRidResponse.ExpirationModifier | undefined;
     /** Unit of time for the rewards's availability (e.g., day/week/month/year). */
-    expirationUnit?: string;
+    expirationUnit?: string | undefined;
     /** Number of days/weeks/month/year for reward expiry */
-    expirationValue?: number;
+    expirationValue?: number | undefined;
     /** object */
-    generator?: GetLoyaltyOfferProgramsPidRewardsRidResponse.Generator;
+    generator?: GetLoyaltyOfferProgramsPidRewardsRidResponse.Generator | undefined;
     /** Unique identifier for the reward */
-    id?: string;
+    id?: string | undefined;
     /** Attribution / Redeem Limits for the reward */
-    limits?: GetLoyaltyOfferProgramsPidRewardsRidResponse.Limits.Item[];
+    limits?: GetLoyaltyOfferProgramsPidRewardsRidResponse.Limits.Item[] | undefined;
     /** Id of the loyalty program to which the current reward belongs to */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** Additional data for reward definition */
-    meta?: Record<string, unknown>;
+    meta?: Record<string, unknown> | undefined;
     /** Name of the reward */
-    name?: string;
+    name?: string | undefined;
     /** Selected products for reward definition */
-    products?: GetLoyaltyOfferProgramsPidRewardsRidResponse.Products.Item[];
+    products?: GetLoyaltyOfferProgramsPidRewardsRidResponse.Products.Item[] | undefined;
     /** Public description for the reward */
-    publicDescription?: string;
+    publicDescription?: string | undefined;
     /** Public Image for the reward */
-    publicImage?: string;
+    publicImage?: string | undefined;
     /** Public name for the reward */
-    publicName?: string;
+    publicName?: string | undefined;
     /** Defines the redeem limit for the consumer */
-    redeemPerConsumer?: number;
+    redeemPerConsumer?: number | undefined;
     /** Rules defined to redeem a reward */
-    redeemRules?: string[];
+    redeemRules?: string[] | undefined;
     /** object */
-    rewardConfigs?: GetLoyaltyOfferProgramsPidRewardsRidResponse.RewardConfigs;
+    rewardConfigs?: GetLoyaltyOfferProgramsPidRewardsRidResponse.RewardConfigs | undefined;
     /** Rule to define the reward */
-    rule?: GetLoyaltyOfferProgramsPidRewardsRidResponse.Rule;
+    rule?: GetLoyaltyOfferProgramsPidRewardsRidResponse.Rule | undefined;
     /** Start date of attribution of the reward */
-    startDate?: string;
+    startDate?: string | undefined;
     /** Id of the selected balance while redeeming / attributing a reward */
-    subtractBalanceDefinitionId?: string;
+    subtractBalanceDefinitionId?: string | undefined;
     /** Strategy of the Balance while redeeming / attributing a reward */
-    subtractBalanceStrategy?: string;
+    subtractBalanceStrategy?: string | undefined;
     /** Amount of balance to be selected while redeeming / attributing a reward */
-    subtractBalanceValue?: number;
+    subtractBalanceValue?: number | undefined;
     /** Value to indicate to subtract full balance or not */
-    subtractTotalBalance?: boolean;
+    subtractTotalBalance?: boolean | undefined;
     /** Defines the limit to which a consumer can attribute a reward */
-    totalAttribution?: number;
+    totalAttribution?: number | undefined;
     /** Defines the limit to which a consumer can redeem a reward */
-    totalRedeem?: number;
+    totalRedeem?: number | undefined;
     /** Id of the Rule to be updated for that reward */
-    triggerId?: string;
+    triggerId?: string | undefined;
     /** Selected unit of the balance */
-    unit?: string;
+    unit?: string | undefined;
     /** Timestamp for when this reward was last updated. */
-    updatedAt?: string;
+    updatedAt?: string | undefined;
     /** Value of metric in selected config for reward definition */
-    value?: number;
+    value?: number | undefined;
     /** Type of config selected for reward definition */
-    valueType?: string;
+    valueType?: string | undefined;
 }
 
 export namespace GetLoyaltyOfferProgramsPidRewardsRidResponse {
@@ -96,17 +96,17 @@ export namespace GetLoyaltyOfferProgramsPidRewardsRidResponse {
 
     export interface Generator {
         /** Timestamp when the reward was created */
-        createdAt?: string;
+        createdAt?: string | undefined;
         /** Public facing description of the reward */
-        description?: string;
+        description?: string | undefined;
         /** Unique identifier for the reward */
-        id?: string;
+        id?: string | undefined;
         /** Name of the reward */
-        name?: string;
+        name?: string | undefined;
         /** Generated pattern */
-        pattern?: string;
+        pattern?: string | undefined;
         /** Timestamp when the reward was created */
-        updatedAt?: string;
+        updatedAt?: string | undefined;
     }
 
     export type Limits = Limits.Item[];
@@ -114,21 +114,21 @@ export namespace GetLoyaltyOfferProgramsPidRewardsRidResponse {
     export namespace Limits {
         export interface Item {
             /** Timestamp when the reward limit was created */
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** Unit of time for the reward limit's availability (e.g., day/week/month/year). */
-            durationUnit?: string;
+            durationUnit?: string | undefined;
             /** Number of days/weeks/month/year for reward limit */
-            durationValue?: number;
+            durationValue?: number | undefined;
             /** Value of the limit */
-            limitValue?: number;
+            limitValue?: number | undefined;
             /** Unique identifier for the reward limit */
-            rewardLimitId?: string;
+            rewardLimitId?: string | undefined;
             /** Select true to calculate all redeems/attributions from the previous value of selected durationUnit to the current time */
-            slidingSchedule?: boolean;
+            slidingSchedule?: boolean | undefined;
             /** Type of reward */
-            type?: string;
+            type?: string | undefined;
             /** Timestamp when the reward limit was created */
-            updatedAt?: string;
+            updatedAt?: string | undefined;
         }
     }
 
@@ -137,60 +137,60 @@ export namespace GetLoyaltyOfferProgramsPidRewardsRidResponse {
     export namespace Products {
         export interface Item {
             /** Timestamp when the product was created */
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** URL of the product image */
-            imageRef?: string;
+            imageRef?: string | undefined;
             /** Unique identifier for the product */
-            productId?: string;
+            productId?: string | undefined;
             /** string */
-            value?: string;
+            value?: string | undefined;
         }
     }
 
     export interface RewardConfigs {
         /** Attribution config of the reward */
-        attribution?: string;
+        attribution?: string | undefined;
         /** Code config of the reward */
-        code?: string;
+        code?: string | undefined;
         /** Value config of the reward */
-        value?: string;
+        value?: string | undefined;
     }
 
     export interface Rule {
         /** Selected rule condition */
-        condition?: Brevo.RuleConditionResponse;
+        condition?: Brevo.RuleConditionResponse | undefined;
         /** Timestamp when the rule was created */
-        createdAt?: string;
+        createdAt?: string | undefined;
         /** Description of the rule */
-        description?: string;
+        description?: string | undefined;
         /** Selected event in the rule */
-        event?: Rule.Event;
+        event?: Rule.Event | undefined;
         /** Metric to identify if it's an internal rule or not */
-        isInternal?: boolean;
+        isInternal?: boolean | undefined;
         /** Loyalty Program id to which current rule is associated */
-        loyaltyProgramId?: string;
+        loyaltyProgramId?: string | undefined;
         /** Loyalty Version id to which current rule is associated */
-        loyaltyVersionId?: number;
+        loyaltyVersionId?: number | undefined;
         /** Additional data to define the rule */
-        meta?: Record<string, unknown>;
+        meta?: Record<string, unknown> | undefined;
         /** Rule name */
-        name?: string;
+        name?: string | undefined;
         /** Results of the rule definition */
-        results?: Rule.Results.Item[];
+        results?: Rule.Results.Item[] | undefined;
         /** Unique identifier for the rule */
-        ruleId?: string;
+        ruleId?: string | undefined;
         /** Type of the rule */
-        ruleType?: string;
+        ruleType?: string | undefined;
         /** Timestamp when the rule was updated */
-        updatedAt?: string;
+        updatedAt?: string | undefined;
     }
 
     export namespace Rule {
         export interface Event {
             /** Name of the event */
-            name?: string;
+            name?: string | undefined;
             /** Source of the event */
-            source?: string;
+            source?: string | undefined;
         }
 
         export type Results = Results.Item[];
@@ -198,11 +198,11 @@ export namespace GetLoyaltyOfferProgramsPidRewardsRidResponse {
         export namespace Results {
             export interface Item {
                 /** Action for the defined rule */
-                action?: string;
+                action?: string | undefined;
                 /** Parameters to define the reward */
-                parameters?: Item.Parameters.Item[];
+                parameters?: Item.Parameters.Item[] | undefined;
                 /** Selected service to define the reward */
-                service?: string;
+                service?: string | undefined;
             }
 
             export namespace Item {
@@ -211,9 +211,9 @@ export namespace GetLoyaltyOfferProgramsPidRewardsRidResponse {
                 export namespace Parameters {
                     export interface Item {
                         /** Name of the rule */
-                        name?: string;
+                        name?: string | undefined;
                         /** Selected value of the parameter to define the rule */
-                        value?: Brevo.ValueResponse;
+                        value?: Brevo.ValueResponse | undefined;
                     }
                 }
             }

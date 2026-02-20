@@ -2,15 +2,15 @@
 
 export interface GetLoyaltyOfferProgramsPidVouchersResponse {
     /** Contact id associated with the current reward */
-    contactId?: number;
+    contactId?: number | undefined;
     /** List of all the rewards for current contact */
-    contactRewards?: GetLoyaltyOfferProgramsPidVouchersResponse.ContactRewards.Item[];
+    contactRewards?: GetLoyaltyOfferProgramsPidVouchersResponse.ContactRewards.Item[] | undefined;
     /** Count of the rewards associated with the current contact */
-    count?: number;
+    count?: number | undefined;
     /** Loyalty Program Id for the contact */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** Loyalty Subscription Id for the contact */
-    loyaltySubscriptionId?: string;
+    loyaltySubscriptionId?: string | undefined;
 }
 
 export namespace GetLoyaltyOfferProgramsPidVouchersResponse {
@@ -19,25 +19,25 @@ export namespace GetLoyaltyOfferProgramsPidVouchersResponse {
     export namespace ContactRewards {
         export interface Item {
             /** Generated code */
-            code?: string;
+            code?: string | undefined;
             /** Timestamp when the reward limit was consumed */
-            consumedAt?: string;
+            consumedAt?: string | undefined;
             /** Timestamp when the reward limit was created */
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** Reward expiration date */
-            expirationDate?: string;
+            expirationDate?: string | undefined;
             /** Unique identifier for the contact */
-            id?: string;
+            id?: string | undefined;
             /** Additional data for the reward */
-            meta?: Record<string, unknown>;
+            meta?: Record<string, unknown> | undefined;
             /** Unique identifier for the reward */
-            rewardId?: string;
+            rewardId?: string | undefined;
             /** Unit of the balance selected in the reward definition */
-            unit?: string;
+            unit?: string | undefined;
             /** Timestamp when the reward limit was updated */
-            updatedAt?: string;
+            updatedAt?: string | undefined;
             /** Value of the selected reward config */
-            value?: number;
+            value?: number | undefined;
         }
     }
 }

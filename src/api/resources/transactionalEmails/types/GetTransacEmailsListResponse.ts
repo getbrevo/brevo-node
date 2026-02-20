@@ -2,8 +2,8 @@
 
 export interface GetTransacEmailsListResponse {
     /** Total number of transactional emails available on your account according to the passed filter */
-    count?: number;
-    transactionalEmails?: GetTransacEmailsListResponse.TransactionalEmails.Item[];
+    count?: number | undefined;
+    transactionalEmails?: GetTransacEmailsListResponse.TransactionalEmails.Item[] | undefined;
 }
 
 export namespace GetTransacEmailsListResponse {
@@ -16,15 +16,15 @@ export namespace GetTransacEmailsListResponse {
             /** Email address to which transactional email has been sent */
             email: string;
             /** Email address of the sender from which the email was sent */
-            from?: string;
+            from?: string | undefined;
             /** Message Id of the sent email */
             messageId: string;
             /** Subject of the sent email */
             subject: string;
             /** Tags used for your email */
-            tags?: string[];
+            tags?: string[] | undefined;
             /** Id of the template */
-            templateId?: number;
+            templateId?: number | undefined;
             /** Unique id of the email sent to a particular contact */
             uuid: string;
         }

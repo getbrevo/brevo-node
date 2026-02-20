@@ -4,6 +4,6 @@ import type * as Brevo from "../../../index.js";
 
 export interface GetFolderListsResponse {
     /** Number of lists in the folder */
-    count?: number;
-    lists?: Brevo.GetList[];
+    count?: number | undefined;
+    lists?: Brevo.GetList[] | undefined;
 }

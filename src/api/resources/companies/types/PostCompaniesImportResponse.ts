@@ -2,5 +2,5 @@
 
 export interface PostCompaniesImportResponse {
     /** The ID of the import process */
-    processId?: number;
+    processId?: number | undefined;
 }

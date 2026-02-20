@@ -26,12 +26,12 @@ export namespace GetExtendedCampaignStats {
 
     export interface StatsByDevice {
         /** Statistics of the campaign on the basis of desktop devices */
-        desktop?: Record<string, Brevo.GetDeviceBrowserStats>;
+        desktop?: Record<string, Brevo.GetDeviceBrowserStats> | undefined;
         /** Statistics of the campaign on the basis of mobile devices */
-        mobile?: Record<string, Brevo.GetDeviceBrowserStats>;
+        mobile?: Record<string, Brevo.GetDeviceBrowserStats> | undefined;
         /** Statistics of the campaign on the basis of tablet devices */
-        tablet?: Record<string, Brevo.GetDeviceBrowserStats>;
+        tablet?: Record<string, Brevo.GetDeviceBrowserStats> | undefined;
         /** Statistics of the campaign on the basis of unknown devices */
-        unknown?: Record<string, Brevo.GetDeviceBrowserStats>;
+        unknown?: Record<string, Brevo.GetDeviceBrowserStats> | undefined;
     }
 }

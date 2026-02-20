@@ -12,5 +12,5 @@ export interface GetCategoryDetails {
     /** Name of the category for which you requested the details */
     name: string;
     /** URL to the category */
-    url?: string;
+    url?: string | undefined;
 }

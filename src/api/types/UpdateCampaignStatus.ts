@@ -5,7 +5,7 @@
  */
 export interface UpdateCampaignStatus {
     /** Note:- **replicateTemplate** status will be available **only for template type campaigns.** */
-    status?: UpdateCampaignStatus.Status;
+    status?: UpdateCampaignStatus.Status | undefined;
 }
 
 export namespace UpdateCampaignStatus {

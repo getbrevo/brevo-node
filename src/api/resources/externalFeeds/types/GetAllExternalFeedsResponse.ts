@@ -23,11 +23,11 @@ export namespace GetAllExternalFeedsResponse {
             /** Authentication type for accessing the feed */
             authType: Item.AuthType;
             /** Username for basic authentication */
-            username?: string;
+            username?: string | undefined;
             /** Password for basic authentication */
-            password?: string;
+            password?: string | undefined;
             /** Token for token-based authentication */
-            token?: string;
+            token?: string | undefined;
             /** Maximum number of retry attempts for failed requests */
             maxRetries: number;
             /** Whether to cache the feed response */
@@ -35,7 +35,7 @@ export namespace GetAllExternalFeedsResponse {
             /** Whether this is an internal Brevo system feed */
             isInternal: boolean;
             /** Custom HTTP headers for the feed request */
-            headers?: Item.Headers.Item[] | null;
+            headers?: (Item.Headers.Item[] | null) | undefined;
             /** Feed creation timestamp */
             createdAt: string;
             /** Feed last modification timestamp */

@@ -6,7 +6,7 @@ export interface ContactErrorModel {
     /** Readable message associated to the failure */
     message: string;
     /** Additional information about the error */
-    metadata?: Record<string, unknown>;
+    metadata?: Record<string, unknown> | undefined;
 }
 
 export namespace ContactErrorModel {

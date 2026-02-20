@@ -2,45 +2,45 @@
 
 export interface BalanceDefinition {
     /** startOfPeriod depicts the balancy expiry on start of day/week/month/year. endOfPeriod depicts the balancy expiry on end of day/week/month/year */
-    balanceAvailabilityDurationModifier?: BalanceDefinition.BalanceAvailabilityDurationModifier;
+    balanceAvailabilityDurationModifier?: BalanceDefinition.BalanceAvailabilityDurationModifier | undefined;
     /** Unit of time for the balance's availability (e.g., day/week/month/year). */
-    balanceAvailabilityDurationUnit?: string;
+    balanceAvailabilityDurationUnit?: string | undefined;
     /** Number of days/weeks/month/year for balance expiry */
-    balanceAvailabilityDurationValue?: number;
+    balanceAvailabilityDurationValue?: number | undefined;
     /** Date when the balance expires and can no longer be used, in dd/mm format. The balance will be expired when this date appears next in the calendar and only one of balanceExpirationDate or balance availability fields can be used. */
-    balanceExpirationDate?: string;
+    balanceExpirationDate?: string | undefined;
     /** Partial enables partial credit of balance if maximum balance limit is reaching. Strict enables rejection of transaction if it will breach the max credit amount limit. */
-    balanceOptionAmountOvertakingStrategy?: string;
+    balanceOptionAmountOvertakingStrategy?: string | undefined;
     /** Rounding strategy for credit transactions. */
-    balanceOptionCreditRounding?: string;
+    balanceOptionCreditRounding?: string | undefined;
     /** Rounding strategy for debit transactions. */
-    balanceOptionDebitRounding?: string;
+    balanceOptionDebitRounding?: string | undefined;
     /** Timestamp of balance definition creation. */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Timestamp of balance definition deletion (nullable). */
-    deletedAt?: string;
+    deletedAt?: string | undefined;
     /** Short description of the balance definition. */
-    description?: string;
+    description?: string | undefined;
     /** Unique identifier for the balance definition. */
-    id?: string;
+    id?: string | undefined;
     /** Optional image reference URL. */
-    imageRef?: string;
+    imageRef?: string | undefined;
     /** Maximum allowable balance. */
-    maxAmount?: number;
+    maxAmount?: number | undefined;
     /** Max credit allowed per operation. */
-    maxCreditAmountLimit?: number;
+    maxCreditAmountLimit?: number | undefined;
     /** Max debit allowed per operation. */
-    maxDebitAmountLimit?: number;
+    maxDebitAmountLimit?: number | undefined;
     /** Additional metadata for the balance definition. */
-    meta?: Record<string, unknown>;
+    meta?: Record<string, unknown> | undefined;
     /** Minimum allowable balance. */
-    minAmount?: number;
+    minAmount?: number | undefined;
     /** Name of the balance definition. */
-    name?: string;
+    name?: string | undefined;
     /** Unit of balance (e.g., points, currency). */
-    unit?: string;
+    unit?: string | undefined;
     /** Timestamp of the last update. */
-    updatedAt?: string;
+    updatedAt?: string | undefined;
 }
 
 export namespace BalanceDefinition {

@@ -4,5 +4,5 @@ import type * as Brevo from "../../../index.js";
 
 export interface GetLpListResponse {
     /** Loyalty Program list */
-    items?: Brevo.LoyaltyProgram[];
+    items?: Brevo.LoyaltyProgram[] | undefined;
 }

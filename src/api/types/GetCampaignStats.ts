@@ -8,19 +8,19 @@ export interface GetCampaignStats {
     /** Number of complaints (Spam reports) for the campaign */
     complaints: number;
     /** Number of deferred emails for the campaign */
-    deferred?: number;
+    deferred?: number | undefined;
     /** Number of delivered emails for the campaign */
     delivered: number;
     /** Rate of recipients without any privacy protection option enabled in their email client_dev, applied to all delivered emails */
-    estimatedViews?: number;
+    estimatedViews?: number | undefined;
     /** Number of harbounce for the campaign */
     hardBounces: number;
     /** List Id of email campaign (only in case of get email campaign(s)(not for global stats)) */
-    listId?: number;
+    listId?: number | undefined;
     /** Percentage of recipients who open the email out of your total number of recipients. Depending on your Campaign settings, they may include Apple MPP opens. */
     opensRate: number;
     /** Total number of non-delivered campaigns for a particular campaign id. */
-    returnBounce?: number;
+    returnBounce?: number | undefined;
     /** Number of sent emails for the campaign */
     sent: number;
     /** Number of softbounce for the campaign */
@@ -28,7 +28,7 @@ export interface GetCampaignStats {
     /** Recipients without any privacy protection option enabled in their email client_dev */
     trackableViews: number;
     /** Rate of recipients without any privacy protection option enabled in their email client_dev */
-    trackableViewsRate?: number;
+    trackableViewsRate?: number | undefined;
     /** Number of unique clicks for the campaign */
     uniqueClicks: number;
     /** Number of unique openings for the campaign */

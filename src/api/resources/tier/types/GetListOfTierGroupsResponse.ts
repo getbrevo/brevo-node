@@ -3,5 +3,5 @@
 import type * as Brevo from "../../../index.js";
 
 export interface GetListOfTierGroupsResponse {
-    items?: Brevo.TierGroup[];
+    items?: Brevo.TierGroup[] | undefined;
 }

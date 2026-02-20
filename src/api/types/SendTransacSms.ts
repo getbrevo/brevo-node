@@ -2,19 +2,19 @@
 
 export interface SendTransacSms {
     /** A recognizable prefix will ensure your audience knows who you are. Recommended by U.S. carriers. This will be added as your Brand Name before the message content. **Prefer verifying maximum length of 160 characters including this prefix in message content to avoid multiple sending of same sms.** */
-    organisationPrefix?: string;
+    organisationPrefix?: string | undefined;
     /** Mobile number to send SMS with the country code */
     recipient: string;
     /** Name of the sender. **The number of characters is limited to 11 for alphanumeric characters and 15 for numeric characters** */
     sender: string;
     /** Tag of the message */
-    tag?: SendTransacSms.Tag;
+    tag?: SendTransacSms.Tag | undefined;
     /** Type of the SMS. Marketing SMS messages are those sent typically with marketing content. Transactional SMS messages are sent to individuals and are triggered in response to some action, such as a sign-up, purchase, etc. */
-    type?: SendTransacSms.Type;
+    type?: SendTransacSms.Type | undefined;
     /** Format of the message. It indicates whether the content should be treated as unicode or not. */
-    unicodeEnabled?: boolean;
+    unicodeEnabled?: boolean | undefined;
     /** Webhook to call for each event triggered by the message (delivered etc.) */
-    webUrl?: string;
+    webUrl?: string | undefined;
 }
 
 export namespace SendTransacSms {
@@ -23,7 +23,7 @@ export namespace SendTransacSms {
      */
     export interface Tag {
         /** A tag can be a string or an array of strings. */
-        field?: Tag.Field;
+        field?: Tag.Field | undefined;
     }
 
     export namespace Tag {

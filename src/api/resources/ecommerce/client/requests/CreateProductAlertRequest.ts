@@ -18,10 +18,10 @@ export interface CreateProductAlertRequest {
 export namespace CreateProductAlertRequest {
     export interface ContactIdentifiers {
         /** Email address of the contact */
-        email?: string;
+        email?: string | undefined;
         /** Contact ID in your system */
-        ext_id?: string;
+        ext_id?: string | undefined;
         /** Sms of the contact */
-        sms?: string;
+        sms?: string | undefined;
     }
 }

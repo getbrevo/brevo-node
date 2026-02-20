@@ -31,7 +31,7 @@ export namespace GetDomainsResponse {
              */
             verified: boolean;
             /** Dedicated IP associated with domain (null if none) */
-            ip?: string | null;
+            ip?: (string | null) | undefined;
             /** DNS provider for the domain */
             provider: string;
             /** Information about who created the domain */

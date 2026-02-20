@@ -5,11 +5,11 @@
  */
 export interface Pipeline {
     /** Pipeline id */
-    pipeline?: string;
+    pipeline?: string | undefined;
     /** Pipeline Name */
-    pipeline_name?: string;
+    pipeline_name?: string | undefined;
     /** List of stages */
-    stages?: Pipeline.Stages.Item[];
+    stages?: Pipeline.Stages.Item[] | undefined;
 }
 
 export namespace Pipeline {
@@ -21,9 +21,9 @@ export namespace Pipeline {
          */
         export interface Item {
             /** Stage id */
-            id?: string;
+            id?: string | undefined;
             /** Stage name */
-            name?: string;
+            name?: string | undefined;
         }
     }
 }

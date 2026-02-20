@@ -2,5 +2,5 @@
 
 export interface CreateContactResponse {
     /** ID of the contact when a new contact is created */
-    id?: number;
+    id?: number | undefined;
 }

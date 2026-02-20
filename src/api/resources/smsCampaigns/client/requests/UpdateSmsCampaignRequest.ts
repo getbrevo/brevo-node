@@ -29,7 +29,7 @@ export interface UpdateSmsCampaignRequest {
 export namespace UpdateSmsCampaignRequest {
     export interface Recipients {
         /** List ids which have to be excluded from a campaign */
-        exclusionListIds?: number[];
+        exclusionListIds?: number[] | undefined;
         /** Lists Ids to send the campaign to. **REQUIRED if scheduledAt is not empty** */
         listIds: number[];
     }

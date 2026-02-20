@@ -36,27 +36,27 @@ export namespace PutCorporateSubAccountsPlanRequest {
          * Number of email credits | Pass the value -1 for unlimited
          * emails in ENTv2 only
          */
-        email?: number;
+        email?: number | undefined;
         /**
          * Number of externalFeeds credits, possible values are 0 or 1
          * |available in ENTv2 only
          */
-        externalFeeds?: number;
+        externalFeeds?: number | undefined;
         /**
          * Number of SMS credits | Pass the value -1 for unlimited SMS
          * in ENTv2 only
          */
-        sms?: number;
+        sms?: number | undefined;
         /**
          * Number of whatsapp credits | Pass the value -1 for unlimited
          * whatsapp in ENTv2 only
          */
-        whatsapp?: number;
+        whatsapp?: number | undefined;
         /**
          * Number of Push credits, possible value is 0 and -1 |
          * available in ENT-v2 only
          */
-        wpSubscribers?: number;
+        wpSubscribers?: number | undefined;
     }
 
     /**
@@ -64,10 +64,10 @@ export namespace PutCorporateSubAccountsPlanRequest {
      */
     export interface Features {
         /** Number of landing pages */
-        landingPage?: number;
+        landingPage?: number | undefined;
         /** Number of sales and service users | only available in ENT-V2 */
-        salesUsers?: number;
+        salesUsers?: number | undefined;
         /** Number of multi-users */
-        users?: number;
+        users?: number | undefined;
     }
 }

@@ -2,19 +2,19 @@
 
 export interface GetCorporateMasterAccountResponse {
     /** Billing details of the master account organization */
-    billingInfo?: GetCorporateMasterAccountResponse.BillingInfo;
+    billingInfo?: GetCorporateMasterAccountResponse.BillingInfo | undefined;
     /** Company name of master account organization */
-    companyName?: string;
+    companyName?: string | undefined;
     /** Currency code of the master account organization */
-    currencyCode?: string;
+    currencyCode?: string | undefined;
     /** Email id of master account */
-    email?: string;
+    email?: string | undefined;
     /** Unique identifier of the master account organization */
-    id?: number;
+    id?: number | undefined;
     /** Plan details */
-    planInfo?: GetCorporateMasterAccountResponse.PlanInfo;
+    planInfo?: GetCorporateMasterAccountResponse.PlanInfo | undefined;
     /** Timezone of the master account organization */
-    timezone?: string;
+    timezone?: string | undefined;
 }
 
 export namespace GetCorporateMasterAccountResponse {
@@ -23,13 +23,13 @@ export namespace GetCorporateMasterAccountResponse {
      */
     export interface BillingInfo {
         /** Billing address of master account */
-        address?: BillingInfo.Address;
+        address?: BillingInfo.Address | undefined;
         /** Company name of master account */
-        companyName?: string;
+        companyName?: string | undefined;
         /** Billing email id of master account */
-        email?: string;
+        email?: string | undefined;
         /** Billing name of master account holder */
-        name?: BillingInfo.Name;
+        name?: BillingInfo.Name | undefined;
     }
 
     export namespace BillingInfo {
@@ -38,15 +38,15 @@ export namespace GetCorporateMasterAccountResponse {
          */
         export interface Address {
             /** Country code */
-            countryCode?: string;
+            countryCode?: string | undefined;
             /** Locality */
-            locality?: string;
+            locality?: string | undefined;
             /** Postal code */
-            postalCode?: string;
+            postalCode?: string | undefined;
             /** State code */
-            stateCode?: string;
+            stateCode?: string | undefined;
             /** Street address */
-            streetAddress?: string;
+            streetAddress?: string | undefined;
         }
 
         /**
@@ -54,9 +54,9 @@ export namespace GetCorporateMasterAccountResponse {
          */
         export interface Name {
             /** Last name for billing */
-            familyName?: string;
+            familyName?: string | undefined;
             /** First name for billing */
-            givenName?: string;
+            givenName?: string | undefined;
         }
     }
 
@@ -65,17 +65,17 @@ export namespace GetCorporateMasterAccountResponse {
      */
     export interface PlanInfo {
         /** Plan currency */
-        currencyCode?: string;
+        currencyCode?: string | undefined;
         /** List of provided features in the plan */
-        features?: PlanInfo.Features.Item[];
+        features?: PlanInfo.Features.Item[] | undefined;
         /** Timestamp of next billing date */
-        nextBillingAt?: number;
+        nextBillingAt?: number | undefined;
         /** Plan period type */
-        planPeriod?: PlanInfo.PlanPeriod;
+        planPeriod?: PlanInfo.PlanPeriod | undefined;
         /** Plan amount */
-        price?: number;
+        price?: number | undefined;
         /** Number of sub-accounts */
-        subAccounts?: number;
+        subAccounts?: number | undefined;
     }
 
     export namespace PlanInfo {
@@ -84,25 +84,25 @@ export namespace GetCorporateMasterAccountResponse {
         export namespace Features {
             export interface Item {
                 /** Name of the feature */
-                name?: string;
+                name?: string | undefined;
                 /** Quantity provided in the plan */
-                quantity?: number;
+                quantity?: number | undefined;
                 /**
                  * Quantity with overages provided in the plan (only
                  * applicable on ENTv2)
                  */
-                quantityWithOverages?: number;
+                quantityWithOverages?: number | undefined;
                 /** Quantity remaining in the plan */
-                remaining?: number;
+                remaining?: number | undefined;
                 /** Unit value of the feature */
-                unitValue?: string;
+                unitValue?: string | undefined;
                 /** Quantity consumed by master */
-                used?: number;
+                used?: number | undefined;
                 /**
                  * Quantity consumed by sub-organizations over the
                  * admin plan limit (only applicable on ENTv2)
                  */
-                usedOverages?: number;
+                usedOverages?: number | undefined;
             }
         }
 

@@ -2,7 +2,7 @@
 
 export interface PutConversationsVisitorGroupResponse {
     /** group ID the visitor was assigned to */
-    groupId?: unknown;
+    groupId?: unknown | undefined;
     /** visitor ID */
-    visitorId?: unknown;
+    visitorId?: unknown | undefined;
 }

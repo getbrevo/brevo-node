@@ -5,11 +5,11 @@
  */
 export interface Deal {
     /** Deal attributes with values */
-    attributes?: Record<string, unknown>;
+    attributes?: Record<string, unknown> | undefined;
     /** Unique deal id */
-    id?: string;
+    id?: string | undefined;
     /** Companies ids for companies linked to this deal */
-    linkedCompaniesIds?: string[];
+    linkedCompaniesIds?: string[] | undefined;
     /** Contact ids for contacts linked to this deal */
-    linkedContactsIds?: number[];
+    linkedContactsIds?: number[] | undefined;
 }

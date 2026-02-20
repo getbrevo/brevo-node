@@ -2,17 +2,17 @@
 
 export interface SubscribeToLoyaltyProgramResponse {
     /** Unique identifier of the contact. */
-    contactId?: number;
+    contactId?: number | undefined;
     /** Timestamp when the subscription was created. */
-    createdAt?: string;
+    createdAt?: string | undefined;
     /** Unique identifier of the loyalty program. */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** Unique identifier of the subscription. */
-    loyaltySubscriptionId?: string;
+    loyaltySubscriptionId?: string | undefined;
     /** Unique identifier of the organization. */
-    organizationId?: number;
+    organizationId?: number | undefined;
     /** Timestamp when the subscription was last updated. */
-    updatedAt?: string;
+    updatedAt?: string | undefined;
     /** Version number of the subscription. */
-    versionId?: number;
+    versionId?: number | undefined;
 }

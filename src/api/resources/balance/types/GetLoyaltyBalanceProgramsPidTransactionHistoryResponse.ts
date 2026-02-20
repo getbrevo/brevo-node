@@ -5,15 +5,15 @@
  */
 export interface GetLoyaltyBalanceProgramsPidTransactionHistoryResponse {
     /** Unique identifier of the associated balance definition. */
-    balanceDefinitionId?: string;
+    balanceDefinitionId?: string | undefined;
     /** Unique identifier of the contact related to the transactions. */
-    contactId?: number;
+    contactId?: number | undefined;
     /** Total number of transactions in the history. */
-    count?: number;
+    count?: number | undefined;
     /** Unique identifier of the associated loyalty program. */
-    loyaltyProgramId?: string;
+    loyaltyProgramId?: string | undefined;
     /** List of past transactions associated with the balance. */
-    transactionHistory?: GetLoyaltyBalanceProgramsPidTransactionHistoryResponse.TransactionHistory.Item[];
+    transactionHistory?: GetLoyaltyBalanceProgramsPidTransactionHistoryResponse.TransactionHistory.Item[] | undefined;
 }
 
 export namespace GetLoyaltyBalanceProgramsPidTransactionHistoryResponse {
@@ -25,25 +25,25 @@ export namespace GetLoyaltyBalanceProgramsPidTransactionHistoryResponse {
          */
         export interface Item {
             /** The transaction amount. */
-            amount?: number;
+            amount?: number | undefined;
             /** Expiration date of the balance associated with this transaction. */
-            balanceExpirationDate?: string;
+            balanceExpirationDate?: string | undefined;
             /** Timestamp when the transaction was canceled, if applicable. */
-            cancelledAt?: string;
+            cancelledAt?: string | undefined;
             /** Timestamp when the transaction was successfully completed. */
-            completedAt?: string;
+            completedAt?: string | undefined;
             /** Timestamp when the transaction was initiated. */
-            createdAt?: string;
+            createdAt?: string | undefined;
             /** Unique identifier of the transaction. */
-            id?: string;
+            id?: string | undefined;
             /** Optional metadata associated with the transaction. */
-            meta?: Record<string, unknown>;
+            meta?: Record<string, unknown> | undefined;
             /** Reason for rejection, if the transaction was declined. */
-            rejectReason?: string;
+            rejectReason?: string | undefined;
             /** Timestamp when the transaction was rejected. */
-            rejectedAt?: string;
+            rejectedAt?: string | undefined;
             /** Current status of the transaction (e.g., pending, completed, rejected). */
-            status?: string;
+            status?: string | undefined;
         }
     }
 }

@@ -4,33 +4,33 @@ import type * as Brevo from "../../../index.js";
 
 export interface GetEmailCampaignResponse {
     /** Status of A/B Test for the campaign. abTesting = false means it is disabled, & abTesting = true means it is enabled. */
-    abTesting?: boolean;
+    abTesting?: boolean | undefined;
     /** ID of the campaign */
     id: number;
     /** Name of the campaign */
     name: string;
     /** Preview text or preheader of the email campaign */
-    previewText?: string;
+    previewText?: string | undefined;
     /** UTC date-time on which campaign is scheduled (YYYY-MM-DDTHH:mm:ss.SSSZ) */
-    scheduledAt?: string;
+    scheduledAt?: string | undefined;
     /** It is true if you have chosen to send your campaign at best time, otherwise it is false */
-    sendAtBestTime?: boolean;
+    sendAtBestTime?: boolean | undefined;
     /** The size of your ab-test groups. Only available if `abTesting` flag of the campaign is `true` */
-    splitRule?: number;
+    splitRule?: number | undefined;
     /** Status of the campaign */
     status: GetEmailCampaignResponse.Status;
     /** Subject of the campaign. Only available if `abTesting` flag of the campaign is `false` */
-    subject?: string;
+    subject?: string | undefined;
     /** Subject A of the ab-test campaign. Only available if `abTesting` flag of the campaign is `true` */
-    subjectA?: string;
+    subjectA?: string | undefined;
     /** Subject B of the ab-test campaign. Only available if `abTesting` flag of the campaign is `true` */
-    subjectB?: string;
+    subjectB?: string | undefined;
     /** Type of campaign */
     type: GetEmailCampaignResponse.Type;
     /** Criteria for the winning version. Only available if `abTesting` flag of the campaign is `true` */
-    winnerCriteria?: string;
+    winnerCriteria?: string | undefined;
     /** The duration of the test in hours at the end of which the winning version will be sent. Only available if `abTesting` flag of the campaign is `true` */
-    winnerDelay?: number;
+    winnerDelay?: number | undefined;
     /** Creation UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     createdAt: string;
     /** Footer of the campaign */
@@ -40,35 +40,35 @@ export interface GetEmailCampaignResponse {
     /** HTML content of the campaign */
     htmlContent: string;
     /** Status of inline image. inlineImageActivation = false means image can’t be embedded, & inlineImageActivation = true means image can be embedded, in the email. */
-    inlineImageActivation?: boolean;
+    inlineImageActivation?: boolean | undefined;
     /** Status of mirror links in campaign. mirrorActive = false means mirror links are deactivated, & mirrorActive = true means mirror links are activated, in the campaign */
-    mirrorActive?: boolean;
+    mirrorActive?: boolean | undefined;
     /** UTC date-time of last modification of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     modifiedAt: string;
     /** FOR TRIGGER ONLY ! Type of trigger campaign.recurring = false means contact can receive the same Trigger campaign only once, & recurring = true means contact can receive the same Trigger campaign several times */
-    recurring?: boolean;
+    recurring?: boolean | undefined;
     /** Email defined as the "Reply to" of the campaign */
     replyTo: string;
     /** Total number of non-delivered campaigns for a particular campaign id. */
-    returnBounce?: number;
+    returnBounce?: number | undefined;
     sender: GetEmailCampaignResponse.Sender;
     /** Sent UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ). Only available if 'status' of the campaign is 'sent' */
-    sentDate?: string;
+    sentDate?: string | undefined;
     /** Link to share the campaign on social medias */
-    shareLink?: string;
+    shareLink?: string | undefined;
     /** Tag of the campaign */
-    tag?: string;
+    tag?: string | undefined;
     /** Retrieved the status of test email sending. (true=Test email has been sent  false=Test email has not been sent) */
     testSent: boolean;
     /** Customisation of the "to" field of the campaign */
-    toField?: string;
+    toField?: string | undefined;
     /** utm parameter associated with campaign */
-    utmCampaignValue?: string;
+    utmCampaignValue?: string | undefined;
     /** utm id active */
-    utmIDActive?: boolean;
-    utmMedium?: string;
+    utmIDActive?: boolean | undefined;
+    utmMedium?: string | undefined;
     /** source of utm */
-    utmSource?: string;
+    utmSource?: string | undefined;
     recipients: Brevo.GetCampaignRecipients;
     statistics: Brevo.GetExtendedCampaignStats;
 }
@@ -93,10 +93,10 @@ export namespace GetEmailCampaignResponse {
 
     export interface Sender {
         /** Sender email of the campaign */
-        email?: string;
+        email?: string | undefined;
         /** Sender id of the campaign */
-        id?: number;
+        id?: number | undefined;
         /** Sender name of the campaign */
-        name?: string;
+        name?: string | undefined;
     }
 }

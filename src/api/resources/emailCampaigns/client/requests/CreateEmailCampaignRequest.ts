@@ -80,9 +80,9 @@ export namespace CreateEmailCampaignRequest {
      */
     export interface EmailExpirationDate {
         /** Duration of the email expiry. maximum duration can be 3600 days or 480 weeks or 120 months. */
-        duration?: number;
+        duration?: number | undefined;
         /** unit of the duration */
-        unit?: EmailExpirationDate.Unit;
+        unit?: EmailExpirationDate.Unit | undefined;
     }
 
     export namespace EmailExpirationDate {
@@ -100,13 +100,13 @@ export namespace CreateEmailCampaignRequest {
      */
     export interface Recipients {
         /** List ids to exclude from the campaign */
-        exclusionListIds?: number[];
+        exclusionListIds?: number[] | undefined;
         /** Segment ids which have to be excluded from a campaign. */
-        exclusionSegmentIds?: number[];
+        exclusionSegmentIds?: number[] | undefined;
         /** **Mandatory if scheduledAt is not empty**. List Ids to send the campaign to */
-        listIds?: number[];
+        listIds?: number[] | undefined;
         /** **Mandatory if listIds are not used**. Segment ids to send the campaign to. */
-        segmentIds?: number[];
+        segmentIds?: number[] | undefined;
     }
 
     /**
@@ -114,11 +114,11 @@ export namespace CreateEmailCampaignRequest {
      */
     export interface Sender {
         /** Sender email */
-        email?: string;
+        email?: string | undefined;
         /** Select the sender for the campaign on the basis of sender id. _In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)_. */
-        id?: number;
+        id?: number | undefined;
         /** Sender Name */
-        name?: string;
+        name?: string | undefined;
     }
 
     /** Choose the metrics that will determinate the winning version. **Mandatory if _splitRule_ >= 1 and < 50**. If splitRule = 50, `winnerCriteria` is ignored if passed */

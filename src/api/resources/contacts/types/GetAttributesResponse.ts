@@ -11,17 +11,17 @@ export namespace GetAttributesResponse {
     export namespace Attributes {
         export interface Item {
             /** Calculated value formula */
-            calculatedValue?: string;
+            calculatedValue?: string | undefined;
             /** Category of the attribute */
             category: Item.Category;
             /** Parameter only available for "category" type attributes. */
-            enumeration?: Item.Enumeration.Item[];
+            enumeration?: Item.Enumeration.Item[] | undefined;
             /** Parameter only available for "multiple-choice" type attributes. */
-            multiCategoryOptions?: string[];
+            multiCategoryOptions?: string[] | undefined;
             /** Name of the attribute */
             name: string;
             /** Type of the attribute */
-            type?: Item.Type;
+            type?: Item.Type | undefined;
         }
 
         export namespace Item {

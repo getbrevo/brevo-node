@@ -2,7 +2,7 @@
 
 export interface GetSendersResponse {
     /** List of the senders available in your account */
-    senders?: GetSendersResponse.Senders.Item[];
+    senders?: GetSendersResponse.Senders.Item[] | undefined;
 }
 
 export namespace GetSendersResponse {

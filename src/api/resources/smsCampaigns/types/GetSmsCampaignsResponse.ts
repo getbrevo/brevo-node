@@ -3,9 +3,9 @@
 import type * as Brevo from "../../../index.js";
 
 export interface GetSmsCampaignsResponse {
-    campaigns?: GetSmsCampaignsResponse.Campaigns.Item[];
+    campaigns?: GetSmsCampaignsResponse.Campaigns.Item[] | undefined;
     /** Number of SMS campaigns retrieved */
-    count?: number;
+    count?: number | undefined;
 }
 
 export namespace GetSmsCampaignsResponse {
@@ -24,7 +24,7 @@ export namespace GetSmsCampaignsResponse {
             /** Name of the SMS Campaign */
             name: string;
             /** UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format */
-            scheduledAt?: string;
+            scheduledAt?: string | undefined;
             /** Sender of the SMS Campaign */
             sender: string;
             /** Status of the SMS Campaign */

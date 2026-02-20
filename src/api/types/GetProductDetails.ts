@@ -2,35 +2,35 @@
 
 export interface GetProductDetails {
     /** Category ID-s of the product */
-    categories?: string[];
+    categories?: string[] | undefined;
     /** Creation UTC date-time of the product (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     createdAt: string;
     /** Product ID for which you requested the details */
     id: string;
     /** Absolute URL to the cover image of the product */
-    imageUrl?: string;
+    imageUrl?: string | undefined;
     /** Product get deleted from the shop's database but not from Brevo */
-    isDeleted?: boolean;
+    isDeleted?: boolean | undefined;
     /** Meta data of product such as description, vendor, producer, stock level, etc. */
-    metaInfo?: Record<string, unknown>;
+    metaInfo?: Record<string, unknown> | undefined;
     /** Last modification UTC date-time of the product (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     modifiedAt: string;
     /** Name of the product for which you requested the details */
     name: string;
     /** Parent product id of the product */
-    parentId?: string;
+    parentId?: string | undefined;
     /** Price of the product */
-    price?: number;
+    price?: number | undefined;
     /** S3 url of original image */
-    s3Original?: string;
+    s3Original?: string | undefined;
     /** S3 thumbnail url of original image in 120x120 dimension for analytics section */
     s3ThumbAnalytics: string;
     /** S3 thumbnail url of original image in 600x400 dimension for editor section */
     s3ThumbEditor: string;
     /** Product identifier from the shop */
-    sku?: string;
+    sku?: string | undefined;
     /** Current stock value of the product from the shop's database */
-    stock?: number;
+    stock?: number | undefined;
     /** URL to the product */
-    url?: string;
+    url?: string | undefined;
 }

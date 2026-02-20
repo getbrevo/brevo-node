@@ -7,5 +7,5 @@ import type * as Brevo from "../../../index.js";
  */
 export interface GetCrmTasksResponse {
     /** List of tasks */
-    items?: Brevo.Task[];
+    items?: Brevo.Task[] | undefined;
 }

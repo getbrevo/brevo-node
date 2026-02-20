@@ -2,5 +2,5 @@
 
 export interface UploadImageToGalleryResponse {
     /** URL of the image uploaded */
-    url?: string;
+    url?: string | undefined;
 }

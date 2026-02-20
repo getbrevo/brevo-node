@@ -4,19 +4,19 @@ import type * as Brevo from "../../../index.js";
 
 export interface GetAbTestCampaignResultResponse {
     /** Click rate for current winning version */
-    clickRate?: string;
-    clickedLinks?: GetAbTestCampaignResultResponse.ClickedLinks;
+    clickRate?: string | undefined;
+    clickedLinks?: GetAbTestCampaignResultResponse.ClickedLinks | undefined;
     /** Open rate for current winning version */
-    openRate?: string;
-    statistics?: GetAbTestCampaignResultResponse.Statistics;
+    openRate?: string | undefined;
+    statistics?: GetAbTestCampaignResultResponse.Statistics | undefined;
     /** Criteria chosen for winning version (Open/Click) */
-    winningCriteria?: GetAbTestCampaignResultResponse.WinningCriteria;
+    winningCriteria?: GetAbTestCampaignResultResponse.WinningCriteria | undefined;
     /** Subject Line of current winning version */
-    winningSubjectLine?: string;
+    winningSubjectLine?: string | undefined;
     /** Winning Campaign Info. pending = Campaign has been picked for sending and winning version is yet to be decided, tie = A tie happened between both the versions, notAvailable = Campaign has not yet been picked for sending. */
-    winningVersion?: GetAbTestCampaignResultResponse.WinningVersion;
+    winningVersion?: GetAbTestCampaignResultResponse.WinningVersion | undefined;
     /** Open/Click rate for the winner version */
-    winningVersionRate?: string;
+    winningVersionRate?: string | undefined;
 }
 
 export namespace GetAbTestCampaignResultResponse {

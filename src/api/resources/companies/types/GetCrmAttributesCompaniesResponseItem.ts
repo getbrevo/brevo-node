@@ -4,9 +4,9 @@
  * List of attributes
  */
 export interface GetCrmAttributesCompaniesResponseItem {
-    attributeOptions?: Record<string, unknown>[];
-    attributeTypeName?: string;
-    internalName?: string;
-    isRequired?: boolean;
-    label?: string;
+    attributeOptions?: Record<string, unknown>[] | undefined;
+    attributeTypeName?: string | undefined;
+    internalName?: string | undefined;
+    isRequired?: boolean | undefined;
+    label?: string | undefined;
 }

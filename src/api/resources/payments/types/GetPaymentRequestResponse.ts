@@ -4,12 +4,12 @@ import type * as Brevo from "../../../index.js";
 
 export interface GetPaymentRequestResponse {
     cart: Brevo.Cart;
-    configuration?: Brevo.Configuration;
+    configuration?: Brevo.Configuration | undefined;
     /** Brevo ID of the contact requested to pay. */
-    contactId?: number;
+    contactId?: number | undefined;
     notification: Brevo.Notification;
     /** number of reminders sent. */
-    numberOfRemindersSent?: number;
+    numberOfRemindersSent?: number | undefined;
     /** Reference of the payment request, it will appear on the payment page. */
     reference: string;
     /** Status of the payment request. */

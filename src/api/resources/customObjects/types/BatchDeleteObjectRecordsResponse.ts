@@ -2,6 +2,6 @@
 
 export interface BatchDeleteObjectRecordsResponse {
     /** Identifier for batch process tracking */
-    processId?: number;
-    message?: string;
+    processId?: number | undefined;
+    message?: string | undefined;
 }

@@ -19,11 +19,11 @@ export interface GetAccountResponse {
     address: GetAccountResponse.Address;
     /** User's date and time preferences */
     dateTimePreferences: GetAccountResponse.DateTimePreferences;
-    marketingAutomation?: GetAccountResponse.MarketingAutomation;
+    marketingAutomation?: GetAccountResponse.MarketingAutomation | undefined;
     /** Information about your plans and credits */
     plan: GetAccountResponse.Plan.Item[];
     /** Detailed information about different plan categories */
-    planVerticals?: GetAccountResponse.PlanVerticals.Item[];
+    planVerticals?: GetAccountResponse.PlanVerticals.Item[] | undefined;
     /** Information about your transactional email account */
     relay: GetAccountResponse.Relay;
 }
@@ -62,7 +62,7 @@ export namespace GetAccountResponse {
          */
         enabled: boolean;
         /** Marketing Automation Tracker ID */
-        key?: string;
+        key?: string | undefined;
     }
 
     export type Plan = Plan.Item[];
@@ -82,12 +82,12 @@ export namespace GetAccountResponse {
              * Date of the period from which the plan will end
              * (Unix timestamp format)
              */
-            endDate?: string;
+            endDate?: string | undefined;
             /**
              * Date of the period from which the plan will start
              * (Unix timestamp format)
              */
-            startDate?: string;
+            startDate?: string | undefined;
             /** Displays the plan type of the user */
             type: Item.Type;
         }
@@ -123,7 +123,7 @@ export namespace GetAccountResponse {
             /** User seat information for the plan */
             users: Item.Users;
             /** Credits allocated for this plan category (optional, may not be present for all plan categories) */
-            credits?: string;
+            credits?: string | undefined;
         }
 
         export namespace Item {

@@ -2,5 +2,5 @@
 
 export interface CreateUpdateCategoryResponse {
     /** ID of the category when a new category is created */
-    id?: number;
+    id?: number | undefined;
 }

@@ -5,12 +5,12 @@ export interface CreateSenderResponse {
      * Status of DKIM configuration for the sender (true = DKIM not
      * well configured, false = DKIM well configured)
      */
-    dkimError?: boolean;
+    dkimError?: boolean | undefined;
     /** ID of the Sender created */
     id: number;
     /**
      * Status of SPF configuration for the sender (true = SPF not
      * well configured, false = SPF well configured)
      */
-    spfError?: boolean;
+    spfError?: boolean | undefined;
 }

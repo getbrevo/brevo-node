@@ -4,7 +4,7 @@ export interface SendReport {
     /** Custom attributes for the report email. */
     email: SendReport.Email;
     /** Language of email content for campaign report sending. */
-    language?: SendReport.Language;
+    language?: SendReport.Language | undefined;
 }
 
 export namespace SendReport {

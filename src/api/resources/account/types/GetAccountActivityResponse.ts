@@ -2,7 +2,7 @@
 
 export interface GetAccountActivityResponse {
     /** Get user activity logs */
-    logs?: GetAccountActivityResponse.Logs.Item[];
+    logs?: GetAccountActivityResponse.Logs.Item[] | undefined;
 }
 
 export namespace GetAccountActivityResponse {
