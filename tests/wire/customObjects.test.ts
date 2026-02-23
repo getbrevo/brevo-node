@@ -125,7 +125,7 @@ describe("CustomObjectsClient", () => {
             count: 350,
             records: [
                 {
-                    associations: [{ object_type: "garage", records: [{ identifiers: { id: 12345 } }] }],
+                    associations: [{ object_type: "garage" }],
                     attributes: { color: "Black", engine_type: "Hybrid", make: "Toyoto", model: "Corolla", year: 2020 },
                     createdAt: "2025-07-22T10:20:30Z",
                     identifiers: { ext_id: "507f1f77bc", id: 16789 },
@@ -153,13 +153,6 @@ describe("CustomObjectsClient", () => {
                     associations: [
                         {
                             object_type: "garage",
-                            records: [
-                                {
-                                    identifiers: {
-                                        id: 12345,
-                                    },
-                                },
-                            ],
                         },
                     ],
                     attributes: {

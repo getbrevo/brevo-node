@@ -1,3 +1,14 @@
+## 4.0.2 - 2026-02-23
+* test: update test fixtures and CLI version
+* Update test data structures and CLI version to maintain consistency across
+* the codebase. The changes ensure tests remain compatible with the current
+* API expectations while keeping development tooling up to date.
+* Key changes:
+* Update CLI version from 3.79.2 to 3.76.0 in metadata
+* Simplify association test data by removing nested records structure
+* Remove specific identifier details from garage associations in test fixtures
+* 🌿 Generated with Fern
+
 ## 5.0.0 - 2026-02-18
 * fix: update delete tier operations to return void instead of string
 * Change deleteTierGroup and deleteTier methods to return void instead of string, which better reflects the actual API behavior for delete operations. This aligns the return types with the expected void response when deletion operations complete successfully.
