@@ -1,3 +1,12 @@
+## 4.0.3 - 2026-02-24
+* chore: update CLI version and enhance test coverage
+* Update Fern CLI version from 3.76.0 to 3.85.3 to leverage the latest tooling improvements and bug fixes. Additionally, expand test coverage for custom objects by adding more comprehensive association data structures with nested records and identifiers.
+* Key changes:
+* Update Fern CLI version to 3.85.3
+* Add nested records structure to association test data
+* Include identifier objects with ID values in test cases
+* 🌿 Generated with Fern
+
 ## 4.0.2 - 2026-02-23
 * test: update test fixtures and CLI version
 * Update test data structures and CLI version to maintain consistency across
