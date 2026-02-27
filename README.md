@@ -1,9 +1,13 @@
-# Brevo Node SDK
+> [!WARNING]
+> ## ⚠️ A New Version of this SDK is Available
+>
+> **[brevo-node v4](https://github.com/getbrevo/brevo-node/tree/v4)** is now the actively developed version of this library, built on a modern, unified client architecture with PHP 8.1+ support.
+>
+> This **v3.x** version will continue to receive **critical security updates only** — no new features will be added. We strongly recommend migrating to the new version at your earliest convenience.
+>
+> 📖 **[View the Migration Guide →](https://developers.brevo.com/docs/api-clients/php#migration-from-the-legacy-sdk)**
 
-> ⚠️ **Legacy Notice**: This package contains the legacy Node SDK (v3.x.x). The new, improved version (v4.x.x) is now available and is not backward compatible.
->This version will continue to receive maintenance and security updates, but we strongly recommend migrating to the latest SDK.
->Learn more and find migration details here: https://developers.brevo.com/docs/api-clients/node-js
-
+---
 ## Overview
 
 Brevo's API exposes the entire Brevo features via a standardized programmatic interface. Please refer to the full [documentation](https://developers.brevo.com) to see all the supported operations.
