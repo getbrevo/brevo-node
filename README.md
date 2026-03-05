@@ -1,7 +1,7 @@
 > [!WARNING]
 > ## ⚠️ A New Version of this SDK is Available
 >
-> **[brevo-node v4](https://github.com/getbrevo/brevo-node/tree/v4)** is now the actively developed version of this library, built on a modern, unified client architecture with PHP 8.1+ support.
+> **[brevo-node v4](https://github.com/getbrevo/brevo-node/tree/v4)** is now the actively developed version of this library, built on a modern, unified client architecture.
 >
 > This **v3.x** version will continue to receive **critical security updates only** — no new features will be added. We strongly recommend migrating to the new version at your earliest convenience.
 >
