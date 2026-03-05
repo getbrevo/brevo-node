@@ -5,7 +5,7 @@
 >
 > This **v3.x** version will continue to receive **critical security updates only** — no new features will be added. We strongly recommend migrating to the new version at your earliest convenience.
 >
-> 📖 **[View the Migration Guide →](https://developers.brevo.com/docs/api-clients/php#migration-from-the-legacy-sdk)**
+> 📖 **[View the Migration Guide →](https://developers.brevo.com/docs/api-clients/node-js#migration-from-v3x)**
 
 ---
 ## Overview
