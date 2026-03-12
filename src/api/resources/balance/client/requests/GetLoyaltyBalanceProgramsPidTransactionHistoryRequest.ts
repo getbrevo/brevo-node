@@ -6,8 +6,8 @@ import type * as Brevo from "../../../../index.js";
  * @example
  *     {
  *         pid: "pid",
- *         contactId: 1,
- *         balanceDefinitionId: "balanceDefinitionId"
+ *         contact_id: 1,
+ *         balance_definition_id: "balance_definition_id"
  *     }
  */
 export interface GetLoyaltyBalanceProgramsPidTransactionHistoryRequest {
@@ -18,13 +18,13 @@ export interface GetLoyaltyBalanceProgramsPidTransactionHistoryRequest {
     /** Skip a number of records */
     offset?: number;
     /** Field to sort by */
-    sortField?: "createdAt";
+    sort_field?: Brevo.GetLoyaltyBalanceProgramsPidTransactionHistoryRequestSortField;
     /** Sort order, either asc or desc */
     sort?: Brevo.GetLoyaltyBalanceProgramsPidTransactionHistoryRequestSort;
     /** Contact ID */
-    contactId: number;
+    contact_id: number;
     /** Balance Definition ID */
-    balanceDefinitionId: string;
+    balance_definition_id: string;
     /** Filters to apply */
     filters?: string | string[];
 }

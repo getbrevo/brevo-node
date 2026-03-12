@@ -2367,8 +2367,8 @@ describe("BalanceClient", () => {
 
         const response = await client.balance.getTransactionHistoryApi({
             pid: "pid",
-            contactId: 1,
-            balanceDefinitionId: "balanceDefinitionId",
+            contact_id: 1,
+            balance_definition_id: "balance_definition_id",
         });
         expect(response).toEqual({
             balanceDefinitionId: "balanceDefinitionId",
@@ -2410,8 +2410,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
-                balanceDefinitionId: "balanceDefinitionId",
+                contact_id: 1,
+                balance_definition_id: "balance_definition_id",
             });
         }).rejects.toThrow(Brevo.UnauthorizedError);
     });
@@ -2432,8 +2432,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
-                balanceDefinitionId: "balanceDefinitionId",
+                contact_id: 1,
+                balance_definition_id: "balance_definition_id",
             });
         }).rejects.toThrow(Brevo.ForbiddenError);
     });
@@ -2454,8 +2454,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
-                balanceDefinitionId: "balanceDefinitionId",
+                contact_id: 1,
+                balance_definition_id: "balance_definition_id",
             });
         }).rejects.toThrow(Brevo.NotFoundError);
     });
@@ -2476,8 +2476,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
-                balanceDefinitionId: "balanceDefinitionId",
+                contact_id: 1,
+                balance_definition_id: "balance_definition_id",
             });
         }).rejects.toThrow(Brevo.UnprocessableEntityError);
     });
@@ -2498,8 +2498,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
-                balanceDefinitionId: "balanceDefinitionId",
+                contact_id: 1,
+                balance_definition_id: "balance_definition_id",
             });
         }).rejects.toThrow(Brevo.InternalServerError);
     });

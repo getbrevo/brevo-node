@@ -1,3 +1,7 @@
+## 5.0.2 - 2026-03-12
+* SDK regeneration
+* Unable to analyze changes with AI, incrementing PATCH version.
+
 ## 4.0.3 - 2026-02-24
 * chore: update CLI version and enhance test coverage
 * Update Fern CLI version from 3.76.0 to 3.85.3 to leverage the latest tooling improvements and bug fixes. Additionally, expand test coverage for custom objects by adding more comprehensive association data structures with nested records and identifiers.

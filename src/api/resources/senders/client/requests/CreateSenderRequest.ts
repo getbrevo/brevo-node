@@ -32,6 +32,18 @@
  *             }],
  *         name: "Newsletter"
  *     }
+ *
+ * @example
+ *     {
+ *         email: "support@example.com",
+ *         name: "Support Team"
+ *     }
+ *
+ * @example
+ *     {
+ *         email: "support@example.com",
+ *         name: "Support Team"
+ *     }
  */
 export interface CreateSenderRequest {
     /**

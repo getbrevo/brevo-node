@@ -26,7 +26,6 @@ export interface UpdateWebhookRequest {
      * #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`,
      * `unsubscribed`, `listAddition` & `delivered` - Possible values
      * for **Inbound** type webhook: #### `inboundEmailProcessed`
-     * #### `reply`
      */
     events?: UpdateWebhookRequest.Events.Item[];
     /** Custom headers to be send with webhooks */
@@ -67,7 +66,6 @@ export namespace UpdateWebhookRequest {
             ContactUpdated: "contactUpdated",
             ContactDeleted: "contactDeleted",
             InboundEmailProcessed: "inboundEmailProcessed",
-            Reply: "reply",
         } as const;
         export type Item = (typeof Item)[keyof typeof Item];
     }

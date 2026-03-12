@@ -167,7 +167,6 @@ export class InboundParsingClient {
 
     /**
      * This endpoint will retrieve inbound attachment with download token.
-     *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
      */

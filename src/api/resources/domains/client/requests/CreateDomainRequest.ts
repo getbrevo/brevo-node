@@ -15,6 +15,16 @@
  *     {
  *         name: "test.example.com"
  *     }
+ *
+ * @example
+ *     {
+ *         name: "mycompany.com"
+ *     }
+ *
+ * @example
+ *     {
+ *         name: "mycompany.com"
+ *     }
  */
 export interface CreateDomainRequest {
     /** Domain name to be added */

@@ -5,6 +5,11 @@
  *     {
  *         domainName: "domainName"
  *     }
+ *
+ * @example
+ *     {
+ *         domainName: "domainName"
+ *     }
  */
 export interface AuthenticateDomainRequest {
     /** Domain name */

@@ -8,8 +8,6 @@ export const GetEmailCampaignsRequestStatus = {
     Draft: "draft",
     InProcess: "inProcess",
     InReview: "inReview",
-    Cancelling: "cancelling",
-    Cancelled: "cancelled",
 } as const;
 export type GetEmailCampaignsRequestStatus =
     (typeof GetEmailCampaignsRequestStatus)[keyof typeof GetEmailCampaignsRequestStatus];

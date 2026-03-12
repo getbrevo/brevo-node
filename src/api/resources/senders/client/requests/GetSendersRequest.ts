@@ -3,6 +3,9 @@
 /**
  * @example
  *     {}
+ *
+ * @example
+ *     {}
  */
 export interface GetSendersRequest {
     /** Filter your senders for a specific ip. **Available for dedicated IP usage only** */

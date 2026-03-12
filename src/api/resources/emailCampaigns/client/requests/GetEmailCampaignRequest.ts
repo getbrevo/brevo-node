@@ -13,6 +13,4 @@ export interface GetEmailCampaignRequest {
     campaignId: number;
     /** Filter on type of the statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. */
     statistics?: Brevo.GetEmailCampaignRequestStatistics;
-    /** Use this flag to exclude htmlContent from the response body. If set to **true**, htmlContent field will be returned as empty string in the response body */
-    excludeHtmlContent?: boolean;
 }

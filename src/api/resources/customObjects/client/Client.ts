@@ -23,8 +23,12 @@ export class CustomObjectsClient {
     }
 
     /**
-     * <Note title="Enterprise access only">Custom objects are only available to Enterprise plans.
-     * This feature is in beta. These are subject to change.</Note>
+     * <Note title="Enterprise access only">
+     * Custom objects are only available to Enterprise plans.
+     *
+     * This feature is in beta. These are subject to change.
+     * </Note>
+     *
      * This API allows bulk upsert of object records in a single request. Each object record may include
      *   - Attributes
      *   - Identifiers
@@ -38,8 +42,8 @@ export class CustomObjectsClient {
      *   - Max 500 attributes defined per object record upsert request
      *     - This is coherent with schema limitation: an object cannot have more than 500 attributes.
      *     - Worth noting: Nothing happens If an attribute is mentioned in the request, but was not previously defined for the object schema (no error, no attribute creation)
-     *   - Max 10 associations defined per associated object type, in each record of the request
-     *     - This is not a schema limitation. You can associate an object record to an unlimited number of other object records by running multiple requests.
+     *   - Max 10 associations defined per object record upsert request
+     *     - This is coherent with schema limitation: an object cannot have more than 10 associations with other objects. and each object record can be linked to max 10 other records.
      * **Errors:**
      *     - Make sure both object records exist before associating them, else the API will return an error.
      *     - This route does not create objects. The object where the object records are upserted by this API must be created already else the API will return an error "invalid object type".
@@ -127,8 +131,12 @@ export class CustomObjectsClient {
     }
 
     /**
-     * <Note title="Enterprise access only">Custom objects are only available to Enterprise plans.
-     * This feature is in beta. These are subject to change.</Note>
+     * <Note title="Enterprise access only">
+     * Custom objects are only available to Enterprise plans.
+     *
+     * This feature is in beta. These are subject to change.
+     * </Note>
+     *
      * This API retrieves a list of object records along with their associated records and provides the total count of records for the specified object. **Note**: Contact as object type is not supported in this endpoint.
      *
      * @param {Brevo.GetrecordsRequest} request

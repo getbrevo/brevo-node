@@ -2,7 +2,7 @@ import { type DefaultBodyType, type HttpHandler, HttpResponse, type HttpResponse
 
 import { url } from "../../src/core";
 import { toJson } from "../../src/core/json";
-import { type WithFormUrlEncodedOptions, withFormUrlEncoded } from "./withFormUrlEncoded";
+import { withFormUrlEncoded } from "./withFormUrlEncoded";
 import { withHeaders } from "./withHeaders";
 import { type WithJsonOptions, withJson } from "./withJson";
 
@@ -27,7 +27,7 @@ interface RequestHeadersStage extends RequestBodyStage, ResponseStage {
 
 interface RequestBodyStage extends ResponseStage {
     jsonBody(body: unknown, options?: WithJsonOptions): ResponseStage;
-    formUrlEncodedBody(body: unknown, options?: WithFormUrlEncodedOptions): ResponseStage;
+    formUrlEncodedBody(body: unknown): ResponseStage;
 }
 
 interface ResponseStage {
@@ -44,7 +44,6 @@ interface ResponseHeaderStage extends ResponseBodyStage, BuildStage {
 
 interface ResponseBodyStage {
     jsonBody(body: unknown): BuildStage;
-    sseBody(body: string): BuildStage;
 }
 
 interface BuildStage {
@@ -138,13 +137,13 @@ class RequestBuilder implements MethodStage, RequestHeadersStage, RequestBodySta
         return this;
     }
 
-    formUrlEncodedBody(body: unknown, options?: WithFormUrlEncodedOptions): ResponseStage {
+    formUrlEncodedBody(body: unknown): ResponseStage {
         if (body === undefined) {
             throw new Error(
                 "Undefined is not valid for form-urlencoded. Do not call formUrlEncodedBody if you want an empty body.",
             );
         }
-        this.predicates.push((resolver) => withFormUrlEncoded(body, resolver, options));
+        this.predicates.push((resolver) => withFormUrlEncoded(body, resolver));
         return this;
     }
 
@@ -199,12 +198,6 @@ class ResponseBuilder implements ResponseStatusStage, ResponseHeaderStage, Respo
             throw new Error("Undefined is not valid JSON. Do not call jsonBody if you expect an empty body.");
         }
         this.responseBody = toJson(body);
-        return this;
-    }
-
-    public sseBody(body: string): BuildStage {
-        this.responseHeaders["Content-Type"] = "text/event-stream";
-        this.responseBody = body;
         return this;
     }
 

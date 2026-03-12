@@ -5,6 +5,16 @@
  *     {
  *         uuid: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6"
  *     }
+ *
+ * @example
+ *     {
+ *         uuid: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6"
+ *     }
+ *
+ * @example
+ *     {
+ *         uuid: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6"
+ *     }
  */
 export interface GetExternalFeedByUuidRequest {
     /** UUID of the feed to fetch */

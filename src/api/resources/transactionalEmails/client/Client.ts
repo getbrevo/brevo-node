@@ -761,9 +761,13 @@ export class TransactionalEmailsClient {
     }
 
     /**
-     * <Note title="How to get uuid">You can get the uuid using either of the following methods:
+     * <Note title="How to get uuid?">
+     * You can get the uuid using either of the following methods:
+     *
      * Send a GET request to https://api.brevo.com/v3/smtp/emails and pass the message_id in the url. Use your api-key to authenticate the request and you will get your uuid as a response.
-     * The uuid can also be fetched from the transactional logs page in your Brevo account, from the address URL.</Note>
+     *
+     * The uuid can also be fetched from the transactional logs page in your Brevo account, from the address URL.
+     * </Note>
      *
      * @param {Brevo.GetTransacEmailContentRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
