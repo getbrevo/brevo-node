@@ -15,6 +15,10 @@ export interface SendTransacSms {
     unicodeEnabled?: boolean | undefined;
     /** Webhook to call for each event triggered by the message (delivered etc.) */
     webUrl?: string | undefined;
+    /** Template ID to send SMS with the template. When provided, overrides the content parameter. Mandatory if 'content' is not passed. */
+    templateId?: number | undefined;
+    /** Content of the message. If more than **160 characters** long, will be sent as multiple text messages. Mandatory if 'templateId' is not passed, ignored if 'templateId' is passed. */
+    content?: string | undefined;
 }
 
 export namespace SendTransacSms {

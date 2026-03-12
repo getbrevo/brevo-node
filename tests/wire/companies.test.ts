@@ -407,6 +407,119 @@ describe("CompaniesClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
+    test("deleteAnAttribute (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        server.mockEndpoint().delete("/crm/attributes/id").respondWith().statusCode(200).build();
+
+        const response = await client.companies.deleteAnAttribute({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deleteAnAttribute (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/crm/attributes/id")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.deleteAnAttribute({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("deleteAnAttribute (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/crm/attributes/id")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.deleteAnAttribute({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.NotFoundError);
+    });
+
+    test("updateAnAttribute (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
+
+        server
+            .mockEndpoint()
+            .patch("/crm/attributes/id")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .build();
+
+        const response = await client.companies.updateAnAttribute({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("updateAnAttribute (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/crm/attributes/id")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.updateAnAttribute({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("updateAnAttribute (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/crm/attributes/id")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.updateAnAttribute({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.NotFoundError);
+    });
+
     test("getCompanyAttributes", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });

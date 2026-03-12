@@ -652,6 +652,97 @@ export class ProgramClient {
     }
 
     /**
+     * Delete subscription for a contact
+     *
+     * @param {Brevo.DeleteContactSubscriptionRequest} request
+     * @param {ProgramClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Brevo.BadRequestError}
+     * @throws {@link Brevo.UnauthorizedError}
+     * @throws {@link Brevo.ForbiddenError}
+     * @throws {@link Brevo.NotFoundError}
+     * @throws {@link Brevo.UnprocessableEntityError}
+     * @throws {@link Brevo.InternalServerError}
+     *
+     * @example
+     *     await client.program.deleteContactSubscription({
+     *         pid: "pid",
+     *         cid: 1
+     *     })
+     */
+    public deleteContactSubscription(
+        request: Brevo.DeleteContactSubscriptionRequest,
+        requestOptions?: ProgramClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteContactSubscription(request, requestOptions));
+    }
+
+    private async __deleteContactSubscription(
+        request: Brevo.DeleteContactSubscriptionRequest,
+        requestOptions?: ProgramClient.RequestOptions,
+    ): Promise<core.WithRawResponse<void>> {
+        const { pid, cid } = request;
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BrevoEnvironment.Default,
+                `loyalty/config/programs/${core.url.encodePathParam(pid)}/contact/${core.url.encodePathParam(cid)}`,
+            ),
+            method: "DELETE",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: undefined, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 401:
+                    throw new Brevo.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 403:
+                    throw new Brevo.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Brevo.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 422:
+                    throw new Brevo.UnprocessableEntityError(
+                        _response.error.body as Brevo.ErrorModel,
+                        _response.rawResponse,
+                    );
+                case 500:
+                    throw new Brevo.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.BrevoError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "DELETE",
+            "/loyalty/config/programs/{pid}/contact/{cid}",
+        );
+    }
+
+    /**
      * Publishes loyalty program
      *
      * @param {Brevo.PublishLoyaltyProgramRequest} request

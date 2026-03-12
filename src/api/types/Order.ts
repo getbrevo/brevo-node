@@ -76,10 +76,20 @@ export namespace Order {
             price: number;
             /** ID of the product. */
             productId: string;
-            /** How many pieces of the product the visitor has added to the cart. */
-            quantity: number;
             /** Product ID of the red color shirts. */
             variantId?: string | undefined;
+            /**
+             * **Required if quantityFloat is empty.**
+             *
+             * Number of product units added to the cart (whole numbers only, e.g., 10)
+             */
+            quantity?: number | undefined;
+            /**
+             * **Required if quantity is empty.**
+             *
+             * Number of product units added to the cart(supports decimals, e.g., 20.52)
+             */
+            quantityFloat?: number | undefined;
         }
     }
 }

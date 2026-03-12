@@ -12,6 +12,7 @@ describe("EmailCampaignsClient", () => {
         const rawResponseBody = {
             campaigns: [
                 {
+                    attachmentFile: "http://mydomain.com/campaign/attachment/file.pdf",
                     abTesting: true,
                     id: 12,
                     name: "EN - Sales Summer 2017",
@@ -40,6 +41,7 @@ describe("EmailCampaignsClient", () => {
                     sentDate: "2018-12-01T16:30:00Z",
                     shareLink: "http://example.com/fhsgccc.html?t=9865448900",
                     tag: "Newsletter",
+                    tags: ["tag1", "tag2"],
                     testSent: true,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
@@ -142,6 +144,7 @@ describe("EmailCampaignsClient", () => {
                     },
                 },
                 {
+                    attachmentFile: "http://img.mailinblue.com/{clientID-campaignID}/attachments/{fileName}",
                     abTesting: true,
                     id: 22,
                     name: "Weekly - 1",
@@ -170,6 +173,7 @@ describe("EmailCampaignsClient", () => {
                     sentDate: "2018-12-01T16:30:00Z",
                     shareLink: "http://example.com/fhsgccc.html?t=9865448900",
                     tag: "Newsletter",
+                    tags: ["Newsletter", "Weekly"],
                     testSent: false,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
@@ -280,6 +284,7 @@ describe("EmailCampaignsClient", () => {
         expect(response).toEqual({
             campaigns: [
                 {
+                    attachmentFile: "http://mydomain.com/campaign/attachment/file.pdf",
                     abTesting: true,
                     id: 12,
                     name: "EN - Sales Summer 2017",
@@ -312,6 +317,7 @@ describe("EmailCampaignsClient", () => {
                     sentDate: "2018-12-01T16:30:00Z",
                     shareLink: "http://example.com/fhsgccc.html?t=9865448900",
                     tag: "Newsletter",
+                    tags: ["tag1", "tag2"],
                     testSent: true,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
@@ -422,6 +428,7 @@ describe("EmailCampaignsClient", () => {
                     },
                 },
                 {
+                    attachmentFile: "http://img.mailinblue.com/{clientID-campaignID}/attachments/{fileName}",
                     abTesting: true,
                     id: 22,
                     name: "Weekly - 1",
@@ -454,6 +461,7 @@ describe("EmailCampaignsClient", () => {
                     sentDate: "2018-12-01T16:30:00Z",
                     shareLink: "http://example.com/fhsgccc.html?t=9865448900",
                     tag: "Newsletter",
+                    tags: ["Newsletter", "Weekly"],
                     testSent: false,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
@@ -675,6 +683,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
+            attachmentFile: "http://img.mailinblue.com/{clientID-campaignID}/attachments/{fileName}",
             abTesting: true,
             id: 22,
             name: "Weekly - 1",
@@ -703,6 +712,7 @@ describe("EmailCampaignsClient", () => {
             sentDate: "2018-12-01T16:30:00Z",
             shareLink: "http://dhh.brevo.com/fhsgccc.html?t=9865448900",
             tag: "Newsletter",
+            tags: ["Newsletter", "Weekly"],
             testSent: false,
             toField: "{FNAME} {LNAME}",
             utmCampaignValue: "myutm",
@@ -806,6 +816,7 @@ describe("EmailCampaignsClient", () => {
             campaignId: 1000000,
         });
         expect(response).toEqual({
+            attachmentFile: "http://img.mailinblue.com/{clientID-campaignID}/attachments/{fileName}",
             abTesting: true,
             id: 22,
             name: "Weekly - 1",
@@ -838,6 +849,7 @@ describe("EmailCampaignsClient", () => {
             sentDate: "2018-12-01T16:30:00Z",
             shareLink: "http://dhh.brevo.com/fhsgccc.html?t=9865448900",
             tag: "Newsletter",
+            tags: ["Newsletter", "Weekly"],
             testSent: false,
             toField: "{FNAME} {LNAME}",
             utmCampaignValue: "myutm",

@@ -37,6 +37,7 @@ export interface CreateWebhookRequest {
      * type **Marketing**  channel **SMS** ####
      * `sent`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`,
      * `subscribe`,`skip`
+     * #### `reply`
      */
     events: CreateWebhookRequest.Events.Item[];
     /** Custom headers to be send with webhooks */
@@ -85,6 +86,7 @@ export namespace CreateWebhookRequest {
             ContactUpdated: "contactUpdated",
             ContactDeleted: "contactDeleted",
             InboundEmailProcessed: "inboundEmailProcessed",
+            Reply: "reply",
         } as const;
         export type Item = (typeof Item)[keyof typeof Item];
     }

@@ -23,11 +23,8 @@ export class EmailCampaignsClient {
     }
 
     /**
-     * <Note>
-     * The response payload for this endpoint has changed
-     *
-     * You now need to specify which type of statistics you would like to retrieve. For more information visit [this page](https://developers.brevo.com/changelog/get-all-marketing-campaigns).
-     * </Note>
+     * <Note>The response payload for this endpoint has changed
+     * You now need to specify which type of statistics you would like to retrieve. For more information visit [this page](https://developers.brevo.com/changelog/get-all-marketing-campaigns).</Note>
      *
      * @param {Brevo.GetEmailCampaignsRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -270,9 +267,10 @@ export class EmailCampaignsClient {
         request: Brevo.GetEmailCampaignRequest,
         requestOptions?: EmailCampaignsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.GetEmailCampaignResponse>> {
-        const { campaignId, statistics } = request;
+        const { campaignId, statistics, excludeHtmlContent } = request;
         const _queryParams: Record<string, unknown> = {
             statistics: statistics != null ? statistics : undefined,
+            excludeHtmlContent,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

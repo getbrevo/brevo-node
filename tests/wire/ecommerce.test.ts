@@ -660,8 +660,8 @@ describe("EcommerceClient", () => {
                     id: "order1803",
                     identifiers: { ext_id: "ab12", loyalty_subscription_id: "1234" },
                     products: [
-                        { price: 100, productId: 21, quantity: 2, variantId: "P100" },
-                        { price: 100, productId: 21, quantity: 2, variantId: "P15756" },
+                        { price: 100, productId: 21, quantity: 2, quantityFloat: 0, variantId: "P100" },
+                        { price: 100, productId: 21, quantity: 0, quantityFloat: 2.52, variantId: "P15756" },
                     ],
                     status: "complete",
                     storeId: "123",
@@ -701,12 +701,14 @@ describe("EcommerceClient", () => {
                             price: 100,
                             productId: 21,
                             quantity: 2,
+                            quantityFloat: 0,
                             variantId: "P100",
                         },
                         {
                             price: 100,
                             productId: 21,
-                            quantity: 2,
+                            quantity: 0,
+                            quantityFloat: 2.52,
                             variantId: "P15756",
                         },
                     ],
@@ -737,7 +739,7 @@ describe("EcommerceClient", () => {
             amount: 308.42,
             createdAt: "2021-07-29T20:59:23.383Z",
             id: "14",
-            products: [{ price: 99.99, productId: "P1", quantity: 10 }],
+            products: [{ price: 99.99, productId: "P1" }],
             status: "completed",
             updatedAt: "2021-07-30T10:59:23.383Z",
         };
@@ -752,7 +754,6 @@ describe("EcommerceClient", () => {
                 {
                     price: 99.99,
                     productId: "P1",
-                    quantity: 10,
                 },
             ],
             status: "completed",
@@ -769,8 +770,8 @@ describe("EcommerceClient", () => {
             createdAt: "createdAt",
             id: "id",
             products: [
-                { price: 1.1, productId: "productId", quantity: 1.1 },
-                { price: 1.1, productId: "productId", quantity: 1.1 },
+                { price: 1.1, productId: "productId" },
+                { price: 1.1, productId: "productId" },
             ],
             status: "status",
             updatedAt: "updatedAt",
@@ -794,12 +795,10 @@ describe("EcommerceClient", () => {
                     {
                         price: 1.1,
                         productId: "productId",
-                        quantity: 1.1,
                     },
                     {
                         price: 1.1,
                         productId: "productId",
-                        quantity: 1.1,
                     },
                 ],
                 status: "status",
@@ -817,7 +816,7 @@ describe("EcommerceClient", () => {
                     amount: 308.42,
                     createdAt: "2021-07-29T20:59:23.383Z",
                     id: "14",
-                    products: [{ price: 99.99, productId: "P1", quantity: 10 }],
+                    products: [{ price: 99.99, productId: "P1" }],
                     status: "completed",
                     updatedAt: "2021-07-30T10:59:23.383Z",
                 },
@@ -843,7 +842,6 @@ describe("EcommerceClient", () => {
                         {
                             price: 99.99,
                             productId: "P1",
-                            quantity: 10,
                         },
                     ],
                     status: "completed",
@@ -867,8 +865,8 @@ describe("EcommerceClient", () => {
                     createdAt: "createdAt",
                     id: "id",
                     products: [
-                        { price: 1.1, productId: "productId", quantity: 1.1 },
-                        { price: 1.1, productId: "productId", quantity: 1.1 },
+                        { price: 1.1, productId: "productId" },
+                        { price: 1.1, productId: "productId" },
                     ],
                     status: "status",
                     updatedAt: "updatedAt",
@@ -878,8 +876,8 @@ describe("EcommerceClient", () => {
                     createdAt: "createdAt",
                     id: "id",
                     products: [
-                        { price: 1.1, productId: "productId", quantity: 1.1 },
-                        { price: 1.1, productId: "productId", quantity: 1.1 },
+                        { price: 1.1, productId: "productId" },
+                        { price: 1.1, productId: "productId" },
                     ],
                     status: "status",
                     updatedAt: "updatedAt",
@@ -907,12 +905,10 @@ describe("EcommerceClient", () => {
                             {
                                 price: 1.1,
                                 productId: "productId",
-                                quantity: 1.1,
                             },
                             {
                                 price: 1.1,
                                 productId: "productId",
-                                quantity: 1.1,
                             },
                         ],
                         status: "status",
@@ -926,12 +922,10 @@ describe("EcommerceClient", () => {
                             {
                                 price: 1.1,
                                 productId: "productId",
-                                quantity: 1.1,
                             },
                             {
                                 price: 1.1,
                                 productId: "productId",
-                                quantity: 1.1,
                             },
                         ],
                         status: "status",
