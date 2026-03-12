@@ -7,7 +7,6 @@ export * from "./GetBalanceDefinitionRequestVersion.js";
 export * from "./GetBalanceLimitRequestVersion.js";
 export * from "./GetContactBalancesResponse.js";
 export * from "./GetLoyaltyBalanceProgramsPidTransactionHistoryRequestSort.js";
-export * from "./GetLoyaltyBalanceProgramsPidTransactionHistoryRequestSortField.js";
 export * from "./GetLoyaltyBalanceProgramsPidTransactionHistoryResponse.js";
 export * from "./GetSubscriptionBalancesResponse.js";
 export * from "./PostLoyaltyBalanceProgramsPidSubscriptionsCidBalancesResponse.js";

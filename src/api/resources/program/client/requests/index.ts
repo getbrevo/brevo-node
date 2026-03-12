@@ -1,5 +1,6 @@
 export type { CreateNewLpRequest } from "./CreateNewLpRequest.js";
 export type { DeleteContactMembersRequest } from "./DeleteContactMembersRequest.js";
+export type { DeleteContactSubscriptionRequest } from "./DeleteContactSubscriptionRequest.js";
 export type { DeleteLoyaltyProgramRequest } from "./DeleteLoyaltyProgramRequest.js";
 export type { GetLoyaltyProgramInfoRequest } from "./GetLoyaltyProgramInfoRequest.js";
 export type { GetLpListRequest } from "./GetLpListRequest.js";

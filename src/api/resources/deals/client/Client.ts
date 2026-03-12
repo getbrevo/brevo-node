@@ -584,6 +584,8 @@ export class DealsClient {
     }
 
     /**
+     * @deprecated
+     *
      * This endpoint is deprecated. Prefer /crm/pipeline/details/{pipelineID} instead.
      *
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.

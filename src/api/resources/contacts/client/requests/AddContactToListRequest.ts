@@ -26,30 +26,6 @@ import type * as Brevo from "../../../../index.js";
  *             ids: [1, 2]
  *         }
  *     }
- *
- * @example
- *     {
- *         listId: 1000000,
- *         body: {
- *             emails: ["jeff32@example.com", "jim56@example.com"]
- *         }
- *     }
- *
- * @example
- *     {
- *         listId: 1000000,
- *         body: {
- *             emails: ["jeff32@example.com", "jim56@example.com"]
- *         }
- *     }
- *
- * @example
- *     {
- *         listId: 1000000,
- *         body: {
- *             emails: ["jeff32@example.com", "jim56@example.com"]
- *         }
- *     }
  */
 export interface AddContactToListRequest {
     /** Id of the list */

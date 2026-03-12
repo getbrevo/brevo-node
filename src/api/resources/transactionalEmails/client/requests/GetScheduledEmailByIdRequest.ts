@@ -9,13 +9,6 @@ import type * as Brevo from "../../../../index.js";
  *         startDate: "2022-02-02",
  *         endDate: "2022-03-02"
  *     }
- *
- * @example
- *     {
- *         identifier: "4320f270-a4e3-4a2e-b591-edfe30a5e627",
- *         startDate: "2022-02-02",
- *         endDate: "2022-03-02"
- *     }
  */
 export interface GetScheduledEmailByIdRequest {
     /** The `batchId` of scheduled emails batch (Should be a valid UUIDv4) or the `messageId` of scheduled email. */

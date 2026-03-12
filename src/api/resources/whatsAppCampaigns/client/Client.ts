@@ -93,19 +93,11 @@ export class WhatsAppCampaignsClient {
     }
 
     /**
-     * <Note>
-     * You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
-     *
-     * [Activating Whatsapp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account
-     * </Note>
-     *
-     * <Note>
-     * This API requires the List and Segment ids as recipients in Body params. You can use the below Contact endpoints to get the required information.
-     *
+     * <Note>You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
+     * [Activating Whatsapp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account</Note>
+     * <Note>This API requires the List and Segment ids as recipients in Body params.You can use the below Contact endpoints to get the required information.
      * [Get all the Lists](https://developers.brevo.com/reference/getlists-1)
-     *
-     * [Get all the Segments](https://developers.brevo.com/reference/getsegments)
-     * </Note>
+     * [Get all the Segments](https://developers.brevo.com/reference/getsegments)</Note>
      *
      * @param {Brevo.CreateWhatsAppCampaignRequest} request
      * @param {WhatsAppCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -177,11 +169,8 @@ export class WhatsAppCampaignsClient {
     }
 
     /**
-     * <Note>
-     * You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
-     *
-     * [Activating WhatsApp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account
-     * </Note>
+     * <Note>You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
+     * [Activating WhatsApp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account</Note>
      *
      * @param {WhatsAppCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -242,11 +231,8 @@ export class WhatsAppCampaignsClient {
     }
 
     /**
-     * <Note>
-     * You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
-     *
-     * [Activating WhatsApp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account
-     * </Note>
+     * <Note>You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
+     * [Activating WhatsApp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account</Note>
      *
      * @param {Brevo.CreateWhatsAppTemplateRequest} request
      * @param {WhatsAppCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -394,11 +380,8 @@ export class WhatsAppCampaignsClient {
     }
 
     /**
-     * <Note>
-     * You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
-     *
-     * [Activating WhatsApp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account
-     * </Note>
+     * <Note>You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
+     * [Activating WhatsApp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account</Note>
      *
      * @param {Brevo.SendWhatsAppTemplateApprovalRequest} request
      * @param {WhatsAppCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -470,11 +453,11 @@ export class WhatsAppCampaignsClient {
     }
 
     /**
-     * <Note>
-     * You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
-     *
-     * [Activating Whatsapp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account
-     * </Note>
+     * <Note>You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
+     * [Activating Whatsapp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account</Note>
+     * <Note>This API requires the List and Segment ids as recipients in Body params.You can use the below Contact endpoints to get the required information.
+     * [Get all the Lists](https://developers.brevo.com/reference/getlists-1)
+     * [Get all the Segments](https://developers.brevo.com/reference/getsegments)</Note>
      *
      * @param {Brevo.GetWhatsAppCampaignRequest} request
      * @param {WhatsAppCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -549,19 +532,11 @@ export class WhatsAppCampaignsClient {
     }
 
     /**
-     * <Note>
-     * You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
-     *
-     * [Activating Whatsapp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account
-     * </Note>
-     *
-     * <Note>
-     * This API requires the List and Segment ids as recipients in Body params. You can use the below Contact endpoints to get the required information.
-     *
+     * <Note>You can use this API for WhatsApp only if you have setup your WhatsApp account on Brevo platform. To setup your WhatsApp account, follow the steps in the guide below.
+     * [Activating Whatsapp](https://developers.brevo.com/docs/whatsapp-campaigns-1) in your account</Note>
+     * <Note>This API requires the List and Segment ids as recipients in Body params.You can use the below Contact endpoints to get the required information.
      * [Get all the Lists](https://developers.brevo.com/reference/getlists-1)
-     *
-     * [Get all the Segments](https://developers.brevo.com/reference/getsegments)
-     * </Note>
+     * [Get all the Segments](https://developers.brevo.com/reference/getsegments)</Note>
      *
      * @param {Brevo.UpdateWhatsAppCampaignRequest} request
      * @param {WhatsAppCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.

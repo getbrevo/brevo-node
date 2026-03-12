@@ -1342,8 +1342,8 @@ export class BalanceClient {
      * @example
      *     await client.balance.getTransactionHistoryApi({
      *         pid: "pid",
-     *         contact_id: 1,
-     *         balance_definition_id: "balance_definition_id"
+     *         contactId: 1,
+     *         balanceDefinitionId: "balanceDefinitionId"
      *     })
      */
     public getTransactionHistoryApi(
@@ -1357,23 +1357,14 @@ export class BalanceClient {
         request: Brevo.GetLoyaltyBalanceProgramsPidTransactionHistoryRequest,
         requestOptions?: BalanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.GetLoyaltyBalanceProgramsPidTransactionHistoryResponse>> {
-        const {
-            pid,
-            limit,
-            offset,
-            sort_field: sortField,
-            sort,
-            contact_id: contactId,
-            balance_definition_id: balanceDefinitionId,
-            filters,
-        } = request;
+        const { pid, limit, offset, sortField, sort, contactId, balanceDefinitionId, filters } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
             offset,
-            sort_field: sortField != null ? sortField : undefined,
+            sortField: sortField != null ? sortField : undefined,
             sort: sort != null ? sort : undefined,
-            contact_id: contactId,
-            balance_definition_id: balanceDefinitionId,
+            contactId,
+            balanceDefinitionId,
             filters,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();

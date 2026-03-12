@@ -11,8 +11,7 @@ import type * as Brevo from "../../../../index.js";
  *                 id: "14",
  *                 products: [{
  *                         price: 99.99,
- *                         productId: "P1",
- *                         quantity: 10
+ *                         productId: "P1"
  *                     }],
  *                 status: "completed",
  *                 updatedAt: "2021-07-30T10:59:23.383Z"

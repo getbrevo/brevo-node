@@ -5,11 +5,6 @@
  *     {
  *         domainName: "domainName"
  *     }
- *
- * @example
- *     {
- *         domainName: "domainName"
- *     }
  */
 export interface GetDomainConfigurationRequest {
     /** Domain name */

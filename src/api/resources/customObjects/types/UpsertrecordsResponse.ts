@@ -2,6 +2,6 @@
 
 export interface UpsertrecordsResponse {
     message?: string | undefined;
-    /** Unique Id for the batch process used to track the status of the batch. */
+    /** Unique Id for the batch process used to track the status of the batch. **How to use this processId:**   Refer to the [Get process status API](https://developers.brevo.com/reference/get-process) to check the execution status of this batch using the returned `processId`. */
     processId?: number | undefined;
 }

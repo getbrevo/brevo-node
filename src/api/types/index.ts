@@ -4,6 +4,7 @@ export * from "./AbTestVersionStats.js";
 export * from "./BadRequestErrorBody.js";
 export * from "./BalanceDefinition.js";
 export * from "./BalanceLimit.js";
+export * from "./BatchEventsResponse.js";
 export * from "./Cart.js";
 export * from "./Company.js";
 export * from "./Configuration.js";

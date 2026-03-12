@@ -121,7 +121,7 @@ export namespace GetAccountResponse {
             /** Plan end date (Unix timestamp) */
             endDate: string;
             /** User seat information for the plan */
-            users: Item.Users;
+            users: Item.Users | null;
             /** Credits allocated for this plan category (optional, may not be present for all plan categories) */
             credits?: string | undefined;
         }
