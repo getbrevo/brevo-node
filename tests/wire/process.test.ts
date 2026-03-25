@@ -41,6 +41,7 @@ describe("ProcessClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/processes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.process.getProcesses();
@@ -83,6 +84,7 @@ describe("ProcessClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/processes").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -115,6 +117,7 @@ describe("ProcessClient", () => {
             created_at: "2024-01-15T10:30:00Z",
             completed_at: "2024-01-15T10:32:15Z",
         };
+
         server.mockEndpoint().get("/processes/1000000").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.process.getProcess({
@@ -160,6 +163,7 @@ describe("ProcessClient", () => {
             created_at: "2024-01-15T10:30:00Z",
             completed_at: "2024-01-15T10:32:15Z",
         };
+
         server.mockEndpoint().get("/processes/1000000").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.process.getProcess({
@@ -207,6 +211,7 @@ describe("ProcessClient", () => {
             created_at: "2024-01-15T10:30:00Z",
             completed_at: "2024-01-15T10:32:15Z",
         };
+
         server.mockEndpoint().get("/processes/1000000").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.process.getProcess({
@@ -263,6 +268,7 @@ describe("ProcessClient", () => {
             created_at: "2024-01-15T10:30:00Z",
             completed_at: "2024-01-15T10:32:15Z",
         };
+
         server.mockEndpoint().get("/processes/1000000").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.process.getProcess({
@@ -299,6 +305,7 @@ describe("ProcessClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/processes/1000000").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -313,6 +320,7 @@ describe("ProcessClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/processes/1000000").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

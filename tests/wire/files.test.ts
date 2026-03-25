@@ -20,6 +20,7 @@ describe("FilesClient", () => {
                 size: 10,
             },
         ];
+
         server.mockEndpoint().get("/crm/files").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.files.getAllFiles();
@@ -41,6 +42,7 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/files").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -53,6 +55,7 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { fileUrl: "https://storage.googleapis.com/brevo-app-crm.......-sample.pdf" };
+
         server.mockEndpoint().get("/crm/files/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.files.downloadAFile({
@@ -68,6 +71,7 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/files/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -82,6 +86,7 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/files/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -108,6 +113,7 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/crm/files/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -122,6 +128,7 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/crm/files/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -144,6 +151,7 @@ describe("FilesClient", () => {
             name: "example.png",
             size: 10,
         };
+
         server.mockEndpoint().get("/crm/files/id/data").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.files.getFileDetails({
@@ -165,6 +173,7 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/files/id/data").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -179,6 +188,7 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/files/id/data").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

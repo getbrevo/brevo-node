@@ -21,6 +21,7 @@ describe("TasksClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/crm/tasks").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.tasks.getAllTasks({
@@ -45,6 +46,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/tasks").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -61,6 +63,7 @@ describe("TasksClient", () => {
             taskTypeId: "61a5cd07ca1347c82306ad09",
         };
         const rawResponseBody = { id: "61a5cd07ca1347c82306ad06" };
+
         server
             .mockEndpoint()
             .post("/crm/tasks")
@@ -85,6 +88,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { date: "2024-01-15T09:30:00Z", name: "name", taskTypeId: "taskTypeId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/crm/tasks")
@@ -115,6 +119,7 @@ describe("TasksClient", () => {
             name: "Task: Connect with client_dev",
             taskTypeId: "61a5cd07ca1347c82306ad09",
         };
+
         server.mockEndpoint().get("/crm/tasks/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.tasks.getATask({
@@ -135,6 +140,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/tasks/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -149,6 +155,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/tasks/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -175,6 +182,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/crm/tasks/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -189,6 +197,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/crm/tasks/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -216,6 +225,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/crm/tasks/id")
@@ -237,6 +247,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/crm/tasks/id")
@@ -258,6 +269,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { id: "61a88a2eb7a574180261234", title: "Email" };
+
         server.mockEndpoint().get("/crm/tasktypes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.tasks.getAllTaskTypes();

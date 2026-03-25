@@ -10,6 +10,7 @@ describe("TransactionalSmsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipient: "33689965433", sender: "MyShop" };
         const rawResponseBody = { messageId: 1511882900176220 };
+
         server
             .mockEndpoint()
             .post("/transactionalSMS/send")
@@ -33,6 +34,7 @@ describe("TransactionalSmsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipient: "recipient", sender: "sender" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/transactionalSMS/send")
@@ -61,6 +63,7 @@ describe("TransactionalSmsClient", () => {
             smsCount: 2,
             usedCredits: 0.7,
         };
+
         server
             .mockEndpoint()
             .post("/transactionalSMS/sms")
@@ -88,6 +91,7 @@ describe("TransactionalSmsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipient: "recipient", sender: "sender" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/transactionalSMS/sms")
@@ -110,6 +114,7 @@ describe("TransactionalSmsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipient: "recipient", sender: "sender" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/transactionalSMS/sms")
@@ -144,6 +149,7 @@ describe("TransactionalSmsClient", () => {
             softBounces: 26,
             unsubscribed: 10,
         };
+
         server
             .mockEndpoint()
             .get("/transactionalSMS/statistics/aggregatedReport")
@@ -173,6 +179,7 @@ describe("TransactionalSmsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/transactionalSMS/statistics/aggregatedReport")
@@ -212,6 +219,7 @@ describe("TransactionalSmsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/transactionalSMS/statistics/events")
@@ -250,6 +258,7 @@ describe("TransactionalSmsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/transactionalSMS/statistics/events")
@@ -310,6 +319,7 @@ describe("TransactionalSmsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/transactionalSMS/statistics/reports")
@@ -369,6 +379,7 @@ describe("TransactionalSmsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/transactionalSMS/statistics/reports")

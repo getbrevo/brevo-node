@@ -20,6 +20,7 @@ describe("TransactionalEmailsClient", () => {
             ],
             count: 1,
         };
+
         server
             .mockEndpoint()
             .get("/smtp/blockedContacts")
@@ -50,6 +51,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smtp/blockedContacts")
@@ -80,6 +82,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/blockedContacts/email")
@@ -100,6 +103,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/blockedContacts/email")
@@ -120,6 +124,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { domains: ["example.com", "testdomain.com"] };
+
         server
             .mockEndpoint()
             .get("/smtp/blockedDomains")
@@ -158,6 +163,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { domain: "domain" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smtp/blockedDomains")
@@ -191,6 +197,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/blockedDomains/domain")
@@ -211,6 +218,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/blockedDomains/domain")
@@ -248,6 +256,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smtp/deleteHardbounces")
@@ -273,6 +282,7 @@ describe("TransactionalEmailsClient", () => {
             to: [{ email: "johndoe@example.com", name: "John Doe" }],
         };
         const rawResponseBody = { messageId: "<201798300811.5787683@relay.domain.com>", messageIds: ["messageIds"] };
+
         server
             .mockEndpoint()
             .post("/smtp/email")
@@ -315,6 +325,7 @@ describe("TransactionalEmailsClient", () => {
             to: [{ email: "johndoe@example.com", name: "John Doe" }],
         };
         const rawResponseBody = { messageId: "<201798300811.5787683@relay.domain.com>", messageIds: ["messageIds"] };
+
         server
             .mockEndpoint()
             .post("/smtp/email")
@@ -354,6 +365,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smtp/email")
@@ -390,6 +402,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/email/identifier")
@@ -410,6 +423,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/email/identifier")
@@ -437,6 +451,7 @@ describe("TransactionalEmailsClient", () => {
             ],
             count: 3,
         };
+
         server
             .mockEndpoint()
             .get("/smtp/emailStatus/4320f270-a4e3-4a2e-b591-edfe30a5e627")
@@ -481,6 +496,7 @@ describe("TransactionalEmailsClient", () => {
             scheduledAt: "2022-02-28T11:36:43Z",
             status: "queued",
         };
+
         server
             .mockEndpoint()
             .get("/smtp/emailStatus/4320f270-a4e3-4a2e-b591-edfe30a5e627")
@@ -506,6 +522,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smtp/emailStatus/identifier")
@@ -526,6 +543,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smtp/emailStatus/identifier")
@@ -570,6 +588,7 @@ describe("TransactionalEmailsClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/smtp/emails").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.transactionalEmails.getTransacEmailsList();
@@ -605,6 +624,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/smtp/emails").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -629,6 +649,7 @@ describe("TransactionalEmailsClient", () => {
             subject: "Summer Camps",
             templateId: 12,
         };
+
         server.mockEndpoint().get("/smtp/emails/uuid").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.transactionalEmails.getTransacEmailContent({
@@ -675,6 +696,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/log/identifier")
@@ -695,6 +717,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/log/identifier")
@@ -729,6 +752,7 @@ describe("TransactionalEmailsClient", () => {
             uniqueOpens: 13688,
             unsubscribed: 2,
         };
+
         server
             .mockEndpoint()
             .get("/smtp/statistics/aggregatedReport")
@@ -760,6 +784,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smtp/statistics/aggregatedReport")
@@ -807,6 +832,7 @@ describe("TransactionalEmailsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/smtp/statistics/events")
@@ -853,6 +879,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smtp/statistics/events")
@@ -904,6 +931,7 @@ describe("TransactionalEmailsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/smtp/statistics/reports")
@@ -954,6 +982,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smtp/statistics/reports")
@@ -979,6 +1008,7 @@ describe("TransactionalEmailsClient", () => {
             subject: "subject",
             usedFeedNames: ["usedFeedNames", "usedFeedNames"],
         };
+
         server
             .mockEndpoint()
             .post("/smtp/template/preview")
@@ -1006,6 +1036,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { key: "value" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smtp/template/preview")
@@ -1061,6 +1092,7 @@ describe("TransactionalEmailsClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/smtp/templates").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.transactionalEmails.getSmtpTemplates();
@@ -1114,6 +1146,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/smtp/templates").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1130,6 +1163,7 @@ describe("TransactionalEmailsClient", () => {
             templateName: "Order Confirmation - EN",
         };
         const rawResponseBody = { id: 5 };
+
         server
             .mockEndpoint()
             .post("/smtp/templates")
@@ -1154,6 +1188,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { sender: {}, subject: "subject", templateName: "templateName" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smtp/templates")
@@ -1191,6 +1226,7 @@ describe("TransactionalEmailsClient", () => {
             testSent: false,
             toField: "",
         };
+
         server
             .mockEndpoint()
             .get("/smtp/templates/1000000")
@@ -1228,6 +1264,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smtp/templates/1000000")
@@ -1248,6 +1285,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smtp/templates/1000000")
@@ -1287,6 +1325,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/smtp/templates/1000000")
@@ -1308,6 +1347,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/smtp/templates/1000000")
@@ -1341,6 +1381,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/templates/1000000")
@@ -1361,6 +1402,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smtp/templates/1000000")
@@ -1401,6 +1443,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smtp/templates/1000000/sendTest")
@@ -1423,6 +1466,7 @@ describe("TransactionalEmailsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smtp/templates/1000000/sendTest")

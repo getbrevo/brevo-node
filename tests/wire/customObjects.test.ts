@@ -10,6 +10,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}] };
         const rawResponseBody = { message: "Batch object records are being processed", processId: 21 };
+
         server
             .mockEndpoint()
             .post("/objects/vehicle/batch/upsert")
@@ -34,6 +35,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/objects/object_type/batch/upsert")
@@ -56,6 +58,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/objects/object_type/batch/upsert")
@@ -78,6 +81,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/objects/object_type/batch/upsert")
@@ -100,6 +104,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/objects/object_type/batch/upsert")
@@ -133,6 +138,7 @@ describe("CustomObjectsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/objects/vehicle/records")
@@ -185,6 +191,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/objects/object_type/records")
@@ -207,6 +214,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/objects/object_type/records")
@@ -229,6 +237,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/objects/object_type/records")
@@ -251,6 +260,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/objects/object_type/records")
@@ -273,6 +283,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { identifiers: { ext_ids: ["ext-001", "ext-002"] } };
         const rawResponseBody = { processId: 21, message: "Batch object records are being processed for deletion." };
+
         server
             .mockEndpoint()
             .post("/objects/vehicle/batch/delete")
@@ -299,6 +310,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/objects/object_type/batch/delete")
@@ -320,6 +332,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/objects/object_type/batch/delete")
@@ -341,6 +354,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/objects/object_type/batch/delete")
@@ -362,6 +376,7 @@ describe("CustomObjectsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/objects/object_type/batch/delete")

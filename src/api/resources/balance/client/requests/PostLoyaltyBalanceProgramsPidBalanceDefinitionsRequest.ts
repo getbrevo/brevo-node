@@ -36,7 +36,7 @@ export interface PostLoyaltyBalanceProgramsPidBalanceDefinitionsRequest {
     /** Maximum debit allowed per operation. */
     maxDebitAmountLimit?: number;
     /** Additional metadata for the balance definition. */
-    meta?: Record<string, unknown>;
+    meta?: PostLoyaltyBalanceProgramsPidBalanceDefinitionsRequest.Meta;
     /** Minimum allowable balance amount. */
     minAmount?: number;
     /** Name of the balance definition. */
@@ -86,6 +86,17 @@ export namespace PostLoyaltyBalanceProgramsPidBalanceDefinitionsRequest {
     } as const;
     export type BalanceOptionDebitRounding =
         (typeof BalanceOptionDebitRounding)[keyof typeof BalanceOptionDebitRounding];
+
+    /**
+     * Additional metadata for the balance definition.
+     */
+    export interface Meta {
+        /** Indicates whether the balance definition is internal. */
+        isInternal?: boolean | undefined;
+        /** Accepts any additional properties */
+        [key: string]: any;
+    }
+
     /** Unit of balance measurement. */
     export const Unit = {
         Points: "POINTS",

@@ -10,6 +10,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { groupName: "My group" };
         const rawResponseBody = { id: "659xxxxxxxxxxxxxxxx6ef9c8" };
+
         server
             .mockEndpoint()
             .post("/corporate/group")
@@ -32,6 +33,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { groupName: "groupName" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/group")
@@ -73,6 +75,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { subAccountIds: [1000000, 1000000] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/group/unlink/groupId/subAccounts")
@@ -105,6 +108,7 @@ describe("MasterAccountClient", () => {
                 { email: "your-user@your-org.com", firstName: "firstName", lastName: "lastName" },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/corporate/group/id")
@@ -167,6 +171,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/group/id")
@@ -200,6 +205,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/corporate/group/id")
@@ -224,6 +230,7 @@ describe("MasterAccountClient", () => {
             { groupName: "My group 2", id: "a5b192a709d6ed67ef8fd922" },
             { groupName: "My group 3", id: "bbb142c709d6ed67ef1cd910" },
         ];
+
         server.mockEndpoint().get("/corporate/groups").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.masterAccount.getSubAccountGroups();
@@ -283,6 +290,7 @@ describe("MasterAccountClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/corporate/invited/users")
@@ -344,6 +352,7 @@ describe("MasterAccountClient", () => {
             { domain: "example.com", ip: "192.168.1.1", transactional: true },
             { domain: "example.com", ip: "192.168.1.2", transactional: false },
         ];
+
         server.mockEndpoint().get("/corporate/ip").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.masterAccount.listOfAllIPs();
@@ -398,6 +407,7 @@ describe("MasterAccountClient", () => {
             },
             timezone: "Europe/Paris",
         };
+
         server
             .mockEndpoint()
             .get("/corporate/masterAccount")
@@ -480,6 +490,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/corporate/masterAccount")
@@ -498,6 +509,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: "vipin+ent-user@brevo.com" };
         const rawResponseBody = { token: "5cadaxxxxxxxxxxxxxxxxxxxx5a179f85a0" };
+
         server
             .mockEndpoint()
             .post("/corporate/ssoToken")
@@ -520,6 +532,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: "email" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/ssoToken")
@@ -541,6 +554,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: "email" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/ssoToken")
@@ -578,6 +592,7 @@ describe("MasterAccountClient", () => {
                 { active: true, companyName: "Company3", createdAt: 1614713641, groups: [{}], id: 3524191 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/corporate/subAccount")
@@ -632,6 +647,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/corporate/subAccount")
@@ -659,6 +675,7 @@ describe("MasterAccountClient", () => {
             timezone: "Europe/Paris",
         };
         const rawResponseBody = { id: 4109344 };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount")
@@ -685,6 +702,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { companyName: "companyName", email: "email" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount")
@@ -707,6 +725,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { ids: [234322, 325553, 893432], ip: "103.11.32.88" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount/ip/associate")
@@ -730,6 +749,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { ids: [1000000, 1000000], ip: "ip" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount/ip/associate")
@@ -772,6 +792,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { ids: [1000000, 1000000], ip: "ip" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/subAccount/ip/dissociate")
@@ -794,6 +815,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: 3232323, name: "My Api Key" };
         const rawResponseBody = { key: "xkeysib-21881axxxxxcc92e04-mIrexxxx7z", status: "success" };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount/key")
@@ -818,6 +840,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: 1000000, name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount/key")
@@ -840,6 +863,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: 3232323 };
         const rawResponseBody = { token: "5cadaxxxxxxxxxxxxxxxxxxxx5a179f85a0" };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount/ssoToken")
@@ -862,6 +886,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount/ssoToken")
@@ -883,6 +908,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/subAccount/ssoToken")
@@ -928,6 +954,7 @@ describe("MasterAccountClient", () => {
                 planType: "paid",
             },
         };
+
         server
             .mockEndpoint()
             .get("/corporate/subAccount/1000000")
@@ -1004,6 +1031,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/corporate/subAccount/1000000")
@@ -1036,6 +1064,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/corporate/subAccount/1000000")
@@ -1056,6 +1085,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/corporate/subAccount/1000000")
@@ -1106,6 +1136,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/subAccount/1000000/applications/toggle")
@@ -1127,6 +1158,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/subAccount/1000000/applications/toggle")
@@ -1183,6 +1215,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/subAccount/1000000/plan")
@@ -1204,6 +1237,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/subAccount/1000000/plan")
@@ -1260,6 +1294,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/subAccounts/plan")
@@ -1279,6 +1314,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/subAccounts/plan")
@@ -1298,6 +1334,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { all_features_access: true, email: "inviteuser@example.com", privileges: [{}] };
         const rawResponseBody = { id: "659xxxxxxxxxxxxxxxx6ef9c8" };
+
         server
             .mockEndpoint()
             .post("/corporate/user/invitation/send")
@@ -1322,6 +1359,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { all_features_access: true, email: "email", privileges: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/corporate/user/invitation/send")
@@ -1345,6 +1383,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "Invitation resent successfully" };
+
         server
             .mockEndpoint()
             .put("/corporate/user/invitation/resend/email")
@@ -1367,6 +1406,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/user/invitation/resend/email")
@@ -1400,6 +1440,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/corporate/user/revoke/email")
@@ -1437,6 +1478,7 @@ describe("MasterAccountClient", () => {
             ],
             status: "active",
         };
+
         server
             .mockEndpoint()
             .get("/corporate/user/email/permissions")
@@ -1479,6 +1521,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/corporate/user/email/permissions")
@@ -1570,6 +1613,7 @@ describe("MasterAccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { all_features_access: true, privileges: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/corporate/user/email/permissions")

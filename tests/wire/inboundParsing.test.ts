@@ -25,6 +25,7 @@ describe("InboundParsingClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/inbound/events").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.inboundParsing.getInboundEmailEvents();
@@ -51,6 +52,7 @@ describe("InboundParsingClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/inbound/events").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -76,6 +78,7 @@ describe("InboundParsingClient", () => {
             sender: "alice@example.com",
             subject: "Re: Question about your API",
         };
+
         server
             .mockEndpoint()
             .get("/inbound/events/uuid")
@@ -123,6 +126,7 @@ describe("InboundParsingClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/inbound/events/uuid")

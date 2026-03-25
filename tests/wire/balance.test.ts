@@ -21,6 +21,7 @@ describe("BalanceClient", () => {
             updatedAt: "updatedAt",
             value: 1,
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/active-balance")
@@ -53,6 +54,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/active-balance")
@@ -75,6 +77,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/active-balance")
@@ -97,6 +100,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/active-balance")
@@ -119,6 +123,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/active-balance")
@@ -141,6 +146,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/active-balance")
@@ -188,6 +194,7 @@ describe("BalanceClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions")
@@ -234,6 +241,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions")
@@ -254,6 +262,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions")
@@ -274,6 +283,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions")
@@ -294,6 +304,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions")
@@ -335,6 +346,7 @@ describe("BalanceClient", () => {
             unit: "unit",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions")
@@ -380,6 +392,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions")
@@ -403,6 +416,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions")
@@ -426,6 +440,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions")
@@ -449,6 +464,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions")
@@ -472,6 +488,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions")
@@ -516,6 +533,7 @@ describe("BalanceClient", () => {
             unit: "unit",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -559,6 +577,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -580,6 +599,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -601,6 +621,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -622,6 +643,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -643,6 +665,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -685,6 +708,7 @@ describe("BalanceClient", () => {
             unit: "unit",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -731,6 +755,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -755,6 +780,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -779,6 +805,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -803,6 +830,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -827,6 +855,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -851,6 +880,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -893,6 +923,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -914,6 +945,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -935,6 +967,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -956,6 +989,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -977,6 +1011,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid")
@@ -1015,6 +1050,7 @@ describe("BalanceClient", () => {
             updatedAt: "updatedAt",
             value: 1,
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions/bdid/limits")
@@ -1058,6 +1094,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions/bdid/limits")
@@ -1091,6 +1128,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions/bdid/limits")
@@ -1124,6 +1162,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions/bdid/limits")
@@ -1157,6 +1196,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions/bdid/limits")
@@ -1190,6 +1230,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/balance-definitions/bdid/limits")
@@ -1228,6 +1269,7 @@ describe("BalanceClient", () => {
             updatedAt: "updatedAt",
             value: 1,
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1260,6 +1302,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1282,6 +1325,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1304,6 +1348,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1326,6 +1371,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1348,6 +1394,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1387,6 +1434,7 @@ describe("BalanceClient", () => {
             updatedAt: "updatedAt",
             value: 1,
         };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1431,6 +1479,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1465,6 +1514,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1499,6 +1549,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1533,6 +1584,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1567,6 +1619,7 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1614,6 +1667,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1636,6 +1690,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1658,6 +1713,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1680,6 +1736,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1702,6 +1759,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/balance/programs/pid/balance-definitions/bdid/limits/blid")
@@ -1731,6 +1789,7 @@ describe("BalanceClient", () => {
             count: 1,
             loyaltyProgramId: "loyaltyProgramId",
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/contact-balances")
@@ -1762,6 +1821,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/contact-balances")
@@ -1782,6 +1842,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/contact-balances")
@@ -1802,6 +1863,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/contact-balances")
@@ -1822,6 +1884,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/contact-balances")
@@ -1842,6 +1905,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/contact-balances")
@@ -1881,6 +1945,7 @@ describe("BalanceClient", () => {
             transactionid: "transactionid",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/create-order")
@@ -1927,6 +1992,7 @@ describe("BalanceClient", () => {
             source: "source",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/create-order")
@@ -1959,6 +2025,7 @@ describe("BalanceClient", () => {
             source: "source",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/create-order")
@@ -1991,6 +2058,7 @@ describe("BalanceClient", () => {
             source: "source",
         };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/create-order")
@@ -2023,6 +2091,7 @@ describe("BalanceClient", () => {
             source: "source",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/create-order")
@@ -2049,6 +2118,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { balance: [{ balanceDefinitionId: "balanceDefinitionId", value: 1.1 }] };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2076,6 +2146,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2097,6 +2168,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2118,6 +2190,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2139,6 +2212,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2160,6 +2234,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2191,6 +2266,7 @@ describe("BalanceClient", () => {
             loyaltyProgramId: "loyaltyProgramId",
             organizationId: 1,
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2223,6 +2299,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2246,6 +2323,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2269,6 +2347,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2292,6 +2371,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2315,6 +2395,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/subscriptions/cid/balances")
@@ -2357,6 +2438,7 @@ describe("BalanceClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/transaction-history")
@@ -2367,8 +2449,8 @@ describe("BalanceClient", () => {
 
         const response = await client.balance.getTransactionHistoryApi({
             pid: "pid",
-            contact_id: 1,
-            balance_definition_id: "balance_definition_id",
+            contactId: 1,
+            balanceDefinitionId: "balanceDefinitionId",
         });
         expect(response).toEqual({
             balanceDefinitionId: "balanceDefinitionId",
@@ -2399,6 +2481,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/transaction-history")
@@ -2410,8 +2493,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.UnauthorizedError);
     });
@@ -2421,6 +2504,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/transaction-history")
@@ -2432,8 +2516,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.ForbiddenError);
     });
@@ -2443,6 +2527,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/transaction-history")
@@ -2454,8 +2539,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.NotFoundError);
     });
@@ -2465,6 +2550,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/transaction-history")
@@ -2476,8 +2562,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.UnprocessableEntityError);
     });
@@ -2487,6 +2573,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/balance/programs/pid/transaction-history")
@@ -2498,8 +2585,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.InternalServerError);
     });
@@ -2525,6 +2612,7 @@ describe("BalanceClient", () => {
             status: "status",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions")
@@ -2565,6 +2653,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { amount: 1.1, balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions")
@@ -2588,6 +2677,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { amount: 1.1, balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions")
@@ -2611,6 +2701,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { amount: 1.1, balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions")
@@ -2634,6 +2725,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { amount: 1.1, balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions")
@@ -2657,6 +2749,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { amount: 1.1, balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions")
@@ -2696,6 +2789,7 @@ describe("BalanceClient", () => {
             status: "status",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/cancel")
@@ -2734,6 +2828,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/cancel")
@@ -2755,6 +2850,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/cancel")
@@ -2776,6 +2872,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/cancel")
@@ -2797,6 +2894,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/cancel")
@@ -2818,6 +2916,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/cancel")
@@ -2855,6 +2954,7 @@ describe("BalanceClient", () => {
             status: "status",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/complete")
@@ -2893,6 +2993,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/complete")
@@ -2914,6 +3015,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/complete")
@@ -2935,6 +3037,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/complete")
@@ -2956,6 +3059,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/complete")
@@ -2977,6 +3081,7 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/balance/programs/pid/transactions/tid/complete")

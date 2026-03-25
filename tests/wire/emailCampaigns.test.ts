@@ -12,6 +12,7 @@ describe("EmailCampaignsClient", () => {
         const rawResponseBody = {
             campaigns: [
                 {
+                    attachmentFile: "http://mydomain.com/campaign/attachment/file.pdf",
                     abTesting: true,
                     id: 12,
                     name: "EN - Sales Summer 2017",
@@ -40,6 +41,7 @@ describe("EmailCampaignsClient", () => {
                     sentDate: "2018-12-01T16:30:00Z",
                     shareLink: "http://example.com/fhsgccc.html?t=9865448900",
                     tag: "Newsletter",
+                    tags: ["tag1", "tag2"],
                     testSent: true,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
@@ -142,6 +144,7 @@ describe("EmailCampaignsClient", () => {
                     },
                 },
                 {
+                    attachmentFile: "http://img.mailinblue.com/{clientID-campaignID}/attachments/{fileName}",
                     abTesting: true,
                     id: 22,
                     name: "Weekly - 1",
@@ -170,6 +173,7 @@ describe("EmailCampaignsClient", () => {
                     sentDate: "2018-12-01T16:30:00Z",
                     shareLink: "http://example.com/fhsgccc.html?t=9865448900",
                     tag: "Newsletter",
+                    tags: ["Newsletter", "Weekly"],
                     testSent: false,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
@@ -274,12 +278,14 @@ describe("EmailCampaignsClient", () => {
             ],
             count: 2,
         };
+
         server.mockEndpoint().get("/emailCampaigns").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.emailCampaigns.getEmailCampaigns();
         expect(response).toEqual({
             campaigns: [
                 {
+                    attachmentFile: "http://mydomain.com/campaign/attachment/file.pdf",
                     abTesting: true,
                     id: 12,
                     name: "EN - Sales Summer 2017",
@@ -312,6 +318,7 @@ describe("EmailCampaignsClient", () => {
                     sentDate: "2018-12-01T16:30:00Z",
                     shareLink: "http://example.com/fhsgccc.html?t=9865448900",
                     tag: "Newsletter",
+                    tags: ["tag1", "tag2"],
                     testSent: true,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
@@ -422,6 +429,7 @@ describe("EmailCampaignsClient", () => {
                     },
                 },
                 {
+                    attachmentFile: "http://img.mailinblue.com/{clientID-campaignID}/attachments/{fileName}",
                     abTesting: true,
                     id: 22,
                     name: "Weekly - 1",
@@ -454,6 +462,7 @@ describe("EmailCampaignsClient", () => {
                     sentDate: "2018-12-01T16:30:00Z",
                     shareLink: "http://example.com/fhsgccc.html?t=9865448900",
                     tag: "Newsletter",
+                    tags: ["Newsletter", "Weekly"],
                     testSent: false,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
@@ -573,6 +582,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/emailCampaigns").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -585,6 +595,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "Newsletter - May 2017", sender: {} };
         const rawResponseBody = { id: 5 };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns")
@@ -608,6 +619,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", sender: {} };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns")
@@ -632,6 +644,7 @@ describe("EmailCampaignsClient", () => {
         const rawResponseBody = {
             url: "https://img.mailinblue.com/100000/images/rnb/original/62casdase8wewq9df1c2f27c.jpeg",
         };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/images")
@@ -654,6 +667,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { imageUrl: "imageUrl" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/images")
@@ -675,6 +689,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
+            attachmentFile: "http://img.mailinblue.com/{clientID-campaignID}/attachments/{fileName}",
             abTesting: true,
             id: 22,
             name: "Weekly - 1",
@@ -703,6 +718,7 @@ describe("EmailCampaignsClient", () => {
             sentDate: "2018-12-01T16:30:00Z",
             shareLink: "http://dhh.brevo.com/fhsgccc.html?t=9865448900",
             tag: "Newsletter",
+            tags: ["Newsletter", "Weekly"],
             testSent: false,
             toField: "{FNAME} {LNAME}",
             utmCampaignValue: "myutm",
@@ -794,6 +810,7 @@ describe("EmailCampaignsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000")
@@ -806,6 +823,7 @@ describe("EmailCampaignsClient", () => {
             campaignId: 1000000,
         });
         expect(response).toEqual({
+            attachmentFile: "http://img.mailinblue.com/{clientID-campaignID}/attachments/{fileName}",
             abTesting: true,
             id: 22,
             name: "Weekly - 1",
@@ -838,6 +856,7 @@ describe("EmailCampaignsClient", () => {
             sentDate: "2018-12-01T16:30:00Z",
             shareLink: "http://dhh.brevo.com/fhsgccc.html?t=9865448900",
             tag: "Newsletter",
+            tags: ["Newsletter", "Weekly"],
             testSent: false,
             toField: "{FNAME} {LNAME}",
             utmCampaignValue: "myutm",
@@ -985,6 +1004,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000")
@@ -1005,6 +1025,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000")
@@ -1044,6 +1065,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/emailCampaigns/1000000")
@@ -1065,6 +1087,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/emailCampaigns/1000000")
@@ -1098,6 +1121,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/emailCampaigns/1000000")
@@ -1118,6 +1142,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/emailCampaigns/1000000")
@@ -1163,6 +1188,7 @@ describe("EmailCampaignsClient", () => {
             winningVersion: "B",
             winningVersionRate: "0%",
         };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000/abTestCampaignResult")
@@ -1241,6 +1267,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000/abTestCampaignResult")
@@ -1261,6 +1288,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000/abTestCampaignResult")
@@ -1281,6 +1309,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipientsType: "all" };
         const rawResponseBody = { processId: 78 };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/exportRecipients")
@@ -1304,6 +1333,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipientsType: "all" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/exportRecipients")
@@ -1326,6 +1356,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipientsType: "all" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/exportRecipients")
@@ -1360,6 +1391,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/sendNow")
@@ -1380,6 +1412,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/sendNow")
@@ -1400,6 +1433,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/sendNow")
@@ -1450,6 +1484,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: { body: "body", to: ["to", "to"] } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/sendReport")
@@ -1477,6 +1512,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: { body: "body", to: ["to", "to"] } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/sendReport")
@@ -1524,6 +1560,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/sendTest")
@@ -1546,6 +1583,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/emailCampaigns/1000000/sendTest")
@@ -1570,6 +1608,7 @@ describe("EmailCampaignsClient", () => {
         const rawResponseBody = {
             sharedUrl: "https://my.brevo.com/pt2YU7R5W_guXlowgumy_VX4pFsKu._zd0Gjj96x1_GMmzc1Qps5ZIpj6nx-",
         };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000/sharedUrl")
@@ -1591,6 +1630,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000/sharedUrl")
@@ -1611,6 +1651,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000/sharedUrl")
@@ -1631,6 +1672,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/emailCampaigns/1000000/sharedUrl")
@@ -1671,6 +1713,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/emailCampaigns/1000000/status")
@@ -1693,6 +1736,7 @@ describe("EmailCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/emailCampaigns/1000000/status")

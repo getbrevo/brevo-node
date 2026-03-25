@@ -31,6 +31,7 @@ describe("UserClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/organization/invited/users")
@@ -81,6 +82,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/organization/invited/users")
@@ -99,6 +101,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { credit_notes: ["TEST-123"], status: "OK" };
+
         server
             .mockEndpoint()
             .put("/organization/user/invitation/revoke/email")
@@ -121,6 +124,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/organization/user/invitation/revoke/email")
@@ -141,6 +145,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { all_features_access: true, email: "inviteuser@example.com", privileges: [{}] };
         const rawResponseBody = { invoice_id: "invoice_id", status: "OK" };
+
         server
             .mockEndpoint()
             .post("/organization/user/invitation/send")
@@ -166,6 +171,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { all_features_access: true, email: "email", privileges: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/organization/user/invitation/send")
@@ -189,6 +195,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { credit_notes: ["TEST-123"], status: "OK" };
+
         server
             .mockEndpoint()
             .put("/organization/user/invitation/resend/email")
@@ -212,6 +219,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/organization/user/invitation/resend/email")
@@ -233,6 +241,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { all_features_access: true, email: "inviteuser@example.com", privileges: [{}] };
         const rawResponseBody = { credit_notes: ["TEST-123"], invoice_id: "invoice_id", status: "OK" };
+
         server
             .mockEndpoint()
             .post("/organization/user/update/permissions")
@@ -259,6 +268,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { all_features_access: true, email: "email", privileges: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/organization/user/update/permissions")
@@ -319,6 +329,7 @@ describe("UserClient", () => {
             ],
             status: "active",
         };
+
         server
             .mockEndpoint()
             .get("/organization/user/email/permissions")
@@ -408,6 +419,7 @@ describe("UserClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/organization/user/email/permissions")

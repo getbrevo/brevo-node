@@ -34,38 +34,6 @@ import type * as Brevo from "../../../../index.js";
  *             ids: [1, 2]
  *         }
  *     }
- *
- * @example
- *     {
- *         listId: 1000000,
- *         body: {
- *             all: true
- *         }
- *     }
- *
- * @example
- *     {
- *         listId: 1000000,
- *         body: {
- *             all: true
- *         }
- *     }
- *
- * @example
- *     {
- *         listId: 1000000,
- *         body: {
- *             all: true
- *         }
- *     }
- *
- * @example
- *     {
- *         listId: 1000000,
- *         body: {
- *             all: true
- *         }
- *     }
  */
 export interface RemoveContactFromListRequest {
     /** Id of the list */

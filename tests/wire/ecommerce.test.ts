@@ -30,6 +30,7 @@ describe("EcommerceClient", () => {
             ],
             count: 2,
         };
+
         server.mockEndpoint().get("/categories").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.ecommerce.getCategories();
@@ -61,6 +62,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/categories").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -73,6 +75,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: "CAT123" };
         const rawResponseBody = { id: 21 };
+
         server
             .mockEndpoint()
             .post("/categories")
@@ -95,6 +98,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/categories")
@@ -116,6 +120,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { categories: [{ id: "CAT123" }] };
         const rawResponseBody = { createdCount: 2, updatedCount: 7 };
+
         server
             .mockEndpoint()
             .post("/categories/batch")
@@ -143,6 +148,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { categories: [{ id: "id" }, { id: "id" }] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/categories/batch")
@@ -178,6 +184,7 @@ describe("EcommerceClient", () => {
             name: "Electronics",
             url: "http://mydomain.com/category/clothing",
         };
+
         server.mockEndpoint().get("/categories/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.ecommerce.getCategoryInfo({
@@ -198,6 +205,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/categories/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -212,6 +220,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/categories/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -236,6 +245,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ecommerce/activate")
@@ -254,6 +264,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ecommerce/activate")
@@ -278,6 +289,7 @@ describe("EcommerceClient", () => {
             ],
             totals: { averageBasket: 3.4, ordersCount: 500, revenue: 1700 },
         };
+
         server
             .mockEndpoint()
             .get("/ecommerce/attribution/metrics")
@@ -320,6 +332,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ecommerce/attribution/metrics")
@@ -345,6 +358,7 @@ describe("EcommerceClient", () => {
             revenue: 1.1,
             newCustomersCount: 1.1,
         };
+
         server
             .mockEndpoint()
             .get("/ecommerce/attribution/metrics/email_campaign/sale")
@@ -372,6 +386,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ecommerce/attribution/metrics/email_campaign/conversionSourceId")
@@ -406,6 +421,7 @@ describe("EcommerceClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/ecommerce/attribution/products/email_campaign/sale")
@@ -439,6 +455,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ecommerce/attribution/products/email_campaign/conversionSourceId")
@@ -460,6 +477,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { code: "EUR" };
+
         server
             .mockEndpoint()
             .get("/ecommerce/config/displayCurrency")
@@ -479,6 +497,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ecommerce/config/displayCurrency")
@@ -497,6 +516,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ecommerce/config/displayCurrency")
@@ -515,6 +535,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ecommerce/config/displayCurrency")
@@ -533,6 +554,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { code: "EUR" };
         const rawResponseBody = { code: "EUR" };
+
         server
             .mockEndpoint()
             .post("/ecommerce/config/displayCurrency")
@@ -555,6 +577,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { code: "code" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ecommerce/config/displayCurrency")
@@ -576,6 +599,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { code: "code" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ecommerce/config/displayCurrency")
@@ -597,6 +621,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { code: "code" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ecommerce/config/displayCurrency")
@@ -618,6 +643,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { code: "code" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/ecommerce/config/displayCurrency")
@@ -660,8 +686,8 @@ describe("EcommerceClient", () => {
                     id: "order1803",
                     identifiers: { ext_id: "ab12", loyalty_subscription_id: "1234" },
                     products: [
-                        { price: 100, productId: 21, quantity: 2, variantId: "P100" },
-                        { price: 100, productId: 21, quantity: 2, variantId: "P15756" },
+                        { price: 100, productId: 21, quantity: 2, quantityFloat: 0, variantId: "P100" },
+                        { price: 100, productId: 21, quantity: 0, quantityFloat: 2.52, variantId: "P15756" },
                     ],
                     status: "complete",
                     storeId: "123",
@@ -669,6 +695,7 @@ describe("EcommerceClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/orders").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.ecommerce.getOrders();
@@ -701,12 +728,14 @@ describe("EcommerceClient", () => {
                             price: 100,
                             productId: 21,
                             quantity: 2,
+                            quantityFloat: 0,
                             variantId: "P100",
                         },
                         {
                             price: 100,
                             productId: 21,
-                            quantity: 2,
+                            quantity: 0,
+                            quantityFloat: 2.52,
                             variantId: "P15756",
                         },
                     ],
@@ -723,6 +752,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/orders").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -737,7 +767,7 @@ describe("EcommerceClient", () => {
             amount: 308.42,
             createdAt: "2021-07-29T20:59:23.383Z",
             id: "14",
-            products: [{ price: 99.99, productId: "P1", quantity: 10 }],
+            products: [{ price: 99.99, productId: "P1" }],
             status: "completed",
             updatedAt: "2021-07-30T10:59:23.383Z",
         };
@@ -752,7 +782,6 @@ describe("EcommerceClient", () => {
                 {
                     price: 99.99,
                     productId: "P1",
-                    quantity: 10,
                 },
             ],
             status: "completed",
@@ -769,13 +798,14 @@ describe("EcommerceClient", () => {
             createdAt: "createdAt",
             id: "id",
             products: [
-                { price: 1.1, productId: "productId", quantity: 1.1 },
-                { price: 1.1, productId: "productId", quantity: 1.1 },
+                { price: 1.1, productId: "productId" },
+                { price: 1.1, productId: "productId" },
             ],
             status: "status",
             updatedAt: "updatedAt",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/orders/status")
@@ -794,12 +824,10 @@ describe("EcommerceClient", () => {
                     {
                         price: 1.1,
                         productId: "productId",
-                        quantity: 1.1,
                     },
                     {
                         price: 1.1,
                         productId: "productId",
-                        quantity: 1.1,
                     },
                 ],
                 status: "status",
@@ -817,13 +845,14 @@ describe("EcommerceClient", () => {
                     amount: 308.42,
                     createdAt: "2021-07-29T20:59:23.383Z",
                     id: "14",
-                    products: [{ price: 99.99, productId: "P1", quantity: 10 }],
+                    products: [{ price: 99.99, productId: "P1" }],
                     status: "completed",
                     updatedAt: "2021-07-30T10:59:23.383Z",
                 },
             ],
         };
         const rawResponseBody = { batchId: 1.1, count: 17655 };
+
         server
             .mockEndpoint()
             .post("/orders/status/batch")
@@ -843,7 +872,6 @@ describe("EcommerceClient", () => {
                         {
                             price: 99.99,
                             productId: "P1",
-                            quantity: 10,
                         },
                     ],
                     status: "completed",
@@ -867,8 +895,8 @@ describe("EcommerceClient", () => {
                     createdAt: "createdAt",
                     id: "id",
                     products: [
-                        { price: 1.1, productId: "productId", quantity: 1.1 },
-                        { price: 1.1, productId: "productId", quantity: 1.1 },
+                        { price: 1.1, productId: "productId" },
+                        { price: 1.1, productId: "productId" },
                     ],
                     status: "status",
                     updatedAt: "updatedAt",
@@ -878,8 +906,8 @@ describe("EcommerceClient", () => {
                     createdAt: "createdAt",
                     id: "id",
                     products: [
-                        { price: 1.1, productId: "productId", quantity: 1.1 },
-                        { price: 1.1, productId: "productId", quantity: 1.1 },
+                        { price: 1.1, productId: "productId" },
+                        { price: 1.1, productId: "productId" },
                     ],
                     status: "status",
                     updatedAt: "updatedAt",
@@ -887,6 +915,7 @@ describe("EcommerceClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/orders/status/batch")
@@ -907,12 +936,10 @@ describe("EcommerceClient", () => {
                             {
                                 price: 1.1,
                                 productId: "productId",
-                                quantity: 1.1,
                             },
                             {
                                 price: 1.1,
                                 productId: "productId",
-                                quantity: 1.1,
                             },
                         ],
                         status: "status",
@@ -926,12 +953,10 @@ describe("EcommerceClient", () => {
                             {
                                 price: 1.1,
                                 productId: "productId",
-                                quantity: 1.1,
                             },
                             {
                                 price: 1.1,
                                 productId: "productId",
-                                quantity: 1.1,
                             },
                         ],
                         status: "status",
@@ -950,8 +975,10 @@ describe("EcommerceClient", () => {
             count: 2,
             products: [
                 {
+                    brand: "Adidas",
                     categories: ["279638835374", "279502848174"],
                     createdAt: "2022-06-30T10:29:16.078Z",
+                    description: "Shoes for sports",
                     id: "P11",
                     imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
                     isDeleted: true,
@@ -968,8 +995,10 @@ describe("EcommerceClient", () => {
                     url: "https://mydomain.com/products/alpina-panoma-classic",
                 },
                 {
+                    brand: "Adidas",
                     categories: ["2d79638835374", "27d9502848174"],
                     createdAt: "2022-06-30T10:29:16.078Z",
+                    description: "Shoes for sports",
                     id: "P11",
                     imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
                     isDeleted: true,
@@ -987,6 +1016,7 @@ describe("EcommerceClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/products").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.ecommerce.getProducts();
@@ -994,8 +1024,10 @@ describe("EcommerceClient", () => {
             count: 2,
             products: [
                 {
+                    brand: "Adidas",
                     categories: ["279638835374", "279502848174"],
                     createdAt: "2022-06-30T10:29:16.078Z",
+                    description: "Shoes for sports",
                     id: "P11",
                     imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
                     isDeleted: true,
@@ -1015,8 +1047,10 @@ describe("EcommerceClient", () => {
                     url: "https://mydomain.com/products/alpina-panoma-classic",
                 },
                 {
+                    brand: "Adidas",
                     categories: ["2d79638835374", "27d9502848174"],
                     createdAt: "2022-06-30T10:29:16.078Z",
+                    description: "Shoes for sports",
                     id: "P11",
                     imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
                     isDeleted: true,
@@ -1044,6 +1078,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/products").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1056,6 +1091,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: "P11", name: "Iphone 11" };
         const rawResponseBody = { id: 21 };
+
         server
             .mockEndpoint()
             .post("/products")
@@ -1079,6 +1115,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: "id", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/products")
@@ -1101,6 +1138,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { products: [{ id: "P11", name: "Iphone 11" }] };
         const rawResponseBody = { createdCount: 2, updatedCount: 7 };
+
         server
             .mockEndpoint()
             .post("/products/batch")
@@ -1134,6 +1172,7 @@ describe("EcommerceClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/products/batch")
@@ -1164,8 +1203,10 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
+            brand: "Adidas",
             categories: ["categories"],
             createdAt: "2017-05-12T12:30:00Z",
+            description: "Shoes for sports",
             id: "P11",
             imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
             isDeleted: true,
@@ -1181,14 +1222,17 @@ describe("EcommerceClient", () => {
             stock: 100,
             url: "http://mydomain.com/product/electronics/product1",
         };
+
         server.mockEndpoint().get("/products/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.ecommerce.getProductInfo({
             id: "id",
         });
         expect(response).toEqual({
+            brand: "Adidas",
             categories: ["categories"],
             createdAt: "2017-05-12T12:30:00Z",
+            description: "Shoes for sports",
             id: "P11",
             imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
             isDeleted: true,
@@ -1214,6 +1258,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/products/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1228,6 +1273,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/products/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1262,6 +1308,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/products/id/alerts/back_in_stock")
@@ -1284,6 +1331,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/products/id/alerts/back_in_stock")
@@ -1306,6 +1354,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/products/id/alerts/back_in_stock")
@@ -1328,6 +1377,7 @@ describe("EcommerceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/products/id/alerts/back_in_stock")

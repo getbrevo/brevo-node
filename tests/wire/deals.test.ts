@@ -18,6 +18,7 @@ describe("DealsClient", () => {
                 label: "Deal Name",
             },
         ];
+
         server
             .mockEndpoint()
             .get("/crm/attributes/deals")
@@ -73,6 +74,7 @@ describe("DealsClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/crm/deals").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.deals.getAllDeals();
@@ -109,6 +111,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/deals").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -121,6 +124,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "Deal: Connect with company" };
         const rawResponseBody = { id: "61a5cd07ca1347c82306ad06" };
+
         server
             .mockEndpoint()
             .post("/crm/deals")
@@ -143,6 +147,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/crm/deals")
@@ -183,6 +188,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/crm/deals/link-unlink/id")
@@ -222,6 +228,7 @@ describe("DealsClient", () => {
             linkedCompaniesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
             linkedContactsIds: [1, 2, 3],
         };
+
         server.mockEndpoint().get("/crm/deals/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.deals.getADeal({
@@ -255,6 +262,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/deals/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -269,6 +277,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/deals/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -295,6 +304,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/crm/deals/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -309,6 +319,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/crm/deals/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -336,6 +347,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/crm/deals/id")
@@ -357,6 +369,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/crm/deals/id")
@@ -382,6 +395,7 @@ describe("DealsClient", () => {
             pipeline_name: "Sales Pipeline",
             stages: [{ id: "9e577ff7-8e42-4ab3-be26-2b5e01b42518", name: "New" }],
         };
+
         server
             .mockEndpoint()
             .get("/crm/pipeline/details")
@@ -414,6 +428,7 @@ describe("DealsClient", () => {
                 stages: [{ id: "9e577ff7-8e42-4ab3-be26-2b5e01b42518", name: "New" }],
             },
         ];
+
         server
             .mockEndpoint()
             .get("/crm/pipeline/details/all")
@@ -442,6 +457,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/crm/pipeline/details/all")
@@ -466,6 +482,7 @@ describe("DealsClient", () => {
                 stages: [{ id: "9e577ff7-8e42-4ab3-be26-2b5e01b42518", name: "New" }],
             },
         ];
+
         server
             .mockEndpoint()
             .get("/crm/pipeline/details/pipelineID")
@@ -496,6 +513,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/crm/pipeline/details/pipelineID")

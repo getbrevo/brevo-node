@@ -26,6 +26,7 @@ describe("NotesClient", () => {
                 updatedAt: "2017-05-01T17:05:03Z",
             },
         ];
+
         server.mockEndpoint().get("/crm/notes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.notes.getAllNotes();
@@ -55,6 +56,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/notes").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -67,6 +69,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "In communication with client_dev for resolution of queries." };
         const rawResponseBody = { id: "61a5cd07ca1347c82306ad09" };
+
         server
             .mockEndpoint()
             .post("/crm/notes")
@@ -89,6 +92,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "x" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/crm/notes")
@@ -110,6 +114,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "x" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/crm/notes")
@@ -145,6 +150,7 @@ describe("NotesClient", () => {
             text: "In communication with client_dev for resolution of queries.",
             updatedAt: "2017-05-01T17:05:03Z",
         };
+
         server.mockEndpoint().get("/crm/notes/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.notes.getANote({
@@ -174,6 +180,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/notes/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -188,6 +195,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/crm/notes/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -214,6 +222,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/crm/notes/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -228,6 +237,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/crm/notes/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -258,6 +268,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "x" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/crm/notes/id")
@@ -282,6 +293,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "x" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/crm/notes/id")
@@ -306,6 +318,7 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "x" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .patch("/crm/notes/id")

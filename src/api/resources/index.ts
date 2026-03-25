@@ -33,6 +33,7 @@ export * as emailCampaigns from "./emailCampaigns/index.js";
 export * from "./emailCampaigns/types/index.js";
 export * from "./event/client/requests/index.js";
 export * as event from "./event/index.js";
+export * from "./event/types/index.js";
 export * from "./externalFeeds/client/requests/index.js";
 export * as externalFeeds from "./externalFeeds/index.js";
 export * from "./externalFeeds/types/index.js";

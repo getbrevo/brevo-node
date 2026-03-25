@@ -2,7 +2,7 @@
 
 export interface GetCampaignStats {
     /** Numbers of times your email has been opened automatically through Apple MPP. */
-    appleMppOpens: number;
+    appleMppOpens: number | null;
     /** Number of total clicks for the campaign */
     clickers: number;
     /** Number of complaints (Spam reports) for the campaign */
@@ -18,7 +18,7 @@ export interface GetCampaignStats {
     /** List Id of email campaign (only in case of get email campaign(s)(not for global stats)) */
     listId?: number | undefined;
     /** Percentage of recipients who open the email out of your total number of recipients. Depending on your Campaign settings, they may include Apple MPP opens. */
-    opensRate: number;
+    opensRate: number | null;
     /** Total number of non-delivered campaigns for a particular campaign id. */
     returnBounce?: number | undefined;
     /** Number of sent emails for the campaign */

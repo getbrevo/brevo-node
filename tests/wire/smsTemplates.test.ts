@@ -29,6 +29,7 @@ describe("SmsTemplatesClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/transactionalSMS/templates")
@@ -69,6 +70,7 @@ describe("SmsTemplatesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/transactionalSMS/templates")

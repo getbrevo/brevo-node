@@ -54,6 +54,7 @@ describe("SmsCampaignsClient", () => {
             ],
             count: 12,
         };
+
         server.mockEndpoint().get("/smsCampaigns").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.smsCampaigns.getSmsCampaigns();
@@ -115,6 +116,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/smsCampaigns").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -131,6 +133,7 @@ describe("SmsCampaignsClient", () => {
             sender: "MyShop",
         };
         const rawResponseBody = { id: 5 };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns")
@@ -155,6 +158,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { content: "content", name: "name", sender: "sender" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns")
@@ -197,6 +201,7 @@ describe("SmsCampaignsClient", () => {
                 unsubscriptions: 3,
             },
         };
+
         server
             .mockEndpoint()
             .get("/smsCampaigns/1000000")
@@ -238,6 +243,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smsCampaigns/1000000")
@@ -258,6 +264,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/smsCampaigns/1000000")
@@ -297,6 +304,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/smsCampaigns/1000000")
@@ -318,6 +326,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/smsCampaigns/1000000")
@@ -351,6 +360,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smsCampaigns/1000000")
@@ -371,6 +381,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/smsCampaigns/1000000")
@@ -391,6 +402,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipientsType: "all" };
         const rawResponseBody = { processId: 78 };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/exportRecipients")
@@ -414,6 +426,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipientsType: "all" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/exportRecipients")
@@ -436,6 +449,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { recipientsType: "all" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/exportRecipients")
@@ -470,6 +484,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/sendNow")
@@ -490,6 +505,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/sendNow")
@@ -510,6 +526,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/sendNow")
@@ -560,6 +577,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: { body: "body", to: ["to", "to"] } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/sendReport")
@@ -587,6 +605,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: { body: "body", to: ["to", "to"] } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/sendReport")
@@ -633,6 +652,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/sendTest")
@@ -654,6 +674,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/smsCampaigns/1000000/sendTest")
@@ -695,6 +716,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/smsCampaigns/1000000/status")
@@ -717,6 +739,7 @@ describe("SmsCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/smsCampaigns/1000000/status")

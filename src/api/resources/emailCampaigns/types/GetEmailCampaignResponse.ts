@@ -3,6 +3,8 @@
 import type * as Brevo from "../../../index.js";
 
 export interface GetEmailCampaignResponse {
+    /** Url of the attachment file. Only available if the campaign has an attachment. */
+    attachmentFile?: string | undefined;
     /** Status of A/B Test for the campaign. abTesting = false means it is disabled, & abTesting = true means it is enabled. */
     abTesting?: boolean | undefined;
     /** ID of the campaign */
@@ -58,6 +60,8 @@ export interface GetEmailCampaignResponse {
     shareLink?: string | undefined;
     /** Tag of the campaign */
     tag?: string | undefined;
+    /** List of tags of the campaign */
+    tags?: string[] | undefined;
     /** Retrieved the status of test email sending. (true=Test email has been sent  false=Test email has not been sent) */
     testSent: boolean;
     /** Customisation of the "to" field of the campaign */
@@ -82,6 +86,9 @@ export namespace GetEmailCampaignResponse {
         Queued: "queued",
         Suspended: "suspended",
         InProcess: "in_process",
+        InReview: "in_review",
+        Cancelling: "cancelling",
+        Cancelled: "cancelled",
     } as const;
     export type Status = (typeof Status)[keyof typeof Status];
     /** Type of campaign */

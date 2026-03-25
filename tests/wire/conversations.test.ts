@@ -54,6 +54,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/conversations/agentOnlinePing")
@@ -125,6 +126,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .post("/conversations/messages")
@@ -275,6 +277,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .post("/conversations/messages")
@@ -426,6 +429,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .post("/conversations/messages")
@@ -523,6 +527,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: { key: "value" }, visitorId: { key: "value" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/conversations/messages")
@@ -597,6 +602,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .get("/conversations/messages/id")
@@ -690,6 +696,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/conversations/messages/id")
@@ -710,6 +717,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/conversations/messages/id")
@@ -778,6 +786,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .put("/conversations/messages/id")
@@ -873,6 +882,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "text" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/conversations/messages/id")
@@ -895,6 +905,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "text" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/conversations/messages/id")
@@ -929,6 +940,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/conversations/messages/id")
@@ -949,6 +961,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/conversations/messages/id")
@@ -1021,6 +1034,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .post("/conversations/pushedMessages")
@@ -1168,6 +1182,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .post("/conversations/pushedMessages")
@@ -1315,6 +1330,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .post("/conversations/pushedMessages")
@@ -1411,6 +1427,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: { key: "value" }, visitorId: { key: "value" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/conversations/pushedMessages")
@@ -1485,6 +1502,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .get("/conversations/pushedMessages/id")
@@ -1578,6 +1596,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/conversations/pushedMessages/id")
@@ -1598,6 +1617,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/conversations/pushedMessages/id")
@@ -1668,6 +1688,7 @@ describe("ConversationsClient", () => {
             type: "agent",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
+
         server
             .mockEndpoint()
             .put("/conversations/pushedMessages/id")
@@ -1763,6 +1784,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "text" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/conversations/pushedMessages/id")
@@ -1785,6 +1807,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { text: "text" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/conversations/pushedMessages/id")
@@ -1819,6 +1842,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/conversations/pushedMessages/id")
@@ -1839,6 +1863,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/conversations/pushedMessages/id")
@@ -1859,6 +1884,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { groupId: "PjRBMhWGen6aRHjif" };
         const rawResponseBody = { groupId: "PjRBMhWGen6aRHjif", visitorId: "AXCR3k9bpSY7bpuh7" };
+
         server
             .mockEndpoint()
             .put("/conversations/visitorGroup")
@@ -1882,6 +1908,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { groupId: { key: "value" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/conversations/visitorGroup")
@@ -1905,6 +1932,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { groupId: { key: "value" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/conversations/visitorGroup")
