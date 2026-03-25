@@ -10,6 +10,7 @@ describe("TransactionalWhatsAppClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { contactNumbers: ["contactNumbers"], senderNumber: "senderNumber", templateId: 123 };
         const rawResponseBody = { messageId: "23befbae-1505-47a8-bd27-e30ef739f32c" };
+
         server
             .mockEndpoint()
             .post("/whatsapp/sendMessage")
@@ -38,6 +39,7 @@ describe("TransactionalWhatsAppClient", () => {
             templateId: 1,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/whatsapp/sendMessage")
@@ -104,6 +106,7 @@ describe("TransactionalWhatsAppClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/whatsapp/statistics/events")
@@ -164,6 +167,7 @@ describe("TransactionalWhatsAppClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/whatsapp/statistics/events")

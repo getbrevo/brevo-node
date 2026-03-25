@@ -53,6 +53,7 @@ describe("DomainsClient", () => {
             current_page: 1,
             total_pages: 1,
         };
+
         server.mockEndpoint().get("/senders/domains").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.domains.getDomains();
@@ -107,6 +108,7 @@ describe("DomainsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/senders/domains").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -139,6 +141,7 @@ describe("DomainsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/senders/domains")
@@ -204,6 +207,7 @@ describe("DomainsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/senders/domains")
@@ -269,6 +273,7 @@ describe("DomainsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/senders/domains")
@@ -334,6 +339,7 @@ describe("DomainsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/senders/domains")
@@ -399,6 +405,7 @@ describe("DomainsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/senders/domains")
@@ -444,6 +451,7 @@ describe("DomainsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/senders/domains")
@@ -484,6 +492,7 @@ describe("DomainsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/senders/domains/domainName")
@@ -546,6 +555,7 @@ describe("DomainsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/senders/domains/domainName")
@@ -589,6 +599,7 @@ describe("DomainsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/senders/domains/domainName")
@@ -609,6 +620,7 @@ describe("DomainsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/senders/domains/domainName")
@@ -641,6 +653,7 @@ describe("DomainsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/senders/domains/domainName")
@@ -661,6 +674,7 @@ describe("DomainsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/senders/domains/domainName")
@@ -684,6 +698,7 @@ describe("DomainsClient", () => {
             domain_name: "mycompany.com",
             message: "Domain has been authenticated successfully.",
         };
+
         server
             .mockEndpoint()
             .put("/senders/domains/domainName/authenticate")
@@ -709,6 +724,7 @@ describe("DomainsClient", () => {
             domain_name: "newsletter.example.com",
             message: "Domain authentication completed. Your domain is now ready for sending.",
         };
+
         server
             .mockEndpoint()
             .put("/senders/domains/domainName/authenticate")
@@ -731,6 +747,7 @@ describe("DomainsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/senders/domains/domainName/authenticate")
@@ -751,6 +768,7 @@ describe("DomainsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/senders/domains/domainName/authenticate")

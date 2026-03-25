@@ -18,6 +18,7 @@ export namespace UpdateCampaignStatus {
         Queued: "queued",
         Replicate: "replicate",
         ReplicateTemplate: "replicateTemplate",
+        Cancel: "cancel",
         Draft: "draft",
     } as const;
     export type Status = (typeof Status)[keyof typeof Status];

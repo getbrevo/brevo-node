@@ -34,6 +34,7 @@ describe("SendersClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/senders").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.senders.getSenders();
@@ -107,6 +108,7 @@ describe("SendersClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/senders").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.senders.getSenders();
@@ -152,6 +154,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/senders").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -164,6 +167,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: "support@example.com", name: "Support Team" };
         const rawResponseBody = { dkimError: false, id: 15, spfError: false };
+
         server
             .mockEndpoint()
             .post("/senders")
@@ -193,6 +197,7 @@ describe("SendersClient", () => {
             name: "Marketing Team",
         };
         const rawResponseBody = { dkimError: false, id: 15, spfError: false };
+
         server
             .mockEndpoint()
             .post("/senders")
@@ -232,6 +237,7 @@ describe("SendersClient", () => {
             name: "Newsletter",
         };
         const rawResponseBody = { dkimError: false, id: 15, spfError: false };
+
         server
             .mockEndpoint()
             .post("/senders")
@@ -269,6 +275,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: "support@example.com", name: "Support Team" };
         const rawResponseBody = { dkimError: false, id: 15, spfError: false };
+
         server
             .mockEndpoint()
             .post("/senders")
@@ -294,6 +301,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: "support@example.com", name: "Support Team" };
         const rawResponseBody = { dkimError: true, id: 16, spfError: false };
+
         server
             .mockEndpoint()
             .post("/senders")
@@ -319,6 +327,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { email: "email", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/senders")
@@ -343,6 +352,7 @@ describe("SendersClient", () => {
         const rawResponseBody = {
             ips: [{ active: true, domain: "mailing.enterprise.com", id: 3, ip: "192.168.1.100" }],
         };
+
         server.mockEndpoint().get("/senders/ips").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.senders.getIps();
@@ -369,6 +379,7 @@ describe("SendersClient", () => {
                 { active: false, domain: "notifications.enterprise.com", id: 6, ip: "192.168.1.102" },
             ],
         };
+
         server.mockEndpoint().get("/senders/ips").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.senders.getIps();
@@ -401,6 +412,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/senders/ips").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -516,6 +528,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/senders/1000000")
@@ -537,6 +550,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/senders/1000000")
@@ -570,6 +584,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/senders/1000000")
@@ -590,6 +605,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/senders/1000000")
@@ -610,6 +626,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { ips: [{ domain: "mailing.enterprise.com", id: 3, ip: "192.168.1.100", weight: 75 }] };
+
         server
             .mockEndpoint()
             .get("/senders/1000000/ips")
@@ -643,6 +660,7 @@ describe("SendersClient", () => {
                 { domain: "newsletter.enterprise.com", id: 5, ip: "192.168.1.101", weight: 60 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/senders/1000000/ips")
@@ -677,6 +695,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/senders/1000000/ips")
@@ -697,6 +716,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/senders/1000000/ips")
@@ -757,6 +777,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { otp: 999999 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/senders/1000000/validate")
@@ -779,6 +800,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { otp: 999999 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/senders/1000000/validate")

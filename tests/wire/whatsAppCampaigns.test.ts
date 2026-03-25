@@ -27,6 +27,7 @@ describe("WhatsAppCampaignsClient", () => {
             ],
             count: 23,
         };
+
         server.mockEndpoint().get("/whatsappCampaigns").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.whatsAppCampaigns.getWhatsAppCampaigns();
@@ -61,6 +62,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/whatsappCampaigns").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -78,6 +80,7 @@ describe("WhatsAppCampaignsClient", () => {
             templateId: 19,
         };
         const rawResponseBody = { id: 5 };
+
         server
             .mockEndpoint()
             .post("/whatsappCampaigns")
@@ -103,6 +106,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", recipients: {}, scheduledAt: "scheduledAt", templateId: 1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/whatsappCampaigns")
@@ -134,6 +138,7 @@ describe("WhatsAppCampaignsClient", () => {
             whatsappBusinessAccountId: "whatsappBusinessAccountId",
             whatsappBusinessAccountStatus: "APPROVED",
         };
+
         server
             .mockEndpoint()
             .get("/whatsappCampaigns/config")
@@ -158,6 +163,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/whatsappCampaigns/config")
@@ -181,6 +187,7 @@ describe("WhatsAppCampaignsClient", () => {
             name: "Test template",
         };
         const rawResponseBody = { id: 5 };
+
         server
             .mockEndpoint()
             .post("/whatsappCampaigns/template")
@@ -206,6 +213,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { bodyText: "bodyText", category: "MARKETING", language: "language", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/whatsappCampaigns/template")
@@ -254,6 +262,7 @@ describe("WhatsAppCampaignsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/whatsappCampaigns/template-list")
@@ -295,6 +304,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/whatsappCampaigns/template-list")
@@ -330,6 +340,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/whatsappCampaigns/template/approval/1000000")
@@ -375,6 +386,7 @@ describe("WhatsAppCampaignsClient", () => {
                 name: "official_campaign8",
             },
         };
+
         server
             .mockEndpoint()
             .get("/whatsappCampaigns/1000000")
@@ -443,6 +455,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/whatsappCampaigns/1000000")
@@ -463,6 +476,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/whatsappCampaigns/1000000")
@@ -502,6 +516,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/whatsappCampaigns/1000000")
@@ -535,6 +550,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/whatsappCampaigns/1000000")
@@ -555,6 +571,7 @@ describe("WhatsAppCampaignsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/whatsappCampaigns/1000000")

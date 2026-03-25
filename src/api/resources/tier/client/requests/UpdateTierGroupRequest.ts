@@ -20,6 +20,8 @@ export interface UpdateTierGroupRequest {
     downgradeStrategy: UpdateTierGroupRequest.DowngradeStrategy;
     /** Name of the tier group */
     name: string;
+    /** Additional metadata for the tier group. */
+    meta?: UpdateTierGroupRequest.Meta;
     /** Order of the tiers in the group in ascending order */
     tierOrder: string[];
     /** Select real_time to upgrade tier on real time balance updates. Select membership_anniversary to upgrade tier on subscription anniversary. Select tier_anniversary to upgrade tier on tier anniversary. */
@@ -34,6 +36,17 @@ export namespace UpdateTierGroupRequest {
         TierAnniversary: "tier_anniversary",
     } as const;
     export type DowngradeStrategy = (typeof DowngradeStrategy)[keyof typeof DowngradeStrategy];
+
+    /**
+     * Additional metadata for the tier group.
+     */
+    export interface Meta {
+        /** Indicates whether the tier group is internal. */
+        isInternal?: boolean | undefined;
+        /** Accepts any additional properties */
+        [key: string]: any;
+    }
+
     /** Select real_time to upgrade tier on real time balance updates. Select membership_anniversary to upgrade tier on subscription anniversary. Select tier_anniversary to upgrade tier on tier anniversary. */
     export const UpgradeStrategy = {
         RealTime: "real_time",

@@ -23,4 +23,6 @@ export interface GetLoyaltyBalanceProgramsPidActiveBalanceRequest {
     contact_id: number;
     /** Balance Definition ID */
     balance_definition_id: string;
+    /** Include balances tied to internal definitions. */
+    includeInternal?: boolean;
 }

@@ -23,6 +23,98 @@ export class EventClient {
     }
 
     /**
+     * <Note>
+     * This endpoint currently only supports custom events.
+     * </Note>
+     *
+     * Retrieve a list of events filtered by various criteria.
+     *
+     * @param {Brevo.GetEventsRequest} request
+     * @param {EventClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Brevo.BadRequestError}
+     * @throws {@link Brevo.UnauthorizedError}
+     * @throws {@link Brevo.InternalServerError}
+     *
+     * @example
+     *     await client.event.getEvents()
+     */
+    public getEvents(
+        request: Brevo.GetEventsRequest = {},
+        requestOptions?: EventClient.RequestOptions,
+    ): core.HttpResponsePromise<Brevo.GetEventsList> {
+        return core.HttpResponsePromise.fromPromise(this.__getEvents(request, requestOptions));
+    }
+
+    private async __getEvents(
+        request: Brevo.GetEventsRequest = {},
+        requestOptions?: EventClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Brevo.GetEventsList>> {
+        const {
+            contact_id: contactId,
+            event_name: eventName,
+            object_type: objectType,
+            startDate,
+            endDate,
+            limit,
+            offset,
+        } = request;
+        const _queryParams: Record<string, unknown> = {
+            contact_id: contactId,
+            event_name: eventName,
+            object_type: objectType,
+            startDate,
+            endDate,
+            limit,
+            offset,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BrevoEnvironment.Default,
+                "events",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: _response.body as Brevo.GetEventsList, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 401:
+                    throw new Brevo.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Brevo.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.BrevoError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/events");
+    }
+
+    /**
      * Create an event to track a contact's interaction.
      *
      * @param {Brevo.CreateEventRequest} request
@@ -93,5 +185,78 @@ export class EventClient {
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/events");
+    }
+
+    /**
+     * Create multiple events to track contacts' interactions in a single request.
+     *
+     * @param {Brevo.CreateBatchEventsRequestItem[]} request
+     * @param {EventClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Brevo.BadRequestError}
+     * @throws {@link Brevo.UnauthorizedError}
+     *
+     * @example
+     *     await client.event.createBatchEvents([{
+     *             event_name: "order_created",
+     *             identifiers: {}
+     *         }])
+     */
+    public createBatchEvents(
+        request: Brevo.CreateBatchEventsRequestItem[],
+        requestOptions?: EventClient.RequestOptions,
+    ): core.HttpResponsePromise<Brevo.BatchAcceptedResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__createBatchEvents(request, requestOptions));
+    }
+
+    private async __createBatchEvents(
+        request: Brevo.CreateBatchEventsRequestItem[],
+        requestOptions?: EventClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Brevo.BatchAcceptedResponse>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BrevoEnvironment.Default,
+                "events/batch",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: _response.body as Brevo.BatchAcceptedResponse, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 401:
+                    throw new Brevo.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.BrevoError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/events/batch");
     }
 }

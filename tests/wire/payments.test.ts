@@ -14,6 +14,7 @@ describe("PaymentsClient", () => {
             reference: "Invoice #INV0001",
         };
         const rawResponseBody = { id: 122, url: "https://pay.brevo.com/payment/6d4ec0b2b48ef803df4103ve" };
+
         server
             .mockEndpoint()
             .post("/payments/requests")
@@ -46,6 +47,7 @@ describe("PaymentsClient", () => {
             reference: "reference",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/payments/requests")
@@ -76,6 +78,7 @@ describe("PaymentsClient", () => {
             reference: "reference",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/payments/requests")
@@ -106,6 +109,7 @@ describe("PaymentsClient", () => {
             reference: "reference",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/payments/requests")
@@ -140,6 +144,7 @@ describe("PaymentsClient", () => {
             reference: "Invoice #INV0001\n",
             status: "paid",
         };
+
         server
             .mockEndpoint()
             .get("/payments/requests/050db7b0-9bb7-4c1e-9c68-5a8dace8c1dc")
@@ -175,6 +180,7 @@ describe("PaymentsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/payments/requests/id")
@@ -195,6 +201,7 @@ describe("PaymentsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/payments/requests/id")
@@ -215,6 +222,7 @@ describe("PaymentsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/payments/requests/id")
@@ -235,6 +243,7 @@ describe("PaymentsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/payments/requests/id")
@@ -272,6 +281,7 @@ describe("PaymentsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/payments/requests/id")
@@ -292,6 +302,7 @@ describe("PaymentsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/payments/requests/id")
@@ -312,6 +323,7 @@ describe("PaymentsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/payments/requests/id")

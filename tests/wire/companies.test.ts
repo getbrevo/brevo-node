@@ -33,6 +33,7 @@ describe("CompaniesClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/companies").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.companies.getAllCompanies();
@@ -67,6 +68,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/companies").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -79,6 +81,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "company" };
         const rawResponseBody = { id: "61a5cd07ca1347c82306ad06" };
+
         server
             .mockEndpoint()
             .post("/companies")
@@ -101,6 +104,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/companies")
@@ -141,6 +145,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/companies/link-unlink/id")
@@ -177,6 +182,7 @@ describe("CompaniesClient", () => {
             linkedContactsIds: [1, 2, 3],
             linkedDealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
         };
+
         server.mockEndpoint().get("/companies/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.companies.getACompany({
@@ -205,6 +211,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/companies/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -219,6 +226,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/companies/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -245,6 +253,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/companies/id").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -259,6 +268,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/companies/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -288,6 +298,7 @@ describe("CompaniesClient", () => {
             linkedContactsIds: [1, 2, 3],
             linkedDealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
         };
+
         server
             .mockEndpoint()
             .patch("/companies/id")
@@ -323,6 +334,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/companies/id")
@@ -344,6 +356,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/companies/id")
@@ -365,6 +378,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { attributeType: "text", label: "Attribute Label", objectType: "companies" };
         const rawResponseBody = { id: "61a5cd07ca1347c82306ad07" };
+
         server
             .mockEndpoint()
             .post("/crm/attributes")
@@ -389,6 +403,7 @@ describe("CompaniesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { attributeType: "text", label: "label", objectType: "companies" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/crm/attributes")
@@ -407,6 +422,123 @@ describe("CompaniesClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
+    test("deleteAnAttribute (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        server.mockEndpoint().delete("/crm/attributes/id").respondWith().statusCode(200).build();
+
+        const response = await client.companies.deleteAnAttribute({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deleteAnAttribute (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/crm/attributes/id")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.deleteAnAttribute({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("deleteAnAttribute (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/crm/attributes/id")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.deleteAnAttribute({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.NotFoundError);
+    });
+
+    test("updateAnAttribute (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
+
+        server
+            .mockEndpoint()
+            .patch("/crm/attributes/id")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .build();
+
+        const response = await client.companies.updateAnAttribute({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("updateAnAttribute (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/crm/attributes/id")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.updateAnAttribute({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("updateAnAttribute (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/crm/attributes/id")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.updateAnAttribute({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.NotFoundError);
+    });
+
     test("getCompanyAttributes", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
@@ -420,6 +552,7 @@ describe("CompaniesClient", () => {
                 label: "Company Name",
             },
         ];
+
         server
             .mockEndpoint()
             .get("/crm/attributes/companies")

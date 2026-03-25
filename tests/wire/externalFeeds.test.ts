@@ -62,6 +62,7 @@ describe("ExternalFeedsClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/feeds").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.externalFeeds.getAllExternalFeeds({
@@ -144,6 +145,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/feeds").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -156,6 +158,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/feeds").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -174,6 +177,7 @@ describe("ExternalFeedsClient", () => {
             cache: true,
         };
         const rawResponseBody = { id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6" };
+
         server
             .mockEndpoint()
             .post("/feeds")
@@ -206,6 +210,7 @@ describe("ExternalFeedsClient", () => {
             cache: true,
         };
         const rawResponseBody = { id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6" };
+
         server
             .mockEndpoint()
             .post("/feeds")
@@ -238,6 +243,7 @@ describe("ExternalFeedsClient", () => {
             cache: true,
         };
         const rawResponseBody = { id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6" };
+
         server
             .mockEndpoint()
             .post("/feeds")
@@ -264,6 +270,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/feeds")
@@ -298,6 +305,7 @@ describe("ExternalFeedsClient", () => {
             createdAt: "2025-09-18T13:29:27Z",
             modifiedAt: "2025-09-18T13:29:27Z",
         };
+
         server
             .mockEndpoint()
             .get("/feeds/b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6")
@@ -341,6 +349,7 @@ describe("ExternalFeedsClient", () => {
             createdAt: "2025-09-17T16:03:25Z",
             modifiedAt: "2025-09-17T16:03:25Z",
         };
+
         server
             .mockEndpoint()
             .get("/feeds/b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6")
@@ -384,6 +393,7 @@ describe("ExternalFeedsClient", () => {
             createdAt: "2025-09-05T09:06:42Z",
             modifiedAt: "2025-09-05T09:06:42Z",
         };
+
         server
             .mockEndpoint()
             .get("/feeds/b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6")
@@ -415,6 +425,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/feeds/uuid").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -429,6 +440,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/feeds/uuid").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -586,6 +598,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/feeds/uuid")
@@ -607,6 +620,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/feeds/uuid")
@@ -645,6 +659,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/feeds/uuid").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -659,6 +674,7 @@ describe("ExternalFeedsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/feeds/uuid").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

@@ -12,4 +12,6 @@ export interface GetSubscriptionBalancesRequest {
     pid: string;
     /** Contact Id */
     cid: string;
+    /** Include balances tied to internal definitions. */
+    includeInternal?: boolean;
 }

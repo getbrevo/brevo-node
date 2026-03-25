@@ -36,6 +36,7 @@ describe("ContactsClient", () => {
             ],
             count: 3,
         };
+
         server.mockEndpoint().get("/contacts").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getContacts();
@@ -73,6 +74,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/contacts").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -85,6 +87,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server.mockEndpoint().get("/contacts").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -97,6 +100,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { id: 21 };
+
         server
             .mockEndpoint()
             .post("/contacts")
@@ -117,6 +121,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts")
@@ -136,6 +141,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { code: "invalid_parameter", message: "message" };
+
         server
             .mockEndpoint()
             .post("/contacts")
@@ -210,6 +216,7 @@ describe("ContactsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/contacts/attributes")
@@ -336,6 +343,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/attributes/normal/attributeName")
@@ -378,6 +386,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/contacts/attributes/category/attributeName")
@@ -400,6 +409,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/contacts/attributes/category/attributeName")
@@ -435,6 +445,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/attributes/normal/attributeName")
@@ -456,6 +467,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/attributes/normal/attributeName")
@@ -496,6 +508,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/attributes/multiple-choice/multipleChoiceAttribute/multipleChoiceAttributeOption")
@@ -518,6 +531,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/attributes/multiple-choice/multipleChoiceAttribute/multipleChoiceAttributeOption")
@@ -551,6 +565,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/batch")
@@ -602,6 +617,7 @@ describe("ContactsClient", () => {
             templateId: 1000000,
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/doubleOptinConfirmation")
@@ -626,6 +642,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { customContactFilter: {} };
         const rawResponseBody = { processId: 78 };
+
         server
             .mockEndpoint()
             .post("/contacts/export")
@@ -648,6 +665,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { customContactFilter: {} };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/export")
@@ -669,6 +687,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { customContactFilter: {} };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/contacts/export")
@@ -696,6 +715,7 @@ describe("ContactsClient", () => {
                 { id: 29, name: "Prestashop", totalBlacklisted: 10, totalSubscribers: 6543, uniqueSubscribers: 6553 },
             ],
         };
+
         server.mockEndpoint().get("/contacts/folders").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getFolders();
@@ -725,6 +745,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/contacts/folders").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -737,6 +758,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { id: 5 };
+
         server
             .mockEndpoint()
             .post("/contacts/folders")
@@ -757,6 +779,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/folders")
@@ -782,6 +805,7 @@ describe("ContactsClient", () => {
             totalSubscribers: 16778,
             uniqueSubscribers: 17765,
         };
+
         server
             .mockEndpoint()
             .get("/contacts/folders/1000000")
@@ -807,6 +831,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/folders/1000000")
@@ -827,6 +852,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/folders/1000000")
@@ -867,6 +893,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/contacts/folders/1000000")
@@ -889,6 +916,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/contacts/folders/1000000")
@@ -923,6 +951,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/folders/1000000")
@@ -943,6 +972,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/folders/1000000")
@@ -970,6 +1000,7 @@ describe("ContactsClient", () => {
                 { id: 22, name: "VIP_Customer", totalBlacklisted: 72, totalSubscribers: 8753, uniqueSubscribers: 8826 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/contacts/folders/1000000/lists")
@@ -1014,6 +1045,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/folders/1000000/lists")
@@ -1034,6 +1066,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/folders/1000000/lists")
@@ -1054,6 +1087,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { processId: 78 };
+
         server
             .mockEndpoint()
             .post("/contacts/import")
@@ -1074,6 +1108,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/import")
@@ -1113,6 +1148,7 @@ describe("ContactsClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/contacts/lists").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getLists();
@@ -1144,6 +1180,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/contacts/lists").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1156,6 +1193,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { folderId: 2, name: "Magento Customer - ES" };
         const rawResponseBody = { id: 5 };
+
         server
             .mockEndpoint()
             .post("/contacts/lists")
@@ -1179,6 +1217,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { folderId: 1000000, name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/lists")
@@ -1258,6 +1297,7 @@ describe("ContactsClient", () => {
             dynamicList: false,
             folderId: 1,
         };
+
         server
             .mockEndpoint()
             .get("/contacts/lists/1000000")
@@ -1334,6 +1374,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/lists/1000000")
@@ -1354,6 +1395,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/lists/1000000")
@@ -1393,6 +1435,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/contacts/lists/1000000")
@@ -1414,6 +1457,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/contacts/lists/1000000")
@@ -1447,6 +1491,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/lists/1000000")
@@ -1467,6 +1512,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/lists/1000000")
@@ -1524,6 +1570,7 @@ describe("ContactsClient", () => {
             ],
             count: 17655,
         };
+
         server
             .mockEndpoint()
             .get("/contacts/lists/1000000/contacts")
@@ -1580,6 +1627,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/lists/1000000/contacts")
@@ -1600,6 +1648,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/lists/1000000/contacts")
@@ -1627,6 +1676,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/add")
@@ -1664,6 +1714,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/add")
@@ -1701,6 +1752,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/add")
@@ -1738,6 +1790,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/add")
@@ -1775,6 +1828,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/add")
@@ -1812,6 +1866,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/add")
@@ -1842,6 +1897,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/add")
@@ -1864,6 +1920,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/add")
@@ -1893,6 +1950,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -1930,6 +1988,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -1967,6 +2026,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -2004,6 +2064,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -2041,6 +2102,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -2078,6 +2140,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -2115,6 +2178,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -2152,6 +2216,7 @@ describe("ContactsClient", () => {
                 total: 27,
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -2182,6 +2247,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -2204,6 +2270,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/contacts/lists/1000000/contacts/remove")
@@ -2232,6 +2299,7 @@ describe("ContactsClient", () => {
                 { categoryName: "Name2", id: 50, segmentName: "Segment2", updatedAt: "2017-03-12T12:30:00Z" },
             ],
         };
+
         server.mockEndpoint().get("/contacts/segments").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getSegments();
@@ -2259,6 +2327,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/contacts/segments").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2313,6 +2382,7 @@ describe("ContactsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/contacts/identifier")
@@ -2421,6 +2491,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/identifier")
@@ -2441,6 +2512,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/identifier")
@@ -2480,6 +2552,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/contacts/identifier")
@@ -2501,6 +2574,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/contacts/identifier")
@@ -2522,6 +2596,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { code: "invalid_parameter", message: "message" };
+
         server
             .mockEndpoint()
             .put("/contacts/identifier")
@@ -2555,6 +2630,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/identifier")
@@ -2575,6 +2651,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/contacts/identifier")
@@ -2595,6 +2672,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .delete("/contacts/identifier")
@@ -2647,6 +2725,7 @@ describe("ContactsClient", () => {
                 userUnsubscription: [{ campaignId: 3, eventTime: "2017-03-12T20:15:13Z", ip: "165.87.3.15" }],
             },
         };
+
         server
             .mockEndpoint()
             .get("/contacts/identifier/campaignStats")
@@ -2754,6 +2833,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/identifier/campaignStats")
@@ -2774,6 +2854,7 @@ describe("ContactsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/contacts/identifier/campaignStats")

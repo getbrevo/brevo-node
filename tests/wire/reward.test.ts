@@ -10,6 +10,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { count: 1000000 };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/code-pools/cpid/codes-count")
@@ -32,6 +33,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/code-pools/cpid/codes-count")
@@ -53,6 +55,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/code-pools/cpid/codes-count")
@@ -74,6 +77,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/code-pools/cpid/codes-count")
@@ -95,6 +99,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/code-pools/cpid/codes-count")
@@ -116,6 +121,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/code-pools/cpid/codes-count")
@@ -152,6 +158,7 @@ describe("RewardClient", () => {
             ],
             totalCount: 1,
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/offers")
@@ -186,6 +193,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/offers")
@@ -206,6 +214,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/offers")
@@ -226,6 +235,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/offers")
@@ -246,6 +256,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/offers")
@@ -266,6 +277,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/offers")
@@ -286,6 +298,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/offers")
@@ -315,6 +328,7 @@ describe("RewardClient", () => {
             publicName: "publicName",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/offers")
@@ -345,6 +359,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/offers")
@@ -367,6 +382,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/offers")
@@ -389,6 +405,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/offers")
@@ -411,6 +428,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/offers")
@@ -445,6 +463,7 @@ describe("RewardClient", () => {
             updatedAt: "2024-01-15T09:30:00Z",
             value: 1.1,
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/attribute")
@@ -480,6 +499,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { rewardId: "rewardId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/attribute")
@@ -502,6 +522,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { rewardId: "rewardId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/attribute")
@@ -524,6 +545,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { rewardId: "rewardId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/attribute")
@@ -546,6 +568,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { rewardId: "rewardId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/attribute")
@@ -568,6 +591,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { rewardId: "rewardId" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/attribute")
@@ -590,6 +614,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { rewardId: "rewardId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/attribute")
@@ -627,6 +652,7 @@ describe("RewardClient", () => {
             status: "status",
             updatedAt: "2024-01-15T09:30:00Z",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -664,6 +690,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -685,6 +712,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -706,6 +734,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -727,6 +756,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -748,6 +778,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -769,6 +800,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -790,6 +822,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -811,6 +844,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem")
@@ -847,6 +881,7 @@ describe("RewardClient", () => {
             status: "status",
             updatedAt: "2024-01-15T09:30:00Z",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -884,6 +919,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -905,6 +941,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -926,6 +963,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -947,6 +985,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -968,6 +1007,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -989,6 +1029,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -1010,6 +1051,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -1031,6 +1073,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/redeem/tid/complete")
@@ -1069,6 +1112,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/offer/programs/pid/rewards/revoke")
@@ -1089,6 +1133,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/offer/programs/pid/rewards/revoke")
@@ -1109,6 +1154,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { authorize: true };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/validate")
@@ -1131,6 +1177,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/validate")
@@ -1152,6 +1199,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/validate")
@@ -1173,6 +1221,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/validate")
@@ -1194,6 +1243,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/validate")
@@ -1215,6 +1265,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/validate")
@@ -1236,6 +1287,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/offer/programs/pid/rewards/validate")
@@ -1330,6 +1382,7 @@ describe("RewardClient", () => {
             value: 1.1,
             valueType: "valueType",
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/rewards/rid")
@@ -1443,6 +1496,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/rewards/rid")
@@ -1464,6 +1518,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/rewards/rid")
@@ -1485,6 +1540,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/rewards/rid")
@@ -1506,6 +1562,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/rewards/rid")
@@ -1527,6 +1584,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/rewards/rid")
@@ -1548,6 +1606,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/rewards/rid")
@@ -1588,6 +1647,7 @@ describe("RewardClient", () => {
             loyaltyProgramId: "loyaltyProgramId",
             loyaltySubscriptionId: "loyaltySubscriptionId",
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/vouchers")
@@ -1629,6 +1689,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/vouchers")
@@ -1650,6 +1711,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/vouchers")
@@ -1671,6 +1733,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/vouchers")
@@ -1692,6 +1755,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/vouchers")
@@ -1713,6 +1777,7 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/offer/programs/pid/vouchers")

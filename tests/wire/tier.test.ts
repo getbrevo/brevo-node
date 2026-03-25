@@ -18,6 +18,7 @@ describe("TierClient", () => {
             meta: { key: "value" },
             updatedAt: "2024-01-15T09:30:00Z",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/contacts/cid/tiers/tid")
@@ -49,6 +50,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/contacts/cid/tiers/tid")
@@ -71,6 +73,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/contacts/cid/tiers/tid")
@@ -93,6 +96,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/contacts/cid/tiers/tid")
@@ -115,6 +119,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/contacts/cid/tiers/tid")
@@ -137,6 +142,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/contacts/cid/tiers/tid")
@@ -159,6 +165,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/contacts/cid/tiers/tid")
@@ -181,6 +188,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/contacts/cid/tiers/tid")
@@ -216,6 +224,7 @@ describe("TierClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups")
@@ -248,6 +257,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups")
@@ -268,6 +278,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups")
@@ -288,6 +299,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups")
@@ -308,6 +320,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups")
@@ -328,6 +341,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups")
@@ -357,6 +371,7 @@ describe("TierClient", () => {
             updatedAt: "2024-01-15T09:30:00Z",
             upgradeStrategy: "real_time",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups")
@@ -387,6 +402,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups")
@@ -409,6 +425,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups")
@@ -431,6 +448,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups")
@@ -453,6 +471,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups")
@@ -475,6 +494,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups")
@@ -497,6 +517,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups")
@@ -528,6 +549,7 @@ describe("TierClient", () => {
             updatedAt: "2024-01-15T09:30:00Z",
             upgradeStrategy: "real_time",
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -557,6 +579,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -578,6 +601,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -599,6 +623,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -620,6 +645,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -641,6 +667,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -676,6 +703,7 @@ describe("TierClient", () => {
             updatedAt: "2024-01-15T09:30:00Z",
             upgradeStrategy: "real_time",
         };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -715,6 +743,7 @@ describe("TierClient", () => {
             upgradeStrategy: "real_time",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -746,6 +775,7 @@ describe("TierClient", () => {
             upgradeStrategy: "real_time",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -777,6 +807,7 @@ describe("TierClient", () => {
             upgradeStrategy: "real_time",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -808,6 +839,7 @@ describe("TierClient", () => {
             upgradeStrategy: "real_time",
         };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -839,6 +871,7 @@ describe("TierClient", () => {
             upgradeStrategy: "real_time",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -883,6 +916,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -904,6 +938,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -925,6 +960,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -946,6 +982,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -967,6 +1004,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -988,6 +1026,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tier-groups/gid")
@@ -1028,6 +1067,7 @@ describe("TierClient", () => {
             ],
             updatedAt: "2024-01-15T09:30:00Z",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups/gid/tiers")
@@ -1074,6 +1114,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups/gid/tiers")
@@ -1098,6 +1139,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups/gid/tiers")
@@ -1122,6 +1164,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups/gid/tiers")
@@ -1146,6 +1189,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups/gid/tiers")
@@ -1170,6 +1214,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/tier/programs/pid/tier-groups/gid/tiers")
@@ -1208,6 +1253,7 @@ describe("TierClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tiers")
@@ -1241,6 +1287,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tiers")
@@ -1261,6 +1308,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tiers")
@@ -1281,6 +1329,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tiers")
@@ -1301,6 +1350,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tiers")
@@ -1321,6 +1371,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/tier/programs/pid/tiers")
@@ -1360,6 +1411,7 @@ describe("TierClient", () => {
             ],
             updatedAt: "2024-01-15T09:30:00Z",
         };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tiers/tid")
@@ -1407,6 +1459,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name", tierRewards: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tiers/tid")
@@ -1432,6 +1485,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name", tierRewards: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tiers/tid")
@@ -1457,6 +1511,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name", tierRewards: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tiers/tid")
@@ -1482,6 +1537,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name", tierRewards: [{}, {}] };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tiers/tid")
@@ -1507,6 +1563,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { accessConditions: [{}, {}], name: "name", tierRewards: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/tier/programs/pid/tiers/tid")
@@ -1545,6 +1602,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tiers/tid")
@@ -1566,6 +1624,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tiers/tid")
@@ -1587,6 +1646,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tiers/tid")
@@ -1608,6 +1668,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tiers/tid")
@@ -1629,6 +1690,7 @@ describe("TierClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/tier/programs/pid/tiers/tid")

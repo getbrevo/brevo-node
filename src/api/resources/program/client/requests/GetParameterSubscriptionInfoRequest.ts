@@ -15,4 +15,6 @@ export interface GetParameterSubscriptionInfoRequest {
     params?: string;
     /** The loyalty subscription ID to filter by. */
     loyaltySubscriptionId?: string;
+    /** Include balances tied to internal definitions. */
+    includeInternal?: boolean;
 }

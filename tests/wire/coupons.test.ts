@@ -20,6 +20,7 @@ describe("CouponsClient", () => {
             remainingDaysAlert: 5,
             totalCoupons: 10000,
         };
+
         server.mockEndpoint().get("/couponCollections").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.coupons.getCouponCollections();
@@ -41,6 +42,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/couponCollections").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -53,6 +55,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/couponCollections").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -65,6 +68,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { defaultCoupon: "Winter", name: "10%OFF" };
         const rawResponseBody = { id: "23befbae-1505-47a8-bd27-e30ef739f32c" };
+
         server
             .mockEndpoint()
             .post("/couponCollections")
@@ -88,6 +92,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { defaultCoupon: "defaultCoupon", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/couponCollections")
@@ -110,6 +115,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { defaultCoupon: "defaultCoupon", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/couponCollections")
@@ -142,6 +148,7 @@ describe("CouponsClient", () => {
             remainingDaysAlert: 5,
             totalCoupons: 10000,
         };
+
         server
             .mockEndpoint()
             .get("/couponCollections/id")
@@ -171,6 +178,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/couponCollections/id")
@@ -191,6 +199,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/couponCollections/id")
@@ -211,6 +220,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/couponCollections/id")
@@ -235,6 +245,7 @@ describe("CouponsClient", () => {
             id: "23befbae-1505-47a8-bd27-e30ef739f32c",
             name: "SummerPromotions",
         };
+
         server
             .mockEndpoint()
             .patch("/couponCollections/id")
@@ -259,6 +270,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/couponCollections/id")
@@ -280,6 +292,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/couponCollections/id")
@@ -315,6 +328,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { collectionId: "collectionId", coupons: ["coupons", "coupons"] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/coupons")
@@ -337,6 +351,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { collectionId: "collectionId", coupons: ["coupons", "coupons"] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/coupons")
@@ -359,6 +374,7 @@ describe("CouponsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { collectionId: "collectionId", coupons: ["coupons", "coupons"] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/coupons")

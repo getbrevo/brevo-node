@@ -60,6 +60,7 @@ export class BalanceClient {
             sort,
             contact_id: contactId,
             balance_definition_id: balanceDefinitionId,
+            includeInternal,
         } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
@@ -68,6 +69,7 @@ export class BalanceClient {
             sort,
             contact_id: contactId,
             balance_definition_id: balanceDefinitionId,
+            includeInternal,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -990,7 +992,10 @@ export class BalanceClient {
         request: Brevo.GetContactBalancesRequest,
         requestOptions?: BalanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.GetContactBalancesResponse>> {
-        const { pid } = request;
+        const { pid, includeInternal } = request;
+        const _queryParams: Record<string, unknown> = {
+            includeInternal,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1006,7 +1011,7 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1170,7 +1175,10 @@ export class BalanceClient {
         request: Brevo.GetSubscriptionBalancesRequest,
         requestOptions?: BalanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.GetSubscriptionBalancesResponse>> {
-        const { pid, cid } = request;
+        const { pid, cid, includeInternal } = request;
+        const _queryParams: Record<string, unknown> = {
+            includeInternal,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1186,7 +1194,7 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1342,8 +1350,8 @@ export class BalanceClient {
      * @example
      *     await client.balance.getTransactionHistoryApi({
      *         pid: "pid",
-     *         contact_id: 1,
-     *         balance_definition_id: "balance_definition_id"
+     *         contactId: 1,
+     *         balanceDefinitionId: "balanceDefinitionId"
      *     })
      */
     public getTransactionHistoryApi(
@@ -1361,20 +1369,24 @@ export class BalanceClient {
             pid,
             limit,
             offset,
-            sort_field: sortField,
+            sortField,
             sort,
-            contact_id: contactId,
-            balance_definition_id: balanceDefinitionId,
+            contactId,
+            balanceDefinitionId,
             filters,
+            status,
+            transactionType,
         } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
             offset,
-            sort_field: sortField != null ? sortField : undefined,
+            sortField: sortField != null ? sortField : undefined,
             sort: sort != null ? sort : undefined,
-            contact_id: contactId,
-            balance_definition_id: balanceDefinitionId,
+            contactId,
+            balanceDefinitionId,
             filters,
+            status: status != null ? status : undefined,
+            transactionType: transactionType != null ? transactionType : undefined,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

@@ -27,6 +27,7 @@ describe("ProgramClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs")
@@ -63,6 +64,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs")
@@ -81,6 +83,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs")
@@ -99,6 +102,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs")
@@ -117,6 +121,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs")
@@ -135,6 +140,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs")
@@ -153,6 +159,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs")
@@ -184,6 +191,7 @@ describe("ProgramClient", () => {
             subscriptionPoolId: "subscriptionPoolId",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs")
@@ -219,6 +227,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs")
@@ -240,6 +249,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs")
@@ -261,6 +271,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs")
@@ -282,6 +293,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs")
@@ -303,6 +315,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs")
@@ -337,6 +350,7 @@ describe("ProgramClient", () => {
             subscriptionPoolId: "subscriptionPoolId",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid")
@@ -371,6 +385,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid")
@@ -391,6 +406,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid")
@@ -411,6 +427,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid")
@@ -431,6 +448,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid")
@@ -451,6 +469,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid")
@@ -484,6 +503,7 @@ describe("ProgramClient", () => {
             subscriptionPoolId: "subscriptionPoolId",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .put("/loyalty/config/programs/pid")
@@ -520,6 +540,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/config/programs/pid")
@@ -542,6 +563,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/config/programs/pid")
@@ -564,6 +586,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/config/programs/pid")
@@ -586,6 +609,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .put("/loyalty/config/programs/pid")
@@ -608,6 +632,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .put("/loyalty/config/programs/pid")
@@ -630,6 +655,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/loyalty/config/programs/pid")
@@ -664,6 +690,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid")
@@ -684,6 +711,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid")
@@ -704,6 +732,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid")
@@ -724,6 +753,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid")
@@ -744,6 +774,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid")
@@ -777,6 +808,7 @@ describe("ProgramClient", () => {
             subscriptionPoolId: "subscriptionPoolId",
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .patch("/loyalty/config/programs/pid")
@@ -812,6 +844,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/loyalty/config/programs/pid")
@@ -833,6 +866,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/loyalty/config/programs/pid")
@@ -854,6 +888,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/loyalty/config/programs/pid")
@@ -875,6 +910,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .patch("/loyalty/config/programs/pid")
@@ -896,6 +932,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .patch("/loyalty/config/programs/pid")
@@ -917,6 +954,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/loyalty/config/programs/pid")
@@ -965,6 +1003,7 @@ describe("ProgramClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid/account-info")
@@ -1025,6 +1064,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid/account-info")
@@ -1045,6 +1085,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid/account-info")
@@ -1065,6 +1106,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid/account-info")
@@ -1085,6 +1127,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid/account-info")
@@ -1105,6 +1148,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/loyalty/config/programs/pid/account-info")
@@ -1116,6 +1160,151 @@ describe("ProgramClient", () => {
         await expect(async () => {
             return await client.program.getParameterSubscriptionInfo({
                 pid: "pid",
+            });
+        }).rejects.toThrow(Brevo.InternalServerError);
+    });
+
+    test("deleteContactSubscription (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        server.mockEndpoint().delete("/loyalty/config/programs/pid/contact/1").respondWith().statusCode(200).build();
+
+        const response = await client.program.deleteContactSubscription({
+            pid: "pid",
+            cid: 1,
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deleteContactSubscription (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/loyalty/config/programs/pid/contact/1")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.program.deleteContactSubscription({
+                pid: "pid",
+                cid: 1,
+            });
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("deleteContactSubscription (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/loyalty/config/programs/pid/contact/1")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.program.deleteContactSubscription({
+                pid: "pid",
+                cid: 1,
+            });
+        }).rejects.toThrow(Brevo.UnauthorizedError);
+    });
+
+    test("deleteContactSubscription (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/loyalty/config/programs/pid/contact/1")
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.program.deleteContactSubscription({
+                pid: "pid",
+                cid: 1,
+            });
+        }).rejects.toThrow(Brevo.ForbiddenError);
+    });
+
+    test("deleteContactSubscription (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/loyalty/config/programs/pid/contact/1")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.program.deleteContactSubscription({
+                pid: "pid",
+                cid: 1,
+            });
+        }).rejects.toThrow(Brevo.NotFoundError);
+    });
+
+    test("deleteContactSubscription (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { message: "message" };
+
+        server
+            .mockEndpoint()
+            .delete("/loyalty/config/programs/pid/contact/1")
+            .respondWith()
+            .statusCode(422)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.program.deleteContactSubscription({
+                pid: "pid",
+                cid: 1,
+            });
+        }).rejects.toThrow(Brevo.UnprocessableEntityError);
+    });
+
+    test("deleteContactSubscription (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/loyalty/config/programs/pid/contact/1")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.program.deleteContactSubscription({
+                pid: "pid",
+                cid: 1,
             });
         }).rejects.toThrow(Brevo.InternalServerError);
     });
@@ -1137,6 +1326,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/publish")
@@ -1157,6 +1347,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/publish")
@@ -1177,6 +1368,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/publish")
@@ -1197,6 +1389,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/publish")
@@ -1217,6 +1410,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/publish")
@@ -1243,6 +1437,7 @@ describe("ProgramClient", () => {
             ownerContactId: 1,
             updatedAt: "updatedAt",
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscription-members")
@@ -1270,6 +1465,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { memberContactIds: [1, 1] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscription-members")
@@ -1292,6 +1488,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { memberContactIds: [1, 1] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscription-members")
@@ -1314,6 +1511,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { memberContactIds: [1, 1] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscription-members")
@@ -1336,6 +1534,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { memberContactIds: [1, 1] };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscription-members")
@@ -1358,6 +1557,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { memberContactIds: [1, 1] };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscription-members")
@@ -1380,6 +1580,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { memberContactIds: [1, 1] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscription-members")
@@ -1420,6 +1621,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid/subscription-members")
@@ -1441,6 +1643,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid/subscription-members")
@@ -1462,6 +1665,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid/subscription-members")
@@ -1483,6 +1687,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid/subscription-members")
@@ -1504,6 +1709,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid/subscription-members")
@@ -1525,6 +1731,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/loyalty/config/programs/pid/subscription-members")
@@ -1554,6 +1761,7 @@ describe("ProgramClient", () => {
             updatedAt: "updatedAt",
             versionId: 1,
         };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscriptions")
@@ -1583,6 +1791,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { contactId: 1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscriptions")
@@ -1605,6 +1814,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { contactId: 1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscriptions")
@@ -1627,6 +1837,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { contactId: 1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscriptions")
@@ -1649,6 +1860,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { contactId: 1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscriptions")
@@ -1671,6 +1883,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { contactId: 1 };
         const rawResponseBody = { message: "message" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscriptions")
@@ -1693,6 +1906,7 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { contactId: 1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/loyalty/config/programs/pid/subscriptions")

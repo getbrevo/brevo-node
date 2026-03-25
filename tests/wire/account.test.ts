@@ -67,6 +67,7 @@ describe("AccountClient", () => {
                 enabled: true,
             },
         };
+
         server.mockEndpoint().get("/account").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.account.getAccount();
@@ -183,6 +184,7 @@ describe("AccountClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/organization/activities")
@@ -217,6 +219,7 @@ describe("AccountClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/organization/activities")

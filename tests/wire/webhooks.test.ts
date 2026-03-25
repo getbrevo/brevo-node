@@ -39,6 +39,7 @@ describe("WebhooksClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.webhooks.getWebhooks();
@@ -95,6 +96,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -107,6 +109,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { events: ["sent"], url: "http://requestb.in/173lyyx1" };
         const rawResponseBody = { id: 5 };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -130,6 +133,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { events: ["sent", "sent"], url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -152,6 +156,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { event: "invalid_parameter", notifyURL: "https://brevo.com", type: "transactional" };
         const rawResponseBody = { processId: 78 };
+
         server
             .mockEndpoint()
             .post("/webhooks/export")
@@ -176,6 +181,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { event: "invalid_parameter", notifyURL: "notifyURL", type: "transactional" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks/export")
@@ -211,6 +217,7 @@ describe("WebhooksClient", () => {
             type: "marketing",
             url: "http://example.domain.com/1brxxxxxx5p1",
         };
+
         server.mockEndpoint().get("/webhooks/1000000").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.webhooks.getWebhook({
@@ -244,6 +251,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/1000000").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -258,6 +266,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/1000000").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -285,6 +294,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/webhooks/1000000")
@@ -306,6 +316,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/webhooks/1000000")
@@ -339,6 +350,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/webhooks/1000000")
@@ -359,6 +371,7 @@ describe("WebhooksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/webhooks/1000000")

@@ -8,17 +8,21 @@
  *     }
  */
 export interface CreateUpdateProductRequest {
+    /** Brand of the product */
+    brand?: string;
     /** Category ID-s of the product */
     categories?: string[];
     /** UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ) of the product deleted from the shop's database */
     deletedAt?: string;
+    /** Description of the product */
+    description?: string;
     /** Product ID for which you requested the details */
     id: string;
     /** Absolute URL to the cover image of the product */
     imageUrl?: string;
     /** product deleted from the shop's database */
     isDeleted?: boolean;
-    /** Meta data of product such as description, vendor, producer, stock level. The size of cumulative metaInfo shall not exceed **1000 KB**. Maximum length of metaInfo object can be 20. */
+    /** Meta data of product such as description, vendor, producer, stock level. The total characters of cumulative metaInfo shall not exceed **20000 characters**. */
     metaInfo?: Record<string, CreateUpdateProductRequest.MetaInfo.Value>;
     /** Mandatory in case of creation**. Name of the product for which you requested the details */
     name: string;
