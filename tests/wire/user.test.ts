@@ -41,40 +41,7 @@ describe("UserClient", () => {
             .build();
 
         const response = await client.user.getInvitedUsersList();
-        expect(response).toEqual({
-            users: [
-                {
-                    email: "owner@company.com",
-                    feature_access: {
-                        conversations: "owner",
-                        crm: "owner",
-                        marketing: "owner",
-                    },
-                    is_owner: "is_owner",
-                    status: "active",
-                },
-                {
-                    email: "pendingInvitedUser@company.com",
-                    feature_access: {
-                        conversations: "none",
-                        crm: "full",
-                        marketing: "custom",
-                    },
-                    is_owner: "is_owner",
-                    status: "pending",
-                },
-                {
-                    email: "connectedInvitedUser@company.com",
-                    feature_access: {
-                        conversations: "full",
-                        crm: "none",
-                        marketing: "none",
-                    },
-                    is_owner: "is_owner",
-                    status: "active",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getInvitedUsersList (2)", async () => {
@@ -113,10 +80,7 @@ describe("UserClient", () => {
         const response = await client.user.putRevokeUserPermission({
             email: "email",
         });
-        expect(response).toEqual({
-            credit_notes: ["TEST-123"],
-            status: "OK",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("putRevokeUserPermission (2)", async () => {
@@ -160,10 +124,7 @@ describe("UserClient", () => {
             email: "inviteuser@example.com",
             privileges: [{}],
         });
-        expect(response).toEqual({
-            invoice_id: "invoice_id",
-            status: "OK",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("inviteuser (2)", async () => {
@@ -208,10 +169,7 @@ describe("UserClient", () => {
             action: "resend",
             email: "email",
         });
-        expect(response).toEqual({
-            credit_notes: ["TEST-123"],
-            status: "OK",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("putresendcancelinvitation (2)", async () => {
@@ -256,11 +214,7 @@ describe("UserClient", () => {
             email: "inviteuser@example.com",
             privileges: [{}],
         });
-        expect(response).toEqual({
-            credit_notes: ["TEST-123"],
-            invoice_id: "invoice_id",
-            status: "OK",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("EditUserPermission (2)", async () => {
@@ -341,77 +295,7 @@ describe("UserClient", () => {
         const response = await client.user.getUserPermission({
             email: "email",
         });
-        expect(response).toEqual({
-            email: "invitedUser@company.com",
-            privileges: [
-                {
-                    feature: "Email campaign",
-                    permissions: ["Create / edit / delete", "Send / schedule / suspend"],
-                },
-                {
-                    feature: "Templates",
-                    permissions: ["Create / edit / delete", "Activate / deactivate"],
-                },
-                {
-                    feature: "SMS campaign",
-                    permissions: ["Create / edit / delete", "Send / schedule / suspend"],
-                },
-                {
-                    feature: "Facebook Ads",
-                    permissions: ["Schedule / pause"],
-                },
-                {
-                    feature: "Landing pages",
-                    permissions: ["All"],
-                },
-                {
-                    feature: "Workflows",
-                    permissions: ["Create / edit / delete", "Activate / deactivate / Pause"],
-                },
-                {
-                    feature: "Contacts",
-                    permissions: ["View", "Contact forms"],
-                },
-                {
-                    feature: "SMTP & API",
-                    permissions: ["SMTP", "API Keys", "Authorized IPs"],
-                },
-                {
-                    feature: "User management",
-                    permissions: ["None"],
-                },
-                {
-                    feature: "Sales Platform",
-                    permissions: [
-                        "Create / edit / delete owned deals and tasks",
-                        "Manage deals and tasks from other users",
-                        "Reports",
-                        "Settings",
-                    ],
-                },
-                {
-                    feature: "Conversations",
-                    permissions: ["None"],
-                },
-                {
-                    feature: "Senders, Domains & Dedicated IPs",
-                    permissions: ["Senders management", "Domains management", "Dedicated IPs management"],
-                },
-                {
-                    feature: "Push",
-                    permissions: ["View", "Create / edit / delete", "Send", "Settings"],
-                },
-                {
-                    feature: "Companies",
-                    permissions: [
-                        "Create / edit / delete owned companies",
-                        "Manage companies from other users",
-                        "Settings",
-                    ],
-                },
-            ],
-            status: "active",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getUserPermission (2)", async () => {

@@ -4637,7 +4637,7 @@ await client.contacts.getContacts();
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">createContact</a>({ ...params }) -> Brevo.CreateContactResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">createContact</a>({ ...params }) -> Brevo.CreateContactResponse | undefined</code></summary>
 <dl>
 <dd>
 
@@ -6915,7 +6915,7 @@ await client.ecommerce.getCategories();
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createUpdateCategory</a>({ ...params }) -> Brevo.CreateUpdateCategoryResponse</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createUpdateCategory</a>({ ...params }) -> Brevo.CreateUpdateCategoryResponse | undefined</code></summary>
 <dl>
 <dd>
 
@@ -7633,7 +7633,7 @@ await client.ecommerce.getProducts();
 </dl>
 </details>
 
-<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createUpdateProduct</a>({ ...params }) -> Brevo.CreateUpdateProductResponse</code></summary>
+<details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createUpdateProduct</a>({ ...params }) -> Brevo.CreateUpdateProductResponse | undefined</code></summary>
 <dl>
 <dd>
 

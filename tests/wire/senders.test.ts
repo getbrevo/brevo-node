@@ -38,49 +38,7 @@ describe("SendersClient", () => {
         server.mockEndpoint().get("/senders").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.senders.getSenders();
-        expect(response).toEqual({
-            senders: [
-                {
-                    active: true,
-                    email: "support@example.com",
-                    id: 1,
-                    ips: [
-                        {
-                            domain: "example.com",
-                            ip: "203.0.113.100",
-                            weight: 50,
-                        },
-                    ],
-                    name: "Support Team",
-                },
-                {
-                    active: false,
-                    email: "hello@example.com",
-                    id: 3,
-                    ips: [
-                        {
-                            domain: "example.com",
-                            ip: "203.0.113.100",
-                            weight: 50,
-                        },
-                    ],
-                    name: "Customer Service",
-                },
-                {
-                    active: false,
-                    email: "marketing@testcompany.com",
-                    id: 5,
-                    ips: [
-                        {
-                            domain: "example.com",
-                            ip: "203.0.113.100",
-                            weight: 50,
-                        },
-                    ],
-                    name: "Marketing Team",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSenders (2)", async () => {
@@ -112,41 +70,7 @@ describe("SendersClient", () => {
         server.mockEndpoint().get("/senders").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.senders.getSenders();
-        expect(response).toEqual({
-            senders: [
-                {
-                    active: true,
-                    email: "marketing@example.com",
-                    id: 10,
-                    ips: [
-                        {
-                            domain: "example.com",
-                            ip: "203.0.113.100",
-                            weight: 100,
-                        },
-                    ],
-                    name: "Marketing",
-                },
-                {
-                    active: false,
-                    email: "newsletter@example.com",
-                    id: 11,
-                    ips: [
-                        {
-                            domain: "example.com",
-                            ip: "203.0.113.100",
-                            weight: 50,
-                        },
-                        {
-                            domain: "news.example.com",
-                            ip: "203.0.113.101",
-                            weight: 50,
-                        },
-                    ],
-                    name: "Newsletter",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSenders (3)", async () => {
@@ -181,11 +105,7 @@ describe("SendersClient", () => {
             email: "support@example.com",
             name: "Support Team",
         });
-        expect(response).toEqual({
-            dkimError: false,
-            id: 15,
-            spfError: false,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createSender (2)", async () => {
@@ -218,11 +138,7 @@ describe("SendersClient", () => {
             ],
             name: "Marketing Team",
         });
-        expect(response).toEqual({
-            dkimError: false,
-            id: 15,
-            spfError: false,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createSender (3)", async () => {
@@ -263,11 +179,7 @@ describe("SendersClient", () => {
             ],
             name: "Newsletter",
         });
-        expect(response).toEqual({
-            dkimError: false,
-            id: 15,
-            spfError: false,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createSender (4)", async () => {
@@ -289,11 +201,7 @@ describe("SendersClient", () => {
             email: "support@example.com",
             name: "Support Team",
         });
-        expect(response).toEqual({
-            dkimError: false,
-            id: 15,
-            spfError: false,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createSender (5)", async () => {
@@ -315,11 +223,7 @@ describe("SendersClient", () => {
             email: "support@example.com",
             name: "Support Team",
         });
-        expect(response).toEqual({
-            dkimError: true,
-            id: 16,
-            spfError: false,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createSender (6)", async () => {
@@ -356,16 +260,7 @@ describe("SendersClient", () => {
         server.mockEndpoint().get("/senders/ips").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.senders.getIps();
-        expect(response).toEqual({
-            ips: [
-                {
-                    active: true,
-                    domain: "mailing.enterprise.com",
-                    id: 3,
-                    ip: "192.168.1.100",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIps (2)", async () => {
@@ -383,28 +278,7 @@ describe("SendersClient", () => {
         server.mockEndpoint().get("/senders/ips").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.senders.getIps();
-        expect(response).toEqual({
-            ips: [
-                {
-                    active: true,
-                    domain: "mailing.enterprise.com",
-                    id: 3,
-                    ip: "192.168.1.100",
-                },
-                {
-                    active: true,
-                    domain: "newsletter.enterprise.com",
-                    id: 5,
-                    ip: "192.168.1.101",
-                },
-                {
-                    active: false,
-                    domain: "notifications.enterprise.com",
-                    id: 6,
-                    ip: "192.168.1.102",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIps (3)", async () => {
@@ -638,16 +512,7 @@ describe("SendersClient", () => {
         const response = await client.senders.getIpsFromSender({
             senderId: 1000000,
         });
-        expect(response).toEqual({
-            ips: [
-                {
-                    domain: "mailing.enterprise.com",
-                    id: 3,
-                    ip: "192.168.1.100",
-                    weight: 75,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIpsFromSender (2)", async () => {
@@ -672,22 +537,7 @@ describe("SendersClient", () => {
         const response = await client.senders.getIpsFromSender({
             senderId: 1000000,
         });
-        expect(response).toEqual({
-            ips: [
-                {
-                    domain: "mailing.enterprise.com",
-                    id: 3,
-                    ip: "192.168.1.100",
-                    weight: 40,
-                },
-                {
-                    domain: "newsletter.enterprise.com",
-                    id: 5,
-                    ip: "192.168.1.101",
-                    weight: 60,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIpsFromSender (3)", async () => {

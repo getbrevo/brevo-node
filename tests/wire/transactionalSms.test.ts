@@ -24,9 +24,7 @@ describe("TransactionalSmsClient", () => {
             recipient: "33689965433",
             sender: "MyShop",
         });
-        expect(response).toEqual({
-            messageId: 1511882900176220,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendAsyncTransactionalSms (2)", async () => {
@@ -77,13 +75,7 @@ describe("TransactionalSmsClient", () => {
             recipient: "33689965433",
             sender: "MyShop",
         });
-        expect(response).toEqual({
-            messageId: 1511882900176220,
-            reference: "ab1cde2fgh3i4jklmno",
-            remainingCredits: 82.85,
-            smsCount: 2,
-            usedCredits: 0.7,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendTransacSms (2)", async () => {
@@ -159,19 +151,7 @@ describe("TransactionalSmsClient", () => {
             .build();
 
         const response = await client.transactionalSms.getTransacAggregatedSmsReport();
-        expect(response).toEqual({
-            accepted: 6,
-            blocked: 4,
-            delivered: 16,
-            hardBounces: 5,
-            range: "2015-05-22|2017-11-29",
-            rejected: 14,
-            replied: 8,
-            requests: 54,
-            skipped: 1,
-            softBounces: 26,
-            unsubscribed: 10,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTransacAggregatedSmsReport (2)", async () => {
@@ -229,28 +209,7 @@ describe("TransactionalSmsClient", () => {
             .build();
 
         const response = await client.transactionalSms.getSmsEvents();
-        expect(response).toEqual({
-            events: [
-                {
-                    date: "2015-05-20T12:30:00Z",
-                    event: "sent",
-                    messageId: "1473139351170140",
-                    phoneNumber: "phoneNumber",
-                    reason: "Recipient is currently unreachable",
-                    reply: "reply",
-                    tag: "cabWaiting",
-                },
-                {
-                    date: "2015-05-20T16:30:00Z",
-                    event: "delivered",
-                    messageId: "1473139351170140",
-                    phoneNumber: "phoneNumber",
-                    reason: "Recipient is currently unreachable",
-                    reply: "reply",
-                    tag: "cabRequest",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSmsEvents (2)", async () => {
@@ -329,49 +288,7 @@ describe("TransactionalSmsClient", () => {
             .build();
 
         const response = await client.transactionalSms.getTransacSmsReport();
-        expect(response).toEqual({
-            reports: [
-                {
-                    accepted: 2318,
-                    blocked: 1026,
-                    date: "2017-04-30",
-                    delivered: 10103,
-                    hardBounces: 21,
-                    rejected: 0,
-                    replied: 5091,
-                    requests: 10756,
-                    skipped: 1,
-                    softBounces: 137,
-                    unsubscribed: 720,
-                },
-                {
-                    accepted: 4393,
-                    blocked: 1514,
-                    date: "2017-05-01",
-                    delivered: 17499,
-                    hardBounces: 34,
-                    rejected: 0,
-                    replied: 10089,
-                    requests: 18812,
-                    skipped: 0,
-                    softBounces: 254,
-                    unsubscribed: 1090,
-                },
-                {
-                    accepted: 4689,
-                    blocked: 1646,
-                    date: "2017-05-02",
-                    delivered: 13427,
-                    hardBounces: 16,
-                    rejected: 0,
-                    replied: 11563,
-                    requests: 14321,
-                    skipped: 1,
-                    softBounces: 176,
-                    unsubscribed: 1170,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTransacSmsReport (2)", async () => {

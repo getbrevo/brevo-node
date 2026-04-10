@@ -118,14 +118,14 @@ export class ContactsClient {
     public createContact(
         request: Brevo.CreateContactRequest = {},
         requestOptions?: ContactsClient.RequestOptions,
-    ): core.HttpResponsePromise<Brevo.CreateContactResponse> {
+    ): core.HttpResponsePromise<Brevo.CreateContactResponse | undefined> {
         return core.HttpResponsePromise.fromPromise(this.__createContact(request, requestOptions));
     }
 
     private async __createContact(
         request: Brevo.CreateContactRequest = {},
         requestOptions?: ContactsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Brevo.CreateContactResponse>> {
+    ): Promise<core.WithRawResponse<Brevo.CreateContactResponse | undefined>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -152,7 +152,10 @@ export class ContactsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Brevo.CreateContactResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Brevo.CreateContactResponse | undefined,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {

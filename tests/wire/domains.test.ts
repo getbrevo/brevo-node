@@ -57,50 +57,7 @@ describe("DomainsClient", () => {
         server.mockEndpoint().get("/senders/domains").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.domains.getDomains();
-        expect(response).toEqual({
-            domains: [
-                {
-                    id: "67e57b40130375f045064c45",
-                    domain_name: "mycompany.com",
-                    authenticated: true,
-                    verified: true,
-                    ip: "192.168.1.100",
-                    provider: "Cloudflare",
-                    creator: {
-                        id: "62e4fce597550d0b0177cb0c",
-                        email: "admin@mycompany.com",
-                        creationDate: "2025-03-27T16:22:24Z",
-                    },
-                },
-                {
-                    id: "67f778570dd65f97c70910ed",
-                    domain_name: "newsletter.mycompany.com",
-                    authenticated: false,
-                    verified: true,
-                    provider: "GoDaddy",
-                    creator: {
-                        id: "62e4fce597550d0b0177cb0c",
-                        email: "admin@mycompany.com",
-                        creationDate: "2025-04-10T07:50:47Z",
-                    },
-                },
-                {
-                    id: "688cd306d8893504e50ea615",
-                    domain_name: "test.example.com",
-                    authenticated: false,
-                    verified: false,
-                    provider: "Other",
-                    creator: {
-                        id: "62e4fce597550d0b0177cb0c",
-                        email: "admin@mycompany.com",
-                        creationDate: "2025-08-01T14:45:26Z",
-                    },
-                },
-            ],
-            count: 3,
-            current_page: 1,
-            total_pages: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDomains (2)", async () => {
@@ -154,32 +111,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.createDomain({
             name: "mycompany.com",
         });
-        expect(response).toEqual({
-            id: 5,
-            domain_name: "mycompany.com",
-            domain_provider: "Cloudflare",
-            message: "Domain added successfully. To authenticate it, add following DNS records",
-            dns_records: {
-                brevo_code: {
-                    host_name: "@",
-                    type: "TXT",
-                    value: "brevo-code=abc123def456",
-                    status: false,
-                },
-                dkim_record: {
-                    host_name: "mail._domainkey",
-                    type: "TXT",
-                    value: "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GN...",
-                    status: false,
-                },
-                dmarc_record: {
-                    host_name: "_dmarc",
-                    type: "TXT",
-                    value: "v=DMARC1; p=none; rua=mailto:dmarc@mycompany.com",
-                    status: false,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDomain (2)", async () => {
@@ -220,32 +152,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.createDomain({
             name: "newsletter.mycompany.com",
         });
-        expect(response).toEqual({
-            id: 5,
-            domain_name: "mycompany.com",
-            domain_provider: "Cloudflare",
-            message: "Domain added successfully. To authenticate it, add following DNS records",
-            dns_records: {
-                brevo_code: {
-                    host_name: "@",
-                    type: "TXT",
-                    value: "brevo-code=abc123def456",
-                    status: false,
-                },
-                dkim_record: {
-                    host_name: "mail._domainkey",
-                    type: "TXT",
-                    value: "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GN...",
-                    status: false,
-                },
-                dmarc_record: {
-                    host_name: "_dmarc",
-                    type: "TXT",
-                    value: "v=DMARC1; p=none; rua=mailto:dmarc@mycompany.com",
-                    status: false,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDomain (3)", async () => {
@@ -286,32 +193,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.createDomain({
             name: "test.example.com",
         });
-        expect(response).toEqual({
-            id: 5,
-            domain_name: "mycompany.com",
-            domain_provider: "Cloudflare",
-            message: "Domain added successfully. To authenticate it, add following DNS records",
-            dns_records: {
-                brevo_code: {
-                    host_name: "@",
-                    type: "TXT",
-                    value: "brevo-code=abc123def456",
-                    status: false,
-                },
-                dkim_record: {
-                    host_name: "mail._domainkey",
-                    type: "TXT",
-                    value: "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GN...",
-                    status: false,
-                },
-                dmarc_record: {
-                    host_name: "_dmarc",
-                    type: "TXT",
-                    value: "v=DMARC1; p=none; rua=mailto:dmarc@mycompany.com",
-                    status: false,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDomain (4)", async () => {
@@ -352,32 +234,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.createDomain({
             name: "mycompany.com",
         });
-        expect(response).toEqual({
-            id: 5,
-            domain_name: "mycompany.com",
-            domain_provider: "Cloudflare",
-            message: "Domain added successfully. To authenticate it, add following DNS records",
-            dns_records: {
-                brevo_code: {
-                    host_name: "@",
-                    type: "TXT",
-                    value: "brevo-code=abc123def456",
-                    status: false,
-                },
-                dkim_record: {
-                    host_name: "mail._domainkey",
-                    type: "TXT",
-                    value: "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GN...",
-                    status: false,
-                },
-                dmarc_record: {
-                    host_name: "_dmarc",
-                    type: "TXT",
-                    value: "v=DMARC1; p=none; rua=mailto:dmarc@mycompany.com",
-                    status: false,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDomain (5)", async () => {
@@ -418,32 +275,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.createDomain({
             name: "mycompany.com",
         });
-        expect(response).toEqual({
-            id: 6,
-            domain_name: "example.com",
-            domain_provider: "GoDaddy",
-            message: "Domain added successfully. To authenticate it, add following DNS records",
-            dns_records: {
-                brevo_code: {
-                    host_name: "@",
-                    type: "TXT",
-                    value: "brevo-code=xyz789abc123",
-                    status: false,
-                },
-                dkim_record: {
-                    host_name: "mail._domainkey",
-                    type: "TXT",
-                    value: "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GN...",
-                    status: false,
-                },
-                dmarc_record: {
-                    host_name: "_dmarc",
-                    type: "TXT",
-                    value: "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com",
-                    status: false,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDomain (6)", async () => {
@@ -504,31 +336,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.getDomainConfiguration({
             domainName: "domainName",
         });
-        expect(response).toEqual({
-            domain: "mycompany.com",
-            verified: true,
-            authenticated: true,
-            dns_records: {
-                brevo_code: {
-                    host_name: "@",
-                    type: "TXT",
-                    value: "brevo-code=abc123def456",
-                    status: true,
-                },
-                dkim_record: {
-                    host_name: "mail._domainkey",
-                    type: "TXT",
-                    value: "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GN...",
-                    status: true,
-                },
-                dmarc_record: {
-                    host_name: "_dmarc",
-                    type: "TXT",
-                    value: "v=DMARC1; p=quarantine; rua=mailto:dmarc@mycompany.com",
-                    status: true,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDomainConfiguration (2)", async () => {
@@ -567,31 +375,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.getDomainConfiguration({
             domainName: "domainName",
         });
-        expect(response).toEqual({
-            domain: "test.example.com",
-            verified: false,
-            authenticated: false,
-            dns_records: {
-                brevo_code: {
-                    host_name: "@",
-                    type: "TXT",
-                    value: "brevo-code=xyz789abc123",
-                    status: false,
-                },
-                dkim_record: {
-                    host_name: "mail._domainkey",
-                    type: "TXT",
-                    value: "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GN...",
-                    status: true,
-                },
-                dmarc_record: {
-                    host_name: "_dmarc",
-                    type: "TXT",
-                    value: "v=DMARC1; p=none; rua=mailto:dmarc@example.com",
-                    status: false,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDomainConfiguration (3)", async () => {
@@ -710,10 +494,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.authenticateDomain({
             domainName: "domainName",
         });
-        expect(response).toEqual({
-            domain_name: "mycompany.com",
-            message: "Domain has been authenticated successfully.",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("authenticateDomain (2)", async () => {
@@ -736,10 +517,7 @@ describe("DomainsClient", () => {
         const response = await client.domains.authenticateDomain({
             domainName: "domainName",
         });
-        expect(response).toEqual({
-            domain_name: "newsletter.example.com",
-            message: "Domain authentication completed. Your domain is now ready for sending.",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("authenticateDomain (3)", async () => {

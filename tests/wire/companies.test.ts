@@ -37,30 +37,7 @@ describe("CompaniesClient", () => {
         server.mockEndpoint().get("/companies").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.companies.getAllCompanies();
-        expect(response).toEqual({
-            items: [
-                {
-                    attributes: {
-                        created_at: "2022-01-13T19:04:24.376+05:30",
-                        domain: "xyz",
-                        last_updated_at: "2022-04-01T18:47:48.283+05:30",
-                        name: "text",
-                        number_of_contacts: 0,
-                        owner: "62260474111b1101704a9d85",
-                        owner_assign_date: "2022-04-01T18:21:13.379+05:30",
-                        phone_number: 8171844192,
-                        revenue: 10,
-                    },
-                    id: "629475917295261d9b1f4403",
-                    linkedContactsIds: [1, 2, 3],
-                    linkedDealsIds: [
-                        "61a5ce58c5d4795761045990",
-                        "61a5ce58c5d4795761045991",
-                        "61a5ce58c5d4795761045992",
-                    ],
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllCompanies (2)", async () => {
@@ -94,9 +71,7 @@ describe("CompaniesClient", () => {
         const response = await client.companies.createACompany({
             name: "company",
         });
-        expect(response).toEqual({
-            id: "61a5cd07ca1347c82306ad06",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createACompany (2)", async () => {
@@ -188,22 +163,7 @@ describe("CompaniesClient", () => {
         const response = await client.companies.getACompany({
             id: "id",
         });
-        expect(response).toEqual({
-            attributes: {
-                created_at: "2022-01-13T19:04:24.376+05:30",
-                domain: "xyz",
-                last_updated_at: "2022-04-01T18:47:48.283+05:30",
-                name: "text",
-                number_of_contacts: 0,
-                owner: "62260474111b1101704a9d85",
-                owner_assign_date: "2022-04-01T18:21:13.379+05:30",
-                phone_number: 8171844192,
-                revenue: 10,
-            },
-            id: "629475917295261d9b1f4403",
-            linkedContactsIds: [1, 2, 3],
-            linkedDealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getACompany (2)", async () => {
@@ -311,22 +271,7 @@ describe("CompaniesClient", () => {
         const response = await client.companies.updateACompany({
             id: "id",
         });
-        expect(response).toEqual({
-            attributes: {
-                created_at: "2022-01-13T19:04:24.376+05:30",
-                domain: "xyz",
-                last_updated_at: "2022-04-01T18:47:48.283+05:30",
-                name: "text",
-                number_of_contacts: 0,
-                owner: "62260474111b1101704a9d85",
-                owner_assign_date: "2022-04-01T18:21:13.379+05:30",
-                phone_number: 8171844192,
-                revenue: 10,
-            },
-            id: "629475917295261d9b1f4403",
-            linkedContactsIds: [1, 2, 3],
-            linkedDealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateACompany (2)", async () => {
@@ -393,9 +338,7 @@ describe("CompaniesClient", () => {
             label: "Attribute Label",
             objectType: "companies",
         });
-        expect(response).toEqual({
-            id: "61a5cd07ca1347c82306ad07",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createACompanyDealAttribute (2)", async () => {
@@ -562,19 +505,6 @@ describe("CompaniesClient", () => {
             .build();
 
         const response = await client.companies.getCompanyAttributes();
-        expect(response).toEqual([
-            {
-                attributeOptions: [
-                    {
-                        key: "custom key",
-                        value: "custom label",
-                    },
-                ],
-                attributeTypeName: "text",
-                internalName: "name",
-                isRequired: true,
-                label: "Company Name",
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 });

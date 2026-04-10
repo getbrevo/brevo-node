@@ -24,11 +24,11 @@ export interface CreateEventRequest {
 
 export namespace CreateEventRequest {
     export namespace ContactProperties {
-        export type Value = string | number;
+        export type Value = string | number | boolean;
     }
 
     export namespace EventProperties {
-        export type Value = string | number | Record<string, unknown> | unknown[];
+        export type Value = string | number | boolean | Record<string, unknown> | unknown[];
     }
 
     /**

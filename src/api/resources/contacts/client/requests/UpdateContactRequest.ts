@@ -31,6 +31,6 @@ export interface UpdateContactRequest {
 
 export namespace UpdateContactRequest {
     export namespace Attributes {
-        export type Value = number | string | boolean | string[];
+        export type Value = number | number | string | boolean | string[];
     }
 }

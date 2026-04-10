@@ -40,33 +40,7 @@ describe("ContactsClient", () => {
         server.mockEndpoint().get("/contacts").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getContacts();
-        expect(response).toEqual({
-            contacts: [
-                {
-                    attributes: {},
-                    createdAt: "2017-05-01T17:05:03Z",
-                    email: "contact1@example.com",
-                    emailBlacklisted: true,
-                    id: 247,
-                    listIds: [43, 58],
-                    listUnsubscribed: [1000000],
-                    modifiedAt: "2017-05-01T17:05:03Z",
-                    smsBlacklisted: true,
-                },
-                {
-                    attributes: {},
-                    createdAt: "2017-05-01T17:05:03Z",
-                    email: "33058407248@mailin-sms.com",
-                    emailBlacklisted: true,
-                    id: 245,
-                    listIds: [43, 61, 58],
-                    listUnsubscribed: [1000000],
-                    modifiedAt: "2017-05-01T17:05:03Z",
-                    smsBlacklisted: false,
-                },
-            ],
-            count: 3,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getContacts (2)", async () => {
@@ -111,9 +85,7 @@ describe("ContactsClient", () => {
             .build();
 
         const response = await client.contacts.createContact();
-        expect(response).toEqual({
-            id: 21,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createContact (2)", async () => {
@@ -226,96 +198,7 @@ describe("ContactsClient", () => {
             .build();
 
         const response = await client.contacts.getAttributes();
-        expect(response).toEqual({
-            attributes: [
-                {
-                    calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
-                    category: "normal",
-                    enumeration: [
-                        {
-                            label: "Women",
-                            value: 1,
-                        },
-                    ],
-                    multiCategoryOptions: ["USA"],
-                    name: "LASTNAME",
-                    type: "text",
-                },
-                {
-                    calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
-                    category: "normal",
-                    enumeration: [
-                        {
-                            label: "Women",
-                            value: 1,
-                        },
-                    ],
-                    multiCategoryOptions: ["USA"],
-                    name: "FIRSTNAME",
-                    type: "text",
-                },
-                {
-                    calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
-                    category: "normal",
-                    enumeration: [
-                        {
-                            label: "Women",
-                            value: 1,
-                        },
-                    ],
-                    multiCategoryOptions: ["USA"],
-                    name: "DOB",
-                    type: "date",
-                },
-                {
-                    calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
-                    category: "category",
-                    enumeration: [
-                        {
-                            label: "Men",
-                            value: 1,
-                        },
-                        {
-                            label: "Women",
-                            value: 2,
-                        },
-                        {
-                            label: "Kid",
-                            value: 3,
-                        },
-                    ],
-                    multiCategoryOptions: ["USA"],
-                    name: "GENDER",
-                    type: "text",
-                },
-                {
-                    calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
-                    category: "normal",
-                    enumeration: [
-                        {
-                            label: "Women",
-                            value: 1,
-                        },
-                    ],
-                    multiCategoryOptions: ["USA"],
-                    name: "BDO",
-                    type: "user",
-                },
-                {
-                    calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
-                    category: "normal",
-                    enumeration: [
-                        {
-                            label: "Women",
-                            value: 1,
-                        },
-                    ],
-                    multiCategoryOptions: ["USA", "India", "France"],
-                    name: "COUNTRY",
-                    type: "multiple-choice",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createAttribute (1)", async () => {
@@ -655,9 +538,7 @@ describe("ContactsClient", () => {
         const response = await client.contacts.requestContactExport({
             customContactFilter: {},
         });
-        expect(response).toEqual({
-            processId: 78,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("requestContactExport (2)", async () => {
@@ -719,25 +600,7 @@ describe("ContactsClient", () => {
         server.mockEndpoint().get("/contacts/folders").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getFolders();
-        expect(response).toEqual({
-            count: 2,
-            folders: [
-                {
-                    id: 42,
-                    name: "Ninja_Form",
-                    totalBlacklisted: 98,
-                    totalSubscribers: 4567,
-                    uniqueSubscribers: 4665,
-                },
-                {
-                    id: 29,
-                    name: "Prestashop",
-                    totalBlacklisted: 10,
-                    totalSubscribers: 6543,
-                    uniqueSubscribers: 6553,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFolders (2)", async () => {
@@ -769,9 +632,7 @@ describe("ContactsClient", () => {
             .build();
 
         const response = await client.contacts.createFolder({});
-        expect(response).toEqual({
-            id: 5,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createFolder (2)", async () => {
@@ -817,13 +678,7 @@ describe("ContactsClient", () => {
         const response = await client.contacts.getFolder({
             folderId: 1000000,
         });
-        expect(response).toEqual({
-            id: 1,
-            name: "Client_Folder",
-            totalBlacklisted: 987,
-            totalSubscribers: 16778,
-            uniqueSubscribers: 17765,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFolder (2)", async () => {
@@ -1012,32 +867,7 @@ describe("ContactsClient", () => {
         const response = await client.contacts.getFolderLists({
             folderId: 1000000,
         });
-        expect(response).toEqual({
-            count: 3,
-            lists: [
-                {
-                    id: 46,
-                    name: "Reactiv",
-                    totalBlacklisted: 0,
-                    totalSubscribers: 7655,
-                    uniqueSubscribers: 7655,
-                },
-                {
-                    id: 41,
-                    name: "NY_Area",
-                    totalBlacklisted: 23,
-                    totalSubscribers: 3654,
-                    uniqueSubscribers: 3677,
-                },
-                {
-                    id: 22,
-                    name: "VIP_Customer",
-                    totalBlacklisted: 72,
-                    totalSubscribers: 8753,
-                    uniqueSubscribers: 8826,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFolderLists (2)", async () => {
@@ -1098,9 +928,7 @@ describe("ContactsClient", () => {
             .build();
 
         const response = await client.contacts.importContacts();
-        expect(response).toEqual({
-            processId: 78,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("importContacts (2)", async () => {
@@ -1152,27 +980,7 @@ describe("ContactsClient", () => {
         server.mockEndpoint().get("/contacts/lists").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getLists();
-        expect(response).toEqual({
-            count: 2,
-            lists: [
-                {
-                    id: 53,
-                    name: "Spanish_Speakers",
-                    totalBlacklisted: 65,
-                    totalSubscribers: 5432,
-                    uniqueSubscribers: 5497,
-                    folderId: 1,
-                },
-                {
-                    id: 50,
-                    name: "Other",
-                    totalBlacklisted: 765,
-                    totalSubscribers: 10976,
-                    uniqueSubscribers: 11741,
-                    folderId: 2,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getLists (2)", async () => {
@@ -1207,9 +1015,7 @@ describe("ContactsClient", () => {
             folderId: 2,
             name: "Magento Customer - ES",
         });
-        expect(response).toEqual({
-            id: 5,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createList (2)", async () => {
@@ -1309,64 +1115,7 @@ describe("ContactsClient", () => {
         const response = await client.contacts.getList({
             listId: 1000000,
         });
-        expect(response).toEqual({
-            id: 12,
-            name: "Newsletter_Weekly",
-            totalBlacklisted: 63,
-            totalSubscribers: 6533,
-            uniqueSubscribers: 6596,
-            campaignStats: [
-                {
-                    campaignId: 15,
-                    stats: {
-                        appleMppOpens: 10,
-                        clickers: 789,
-                        complaints: 0,
-                        deferred: 0,
-                        delivered: 6632,
-                        estimatedViews: 560,
-                        hardBounces: 4,
-                        listId: 2,
-                        opensRate: 29.54,
-                        returnBounce: 5,
-                        sent: 6645,
-                        softBounces: 34,
-                        trackableViews: 5661,
-                        trackableViewsRate: 23.45,
-                        uniqueClicks: 701,
-                        uniqueViews: 3442,
-                        unsubscriptions: 4,
-                        viewed: 4322,
-                    },
-                },
-                {
-                    campaignId: 45,
-                    stats: {
-                        appleMppOpens: 10,
-                        clickers: 788,
-                        complaints: 1,
-                        deferred: 0,
-                        delivered: 4078,
-                        estimatedViews: 560,
-                        hardBounces: 2,
-                        listId: 2,
-                        opensRate: 29.54,
-                        returnBounce: 5,
-                        sent: 4334,
-                        softBounces: 18,
-                        trackableViews: 5661,
-                        trackableViewsRate: 23.45,
-                        uniqueClicks: 654,
-                        uniqueViews: 987,
-                        unsubscriptions: 4,
-                        viewed: 1555,
-                    },
-                },
-            ],
-            createdAt: "2016-02-26T11:56:08Z",
-            dynamicList: false,
-            folderId: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getList (2)", async () => {
@@ -1582,44 +1331,7 @@ describe("ContactsClient", () => {
         const response = await client.contacts.getContactsFromList({
             listId: 1000000,
         });
-        expect(response).toEqual({
-            contacts: [
-                {
-                    attributes: {},
-                    createdAt: "2017-05-12T12:30:00Z",
-                    email: "alex.pain@example.com",
-                    emailBlacklisted: false,
-                    id: 45,
-                    listIds: [12, 9, 20],
-                    listUnsubscribed: [1, 2],
-                    modifiedAt: "2017-05-12T12:30:00Z",
-                    smsBlacklisted: true,
-                },
-                {
-                    attributes: {},
-                    createdAt: "2017-05-12T12:30:00Z",
-                    email: "john.smith@example.com",
-                    emailBlacklisted: true,
-                    id: 32,
-                    listIds: [12],
-                    listUnsubscribed: [1],
-                    modifiedAt: "2017-05-12T12:30:00Z",
-                    smsBlacklisted: false,
-                },
-                {
-                    attributes: {},
-                    createdAt: "2017-05-12T12:30:00Z",
-                    email: "helen.rose@example.com",
-                    emailBlacklisted: true,
-                    id: 65,
-                    listIds: [12, 9, 20],
-                    listUnsubscribed: [1],
-                    modifiedAt: "2017-05-12T12:30:00Z",
-                    smsBlacklisted: false,
-                },
-            ],
-            count: 17655,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getContactsFromList (2)", async () => {
@@ -1692,14 +1404,7 @@ describe("ContactsClient", () => {
                 emails: ["jeff32@example.com", "jim56@example.com"],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("addContactToList (2)", async () => {
@@ -1730,14 +1435,7 @@ describe("ContactsClient", () => {
                 extIds: ["ext234", "ext456"],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("addContactToList (3)", async () => {
@@ -1768,14 +1466,7 @@ describe("ContactsClient", () => {
                 ids: [1, 2],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("addContactToList (4)", async () => {
@@ -1806,14 +1497,7 @@ describe("ContactsClient", () => {
                 emails: ["jeff32@example.com", "jim56@example.com"],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("addContactToList (5)", async () => {
@@ -1844,14 +1528,7 @@ describe("ContactsClient", () => {
                 emails: ["jeff32@example.com", "jim56@example.com"],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("addContactToList (6)", async () => {
@@ -1882,14 +1559,7 @@ describe("ContactsClient", () => {
                 emails: ["jeff32@example.com", "jim56@example.com"],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("addContactToList (7)", async () => {
@@ -1966,14 +1636,7 @@ describe("ContactsClient", () => {
                 all: true,
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("removeContactFromList (2)", async () => {
@@ -2004,14 +1667,7 @@ describe("ContactsClient", () => {
                 emails: ["jeff32@example.com", "jim56@example.com"],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("removeContactFromList (3)", async () => {
@@ -2042,14 +1698,7 @@ describe("ContactsClient", () => {
                 extIds: ["ext234", "ext456"],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("removeContactFromList (4)", async () => {
@@ -2080,14 +1729,7 @@ describe("ContactsClient", () => {
                 ids: [1, 2],
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("removeContactFromList (5)", async () => {
@@ -2118,14 +1760,7 @@ describe("ContactsClient", () => {
                 all: true,
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("removeContactFromList (6)", async () => {
@@ -2156,14 +1791,7 @@ describe("ContactsClient", () => {
                 all: true,
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("removeContactFromList (7)", async () => {
@@ -2194,14 +1822,7 @@ describe("ContactsClient", () => {
                 all: true,
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("removeContactFromList (8)", async () => {
@@ -2232,14 +1853,7 @@ describe("ContactsClient", () => {
                 all: true,
             },
         });
-        expect(response).toEqual({
-            contacts: {
-                failure: ["jeff32@example.com, jim56@example.com"],
-                processId: 78,
-                success: ["success"],
-                total: 27,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("removeContactFromList (9)", async () => {
@@ -2303,23 +1917,7 @@ describe("ContactsClient", () => {
         server.mockEndpoint().get("/contacts/segments").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getSegments();
-        expect(response).toEqual({
-            count: 2,
-            segments: [
-                {
-                    categoryName: "Name1",
-                    id: 53,
-                    segmentName: "Segment1",
-                    updatedAt: "2017-03-12T12:30:00Z",
-                },
-                {
-                    categoryName: "Name2",
-                    id: 50,
-                    segmentName: "Segment2",
-                    updatedAt: "2017-03-12T12:30:00Z",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSegments (2)", async () => {
@@ -2394,96 +1992,7 @@ describe("ContactsClient", () => {
         const response = await client.contacts.getContactInfo({
             identifier: "identifier",
         });
-        expect(response).toEqual({
-            attributes: {},
-            createdAt: "2017-05-02T16:40:31Z",
-            email: "peggy.rain@example.com",
-            emailBlacklisted: false,
-            id: 42,
-            listIds: [40],
-            listUnsubscribed: [1000000],
-            modifiedAt: "2017-05-02T16:40:31Z",
-            smsBlacklisted: false,
-            statistics: {
-                clicked: [
-                    {
-                        campaignId: 21,
-                        links: [
-                            {
-                                count: 2,
-                                eventTime: "2016-05-03T21:25:01Z",
-                                ip: "66.249.93.118",
-                                url: "https://url.domain.com/fbe5387ec717e333628380454f68670010b205ff/1/go?uid={EMAIL}&utm_source=brevo&utm_campaign=test_camp&utm_medium=email",
-                            },
-                        ],
-                    },
-                ],
-                complaints: [
-                    {
-                        campaignId: 3,
-                        eventTime: "2017-03-12T20:15:13Z",
-                    },
-                ],
-                delivered: [
-                    {
-                        campaignId: 21,
-                        eventTime: "2016-05-03T21:24:56Z",
-                    },
-                ],
-                hardBounces: [
-                    {
-                        campaignId: 3,
-                        eventTime: "2017-03-12T20:15:13Z",
-                    },
-                ],
-                messagesSent: [
-                    {
-                        campaignId: 21,
-                        eventTime: "2016-05-03T20:15:13Z",
-                    },
-                    {
-                        campaignId: 42,
-                        eventTime: "2016-10-17T10:30:01Z",
-                    },
-                ],
-                opened: [
-                    {
-                        campaignId: 21,
-                        count: 2,
-                        eventTime: "2016-05-03T21:24:56Z",
-                        ip: "66.249.93.118",
-                    },
-                    {
-                        campaignId: 68,
-                        count: 1,
-                        eventTime: "2017-01-30T13:56:40Z",
-                        ip: "66.249.93.217",
-                    },
-                ],
-                softBounces: [
-                    {
-                        campaignId: 3,
-                        eventTime: "2017-03-12T20:15:13Z",
-                    },
-                ],
-                transacAttributes: [{}],
-                unsubscriptions: {
-                    adminUnsubscription: [
-                        {
-                            eventTime: "2017-03-12T20:15:13Z",
-                            ip: "165.87.3.15",
-                        },
-                    ],
-                    userUnsubscription: [
-                        {
-                            campaignId: 3,
-                            eventTime: "2017-03-12T20:15:13Z",
-                            ip: "165.87.3.15",
-                        },
-                    ],
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getContactInfo (2)", async () => {
@@ -2737,95 +2246,7 @@ describe("ContactsClient", () => {
         const response = await client.contacts.getContactStats({
             identifier: "identifier",
         });
-        expect(response).toEqual({
-            clicked: [
-                {
-                    campaignId: 21,
-                    links: [
-                        {
-                            count: 2,
-                            eventTime: "2016-05-03T21:25:01Z",
-                            ip: "66.249.93.118",
-                            url: "https://url.domain.com/fbe5387ec717e333628380454f68670010b205ff/1/go?uid={EMAIL}&utm_source=brevo&utm_campaign=test_camp&utm_medium=email",
-                        },
-                    ],
-                },
-            ],
-            complaints: [
-                {
-                    campaignId: 3,
-                    eventTime: "2017-03-12T20:15:13Z",
-                },
-            ],
-            delivered: [
-                {
-                    campaignId: 21,
-                    eventTime: "2016-05-03T21:24:56Z",
-                },
-            ],
-            hardBounces: [
-                {
-                    campaignId: 3,
-                    eventTime: "2017-03-12T20:15:13Z",
-                },
-            ],
-            messagesSent: [
-                {
-                    campaignId: 21,
-                    eventTime: "2016-05-03T20:15:13Z",
-                },
-                {
-                    campaignId: 42,
-                    eventTime: "2016-10-17T10:30:01Z",
-                },
-                {
-                    campaignId: 45,
-                    eventTime: "2016-11-09T11:45:02Z",
-                },
-            ],
-            opened: [
-                {
-                    campaignId: 21,
-                    count: 2,
-                    eventTime: "2016-05-03T21:24:56Z",
-                    ip: "66.249.93.118",
-                },
-                {
-                    campaignId: 45,
-                    count: 1,
-                    eventTime: "2017-01-30T13:56:40Z",
-                    ip: "66.249.93.217",
-                },
-            ],
-            softBounces: [
-                {
-                    campaignId: 3,
-                    eventTime: "2017-03-12T20:15:13Z",
-                },
-            ],
-            transacAttributes: [
-                {
-                    orderDate: "2017-03-12",
-                    orderId: 248,
-                    orderPrice: 24.99,
-                },
-            ],
-            unsubscriptions: {
-                adminUnsubscription: [
-                    {
-                        eventTime: "2017-03-12T20:15:13Z",
-                        ip: "165.87.3.15",
-                    },
-                ],
-                userUnsubscription: [
-                    {
-                        campaignId: 3,
-                        eventTime: "2017-03-12T20:15:13Z",
-                        ip: "165.87.3.15",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getContactStats (2)", async () => {

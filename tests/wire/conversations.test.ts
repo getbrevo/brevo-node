@@ -141,81 +141,7 @@ describe("ConversationsClient", () => {
             text: "Hello! How can I help you?",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1482512803740,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Hello! How can I help you?",
-            id: "eYBEm3gq3zc5ayE2g",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: false,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Hello! How can I help you?",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendAMessageAsAnAgent (2)", async () => {
@@ -294,81 +220,7 @@ describe("ConversationsClient", () => {
             text: "Hello! How can I help you?",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1482512803740,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Hello! How can I help you?",
-            id: "eYBEm3gq3zc5ayE2g",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: false,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Hello! How can I help you?",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendAMessageAsAnAgent (3)", async () => {
@@ -445,81 +297,7 @@ describe("ConversationsClient", () => {
             text: "Hello! How can I help you?",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1482512803740,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Hello! How can I help you?",
-            id: "eYBEm3gq3zc5ayE2g",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: false,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Hello! How can I help you?",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendAMessageAsAnAgent (4)", async () => {
@@ -614,81 +392,7 @@ describe("ConversationsClient", () => {
         const response = await client.conversations.getAMessage({
             id: "id",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1482512803740,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Hello! How can I help you?",
-            id: "eYBEm3gq3zc5ayE2g",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: false,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Hello! How can I help you?",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAMessage (2)", async () => {
@@ -800,81 +504,7 @@ describe("ConversationsClient", () => {
             id: "id",
             text: "Good morning! How can I help you?",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1482512803740,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Hello! How can I help you?",
-            id: "eYBEm3gq3zc5ayE2g",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: false,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Hello! How can I help you?",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateAMessageSentByAnAgent (2)", async () => {
@@ -1049,81 +679,7 @@ describe("ConversationsClient", () => {
             text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1470222622433,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
-            id: "AXCR3k9bpSY7bpuh7",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: true,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendAnAutomatedMessageToAVisitor (2)", async () => {
@@ -1196,81 +752,7 @@ describe("ConversationsClient", () => {
             text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1470222622433,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
-            id: "AXCR3k9bpSY7bpuh7",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: true,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendAnAutomatedMessageToAVisitor (3)", async () => {
@@ -1345,81 +827,7 @@ describe("ConversationsClient", () => {
             text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1470222622433,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
-            id: "AXCR3k9bpSY7bpuh7",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: true,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendAnAutomatedMessageToAVisitor (4)", async () => {
@@ -1514,81 +922,7 @@ describe("ConversationsClient", () => {
         const response = await client.conversations.getAnAutomatedMessage({
             id: "id",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1470222622433,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
-            id: "AXCR3k9bpSY7bpuh7",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: true,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAnAutomatedMessage (2)", async () => {
@@ -1702,81 +1036,7 @@ describe("ConversationsClient", () => {
             id: "id",
             text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 4668 7775 9233 54",
         });
-        expect(response).toEqual({
-            agentId: "d9nKoegKSjmCtyK78",
-            agentName: "Liz",
-            agentUserpic: "https://www.brevo.com/",
-            attachments: [
-                {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
-                    isImage: true,
-                    isInline: "isInline",
-                    size: 1000000,
-                    url: "url",
-                },
-            ],
-            bcc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            cc: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            createdAt: 1470222622433,
-            file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
-                isImage: true,
-                size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
-            },
-            forwardedToSourceStatus: {
-                error: "error",
-                isSuccess: true,
-            },
-            from: {
-                email: "email",
-                name: "name",
-            },
-            html: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 4668 7775 9233 54",
-            id: "AXCR3k9bpSY7bpuh7",
-            integrations: {
-                key: "value",
-            },
-            isBot: true,
-            isMissed: false,
-            isMissedByVisitor: false,
-            isPushed: true,
-            isTrigger: false,
-            rawUnsafeHtml: "Good morning!<br>How can I help you?",
-            receivedFrom: "SuperAwesomeHelpdesk",
-            replyTo: {
-                email: "email",
-                name: "name",
-            },
-            sourceMessageId: "sourceMessageId",
-            subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 4668 7775 9233 54",
-            to: [
-                {
-                    email: "email",
-                    name: "name",
-                },
-            ],
-            type: "agent",
-            visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateAnAutomatedMessage (2)", async () => {
@@ -1897,10 +1157,7 @@ describe("ConversationsClient", () => {
         const response = await client.conversations.setVisitorGroupAssignment({
             groupId: "PjRBMhWGen6aRHjif",
         });
-        expect(response).toEqual({
-            groupId: "PjRBMhWGen6aRHjif",
-            visitorId: "AXCR3k9bpSY7bpuh7",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("setVisitorGroupAssignment (2)", async () => {

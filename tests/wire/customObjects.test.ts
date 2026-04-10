@@ -24,10 +24,7 @@ describe("CustomObjectsClient", () => {
             object_type: "vehicle",
             records: [{}],
         });
-        expect(response).toEqual({
-            message: "Batch object records are being processed",
-            processId: 21,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("upsertrecords (2)", async () => {
@@ -152,38 +149,7 @@ describe("CustomObjectsClient", () => {
             limit: 1000000,
             page_num: 1000000,
         });
-        expect(response).toEqual({
-            count: 350,
-            records: [
-                {
-                    associations: [
-                        {
-                            object_type: "garage",
-                            records: [
-                                {
-                                    identifiers: {
-                                        id: 12345,
-                                    },
-                                },
-                            ],
-                        },
-                    ],
-                    attributes: {
-                        color: "Black",
-                        engine_type: "Hybrid",
-                        make: "Toyoto",
-                        model: "Corolla",
-                        year: 2020,
-                    },
-                    createdAt: "2025-07-22T10:20:30Z",
-                    identifiers: {
-                        ext_id: "507f1f77bc",
-                        id: 16789,
-                    },
-                    updatedAt: "2025-07-22T10:20:30Z",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getrecords (2)", async () => {
@@ -299,10 +265,7 @@ describe("CustomObjectsClient", () => {
                 ext_ids: ["ext-001", "ext-002"],
             },
         });
-        expect(response).toEqual({
-            processId: 21,
-            message: "Batch object records are being processed for deletion.",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("batchDeleteObjectRecords (2)", async () => {

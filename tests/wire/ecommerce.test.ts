@@ -34,27 +34,7 @@ describe("EcommerceClient", () => {
         server.mockEndpoint().get("/categories").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.ecommerce.getCategories();
-        expect(response).toEqual({
-            categories: [
-                {
-                    createdAt: "2021-12-31T11:42:35.638Z",
-                    id: "C19",
-                    isDeleted: true,
-                    modifiedAt: "2022-03-03T14:48:31.867Z",
-                    name: "Food",
-                    url: "http://mydomain.com/category/food",
-                },
-                {
-                    createdAt: "2021-12-31T11:42:35.638Z",
-                    id: "C20",
-                    isDeleted: true,
-                    modifiedAt: "2022-03-03T14:48:31.867Z",
-                    name: "clothing",
-                    url: "http://mydomain.com/category/clothing",
-                },
-            ],
-            count: 2,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getCategories (2)", async () => {
@@ -88,9 +68,7 @@ describe("EcommerceClient", () => {
         const response = await client.ecommerce.createUpdateCategory({
             id: "CAT123",
         });
-        expect(response).toEqual({
-            id: 21,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createUpdateCategory (2)", async () => {
@@ -137,10 +115,7 @@ describe("EcommerceClient", () => {
                 },
             ],
         });
-        expect(response).toEqual({
-            createdCount: 2,
-            updatedCount: 7,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createUpdateBatchCategory (2)", async () => {
@@ -190,14 +165,7 @@ describe("EcommerceClient", () => {
         const response = await client.ecommerce.getCategoryInfo({
             id: "id",
         });
-        expect(response).toEqual({
-            createdAt: "2017-05-12T12:30:00Z",
-            id: "C11",
-            isDeleted: true,
-            modifiedAt: "2017-05-12T12:30:00Z",
-            name: "Electronics",
-            url: "http://mydomain.com/category/clothing",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getCategoryInfo (2)", async () => {
@@ -302,29 +270,7 @@ describe("EcommerceClient", () => {
             periodFrom: "2022-01-02T00:00:00Z",
             periodTo: "2022-01-03T00:00:00Z",
         });
-        expect(response).toEqual({
-            results: [
-                {
-                    averageBasket: 3,
-                    conversionSource: "email_campaign",
-                    id: 1.1,
-                    ordersCount: 300,
-                    revenue: 900,
-                },
-                {
-                    averageBasket: 4,
-                    conversionSource: "email_campaign",
-                    id: 1.1,
-                    ordersCount: 200,
-                    revenue: 800,
-                },
-            ],
-            totals: {
-                averageBasket: 3.4,
-                ordersCount: 500,
-                revenue: 1700,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAttributionMetricsForOneOrMoreBrevoCampaignsOrWorkflows (2)", async () => {
@@ -371,14 +317,7 @@ describe("EcommerceClient", () => {
             conversionSource: "email_campaign",
             conversionSourceId: "sale",
         });
-        expect(response).toEqual({
-            averageBasket: 1.1,
-            conversionSource: "email_campaign",
-            id: 1.1,
-            ordersCount: 1.1,
-            revenue: 1.1,
-            newCustomersCount: 1.1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDetailedAttributionMetricsForASingleBrevoCampaignOrWorkflow (2)", async () => {
@@ -434,20 +373,7 @@ describe("EcommerceClient", () => {
             conversionSource: "email_campaign",
             conversionSourceId: "sale",
         });
-        expect(response).toEqual({
-            products: [
-                {
-                    id: "1",
-                    imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
-                    name: "Milky Way Galaxy",
-                    ordersCount: 200,
-                    price: 1000,
-                    revenue: 999.99,
-                    sku: "sku-1",
-                    url: "https://mydomain.com/products/alpina-panoma-classic",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAttributedProductSalesForASingleBrevoCampaignOrWorkflow (2)", async () => {
@@ -487,9 +413,7 @@ describe("EcommerceClient", () => {
             .build();
 
         const response = await client.ecommerce.getTheIso4217CompliantDisplayCurrencyCodeForYourBrevoAccount();
-        expect(response).toEqual({
-            code: "EUR",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTheIso4217CompliantDisplayCurrencyCodeForYourBrevoAccount (2)", async () => {
@@ -567,9 +491,7 @@ describe("EcommerceClient", () => {
         const response = await client.ecommerce.setConfigDisplayCurrency({
             code: "EUR",
         });
-        expect(response).toEqual({
-            code: "EUR",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("setConfigDisplayCurrency (2)", async () => {
@@ -699,52 +621,7 @@ describe("EcommerceClient", () => {
         server.mockEndpoint().get("/orders").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.ecommerce.getOrders();
-        expect(response).toEqual({
-            count: 1,
-            orders: [
-                {
-                    amount: 2000,
-                    billing: {
-                        address: "Sec 62, Noida",
-                        city: "Noida",
-                        country: "India",
-                        countryCode: "IN",
-                        paymentMethod: "Net banking",
-                        phone: 9238283982,
-                        postCode: 110001,
-                        region: "North India",
-                    },
-                    contact_id: 2,
-                    coupons: ["flat50", "flat40"],
-                    createdAt: "2021-12-31T11:42:35.638Z",
-                    email: "testvisitor@sendinblue.com",
-                    id: "order1803",
-                    identifiers: {
-                        ext_id: "ab12",
-                        loyalty_subscription_id: "1234",
-                    },
-                    products: [
-                        {
-                            price: 100,
-                            productId: 21,
-                            quantity: 2,
-                            quantityFloat: 0,
-                            variantId: "P100",
-                        },
-                        {
-                            price: 100,
-                            productId: 21,
-                            quantity: 0,
-                            quantityFloat: 2.52,
-                            variantId: "P15756",
-                        },
-                    ],
-                    status: "complete",
-                    storeId: "123",
-                    updatedAt: "2022-03-03T14:48:31.867Z",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getOrders (2)", async () => {
@@ -879,10 +756,7 @@ describe("EcommerceClient", () => {
                 },
             ],
         });
-        expect(response).toEqual({
-            batchId: 1.1,
-            count: 17655,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createBatchOrder (2)", async () => {
@@ -1020,57 +894,7 @@ describe("EcommerceClient", () => {
         server.mockEndpoint().get("/products").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.ecommerce.getProducts();
-        expect(response).toEqual({
-            count: 2,
-            products: [
-                {
-                    brand: "Adidas",
-                    categories: ["279638835374", "279502848174"],
-                    createdAt: "2022-06-30T10:29:16.078Z",
-                    description: "Shoes for sports",
-                    id: "P11",
-                    imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
-                    isDeleted: true,
-                    metaInfo: {
-                        brand: "addidas",
-                        description: "Shoes for sports",
-                    },
-                    modifiedAt: "2022-06-30T10:29:16.078Z",
-                    name: "Alpina Panoma Classic",
-                    parentId: "parentId",
-                    price: 49.95,
-                    s3Original: "https://img-ecom.mailinblue.com/path-to-original/img.jpg",
-                    s3ThumbAnalytics: "https://img-ecom.mailinblue.com/path-to-analytics/img.jpg",
-                    s3ThumbEditor: "https://img-ecom.mailinblue.com/path-to-editor/img.jpg",
-                    sku: "186622-9",
-                    stock: 100,
-                    url: "https://mydomain.com/products/alpina-panoma-classic",
-                },
-                {
-                    brand: "Adidas",
-                    categories: ["2d79638835374", "27d9502848174"],
-                    createdAt: "2022-06-30T10:29:16.078Z",
-                    description: "Shoes for sports",
-                    id: "P11",
-                    imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
-                    isDeleted: true,
-                    metaInfo: {
-                        brand: "addidas",
-                        description: "Shoes for sports",
-                    },
-                    modifiedAt: "2022-06-30T10:29:16.078Z",
-                    name: "Alpina Panoma Classic2",
-                    parentId: "parentId",
-                    price: 49.95,
-                    s3Original: "https://img-ecom.mailinblue.com/path-to-original/img.jpg",
-                    s3ThumbAnalytics: "https://img-ecom.mailinblue.com/path-to-analytics/img.jpg",
-                    s3ThumbEditor: "https://img-ecom.mailinblue.com/path-to-editor/img.jpg",
-                    sku: "186622-9",
-                    stock: 350,
-                    url: "https://mydomain.com/products/alpina-panoma-classic2",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getProducts (2)", async () => {
@@ -1105,9 +929,7 @@ describe("EcommerceClient", () => {
             id: "P11",
             name: "Iphone 11",
         });
-        expect(response).toEqual({
-            id: 21,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createUpdateProduct (2)", async () => {
@@ -1156,10 +978,7 @@ describe("EcommerceClient", () => {
                 },
             ],
         });
-        expect(response).toEqual({
-            createdCount: 2,
-            updatedCount: 7,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createUpdateBatchProducts (2)", async () => {
@@ -1228,29 +1047,7 @@ describe("EcommerceClient", () => {
         const response = await client.ecommerce.getProductInfo({
             id: "id",
         });
-        expect(response).toEqual({
-            brand: "Adidas",
-            categories: ["categories"],
-            createdAt: "2017-05-12T12:30:00Z",
-            description: "Shoes for sports",
-            id: "P11",
-            imageUrl: "http://mydomain.com/product-absoulte-url/img.jpeg",
-            isDeleted: true,
-            metaInfo: {
-                brand: "addidas",
-                description: "Shoes for sports",
-            },
-            modifiedAt: "2017-05-12T12:30:00Z",
-            name: "Iphone 11",
-            parentId: "parentId",
-            price: 1.1,
-            s3Original: "s3Original",
-            s3ThumbAnalytics: "s3ThumbAnalytics",
-            s3ThumbEditor: "s3ThumbEditor",
-            sku: "sku",
-            stock: 100,
-            url: "http://mydomain.com/product/electronics/product1",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getProductInfo (2)", async () => {

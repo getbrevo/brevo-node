@@ -39,30 +39,7 @@ describe("SmsTemplatesClient", () => {
             .build();
 
         const response = await client.smsTemplates.getSmsTemplates();
-        expect(response).toEqual({
-            count: 1,
-            templates: [
-                {
-                    id: 4,
-                    name: "Order Confirmation - EN",
-                    short_url_enabled: false,
-                    message: "Thanks for your order !",
-                    compliance: {
-                        compliance_toggle: true,
-                        organisation_prefix: "BREVO",
-                        stop_keyword: "STOP",
-                    },
-                    encryption: true,
-                    unicode_sms: true,
-                    media_file: "brv-logo.png",
-                    media_file_size: "media_file_size",
-                    media_url:
-                        "https://img-st2.mailinblue.com/1232/images/content_library/original/69282fe28f55fd22de6e0cf9.png",
-                    createdAt: "2025-05-01T12:30:00Z",
-                    updatedAt: "2025-05-01T12:30:00Z",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSMSTemplates (2)", async () => {

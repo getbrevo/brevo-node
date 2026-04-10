@@ -23,9 +23,7 @@ describe("RewardClient", () => {
             pid: "pid",
             cpid: "cpid",
         });
-        expect(response).toEqual({
-            count: 1000000,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getCodeCount (2)", async () => {
@@ -170,22 +168,7 @@ describe("RewardClient", () => {
         const response = await client.reward.getRewardPageApi({
             pid: "pid",
         });
-        expect(response).toEqual({
-            items: [
-                {
-                    createdAt: "2024-01-15T09:30:00Z",
-                    endDate: "2024-01-15T09:30:00Z",
-                    id: "id",
-                    loyaltyProgramId: "loyaltyProgramId",
-                    name: "name",
-                    publicImage: "publicImage",
-                    startDate: "2024-01-15T09:30:00Z",
-                    state: "state",
-                    updatedAt: "2024-01-15T09:30:00Z",
-                },
-            ],
-            totalCount: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getRewardPageApi (2)", async () => {
@@ -342,16 +325,7 @@ describe("RewardClient", () => {
             pid: "pid",
             name: "name",
         });
-        expect(response).toEqual({
-            createdAt: "2024-01-15T09:30:00Z",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            name: "name",
-            publicDescription: "publicDescription",
-            publicImage: "publicImage",
-            publicName: "publicName",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createReward (2)", async () => {
@@ -477,21 +451,7 @@ describe("RewardClient", () => {
             pid: "pid",
             rewardId: "rewardId",
         });
-        expect(response).toEqual({
-            code: "code",
-            consumedAt: "consumedAt",
-            contactId: 1000000,
-            createdAt: "2024-01-15T09:30:00Z",
-            expirationDate: "2024-01-15T09:30:00Z",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            rewardId: "rewardId",
-            updatedAt: "2024-01-15T09:30:00Z",
-            value: 1.1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createVoucher (2)", async () => {
@@ -665,24 +625,7 @@ describe("RewardClient", () => {
         const response = await client.reward.redeemVoucher({
             pid: "pid",
         });
-        expect(response).toEqual({
-            cancelledAt: "2024-01-15T09:30:00Z",
-            completedAt: "2024-01-15T09:30:00Z",
-            contactId: 1000000,
-            createdAt: "2024-01-15T09:30:00Z",
-            debitTransactionId: "debitTransactionId",
-            expiresAt: "2024-01-15T09:30:00Z",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            rejectReason: "rejectReason",
-            rejectedAt: "2024-01-15T09:30:00Z",
-            rewardAttributionId: "rewardAttributionId",
-            status: "status",
-            updatedAt: "2024-01-15T09:30:00Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("redeemVoucher (2)", async () => {
@@ -894,24 +837,7 @@ describe("RewardClient", () => {
             pid: "pid",
             tid: "tid",
         });
-        expect(response).toEqual({
-            cancelledAt: "2024-01-15T09:30:00Z",
-            completedAt: "2024-01-15T09:30:00Z",
-            contactId: 1000000,
-            createdAt: "2024-01-15T09:30:00Z",
-            debitTransactionId: "debitTransactionId",
-            expiresAt: "2024-01-15T09:30:00Z",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            rejectReason: "rejectReason",
-            rejectedAt: "2024-01-15T09:30:00Z",
-            rewardAttributionId: "rewardAttributionId",
-            status: "status",
-            updatedAt: "2024-01-15T09:30:00Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("completeRedeemTransaction (2)", async () => {
@@ -1167,9 +1093,7 @@ describe("RewardClient", () => {
         const response = await client.reward.validateReward({
             pid: "pid",
         });
-        expect(response).toEqual({
-            authorize: true,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("validateReward (2)", async () => {
@@ -1395,100 +1319,7 @@ describe("RewardClient", () => {
             pid: "pid",
             rid: "rid",
         });
-        expect(response).toEqual({
-            attributionPerConsumer: 1,
-            balanceDefinitionId: "balanceDefinitionId",
-            code: "code",
-            codeCount: 1000000,
-            codeGeneratorId: "codeGeneratorId",
-            codePoolId: "codePoolId",
-            config: "config",
-            createdAt: "2024-01-15T09:30:00Z",
-            disabledAt: "2024-01-15T09:30:00Z",
-            endDate: "2024-01-15T09:30:00Z",
-            expirationDate: "2024-01-15T09:30:00Z",
-            expirationModifier: "startOfPeriod",
-            expirationUnit: "expirationUnit",
-            expirationValue: 1,
-            generator: {
-                createdAt: "createdAt",
-                description: "description",
-                id: "id",
-                name: "name",
-                pattern: "pattern",
-                updatedAt: "2024-01-15T09:30:00Z",
-            },
-            id: "id",
-            limits: [
-                {
-                    createdAt: "2024-01-15T09:30:00Z",
-                    durationUnit: "durationUnit",
-                    durationValue: 1,
-                    limitValue: 1,
-                    rewardLimitId: "rewardLimitId",
-                    slidingSchedule: true,
-                    type: "type",
-                    updatedAt: "2024-01-15T09:30:00Z",
-                },
-            ],
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            name: "name",
-            products: [
-                {
-                    createdAt: "createdAt",
-                    imageRef: "imageRef",
-                    productId: "productId",
-                    value: "value",
-                },
-            ],
-            publicDescription: "publicDescription",
-            publicImage: "publicImage",
-            publicName: "publicName",
-            redeemPerConsumer: 1,
-            redeemRules: ["redeemRules"],
-            rewardConfigs: {
-                attribution: "attribution",
-                code: "code",
-                value: "value",
-            },
-            rule: {
-                condition: {
-                    op: "op",
-                },
-                createdAt: "createdAt",
-                description: "description",
-                event: {
-                    name: "name",
-                    source: "source",
-                },
-                isInternal: true,
-                loyaltyProgramId: "loyaltyProgramId",
-                loyaltyVersionId: 1,
-                meta: {
-                    key: "value",
-                },
-                name: "name",
-                results: [{}],
-                ruleId: "ruleId",
-                ruleType: "ruleType",
-                updatedAt: "updatedAt",
-            },
-            startDate: "2024-01-15T09:30:00Z",
-            subtractBalanceDefinitionId: "subtractBalanceDefinitionId",
-            subtractBalanceStrategy: "subtractBalanceStrategy",
-            subtractBalanceValue: 1,
-            subtractTotalBalance: true,
-            totalAttribution: 1,
-            totalRedeem: 1,
-            triggerId: "triggerId",
-            unit: "unit",
-            updatedAt: "updatedAt",
-            value: 1.1,
-            valueType: "valueType",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getRewardInformation (2)", async () => {
@@ -1660,28 +1491,7 @@ describe("RewardClient", () => {
             pid: "pid",
             contactId: 1,
         });
-        expect(response).toEqual({
-            contactId: 1000000,
-            contactRewards: [
-                {
-                    code: "code",
-                    consumedAt: "consumedAt",
-                    createdAt: "createdAt",
-                    expirationDate: "expirationDate",
-                    id: "id",
-                    meta: {
-                        key: "value",
-                    },
-                    rewardId: "rewardId",
-                    unit: "unit",
-                    updatedAt: "updatedAt",
-                    value: 1.1,
-                },
-            ],
-            count: 1,
-            loyaltyProgramId: "loyaltyProgramId",
-            loyaltySubscriptionId: "loyaltySubscriptionId",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVoucherForAContact (2)", async () => {

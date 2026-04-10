@@ -30,20 +30,7 @@ describe("TransactionalEmailsClient", () => {
             .build();
 
         const response = await client.transactionalEmails.getTransacBlockedContacts();
-        expect(response).toEqual({
-            contacts: [
-                {
-                    blockedAt: "2017-05-01T12:30:00Z",
-                    email: "abc@xyz.com",
-                    reason: {
-                        code: "adminBlocked",
-                        message: "Admin blocked",
-                    },
-                    senderEmail: "ez312@gmal.com",
-                },
-            ],
-            count: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTransacBlockedContacts (2)", async () => {
@@ -134,9 +121,7 @@ describe("TransactionalEmailsClient", () => {
             .build();
 
         const response = await client.transactionalEmails.getBlockedDomains();
-        expect(response).toEqual({
-            domains: ["example.com", "testdomain.com"],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("blockNewDomain (1)", async () => {
@@ -307,10 +292,7 @@ describe("TransactionalEmailsClient", () => {
                 },
             ],
         });
-        expect(response).toEqual({
-            messageId: "<201798300811.5787683@relay.domain.com>",
-            messageIds: ["messageIds"],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendTransacEmail (2)", async () => {
@@ -354,10 +336,7 @@ describe("TransactionalEmailsClient", () => {
                 },
             ],
         });
-        expect(response).toEqual({
-            messageId: "<201798300811.5787683@relay.domain.com>",
-            messageIds: ["messageIds"],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendTransacEmail (3)", async () => {
@@ -465,26 +444,7 @@ describe("TransactionalEmailsClient", () => {
             startDate: "2022-02-02",
             endDate: "2022-03-02",
         });
-        expect(response).toEqual({
-            batches: [
-                {
-                    createdAt: "2022-02-26T11:36:43Z",
-                    scheduledAt: "2022-02-28T11:36:43Z",
-                    status: "queued",
-                },
-                {
-                    createdAt: "2022-02-24T11:36:43Z",
-                    scheduledAt: "2022-02-25T11:36:43Z",
-                    status: "processed",
-                },
-                {
-                    createdAt: "2022-02-25T11:36:43Z",
-                    scheduledAt: "2022-02-26T11:36:43Z",
-                    status: "inProgress",
-                },
-            ],
-            count: 3,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getScheduledEmailById (2)", async () => {
@@ -510,11 +470,7 @@ describe("TransactionalEmailsClient", () => {
             startDate: "2022-02-02",
             endDate: "2022-03-02",
         });
-        expect(response).toEqual({
-            createdAt: "2022-02-26T11:36:43Z",
-            scheduledAt: "2022-02-28T11:36:43Z",
-            status: "queued",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getScheduledEmailById (3)", async () => {
@@ -592,31 +548,7 @@ describe("TransactionalEmailsClient", () => {
         server.mockEndpoint().get("/smtp/emails").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.transactionalEmails.getTransacEmailsList();
-        expect(response).toEqual({
-            count: 120,
-            transactionalEmails: [
-                {
-                    date: "2019-05-25T11:53:26Z",
-                    email: "abc@xyz.com",
-                    from: "diana.doe@example.com",
-                    messageId: "<201798300811.5787683@relay.domain.com>",
-                    subject: "summer camp",
-                    tags: ["tag1"],
-                    templateId: 15,
-                    uuid: "5a78c-209ok98262910-std2341",
-                },
-                {
-                    date: "2019-05-25T07:28:11Z",
-                    email: "test@test.com",
-                    from: "diana.doe@example.com",
-                    messageId: "<201798300811.5700093@relay.domain.com>",
-                    subject: "details verification",
-                    tags: ["tag1"],
-                    templateId: 15,
-                    uuid: "5a78c-209ok98262910-s99a341",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTransacEmailsList (2)", async () => {
@@ -655,28 +587,7 @@ describe("TransactionalEmailsClient", () => {
         const response = await client.transactionalEmails.getTransacEmailContent({
             uuid: "uuid",
         });
-        expect(response).toEqual({
-            attachmentCount: 2,
-            body: "<!DOCTYPE html> <html> <body> <h1>Greetings from the team</h1> <p>This is the actual html content sent</p> </body> </html>",
-            date: "2016-02-25T11:53:26Z",
-            email: "abc@example.com",
-            events: [
-                {
-                    name: "sent",
-                    time: "2016-02-25T11:53:26Z",
-                },
-                {
-                    name: "delivered",
-                    time: "2016-02-25T11:55:26Z",
-                },
-                {
-                    name: "opened",
-                    time: "2016-02-26T09:53:26Z",
-                },
-            ],
-            subject: "Summer Camps",
-            templateId: 12,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("deleteAnSmtpTransactionalLog (1)", async () => {
@@ -762,21 +673,7 @@ describe("TransactionalEmailsClient", () => {
             .build();
 
         const response = await client.transactionalEmails.getAggregatedSmtpReport();
-        expect(response).toEqual({
-            blocked: 2,
-            clicks: 9987,
-            delivered: 18996,
-            hardBounces: 234,
-            invalid: 0,
-            opens: 17654,
-            range: "2016-09-08|2017-04-28",
-            requests: 19887,
-            softBounces: 1533,
-            spamReports: 1,
-            uniqueClicks: 8766,
-            uniqueOpens: 13688,
-            unsubscribed: 2,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAggregatedSmtpReport (2)", async () => {
@@ -842,36 +739,7 @@ describe("TransactionalEmailsClient", () => {
             .build();
 
         const response = await client.transactionalEmails.getEmailEventReport();
-        expect(response).toEqual({
-            events: [
-                {
-                    date: "2017-03-12T12:30:00Z",
-                    email: "john.smith@example.com",
-                    event: "deferred",
-                    from: "john@example.com",
-                    ip: "165.87.3.15",
-                    link: "https://www.someexamplelink.com",
-                    messageId: "<201798300811.5787683@example.domain.com>",
-                    reason: "Error connection timeout",
-                    subject: "Sib client_dev test",
-                    tag: "OrderConfirmation",
-                    templateId: 4,
-                },
-                {
-                    date: "2017-03-13T16:30:00Z",
-                    email: "john.smith@example.com",
-                    event: "delivered",
-                    from: "john@example.com",
-                    ip: "165.87.3.15",
-                    link: "https://www.someexamplelink.com",
-                    messageId: "<201798300811.5787683@example.domain.com>",
-                    reason: "Error connection timeout",
-                    subject: "Sib client_dev test",
-                    tag: "OrderConfirmation",
-                    templateId: 5,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEmailEventReport (2)", async () => {
@@ -941,40 +809,7 @@ describe("TransactionalEmailsClient", () => {
             .build();
 
         const response = await client.transactionalEmails.getSmtpReport();
-        expect(response).toEqual({
-            reports: [
-                {
-                    blocked: 519,
-                    clicks: 1026,
-                    date: "2017-04-30",
-                    delivered: 10103,
-                    hardBounces: 21,
-                    invalid: 1,
-                    opens: 5091,
-                    requests: 10756,
-                    softBounces: 137,
-                    spamReports: 0,
-                    uniqueClicks: 720,
-                    uniqueOpens: 2318,
-                    unsubscribed: 0,
-                },
-                {
-                    blocked: 920,
-                    clicks: 1514,
-                    date: "2017-05-01",
-                    delivered: 17499,
-                    hardBounces: 34,
-                    invalid: 2,
-                    opens: 10089,
-                    requests: 18812,
-                    softBounces: 254,
-                    spamReports: 0,
-                    uniqueClicks: 1090,
-                    uniqueOpens: 4393,
-                    unsubscribed: 3,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSmtpReport (2)", async () => {
@@ -1021,14 +856,7 @@ describe("TransactionalEmailsClient", () => {
         const response = await client.transactionalEmails.postPreviewSmtpEmailTemplates({
             key: "value",
         });
-        expect(response).toEqual({
-            fromEmail: "fromEmail",
-            fromName: "fromName",
-            html: "html",
-            previewText: "previewText",
-            subject: "subject",
-            usedFeedNames: ["usedFeedNames", "usedFeedNames"],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postPreviewSmtpEmailTemplates (2)", async () => {
@@ -1096,49 +924,7 @@ describe("TransactionalEmailsClient", () => {
         server.mockEndpoint().get("/smtp/templates").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.transactionalEmails.getSmtpTemplates();
-        expect(response).toEqual({
-            count: 2,
-            templates: [
-                {
-                    createdAt: "2016-02-24T14:44:24Z",
-                    doiTemplate: false,
-                    htmlContent: "HTML CONTENT 1",
-                    id: 5,
-                    isActive: false,
-                    modifiedAt: "2016-02-24T15:37:11Z",
-                    name: "ChristomasTimeTemplate",
-                    replyTo: "replyto@domain.com",
-                    sender: {
-                        email: "john.smith@example.com",
-                        id: "43",
-                        name: "John",
-                    },
-                    subject: "Merry Christmas",
-                    tag: "Festival",
-                    testSent: false,
-                    toField: "",
-                },
-                {
-                    createdAt: "2016-02-25T11:53:26Z",
-                    doiTemplate: false,
-                    htmlContent: "HTML CONTENT 2",
-                    id: 12,
-                    isActive: true,
-                    modifiedAt: "2016-02-25T11:53:26Z",
-                    name: "SummerSales2017Template",
-                    replyTo: "replyto@domain.com",
-                    sender: {
-                        email: "john.smith@example.com",
-                        id: "43",
-                        name: "John",
-                    },
-                    subject: "Enjoy our summer Sales !",
-                    tag: "Summer",
-                    testSent: false,
-                    toField: "",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSmtpTemplates (2)", async () => {
@@ -1178,9 +964,7 @@ describe("TransactionalEmailsClient", () => {
             subject: "Thanks for your purchase !",
             templateName: "Order Confirmation - EN",
         });
-        expect(response).toEqual({
-            id: 5,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createSmtpTemplate (2)", async () => {
@@ -1238,25 +1022,7 @@ describe("TransactionalEmailsClient", () => {
         const response = await client.transactionalEmails.getSmtpTemplate({
             templateId: 1000000,
         });
-        expect(response).toEqual({
-            createdAt: "2016-02-25T11:53:26Z",
-            doiTemplate: false,
-            htmlContent: "HTML CONTENT 4",
-            id: 33,
-            isActive: true,
-            modifiedAt: "2016-02-25T11:53:26Z",
-            name: "OrderConfirmation",
-            replyTo: "replyto@domain.com",
-            sender: {
-                email: "john.smith@example.com",
-                id: "43",
-                name: "John",
-            },
-            subject: "Order Confirmation : Thanks for your Purchase !",
-            tag: "",
-            testSent: false,
-            toField: "",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSmtpTemplate (2)", async () => {

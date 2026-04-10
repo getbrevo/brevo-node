@@ -28,27 +28,7 @@ describe("EventClient", () => {
         server.mockEndpoint().get("/events").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.event.getEvents();
-        expect(response).toEqual({
-            events: [
-                {
-                    contact_id: 211,
-                    event_date: "2024-02-06T20:59:23Z",
-                    event_name: "order_created",
-                    event_filter_id: "abc123",
-                    source: "api",
-                    object_type: "subscription",
-                    event_properties: {
-                        duration: 142,
-                        video_title: "Brevo \u2014 The most approachable CRM suite",
-                    },
-                    contact_properties: {
-                        AGE: 32,
-                        GENDER: "FEMALE",
-                    },
-                },
-            ],
-            count: 2,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEvents (2)", async () => {
@@ -174,10 +154,7 @@ describe("EventClient", () => {
                 identifiers: {},
             },
         ]);
-        expect(response).toEqual({
-            message: "Batch accepted. Valid events have been added to the processing queue.",
-            count: 7,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createBatchEvents (2)", async () => {
