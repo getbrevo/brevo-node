@@ -35,18 +35,7 @@ describe("BalanceClient", () => {
             contact_id: 1,
             balance_definition_id: "balance_definition_id",
         });
-        expect(response).toEqual({
-            balanceDefinitionId: "balanceDefinitionId",
-            constraintType: "constraintType",
-            createdAt: "createdAt",
-            durationUnit: "durationUnit",
-            durationValue: 1,
-            id: "id",
-            slidingSchedule: true,
-            transactionType: "transactionType",
-            updatedAt: "updatedAt",
-            value: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getActiveBalancesApi (2)", async () => {
@@ -206,34 +195,7 @@ describe("BalanceClient", () => {
         const response = await client.balance.getBalanceDefinitionList({
             pid: "pid",
         });
-        expect(response).toEqual({
-            items: [
-                {
-                    balanceAvailabilityDurationModifier: "startOfPeriod",
-                    balanceAvailabilityDurationUnit: "balanceAvailabilityDurationUnit",
-                    balanceAvailabilityDurationValue: 1,
-                    balanceExpirationDate: "2024-01-15T09:30:00Z",
-                    balanceOptionAmountOvertakingStrategy: "balanceOptionAmountOvertakingStrategy",
-                    balanceOptionCreditRounding: "balanceOptionCreditRounding",
-                    balanceOptionDebitRounding: "balanceOptionDebitRounding",
-                    createdAt: "2024-01-15T09:30:00Z",
-                    deletedAt: "deletedAt",
-                    description: "description",
-                    id: "id",
-                    imageRef: "imageRef",
-                    maxAmount: 1.1,
-                    maxCreditAmountLimit: 1.1,
-                    maxDebitAmountLimit: 1.1,
-                    meta: {
-                        key: "value",
-                    },
-                    minAmount: 1.1,
-                    name: "name",
-                    unit: "unit",
-                    updatedAt: "updatedAt",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getBalanceDefinitionList (2)", async () => {
@@ -361,30 +323,7 @@ describe("BalanceClient", () => {
             name: "name",
             unit: "POINTS",
         });
-        expect(response).toEqual({
-            balanceAvailabilityDurationModifier: "startOfPeriod",
-            balanceAvailabilityDurationUnit: "balanceAvailabilityDurationUnit",
-            balanceAvailabilityDurationValue: 1,
-            balanceExpirationDate: "2024-01-15T09:30:00Z",
-            balanceOptionAmountOvertakingStrategy: "balanceOptionAmountOvertakingStrategy",
-            balanceOptionCreditRounding: "balanceOptionCreditRounding",
-            balanceOptionDebitRounding: "balanceOptionDebitRounding",
-            createdAt: "2024-01-15T09:30:00Z",
-            deletedAt: "deletedAt",
-            description: "description",
-            id: "id",
-            imageRef: "imageRef",
-            maxAmount: 1.1,
-            maxCreditAmountLimit: 1.1,
-            maxDebitAmountLimit: 1.1,
-            meta: {
-                key: "value",
-            },
-            minAmount: 1.1,
-            name: "name",
-            unit: "unit",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createBalanceDefinition (2)", async () => {
@@ -546,30 +485,7 @@ describe("BalanceClient", () => {
             pid: "pid",
             bdid: "bdid",
         });
-        expect(response).toEqual({
-            balanceAvailabilityDurationModifier: "startOfPeriod",
-            balanceAvailabilityDurationUnit: "balanceAvailabilityDurationUnit",
-            balanceAvailabilityDurationValue: 1,
-            balanceExpirationDate: "2024-01-15T09:30:00Z",
-            balanceOptionAmountOvertakingStrategy: "balanceOptionAmountOvertakingStrategy",
-            balanceOptionCreditRounding: "balanceOptionCreditRounding",
-            balanceOptionDebitRounding: "balanceOptionDebitRounding",
-            createdAt: "2024-01-15T09:30:00Z",
-            deletedAt: "deletedAt",
-            description: "description",
-            id: "id",
-            imageRef: "imageRef",
-            maxAmount: 1.1,
-            maxCreditAmountLimit: 1.1,
-            maxDebitAmountLimit: 1.1,
-            meta: {
-                key: "value",
-            },
-            minAmount: 1.1,
-            name: "name",
-            unit: "unit",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getBalanceDefinition (2)", async () => {
@@ -724,30 +640,7 @@ describe("BalanceClient", () => {
             name: "name",
             unit: "POINTS",
         });
-        expect(response).toEqual({
-            balanceAvailabilityDurationModifier: "startOfPeriod",
-            balanceAvailabilityDurationUnit: "balanceAvailabilityDurationUnit",
-            balanceAvailabilityDurationValue: 1,
-            balanceExpirationDate: "2024-01-15T09:30:00Z",
-            balanceOptionAmountOvertakingStrategy: "balanceOptionAmountOvertakingStrategy",
-            balanceOptionCreditRounding: "balanceOptionCreditRounding",
-            balanceOptionDebitRounding: "balanceOptionDebitRounding",
-            createdAt: "2024-01-15T09:30:00Z",
-            deletedAt: "deletedAt",
-            description: "description",
-            id: "id",
-            imageRef: "imageRef",
-            maxAmount: 1.1,
-            maxCreditAmountLimit: 1.1,
-            maxDebitAmountLimit: 1.1,
-            meta: {
-                key: "value",
-            },
-            minAmount: 1.1,
-            name: "name",
-            unit: "unit",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateBalanceDefinition (2)", async () => {
@@ -1069,18 +962,7 @@ describe("BalanceClient", () => {
             transactionType: "credit",
             value: 1,
         });
-        expect(response).toEqual({
-            balanceDefinitionId: "balanceDefinitionId",
-            constraintType: "constraintType",
-            createdAt: "createdAt",
-            durationUnit: "durationUnit",
-            durationValue: 1,
-            id: "id",
-            slidingSchedule: true,
-            transactionType: "transactionType",
-            updatedAt: "updatedAt",
-            value: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createBalanceLimit (2)", async () => {
@@ -1283,18 +1165,7 @@ describe("BalanceClient", () => {
             bdid: "bdid",
             blid: "blid",
         });
-        expect(response).toEqual({
-            balanceDefinitionId: "balanceDefinitionId",
-            constraintType: "constraintType",
-            createdAt: "createdAt",
-            durationUnit: "durationUnit",
-            durationValue: 1,
-            id: "id",
-            slidingSchedule: true,
-            transactionType: "transactionType",
-            updatedAt: "updatedAt",
-            value: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getBalanceLimit (2)", async () => {
@@ -1454,18 +1325,7 @@ describe("BalanceClient", () => {
             transactionType: "credit",
             value: 1,
         });
-        expect(response).toEqual({
-            balanceDefinitionId: "balanceDefinitionId",
-            constraintType: "constraintType",
-            createdAt: "createdAt",
-            durationUnit: "durationUnit",
-            durationValue: 1,
-            id: "id",
-            slidingSchedule: true,
-            transactionType: "transactionType",
-            updatedAt: "updatedAt",
-            value: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateBalanceLimit (2)", async () => {
@@ -1801,19 +1661,7 @@ describe("BalanceClient", () => {
         const response = await client.balance.getContactBalances({
             pid: "pid",
         });
-        expect(response).toEqual({
-            balanceDefinitionId: "balanceDefinitionId",
-            balances: [
-                {
-                    contactId: 1,
-                    loyaltySubscriptionId: "loyaltySubscriptionId",
-                    updatedAt: "updatedAt",
-                    value: 1.1,
-                },
-            ],
-            count: 1,
-            loyaltyProgramId: "loyaltyProgramId",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getContactBalances (2)", async () => {
@@ -1963,22 +1811,7 @@ describe("BalanceClient", () => {
             dueAt: "dueAt",
             source: "source",
         });
-        expect(response).toEqual({
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            contactId: 1,
-            createdAt: "createdAt",
-            dueAt: "dueAt",
-            expiresAt: "expiresAt",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            processedAt: "processedAt",
-            transactionid: "transactionid",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createBalanceOrder (2)", async () => {
@@ -2131,14 +1964,7 @@ describe("BalanceClient", () => {
             pid: "pid",
             cid: "cid",
         });
-        expect(response).toEqual({
-            balance: [
-                {
-                    balanceDefinitionId: "balanceDefinitionId",
-                    value: 1.1,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSubscriptionBalances (2)", async () => {
@@ -2281,17 +2107,7 @@ describe("BalanceClient", () => {
             cid: "cid",
             balanceDefinitionId: "balanceDefinitionId",
         });
-        expect(response).toEqual({
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            consumedAt: "consumedAt",
-            contactId: 1,
-            createdAt: "createdAt",
-            expiresAt: "expiresAt",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            organizationId: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createSubscriptionBalances (2)", async () => {
@@ -2452,28 +2268,7 @@ describe("BalanceClient", () => {
             contactId: 1,
             balanceDefinitionId: "balanceDefinitionId",
         });
-        expect(response).toEqual({
-            balanceDefinitionId: "balanceDefinitionId",
-            contactId: 1,
-            count: 1,
-            loyaltyProgramId: "loyaltyProgramId",
-            transactionHistory: [
-                {
-                    amount: 1.1,
-                    balanceExpirationDate: "balanceExpirationDate",
-                    cancelledAt: "cancelledAt",
-                    completedAt: "completedAt",
-                    createdAt: "createdAt",
-                    id: "id",
-                    meta: {
-                        key: "value",
-                    },
-                    rejectReason: "rejectReason",
-                    rejectedAt: "rejectedAt",
-                    status: "status",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTransactionHistoryApi (2)", async () => {
@@ -2627,25 +2422,7 @@ describe("BalanceClient", () => {
             amount: 1.1,
             balanceDefinitionId: "balanceDefinitionId",
         });
-        expect(response).toEqual({
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            cancelledAt: "cancelledAt",
-            completedAt: "completedAt",
-            contactId: 1,
-            createdAt: "createdAt",
-            eventTime: "eventTime",
-            expirationDate: "expirationDate",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            rejectReason: "rejectReason",
-            rejectedAt: "rejectedAt",
-            status: "status",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("beginTransaction (2)", async () => {
@@ -2802,25 +2579,7 @@ describe("BalanceClient", () => {
             pid: "pid",
             tid: "tid",
         });
-        expect(response).toEqual({
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            cancelledAt: "cancelledAt",
-            completedAt: "completedAt",
-            contactId: 1,
-            createdAt: "createdAt",
-            eventTime: "eventTime",
-            expirationDate: "expirationDate",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            rejectReason: "rejectReason",
-            rejectedAt: "rejectedAt",
-            status: "status",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("cancelTransaction (2)", async () => {
@@ -2967,25 +2726,7 @@ describe("BalanceClient", () => {
             pid: "pid",
             tid: "tid",
         });
-        expect(response).toEqual({
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            cancelledAt: "cancelledAt",
-            completedAt: "completedAt",
-            contactId: 1,
-            createdAt: "createdAt",
-            eventTime: "eventTime",
-            expirationDate: "expirationDate",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            rejectReason: "rejectReason",
-            rejectedAt: "rejectedAt",
-            status: "status",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("completeTransaction (2)", async () => {

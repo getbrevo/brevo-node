@@ -29,22 +29,7 @@ describe("InboundParsingClient", () => {
         server.mockEndpoint().get("/inbound/events").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.inboundParsing.getInboundEmailEvents();
-        expect(response).toEqual({
-            events: [
-                {
-                    date: "2017-03-11T12:30:00Z",
-                    recipient: "alexa@example.com",
-                    sender: "john@example.com",
-                    uuid: "1a825d56-029b-4a41-b8e4-1a825d56",
-                },
-                {
-                    date: "2017-03-12T12:30:00Z",
-                    recipient: "bob@example.com",
-                    sender: "alice@example.com",
-                    uuid: "1a825d56-029b-4a41-b8e4-61670463431b",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getInboundEmailEvents (2)", async () => {
@@ -90,35 +75,7 @@ describe("InboundParsingClient", () => {
         const response = await client.inboundParsing.getInboundEmailEventsByUuid({
             uuid: "uuid",
         });
-        expect(response).toEqual({
-            attachments: [
-                {
-                    contentLength: 12345,
-                    contentType: "application/pdf",
-                    name: "invoice.pdf",
-                },
-            ],
-            deliveredAt: "2017-03-12T12:31:00Z",
-            logs: [
-                {
-                    date: "2017-03-12T12:30:00Z",
-                    type: "received",
-                },
-                {
-                    date: "2017-03-12T12:30:04Z",
-                    type: "webhookFailed",
-                },
-                {
-                    date: "2017-03-12T12:31:04Z",
-                    type: "webhookDelivered",
-                },
-            ],
-            messageId: "<a_nice@message.id>",
-            receivedAt: "2017-03-12T12:30:00Z",
-            recipient: "bob@example.com",
-            sender: "alice@example.com",
-            subject: "Re: Question about your API",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getInboundEmailEventsByUuid (2)", async () => {

@@ -27,18 +27,7 @@ describe("TasksClient", () => {
         const response = await client.tasks.getAllTasks({
             sortBy: "name",
         });
-        expect(response).toEqual({
-            items: [
-                {
-                    companiesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-                    contactsIds: [1, 2, 3],
-                    dealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-                    id: "61a5cd07ca1347c82306ad06",
-                    name: "Task: Connect with client_dev",
-                    taskTypeId: "61a5cd07ca1347c82306ad09",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllTasks (2)", async () => {
@@ -78,9 +67,7 @@ describe("TasksClient", () => {
             name: "Task: Connect with client_dev",
             taskTypeId: "61a5cd07ca1347c82306ad09",
         });
-        expect(response).toEqual({
-            id: "61a5cd07ca1347c82306ad06",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createATask (2)", async () => {
@@ -125,14 +112,7 @@ describe("TasksClient", () => {
         const response = await client.tasks.getATask({
             id: "id",
         });
-        expect(response).toEqual({
-            companiesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-            contactsIds: [1, 2, 3],
-            dealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-            id: "61a5cd07ca1347c82306ad06",
-            name: "Task: Connect with client_dev",
-            taskTypeId: "61a5cd07ca1347c82306ad09",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getATask (2)", async () => {
@@ -273,9 +253,6 @@ describe("TasksClient", () => {
         server.mockEndpoint().get("/crm/tasktypes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.tasks.getAllTaskTypes();
-        expect(response).toEqual({
-            id: "61a88a2eb7a574180261234",
-            title: "Email",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

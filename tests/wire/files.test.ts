@@ -24,17 +24,7 @@ describe("FilesClient", () => {
         server.mockEndpoint().get("/crm/files").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.files.getAllFiles();
-        expect(response).toEqual([
-            {
-                authorId: "61a5ce58y5d4795761045991",
-                companyId: "61a5ce58c5d4795761045991",
-                contactId: 1,
-                createdAt: "2017-05-01T17:05:03Z",
-                dealId: "61a5ce58c5d4795761045991",
-                name: "example.png",
-                size: 10,
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllFiles (2)", async () => {
@@ -61,9 +51,7 @@ describe("FilesClient", () => {
         const response = await client.files.downloadAFile({
             id: "id",
         });
-        expect(response).toEqual({
-            fileUrl: "https://storage.googleapis.com/brevo-app-crm.......-sample.pdf",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("downloadAFile (2)", async () => {
@@ -157,15 +145,7 @@ describe("FilesClient", () => {
         const response = await client.files.getFileDetails({
             id: "id",
         });
-        expect(response).toEqual({
-            authorId: "61a5ce58y5d4795761045991",
-            companyId: "61a5ce58c5d4795761045991",
-            contactId: 1,
-            createdAt: "2017-05-01T17:05:03Z",
-            dealId: "61a5ce58c5d4795761045991",
-            name: "example.png",
-            size: 10,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFileDetails (2)", async () => {

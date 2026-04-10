@@ -28,20 +28,7 @@ describe("DealsClient", () => {
             .build();
 
         const response = await client.deals.getDealAttributes();
-        expect(response).toEqual([
-            {
-                attributeOptions: [
-                    {
-                        key: "custom key",
-                        value: "custom label",
-                    },
-                ],
-                attributeTypeName: "text",
-                internalName: "deal_name",
-                isRequired: true,
-                label: "Deal Name",
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllDeals (1)", async () => {
@@ -78,32 +65,7 @@ describe("DealsClient", () => {
         server.mockEndpoint().get("/crm/deals").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.deals.getAllDeals();
-        expect(response).toEqual({
-            items: [
-                {
-                    attributes: {
-                        amount: 12,
-                        created_at: "2022-05-30T07:42:05.671Z",
-                        deal_name: "testname",
-                        deal_owner: "6093d2425a9b436e9519d034",
-                        deal_stage: "9e577ff7-8e42-4ab3-be26-2b5e01b42518",
-                        last_activity_date: "2022-06-06T08:38:36.000Z",
-                        last_updated_date: "2022-06-06T08:38:36.761Z",
-                        number_of_activities: 0,
-                        number_of_contacts: 1,
-                        pipeline: "6093d296ad1e9c5cf2140a58",
-                        stage_updated_at: "2022-05-30T07:42:05.671Z",
-                    },
-                    id: "629475917295261d9b1f4403",
-                    linkedCompaniesIds: [
-                        "61a5ce58c5d4795761045990",
-                        "61a5ce58c5d4795761045991",
-                        "61a5ce58c5d4795761045992",
-                    ],
-                    linkedContactsIds: [1, 2, 3],
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllDeals (2)", async () => {
@@ -137,9 +99,7 @@ describe("DealsClient", () => {
         const response = await client.deals.createADeal({
             name: "Deal: Connect with company",
         });
-        expect(response).toEqual({
-            id: "61a5cd07ca1347c82306ad06",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createADeal (2)", async () => {
@@ -234,27 +194,7 @@ describe("DealsClient", () => {
         const response = await client.deals.getADeal({
             id: "id",
         });
-        expect(response).toEqual({
-            attributes: {
-                amount: 12,
-                created_at: "2022-05-30T07:42:05.671Z",
-                deal_name: "testname",
-                deal_owner: "6093d2425a9b436e9519d034",
-                deal_stage: "9e577ff7-8e42-4ab3-be26-2b5e01b42518",
-                last_activity_date: "2022-06-06T08:38:36.000Z",
-                last_updated_date: "2022-06-06T08:38:36.761Z",
-                next_activity_date: {
-                    key: "value",
-                },
-                number_of_activities: 0,
-                number_of_contacts: 1,
-                pipeline: "6093d296ad1e9c5cf2140a58",
-                stage_updated_at: "2022-05-30T07:42:05.671Z",
-            },
-            id: "629475917295261d9b1f4403",
-            linkedCompaniesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-            linkedContactsIds: [1, 2, 3],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getADeal (2)", async () => {
@@ -405,16 +345,7 @@ describe("DealsClient", () => {
             .build();
 
         const response = await client.deals.getPipelineStages();
-        expect(response).toEqual({
-            pipeline: "5ea675e3da0dd085acaea610",
-            pipeline_name: "Sales Pipeline",
-            stages: [
-                {
-                    id: "9e577ff7-8e42-4ab3-be26-2b5e01b42518",
-                    name: "New",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllPipelines (1)", async () => {
@@ -438,18 +369,7 @@ describe("DealsClient", () => {
             .build();
 
         const response = await client.deals.getAllPipelines();
-        expect(response).toEqual([
-            {
-                pipeline: "5ea675e3da0dd085acaea610",
-                pipeline_name: "Sales Pipeline",
-                stages: [
-                    {
-                        id: "9e577ff7-8e42-4ab3-be26-2b5e01b42518",
-                        name: "New",
-                    },
-                ],
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllPipelines (2)", async () => {
@@ -494,18 +414,7 @@ describe("DealsClient", () => {
         const response = await client.deals.getAPipeline({
             pipelineID: "pipelineID",
         });
-        expect(response).toEqual([
-            {
-                pipeline: "5ea675e3da0dd085acaea610",
-                pipeline_name: "Sales Pipeline",
-                stages: [
-                    {
-                        id: "9e577ff7-8e42-4ab3-be26-2b5e01b42518",
-                        name: "New",
-                    },
-                ],
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAPipeline (2)", async () => {

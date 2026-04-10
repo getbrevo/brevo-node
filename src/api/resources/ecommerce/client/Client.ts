@@ -109,14 +109,14 @@ export class EcommerceClient {
     public createUpdateCategory(
         request: Brevo.CreateUpdateCategoryRequest,
         requestOptions?: EcommerceClient.RequestOptions,
-    ): core.HttpResponsePromise<Brevo.CreateUpdateCategoryResponse> {
+    ): core.HttpResponsePromise<Brevo.CreateUpdateCategoryResponse | undefined> {
         return core.HttpResponsePromise.fromPromise(this.__createUpdateCategory(request, requestOptions));
     }
 
     private async __createUpdateCategory(
         request: Brevo.CreateUpdateCategoryRequest,
         requestOptions?: EcommerceClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Brevo.CreateUpdateCategoryResponse>> {
+    ): Promise<core.WithRawResponse<Brevo.CreateUpdateCategoryResponse | undefined>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -143,7 +143,10 @@ export class EcommerceClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Brevo.CreateUpdateCategoryResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Brevo.CreateUpdateCategoryResponse | undefined,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1108,14 +1111,14 @@ export class EcommerceClient {
     public createUpdateProduct(
         request: Brevo.CreateUpdateProductRequest,
         requestOptions?: EcommerceClient.RequestOptions,
-    ): core.HttpResponsePromise<Brevo.CreateUpdateProductResponse> {
+    ): core.HttpResponsePromise<Brevo.CreateUpdateProductResponse | undefined> {
         return core.HttpResponsePromise.fromPromise(this.__createUpdateProduct(request, requestOptions));
     }
 
     private async __createUpdateProduct(
         request: Brevo.CreateUpdateProductRequest,
         requestOptions?: EcommerceClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Brevo.CreateUpdateProductResponse>> {
+    ): Promise<core.WithRawResponse<Brevo.CreateUpdateProductResponse | undefined>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1142,7 +1145,10 @@ export class EcommerceClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Brevo.CreateUpdateProductResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Brevo.CreateUpdateProductResponse | undefined,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {

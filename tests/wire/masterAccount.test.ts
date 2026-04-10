@@ -23,9 +23,7 @@ describe("MasterAccountClient", () => {
         const response = await client.masterAccount.createANewGroupOfSubAccounts({
             groupName: "My group",
         });
-        expect(response).toEqual({
-            id: "659xxxxxxxxxxxxxxxx6ef9c8",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createANewGroupOfSubAccounts (2)", async () => {
@@ -120,37 +118,7 @@ describe("MasterAccountClient", () => {
         const response = await client.masterAccount.getAGroupDetails({
             id: "id",
         });
-        expect(response).toEqual({
-            group: {
-                createdAt: "2024-02-09T06:14:40+00:00",
-                groupName: "My group",
-                id: "5f926dba72a405440a4efc97",
-            },
-            "sub-accounts": [
-                {
-                    companyName: "My sub organization",
-                    createdAt: "2024-02-09T06:14:40+00:00",
-                    id: 7866556,
-                },
-                {
-                    companyName: "Your sub organization",
-                    createdAt: "2024-01-05T03:11:40+00:00",
-                    id: 6563051,
-                },
-            ],
-            users: [
-                {
-                    email: "my-user@my-org.com",
-                    firstName: "John",
-                    lastName: "Smith",
-                },
-                {
-                    email: "your-user@your-org.com",
-                    firstName: "firstName",
-                    lastName: "lastName",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateAGroupOfSubAccounts (1)", async () => {
@@ -234,20 +202,7 @@ describe("MasterAccountClient", () => {
         server.mockEndpoint().get("/corporate/groups").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.masterAccount.getSubAccountGroups();
-        expect(response).toEqual([
-            {
-                groupName: "My group 1",
-                id: "d3b142c709d6ed67ef1cd903",
-            },
-            {
-                groupName: "My group 2",
-                id: "a5b192a709d6ed67ef8fd922",
-            },
-            {
-                groupName: "My group 3",
-                id: "bbb142c709d6ed67ef1cd910",
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getCorporateInvitedUsersList", async () => {
@@ -300,48 +255,7 @@ describe("MasterAccountClient", () => {
             .build();
 
         const response = await client.masterAccount.getCorporateInvitedUsersList();
-        expect(response).toEqual({
-            users: [
-                {
-                    email: "master-user2@company.com",
-                    feature_access: {
-                        analytics: ["download_data", "create_alerts", "my_looks", "explore_create"],
-                        api_keys: ["all"],
-                        apps_management: ["none"],
-                        create_sub_organizations: ["all"],
-                        manage_sub_organizations: ["all"],
-                        my_plan: ["all", "all"],
-                        sub_organization_groups: ["create", "edit_delete"],
-                        user_management: ["none"],
-                    },
-                    groups: {
-                        id: "a5c4f22c08d9ed37ef1ca342",
-                        name: "My group",
-                    },
-                    is_owner: "is_owner",
-                    status: "active",
-                },
-                {
-                    email: "master-user3@company.com",
-                    feature_access: {
-                        analytics: ["create_alerts", "my_looks"],
-                        api_keys: ["none"],
-                        apps_management: ["all"],
-                        create_sub_organizations: ["all"],
-                        manage_sub_organizations: ["all"],
-                        my_plan: ["none", "none"],
-                        sub_organization_groups: ["edit_delete"],
-                        user_management: ["all"],
-                    },
-                    groups: {
-                        id: "a5c4f22c08d9ed37ef1ca342",
-                        name: "My group",
-                    },
-                    is_owner: "is_owner",
-                    status: "active",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listOfAllIPs", async () => {
@@ -356,18 +270,7 @@ describe("MasterAccountClient", () => {
         server.mockEndpoint().get("/corporate/ip").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.masterAccount.listOfAllIPs();
-        expect(response).toEqual([
-            {
-                domain: "example.com",
-                ip: "192.168.1.1",
-                transactional: true,
-            },
-            {
-                domain: "example.com",
-                ip: "192.168.1.2",
-                transactional: false,
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTheDetailsOfRequestedMasterAccount (1)", async () => {
@@ -417,72 +320,7 @@ describe("MasterAccountClient", () => {
             .build();
 
         const response = await client.masterAccount.getTheDetailsOfRequestedMasterAccount();
-        expect(response).toEqual({
-            billingInfo: {
-                address: {
-                    countryCode: "IN",
-                    locality: "Pandav Nagar, New Delhi",
-                    postalCode: "560048",
-                    stateCode: "UP",
-                    streetAddress: "C-92",
-                },
-                companyName: "Corp Sample 1-1",
-                email: "sample@example.com",
-                name: {
-                    familyName: "Pandit",
-                    givenName: "Uday",
-                },
-            },
-            companyName: "Corp Sample 1-1",
-            currencyCode: "INR",
-            email: "sample@example.com",
-            id: 1003286,
-            planInfo: {
-                currencyCode: "INR",
-                features: [
-                    {
-                        name: "MULTI_USER",
-                        quantity: 10,
-                        remaining: 0,
-                        unitValue: "unitValue",
-                        used: 15,
-                    },
-                    {
-                        name: "ADVANCED_REPORTING",
-                        quantity: 12,
-                        remaining: 11,
-                        unitValue: "unitValue",
-                        used: 1,
-                    },
-                    {
-                        name: "INBOX",
-                        quantity: 10,
-                        remaining: 0,
-                        unitValue: "unitValue",
-                        used: 10,
-                    },
-                    {
-                        name: "LANDING_PAGE",
-                        quantity: 10,
-                        remaining: 0,
-                        unitValue: "unitValue",
-                        used: 11,
-                    },
-                    {
-                        name: "RECURRING_CREDITS",
-                        quantity: 500,
-                        remaining: 499,
-                        unitValue: "unitValue",
-                        used: 1,
-                    },
-                ],
-                nextBillingAt: 1637739295,
-                planPeriod: "month",
-                price: 2100,
-                subAccounts: 15,
-            },
-            timezone: "Europe/Paris",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTheDetailsOfRequestedMasterAccount (2)", async () => {
@@ -522,9 +360,7 @@ describe("MasterAccountClient", () => {
         const response = await client.masterAccount.generateSsoTokenToAccessAdminAccount({
             email: "vipin+ent-user@brevo.com",
         });
-        expect(response).toEqual({
-            token: "5cadaxxxxxxxxxxxxxxxxxxxx5a179f85a0",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("generateSsoTokenToAccessAdminAccount (2)", async () => {
@@ -605,41 +441,7 @@ describe("MasterAccountClient", () => {
             offset: 1,
             limit: 1,
         });
-        expect(response).toEqual({
-            count: 3,
-            subAccounts: [
-                {
-                    active: true,
-                    companyName: "Company1",
-                    createdAt: 1631523176,
-                    groups: [
-                        {
-                            id: "5f8f8c3b5f56a02d4433b3a8",
-                            name: "Group 1",
-                        },
-                        {
-                            id: "4fbf3c3b1f56a02ac465b1a0",
-                            name: "Group 2",
-                        },
-                    ],
-                    id: 4043629,
-                },
-                {
-                    active: true,
-                    companyName: "Company2",
-                    createdAt: 1629439311,
-                    groups: [{}],
-                    id: 3984002,
-                },
-                {
-                    active: true,
-                    companyName: "Company3",
-                    createdAt: 1614713641,
-                    groups: [{}],
-                    id: 3524191,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTheListOfAllTheSubAccountsOfTheMasterAccount (2)", async () => {
@@ -692,9 +494,7 @@ describe("MasterAccountClient", () => {
             language: "fr",
             timezone: "Europe/Paris",
         });
-        expect(response).toEqual({
-            id: 4109344,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createANewSubAccountUnderAMasterAccount (2)", async () => {
@@ -739,9 +539,7 @@ describe("MasterAccountClient", () => {
             ids: [234322, 325553, 893432],
             ip: "103.11.32.88",
         });
-        expect(response).toEqual({
-            key: "value",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("associateAnIpToSubAccounts (2)", async () => {
@@ -829,10 +627,7 @@ describe("MasterAccountClient", () => {
             id: 3232323,
             name: "My Api Key",
         });
-        expect(response).toEqual({
-            key: "xkeysib-21881axxxxxcc92e04-mIrexxxx7z",
-            status: "success",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createAnApiKeyForASubAccount (2)", async () => {
@@ -876,9 +671,7 @@ describe("MasterAccountClient", () => {
         const response = await client.masterAccount.generateSsoTokenToAccessSubAccount({
             id: 3232323,
         });
-        expect(response).toEqual({
-            token: "5cadaxxxxxxxxxxxxxxxxxxxx5a179f85a0",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("generateSsoTokenToAccessSubAccount (2)", async () => {
@@ -966,64 +759,7 @@ describe("MasterAccountClient", () => {
         const response = await client.masterAccount.getSubAccountDetails({
             id: 1000000,
         });
-        expect(response).toEqual({
-            companyName: "API-Sub-26thOct21-4",
-            email: "uday+1@brevo.com",
-            groups: [
-                {
-                    id: "5f8f8c3b5f56a02d4433b3a7",
-                    name: "Group 1",
-                },
-                {
-                    id: "5f8f8c3b5f56a02d4433b3a8",
-                    name: "Group 2",
-                },
-            ],
-            name: "Uday Pandit",
-            planInfo: {
-                credits: {
-                    emails: {
-                        quantity: 2000,
-                        remaining: 1955,
-                    },
-                    externalFeeds: {
-                        quantity: 1,
-                        remaining: 1,
-                    },
-                    sms: {
-                        quantity: 2000,
-                        remaining: 1955,
-                    },
-                    whatsapp: {
-                        quantity: 100,
-                        remaining: 50,
-                    },
-                    wpSubscribers: {
-                        quantity: 2000,
-                        remaining: 1955,
-                    },
-                },
-                features: {
-                    inbox: {
-                        quantity: 20,
-                        remaining: 12,
-                    },
-                    landingPage: {
-                        quantity: 25,
-                        remaining: 14,
-                    },
-                    salesUsers: {
-                        quantity: 30,
-                        remaining: 14,
-                    },
-                    users: {
-                        quantity: 30,
-                        remaining: 14,
-                    },
-                },
-                planType: "paid",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSubAccountDetails (2)", async () => {
@@ -1349,9 +1085,7 @@ describe("MasterAccountClient", () => {
             email: "inviteuser@example.com",
             privileges: [{}],
         });
-        expect(response).toEqual({
-            id: "659xxxxxxxxxxxxxxxx6ef9c8",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("inviteAdminUser (2)", async () => {
@@ -1396,9 +1130,7 @@ describe("MasterAccountClient", () => {
             action: "resend",
             email: "email",
         });
-        expect(response).toEqual({
-            message: "Invitation resent successfully",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("resendCancelAdminUserInvitation (2)", async () => {
@@ -1490,30 +1222,7 @@ describe("MasterAccountClient", () => {
         const response = await client.masterAccount.getCorporateUserPermission({
             email: "email",
         });
-        expect(response).toEqual({
-            email: "invitedUser@company.com",
-            feature_access: {
-                analytics: ["download_data", "create_alerts", "my_looks", "explore_create"],
-                api_keys: ["all"],
-                apps_management: ["all"],
-                create_sub_organizations: ["all"],
-                manage_sub_organizations: ["all"],
-                my_plan: ["all", "all"],
-                sub_organization_groups: ["create", "edit_delete"],
-                user_management: ["none"],
-            },
-            groups: [
-                {
-                    id: "6543ab3667ffbb00142e4486",
-                    name: "Support",
-                },
-                {
-                    id: "174bab366732bbce142e4412",
-                    name: "Technical",
-                },
-            ],
-            status: "active",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getCorporateUserPermission (2)", async () => {

@@ -58,57 +58,7 @@ describe("SmsCampaignsClient", () => {
         server.mockEndpoint().get("/smsCampaigns").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.smsCampaigns.getSmsCampaigns();
-        expect(response).toEqual({
-            campaigns: [
-                {
-                    content: "Visit our Store and get some discount !",
-                    createdAt: "2017-06-01T12:30:00Z",
-                    id: 2,
-                    modifiedAt: "2017-05-01T12:30:00Z",
-                    name: "PROMO CODE",
-                    scheduledAt: "2017-06-01T12:30:00Z",
-                    sender: "MyCompany",
-                    status: "sent",
-                    recipients: {
-                        exclusionLists: [13],
-                        lists: [21],
-                    },
-                    statistics: {
-                        answered: 2,
-                        delivered: 2987,
-                        hardBounces: 1,
-                        processing: 0,
-                        sent: 3000,
-                        softBounces: 3,
-                        unsubscriptions: 3,
-                    },
-                },
-                {
-                    content: "Summer Sale is starting tomorrow. Get extra 10% with this code:SUM17",
-                    createdAt: "2017-06-01T12:30:00Z",
-                    id: 10,
-                    modifiedAt: "2017-05-01T12:30:00Z",
-                    name: "SUMMER SALE",
-                    scheduledAt: "2017-08-04T12:30:00Z",
-                    sender: "MyCompany",
-                    status: "draft",
-                    recipients: {
-                        exclusionLists: [13],
-                        lists: [21],
-                    },
-                    statistics: {
-                        answered: 2,
-                        delivered: 2987,
-                        hardBounces: 1,
-                        processing: 0,
-                        sent: 3000,
-                        softBounces: 3,
-                        unsubscriptions: 3,
-                    },
-                },
-            ],
-            count: 12,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSmsCampaigns (2)", async () => {
@@ -148,9 +98,7 @@ describe("SmsCampaignsClient", () => {
             name: "Spring Promo Code",
             sender: "MyShop",
         });
-        expect(response).toEqual({
-            id: 5,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createSmsCampaign (2)", async () => {
@@ -213,29 +161,7 @@ describe("SmsCampaignsClient", () => {
         const response = await client.smsCampaigns.getSmsCampaign({
             campaignId: 1000000,
         });
-        expect(response).toEqual({
-            content: "Visit our Store and get some discount !",
-            createdAt: "2017-06-01T12:30:00Z",
-            id: 2,
-            modifiedAt: "2017-05-01T12:30:00Z",
-            name: "PROMO CODE",
-            scheduledAt: "2017-06-01T12:30:00Z",
-            sender: "MyCompany",
-            status: "sent",
-            recipients: {
-                exclusionLists: [13],
-                lists: [21],
-            },
-            statistics: {
-                answered: 2,
-                delivered: 2987,
-                hardBounces: 1,
-                processing: 0,
-                sent: 3000,
-                softBounces: 3,
-                unsubscriptions: 3,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSmsCampaign (2)", async () => {
@@ -416,9 +342,7 @@ describe("SmsCampaignsClient", () => {
             campaignId: 1000000,
             recipientsType: "all",
         });
-        expect(response).toEqual({
-            processId: 78,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("requestSmsRecipientExport (2)", async () => {

@@ -22,11 +22,14 @@ export function handleNonStatusCodeError(
                 rawResponse: rawResponse,
             });
         case "timeout":
-            throw new errors.BrevoTimeoutError(`Timeout exceeded when calling ${method} ${path}.`);
+            throw new errors.BrevoTimeoutError(`Timeout exceeded when calling ${method} ${path}.`, {
+                cause: error.cause,
+            });
         case "unknown":
             throw new errors.BrevoError({
                 message: error.errorMessage,
                 rawResponse: rawResponse,
+                cause: error.cause,
             });
         default:
             throw new errors.BrevoError({

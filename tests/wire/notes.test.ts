@@ -30,25 +30,7 @@ describe("NotesClient", () => {
         server.mockEndpoint().get("/crm/notes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.notes.getAllNotes();
-        expect(response).toEqual([
-            {
-                authorId: {
-                    email: "johndoe@example.com",
-                    id: "61a5ce58y5d4795761045991",
-                    locale: "en_GB",
-                    name: {
-                        fullName: "John Doe",
-                    },
-                    timezone: "Asia/Kolkata",
-                },
-                contactIds: [247, 1, 2],
-                createdAt: "2017-05-01T17:05:03Z",
-                dealIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991"],
-                id: "61a5cd07ca1347c82306ad09",
-                text: "In communication with client_dev for resolution of queries.",
-                updatedAt: "2017-05-01T17:05:03Z",
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllNotes (2)", async () => {
@@ -82,9 +64,7 @@ describe("NotesClient", () => {
         const response = await client.notes.createANote({
             text: "In communication with client_dev for resolution of queries.",
         });
-        expect(response).toEqual({
-            id: "61a5cd07ca1347c82306ad09",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createANote (2)", async () => {
@@ -156,23 +136,7 @@ describe("NotesClient", () => {
         const response = await client.notes.getANote({
             id: "id",
         });
-        expect(response).toEqual({
-            authorId: {
-                email: "johndoe@example.com",
-                id: "61a5ce58y5d4795761045991",
-                locale: "en_GB",
-                name: {
-                    fullName: "John Doe",
-                },
-                timezone: "Asia/Kolkata",
-            },
-            contactIds: [247, 1, 2],
-            createdAt: "2017-05-01T17:05:03Z",
-            dealIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991"],
-            id: "61a5cd07ca1347c82306ad09",
-            text: "In communication with client_dev for resolution of queries.",
-            updatedAt: "2017-05-01T17:05:03Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getANote (2)", async () => {

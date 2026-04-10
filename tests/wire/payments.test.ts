@@ -32,10 +32,7 @@ describe("PaymentsClient", () => {
             contactId: 43,
             reference: "Invoice #INV0001",
         });
-        expect(response).toEqual({
-            id: 122,
-            url: "https://pay.brevo.com/payment/6d4ec0b2b48ef803df4103ve",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createPaymentRequest (2)", async () => {
@@ -156,23 +153,7 @@ describe("PaymentsClient", () => {
         const response = await client.payments.getPaymentRequest({
             id: "050db7b0-9bb7-4c1e-9c68-5a8dace8c1dc",
         });
-        expect(response).toEqual({
-            cart: {
-                currency: "EUR",
-                specificAmount: 1200,
-            },
-            configuration: {
-                customSuccessUrl: "https://my-company.com/payment-success",
-            },
-            contactId: 43,
-            notification: {
-                channel: "email",
-                text: "Please pay for your yoga class.",
-            },
-            numberOfRemindersSent: 5,
-            reference: "Invoice #INV0001\n",
-            status: "paid",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getPaymentRequest (2)", async () => {

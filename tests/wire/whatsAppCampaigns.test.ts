@@ -31,30 +31,7 @@ describe("WhatsAppCampaignsClient", () => {
         server.mockEndpoint().get("/whatsappCampaigns").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.whatsAppCampaigns.getWhatsAppCampaigns();
-        expect(response).toEqual({
-            campaigns: [
-                {
-                    campaignName: "campaign_22",
-                    campaignStatus: "sent",
-                    createdAt: "2017-05-01T12:30:00Z",
-                    errorReason: "NONE",
-                    id: 1672035851100690,
-                    invalidatedContacts: 0,
-                    modifiedAt: "2017-05-01T12:30:00Z",
-                    readPercentage: 28.57,
-                    scheduledAt: "2022-12-27T09:50:00Z",
-                    stats: {
-                        delivered: 3,
-                        notSent: 4,
-                        read: 2,
-                        sent: 3,
-                        unsubscribe: 0,
-                    },
-                    templateId: "templateId",
-                },
-            ],
-            count: 23,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWhatsAppCampaigns (2)", async () => {
@@ -96,9 +73,7 @@ describe("WhatsAppCampaignsClient", () => {
             scheduledAt: "2017-06-01T12:30:00+02:00",
             templateId: 19,
         });
-        expect(response).toEqual({
-            id: 5,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createWhatsAppCampaign (2)", async () => {
@@ -148,14 +123,7 @@ describe("WhatsAppCampaignsClient", () => {
             .build();
 
         const response = await client.whatsAppCampaigns.getWhatsAppConfig();
-        expect(response).toEqual({
-            businessStatus: "verified",
-            phoneNumberNameStatus: "APPROVED",
-            phoneNumberQuality: "GREEN",
-            sendingLimit: "TIER_1K",
-            whatsappBusinessAccountId: "whatsappBusinessAccountId",
-            whatsappBusinessAccountStatus: "APPROVED",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWhatsAppConfig (2)", async () => {
@@ -203,9 +171,7 @@ describe("WhatsAppCampaignsClient", () => {
             language: "en",
             name: "Test template",
         });
-        expect(response).toEqual({
-            id: 5,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createWhatsAppTemplate (2)", async () => {
@@ -272,31 +238,7 @@ describe("WhatsAppCampaignsClient", () => {
             .build();
 
         const response = await client.whatsAppCampaigns.getWhatsAppTemplates();
-        expect(response).toEqual({
-            count: 2,
-            templates: [
-                {
-                    category: "MARKETING",
-                    createdAt: "2017-05-01T12:30:00Z",
-                    errorReason: "NONE",
-                    id: 235,
-                    language: "en",
-                    modifiedAt: "2017-05-01T12:30:00Z",
-                    name: "campaign_22",
-                    status: "approved",
-                },
-                {
-                    category: "MARKETING",
-                    createdAt: "2017-0",
-                    errorReason: "NONE",
-                    id: 124,
-                    language: "",
-                    modifiedAt: "2017-05-01T12:30:00Z",
-                    name: "test-template",
-                    status: "draft",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWhatsAppTemplates (2)", async () => {
@@ -398,56 +340,7 @@ describe("WhatsAppCampaignsClient", () => {
         const response = await client.whatsAppCampaigns.getWhatsAppCampaign({
             campaignId: 1000000,
         });
-        expect(response).toEqual({
-            campaignName: "Test WhatsApp Campaign",
-            campaignStatus: "sent",
-            createdAt: "2022-12-26T06:50:00Z",
-            id: 1672035851100690,
-            modifiedAt: "2022-12-26T08:50:00Z",
-            scheduledAt: "2022-12-27T09:50:00Z",
-            senderNumber: "senderNumber",
-            stats: {
-                delivered: 3,
-                notSent: 4,
-                read: 2,
-                sent: 3,
-                unsubscribe: 0,
-            },
-            template: {
-                body_variables: [
-                    {
-                        datatype: "text",
-                        default: "INVALID_HEADER",
-                        name: "FIRSTNAME",
-                    },
-                ],
-                button_type: "CALL_TO_ACTION",
-                category: "MARKETING",
-                components: [
-                    {
-                        text: "making it look like readable English.",
-                        type: "BODY",
-                    },
-                    {
-                        text: "Life is a long lesson in humility",
-                        type: "BUTTONS",
-                    },
-                ],
-                contains_button: true,
-                display_header: false,
-                header_type: "text",
-                header_variables: [
-                    {
-                        datatype: "text",
-                        default: "INVALID HEADER",
-                        name: "FIRSTNAME",
-                    },
-                ],
-                hide_footer: true,
-                language: "en",
-                name: "official_campaign8",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWhatsAppCampaign (2)", async () => {

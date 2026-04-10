@@ -37,26 +37,7 @@ describe("ProgramClient", () => {
             .build();
 
         const response = await client.program.getLpList();
-        expect(response).toEqual({
-            items: [
-                {
-                    codeCount: 1,
-                    createdAt: "createdAt",
-                    description: "description",
-                    documentId: "documentId",
-                    id: "id",
-                    meta: {
-                        key: "value",
-                    },
-                    name: "name",
-                    pattern: "pattern",
-                    state: "inactive",
-                    subscriptionGeneratorId: "subscriptionGeneratorId",
-                    subscriptionPoolId: "subscriptionPoolId",
-                    updatedAt: "updatedAt",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getLPList (2)", async () => {
@@ -204,22 +185,7 @@ describe("ProgramClient", () => {
         const response = await client.program.createNewLp({
             name: "name",
         });
-        expect(response).toEqual({
-            codeCount: 1,
-            createdAt: "createdAt",
-            description: "description",
-            documentId: "documentId",
-            id: "id",
-            meta: {
-                key: "value",
-            },
-            name: "name",
-            pattern: "pattern",
-            state: "inactive",
-            subscriptionGeneratorId: "subscriptionGeneratorId",
-            subscriptionPoolId: "subscriptionPoolId",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createNewLP (2)", async () => {
@@ -362,22 +328,7 @@ describe("ProgramClient", () => {
         const response = await client.program.getLoyaltyProgramInfo({
             pid: "pid",
         });
-        expect(response).toEqual({
-            codeCount: 1,
-            createdAt: "createdAt",
-            description: "description",
-            documentId: "documentId",
-            id: "id",
-            meta: {
-                key: "value",
-            },
-            name: "name",
-            pattern: "pattern",
-            state: "inactive",
-            subscriptionGeneratorId: "subscriptionGeneratorId",
-            subscriptionPoolId: "subscriptionPoolId",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getLoyaltyProgramInfo (2)", async () => {
@@ -517,22 +468,7 @@ describe("ProgramClient", () => {
             pid: "pid",
             name: "name",
         });
-        expect(response).toEqual({
-            codeCount: 1,
-            createdAt: "createdAt",
-            description: "description",
-            documentId: "documentId",
-            id: "id",
-            meta: {
-                key: "value",
-            },
-            name: "name",
-            pattern: "pattern",
-            state: "inactive",
-            subscriptionGeneratorId: "subscriptionGeneratorId",
-            subscriptionPoolId: "subscriptionPoolId",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateLoyaltyProgram (2)", async () => {
@@ -821,22 +757,7 @@ describe("ProgramClient", () => {
         const response = await client.program.partiallyUpdateLoyaltyProgram({
             pid: "pid",
         });
-        expect(response).toEqual({
-            codeCount: 1,
-            createdAt: "createdAt",
-            description: "description",
-            documentId: "documentId",
-            id: "id",
-            meta: {
-                key: "value",
-            },
-            name: "name",
-            pattern: "pattern",
-            state: "inactive",
-            subscriptionGeneratorId: "subscriptionGeneratorId",
-            subscriptionPoolId: "subscriptionPoolId",
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("partiallyUpdateLoyaltyProgram (2)", async () => {
@@ -1015,48 +936,7 @@ describe("ProgramClient", () => {
         const response = await client.program.getParameterSubscriptionInfo({
             pid: "pid",
         });
-        expect(response).toEqual({
-            balance: {
-                balances: [{}],
-                contactId: 1,
-                loyaltyProgramId: "loyaltyProgramId",
-            },
-            members: [
-                {
-                    createdAt: "createdAt",
-                    memberContactId: 1,
-                    updatedAt: "updatedAt",
-                },
-            ],
-            reward: [
-                {
-                    code: "code",
-                    contactId: 1,
-                    createdAt: "createdAt",
-                    expirationDate: "expirationDate",
-                    id: "id",
-                    loyaltyProgramId: "loyaltyProgramId",
-                    meta: {
-                        key: "value",
-                    },
-                    rewardId: "rewardId",
-                    updatedAt: "updatedAt",
-                },
-            ],
-            tier: [
-                {
-                    contactId: 1,
-                    createdAt: "createdAt",
-                    groupId: "groupId",
-                    loyaltyProgramId: "loyaltyProgramId",
-                    meta: {
-                        key: "value",
-                    },
-                    tierId: "tierId",
-                    updatedAt: "updatedAt",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getParameterSubscriptionInfo (2)", async () => {
@@ -1451,13 +1331,7 @@ describe("ProgramClient", () => {
             pid: "pid",
             memberContactIds: [1],
         });
-        expect(response).toEqual({
-            createdAt: "createdAt",
-            memberContactIds: [1],
-            organizationId: 1,
-            ownerContactId: 1,
-            updatedAt: "updatedAt",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("subscribeMemberToASubscription (2)", async () => {
@@ -1775,15 +1649,7 @@ describe("ProgramClient", () => {
             pid: "pid",
             contactId: 1,
         });
-        expect(response).toEqual({
-            contactId: 1,
-            createdAt: "createdAt",
-            loyaltyProgramId: "loyaltyProgramId",
-            loyaltySubscriptionId: "loyaltySubscriptionId",
-            organizationId: 1,
-            updatedAt: "updatedAt",
-            versionId: 1,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("subscribeToLoyaltyProgram (2)", async () => {

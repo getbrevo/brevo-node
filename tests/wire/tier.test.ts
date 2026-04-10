@@ -32,17 +32,7 @@ describe("TierClient", () => {
             cid: "cid",
             tid: "tid",
         });
-        expect(response).toEqual({
-            contactId: 1,
-            createdAt: "2024-01-15T09:30:00Z",
-            groupId: "groupId",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            meta: {
-                key: "value",
-            },
-            updatedAt: "2024-01-15T09:30:00Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("addSubscriptionToTier (2)", async () => {
@@ -236,20 +226,7 @@ describe("TierClient", () => {
         const response = await client.tier.getListOfTierGroups({
             pid: "pid",
         });
-        expect(response).toEqual({
-            items: [
-                {
-                    createdAt: "2024-01-15T09:30:00Z",
-                    downgradeStrategy: "real_time",
-                    id: "id",
-                    loyaltyProgramId: "loyaltyProgramId",
-                    name: "name",
-                    tierOrder: ["tierOrder"],
-                    updatedAt: "2024-01-15T09:30:00Z",
-                    upgradeStrategy: "real_time",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getListOfTierGroups (2)", async () => {
@@ -385,16 +362,7 @@ describe("TierClient", () => {
             pid: "pid",
             name: "name",
         });
-        expect(response).toEqual({
-            createdAt: "2024-01-15T09:30:00Z",
-            downgradeStrategy: "real_time",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            name: "name",
-            tierOrder: ["tierOrder"],
-            updatedAt: "2024-01-15T09:30:00Z",
-            upgradeStrategy: "real_time",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createTierGroup (2)", async () => {
@@ -562,16 +530,7 @@ describe("TierClient", () => {
             pid: "pid",
             gid: "gid",
         });
-        expect(response).toEqual({
-            createdAt: "2024-01-15T09:30:00Z",
-            downgradeStrategy: "real_time",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            name: "name",
-            tierOrder: ["tierOrder"],
-            updatedAt: "2024-01-15T09:30:00Z",
-            upgradeStrategy: "real_time",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTierGroup (2)", async () => {
@@ -721,16 +680,7 @@ describe("TierClient", () => {
             tierOrder: ["tierOrder"],
             upgradeStrategy: "real_time",
         });
-        expect(response).toEqual({
-            createdAt: "2024-01-15T09:30:00Z",
-            downgradeStrategy: "real_time",
-            id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
-            name: "name",
-            tierOrder: ["tierOrder"],
-            updatedAt: "2024-01-15T09:30:00Z",
-            upgradeStrategy: "real_time",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateTierGroup (2)", async () => {
@@ -1083,30 +1033,7 @@ describe("TierClient", () => {
             accessConditions: [{}],
             name: "name",
         });
-        expect(response).toEqual({
-            accessConditions: [
-                {
-                    balanceDefinitionId: "balanceDefinitionId",
-                    createdAt: "2024-01-15T09:30:00Z",
-                    minimumValue: 1,
-                    updatedAt: "2024-01-15T09:30:00Z",
-                },
-            ],
-            createdAt: "2024-01-15T09:30:00Z",
-            groupId: "groupId",
-            imageRef: "imageRef",
-            loyaltyProgramId: "loyaltyProgramId",
-            name: "name",
-            tierId: "tierId",
-            tierRewards: [
-                {
-                    createdAt: "2024-01-15T09:30:00Z",
-                    rewardId: "rewardId",
-                    updatedAt: "2024-01-15T09:30:00Z",
-                },
-            ],
-            updatedAt: "2024-01-15T09:30:00Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createTierForTierGroup (2)", async () => {
@@ -1265,21 +1192,7 @@ describe("TierClient", () => {
         const response = await client.tier.getLoyaltyProgramTier({
             pid: "pid",
         });
-        expect(response).toEqual({
-            items: [
-                {
-                    accessConditions: [{}],
-                    createdAt: "2024-01-15T09:30:00Z",
-                    groupId: "groupId",
-                    imageRef: "imageRef",
-                    loyaltyProgramId: "loyaltyProgramId",
-                    name: "name",
-                    tierId: "tierId",
-                    tierRewards: [{}],
-                    updatedAt: "2024-01-15T09:30:00Z",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getLoyaltyProgramTier (2)", async () => {
@@ -1428,30 +1341,7 @@ describe("TierClient", () => {
             name: "name",
             tierRewards: [{}],
         });
-        expect(response).toEqual({
-            accessConditions: [
-                {
-                    balanceDefinitionId: "balanceDefinitionId",
-                    createdAt: "2024-01-15T09:30:00Z",
-                    minimumValue: 1,
-                    updatedAt: "2024-01-15T09:30:00Z",
-                },
-            ],
-            createdAt: "2024-01-15T09:30:00Z",
-            groupId: "groupId",
-            imageRef: "imageRef",
-            loyaltyProgramId: "loyaltyProgramId",
-            name: "name",
-            tierId: "tierId",
-            tierRewards: [
-                {
-                    createdAt: "2024-01-15T09:30:00Z",
-                    rewardId: "rewardId",
-                    updatedAt: "2024-01-15T09:30:00Z",
-                },
-            ],
-            updatedAt: "2024-01-15T09:30:00Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateTier (2)", async () => {

@@ -24,17 +24,7 @@ describe("CouponsClient", () => {
         server.mockEndpoint().get("/couponCollections").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.coupons.getCouponCollections();
-        expect(response).toEqual({
-            createdAt: "2023-01-06T05:03:47Z",
-            defaultCoupon: "10 OFF",
-            expirationDate: "2024-01-01T00:00:00Z",
-            id: "23befbae-1505-47a8-bd27-e30ef739f32c",
-            name: "SummerPromotions",
-            remainingCoupons: 5000,
-            remainingCouponsAlert: 5,
-            remainingDaysAlert: 5,
-            totalCoupons: 10000,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getCouponCollections (2)", async () => {
@@ -82,9 +72,7 @@ describe("CouponsClient", () => {
             defaultCoupon: "Winter",
             name: "10%OFF",
         });
-        expect(response).toEqual({
-            id: "23befbae-1505-47a8-bd27-e30ef739f32c",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createCouponCollection (2)", async () => {
@@ -160,17 +148,7 @@ describe("CouponsClient", () => {
         const response = await client.coupons.getCouponCollection({
             id: "id",
         });
-        expect(response).toEqual({
-            createdAt: "2023-01-06T05:03:47Z",
-            defaultCoupon: "10 OFF",
-            expirationDate: "2024-01-01T00:00:00Z",
-            id: "23befbae-1505-47a8-bd27-e30ef739f32c",
-            name: "SummerPromotions",
-            remainingCoupons: 5000,
-            remainingCouponsAlert: 5,
-            remainingDaysAlert: 5,
-            totalCoupons: 10000,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getCouponCollection (2)", async () => {
@@ -258,11 +236,7 @@ describe("CouponsClient", () => {
         const response = await client.coupons.updateCouponCollection({
             id: "id",
         });
-        expect(response).toEqual({
-            defaultCoupon: "10 OFF",
-            id: "23befbae-1505-47a8-bd27-e30ef739f32c",
-            name: "SummerPromotions",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateCouponCollection (2)", async () => {

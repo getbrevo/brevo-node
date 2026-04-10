@@ -70,74 +70,7 @@ describe("ExternalFeedsClient", () => {
             startDate: "2024-01-01",
             endDate: "2024-01-31",
         });
-        expect(response).toEqual({
-            count: 18,
-            feeds: [
-                {
-                    id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
-                    name: "Product Catalog Feed",
-                    alias: "product_catalog_feed",
-                    url: "https://api.example.com/products",
-                    authType: "noAuth",
-                    username: "apiuser",
-                    password: "apipass",
-                    token: "abc123token456",
-                    maxRetries: 3,
-                    cache: true,
-                    isInternal: false,
-                    headers: [
-                        {
-                            name: "Authorization",
-                            value: "Bearer xyz789",
-                        },
-                    ],
-                    createdAt: "2025-09-18T13:29:27Z",
-                    modifiedAt: "2025-09-18T13:29:27Z",
-                },
-                {
-                    id: "c2d3e4f5-a6b7-48c9-90d1-e2f3a4b5c6d7",
-                    name: "Blog News Feed",
-                    alias: "blog_news_feed",
-                    url: "https://blog.example.com/api/posts",
-                    authType: "noAuth",
-                    username: "apiuser",
-                    password: "apipass",
-                    token: "abc123token456",
-                    maxRetries: 3,
-                    cache: true,
-                    isInternal: true,
-                    headers: [
-                        {
-                            name: "Authorization",
-                            value: "Bearer xyz789",
-                        },
-                    ],
-                    createdAt: "2025-09-17T16:03:25Z",
-                    modifiedAt: "2025-09-17T16:03:25Z",
-                },
-                {
-                    id: "d3e4f5a6-b7c8-49d0-91e2-f3a4b5c6d7e8",
-                    name: "Public Data Feed",
-                    alias: "public_data_feed",
-                    url: "https://jsonplaceholder.typicode.com/posts",
-                    authType: "noAuth",
-                    username: "apiuser",
-                    password: "apipass",
-                    token: "abc123token456",
-                    maxRetries: 3,
-                    cache: true,
-                    isInternal: true,
-                    headers: [
-                        {
-                            name: "Authorization",
-                            value: "Bearer xyz789",
-                        },
-                    ],
-                    createdAt: "2025-09-05T09:06:42Z",
-                    modifiedAt: "2025-09-05T09:06:42Z",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAllExternalFeeds (2)", async () => {
@@ -194,9 +127,7 @@ describe("ExternalFeedsClient", () => {
             maxRetries: 3,
             cache: true,
         });
-        expect(response).toEqual({
-            id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createExternalFeed (2)", async () => {
@@ -227,9 +158,7 @@ describe("ExternalFeedsClient", () => {
             maxRetries: 3,
             cache: true,
         });
-        expect(response).toEqual({
-            id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createExternalFeed (3)", async () => {
@@ -260,9 +189,7 @@ describe("ExternalFeedsClient", () => {
             maxRetries: 3,
             cache: true,
         });
-        expect(response).toEqual({
-            id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createExternalFeed (4)", async () => {
@@ -317,19 +244,7 @@ describe("ExternalFeedsClient", () => {
         const response = await client.externalFeeds.getExternalFeedByUuid({
             uuid: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
         });
-        expect(response).toEqual({
-            id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
-            name: "Product Catalog Feed",
-            url: "https://api.example.com/products",
-            authType: "noAuth",
-            personalization: false,
-            defaultAttr: "",
-            defaultContact: "",
-            maxRetries: 0,
-            cache: false,
-            createdAt: "2025-09-18T13:29:27Z",
-            modifiedAt: "2025-09-18T13:29:27Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getExternalFeedByUUID (2)", async () => {
@@ -361,19 +276,7 @@ describe("ExternalFeedsClient", () => {
         const response = await client.externalFeeds.getExternalFeedByUuid({
             uuid: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
         });
-        expect(response).toEqual({
-            id: "c2d3e4f5-a6b7-48c9-90d1-e2f3a4b5c6d7",
-            name: "Internal Blog Feed",
-            url: "https://blog.example.com/api/posts",
-            authType: "noAuth",
-            personalization: false,
-            defaultAttr: "",
-            defaultContact: "",
-            maxRetries: 0,
-            cache: false,
-            createdAt: "2025-09-17T16:03:25Z",
-            modifiedAt: "2025-09-17T16:03:25Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getExternalFeedByUUID (3)", async () => {
@@ -405,19 +308,7 @@ describe("ExternalFeedsClient", () => {
         const response = await client.externalFeeds.getExternalFeedByUuid({
             uuid: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
         });
-        expect(response).toEqual({
-            id: "d3e4f5a6-b7c8-49d0-91e2-f3a4b5c6d7e8",
-            name: "Public Data Feed",
-            url: "https://jsonplaceholder.typicode.com/posts",
-            authType: "noAuth",
-            personalization: false,
-            defaultAttr: "",
-            defaultContact: "",
-            maxRetries: 0,
-            cache: false,
-            createdAt: "2025-09-05T09:06:42Z",
-            modifiedAt: "2025-09-05T09:06:42Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getExternalFeedByUUID (4)", async () => {

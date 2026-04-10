@@ -34,6 +34,7 @@ export namespace GetProcessResponse {
     /** Current status of the process */
     export const Status = {
         Queued: "queued",
+        InProcess: "in_process",
         Processing: "processing",
         Completed: "completed",
         Failed: "failed",
@@ -62,8 +63,8 @@ export namespace GetProcessResponse {
             duplicate_contact_id?: (number | null) | undefined;
             /** Number of duplicate external IDs */
             duplicate_ext_id?: (number | null) | undefined;
-            /** Number of duplicate email IDs */
-            duplicate_email_id?: (number | null) | undefined;
+            /** URL to CSV file containing duplicate email IDs, or null if none */
+            duplicate_email_id?: (string | null) | undefined;
             /** Number of duplicate phone numbers */
             duplicate_phone_id?: (number | null) | undefined;
             /** Number of duplicate WhatsApp numbers */

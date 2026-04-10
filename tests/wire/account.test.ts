@@ -71,95 +71,7 @@ describe("AccountClient", () => {
         server.mockEndpoint().get("/account").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.account.getAccount();
-        expect(response).toEqual({
-            organization_id: "5fa2b8c123456789abcdef01",
-            user_id: 1234567,
-            enterprise: false,
-            companyName: "Acme Marketing Corp",
-            email: "michael.davis@example.com",
-            firstName: "Michael",
-            lastName: "Davis",
-            address: {
-                city: "New York",
-                country: "United States",
-                street: "456 Business Ave",
-                zipCode: "10001",
-            },
-            dateTimePreferences: {
-                timezone: "America/New_York",
-                timeFormat: "12",
-                dateFormat: "mm-dd-yyyy",
-            },
-            marketingAutomation: {
-                enabled: true,
-                key: "ma8k2x9v4h7p3d6f1c5e8b2a",
-            },
-            plan: [
-                {
-                    credits: 250,
-                    creditsType: "sendLimit",
-                    endDate: "1753826567",
-                    startDate: "1751234567",
-                    type: "free",
-                },
-                {
-                    credits: 15,
-                    creditsType: "sendLimit",
-                    endDate: "1753826567",
-                    startDate: "1751234567",
-                    type: "sms",
-                },
-            ],
-            planVerticals: [
-                {
-                    planCategory: "Marketing",
-                    planType: "free",
-                    name: "Free",
-                    status: "active",
-                    startDate: "1751234567",
-                    endDate: "1753826567",
-                    users: {
-                        purchasedSeats: "1",
-                        usedSeats: "1",
-                    },
-                    credits: "250",
-                },
-                {
-                    planCategory: "Chat",
-                    planType: "free",
-                    name: "Free",
-                    status: "active",
-                    startDate: "1735678901",
-                    endDate: "1767214901",
-                    users: {
-                        purchasedSeats: "1",
-                        usedSeats: "1",
-                    },
-                    credits: "250",
-                },
-                {
-                    planCategory: "CRM",
-                    planType: "free",
-                    name: "Free",
-                    status: "active",
-                    startDate: "1735678900",
-                    endDate: "1767214900",
-                    users: {
-                        purchasedSeats: "1",
-                        usedSeats: "1",
-                    },
-                    credits: "250",
-                },
-            ],
-            relay: {
-                data: {
-                    port: 587,
-                    relay: "smtp-relay.brevo.com",
-                    userName: "michael.davis@example.com",
-                },
-                enabled: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAccountActivity (1)", async () => {
@@ -194,24 +106,7 @@ describe("AccountClient", () => {
             .build();
 
         const response = await client.account.getAccountActivity();
-        expect(response).toEqual({
-            logs: [
-                {
-                    action: "login-success",
-                    date: "2023-03-16T16:49:23+05:30",
-                    user_agent: "Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us)",
-                    user_email: "test@mycompany.com",
-                    user_ip: "192.158.1.34",
-                },
-                {
-                    action: "update-profile",
-                    date: "2023-03-15T16:49:23+05:30",
-                    user_agent: "Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us)",
-                    user_email: "test@myexample.com",
-                    user_ip: "192.158.1.38",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAccountActivity (2)", async () => {

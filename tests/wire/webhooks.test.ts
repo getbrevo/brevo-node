@@ -43,52 +43,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.webhooks.getWebhooks();
-        expect(response).toEqual({
-            webhooks: [
-                {
-                    auth: {
-                        token: "test-auth-token1234",
-                        type: "bearer",
-                    },
-                    batched: true,
-                    channel: "email",
-                    createdAt: "2016-07-18T12:30:09Z",
-                    description: "Webhook triggered on campaign openings",
-                    events: ["opened"],
-                    headers: [
-                        {
-                            key: "cf-secret",
-                            value: "test-header-value",
-                        },
-                    ],
-                    id: 9864,
-                    modifiedAt: "2016-07-18T16:00:50Z",
-                    type: "transactional",
-                    url: "https://example.domain.com/webhook/events/kzfxxxxxxxx0uyo1",
-                },
-                {
-                    auth: {
-                        token: "test-auth-token1234",
-                        type: "bearer",
-                    },
-                    batched: true,
-                    channel: "sms",
-                    createdAt: "2017-02-20T14:30:00Z",
-                    description: "Webhook triggered on campaign hard bounces",
-                    events: ["hardBounces"],
-                    headers: [
-                        {
-                            key: "cf-secret",
-                            value: "test-header-value",
-                        },
-                    ],
-                    id: 22770,
-                    modifiedAt: "2017-02-20T19:00:00Z",
-                    type: "marketing",
-                    url: "http://exmaple.domain.com/15kxxxxxn1",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWebhooks (2)", async () => {
@@ -123,9 +78,7 @@ describe("WebhooksClient", () => {
             events: ["sent"],
             url: "http://requestb.in/173lyyx1",
         });
-        expect(response).toEqual({
-            id: 5,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createWebhook (2)", async () => {
@@ -171,9 +124,7 @@ describe("WebhooksClient", () => {
             notifyURL: "https://brevo.com",
             type: "transactional",
         });
-        expect(response).toEqual({
-            processId: 78,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("exportWebhooksHistory (2)", async () => {
@@ -223,27 +174,7 @@ describe("WebhooksClient", () => {
         const response = await client.webhooks.getWebhook({
             webhookId: 1000000,
         });
-        expect(response).toEqual({
-            auth: {
-                token: "test-auth-token1234",
-                type: "bearer",
-            },
-            batched: true,
-            channel: "sms",
-            createdAt: "2016-06-07T09:10:10Z",
-            description: "Webhook triggered on campaign openings and addition of lists",
-            events: ["listAdditions", "opened"],
-            headers: [
-                {
-                    key: "cf-secret",
-                    value: "test-header-value",
-                },
-            ],
-            id: 7287,
-            modifiedAt: "2016-06-08T11:30:00Z",
-            type: "marketing",
-            url: "http://example.domain.com/1brxxxxxx5p1",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWebhook (2)", async () => {

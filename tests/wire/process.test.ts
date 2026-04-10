@@ -45,38 +45,7 @@ describe("ProcessClient", () => {
         server.mockEndpoint().get("/processes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.process.getProcesses();
-        expect(response).toEqual({
-            count: 198,
-            processes: [
-                {
-                    id: 217,
-                    name: "IMPORTUSER",
-                    status: "completed",
-                    export_url: "https://s3.eu-west-1.amazonaws.com/api-export.example.com/upload/contacts_export.csv",
-                    error: "Processing timeout exceeded",
-                    created_at: "2024-01-15T10:30:00Z",
-                    completed_at: "2024-01-15T10:35:00Z",
-                },
-                {
-                    id: 213,
-                    name: "SEARCH_EXPORT_USERS",
-                    status: "completed",
-                    export_url: "https://s3.eu-west-1.amazonaws.com/api-export.example.com/upload/contacts_export.csv",
-                    error: "Processing timeout exceeded",
-                    created_at: "2024-01-15T10:30:00Z",
-                    completed_at: "2024-01-15T10:35:00Z",
-                },
-                {
-                    id: 212,
-                    name: "IMPORTUSER",
-                    status: "queued",
-                    export_url: "https://s3.eu-west-1.amazonaws.com/api-export.example.com/upload/contacts_export.csv",
-                    error: "Processing timeout exceeded",
-                    created_at: "2024-01-15T10:30:00Z",
-                    completed_at: "2024-01-15T10:35:00Z",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getProcesses (2)", async () => {
@@ -105,7 +74,7 @@ describe("ProcessClient", () => {
                     invalid_emails: 2,
                     duplicate_contact_id: 0,
                     duplicate_ext_id: 1,
-                    duplicate_email_id: 5,
+                    duplicate_email_id: "duplicate_email_id",
                     duplicate_phone_id: 1,
                     duplicate_whatsapp_id: 1,
                     duplicate_landline_number_id: 1,
@@ -123,30 +92,7 @@ describe("ProcessClient", () => {
         const response = await client.process.getProcess({
             processId: 1000000,
         });
-        expect(response).toEqual({
-            id: 217,
-            name: "IMPORTUSER",
-            status: "queued",
-            info: {
-                import: {
-                    invalid_emails: 2,
-                    duplicate_contact_id: 0,
-                    duplicate_ext_id: 1,
-                    duplicate_email_id: 5,
-                    duplicate_phone_id: 1,
-                    duplicate_whatsapp_id: 1,
-                    duplicate_landline_number_id: 1,
-                },
-                export: {
-                    total_records: 1250,
-                    file_size: 102400,
-                },
-            },
-            export_url: "https://s3.eu-west-1.amazonaws.com/api-export.example.com/upload/contacts_export.csv",
-            error: "Processing timeout exceeded after 30 minutes",
-            created_at: "2024-01-15T10:30:00Z",
-            completed_at: "2024-01-15T10:32:15Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getProcess (2)", async () => {
@@ -169,21 +115,7 @@ describe("ProcessClient", () => {
         const response = await client.process.getProcess({
             processId: 1000000,
         });
-        expect(response).toEqual({
-            id: 217,
-            name: "IMPORTUSER",
-            status: "completed",
-            info: {
-                export: {
-                    total_records: 1250,
-                    file_size: 102400,
-                },
-            },
-            export_url: "https://s3.eu-west-1.amazonaws.com/api-export.example.com/upload/contacts_export.csv",
-            error: "Processing timeout exceeded after 30 minutes",
-            created_at: "2024-01-15T10:30:00Z",
-            completed_at: "2024-01-15T10:32:15Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getProcess (3)", async () => {
@@ -199,7 +131,7 @@ describe("ProcessClient", () => {
                     invalid_emails: 2,
                     duplicate_contact_id: 0,
                     duplicate_ext_id: 1,
-                    duplicate_email_id: 5,
+                    duplicate_email_id: "duplicate_email_id",
                     duplicate_phone_id: 1,
                     duplicate_whatsapp_id: 1,
                     duplicate_landline_number_id: 1,
@@ -217,30 +149,7 @@ describe("ProcessClient", () => {
         const response = await client.process.getProcess({
             processId: 1000000,
         });
-        expect(response).toEqual({
-            id: 213,
-            name: "SEARCH_EXPORT_USERS",
-            status: "completed",
-            info: {
-                import: {
-                    invalid_emails: 2,
-                    duplicate_contact_id: 0,
-                    duplicate_ext_id: 1,
-                    duplicate_email_id: 5,
-                    duplicate_phone_id: 1,
-                    duplicate_whatsapp_id: 1,
-                    duplicate_landline_number_id: 1,
-                },
-                export: {
-                    total_records: 1250,
-                    file_size: 102400,
-                },
-            },
-            export_url: "https://s3.eu-west-1.amazonaws.com/api-export.example.com/upload/contacts_export.csv",
-            error: "Processing timeout exceeded after 30 minutes",
-            created_at: "2024-01-15T10:30:00Z",
-            completed_at: "2024-01-15T10:32:15Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getProcess (4)", async () => {
@@ -256,7 +165,7 @@ describe("ProcessClient", () => {
                     invalid_emails: 2,
                     duplicate_contact_id: 0,
                     duplicate_ext_id: 1,
-                    duplicate_email_id: 5,
+                    duplicate_email_id: "duplicate_email_id",
                     duplicate_phone_id: 1,
                     duplicate_whatsapp_id: 1,
                     duplicate_landline_number_id: 1,
@@ -274,30 +183,7 @@ describe("ProcessClient", () => {
         const response = await client.process.getProcess({
             processId: 1000000,
         });
-        expect(response).toEqual({
-            id: 189,
-            name: "TRANS-GLOBAL-CALC",
-            status: "failed",
-            info: {
-                import: {
-                    invalid_emails: 2,
-                    duplicate_contact_id: 0,
-                    duplicate_ext_id: 1,
-                    duplicate_email_id: 5,
-                    duplicate_phone_id: 1,
-                    duplicate_whatsapp_id: 1,
-                    duplicate_landline_number_id: 1,
-                },
-                export: {
-                    total_records: 1250,
-                    file_size: 102400,
-                },
-            },
-            export_url: "https://s3.eu-west-1.amazonaws.com/api-export.example.com/upload/contacts_export.csv",
-            error: "Processing timeout exceeded after 30 minutes",
-            created_at: "2024-01-15T10:30:00Z",
-            completed_at: "2024-01-15T10:32:15Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getProcess (5)", async () => {

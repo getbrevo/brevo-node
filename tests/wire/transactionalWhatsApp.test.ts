@@ -25,9 +25,7 @@ describe("TransactionalWhatsAppClient", () => {
             senderNumber: "senderNumber",
             templateId: 123,
         });
-        expect(response).toEqual({
-            messageId: "23befbae-1505-47a8-bd27-e30ef739f32c",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("sendWhatsappMessage (2)", async () => {
@@ -116,50 +114,7 @@ describe("TransactionalWhatsAppClient", () => {
             .build();
 
         const response = await client.transactionalWhatsApp.getWhatsappEventReport();
-        expect(response).toEqual({
-            events: [
-                {
-                    body: "Hi! I am a reply",
-                    contactNumber: "contactNumber",
-                    date: "2017-03-12T12:30:00Z",
-                    event: "sent",
-                    mediaUrl: "https://example.com/media.png",
-                    messageId: "23befbae-1505-47a8-bd27-e30ef739f32c",
-                    reason: "23befbae-1505-47a8-bd27-e30ef739f32c",
-                    senderNumber: "senderNumber",
-                },
-                {
-                    body: "Hi! I am a reply",
-                    contactNumber: "contactNumber",
-                    date: "2017-03-12T12:30:00Z",
-                    event: "error",
-                    mediaUrl: "https://example.com/media.png",
-                    messageId: "23befbae-1505-47a8-bd27-e30ef739f32c",
-                    reason: "error reason",
-                    senderNumber: "senderNumber",
-                },
-                {
-                    body: "Hi! I am a reply",
-                    contactNumber: "contactNumber",
-                    date: "2017-03-12T12:30:00Z",
-                    event: "soft-bounce",
-                    mediaUrl: "https://example.com/media.png",
-                    messageId: "23befbae-1505-47a8-bd27-e30ef739f32c",
-                    reason: "invalid whatsapp contact",
-                    senderNumber: "senderNumber",
-                },
-                {
-                    body: "body only in case of text reply & url will be empty",
-                    contactNumber: "contactNumber",
-                    date: "2017-03-12T12:30:00Z",
-                    event: "reply",
-                    mediaUrl: "media url only in case media reply & body will be empty",
-                    messageId: "23befbae-1505-47a8-bd27-e30ef739f32c",
-                    reason: "23befbae-1505-47a8-bd27-e30ef739f32c",
-                    senderNumber: "senderNumber",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWhatsappEventReport (2)", async () => {

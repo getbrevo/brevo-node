@@ -25,6 +25,6 @@ export interface CreateContactRequest {
 
 export namespace CreateContactRequest {
     export namespace Attributes {
-        export type Value = number | string | boolean | string[];
+        export type Value = number | number | string | boolean | string[];
     }
 }
