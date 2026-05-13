@@ -11,22 +11,33 @@
 export interface BeginTransactionRequest {
     /** Loyalty Program Id */
     pid: string;
-    /** Unique identifier for the loyalty subscription (required unless `contactId` is provided). */
-    LoyaltySubscriptionId?: string;
-    /** Transaction amount (must be provided). */
+    /** Transaction amount. A positive value creates a credit transaction and a negative value creates a debit transaction (unless transactionType is explicitly provided). */
     amount: number;
-    /** Whether the transaction should be automatically completed. */
-    autoComplete?: boolean;
+    /** Explicit transaction type. If not provided, the type is inferred from the sign of the amount (positive = credit, negative = debit). */
+    transactionType?: BeginTransactionRequest.TransactionType;
     /** Unique identifier (UUID) of the associated balance definition. */
     balanceDefinitionId: string;
-    /** Optional expiry time for the balance in minutes (must be greater than 0 if provided). */
-    balanceExpiryInMinutes?: number;
-    /** Unique identifier of the contact involved in the transaction (required unless `LoyaltySubscriptionId` is provided). */
+    /** Unique identifier of the contact involved in the transaction. Required unless `LoyaltySubscriptionId` is provided. */
     contactId?: number;
-    /** Optional timestamp specifying when the transaction occurred. */
-    eventTime?: string;
+    /** Unique identifier for the loyalty subscription. Required unless `contactId` is provided. */
+    LoyaltySubscriptionId?: string;
     /** Optional metadata associated with the transaction. */
     meta?: Record<string, unknown>;
-    /** Optional time-to-live for the transaction (must be greater than 0 if provided). */
+    /** Time-to-live for the transaction in seconds. Must be at least 10 seconds if provided. */
     ttl?: number;
+    /** Timestamp specifying when the transaction event occurred (ISO 8601 / RFC 3339 format). */
+    eventTime?: string;
+    /** Whether the transaction should be automatically completed. */
+    autoComplete?: boolean;
+    /** Expiry time for the balance in minutes. Must be greater than 0 if provided. Only applicable when autoComplete is true. */
+    balanceExpiryInMinutes?: number;
+}
+
+export namespace BeginTransactionRequest {
+    /** Explicit transaction type. If not provided, the type is inferred from the sign of the amount (positive = credit, negative = debit). */
+    export const TransactionType = {
+        Credit: "credit",
+        Debit: "debit",
+    } as const;
+    export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType];
 }

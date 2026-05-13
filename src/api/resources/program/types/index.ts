@@ -1,3 +1,4 @@
+export * from "./GetLpListRequestSort.js";
 export * from "./GetLpListRequestSortField.js";
 export * from "./GetLpListResponse.js";
 export * from "./GetParameterSubscriptionInfoResponse.js";

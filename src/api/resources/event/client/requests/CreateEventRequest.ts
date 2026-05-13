@@ -10,11 +10,11 @@
 export interface CreateEventRequest {
     /** Properties defining the state of the contact associated to this event. Useful to update contact attributes defined in your contacts database while passing the event. For example: **"FIRSTNAME": "Jane" , "AGE": 37** */
     contact_properties?: Record<string, CreateEventRequest.ContactProperties.Value>;
-    /** Timestamp of when the event occurred (e.g. "2024-01-24T17:39:57+01:00"). If no value is passed, the timestamp of the event creation is used. */
+    /** ISO 8601 timestamp of when the event occurred (e.g. "2024-01-24T17:39:57+01:00"). If no value is passed, the timestamp of the event creation is used. */
     event_date?: string;
-    /** The name of the event that occurred. This is how you will find your event in Brevo. Limited to 255 characters, alphanumerical characters and - _ only. */
+    /** The name of the event that occurred. This is how you will find your event in Brevo. Limited to 255 characters; only alphanumeric characters, hyphens (-), and underscores (_) are allowed. */
     event_name: string;
-    /** Properties of the event. Top level properties and nested properties can be used to better segment contacts and personalise workflow conditions. The following field type are supported: string, number, boolean (true/false), date (Timestamp e.g. "2024-01-24T17:39:57+01:00"). Keys are limited to 255 characters, alphanumerical characters and - _ only. Size is limited to 50Kb. */
+    /** Properties of the event. Top level properties and nested properties can be used to better segment contacts and personalise workflow conditions. The following field types are supported: string, number, boolean (true/false), date (Timestamp e.g. "2024-01-24T17:39:57+01:00"). Keys are limited to 255 characters, alphanumerical characters and - _ only. Size is limited to 50KB. */
     event_properties?: Record<string, CreateEventRequest.EventProperties.Value>;
     /** Identifies the contact associated with the event. At least one identifier is required. */
     identifiers: CreateEventRequest.Identifiers;

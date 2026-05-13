@@ -19,9 +19,9 @@ import type * as Brevo from "../../../../index.js";
  *     }
  */
 export interface CreateBatchOrderRequest {
-    /** Defines wether you want your orders to be considered as live data or as historical data (import of past data, synchronising data). True: orders will not trigger any automation workflows. False: orders will trigger workflows as usual. */
+    /** Defines whether you want your orders to be considered as live data or as historical data (import of past data, synchronising data). True: orders will not trigger any automation workflows. False: orders will trigger workflows as usual. */
     historical?: boolean;
-    /** Notify Url provided by client_dev to get the status of batch request */
+    /** Webhook URL to receive the status of the batch request */
     notifyUrl?: string;
     /** array of order objects */
     orders: Brevo.Order[];

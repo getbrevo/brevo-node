@@ -7,7 +7,7 @@ import type * as Brevo from "../../../../index.js";
  *     {
  *         id: "id",
  *         body: {
- *             text: "In communication with client_dev for resolution of queries."
+ *             text: "<p>Meeting notes: <b>Action item</b> - visit <a href=\"https://www.brevo.com/\">Brevo</a> for details.</p>"
  *         }
  *     }
  */

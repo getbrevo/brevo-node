@@ -4,7 +4,7 @@
  * @example
  *     {
  *         pid: "pid",
- *         contactId: 1
+ *         contactId: 1000000
  *     }
  */
 export interface SubscribeToLoyaltyProgramRequest {
@@ -12,8 +12,10 @@ export interface SubscribeToLoyaltyProgramRequest {
     pid: string;
     /** Required contact ID; must be greater than 0. */
     contactId: number;
-    /** Optional custom date-time format. */
-    creationDate?: string;
     /** Optional subscription ID (max length 64). */
     loyaltySubscriptionId?: string;
+    /** Optional creation date in ISO 8601 format (YYYY-MM-DDThh:mm:ss.ffffff+HH:MM). Must be in the past. */
+    creationDate?: string;
+    /** Optional metadata associated with the subscription. */
+    meta?: Record<string, unknown>;
 }

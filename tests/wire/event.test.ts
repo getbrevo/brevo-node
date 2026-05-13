@@ -16,7 +16,6 @@ describe("EventClient", () => {
                     event_date: "2024-02-06T20:59:23Z",
                     event_name: "order_created",
                     event_filter_id: "abc123",
-                    source: "api",
                     object_type: "subscription",
                     event_properties: { duration: 142, video_title: "Brevo — The most approachable CRM suite" },
                     contact_properties: { AGE: 32, GENDER: "FEMALE" },
@@ -133,7 +132,7 @@ describe("EventClient", () => {
     test("createBatchEvents (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = [{ event_name: "order_created", identifiers: {} }];
+        const rawRequestBody = { events: [{ event_name: "order_created", identifiers: {} }] };
         const rawResponseBody = {
             message: "Batch accepted. Valid events have been added to the processing queue.",
             count: 7,
@@ -148,22 +147,26 @@ describe("EventClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.event.createBatchEvents([
-            {
-                event_name: "order_created",
-                identifiers: {},
-            },
-        ]);
+        const response = await client.event.createBatchEvents({
+            events: [
+                {
+                    event_name: "order_created",
+                    identifiers: {},
+                },
+            ],
+        });
         expect(response).toEqual(rawResponseBody);
     });
 
     test("createBatchEvents (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = [
-            { event_name: "event_name", identifiers: {} },
-            { event_name: "event_name", identifiers: {} },
-        ];
+        const rawRequestBody = {
+            events: [
+                { event_name: "event_name", identifiers: {} },
+                { event_name: "event_name", identifiers: {} },
+            ],
+        };
         const rawResponseBody = { key: "value" };
 
         server
@@ -176,26 +179,30 @@ describe("EventClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.event.createBatchEvents([
-                {
-                    event_name: "event_name",
-                    identifiers: {},
-                },
-                {
-                    event_name: "event_name",
-                    identifiers: {},
-                },
-            ]);
+            return await client.event.createBatchEvents({
+                events: [
+                    {
+                        event_name: "event_name",
+                        identifiers: {},
+                    },
+                    {
+                        event_name: "event_name",
+                        identifiers: {},
+                    },
+                ],
+            });
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
     test("createBatchEvents (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = [
-            { event_name: "event_name", identifiers: {} },
-            { event_name: "event_name", identifiers: {} },
-        ];
+        const rawRequestBody = {
+            events: [
+                { event_name: "event_name", identifiers: {} },
+                { event_name: "event_name", identifiers: {} },
+            ],
+        };
         const rawResponseBody = { key: "value" };
 
         server
@@ -208,16 +215,18 @@ describe("EventClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.event.createBatchEvents([
-                {
-                    event_name: "event_name",
-                    identifiers: {},
-                },
-                {
-                    event_name: "event_name",
-                    identifiers: {},
-                },
-            ]);
+            return await client.event.createBatchEvents({
+                events: [
+                    {
+                        event_name: "event_name",
+                        identifiers: {},
+                    },
+                    {
+                        event_name: "event_name",
+                        identifiers: {},
+                    },
+                ],
+            });
         }).rejects.toThrow(Brevo.UnauthorizedError);
     });
 });

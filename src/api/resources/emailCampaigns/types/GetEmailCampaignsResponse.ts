@@ -43,8 +43,12 @@ export namespace GetEmailCampaignsResponse {
             winnerCriteria?: string | undefined;
             /** The duration of the test in hours at the end of which the winning version will be sent. Only available if `abTesting` flag of the campaign is `true` */
             winnerDelay?: number | undefined;
+            /** URL of the attachment file associated with the campaign. Empty string if no attachment is present. */
+            attachmentUrl?: string | undefined;
             /** Creation UTC date-time of the campaign (YYYY-MM-DDTHH:mm:ss.SSSZ) */
             createdAt: string;
+            /** Expiration date configuration for the email campaign, if set. Contains the duration and unit of the email expiry. */
+            emailExpirationDate?: Item.EmailExpirationDate | undefined;
             /** Footer of the campaign */
             footer: string;
             /** Header of the campaign */
@@ -76,12 +80,13 @@ export namespace GetEmailCampaignsResponse {
             testSent: boolean;
             /** Customisation of the "to" field of the campaign */
             toField?: string | undefined;
-            /** utm parameter associated with campaign */
+            /** The utm_campaign value associated with the campaign. Only present if a UTM campaign value was set. */
             utmCampaignValue?: string | undefined;
-            /** utm id active */
-            utmIDActive?: boolean | undefined;
+            /** The campaign ID used as utm_id parameter. Only present if UTM campaign tracking with ID is enabled. */
+            utmID?: number | undefined;
+            /** The utm_medium value. Set to "EMAIL" when UTM campaign tracking is enabled. */
             utmMedium?: string | undefined;
-            /** source of utm */
+            /** The utm_source value. Set to "Brevo" when UTM campaign tracking is enabled. */
             utmSource?: string | undefined;
             recipients: Brevo.GetCampaignRecipients;
             statistics: Brevo.GetExtendedCampaignStats;
@@ -107,6 +112,26 @@ export namespace GetEmailCampaignsResponse {
                 Trigger: "trigger",
             } as const;
             export type Type = (typeof Type)[keyof typeof Type];
+
+            /**
+             * Expiration date configuration for the email campaign, if set. Contains the duration and unit of the email expiry.
+             */
+            export interface EmailExpirationDate {
+                /** Duration of the email expiry */
+                duration?: number | undefined;
+                /** Unit of the duration */
+                unit?: EmailExpirationDate.Unit | undefined;
+            }
+
+            export namespace EmailExpirationDate {
+                /** Unit of the duration */
+                export const Unit = {
+                    Days: "days",
+                    Weeks: "weeks",
+                    Months: "months",
+                } as const;
+                export type Unit = (typeof Unit)[keyof typeof Unit];
+            }
 
             export interface Sender {
                 /** Sender email of the campaign */

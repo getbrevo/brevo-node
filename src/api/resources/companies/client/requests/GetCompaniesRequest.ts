@@ -7,15 +7,15 @@ import type * as Brevo from "../../../../index.js";
  *     {}
  */
 export interface GetCompaniesRequest {
-    /** Filter by attrbutes. If you have filter for owner on your side please send it as {"attributes.owner":"6299dcf3874a14eacbc65c46"} */
-    filters?: string;
+    /** Filter by attributes. If you have a filter for the owner on your side please send it as filters[attributes.owner] and utilize the account email for the filtering. */
+    "filters[attributes.name]"?: string;
     /** Filter by linked contacts ids */
     linkedContactsIds?: number;
     /** Filter by linked Deals ids */
     linkedDealsIds?: string;
-    /** Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
+    /** Filter (urlencoded) the companies modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
     modifiedSince?: string;
-    /** Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
+    /** Filter (urlencoded) the companies created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
     createdSince?: string;
     /** Index of the first document of the page */
     page?: number;

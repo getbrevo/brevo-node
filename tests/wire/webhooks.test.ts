@@ -14,7 +14,6 @@ describe("WebhooksClient", () => {
                 {
                     auth: { token: "test-auth-token1234", type: "bearer" },
                     batched: true,
-                    channel: "email",
                     createdAt: "2016-07-18T12:30:09Z",
                     description: "Webhook triggered on campaign openings",
                     events: ["opened"],
@@ -22,19 +21,20 @@ describe("WebhooksClient", () => {
                     id: 9864,
                     modifiedAt: "2016-07-18T16:00:50Z",
                     type: "transactional",
+                    domain: "example.com",
                     url: "https://example.domain.com/webhook/events/kzfxxxxxxxx0uyo1",
                 },
                 {
                     auth: { token: "test-auth-token1234", type: "bearer" },
                     batched: true,
-                    channel: "sms",
                     createdAt: "2017-02-20T14:30:00Z",
                     description: "Webhook triggered on campaign hard bounces",
-                    events: ["hardBounces"],
+                    events: ["hardBounce"],
                     headers: [{ key: "cf-secret", value: "test-header-value" }],
                     id: 22770,
                     modifiedAt: "2017-02-20T19:00:00Z",
                     type: "marketing",
+                    domain: "example.com",
                     url: "http://exmaple.domain.com/15kxxxxxn1",
                 },
             ],
@@ -62,7 +62,7 @@ describe("WebhooksClient", () => {
     test("createWebhook (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { events: ["sent"], url: "http://requestb.in/173lyyx1" };
+        const rawRequestBody = { url: "http://requestb.in/173lyyx1" };
         const rawResponseBody = { id: 5 };
 
         server
@@ -75,7 +75,6 @@ describe("WebhooksClient", () => {
             .build();
 
         const response = await client.webhooks.createWebhook({
-            events: ["sent"],
             url: "http://requestb.in/173lyyx1",
         });
         expect(response).toEqual(rawResponseBody);
@@ -84,7 +83,7 @@ describe("WebhooksClient", () => {
     test("createWebhook (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { events: ["sent", "sent"], url: "url" };
+        const rawRequestBody = { url: "url" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -98,7 +97,6 @@ describe("WebhooksClient", () => {
 
         await expect(async () => {
             return await client.webhooks.createWebhook({
-                events: ["sent", "sent"],
                 url: "url",
             });
         }).rejects.toThrow(Brevo.BadRequestError);
@@ -158,14 +156,14 @@ describe("WebhooksClient", () => {
         const rawResponseBody = {
             auth: { token: "test-auth-token1234", type: "bearer" },
             batched: true,
-            channel: "sms",
             createdAt: "2016-06-07T09:10:10Z",
             description: "Webhook triggered on campaign openings and addition of lists",
-            events: ["listAdditions", "opened"],
+            events: ["listAddition", "opened"],
             headers: [{ key: "cf-secret", value: "test-header-value" }],
             id: 7287,
             modifiedAt: "2016-06-08T11:30:00Z",
             type: "marketing",
+            domain: "example.com",
             url: "http://example.domain.com/1brxxxxxx5p1",
         };
 

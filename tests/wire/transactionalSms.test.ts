@@ -124,6 +124,29 @@ describe("TransactionalSmsClient", () => {
         }).rejects.toThrow(Brevo.PaymentRequiredError);
     });
 
+    test("sendTransacSms (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = { recipient: "recipient", sender: "sender" };
+        const rawResponseBody = { message: "message" };
+
+        server
+            .mockEndpoint()
+            .post("/transactionalSMS/sms")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactionalSms.sendTransacSms({
+                recipient: "recipient",
+                sender: "sender",
+            });
+        }).rejects.toThrow(Brevo.TooManyRequestsError);
+    });
+
     test("getTransacAggregatedSmsReport (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });

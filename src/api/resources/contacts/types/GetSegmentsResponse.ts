@@ -14,11 +14,11 @@ export namespace GetSegmentsResponse {
         export interface Item {
             /** Name of the Segment Category */
             categoryName: string;
-            /** ID of the list */
+            /** ID of the segment */
             id: number;
             /** Name of the Segment */
             segmentName: string;
-            /** Updation UTC date-time of the segment (YYYY-MM-DDTHH:mm:ss.SSSZ) */
+            /** Last update UTC date-time of the segment (YYYY-MM-DDTHH:mm:ss.SSSZ) */
             updatedAt?: string | undefined;
         }
     }

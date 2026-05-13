@@ -13,14 +13,23 @@ export interface GetSmsCampaignResponse {
     modifiedAt: string;
     /** Name of the SMS Campaign */
     name: string;
-    /** UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format */
+    /** A recognizable prefix added as the Brand Name before the message content. Empty string if not set. */
+    organisationPrefix?: string | undefined;
+    /** UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format. Empty string if not scheduled. */
     scheduledAt?: string | undefined;
     /** Sender of the SMS Campaign */
     sender: string;
+    /** UTC date-time on which the SMS campaign was sent (YYYY-MM-DDTHH:mm:ss.SSSZ). Only available if the campaign status is 'sent'. */
+    sentDate?: string | undefined;
     /** Status of the SMS Campaign */
     status: GetSmsCampaignResponse.Status;
-    recipients: Brevo.GetCampaignRecipients;
+    /** Instructions to unsubscribe from future communications. Empty string if not set. */
+    unsubscribeInstruction?: string | undefined;
+    /** Recipients of the SMS campaign. For a single campaign, lists and exclusion lists are returned as objects with id and name. */
+    recipients: GetSmsCampaignResponse.Recipients;
     statistics: Brevo.GetSmsCampaignStats;
+    /** Tags (labels) associated with the SMS campaign. Only available when retrieving a single campaign. */
+    tags?: string[] | undefined;
 }
 
 export namespace GetSmsCampaignResponse {
@@ -34,4 +43,36 @@ export namespace GetSmsCampaignResponse {
         InProcess: "inProcess",
     } as const;
     export type Status = (typeof Status)[keyof typeof Status];
+
+    /**
+     * Recipients of the SMS campaign. For a single campaign, lists and exclusion lists are returned as objects with id and name.
+     */
+    export interface Recipients {
+        exclusionLists?: Recipients.ExclusionLists.Item[] | undefined;
+        lists?: Recipients.Lists.Item[] | undefined;
+    }
+
+    export namespace Recipients {
+        export type ExclusionLists = ExclusionLists.Item[];
+
+        export namespace ExclusionLists {
+            export interface Item {
+                /** ID of the exclusion list */
+                id?: number | undefined;
+                /** Name of the exclusion list */
+                name?: string | undefined;
+            }
+        }
+
+        export type Lists = Lists.Item[];
+
+        export namespace Lists {
+            export interface Item {
+                /** ID of the list */
+                id?: number | undefined;
+                /** Name of the list */
+                name?: string | undefined;
+            }
+        }
+    }
 }

@@ -17,10 +17,13 @@ describe("SmsCampaignsClient", () => {
                     id: 2,
                     modifiedAt: "2017-05-01T12:30:00Z",
                     name: "PROMO CODE",
+                    organisationPrefix: "MyCompany",
                     scheduledAt: "2017-06-01T12:30:00Z",
                     sender: "MyCompany",
+                    sentDate: "2017-06-01T12:30:00Z",
                     status: "sent",
-                    recipients: { exclusionLists: [13], lists: [21] },
+                    unsubscribeInstruction: "send Stop if you want to unsubscribe.",
+                    recipients: { excludedSegments: [14], exclusionLists: [13], lists: [21], segments: [23] },
                     statistics: {
                         answered: 2,
                         delivered: 2987,
@@ -37,10 +40,13 @@ describe("SmsCampaignsClient", () => {
                     id: 10,
                     modifiedAt: "2017-05-01T12:30:00Z",
                     name: "SUMMER SALE",
+                    organisationPrefix: "",
                     scheduledAt: "2017-08-04T12:30:00Z",
                     sender: "MyCompany",
+                    sentDate: "2017-06-01T12:30:00Z",
                     status: "draft",
-                    recipients: { exclusionLists: [13], lists: [21] },
+                    unsubscribeInstruction: "",
+                    recipients: { excludedSegments: [14], exclusionLists: [13], lists: [21], segments: [23] },
                     statistics: {
                         answered: 2,
                         delivered: 2987,
@@ -135,10 +141,16 @@ describe("SmsCampaignsClient", () => {
             id: 2,
             modifiedAt: "2017-05-01T12:30:00Z",
             name: "PROMO CODE",
+            organisationPrefix: "MyCompany",
             scheduledAt: "2017-06-01T12:30:00Z",
             sender: "MyCompany",
+            sentDate: "2017-06-01T12:30:00Z",
             status: "sent",
-            recipients: { exclusionLists: [13], lists: [21] },
+            unsubscribeInstruction: "send Stop if you want to unsubscribe.",
+            recipients: {
+                exclusionLists: [{ id: 13, name: "Exclusion List" }],
+                lists: [{ id: 21, name: "Main List" }],
+            },
             statistics: {
                 answered: 2,
                 delivered: 2987,
@@ -148,6 +160,7 @@ describe("SmsCampaignsClient", () => {
                 softBounces: 3,
                 unsubscriptions: 3,
             },
+            tags: ["promo"],
         };
 
         server

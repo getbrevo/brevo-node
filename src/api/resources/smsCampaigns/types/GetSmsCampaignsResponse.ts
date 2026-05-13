@@ -23,12 +23,18 @@ export namespace GetSmsCampaignsResponse {
             modifiedAt: string;
             /** Name of the SMS Campaign */
             name: string;
-            /** UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format */
+            /** A recognizable prefix added as the Brand Name before the message content. Empty string if not set. */
+            organisationPrefix?: string | undefined;
+            /** UTC date-time on which SMS campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format. Empty string if not scheduled. */
             scheduledAt?: string | undefined;
             /** Sender of the SMS Campaign */
             sender: string;
+            /** UTC date-time on which the SMS campaign was sent (YYYY-MM-DDTHH:mm:ss.SSSZ). Only available if the campaign status is 'sent'. */
+            sentDate?: string | undefined;
             /** Status of the SMS Campaign */
             status: Item.Status;
+            /** Instructions to unsubscribe from future communications. Empty string if not set. */
+            unsubscribeInstruction?: string | undefined;
             recipients: Brevo.GetCampaignRecipients;
             statistics: Brevo.GetSmsCampaignStats;
         }

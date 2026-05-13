@@ -17,7 +17,9 @@ export interface GetContactsRequest {
     createdSince?: string;
     /** Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed */
     sort?: Brevo.GetContactsRequestSort;
-    /** Id of the segment. **Either listIds or segmentId can be passed.** */
+    /** Filter by a list of contact IDs. You can pass a **maximum of 20 IDs**. All elements must be integers. */
+    ids?: number | number[];
+    /** Id of the segment. **Either listIds or segmentId can be passed.** Must be a positive integer (minimum value of 1). */
     segmentId?: number;
     /** Ids of the list. **Either listIds or segmentId can be passed.** */
     listIds?: number | number[];

@@ -254,7 +254,7 @@ describe("SendersClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            ips: [{ active: true, domain: "mailing.enterprise.com", id: 3, ip: "192.168.1.100" }],
+            ips: [{ id: 1, active: true, domain: "mailing.enterprise.com", ip: "192.168.1.100" }],
         };
 
         server.mockEndpoint().get("/senders/ips").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
@@ -269,9 +269,9 @@ describe("SendersClient", () => {
 
         const rawResponseBody = {
             ips: [
-                { active: true, domain: "mailing.enterprise.com", id: 3, ip: "192.168.1.100" },
-                { active: true, domain: "newsletter.enterprise.com", id: 5, ip: "192.168.1.101" },
-                { active: false, domain: "notifications.enterprise.com", id: 6, ip: "192.168.1.102" },
+                { id: 1, active: true, domain: "mailing.enterprise.com", ip: "192.168.1.100" },
+                { id: 1, active: true, domain: "newsletter.enterprise.com", ip: "192.168.1.101" },
+                { id: 1, active: false, domain: "notifications.enterprise.com", ip: "192.168.1.102" },
             ],
         };
 

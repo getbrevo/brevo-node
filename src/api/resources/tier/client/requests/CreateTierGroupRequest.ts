@@ -20,6 +20,10 @@ export interface CreateTierGroupRequest {
     tierOrder?: string[];
     /** Select real_time to upgrade tier on real time balance updates. Select membership_anniversary to upgrade tier on subscription anniversary. Select tier_anniversary to upgrade tier on tier anniversary. */
     upgradeStrategy?: CreateTierGroupRequest.UpgradeStrategy;
+    /** Schedule configuration for tier upgrades. Required when upgradeStrategy is set to a schedule-based strategy. */
+    upgradeSchedule?: CreateTierGroupRequest.UpgradeSchedule;
+    /** Schedule configuration for tier downgrades. Required when downgradeStrategy is set to a schedule-based strategy. */
+    downgradeSchedule?: CreateTierGroupRequest.DowngradeSchedule;
 }
 
 export namespace CreateTierGroupRequest {
@@ -48,4 +52,66 @@ export namespace CreateTierGroupRequest {
         TierAnniversary: "tier_anniversary",
     } as const;
     export type UpgradeStrategy = (typeof UpgradeStrategy)[keyof typeof UpgradeStrategy];
+
+    /**
+     * Schedule configuration for tier upgrades. Required when upgradeStrategy is set to a schedule-based strategy.
+     */
+    export interface UpgradeSchedule {
+        /** Duration value for the schedule. */
+        durationValue?: number | undefined;
+        /** Duration unit for the schedule. */
+        durationUnit?: UpgradeSchedule.DurationUnit | undefined;
+        /** Modifier for the duration. */
+        durationModifier?: UpgradeSchedule.DurationModifier | undefined;
+        /** Scheduled date in DD/MM format. */
+        scheduledDate?: string | undefined;
+    }
+
+    export namespace UpgradeSchedule {
+        /** Duration unit for the schedule. */
+        export const DurationUnit = {
+            Day: "day",
+            Week: "week",
+            Month: "month",
+            Year: "year",
+        } as const;
+        export type DurationUnit = (typeof DurationUnit)[keyof typeof DurationUnit];
+        /** Modifier for the duration. */
+        export const DurationModifier = {
+            StartOfPeriod: "start_of_period",
+            EndOfPeriod: "end_of_period",
+        } as const;
+        export type DurationModifier = (typeof DurationModifier)[keyof typeof DurationModifier];
+    }
+
+    /**
+     * Schedule configuration for tier downgrades. Required when downgradeStrategy is set to a schedule-based strategy.
+     */
+    export interface DowngradeSchedule {
+        /** Duration value for the schedule. */
+        durationValue?: number | undefined;
+        /** Duration unit for the schedule. */
+        durationUnit?: DowngradeSchedule.DurationUnit | undefined;
+        /** Modifier for the duration. */
+        durationModifier?: DowngradeSchedule.DurationModifier | undefined;
+        /** Scheduled date in DD/MM format. */
+        scheduledDate?: string | undefined;
+    }
+
+    export namespace DowngradeSchedule {
+        /** Duration unit for the schedule. */
+        export const DurationUnit = {
+            Day: "day",
+            Week: "week",
+            Month: "month",
+            Year: "year",
+        } as const;
+        export type DurationUnit = (typeof DurationUnit)[keyof typeof DurationUnit];
+        /** Modifier for the duration. */
+        export const DurationModifier = {
+            StartOfPeriod: "start_of_period",
+            EndOfPeriod: "end_of_period",
+        } as const;
+        export type DurationModifier = (typeof DurationModifier)[keyof typeof DurationModifier];
+    }
 }

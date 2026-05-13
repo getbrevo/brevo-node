@@ -7,16 +7,10 @@ export interface GetProcessResponse {
     name: GetProcessResponse.Name;
     /** Current status of the process */
     status: GetProcessResponse.Status;
-    /** Additional process information (for completed processes) */
-    info?: (GetProcessResponse.Info | null) | undefined;
-    /** Download URL for completed export processes */
-    export_url?: (string | null) | undefined;
-    /** Error message for failed processes */
-    error?: (string | null) | undefined;
-    /** Process creation timestamp */
-    created_at?: (string | null) | undefined;
-    /** Process completion timestamp */
-    completed_at?: (string | null) | undefined;
+    /** Additional process information, only returned for completed IMPORTUSER processes. Contains URLs to CSV files with details about problematic records. */
+    info?: GetProcessResponse.Info | undefined;
+    /** Download URL for completed export processes (returned for SEARCH_EXPORT_USERS, SEARCH_EXPORT_USERS_API, CAMPAIGN_USER_DETAILS, and EXPORT_WEBHOOK process types) */
+    export_url?: string | undefined;
 }
 
 export namespace GetProcessResponse {
@@ -43,44 +37,32 @@ export namespace GetProcessResponse {
     export type Status = (typeof Status)[keyof typeof Status];
 
     /**
-     * Additional process information (for completed processes)
+     * Additional process information, only returned for completed IMPORTUSER processes. Contains URLs to CSV files with details about problematic records.
      */
     export interface Info {
-        /** Import process details */
+        /** Import process details with URLs to CSV reports */
         import?: Info.Import | undefined;
-        /** Export process details */
-        export?: Info.Export | undefined;
     }
 
     export namespace Info {
         /**
-         * Import process details
+         * Import process details with URLs to CSV reports
          */
         export interface Import {
-            /** Number of invalid email addresses */
-            invalid_emails?: (number | null) | undefined;
-            /** Number of duplicate contact IDs */
-            duplicate_contact_id?: (number | null) | undefined;
-            /** Number of duplicate external IDs */
-            duplicate_ext_id?: (number | null) | undefined;
+            /** URL to CSV file containing invalid email addresses, or null if none */
+            invalid_emails?: (string | null) | undefined;
+            /** URL to CSV file containing duplicate contact IDs, or null if none */
+            duplicate_contact_id?: (string | null) | undefined;
+            /** URL to CSV file containing duplicate external IDs, or null if none */
+            duplicate_ext_id?: (string | null) | undefined;
             /** URL to CSV file containing duplicate email IDs, or null if none */
             duplicate_email_id?: (string | null) | undefined;
-            /** Number of duplicate phone numbers */
-            duplicate_phone_id?: (number | null) | undefined;
-            /** Number of duplicate WhatsApp numbers */
-            duplicate_whatsapp_id?: (number | null) | undefined;
-            /** Number of duplicate landline numbers */
-            duplicate_landline_number_id?: (number | null) | undefined;
-        }
-
-        /**
-         * Export process details
-         */
-        export interface Export {
-            /** Total number of exported records */
-            total_records?: number | undefined;
-            /** Size of exported file in bytes */
-            file_size?: number | undefined;
+            /** URL to CSV file containing duplicate phone numbers, or null if none */
+            duplicate_phone_id?: (string | null) | undefined;
+            /** URL to CSV file containing duplicate WhatsApp numbers, or null if none */
+            duplicate_whatsapp_id?: (string | null) | undefined;
+            /** URL to CSV file containing duplicate landline numbers, or null if none */
+            duplicate_landline_number_id?: (string | null) | undefined;
         }
     }
 }

@@ -33,20 +33,19 @@ export class ProcessClient {
      * - Identify failed or stuck processes for troubleshooting
      *
      * **Key information returned:**
-     * - Process details (ID, name, type, status)
-     * - Process creation and completion timestamps
-     * - Process progress and completion status
-     * - Error information for failed processes
-     * - Process result data and download links
+     * - Process details (ID, name, status)
+     * - Export download URLs for completed export processes
+     * - Import details with CSV report URLs for completed import processes
+     * - Total count of processes for pagination
      *
      * **Important considerations:**
      * - Background processes handle long-running operations like imports and exports
-     * - Process status indicates current state (queued, processing, completed, failed, cancelled)
+     * - Process status indicates current state (queued, processing, completed)
      * - Export processes provide download URLs when completed
-     * - Failed processes include error messages for troubleshooting
+     * - Import processes provide CSV report URLs with details about problematic records
      * - Use pagination for accounts with many historical processes
      * - Sort options available for creation order (ascending or descending)
-     * - Different process types handle specific operations (imports, exports, calculations)
+     * - Default limit is 10 results per page, maximum is 50
      *
      * @param {Brevo.GetProcessesRequest} request
      * @param {ProcessClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -88,7 +87,11 @@ export class ProcessClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -126,18 +129,14 @@ export class ProcessClient {
      * - Track process execution times
      *
      * **Key information returned:**
-     * - Complete process details and status
-     * - Import/export statistics and results
-     * - Error information for troubleshooting
-     * - Download URLs for export processes
-     * - Process timing and performance data
+     * - Complete process details (ID, name, status)
+     * - Download URLs for completed export processes
+     * - Import details with CSV report URLs for completed import processes
      *
      * **Important considerations:**
-     * - Process ID must exist in your account
-     * - Completed processes provide detailed statistics and results
-     * - Export processes include download URLs when successful
-     * - Failed processes contain error messages for debugging
-     * - Timing information helps with performance analysis
+     * - Process ID must exist in your account and not be deleted
+     * - Completed export processes include download URLs
+     * - Completed import processes include CSV report URLs with details about problematic records
      * - Different process types return different result structures
      *
      * @param {Brevo.GetProcessRequest} request
@@ -178,7 +177,7 @@ export class ProcessClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

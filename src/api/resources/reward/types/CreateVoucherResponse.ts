@@ -23,4 +23,6 @@ export interface CreateVoucherResponse {
     updatedAt?: string | undefined;
     /** Value of the selected reward config */
     value?: number | undefined;
+    /** Date from which the voucher becomes valid */
+    validFrom?: string | undefined;
 }

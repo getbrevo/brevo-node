@@ -8,7 +8,7 @@
  *         balanceDefinitionId: "balanceDefinitionId",
  *         contactId: 1,
  *         dueAt: "dueAt",
- *         source: "source"
+ *         source: "engine"
  *     }
  */
 export interface CreateBalanceOrderRequest {
@@ -26,6 +26,15 @@ export interface CreateBalanceOrderRequest {
     expiresAt?: string;
     /** Optional metadata associated with the order. */
     meta?: Record<string, unknown>;
-    /** Specifies the origin of the order (`engine` or `user`). */
-    source: string;
+    /** Specifies the origin of the order. */
+    source: CreateBalanceOrderRequest.Source;
+}
+
+export namespace CreateBalanceOrderRequest {
+    /** Specifies the origin of the order. */
+    export const Source = {
+        Engine: "engine",
+        User: "user",
+    } as const;
+    export type Source = (typeof Source)[keyof typeof Source];
 }

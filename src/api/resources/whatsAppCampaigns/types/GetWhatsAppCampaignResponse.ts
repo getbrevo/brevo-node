@@ -15,6 +15,8 @@ export interface GetWhatsAppCampaignResponse {
     modifiedAt: string;
     /** UTC date-time on which WhatsApp campaign is scheduled. Should be in YYYY-MM-DDTHH:mm:ss.SSSZ format */
     scheduledAt?: string | undefined;
+    /** Recipients of the WhatsApp Campaign */
+    recipients: GetWhatsAppCampaignResponse.Recipients;
     /** Sender of the WhatsApp Campaign */
     senderNumber: string;
     stats?: Brevo.WhatsappCampStats | undefined;
@@ -34,6 +36,20 @@ export namespace GetWhatsAppCampaignResponse {
         Sent: "sent",
     } as const;
     export type CampaignStatus = (typeof CampaignStatus)[keyof typeof CampaignStatus];
+
+    /**
+     * Recipients of the WhatsApp Campaign
+     */
+    export interface Recipients {
+        /** List of excluded list IDs */
+        excludedLists?: number[] | undefined;
+        /** List of included list IDs */
+        includedLists?: number[] | undefined;
+        /** List of segment IDs */
+        segments?: number[] | undefined;
+        /** Type of recipients (list or segment) */
+        type?: string | undefined;
+    }
 
     export interface Template {
         /** array of variables item variables */

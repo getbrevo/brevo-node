@@ -11,13 +11,14 @@ describe("FilesClient", () => {
 
         const rawResponseBody = [
             {
-                authorId: "61a5ce58y5d4795761045991",
-                companyId: "61a5ce58c5d4795761045991",
-                contactId: 1,
-                createdAt: "2017-05-01T17:05:03Z",
-                dealId: "61a5ce58c5d4795761045991",
+                id: "61a5ce58c5d4795761045991",
                 name: "example.png",
+                authorId: "61a5ce58c5d4795761045991",
+                contactId: 1,
+                dealId: "61a5ce58c5d4795761045991",
+                companyId: "61a5ce58c5d4795761045991",
                 size: 10,
+                createdAt: "2017-05-01T17:05:03Z",
             },
         ];
 
@@ -131,13 +132,14 @@ describe("FilesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            authorId: "61a5ce58y5d4795761045991",
-            companyId: "61a5ce58c5d4795761045991",
-            contactId: 1,
-            createdAt: "2017-05-01T17:05:03Z",
-            dealId: "61a5ce58c5d4795761045991",
+            id: "61a5ce58c5d4795761045991",
             name: "example.png",
+            authorId: "61a5ce58c5d4795761045991",
+            contactId: 1,
+            dealId: "61a5ce58c5d4795761045991",
+            companyId: "61a5ce58c5d4795761045991",
             size: 10,
+            createdAt: "2017-05-01T17:05:03Z",
         };
 
         server.mockEndpoint().get("/crm/files/id/data").respondWith().statusCode(200).jsonBody(rawResponseBody).build();

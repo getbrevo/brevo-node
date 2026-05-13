@@ -18,9 +18,9 @@ export interface CreateEmailCampaignRequest {
     footer?: string;
     /** Header of the email campaign */
     header?: string;
-    /** Mandatory if htmlUrl and templateId are empty. Body of the message (HTML). */
+    /** **Mandatory if htmlUrl and templateId are empty.** Body of the message (HTML). Must have more than 10 characters and be less than 1MB in size. Cannot be used together with `htmlUrl` or `templateId`. */
     htmlContent?: string;
-    /** **Mandatory if htmlContent and templateId are empty**. Url to the message (HTML). For example: **https://html.domain.com** */
+    /** **Mandatory if htmlContent and templateId are empty.** URL to the message (HTML). Cannot be used together with `htmlContent` or `templateId`. For example: **https://html.domain.com** */
     htmlUrl?: string;
     /** **Mandatory if ipWarmupEnable is set to true**. Set a percentage increase rate for warming up your ip. We recommend you set the increase rate to 30% per day. If you want to send the same number of emails every day, set the daily increase value to 0%. */
     increaseRate?: number;
@@ -46,7 +46,7 @@ export interface CreateEmailCampaignRequest {
     scheduledAt?: string;
     /** Set this to true if you want to send your campaign at best time. */
     sendAtBestTime?: boolean;
-    /** Sender details including id or email and name (_optional_). Only one of either Sender's email or Sender's ID shall be passed in one request at a time. For example: **{"name":"xyz", "email":"example@abc.com"}** **{"name":"xyz", "id":123}** */
+    /** Sender details including id or email and name (optional). Only one of either Sender’s email or Sender’s ID shall be passed in one request at a time. Passing both `email` and `id` will result in an error. For example: **{"name":"xyz", "email":"example@abc.com"}** or **{"name":"xyz", "id":123}** */
     sender: CreateEmailCampaignRequest.Sender;
     /** Add the size of your test groups. **Mandatory if abTesting = true & 'recipients' is passed**. We'll send version A and B to a random sample of recipients, and then the winning version to everyone else */
     splitRule?: number;
@@ -58,7 +58,7 @@ export interface CreateEmailCampaignRequest {
     subjectB?: string;
     /** Tag of the campaign */
     tag?: string;
-    /** **Mandatory if htmlContent and htmlUrl are empty**. Id of the transactional email template with status _active_. Used to copy only its content fetched from htmlContent/htmlUrl to an email campaign for RSS feature. */
+    /** **Mandatory if htmlContent and htmlUrl are empty.** Id of the transactional email template with status _active_. Used to copy only its content fetched from htmlContent/htmlUrl to an email campaign for RSS feature. Cannot be used together with `htmlContent` or `htmlUrl`. */
     templateId?: number;
     /** To personalize the **To** Field. If you want to include the first name and last name of your recipient, add **{FNAME} {LNAME}**. These contact attributes must already exist in your Brevo account. If input parameter **params** used please use **{{contact.FNAME}} {{contact.LNAME}}** for personalization */
     toField?: string;
@@ -110,12 +110,12 @@ export namespace CreateEmailCampaignRequest {
     }
 
     /**
-     * Sender details including id or email and name (_optional_). Only one of either Sender's email or Sender's ID shall be passed in one request at a time. For example: **{"name":"xyz", "email":"example@abc.com"}** **{"name":"xyz", "id":123}**
+     * Sender details including id or email and name (optional). Only one of either Sender’s email or Sender’s ID shall be passed in one request at a time. Passing both `email` and `id` will result in an error. For example: **{"name":"xyz", "email":"example@abc.com"}** or **{"name":"xyz", "id":123}**
      */
     export interface Sender {
-        /** Sender email */
+        /** Sender email. Must be a valid email address. Cannot be used together with `id` in the same request. */
         email?: string | undefined;
-        /** Select the sender for the campaign on the basis of sender id. _In order to select a sender with specific pool of IP’s, dedicated ip users shall pass id (instead of email)_. */
+        /** Select the sender for the campaign on the basis of sender id. Cannot be used together with `email` in the same request. _In order to select a sender with a specific pool of IPs, dedicated IP users shall pass id (instead of email)._ */
         id?: number | undefined;
         /** Sender Name */
         name?: string | undefined;

@@ -23,7 +23,7 @@ export class ConversationsClient {
     }
 
     /**
-     * We recommend pinging this endpoint every minute for as long as the agent has to be considered online.
+     * Sets the agent's status to online for 2-3 minutes. We recommend pinging this endpoint every minute for as long as the agent has to be considered online. You must provide either `agentId` alone, or all three of `agentEmail` + `agentName` + `receivedFrom`.
      *
      * @param {Brevo.PostConversationsAgentOnlinePingRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -71,7 +71,7 @@ export class ConversationsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -106,6 +106,8 @@ export class ConversationsClient {
     }
 
     /**
+     * Send a message as an agent to an existing visitor's conversation. You must provide either `agentId` alone, or all three of `agentEmail` + `agentName` + `receivedFrom` to identify the agent.
+     *
      * @param {Brevo.PostConversationsMessagesRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -162,7 +164,7 @@ export class ConversationsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -192,6 +194,8 @@ export class ConversationsClient {
     }
 
     /**
+     * Retrieve a single message by its ID.
+     *
      * @param {Brevo.GetConversationsMessagesIdRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -230,7 +234,7 @@ export class ConversationsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -260,7 +264,7 @@ export class ConversationsClient {
     }
 
     /**
-     * Only agents’ messages can be edited.
+     * Update the text of a message sent by an agent. Only messages of type `agent` can be edited. The `text` and `html` fields of the message will be updated.
      *
      * @param {Brevo.PutConversationsMessagesIdRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -302,7 +306,7 @@ export class ConversationsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -334,7 +338,7 @@ export class ConversationsClient {
     }
 
     /**
-     * Only agents’ messages can be deleted.
+     * Delete a message sent by an agent. Only messages of type `agent` can be deleted.
      *
      * @param {Brevo.DeleteConversationsMessagesIdRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -374,7 +378,7 @@ export class ConversationsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -409,7 +413,7 @@ export class ConversationsClient {
     }
 
     /**
-     * Example of automated messages: order status, announce new features in your web app, etc.
+     * Send an automated (pushed) message to a visitor on behalf of an agent. Example use cases: order status updates, announcing new features in your web app, etc.
      *
      * @param {Brevo.PostConversationsPushedMessagesRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -419,20 +423,20 @@ export class ConversationsClient {
      * @example
      *     await client.conversations.sendAnAutomatedMessageToAVisitor({
      *         groupId: "PjRBMhWGen6aRHjif",
-     *         text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
+     *         text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
      *         visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg"
      *     })
      *
      * @example
      *     await client.conversations.sendAnAutomatedMessageToAVisitor({
-     *         text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
+     *         text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
      *         visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg"
      *     })
      *
      * @example
      *     await client.conversations.sendAnAutomatedMessageToAVisitor({
      *         agentId: "d9nKoegKSjmCtyK78",
-     *         text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
+     *         text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
      *         visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg"
      *     })
      */
@@ -463,7 +467,7 @@ export class ConversationsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -498,6 +502,8 @@ export class ConversationsClient {
     }
 
     /**
+     * Retrieve a single automated (pushed) message by its ID.
+     *
      * @param {Brevo.GetConversationsPushedMessagesIdRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -536,7 +542,7 @@ export class ConversationsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -571,6 +577,8 @@ export class ConversationsClient {
     }
 
     /**
+     * Update the text of an automated (pushed) message. The `text` and `html` fields of the message will be updated.
+     *
      * @param {Brevo.PutConversationsPushedMessagesIdRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -580,7 +588,7 @@ export class ConversationsClient {
      * @example
      *     await client.conversations.updateAnAutomatedMessage({
      *         id: "id",
-     *         text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 4668 7775 9233 54"
+     *         text: "Your order has shipped! Here's your tracking number: 9114 5847 4668 7775 9233 54"
      *     })
      */
     public updateAnAutomatedMessage(
@@ -611,7 +619,7 @@ export class ConversationsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -648,6 +656,8 @@ export class ConversationsClient {
     }
 
     /**
+     * Delete an automated (pushed) message by its ID.
+     *
      * @param {Brevo.DeleteConversationsPushedMessagesIdRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -686,7 +696,7 @@ export class ConversationsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -761,7 +771,7 @@ export class ConversationsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,

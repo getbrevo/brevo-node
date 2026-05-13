@@ -14,12 +14,12 @@
  *     }
  */
 export interface PostConversationsAgentOnlinePingRequest {
-    /** agent email. When sending online pings from a standalone system, it’s hard to maintain a 1-to-1 relationship between the users of both systems. In this case, an agent can be specified by their email address. If there’s no agent with the specified email address in your Brevo organization, a dummy agent will be created automatically. */
-    agentEmail?: unknown;
-    /** agent ID. It can be found on agent’s page or received <a href="https://developers.brevo.com/docs/conversations-webhooks">from a webhook</a>. Alternatively, you can use `agentEmail` + `agentName` + `receivedFrom` instead (all 3 fields required). */
-    agentId?: unknown;
-    /** agent name */
-    agentName?: unknown;
-    /** mark your messages to distinguish messages created by you from the others. */
-    receivedFrom?: unknown;
+    /** Agent's email address. When sending online pings from a standalone system, it's hard to maintain a 1-to-1 relationship between the users of both systems. In this case, an agent can be specified by their email address. If there's no agent with the specified email address in your Brevo organization, a dummy agent will be created automatically. */
+    agentEmail?: string;
+    /** Agent ID. It can be found on the agent's page or received <a href="https://developers.brevo.com/docs/conversations-webhooks">from a webhook</a>. Alternatively, you can use `agentEmail` + `agentName` + `receivedFrom` instead (all 3 fields required). */
+    agentId?: string;
+    /** Agent's name. */
+    agentName?: string;
+    /** Mark your messages to distinguish messages created by you from the others. */
+    receivedFrom?: string;
 }

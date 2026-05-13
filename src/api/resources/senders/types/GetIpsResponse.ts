@@ -13,12 +13,12 @@ export namespace GetIpsResponse {
 
     export namespace Ips {
         export interface Item {
+            /** ID of the dedicated IP */
+            id: number;
             /** Status of the IP (true=active, false=inactive) */
             active: boolean;
             /** Domain associated to the IP */
             domain: string;
-            /** ID of the dedicated IP */
-            id: number;
             /** Dedicated IP address */
             ip: string;
         }

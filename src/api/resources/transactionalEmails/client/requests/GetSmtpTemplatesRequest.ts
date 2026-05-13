@@ -15,4 +15,6 @@ export interface GetSmtpTemplatesRequest {
     offset?: number;
     /** Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed */
     sort?: Brevo.GetSmtpTemplatesRequestSort;
+    /** Filter on the editor type used to create the template. Currently only `richTextEditor` is supported as a filter value. */
+    editorType?: "richTextEditor";
 }

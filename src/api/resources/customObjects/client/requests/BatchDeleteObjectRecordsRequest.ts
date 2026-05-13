@@ -12,13 +12,13 @@
 export interface BatchDeleteObjectRecordsRequest {
     /** Object type for the records to delete */
     object_type: string;
-    /** One of the below must be provided */
+    /** Either `ids` or `ext_ids` must be provided, but not both in the same request. */
     identifiers?: BatchDeleteObjectRecordsRequest.Identifiers;
 }
 
 export namespace BatchDeleteObjectRecordsRequest {
     /**
-     * One of the below must be provided
+     * Either `ids` or `ext_ids` must be provided, but not both in the same request.
      */
     export type Identifiers =
         | {

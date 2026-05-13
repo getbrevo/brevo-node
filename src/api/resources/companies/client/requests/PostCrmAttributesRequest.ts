@@ -15,7 +15,7 @@ export interface PostCrmAttributesRequest {
     description?: string;
     /** The label for the attribute (max 50 characters, cannot be empty) */
     label: string;
-    /** The type of object the attribute belongs to (prefilled with `companies`, mandatory) */
+    /** The type of object the attribute belongs to. Must be either `companies` or `deals`. */
     objectType: PostCrmAttributesRequest.ObjectType;
     /** Options for multi-choice or single-select attributes */
     optionsLabels?: string[];
@@ -33,7 +33,7 @@ export namespace PostCrmAttributesRequest {
         MultiChoice: "multi-choice",
     } as const;
     export type AttributeType = (typeof AttributeType)[keyof typeof AttributeType];
-    /** The type of object the attribute belongs to (prefilled with `companies`, mandatory) */
+    /** The type of object the attribute belongs to. Must be either `companies` or `deals`. */
     export const ObjectType = {
         Companies: "companies",
         Deals: "deals",

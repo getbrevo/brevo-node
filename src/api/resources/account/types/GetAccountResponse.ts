@@ -16,9 +16,7 @@ export interface GetAccountResponse {
     /** Last Name */
     lastName: string;
     /** Address informations */
-    address: GetAccountResponse.Address;
-    /** User's date and time preferences */
-    dateTimePreferences: GetAccountResponse.DateTimePreferences;
+    address?: GetAccountResponse.Address | undefined;
     marketingAutomation?: GetAccountResponse.MarketingAutomation | undefined;
     /** Information about your plans and credits */
     plan: GetAccountResponse.Plan.Item[];
@@ -41,18 +39,6 @@ export namespace GetAccountResponse {
         street: string;
         /** Zip Code information */
         zipCode: string;
-    }
-
-    /**
-     * User's date and time preferences
-     */
-    export interface DateTimePreferences {
-        /** User's timezone setting */
-        timezone: string;
-        /** Preferred time format (12 or 24 hour) */
-        timeFormat: string;
-        /** Preferred date format */
-        dateFormat: string;
     }
 
     export interface MarketingAutomation {
@@ -117,11 +103,11 @@ export namespace GetAccountResponse {
             /** Current status of the plan */
             status: Item.Status;
             /** Plan start date (Unix timestamp) */
-            startDate: string;
+            startDate?: string | undefined;
             /** Plan end date (Unix timestamp) */
-            endDate: string;
+            endDate?: string | undefined;
             /** User seat information for the plan */
-            users: Item.Users | null;
+            users?: (Item.Users | null) | undefined;
             /** Credits allocated for this plan category (optional, may not be present for all plan categories) */
             credits?: string | undefined;
         }

@@ -23,6 +23,8 @@ export class NotesClient {
     }
 
     /**
+     * Retrieve a paginated list of CRM notes with optional filtering by entity type, entity IDs, and date range. Results are sorted by creation date in descending order by default, with a default limit of 50 notes per page.
+     *
      * @param {Brevo.GetCrmNotesRequest} request
      * @param {NotesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -67,7 +69,11 @@ export class NotesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -95,6 +101,8 @@ export class NotesClient {
     }
 
     /**
+     * Create a new CRM note and optionally associate it with contacts, companies, or deals. The note text content is required, and you can link the note to multiple entities simultaneously during creation.
+     *
      * @param {Brevo.NoteData} request
      * @param {NotesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -103,7 +111,7 @@ export class NotesClient {
      *
      * @example
      *     await client.notes.createANote({
-     *         text: "In communication with client_dev for resolution of queries."
+     *         text: "<p>Meeting notes: <b>Action item</b> - visit <a href=\"https://www.brevo.com/\">Brevo</a> for details.</p>"
      *     })
      */
     public createANote(
@@ -133,7 +141,7 @@ export class NotesClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -168,6 +176,8 @@ export class NotesClient {
     }
 
     /**
+     * Retrieve the full details of a single CRM note by its identifier. The response includes the note''s text content, creation date, author, and any associated contacts, companies, or deals.
+     *
      * @param {Brevo.GetCrmNotesIdRequest} request
      * @param {NotesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -206,7 +216,7 @@ export class NotesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -236,6 +246,8 @@ export class NotesClient {
     }
 
     /**
+     * Permanently delete a CRM note by its identifier. This removes the note and unlinks it from any associated contacts, companies, or deals.
+     *
      * @param {Brevo.DeleteCrmNotesIdRequest} request
      * @param {NotesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -274,7 +286,7 @@ export class NotesClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -304,6 +316,8 @@ export class NotesClient {
     }
 
     /**
+     * Update an existing CRM note''s text content and its associations with contacts, companies, or deals. You can modify the note text, change the pinned status, or update the linked entities.
+     *
      * @param {Brevo.PatchCrmNotesIdRequest} request
      * @param {NotesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -315,7 +329,7 @@ export class NotesClient {
      *     await client.notes.updateANote({
      *         id: "id",
      *         body: {
-     *             text: "In communication with client_dev for resolution of queries."
+     *             text: "<p>Meeting notes: <b>Action item</b> - visit <a href=\"https://www.brevo.com/\">Brevo</a> for details.</p>"
      *         }
      *     })
      */
@@ -347,7 +361,7 @@ export class NotesClient {
             method: "PATCH",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,

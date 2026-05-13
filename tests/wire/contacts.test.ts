@@ -21,6 +21,7 @@ describe("ContactsClient", () => {
                     listUnsubscribed: [1000000],
                     modifiedAt: "2017-05-01T17:05:03Z",
                     smsBlacklisted: true,
+                    whatsappBlacklisted: false,
                 },
                 {
                     attributes: {},
@@ -32,6 +33,7 @@ describe("ContactsClient", () => {
                     listUnsubscribed: [1000000],
                     modifiedAt: "2017-05-01T17:05:03Z",
                     smsBlacklisted: false,
+                    whatsappBlacklisted: false,
                 },
             ],
             count: 3,
@@ -128,7 +130,7 @@ describe("ContactsClient", () => {
         }).rejects.toThrow(Brevo.TooEarlyError);
     });
 
-    test("getAttributes", async () => {
+    test("getAttributes (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -137,7 +139,7 @@ describe("ContactsClient", () => {
                 {
                     calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
                     category: "normal",
-                    enumeration: [{ label: "Women", value: 1 }],
+                    enumeration: [{ label: "Women", value: 1, valueStr: "1" }],
                     multiCategoryOptions: ["USA"],
                     name: "LASTNAME",
                     type: "text",
@@ -145,7 +147,7 @@ describe("ContactsClient", () => {
                 {
                     calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
                     category: "normal",
-                    enumeration: [{ label: "Women", value: 1 }],
+                    enumeration: [{ label: "Women", value: 1, valueStr: "1" }],
                     multiCategoryOptions: ["USA"],
                     name: "FIRSTNAME",
                     type: "text",
@@ -153,7 +155,7 @@ describe("ContactsClient", () => {
                 {
                     calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
                     category: "normal",
-                    enumeration: [{ label: "Women", value: 1 }],
+                    enumeration: [{ label: "Women", value: 1, valueStr: "1" }],
                     multiCategoryOptions: ["USA"],
                     name: "DOB",
                     type: "date",
@@ -162,9 +164,9 @@ describe("ContactsClient", () => {
                     calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
                     category: "category",
                     enumeration: [
-                        { label: "Men", value: 1 },
-                        { label: "Women", value: 2 },
-                        { label: "Kid", value: 3 },
+                        { label: "Men", value: 1, valueStr: "1" },
+                        { label: "Women", value: 2, valueStr: "2" },
+                        { label: "Kid", value: 3, valueStr: "3" },
                     ],
                     multiCategoryOptions: ["USA"],
                     name: "GENDER",
@@ -172,8 +174,19 @@ describe("ContactsClient", () => {
                 },
                 {
                     calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
+                    category: "category",
+                    enumeration: [
+                        { label: "English", value: 0, valueStr: "en" },
+                        { label: "French", value: 0, valueStr: "fr" },
+                    ],
+                    multiCategoryOptions: ["USA"],
+                    name: "LANGUAGE",
+                    type: "text",
+                },
+                {
+                    calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
                     category: "normal",
-                    enumeration: [{ label: "Women", value: 1 }],
+                    enumeration: [{ label: "Women", value: 1, valueStr: "1" }],
                     multiCategoryOptions: ["USA"],
                     name: "BDO",
                     type: "user",
@@ -181,7 +194,7 @@ describe("ContactsClient", () => {
                 {
                     calculatedValue: "COUNT[ORDER_ID,ORDER_DATE,==,NOW(-1)]",
                     category: "normal",
-                    enumeration: [{ label: "Women", value: 1 }],
+                    enumeration: [{ label: "Women", value: 1, valueStr: "1" }],
                     multiCategoryOptions: ["USA", "India", "France"],
                     name: "COUNTRY",
                     type: "multiple-choice",
@@ -199,6 +212,25 @@ describe("ContactsClient", () => {
 
         const response = await client.contacts.getAttributes();
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getAttributes (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/contacts/attributes")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.contacts.getAttributes();
+        }).rejects.toThrow(Brevo.BadRequestError);
     });
 
     test("createAttribute (1)", async () => {
@@ -1293,6 +1325,7 @@ describe("ContactsClient", () => {
                     listUnsubscribed: [1, 2],
                     modifiedAt: "2017-05-12T12:30:00Z",
                     smsBlacklisted: true,
+                    whatsappBlacklisted: false,
                 },
                 {
                     attributes: {},
@@ -1304,6 +1337,7 @@ describe("ContactsClient", () => {
                     listUnsubscribed: [1],
                     modifiedAt: "2017-05-12T12:30:00Z",
                     smsBlacklisted: false,
+                    whatsappBlacklisted: false,
                 },
                 {
                     attributes: {},
@@ -1315,6 +1349,7 @@ describe("ContactsClient", () => {
                     listUnsubscribed: [1],
                     modifiedAt: "2017-05-12T12:30:00Z",
                     smsBlacklisted: false,
+                    whatsappBlacklisted: false,
                 },
             ],
             count: 17655,
@@ -1374,6 +1409,27 @@ describe("ContactsClient", () => {
                 listId: 1000000,
             });
         }).rejects.toThrow(Brevo.NotFoundError);
+    });
+
+    test("getContactsFromList (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { message: "message" };
+
+        server
+            .mockEndpoint()
+            .get("/contacts/lists/1000000/contacts")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.contacts.getContactsFromList({
+                listId: 1000000,
+            });
+        }).rejects.toThrow(Brevo.TooManyRequestsError);
     });
 
     test("addContactToList (1)", async () => {
@@ -1947,6 +2003,7 @@ describe("ContactsClient", () => {
             listUnsubscribed: [1000000],
             modifiedAt: "2017-05-02T16:40:31Z",
             smsBlacklisted: false,
+            whatsappBlacklisted: false,
             statistics: {
                 clicked: [
                     {

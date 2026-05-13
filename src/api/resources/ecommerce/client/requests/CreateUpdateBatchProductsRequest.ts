@@ -12,7 +12,7 @@
 export interface CreateUpdateBatchProductsRequest {
     /** array of products objects */
     products: CreateUpdateBatchProductsRequest.Products.Item[];
-    /** Facilitate to update the existing categories in the same request (updateEnabled = true) */
+    /** Facilitate to update the existing products in the same request (updateEnabled = true) */
     updateEnabled?: boolean;
 }
 
@@ -37,12 +37,14 @@ export namespace CreateUpdateBatchProductsRequest {
             isDeleted?: boolean | undefined;
             /** Meta data of product such as description, vendor, producer, stock level. The total characters of cumulative metaInfo shall not exceed **20000 characters**. */
             metaInfo?: Record<string, Item.MetaInfo.Value> | undefined;
-            /** Mandatory in case of creation**. Name of the product for which you requested the details */
+            /** **Mandatory in case of creation**. Name of the product, as displayed in the shop */
             name: string;
             /** Parent product id of the product */
             parentId?: string | undefined;
             /** Price of the product */
             price?: number | undefined;
+            /** Alternative price of the product */
+            alternativePrice?: number | undefined;
             /** Product identifier from the shop */
             sku?: string | undefined;
             /** Current stock value of the product from the shop's database */

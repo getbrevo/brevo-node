@@ -26,6 +26,8 @@ export namespace GetLoyaltyBalanceProgramsPidTransactionHistoryResponse {
         export interface Item {
             /** The transaction amount. */
             amount?: number | undefined;
+            /** The type of the transaction. */
+            transactionType?: Item.TransactionType | undefined;
             /** Expiration date of the balance associated with this transaction. */
             balanceExpirationDate?: string | undefined;
             /** Timestamp when the transaction was canceled, if applicable. */
@@ -44,6 +46,15 @@ export namespace GetLoyaltyBalanceProgramsPidTransactionHistoryResponse {
             rejectedAt?: string | undefined;
             /** Current status of the transaction (e.g., pending, completed, rejected). */
             status?: string | undefined;
+        }
+
+        export namespace Item {
+            /** The type of the transaction. */
+            export const TransactionType = {
+                Credit: "credit",
+                Debit: "debit",
+            } as const;
+            export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType];
         }
     }
 }

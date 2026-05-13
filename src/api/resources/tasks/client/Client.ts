@@ -23,6 +23,8 @@ export class TasksClient {
     }
 
     /**
+     * Retrieve a paginated list of CRM tasks with optional filtering by task type, status, date range, assignee, and linked entities (contacts, deals, companies). Results are sorted by creation date in descending order by default, with a default limit of 50 tasks per page.
+     *
      * @param {Brevo.GetCrmTasksRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -89,7 +91,11 @@ export class TasksClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -117,6 +123,8 @@ export class TasksClient {
     }
 
     /**
+     * Create a new CRM task with the specified name, type, due date, and optional associations to contacts, companies, or deals. A task requires a name, task type ID, and due date at minimum. You can also set a duration, notes, a reminder, and assign the task to a specific user.
+     *
      * @param {Brevo.PostCrmTasksRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -125,7 +133,7 @@ export class TasksClient {
      * @example
      *     await client.tasks.createATask({
      *         date: "2021-11-01T17:44:54Z",
-     *         name: "Task: Connect with client_dev",
+     *         name: "Task: Connect with client",
      *         taskTypeId: "61a5cd07ca1347c82306ad09"
      *     })
      */
@@ -156,7 +164,7 @@ export class TasksClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -186,6 +194,8 @@ export class TasksClient {
     }
 
     /**
+     * Retrieve the full details of a single CRM task by its identifier. The response includes the task''s name, type, status, due date, duration, notes, assignee, reminder settings, and linked contacts, companies, or deals.
+     *
      * @param {Brevo.GetCrmTasksIdRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -224,7 +234,7 @@ export class TasksClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -254,6 +264,8 @@ export class TasksClient {
     }
 
     /**
+     * Permanently delete a CRM task by its identifier. This removes the task and cancels any associated reminders. The requesting user must be the task assignee or have manage permission on tasks.
+     *
      * @param {Brevo.DeleteCrmTasksIdRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -292,7 +304,7 @@ export class TasksClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -322,6 +334,8 @@ export class TasksClient {
     }
 
     /**
+     * Update an existing CRM task''s properties such as name, type, due date, status, duration, notes, assignee, reminder, or linked entities. Only the fields provided in the request body will be updated; omitted fields remain unchanged.
+     *
      * @param {Brevo.PatchCrmTasksIdRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -361,7 +375,7 @@ export class TasksClient {
             method: "PATCH",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -393,20 +407,24 @@ export class TasksClient {
     }
 
     /**
+     * Retrieve the list of all available task types, such as Email, Call, Meeting, Todo, Lunch, Deadline, and LinkedIn. If no task types exist yet, the default set is automatically created and returned. Use the task type ID when creating or updating tasks.
+     *
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Brevo.BadRequestError}
      *
      * @example
      *     await client.tasks.getAllTaskTypes()
      */
     public getAllTaskTypes(
         requestOptions?: TasksClient.RequestOptions,
-    ): core.HttpResponsePromise<Brevo.GetCrmTasktypesResponse> {
+    ): core.HttpResponsePromise<Brevo.GetCrmTasktypesResponseItem[]> {
         return core.HttpResponsePromise.fromPromise(this.__getAllTaskTypes(requestOptions));
     }
 
     private async __getAllTaskTypes(
         requestOptions?: TasksClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Brevo.GetCrmTasktypesResponse>> {
+    ): Promise<core.WithRawResponse<Brevo.GetCrmTasktypesResponseItem[]>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -422,7 +440,7 @@ export class TasksClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -430,15 +448,20 @@ export class TasksClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Brevo.GetCrmTasktypesResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Brevo.GetCrmTasktypesResponseItem[], rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BrevoError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.BrevoError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/crm/tasktypes");

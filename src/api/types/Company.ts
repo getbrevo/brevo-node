@@ -10,6 +10,6 @@ export interface Company {
     id?: string | undefined;
     /** Contact ids for contacts linked to this company */
     linkedContactsIds?: number[] | undefined;
-    /** Deals ids for companies linked to this company */
+    /** Deal ids for deals linked to this company */
     linkedDealsIds?: string[] | undefined;
 }

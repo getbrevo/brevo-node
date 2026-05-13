@@ -24,6 +24,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Retrieve a paginated list of companies with optional filtering, sorting, and search capabilities. Results are sorted by creation date in descending order by default, and can be filtered by attributes, linked contacts, linked deals, or modification/creation timestamps.
+     *
      * @param {Brevo.GetCompaniesRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -43,10 +45,19 @@ export class CompaniesClient {
         request: Brevo.GetCompaniesRequest = {},
         requestOptions?: CompaniesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.GetCompaniesResponse>> {
-        const { filters, linkedContactsIds, linkedDealsIds, modifiedSince, createdSince, page, limit, sort, sortBy } =
-            request;
+        const {
+            "filters[attributes.name]": filtersAttributesName,
+            linkedContactsIds,
+            linkedDealsIds,
+            modifiedSince,
+            createdSince,
+            page,
+            limit,
+            sort,
+            sortBy,
+        } = request;
         const _queryParams: Record<string, unknown> = {
-            filters,
+            "filters[attributes.name]": filtersAttributesName,
             linkedContactsIds,
             linkedDealsIds,
             modifiedSince,
@@ -71,7 +82,11 @@ export class CompaniesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -99,6 +114,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Create a new CRM company with the specified name, attributes, and optional associations to contacts and deals. The company name is required, and you can optionally provide a country code when a phone number attribute is included.
+     *
      * @param {Brevo.PostCompaniesRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -136,7 +153,7 @@ export class CompaniesClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -214,7 +231,7 @@ export class CompaniesClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "file",
             duplex: _maybeEncodedRequest.duplex,
             body: _maybeEncodedRequest.body,
@@ -245,6 +262,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Link or unlink contacts and deals with a specific company in a single request. You can simultaneously link new contacts/deals and unlink existing ones by providing the respective ID arrays in the request body.
+     *
      * @param {Brevo.PatchCompaniesLinkUnlinkIdRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -285,7 +304,7 @@ export class CompaniesClient {
             method: "PATCH",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -315,6 +334,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Retrieve the full details of a single company by its identifier, including its attributes, linked contacts, and linked deals. Returns a 404 error if the company does not exist, or a 403 error if the user lacks permission to view the company.
+     *
      * @param {Brevo.GetCompaniesIdRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -353,7 +374,7 @@ export class CompaniesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -383,6 +404,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Permanently delete a company by its identifier. The requesting user must be the company owner or have manage permission on companies; otherwise, a 403 Forbidden error is returned.
+     *
      * @param {Brevo.DeleteCompaniesIdRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -421,7 +444,7 @@ export class CompaniesClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -451,6 +474,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Update an existing company''s attributes, name, linked contacts, or linked deals. Note that passing `linkedContactsIds` or `linkedDealsIds` replaces the entire list of associations, so omitted IDs will be removed. The company name cannot be set to an empty string.
+     *
      * @param {Brevo.PatchCompaniesIdRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -490,7 +515,7 @@ export class CompaniesClient {
             method: "PATCH",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -522,6 +547,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Create a new custom attribute for companies or deals. The attribute label must be unique within the object type, cannot exceed 50 characters, and cannot use reserved names. For `single-select` or `multi-choice` attribute types, you must also provide the `optionsLabels` array.
+     *
      * @param {Brevo.PostCrmAttributesRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -561,7 +588,7 @@ export class CompaniesClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -591,6 +618,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Delete an existing custom attribute by its identifier. This permanently removes the attribute definition and cleans up all references to it across companies or deals. System-default and non-editable attributes cannot be deleted.
+     *
      * @param {Brevo.DeleteCrmAttributesIdRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -629,7 +658,7 @@ export class CompaniesClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -659,6 +688,8 @@ export class CompaniesClient {
     }
 
     /**
+     * Update an existing custom attribute''s label or options. You can rename the attribute label or modify the available options for `single-select` and `multi-choice` attribute types. System-default attributes cannot be modified except for specific editable fields.
+     *
      * @param {Brevo.PatchCrmAttributesIdRequest} request
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -698,7 +729,7 @@ export class CompaniesClient {
             method: "PATCH",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -730,7 +761,11 @@ export class CompaniesClient {
     }
 
     /**
+     * Retrieve the list of all attributes defined for companies, including both system-default and custom attributes. Each attribute includes its label, internal name, type, required status, and available options for select-type attributes.
+     *
      * @param {CompaniesClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Brevo.BadRequestError}
      *
      * @example
      *     await client.companies.getCompanyAttributes()
@@ -759,7 +794,7 @@ export class CompaniesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -774,11 +809,16 @@ export class CompaniesClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BrevoError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.BrevoError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/crm/attributes/companies");
