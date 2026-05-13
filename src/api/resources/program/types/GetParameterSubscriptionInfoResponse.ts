@@ -69,6 +69,8 @@ export namespace GetParameterSubscriptionInfoResponse {
             rewardId?: string | undefined;
             /** Timestamp when the reward was last updated. */
             updatedAt?: string | undefined;
+            /** Date from which the voucher becomes valid. */
+            validFrom?: string | undefined;
         }
     }
 

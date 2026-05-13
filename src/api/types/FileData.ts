@@ -4,18 +4,20 @@
  * File data that is uploaded
  */
 export interface FileData {
-    /** Account id of user which created the file */
-    authorId?: string | undefined;
-    /** Company id linked to a file */
-    companyId?: string | undefined;
-    /** Contact id of contact on which file is uploaded */
-    contactId?: number | undefined;
-    /** File created date/time */
-    createdAt?: string | undefined;
-    /** Deal id linked to a file */
-    dealId?: string | undefined;
+    /** Unique file id */
+    id?: string | undefined;
     /** Name of uploaded file */
     name?: string | undefined;
+    /** Account id of user which created the file */
+    authorId?: string | undefined;
+    /** Contact id of contact on which file is uploaded */
+    contactId?: number | undefined;
+    /** Deal id linked to a file */
+    dealId?: string | undefined;
+    /** Company id linked to a file */
+    companyId?: string | undefined;
     /** Size of file in bytes */
     size?: number | undefined;
+    /** File created date/time */
+    createdAt?: string | undefined;
 }

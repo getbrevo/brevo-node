@@ -13,5 +13,6 @@ export * from "./GetEcommerceAttributionProductsConversionSourceConversionSource
 export * from "./GetEcommerceConfigDisplayCurrencyResponse.js";
 export * from "./GetOrdersRequestSort.js";
 export * from "./GetProductsRequestSort.js";
+export * from "./GetProductsRequestSortByField.js";
 export * from "./GetProductsResponse.js";
 export * from "./SetConfigDisplayCurrencyResponse.js";

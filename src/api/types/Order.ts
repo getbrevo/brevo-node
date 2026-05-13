@@ -13,7 +13,7 @@ export interface Order {
     id: string;
     /** Identifies the contact associated with the order. */
     identifiers?: Order.Identifiers | undefined;
-    /** Meta data of order to store additional detal such as custom message, customer type, source. */
+    /** Meta data of order to store additional detail such as custom message, customer type, source. */
     metaInfo?: Record<string, Order.MetaInfo.Value> | undefined;
     products: Order.Products.Item[];
     /** State of the order. */

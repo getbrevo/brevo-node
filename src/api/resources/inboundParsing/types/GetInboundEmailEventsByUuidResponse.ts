@@ -3,9 +3,9 @@
 export interface GetInboundEmailEventsByUuidResponse {
     /** List of attachments of the email. This will be present only after the processing is done. */
     attachments?: GetInboundEmailEventsByUuidResponse.Attachments.Item[] | undefined;
-    /** Date when email was delivered successfully to client_dev’s webhook */
+    /** Date when email was delivered successfully to the client’s webhook */
     deliveredAt?: (string | null) | undefined;
-    /** List of events/logs that describe the lifecycle of the email on SIB platform */
+    /** List of events/logs that describe the lifecycle of the email on the Brevo platform */
     logs?: GetInboundEmailEventsByUuidResponse.Logs.Item[] | undefined;
     /** Value of the Message-ID header. This will be present only after the processing is done. */
     messageId?: string | undefined;

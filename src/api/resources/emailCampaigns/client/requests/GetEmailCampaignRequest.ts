@@ -11,7 +11,7 @@ import type * as Brevo from "../../../../index.js";
 export interface GetEmailCampaignRequest {
     /** Id of the campaign */
     campaignId: number;
-    /** Filter on type of the statistics required. Example **globalStats** value will only fetch globalStats info of the campaign in returned response. */
+    /** Filter on the type of statistics required. Example: **globalStats** value will only fetch globalStats info of the campaign in the returned response. `statsByDevice` and `statsByBrowser` are only available when retrieving a single campaign (not in the list endpoint). */
     statistics?: Brevo.GetEmailCampaignRequestStatistics;
     /** Use this flag to exclude htmlContent from the response body. If set to **true**, htmlContent field will be returned as empty string in the response body */
     excludeHtmlContent?: boolean;

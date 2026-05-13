@@ -23,7 +23,7 @@ export class InboundParsingClient {
     }
 
     /**
-     * This endpoint will show the list of all the events for the received emails.
+     * This endpoint will show the list of all the events for the received emails. When no date range is provided, the last 30 days of events are returned by default.
      *
      * @param {Brevo.GetInboundEmailEventsRequest} request
      * @param {InboundParsingClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -68,7 +68,11 @@ export class InboundParsingClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -102,6 +106,7 @@ export class InboundParsingClient {
      * @param {InboundParsingClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link Brevo.NotFoundError}
      *
      * @example
      *     await client.inboundParsing.getInboundEmailEventsByUuid({
@@ -135,7 +140,7 @@ export class InboundParsingClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -153,6 +158,8 @@ export class InboundParsingClient {
             switch (_response.error.statusCode) {
                 case 400:
                     throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Brevo.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
                     throw new errors.BrevoError({
                         statusCode: _response.error.statusCode,
@@ -198,7 +205,7 @@ export class InboundParsingClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             responseType: "binary-response",
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,

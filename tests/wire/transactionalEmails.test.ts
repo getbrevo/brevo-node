@@ -106,7 +106,7 @@ describe("TransactionalEmailsClient", () => {
         }).rejects.toThrow(Brevo.NotFoundError);
     });
 
-    test("getBlockedDomains", async () => {
+    test("getBlockedDomains (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -122,6 +122,25 @@ describe("TransactionalEmailsClient", () => {
 
         const response = await client.transactionalEmails.getBlockedDomains();
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getBlockedDomains (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/smtp/blockedDomains")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactionalEmails.getBlockedDomains();
+        }).rejects.toThrow(Brevo.BadRequestError);
     });
 
     test("blockNewDomain (1)", async () => {
@@ -564,7 +583,7 @@ describe("TransactionalEmailsClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
-    test("getTransacEmailContent", async () => {
+    test("getTransacEmailContent (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -588,6 +607,36 @@ describe("TransactionalEmailsClient", () => {
             uuid: "uuid",
         });
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getTransacEmailContent (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/smtp/emails/uuid").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.transactionalEmails.getTransacEmailContent({
+                uuid: "uuid",
+            });
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("getTransacEmailContent (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/smtp/emails/uuid").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.transactionalEmails.getTransacEmailContent({
+                uuid: "uuid",
+            });
+        }).rejects.toThrow(Brevo.NotFoundError);
     });
 
     test("deleteAnSmtpTransactionalLog (1)", async () => {
@@ -710,7 +759,7 @@ describe("TransactionalEmailsClient", () => {
                     link: "https://www.someexamplelink.com",
                     messageId: "<201798300811.5787683@example.domain.com>",
                     reason: "Error connection timeout",
-                    subject: "Sib client_dev test",
+                    subject: "Sib client test",
                     tag: "OrderConfirmation",
                     templateId: 4,
                 },
@@ -723,7 +772,7 @@ describe("TransactionalEmailsClient", () => {
                     link: "https://www.someexamplelink.com",
                     messageId: "<201798300811.5787683@example.domain.com>",
                     reason: "Error connection timeout",
-                    subject: "Sib client_dev test",
+                    subject: "Sib client test",
                     tag: "OrderConfirmation",
                     templateId: 5,
                 },
@@ -897,11 +946,12 @@ describe("TransactionalEmailsClient", () => {
                     modifiedAt: "2016-02-24T15:37:11Z",
                     name: "ChristomasTimeTemplate",
                     replyTo: "replyto@domain.com",
-                    sender: { email: "john.smith@example.com", id: "43", name: "John" },
+                    sender: { email: "john.smith@example.com", id: "id", name: "John" },
                     subject: "Merry Christmas",
                     tag: "Festival",
                     testSent: false,
                     toField: "",
+                    customTemplateId: "my-custom-template-001",
                 },
                 {
                     createdAt: "2016-02-25T11:53:26Z",
@@ -912,11 +962,12 @@ describe("TransactionalEmailsClient", () => {
                     modifiedAt: "2016-02-25T11:53:26Z",
                     name: "SummerSales2017Template",
                     replyTo: "replyto@domain.com",
-                    sender: { email: "john.smith@example.com", id: "43", name: "John" },
+                    sender: { email: "john.smith@example.com", id: "id", name: "John" },
                     subject: "Enjoy our summer Sales !",
                     tag: "Summer",
                     testSent: false,
                     toField: "",
+                    customTemplateId: "my-custom-template-001",
                 },
             ],
         };
@@ -1004,11 +1055,12 @@ describe("TransactionalEmailsClient", () => {
             modifiedAt: "2016-02-25T11:53:26Z",
             name: "OrderConfirmation",
             replyTo: "replyto@domain.com",
-            sender: { email: "john.smith@example.com", id: "43", name: "John" },
+            sender: { email: "john.smith@example.com", id: "id", name: "John" },
             subject: "Order Confirmation : Thanks for your Purchase !",
             tag: "",
             testSent: false,
             toField: "",
+            customTemplateId: "my-custom-template-001",
         };
 
         server

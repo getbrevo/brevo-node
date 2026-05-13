@@ -11,9 +11,9 @@ import type * as Brevo from "../../../../index.js";
  *     }
  */
 export interface GetScheduledEmailByIdRequest {
-    /** The `batchId` of scheduled emails batch (Should be a valid UUIDv4) or the `messageId` of scheduled email. */
+    /** The `batchId` of scheduled emails batch (must be a valid UUIDv4) or the `messageId` of scheduled email (enclosed in angle brackets with @ sign, e.g. `<...@domain>`). When using `messageId`, the `limit`, `offset`, `sort`, and `status` query parameters are ignored. */
     identifier: string;
-    /** Mandatory if `endDate` is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Can be maximum 30 days older tha current date. */
+    /** Mandatory if `endDate` is used. Starting date (YYYY-MM-DD) from which you want to fetch the list. Cannot be more than 30 days older than the current date. */
     startDate?: string;
     /** Mandatory if `startDate` is used. Ending date (YYYY-MM-DD) till which you want to fetch the list. Maximum time period that can be selected is one month. */
     endDate?: string;

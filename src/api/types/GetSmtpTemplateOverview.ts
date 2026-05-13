@@ -26,6 +26,8 @@ export interface GetSmtpTemplateOverview {
     testSent: boolean;
     /** Customisation of the "to" field for the template */
     toField: string;
+    /** Custom template identifier, if one was assigned during template creation. Only present when the template has a custom ID. */
+    customTemplateId?: string | undefined;
 }
 
 export namespace GetSmtpTemplateOverview {
@@ -34,7 +36,7 @@ export namespace GetSmtpTemplateOverview {
         email?: string | undefined;
         /** Sender id of the template */
         id?: string | undefined;
-        /** From email for the template */
+        /** Sender name for the template */
         name?: string | undefined;
     }
 }

@@ -16,24 +16,20 @@ export namespace GetAllExternalFeedsResponse {
             id: string;
             /** Name of the feed */
             name: string;
-            /** URL-friendly alias for the feed */
-            alias: string;
             /** URL of the external data source */
             url: string;
             /** Authentication type for accessing the feed */
             authType: Item.AuthType;
-            /** Username for basic authentication */
+            /** Username for basic authentication. Only returned when authType is 'basic'. Excluded when authType is 'token'. */
             username?: string | undefined;
-            /** Password for basic authentication */
+            /** Password for basic authentication. Only returned when authType is 'basic'. Excluded when authType is 'token'. */
             password?: string | undefined;
-            /** Token for token-based authentication */
+            /** Token for token-based authentication. Only returned when authType is 'token'. Excluded when authType is 'basic' or 'noAuth'. */
             token?: string | undefined;
             /** Maximum number of retry attempts for failed requests */
             maxRetries: number;
             /** Whether to cache the feed response */
             cache: boolean;
-            /** Whether this is an internal Brevo system feed */
-            isInternal: boolean;
             /** Custom HTTP headers for the feed request */
             headers?: (Item.Headers.Item[] | null) | undefined;
             /** Feed creation timestamp */

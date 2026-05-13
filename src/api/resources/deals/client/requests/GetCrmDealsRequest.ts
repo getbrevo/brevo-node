@@ -11,11 +11,11 @@ export interface GetCrmDealsRequest {
     "filters[attributes.deal_name]"?: string;
     /** Filter by linked companies ids */
     "filters[linkedCompaniesIds]"?: string;
-    /** Filter by linked companies ids */
+    /** Filter by linked contacts ids */
     "filters[linkedContactsIds]"?: string;
-    /** Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
+    /** Filter (urlencoded) the deals modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
     modifiedSince?: string;
-    /** Filter (urlencoded) the contacts created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
+    /** Filter (urlencoded) the deals created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). Prefer to pass your timezone in date-time format for accurate result. */
     createdSince?: string;
     /** Index of the first document of the page */
     offset?: number;
@@ -23,4 +23,6 @@ export interface GetCrmDealsRequest {
     limit?: number;
     /** Sort the results in the ascending/descending order. Default order is **descending** by creation if `sort` is not passed */
     sort?: Brevo.GetCrmDealsRequestSort;
+    /** The field used to sort field names. */
+    sortBy?: string;
 }

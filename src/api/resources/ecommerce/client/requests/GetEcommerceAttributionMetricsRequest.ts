@@ -4,7 +4,8 @@
  * @example
  *     {
  *         periodFrom: "2022-01-02T00:00:00Z",
- *         periodTo: "2022-01-03T00:00:00Z"
+ *         periodTo: "2022-01-03T00:00:00Z",
+ *         "emailCampaignId[]": ["sale"]
  *     }
  */
 export interface GetEcommerceAttributionMetricsRequest {

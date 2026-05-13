@@ -15,7 +15,7 @@ export interface GetEmailEventReportRequest {
     startDate?: string;
     /** **Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate */
     endDate?: string;
-    /** Number of days in the past including today (positive integer). _Not compatible with 'startDate' and 'endDate'_ */
+    /** Number of days in the past including today (positive integer, maximum 90). _Not compatible with 'startDate' and 'endDate'_. Defaults to 30 if neither dates nor days are provided. */
     days?: number;
     /** Filter the report for a specific email addresses */
     email?: string;

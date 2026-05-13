@@ -55,6 +55,14 @@ export interface ConversationsMessage {
     to?: ConversationsMessage.To.Item[] | undefined;
     /** `"agent"` for agents’ messages, `"visitor"` for visitors’ messages. */
     type?: ConversationsMessage.Type | undefined;
+    /** ‘`true` if the message was sent via JavaScript API.’ */
+    isSentViaJsApi?: boolean | undefined;
+    /** The type of message content (e.g. for integration-specific message types). */
+    messageType?: string | undefined;
+    /** ‘`true` if the message is a forwarded message.’ */
+    isForward?: boolean | undefined;
+    /** Source information for the message. */
+    source?: Record<string, unknown> | undefined;
     /** visitor’s ID */
     visitorId?: string | undefined;
 }
@@ -65,17 +73,39 @@ export namespace ConversationsMessage {
     export namespace Attachments {
         export interface Item {
             /** The name of the file. */
-            fileName?: string | undefined;
-            /** The ID of the inline file. */
-            inlineId?: string | undefined;
+            name?: string | undefined;
+            /** The URL of the file. */
+            link?: string | undefined;
+            /** The MIME type of the file. */
+            mimeType?: string | undefined;
             /** `true` for images. */
             isImage?: boolean | undefined;
+            /** `true` for sticker files. */
+            isSticker?: boolean | undefined;
             /** `true` for inline files. */
-            isInline?: string | undefined;
+            isInline?: boolean | undefined;
+            /** The ID of the inline file. */
+            inlineId?: string | undefined;
             /** The size of the file in bytes. */
             size?: number | undefined;
-            /** The URL of the file. */
-            url?: string | undefined;
+            /** Image information (only present for image files). */
+            imageInfo?: Item.ImageInfo | undefined;
+            /** Whether the file extension is allowed for download. */
+            isAllowedFileType?: boolean | undefined;
+        }
+
+        export namespace Item {
+            /**
+             * Image information (only present for image files).
+             */
+            export interface ImageInfo {
+                /** Width of the image in pixels. */
+                width?: number | undefined;
+                /** Height of the image in pixels. */
+                height?: number | undefined;
+                /** URL of the image preview. */
+                previewLink?: string | undefined;
+            }
         }
     }
 
@@ -98,29 +128,39 @@ export namespace ConversationsMessage {
     }
 
     export interface File_ {
-        /** Name of the file */
-        filename?: string | undefined;
-        /** image info is passed in case the file is an image */
-        imageInfo?: File_.ImageInfo | undefined;
-        /** Whether the file is an image */
+        /** Name of the file. */
+        name?: string | undefined;
+        /** URL of the file. */
+        link?: string | undefined;
+        /** MIME type of the file. */
+        mimeType?: string | undefined;
+        /** Whether the file is an image. */
         isImage?: boolean | undefined;
-        /** Size in bytes */
+        /** Whether the file is a sticker. */
+        isSticker?: boolean | undefined;
+        /** Whether the file is inline. */
+        isInline?: boolean | undefined;
+        /** The ID of the inline file. */
+        inlineId?: string | undefined;
+        /** Size in bytes. */
         size?: number | undefined;
-        /** URL of the file */
-        url?: string | undefined;
+        /** Image info, present when the file is an image. */
+        imageInfo?: File_.ImageInfo | undefined;
+        /** Whether the file extension is allowed for download. */
+        isAllowedFileType?: boolean | undefined;
     }
 
     export namespace File_ {
         /**
-         * image info is passed in case the file is an image
+         * Image info, present when the file is an image.
          */
         export interface ImageInfo {
-            /** height of the image */
-            height?: number | undefined;
-            /** URL of the preview */
-            previewUrl?: string | undefined;
-            /** Width of the image */
+            /** Width of the image in pixels. */
             width?: number | undefined;
+            /** Height of the image in pixels. */
+            height?: number | undefined;
+            /** URL of the image preview. */
+            previewLink?: string | undefined;
         }
     }
 

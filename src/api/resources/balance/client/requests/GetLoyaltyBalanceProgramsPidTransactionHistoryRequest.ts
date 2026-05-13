@@ -6,7 +6,7 @@ import type * as Brevo from "../../../../index.js";
  * @example
  *     {
  *         pid: "pid",
- *         contactId: 1,
+ *         contactId: 1000000,
  *         balanceDefinitionId: "balanceDefinitionId"
  *     }
  */
@@ -19,16 +19,16 @@ export interface GetLoyaltyBalanceProgramsPidTransactionHistoryRequest {
     offset?: number;
     /** Field to sort by */
     sortField?: "createdAt";
-    /** Sort order, either asc or desc */
+    /** Sort order */
     sort?: Brevo.GetLoyaltyBalanceProgramsPidTransactionHistoryRequestSort;
     /** Contact ID */
     contactId: number;
     /** Balance Definition ID */
     balanceDefinitionId: string;
-    /** Filters to apply */
-    filters?: string | string[];
-    /** Transaction status filter. Allowed values: draft, completed, rejected, cancelled, expired */
+    /** Transaction status filter */
     status?: Brevo.GetLoyaltyBalanceProgramsPidTransactionHistoryRequestStatus;
-    /** Transaction type filter. Allowed values: credit, debit */
+    /** Transaction type filter */
     transactionType?: Brevo.GetLoyaltyBalanceProgramsPidTransactionHistoryRequestTransactionType;
+    /** Loyalty Subscription ID filter */
+    loyaltySubscriptionId?: string;
 }

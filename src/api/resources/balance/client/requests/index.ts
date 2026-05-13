@@ -1,8 +1,8 @@
-export type { BeginTransactionRequest } from "./BeginTransactionRequest.js";
+export { BeginTransactionRequest } from "./BeginTransactionRequest.js";
 export type { CancelTransactionRequest } from "./CancelTransactionRequest.js";
 export type { CompleteTransactionRequest } from "./CompleteTransactionRequest.js";
 export { CreateBalanceLimitRequest } from "./CreateBalanceLimitRequest.js";
-export type { CreateBalanceOrderRequest } from "./CreateBalanceOrderRequest.js";
+export { CreateBalanceOrderRequest } from "./CreateBalanceOrderRequest.js";
 export type { DeleteBalanceDefinitionRequest } from "./DeleteBalanceDefinitionRequest.js";
 export type { DeleteBalanceLimitRequest } from "./DeleteBalanceLimitRequest.js";
 export type { GetBalanceDefinitionListRequest } from "./GetBalanceDefinitionListRequest.js";

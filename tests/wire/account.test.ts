@@ -5,7 +5,7 @@ import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("AccountClient", () => {
-    test("getAccount", async () => {
+    test("getAccount (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -18,7 +18,6 @@ describe("AccountClient", () => {
             firstName: "Michael",
             lastName: "Davis",
             address: { city: "New York", country: "United States", street: "456 Business Ave", zipCode: "10001" },
-            dateTimePreferences: { timezone: "America/New_York", timeFormat: "12", dateFormat: "mm-dd-yyyy" },
             marketingAutomation: { enabled: true, key: "ma8k2x9v4h7p3d6f1c5e8b2a" },
             plan: [
                 {
@@ -72,6 +71,19 @@ describe("AccountClient", () => {
 
         const response = await client.account.getAccount();
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getAccount (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/account").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.account.getAccount();
+        }).rejects.toThrow(Brevo.BadRequestError);
     });
 
     test("getAccountActivity (1)", async () => {

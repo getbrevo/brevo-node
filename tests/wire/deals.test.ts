@@ -5,17 +5,18 @@ import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("DealsClient", () => {
-    test("getDealAttributes", async () => {
+    test("getDealAttributes (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = [
             {
-                attributeOptions: [{ key: "custom key", value: "custom label" }],
-                attributeTypeName: "text",
                 internalName: "deal_name",
-                isRequired: true,
+                attributeTypeName: "text",
                 label: "Deal Name",
+                attributeOptions: [{ key: "custom key", value: "custom label" }],
+                isRequired: true,
+                isValueReadonly: false,
             },
         ];
 
@@ -31,6 +32,25 @@ describe("DealsClient", () => {
         expect(response).toEqual(rawResponseBody);
     });
 
+    test("getDealAttributes (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/crm/attributes/deals")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.deals.getDealAttributes();
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
     test("getAllDeals (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
@@ -38,6 +58,7 @@ describe("DealsClient", () => {
         const rawResponseBody = {
             items: [
                 {
+                    id: "629475917295261d9b1f4403",
                     attributes: {
                         amount: 12,
                         created_at: "2022-05-30T07:42:05.671Z",
@@ -51,13 +72,12 @@ describe("DealsClient", () => {
                         pipeline: "6093d296ad1e9c5cf2140a58",
                         stage_updated_at: "2022-05-30T07:42:05.671Z",
                     },
-                    id: "629475917295261d9b1f4403",
+                    linkedContactsIds: [1, 2, 3],
                     linkedCompaniesIds: [
                         "61a5ce58c5d4795761045990",
                         "61a5ce58c5d4795761045991",
                         "61a5ce58c5d4795761045992",
                     ],
-                    linkedContactsIds: [1, 2, 3],
                 },
             ],
         };
@@ -170,6 +190,7 @@ describe("DealsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
+            id: "629475917295261d9b1f4403",
             attributes: {
                 amount: 12,
                 created_at: "2022-05-30T07:42:05.671Z",
@@ -178,15 +199,13 @@ describe("DealsClient", () => {
                 deal_stage: "9e577ff7-8e42-4ab3-be26-2b5e01b42518",
                 last_activity_date: "2022-06-06T08:38:36.000Z",
                 last_updated_date: "2022-06-06T08:38:36.761Z",
-                next_activity_date: { key: "value" },
                 number_of_activities: 0,
                 number_of_contacts: 1,
                 pipeline: "6093d296ad1e9c5cf2140a58",
                 stage_updated_at: "2022-05-30T07:42:05.671Z",
             },
-            id: "629475917295261d9b1f4403",
-            linkedCompaniesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
             linkedContactsIds: [1, 2, 3],
+            linkedCompaniesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
         };
 
         server.mockEndpoint().get("/crm/deals/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
@@ -326,7 +345,7 @@ describe("DealsClient", () => {
         }).rejects.toThrow(Brevo.NotFoundError);
     });
 
-    test("getPipelineStages", async () => {
+    test("getPipelineStages (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -346,6 +365,25 @@ describe("DealsClient", () => {
 
         const response = await client.deals.getPipelineStages();
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getPipelineStages (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/crm/pipeline/details")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.deals.getPipelineStages();
+        }).rejects.toThrow(Brevo.BadRequestError);
     });
 
     test("getAllPipelines (1)", async () => {

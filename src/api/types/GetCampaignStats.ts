@@ -11,9 +11,9 @@ export interface GetCampaignStats {
     deferred?: number | undefined;
     /** Number of delivered emails for the campaign */
     delivered: number;
-    /** Rate of recipients without any privacy protection option enabled in their email client_dev, applied to all delivered emails */
+    /** Rate of recipients without any privacy protection option enabled in their email client, applied to all delivered emails */
     estimatedViews?: number | undefined;
-    /** Number of harbounce for the campaign */
+    /** Number of hard bounces for the campaign */
     hardBounces: number;
     /** List Id of email campaign (only in case of get email campaign(s)(not for global stats)) */
     listId?: number | undefined;
@@ -25,9 +25,9 @@ export interface GetCampaignStats {
     sent: number;
     /** Number of softbounce for the campaign */
     softBounces: number;
-    /** Recipients without any privacy protection option enabled in their email client_dev */
+    /** Recipients without any privacy protection option enabled in their email email client */
     trackableViews: number;
-    /** Rate of recipients without any privacy protection option enabled in their email client_dev */
+    /** Rate of recipients without any privacy protection option enabled in their email client */
     trackableViewsRate?: number | undefined;
     /** Number of unique clicks for the campaign */
     uniqueClicks: number;

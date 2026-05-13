@@ -4,34 +4,54 @@
  * Represents a transaction involving a balance, including status and timestamps.
  */
 export interface Transaction {
-    /** The transaction amount. */
-    amount?: number | undefined;
-    /** Unique identifier (UUID) of the associated balance definition. */
-    balanceDefinitionId?: string | undefined;
-    /** Timestamp when the transaction was canceled (nullable). */
-    cancelledAt?: string | undefined;
-    /** Timestamp when the transaction was completed (nullable). */
-    completedAt?: string | undefined;
-    /** Unique identifier of the contact associated with the transaction. */
-    contactId?: number | undefined;
-    /** Timestamp when the transaction was created. */
-    createdAt?: string | undefined;
-    /** Optional timestamp indicating when the transaction event occurred. */
-    eventTime?: string | undefined;
-    /** Expiry date of the transaction (nullable). */
-    expirationDate?: string | undefined;
     /** Unique identifier (UUID) of the transaction. */
     id?: string | undefined;
-    /** Unique identifier (UUID) of the associated loyalty program. */
-    loyaltyProgramId?: string | undefined;
+    /** The transaction amount. */
+    amount?: number | undefined;
+    /** The type of the transaction. */
+    transactionType?: Transaction.TransactionType | undefined;
     /** Optional metadata associated with the transaction. */
     meta?: Record<string, unknown> | undefined;
+    /** The current status of the transaction. */
+    status?: Transaction.Status | undefined;
+    /** Unique identifier (UUID) of the associated loyalty program. */
+    loyaltyProgramId?: string | undefined;
+    /** Unique identifier (UUID) of the associated balance definition. */
+    balanceDefinitionId?: string | undefined;
+    /** Unique identifier of the contact associated with the transaction. */
+    contactId?: number | undefined;
+    /** Optional timestamp indicating when the transaction event occurred (ISO 8601 format). */
+    eventTime?: string | undefined;
     /** Reason for rejection if the transaction was declined (nullable). */
     rejectReason?: string | undefined;
     /** Timestamp when the transaction was rejected (nullable). */
     rejectedAt?: string | undefined;
-    /** The current status of the transaction (e.g., pending, completed, rejected). */
-    status?: string | undefined;
+    /** Expiry date of the transaction (nullable). */
+    expirationDate?: string | undefined;
+    /** Timestamp when the transaction was completed (nullable). */
+    completedAt?: string | undefined;
+    /** Timestamp when the transaction was canceled (nullable). */
+    cancelledAt?: string | undefined;
+    /** Timestamp when the transaction was created. */
+    createdAt?: string | undefined;
     /** Timestamp when the transaction was last updated. */
     updatedAt?: string | undefined;
+}
+
+export namespace Transaction {
+    /** The type of the transaction. */
+    export const TransactionType = {
+        Credit: "credit",
+        Debit: "debit",
+    } as const;
+    export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType];
+    /** The current status of the transaction. */
+    export const Status = {
+        Pending: "pending",
+        Complete: "complete",
+        Rejected: "rejected",
+        Cancelled: "cancelled",
+        Expired: "expired",
+    } as const;
+    export type Status = (typeof Status)[keyof typeof Status];
 }

@@ -12,12 +12,18 @@ describe("TasksClient", () => {
         const rawResponseBody = {
             items: [
                 {
-                    companiesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-                    contactsIds: [1, 2, 3],
-                    dealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
                     id: "61a5cd07ca1347c82306ad06",
-                    name: "Task: Connect with client_dev",
                     taskTypeId: "61a5cd07ca1347c82306ad09",
+                    name: "Task: Connect with client",
+                    companiesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
+                    dealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
+                    contactsIds: [1, 2, 3],
+                    assignToId: "5faab4b7f195bb3c4c31e62a",
+                    date: "2021-11-01T17:44:54Z",
+                    notes: "In communication with client for resolution of queries.",
+                    done: false,
+                    createdAt: "2021-11-01T17:44:54Z",
+                    updatedAt: "2021-11-01T17:44:54Z",
                 },
             ],
         };
@@ -48,7 +54,7 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             date: "2021-11-01T17:44:54Z",
-            name: "Task: Connect with client_dev",
+            name: "Task: Connect with client",
             taskTypeId: "61a5cd07ca1347c82306ad09",
         };
         const rawResponseBody = { id: "61a5cd07ca1347c82306ad06" };
@@ -64,7 +70,7 @@ describe("TasksClient", () => {
 
         const response = await client.tasks.createATask({
             date: "2021-11-01T17:44:54Z",
-            name: "Task: Connect with client_dev",
+            name: "Task: Connect with client",
             taskTypeId: "61a5cd07ca1347c82306ad09",
         });
         expect(response).toEqual(rawResponseBody);
@@ -99,12 +105,18 @@ describe("TasksClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            companiesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
-            contactsIds: [1, 2, 3],
-            dealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
             id: "61a5cd07ca1347c82306ad06",
-            name: "Task: Connect with client_dev",
             taskTypeId: "61a5cd07ca1347c82306ad09",
+            name: "Task: Connect with client",
+            companiesIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
+            dealsIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991", "61a5ce58c5d4795761045992"],
+            contactsIds: [1, 2, 3],
+            assignToId: "5faab4b7f195bb3c4c31e62a",
+            date: "2021-11-01T17:44:54Z",
+            notes: "In communication with client for resolution of queries.",
+            done: false,
+            createdAt: "2021-11-01T17:44:54Z",
+            updatedAt: "2021-11-01T17:44:54Z",
         };
 
         server.mockEndpoint().get("/crm/tasks/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
@@ -244,15 +256,28 @@ describe("TasksClient", () => {
         }).rejects.toThrow(Brevo.NotFoundError);
     });
 
-    test("getAllTaskTypes", async () => {
+    test("getAllTaskTypes (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
-        const rawResponseBody = { id: "61a88a2eb7a574180261234", title: "Email" };
+        const rawResponseBody = [{ id: "61a88a2eb7a574180261234", title: "Email" }];
 
         server.mockEndpoint().get("/crm/tasktypes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.tasks.getAllTaskTypes();
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getAllTaskTypes (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/crm/tasktypes").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.tasks.getAllTaskTypes();
+        }).rejects.toThrow(Brevo.BadRequestError);
     });
 });

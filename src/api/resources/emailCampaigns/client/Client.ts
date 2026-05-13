@@ -24,7 +24,7 @@ export class EmailCampaignsClient {
 
     /**
      * <Note>The response payload for this endpoint has changed
-     * You now need to specify which type of statistics you would like to retrieve. For more information visit [this page](https://developers.brevo.com/changelog/get-all-marketing-campaigns).</Note>
+     * You now need to specify which type of statistics you would like to retrieve. For more information visit [this page](https://developers.brevo.com/changelog/2023/2/7).</Note>
      *
      * @param {Brevo.GetEmailCampaignsRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -55,6 +55,7 @@ export class EmailCampaignsClient {
             offset,
             sort,
             excludeHtmlContent,
+            excludePdfAttachment,
         } = request;
         const _queryParams: Record<string, unknown> = {
             type: type_ != null ? type_ : undefined,
@@ -66,6 +67,7 @@ export class EmailCampaignsClient {
             offset,
             sort: sort != null ? sort : undefined,
             excludeHtmlContent,
+            excludePdfAttachment,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -82,7 +84,11 @@ export class EmailCampaignsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -110,10 +116,13 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Create a new email campaign. The campaign requires at minimum a name and sender details, and is created in draft status by default. You must provide email content via one of three mutually exclusive options: htmlContent (inline HTML), htmlUrl (remote URL), or templateId (existing template); additionally, A/B testing can be enabled by setting abTesting to true with subjectA and subjectB, but this is incompatible with sendAtBestTime.
+     *
      * @param {Brevo.CreateEmailCampaignRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link Brevo.MethodNotAllowedError}
      *
      * @example
      *     await client.emailCampaigns.createEmailCampaign({
@@ -148,7 +157,7 @@ export class EmailCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -165,6 +174,11 @@ export class EmailCampaignsClient {
             switch (_response.error.statusCode) {
                 case 400:
                     throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Brevo.MethodNotAllowedError(
+                        _response.error.body as Brevo.ErrorModel,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.BrevoError({
                         statusCode: _response.error.statusCode,
@@ -178,6 +192,8 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Upload an image to your account''s image gallery by providing an absolute URL to the image. The maximum allowed image size is 2MB and supported formats are jpeg, jpg, png, bmp, and gif; local file uploads are not supported.
+     *
      * @param {Brevo.UploadImageToGalleryRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -215,7 +231,7 @@ export class EmailCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -245,6 +261,8 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Retrieve detailed information about a specific email campaign by its ID, including recipients, statistics, and HTML content. Use the statistics query parameter to select which statistics to include (globalStats, linksStats, statsByDomain, statsByDevice, or statsByBrowser); statsByDevice and statsByBrowser are only available on this single-campaign endpoint. You can exclude HTML content from the response by setting excludeHtmlContent to true.
+     *
      * @param {Brevo.GetEmailCampaignRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -287,7 +305,11 @@ export class EmailCampaignsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -317,11 +339,14 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Update an existing email campaign''s properties such as name, subject, content, sender, recipients, schedule, and A/B testing configuration. The campaign must exist and the request body must contain at least one valid field to update. Only draft or scheduled campaigns can be modified; if sendAtBestTime is enabled, IP warmup will be automatically disabled.
+     *
      * @param {Brevo.UpdateEmailCampaignRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link Brevo.MethodNotAllowedError}
      *
      * @example
      *     await client.emailCampaigns.updateEmailCampaign({
@@ -356,7 +381,7 @@ export class EmailCampaignsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -375,6 +400,11 @@ export class EmailCampaignsClient {
                     throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
                     throw new Brevo.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Brevo.MethodNotAllowedError(
+                        _response.error.body as Brevo.ErrorModel,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.BrevoError({
                         statusCode: _response.error.statusCode,
@@ -388,10 +418,13 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Delete an email campaign by its campaign ID. Only campaigns that have not been scheduled can be deleted; attempting to delete a campaign that has already been scheduled will return a 403 permission denied error. Related data in templates, newsletter builder, and schedule collections is also cleaned up.
+     *
      * @param {Brevo.DeleteEmailCampaignRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.NotFoundError}
      *
      * @example
@@ -426,7 +459,7 @@ export class EmailCampaignsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -441,6 +474,8 @@ export class EmailCampaignsClient {
             switch (_response.error.statusCode) {
                 case 400:
                     throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 403:
+                    throw new Brevo.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
                     throw new Brevo.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 default:
@@ -501,7 +536,7 @@ export class EmailCampaignsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -539,6 +574,8 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Export the recipients of a sent email campaign as an asynchronous process, filtered by recipient type (e.g. openers, clickers, hardBounces). The recipientsType field is required and determines which subset of recipients to export. An optional notifyURL webhook will be called once the export is complete, and the response returns a processId to track the export status.
+     *
      * @param {Brevo.EmailExportRecipientsRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -579,7 +616,7 @@ export class EmailCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -616,6 +653,8 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Send an existing email campaign immediately by scheduling it for the current time. The campaign must have valid recipients and content configured before sending. The system verifies your account''s send limit and credit balance before dispatching; if credits are insufficient, a 402 error is returned.
+     *
      * @param {Brevo.SendEmailCampaignNowRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -655,7 +694,7 @@ export class EmailCampaignsClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -742,7 +781,7 @@ export class EmailCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -779,6 +818,8 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Send a test version of an email campaign to specified email addresses or your entire test list. If the emailTo array is left empty, the test mail will be sent to all addresses in your test list. You can send a maximum of 50 test emails per day.
+     *
      * @param {Brevo.SendTestEmailRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -819,7 +860,7 @@ export class EmailCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -897,7 +938,7 @@ export class EmailCampaignsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -937,6 +978,8 @@ export class EmailCampaignsClient {
     }
 
     /**
+     * Update the status of an email campaign, such as suspending, archiving, or replicating it. Available status values include suspended, archive, darchive, sent, queued, replicate, replicateTemplate, cancel, and draft. Note that the replicateTemplate status is only available for template type campaigns.
+     *
      * @param {Brevo.UpdateCampaignStatusRequest} request
      * @param {EmailCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -977,7 +1020,7 @@ export class EmailCampaignsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,

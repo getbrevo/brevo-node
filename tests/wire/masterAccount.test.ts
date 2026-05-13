@@ -91,7 +91,7 @@ describe("MasterAccountClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
-    test("getAGroupDetails", async () => {
+    test("getAGroupDetails (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -119,6 +119,27 @@ describe("MasterAccountClient", () => {
             id: "id",
         });
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getAGroupDetails (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/corporate/group/id")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.masterAccount.getAGroupDetails({
+                id: "id",
+            });
+        }).rejects.toThrow(Brevo.BadRequestError);
     });
 
     test("updateAGroupOfSubAccounts (1)", async () => {
@@ -189,7 +210,7 @@ describe("MasterAccountClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
-    test("getSubAccountGroups", async () => {
+    test("getSubAccountGroups (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -205,7 +226,20 @@ describe("MasterAccountClient", () => {
         expect(response).toEqual(rawResponseBody);
     });
 
-    test("getCorporateInvitedUsersList", async () => {
+    test("getSubAccountGroups (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/corporate/groups").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.masterAccount.getSubAccountGroups();
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("getCorporateInvitedUsersList (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -258,7 +292,26 @@ describe("MasterAccountClient", () => {
         expect(response).toEqual(rawResponseBody);
     });
 
-    test("listOfAllIPs", async () => {
+    test("getCorporateInvitedUsersList (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/corporate/invited/users")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.masterAccount.getCorporateInvitedUsersList();
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("listOfAllIPs (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
@@ -271,6 +324,19 @@ describe("MasterAccountClient", () => {
 
         const response = await client.masterAccount.listOfAllIPs();
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("listOfAllIPs (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/corporate/ip").respondWith().statusCode(400).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.masterAccount.listOfAllIPs();
+        }).rejects.toThrow(Brevo.BadRequestError);
     });
 
     test("getTheDetailsOfRequestedMasterAccount (1)", async () => {

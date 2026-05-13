@@ -10,6 +10,6 @@ export interface NoteData {
     contactIds?: number[] | undefined;
     /** Deal Ids linked to a note */
     dealIds?: string[] | undefined;
-    /** Text content of a note */
+    /** Content of the note. Supports HTML for rich text formatting. Supported tags include: `<p>` (paragraph), `<b>` / `<strong>` (bold), `<i>` / `<em>` (italic), `<u>` (underline), `<br>` (line break), `<a href="...">` (labelled hyperlink). Example labelled link: `<a href="https://example.com">Link text</a>`. */
     text: string;
 }

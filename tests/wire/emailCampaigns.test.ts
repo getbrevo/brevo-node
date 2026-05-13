@@ -27,7 +27,9 @@ describe("EmailCampaignsClient", () => {
                     type: "classic",
                     winnerCriteria: "open",
                     winnerDelay: 50,
+                    attachmentUrl: "https://attachment.domain.com/file.pdf",
                     createdAt: "2017-05-01T12:30:00Z",
+                    emailExpirationDate: { duration: 30 },
                     footer: "[DEFAULT_FOOTER]",
                     header: "[DEFAULT_HEADER]",
                     htmlContent: "This is my HTML Content",
@@ -45,10 +47,10 @@ describe("EmailCampaignsClient", () => {
                     testSent: true,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
-                    utmIDActive: true,
+                    utmID: 12,
                     utmMedium: "EMAIL",
                     utmSource: "Brevo",
-                    recipients: { exclusionLists: [13], lists: [5] },
+                    recipients: { excludedSegments: [14], exclusionLists: [13], lists: [5], segments: [23] },
                     statistics: {
                         campaignStats: [
                             {
@@ -92,13 +94,9 @@ describe("EmailCampaignsClient", () => {
                             unsubscriptions: 2,
                             viewed: 8999,
                         },
-                        linksStats: {},
+                        linksStats: { "http://myUrl1.domain.com": 80 },
                         mirrorClick: 120,
                         remaining: 1000,
-                        statsByBrowser: {
-                            key: { clickers: 2665, uniqueClicks: 2300, uniqueViews: 7779, viewed: 8999 },
-                        },
-                        statsByDevice: {},
                         statsByDomain: {
                             "hotmail.co.uk": {
                                 appleMppOpens: 10,
@@ -159,7 +157,9 @@ describe("EmailCampaignsClient", () => {
                     type: "classic",
                     winnerCriteria: "open",
                     winnerDelay: 50,
+                    attachmentUrl: "https://attachment.domain.com/file.pdf",
                     createdAt: "2017-05-01T12:30:00Z",
+                    emailExpirationDate: { duration: 30 },
                     footer: "[DEFAULT_FOOTER]",
                     header: "[DEFAULT_HEADER]",
                     htmlContent: "This is my HTML Content",
@@ -177,10 +177,10 @@ describe("EmailCampaignsClient", () => {
                     testSent: false,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
-                    utmIDActive: true,
+                    utmID: 12,
                     utmMedium: "EMAIL",
                     utmSource: "Brevo",
-                    recipients: { exclusionLists: [45], lists: [10] },
+                    recipients: { excludedSegments: [14], exclusionLists: [45], lists: [10], segments: [23] },
                     statistics: {
                         campaignStats: [
                             {
@@ -224,13 +224,13 @@ describe("EmailCampaignsClient", () => {
                             unsubscriptions: 2,
                             viewed: 8999,
                         },
-                        linksStats: {},
+                        linksStats: {
+                            "http://myUrl1.domain.com": 1000000,
+                            "http://myUrl2.domain.com": 1000000,
+                            "http://myUrl3.domain.com": 1000000,
+                        },
                         mirrorClick: 120,
                         remaining: 1000,
-                        statsByBrowser: {
-                            key: { clickers: 2665, uniqueClicks: 2300, uniqueViews: 7779, viewed: 8999 },
-                        },
-                        statsByDevice: {},
                         statsByDomain: {
                             aol: {
                                 appleMppOpens: 10,
@@ -343,6 +343,29 @@ describe("EmailCampaignsClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
+    test("createEmailCampaign (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = { name: "name", sender: {} };
+        const rawResponseBody = { message: "message" };
+
+        server
+            .mockEndpoint()
+            .post("/emailCampaigns")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailCampaigns.createEmailCampaign({
+                name: "name",
+                sender: {},
+            });
+        }).rejects.toThrow(Brevo.MethodNotAllowedError);
+    });
+
     test("uploadImageToGallery (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
@@ -408,7 +431,9 @@ describe("EmailCampaignsClient", () => {
             type: "classic",
             winnerCriteria: "open",
             winnerDelay: 50,
+            attachmentUrl: "https://attachment.domain.com/file.pdf",
             createdAt: "2017-05-01T12:30:00Z",
+            emailExpirationDate: { duration: 30, unit: "days" },
             footer: "[DEFAULT_FOOTER]",
             header: "[DEFAULT_HEADER]",
             htmlContent: "This is my HTML Content",
@@ -426,10 +451,10 @@ describe("EmailCampaignsClient", () => {
             testSent: false,
             toField: "{FNAME} {LNAME}",
             utmCampaignValue: "myutm",
-            utmIDActive: true,
+            utmID: 12,
             utmMedium: "EMAIL",
             utmSource: "Brevo",
-            recipients: { exclusionLists: [45], lists: [22] },
+            recipients: { excludedSegments: [14], exclusionLists: [45], lists: [22], segments: [23] },
             statistics: {
                 campaignStats: [
                     {
@@ -473,7 +498,11 @@ describe("EmailCampaignsClient", () => {
                     unsubscriptions: 2,
                     viewed: 8999,
                 },
-                linksStats: {},
+                linksStats: {
+                    "http://myUrl1.domain.com": 1000000,
+                    "http://myUrl2.domain.com": 1000000,
+                    "http://myUrl3.domain.com": 1000000,
+                },
                 mirrorClick: 120,
                 remaining: 1000,
                 statsByBrowser: {
@@ -634,6 +663,28 @@ describe("EmailCampaignsClient", () => {
         }).rejects.toThrow(Brevo.NotFoundError);
     });
 
+    test("updateEmailCampaign (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
+        const rawResponseBody = { message: "message" };
+
+        server
+            .mockEndpoint()
+            .put("/emailCampaigns/1000000")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailCampaigns.updateEmailCampaign({
+                campaignId: 1000000,
+            });
+        }).rejects.toThrow(Brevo.MethodNotAllowedError);
+    });
+
     test("deleteEmailCampaign (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
@@ -668,6 +719,27 @@ describe("EmailCampaignsClient", () => {
     });
 
     test("deleteEmailCampaign (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/emailCampaigns/1000000")
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.emailCampaigns.deleteEmailCampaign({
+                campaignId: 1000000,
+            });
+        }).rejects.toThrow(Brevo.ForbiddenError);
+    });
+
+    test("deleteEmailCampaign (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 

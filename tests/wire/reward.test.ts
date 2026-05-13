@@ -302,14 +302,14 @@ describe("RewardClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = {
-            createdAt: "2024-01-15T09:30:00Z",
             id: "id",
             loyaltyProgramId: "loyaltyProgramId",
             name: "name",
             publicDescription: "publicDescription",
             publicImage: "publicImage",
             publicName: "publicName",
-            updatedAt: "updatedAt",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -436,6 +436,7 @@ describe("RewardClient", () => {
             rewardId: "rewardId",
             updatedAt: "2024-01-15T09:30:00Z",
             value: 1.1,
+            validFrom: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -1472,6 +1473,7 @@ describe("RewardClient", () => {
                     unit: "unit",
                     updatedAt: "updatedAt",
                     value: 1.1,
+                    validFrom: "2024-01-15T09:30:00Z",
                 },
             ],
             count: 1,

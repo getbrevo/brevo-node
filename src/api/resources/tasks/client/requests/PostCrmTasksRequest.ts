@@ -6,7 +6,7 @@ import type * as Brevo from "../../../../index.js";
  * @example
  *     {
  *         date: "2021-11-01T17:44:54Z",
- *         name: "Task: Connect with client_dev",
+ *         name: "Task: Connect with client",
  *         taskTypeId: "61a5cd07ca1347c82306ad09"
  *     }
  */

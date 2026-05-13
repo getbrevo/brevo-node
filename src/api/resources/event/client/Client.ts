@@ -83,7 +83,11 @@ export class EventClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -156,7 +160,7 @@ export class EventClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -190,27 +194,29 @@ export class EventClient {
     /**
      * Create multiple events to track contacts' interactions in a single request.
      *
-     * @param {Brevo.CreateBatchEventsRequestItem[]} request
+     * @param {Brevo.CreateBatchEventsRequest} request
      * @param {EventClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.UnauthorizedError}
      *
      * @example
-     *     await client.event.createBatchEvents([{
-     *             event_name: "order_created",
-     *             identifiers: {}
-     *         }])
+     *     await client.event.createBatchEvents({
+     *         events: [{
+     *                 event_name: "order_created",
+     *                 identifiers: {}
+     *             }]
+     *     })
      */
     public createBatchEvents(
-        request: Brevo.CreateBatchEventsRequestItem[],
+        request: Brevo.CreateBatchEventsRequest,
         requestOptions?: EventClient.RequestOptions,
     ): core.HttpResponsePromise<Brevo.BatchAcceptedResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createBatchEvents(request, requestOptions));
     }
 
     private async __createBatchEvents(
-        request: Brevo.CreateBatchEventsRequestItem[],
+        request: Brevo.CreateBatchEventsRequest,
         requestOptions?: EventClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.BatchAcceptedResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -229,7 +235,7 @@ export class EventClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,

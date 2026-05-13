@@ -12,18 +12,19 @@ describe("ProgramClient", () => {
         const rawResponseBody = {
             items: [
                 {
-                    codeCount: 1,
-                    createdAt: "createdAt",
-                    description: "description",
-                    documentId: "documentId",
                     id: "id",
-                    meta: { key: "value" },
                     name: "name",
-                    pattern: "pattern",
+                    description: "description",
+                    meta: { key: "value" },
                     state: "inactive",
-                    subscriptionGeneratorId: "subscriptionGeneratorId",
                     subscriptionPoolId: "subscriptionPoolId",
-                    updatedAt: "updatedAt",
+                    subscriptionGeneratorId: "subscriptionGeneratorId",
+                    pattern: "pattern",
+                    codeCount: 1000000,
+                    documentId: "documentId",
+                    birthdayAttribute: "birthdayAttribute",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
                 },
             ],
         };
@@ -159,18 +160,19 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = {
-            codeCount: 1,
-            createdAt: "createdAt",
-            description: "description",
-            documentId: "documentId",
             id: "id",
-            meta: { key: "value" },
             name: "name",
-            pattern: "pattern",
+            description: "description",
+            meta: { key: "value" },
             state: "inactive",
-            subscriptionGeneratorId: "subscriptionGeneratorId",
             subscriptionPoolId: "subscriptionPoolId",
-            updatedAt: "updatedAt",
+            subscriptionGeneratorId: "subscriptionGeneratorId",
+            pattern: "pattern",
+            codeCount: 1000000,
+            documentId: "documentId",
+            birthdayAttribute: "birthdayAttribute",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -303,18 +305,19 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            codeCount: 1,
-            createdAt: "createdAt",
-            description: "description",
-            documentId: "documentId",
             id: "id",
-            meta: { key: "value" },
             name: "name",
-            pattern: "pattern",
+            description: "description",
+            meta: { key: "value" },
             state: "inactive",
-            subscriptionGeneratorId: "subscriptionGeneratorId",
             subscriptionPoolId: "subscriptionPoolId",
-            updatedAt: "updatedAt",
+            subscriptionGeneratorId: "subscriptionGeneratorId",
+            pattern: "pattern",
+            codeCount: 1000000,
+            documentId: "documentId",
+            birthdayAttribute: "birthdayAttribute",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -441,18 +444,19 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = {
-            codeCount: 1,
-            createdAt: "createdAt",
-            description: "description",
-            documentId: "documentId",
             id: "id",
-            meta: { key: "value" },
             name: "name",
-            pattern: "pattern",
+            description: "description",
+            meta: { key: "value" },
             state: "inactive",
-            subscriptionGeneratorId: "subscriptionGeneratorId",
             subscriptionPoolId: "subscriptionPoolId",
-            updatedAt: "updatedAt",
+            subscriptionGeneratorId: "subscriptionGeneratorId",
+            pattern: "pattern",
+            codeCount: 1000000,
+            documentId: "documentId",
+            birthdayAttribute: "birthdayAttribute",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -731,18 +735,19 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = {
-            codeCount: 1,
-            createdAt: "createdAt",
-            description: "description",
-            documentId: "documentId",
             id: "id",
-            meta: { key: "value" },
             name: "name",
-            pattern: "pattern",
+            description: "description",
+            meta: { key: "value" },
             state: "inactive",
-            subscriptionGeneratorId: "subscriptionGeneratorId",
             subscriptionPoolId: "subscriptionPoolId",
-            updatedAt: "updatedAt",
+            subscriptionGeneratorId: "subscriptionGeneratorId",
+            pattern: "pattern",
+            codeCount: 1000000,
+            documentId: "documentId",
+            birthdayAttribute: "birthdayAttribute",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -909,7 +914,8 @@ describe("ProgramClient", () => {
                     loyaltyProgramId: "loyaltyProgramId",
                     meta: { key: "value" },
                     rewardId: "rewardId",
-                    updatedAt: "updatedAt",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    validFrom: "2024-01-15T09:30:00Z",
                 },
             ],
             tier: [
@@ -1311,11 +1317,11 @@ describe("ProgramClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { memberContactIds: [1] };
         const rawResponseBody = {
-            createdAt: "createdAt",
-            memberContactIds: [1],
-            organizationId: 1,
-            ownerContactId: 1,
-            updatedAt: "updatedAt",
+            organizationId: 1000000,
+            ownerContactId: 1000000,
+            memberContactIds: [1000000],
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -1625,15 +1631,16 @@ describe("ProgramClient", () => {
     test("subscribeToLoyaltyProgram (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { contactId: 1 };
+        const rawRequestBody = { contactId: 1000000 };
         const rawResponseBody = {
-            contactId: 1,
-            createdAt: "createdAt",
+            organizationId: 1000000,
             loyaltyProgramId: "loyaltyProgramId",
-            loyaltySubscriptionId: "loyaltySubscriptionId",
-            organizationId: 1,
-            updatedAt: "updatedAt",
             versionId: 1,
+            contactId: 1000000,
+            loyaltySubscriptionId: "loyaltySubscriptionId",
+            meta: { key: "value" },
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -1647,7 +1654,7 @@ describe("ProgramClient", () => {
 
         const response = await client.program.subscribeToLoyaltyProgram({
             pid: "pid",
-            contactId: 1,
+            contactId: 1000000,
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -1655,7 +1662,7 @@ describe("ProgramClient", () => {
     test("subscribeToLoyaltyProgram (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { contactId: 1 };
+        const rawRequestBody = { contactId: 1000000 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1670,7 +1677,7 @@ describe("ProgramClient", () => {
         await expect(async () => {
             return await client.program.subscribeToLoyaltyProgram({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
             });
         }).rejects.toThrow(Brevo.BadRequestError);
     });
@@ -1678,7 +1685,7 @@ describe("ProgramClient", () => {
     test("subscribeToLoyaltyProgram (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { contactId: 1 };
+        const rawRequestBody = { contactId: 1000000 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1693,7 +1700,7 @@ describe("ProgramClient", () => {
         await expect(async () => {
             return await client.program.subscribeToLoyaltyProgram({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
             });
         }).rejects.toThrow(Brevo.UnauthorizedError);
     });
@@ -1701,7 +1708,7 @@ describe("ProgramClient", () => {
     test("subscribeToLoyaltyProgram (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { contactId: 1 };
+        const rawRequestBody = { contactId: 1000000 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1716,7 +1723,7 @@ describe("ProgramClient", () => {
         await expect(async () => {
             return await client.program.subscribeToLoyaltyProgram({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
             });
         }).rejects.toThrow(Brevo.ForbiddenError);
     });
@@ -1724,7 +1731,7 @@ describe("ProgramClient", () => {
     test("subscribeToLoyaltyProgram (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { contactId: 1 };
+        const rawRequestBody = { contactId: 1000000 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1739,7 +1746,7 @@ describe("ProgramClient", () => {
         await expect(async () => {
             return await client.program.subscribeToLoyaltyProgram({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
             });
         }).rejects.toThrow(Brevo.NotFoundError);
     });
@@ -1747,7 +1754,7 @@ describe("ProgramClient", () => {
     test("subscribeToLoyaltyProgram (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { contactId: 1 };
+        const rawRequestBody = { contactId: 1000000 };
         const rawResponseBody = { message: "message" };
 
         server
@@ -1762,7 +1769,7 @@ describe("ProgramClient", () => {
         await expect(async () => {
             return await client.program.subscribeToLoyaltyProgram({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
             });
         }).rejects.toThrow(Brevo.UnprocessableEntityError);
     });
@@ -1770,7 +1777,7 @@ describe("ProgramClient", () => {
     test("subscribeToLoyaltyProgram (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { contactId: 1 };
+        const rawRequestBody = { contactId: 1000000 };
         const rawResponseBody = { key: "value" };
 
         server
@@ -1785,7 +1792,7 @@ describe("ProgramClient", () => {
         await expect(async () => {
             return await client.program.subscribeToLoyaltyProgram({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
             });
         }).rejects.toThrow(Brevo.InternalServerError);
     });

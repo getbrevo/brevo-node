@@ -54,7 +54,7 @@ describe("EcommerceClient", () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: "CAT123" };
-        const rawResponseBody = { id: 21 };
+        const rawResponseBody = { id: "CAT123" };
 
         server
             .mockEndpoint()
@@ -269,6 +269,7 @@ describe("EcommerceClient", () => {
         const response = await client.ecommerce.getAttributionMetricsForOneOrMoreBrevoCampaignsOrWorkflows({
             periodFrom: "2022-01-02T00:00:00Z",
             periodTo: "2022-01-03T00:00:00Z",
+            "emailCampaignId[]": ["sale"],
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -861,6 +862,7 @@ describe("EcommerceClient", () => {
                     name: "Alpina Panoma Classic",
                     parentId: "parentId",
                     price: 49.95,
+                    alternativePrice: 39.95,
                     s3Original: "https://img-ecom.mailinblue.com/path-to-original/img.jpg",
                     s3ThumbAnalytics: "https://img-ecom.mailinblue.com/path-to-analytics/img.jpg",
                     s3ThumbEditor: "https://img-ecom.mailinblue.com/path-to-editor/img.jpg",
@@ -881,6 +883,7 @@ describe("EcommerceClient", () => {
                     name: "Alpina Panoma Classic2",
                     parentId: "parentId",
                     price: 49.95,
+                    alternativePrice: 44.95,
                     s3Original: "https://img-ecom.mailinblue.com/path-to-original/img.jpg",
                     s3ThumbAnalytics: "https://img-ecom.mailinblue.com/path-to-analytics/img.jpg",
                     s3ThumbEditor: "https://img-ecom.mailinblue.com/path-to-editor/img.jpg",
@@ -914,7 +917,7 @@ describe("EcommerceClient", () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { id: "P11", name: "Iphone 11" };
-        const rawResponseBody = { id: 21 };
+        const rawResponseBody = { id: "P11" };
 
         server
             .mockEndpoint()
@@ -1034,6 +1037,7 @@ describe("EcommerceClient", () => {
             name: "Iphone 11",
             parentId: "parentId",
             price: 1.1,
+            alternativePrice: 1.1,
             s3Original: "s3Original",
             s3ThumbAnalytics: "s3ThumbAnalytics",
             s3ThumbEditor: "s3ThumbEditor",

@@ -15,6 +15,8 @@ export interface GetProductsRequest {
     sort?: Brevo.GetProductsRequestSort;
     /** Filter by product ids */
     ids?: string | string[];
+    /** Search products simultaneously across SKU, name, and ID fields. Results are returned in the following priority order: **exact SKU match** > **SKU prefix match** > **name match** > **ID match**. For example, `?search=123` on products with `{sku: "123"}` and `{sku: "123456"}` returns the exact SKU match first. */
+    search?: string;
     /** Filter by product name, minimum 3 characters should be present for search. */
     name?: string;
     /** Price filter for products less than and equals to particular amount */
@@ -29,12 +31,26 @@ export interface GetProductsRequest {
     "price[eq]"?: number;
     /** Price filter for products not equals to particular amount */
     "price[ne]"?: number;
+    /** Alternative price filter for products less than and equals to particular amount */
+    "alternativePrice[lte]"?: number;
+    /** Alternative price filter for products greater than and equals to particular amount */
+    "alternativePrice[gte]"?: number;
+    /** Alternative price filter for products less than particular amount */
+    "alternativePrice[lt]"?: number;
+    /** Alternative price filter for products greater than particular amount */
+    "alternativePrice[gt]"?: number;
+    /** Alternative price filter for products equals to particular amount */
+    "alternativePrice[eq]"?: number;
+    /** Alternative price filter for products not equals to particular amount */
+    "alternativePrice[ne]"?: number;
     /** Filter by categories ids */
     categories?: string | string[];
-    /** Filter (urlencoded) the orders modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** */
+    /** Filter (urlencoded) the products modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** */
     modifiedSince?: string;
-    /** Filter (urlencoded) the orders created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** */
+    /** Filter (urlencoded) the products created after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.** */
     createdSince?: string;
+    /** Sort the results by a specific field. Default sort field is `created_at` when not passed. */
+    sortByField?: Brevo.GetProductsRequestSortByField;
     /** Filter products by their deletion status. If `false` is passed, only products that are not deleted will be returned. */
     isDeleted?: string;
 }

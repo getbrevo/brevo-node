@@ -25,6 +25,8 @@ export interface RedeemVoucherRequest {
     rewardId?: string;
     /** Time to live in seconds for the redemption request */
     ttl?: number;
+    /** Whether the redemption should be automatically completed */
+    autoComplete?: boolean;
 }
 
 export namespace RedeemVoucherRequest {

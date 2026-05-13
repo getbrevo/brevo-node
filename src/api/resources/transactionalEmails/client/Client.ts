@@ -23,6 +23,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Retrieve a paginated list of transactional contacts that have been blocked or unsubscribed, along with the reason for blocking (e.g. hard bounce, admin blocked, spam complaint, or unsubscription via email/API/Marketing Automation). Both `startDate` and `endDate` must be provided together when filtering by date range, and neither date can be in the future. Results default to 50 per page (max 100) and are sorted in descending order of record creation unless overridden with the `sort` parameter.
+     *
      * @param {Brevo.GetTransacBlockedContactsRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -66,7 +68,12 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("senders", _queryParams.senders, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -97,6 +104,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Unblock or resubscribe a transactional contact by removing their email address from the blacklist. The email address must be URL-encoded in the path parameter and must be a valid email format. If the contact is not found in the blocklist, a 404 error is returned.
+     *
      * @param {Brevo.DeleteSmtpBlockedContactsEmailRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -137,7 +146,7 @@ export class TransactionalEmailsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -176,6 +185,8 @@ export class TransactionalEmailsClient {
      *
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Brevo.BadRequestError}
+     *
      * @example
      *     await client.transactionalEmails.getBlockedDomains()
      */
@@ -203,7 +214,7 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -215,11 +226,16 @@ export class TransactionalEmailsClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BrevoError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.BrevoError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/smtp/blockedDomains");
@@ -265,7 +281,7 @@ export class TransactionalEmailsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -335,7 +351,7 @@ export class TransactionalEmailsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -407,7 +423,7 @@ export class TransactionalEmailsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -437,6 +453,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Send a transactional email to one or more recipients, either using inline HTML content or a pre-built template via `templateId`. You can schedule emails for future delivery using `scheduledAt` (UTC, up to 5-minute delay), send multiple personalized versions with `messageVersions` (max 2000 total recipients, 99 per version), and attach files via URL or base64-encoded content. A `sender` and `subject` are required when no `templateId` is provided; when a `templateId` is used, the template''s sender and subject are applied unless overridden.
+     *
      * @param {Brevo.SendTransacEmailRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -501,7 +519,7 @@ export class TransactionalEmailsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -571,7 +589,7 @@ export class TransactionalEmailsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -651,7 +669,11 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -733,7 +755,11 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -768,6 +794,9 @@ export class TransactionalEmailsClient {
      * @param {Brevo.GetTransacEmailContentRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
+     * @throws {@link Brevo.BadRequestError}
+     * @throws {@link Brevo.NotFoundError}
+     *
      * @example
      *     await client.transactionalEmails.getTransacEmailContent({
      *         uuid: "uuid"
@@ -800,7 +829,7 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -812,17 +841,26 @@ export class TransactionalEmailsClient {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BrevoError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Brevo.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.BrevoError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/smtp/emails/{uuid}");
     }
 
     /**
+     * Delete SMTP transactional log entries identified by a message ID (enclosed in angle brackets with an @ sign) or a valid email address. Optionally narrow the deletion to a specific date range using `from_date` and `to_date` query parameters (YYYY-MM-DD format). The operation also removes any associated stored email preview content.
+     *
      * @param {Brevo.DeleteSmtpLogIdentifierRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -845,7 +883,11 @@ export class TransactionalEmailsClient {
         request: Brevo.DeleteSmtpLogIdentifierRequest,
         requestOptions?: TransactionalEmailsClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { identifier } = request;
+        const { identifier, from_date: fromDate, to_date: toDate } = request;
+        const _queryParams: Record<string, unknown> = {
+            from_date: fromDate,
+            to_date: toDate,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -861,7 +903,11 @@ export class TransactionalEmailsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -934,7 +980,11 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1020,7 +1070,11 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1048,6 +1102,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * This endpoint will show the aggregated stats per day for the past 10 days by default if `startDate` and `endDate` OR `days` is not passed. The date range can not exceed 30 days.
+     *
      * @param {Brevo.GetSmtpReportRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1092,7 +1148,11 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1120,7 +1180,9 @@ export class TransactionalEmailsClient {
     }
 
     /**
-     * @param {unknown} request
+     * Generate a fully rendered preview of a transactional email template by resolving dynamic variables. Provide either an `email` address (to populate variables from the contact''s attributes) or a `params` object with key-value pairs for manual substitution; at least one of these is required alongside the mandatory `templateId`. The response includes the rendered HTML, subject, sender details, preview text, and any feed names used in the template.
+     *
+     * @param {Brevo.PostPreviewSmtpEmailTemplatesRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
@@ -1131,14 +1193,14 @@ export class TransactionalEmailsClient {
      *     })
      */
     public postPreviewSmtpEmailTemplates(
-        request?: unknown,
+        request: Brevo.PostPreviewSmtpEmailTemplatesRequest,
         requestOptions?: TransactionalEmailsClient.RequestOptions,
     ): core.HttpResponsePromise<Brevo.PostPreviewSmtpEmailTemplatesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__postPreviewSmtpEmailTemplates(request, requestOptions));
     }
 
     private async __postPreviewSmtpEmailTemplates(
-        request?: unknown,
+        request: Brevo.PostPreviewSmtpEmailTemplatesRequest,
         requestOptions?: TransactionalEmailsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.PostPreviewSmtpEmailTemplatesResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -1157,7 +1219,7 @@ export class TransactionalEmailsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -1190,6 +1252,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Retrieve a paginated list of all transactional email templates (including automation templates) with their details such as name, subject, sender, status, HTML content, and timestamps. Results default to 50 per page (max 1000) and are sorted in descending creation order unless overridden. You can filter by active/inactive status using `templateStatus` and by editor type using `editorType` (currently only `richTextEditor` is supported).
+     *
      * @param {Brevo.GetSmtpTemplatesRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1209,12 +1273,13 @@ export class TransactionalEmailsClient {
         request: Brevo.GetSmtpTemplatesRequest = {},
         requestOptions?: TransactionalEmailsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.GetSmtpTemplatesResponse>> {
-        const { templateStatus, limit, offset, sort } = request;
+        const { templateStatus, limit, offset, sort, editorType } = request;
         const _queryParams: Record<string, unknown> = {
             templateStatus,
             limit,
             offset,
             sort: sort != null ? sort : undefined,
+            editorType: editorType != null ? editorType : undefined,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1231,7 +1296,11 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1259,6 +1328,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Create a new transactional email template with the specified sender, subject, and content. The `sender`, `subject`, and `templateName` fields are required. Template content can be provided via `htmlContent` (minimum 10 characters) or `htmlUrl`; at least one must be supplied. Templates are created as inactive by default unless `isActive` is explicitly set to `true`.
+     *
      * @param {Brevo.CreateSmtpTemplateRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1298,7 +1369,7 @@ export class TransactionalEmailsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -1328,6 +1399,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Retrieve the full details of a specific transactional email template by its numeric ID or custom template identifier string. The response includes the template name, subject, sender information, HTML content, active status, creation and modification timestamps, reply-to address, tag, and a `doiTemplate` flag indicating whether the template is a double opt-in template (detected by the presence of optin-related tags or variables in the content).
+     *
      * @param {Brevo.GetSmtpTemplateRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1366,7 +1439,7 @@ export class TransactionalEmailsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1396,6 +1469,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Update an existing transactional email template by its numeric ID or custom template identifier string. All fields in the request body are optional; only the provided fields will be updated. You can update the template name, subject, sender, reply-to address, HTML content (via `htmlContent` or `htmlUrl`), active status, tag, attachment URL, and the personalized `toField`. Only one of sender email or sender ID should be provided per request.
+     *
      * @param {Brevo.UpdateSmtpTemplateRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1435,7 +1510,7 @@ export class TransactionalEmailsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -1467,6 +1542,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Permanently delete a transactional email template by its numeric ID. Only inactive templates can be deleted; attempting to delete an active template returns a 405 error. To deactivate a template before deletion, use `PUT /smtp/templates/{templateId}` with `isActive` set to `false`. Deletion also removes associated newsletter template data and triggers asynchronous cleanup of shared assets.
+     *
      * @param {Brevo.DeleteSmtpTemplateRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1505,7 +1582,7 @@ export class TransactionalEmailsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1540,6 +1617,8 @@ export class TransactionalEmailsClient {
     }
 
     /**
+     * Send a test email of the specified transactional template to one or more recipients. Provide an array of email addresses in the `emailTo` field; if left empty, the test mail is sent to your entire test list. You can send a maximum of 50 test emails per day, and all provided email addresses must be valid.
+     *
      * @param {Brevo.SendTestTemplateRequest} request
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1580,7 +1659,7 @@ export class TransactionalEmailsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
