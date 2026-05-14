@@ -7,23 +7,20 @@ export interface GetExtendedCampaignStats {
     campaignStats: Brevo.GetCampaignStats[];
     /** Overall statistics of the campaign */
     globalStats: Brevo.GetCampaignStats;
-    /** Statistics about the number of clicks for the links */
-    linksStats: GetExtendedCampaignStats.LinksStats;
+    /** Statistics about the number of clicks for each link in the campaign. Keys are the link URLs, values are click counts. Only populated when the `statistics` query parameter is set to `linksStats`. */
+    linksStats: Record<string, number>;
     /** Number of clicks on mirror link */
     mirrorClick: number;
-    /** Number of remaning emails to send */
+    /** Number of remaining emails to send */
     remaining: number;
-    statsByBrowser: Record<string, Brevo.GetDeviceBrowserStats>;
-    statsByDevice: GetExtendedCampaignStats.StatsByDevice;
-    statsByDomain: Record<string, Brevo.GetCampaignStats>;
+    /** Statistics of the campaign grouped by browser. Only available when retrieving a single campaign with the `statistics` query parameter set to `statsByBrowser`. */
+    statsByBrowser?: Record<string, Brevo.GetDeviceBrowserStats> | undefined;
+    statsByDevice?: GetExtendedCampaignStats.StatsByDevice | undefined;
+    /** Statistics of the campaign grouped by email domain. Only populated when the `statistics` query parameter is set to `statsByDomain`. */
+    statsByDomain?: Record<string, Brevo.GetCampaignStats> | undefined;
 }
 
 export namespace GetExtendedCampaignStats {
-    /**
-     * Statistics about the number of clicks for the links
-     */
-    export type LinksStats = {};
-
     export interface StatsByDevice {
         /** Statistics of the campaign on the basis of desktop devices */
         desktop?: Record<string, Brevo.GetDeviceBrowserStats> | undefined;

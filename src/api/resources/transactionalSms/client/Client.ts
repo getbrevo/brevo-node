@@ -65,7 +65,7 @@ export class TransactionalSmsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -100,11 +100,14 @@ export class TransactionalSmsClient {
     /**
      * @deprecated
      *
+     * Send a transactional SMS message to a single mobile number. The `sender`, `recipient`, and either `content` or `templateId` fields are required. The sender name is limited to 11 alphanumeric characters or 15 numeric characters, and the recipient must be a valid international phone number (6-15 digits, optional leading +). Tags can be a string or an array of up to 10 strings. The SMS type defaults to `transactional` but can be set to `marketing`; if the content includes a stop code, it is automatically treated as marketing. Returns the message ID, SMS count, credits used, and remaining credits.
+     *
      * @param {Brevo.SendTransacSms} request
      * @param {TransactionalSmsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.PaymentRequiredError}
+     * @throws {@link Brevo.TooManyRequestsError}
      *
      * @example
      *     await client.transactionalSms.sendTransacSms({
@@ -139,7 +142,7 @@ export class TransactionalSmsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -161,6 +164,11 @@ export class TransactionalSmsClient {
                         _response.error.body as Brevo.ErrorModel,
                         _response.rawResponse,
                     );
+                case 429:
+                    throw new Brevo.TooManyRequestsError(
+                        _response.error.body as Brevo.ErrorModel,
+                        _response.rawResponse,
+                    );
                 default:
                     throw new errors.BrevoError({
                         statusCode: _response.error.statusCode,
@@ -174,6 +182,8 @@ export class TransactionalSmsClient {
     }
 
     /**
+     * Retrieve an aggregated report of your transactional SMS activity over a specified time period, including counts for requests, delivered, hard bounces, soft bounces, blocked, unsubscribed, replied, accepted, rejected, and skipped messages. Filter by date range using `startDate` and `endDate` (both required together, YYYY-MM-DD format) or by a number of past `days` (not compatible with date range). You can further narrow results by `tag`. If no date filter is provided, the report covers all available data and returns the auto-detected date range.
+     *
      * @param {Brevo.GetTransacAggregatedSmsReportRequest} request
      * @param {TransactionalSmsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -215,7 +225,11 @@ export class TransactionalSmsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -251,6 +265,8 @@ export class TransactionalSmsClient {
     }
 
     /**
+     * Retrieve a paginated list of individual SMS event records (unaggregated), including event type, phone number, message ID, timestamp, tag, and reason or reply content where applicable. Results default to 50 per page (max 100) and are sorted in descending order unless overridden. Filter by date range (`startDate`/`endDate`), past `days` (not compatible with date range), specific `event` type (e.g. delivered, bounces, replies), `phoneNumber`, or `tags`. Bounce events include the failure reason, and reply events include the reply content.
+     *
      * @param {Brevo.GetSmsEventsRequest} request
      * @param {TransactionalSmsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -297,7 +313,11 @@ export class TransactionalSmsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -330,6 +350,8 @@ export class TransactionalSmsClient {
     }
 
     /**
+     * Retrieve a day-by-day breakdown of your transactional SMS activity, with each entry containing the date and counts for requests, delivered, hard bounces, soft bounces, blocked, unsubscribed, replied, accepted, rejected, and skipped messages. Filter by date range using `startDate` and `endDate` (both required together, YYYY-MM-DD format), by a number of past `days` (not compatible with date range), or by `tag`. Results are sorted in descending order by default unless overridden with the `sort` parameter.
+     *
      * @param {Brevo.GetTransacSmsReportRequest} request
      * @param {TransactionalSmsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -372,7 +394,11 @@ export class TransactionalSmsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

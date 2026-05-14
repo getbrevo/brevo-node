@@ -7,7 +7,7 @@ import type * as core from "../../../../../core/index.js";
  *     {}
  */
 export interface PostCompaniesImportRequest {
-    /** The CSV file to upload.The file should have the first row as the mapping attribute. Some default attribute names are (a) company_id [brevo mongoID to update deals] (b) associated_contact (c) associated_deal (f) any other attribute with internal name */
+    /** The CSV file to upload.The file should have the first row as the mapping attribute. Some default attribute names are (a) company_id [brevo mongoID to update companies] (b) associated_contact (c) associated_deal (f) any other attribute with internal name */
     file?: core.file.Uploadable | undefined;
     /**
      * The mapping options in JSON format. Here is an example of the JSON structure: ```json {

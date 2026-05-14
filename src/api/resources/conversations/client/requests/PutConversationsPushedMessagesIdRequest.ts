@@ -4,12 +4,12 @@
  * @example
  *     {
  *         id: "id",
- *         text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 4668 7775 9233 54"
+ *         text: "Your order has shipped! Here's your tracking number: 9114 5847 4668 7775 9233 54"
  *     }
  */
 export interface PutConversationsPushedMessagesIdRequest {
     /** ID of the message */
     id: string;
-    /** edited message text */
+    /** The new message text. */
     text: string;
 }

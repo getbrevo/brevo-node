@@ -3,7 +3,6 @@
 /**
  * @example
  *     {
- *         events: ["sent"],
  *         url: "http://requestb.in/173lyyx1"
  *     }
  */
@@ -12,7 +11,7 @@ export interface CreateWebhookRequest {
     auth?: CreateWebhookRequest.Auth;
     /** To send batched webhooks */
     batched?: boolean;
-    /** channel of webhook */
+    /** Channel of the webhook */
     channel?: CreateWebhookRequest.Channel;
     /** Description of the webhook */
     description?: string;
@@ -22,24 +21,18 @@ export interface CreateWebhookRequest {
      */
     domain?: string;
     /**
-     * - Events triggering the webhook. Possible values for
-     * **Transactional** type webhook: #### `sent` OR `request`,
-     * `delivered`, `hardBounce`, `softBounce`, `blocked`, `spam`,
-     * `invalid`, `deferred`, `click`, `opened`, `uniqueOpened` and
-     * `unsubscribed` - Possible values for **Marketing** type webhook:
-     * #### `spam`, `opened`, `click`, `hardBounce`, `softBounce`,
-     * `unsubscribed`, `listAddition` & `delivered` - Possible values
-     * for **Inbound** type webhook: #### `inboundEmailProcessed` -
-     * Possible values for type **Transactional** and channel **SMS**
-     * ####
-     * `accepted`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`,
-     * `subscribe`,`sent`,`blacklisted`,`skip` - Possible values for
-     * type **Marketing**  channel **SMS** ####
-     * `sent`,`delivered`,`softBounce`,`hardBounce`,`unsubscribe`,`reply`,
-     * `subscribe`,`skip`
-     * #### `reply`
+     * Events triggering the webhook. Required for transactional and
+     * marketing types, optional for inbound type (defaults to
+     * `inboundEmailProcessed`). Possible values for **Transactional**
+     * type webhook: `sent` OR `request`, `delivered`, `hardBounce`,
+     * `softBounce`, `blocked`, `spam`, `invalid`, `deferred`, `click`,
+     * `opened`, `uniqueOpened` and `unsubscribed`. Possible values for
+     * **Marketing** type webhook: `spam`, `opened`, `click`,
+     * `hardBounce`, `softBounce`, `unsubscribed`, `listAddition`,
+     * `delivered`, `contactUpdated` & `contactDeleted`. Possible values
+     * for **Inbound** type webhook: `inboundEmailProcessed`.
      */
-    events: CreateWebhookRequest.Events.Item[];
+    events?: CreateWebhookRequest.Events.Item[];
     /** Custom headers to be send with webhooks */
     headers?: CreateWebhookRequest.Headers.Item[];
     /** Type of the webhook */
@@ -59,10 +52,10 @@ export namespace CreateWebhookRequest {
         type?: string | undefined;
     }
 
-    /** channel of webhook */
+    /** Channel of the webhook */
     export const Channel = {
-        Sms: "sms",
         Email: "email",
+        Sms: "sms",
     } as const;
     export type Channel = (typeof Channel)[keyof typeof Channel];
     export type Events = Events.Item[];

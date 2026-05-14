@@ -13,7 +13,7 @@ export interface PostCrmDealsImportRequest {
      * The mapping options in JSON format. Here is an example of the JSON structure: ```json {
      *   "link_entities": true, // Determines whether to link related entities during the import process
      *   "unlink_entities": false, // Determines whether to unlink related entities during the import process
-     *   "update_existing_records": true, // Determines whether to update based on company ID or treat every row as create
+     *   "update_existing_records": true, // Determines whether to update based on deal ID or treat every row as create
      *   "unset_empty_attributes": false // Determines whether to unset a specific attribute during update if the values input is blank
      * } ```
      */

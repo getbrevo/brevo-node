@@ -8,8 +8,6 @@ export interface GetWebhook {
      * true
      */
     batched?: boolean | undefined;
-    /** channel of webhook */
-    channel?: GetWebhook.Channel | undefined;
     /** Creation UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     createdAt: string;
     /** Description of the webhook */
@@ -20,23 +18,20 @@ export interface GetWebhook {
     id: number;
     /** Last modification UTC date-time of the webhook (YYYY-MM-DDTHH:mm:ss.SSSZ) */
     modifiedAt: string;
-    /** Type of webhook (marketing or transactional) */
+    /** Type of webhook (marketing, transactional, or inbound) */
     type: GetWebhook.Type;
+    /** Inbound domain of the webhook, only returned for inbound type webhooks */
+    domain?: string | undefined;
     /** URL of the webhook */
     url: string;
 }
 
 export namespace GetWebhook {
-    /** channel of webhook */
-    export const Channel = {
-        Sms: "sms",
-        Email: "email",
-    } as const;
-    export type Channel = (typeof Channel)[keyof typeof Channel];
-    /** Type of webhook (marketing or transactional) */
+    /** Type of webhook (marketing, transactional, or inbound) */
     export const Type = {
         Marketing: "marketing",
         Transactional: "transactional",
+        Inbound: "inbound",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

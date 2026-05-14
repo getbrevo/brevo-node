@@ -23,6 +23,8 @@ export class PaymentsClient {
     }
 
     /**
+     * Create a new payment request for a Brevo contact. The request requires a reference (displayed on the payment page), a contact ID, and a cart with currency and amount in cents. You can optionally configure a custom success redirect URL and enable email notifications with reminders. Returns the payment request ID and its public payment URL. A `403` error is returned if Brevo Payments is not activated or the account is not validated.
+     *
      * @param {Brevo.CreatePaymentRequestRequest} request
      * @param {PaymentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -67,7 +69,7 @@ export class PaymentsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -101,6 +103,8 @@ export class PaymentsClient {
     }
 
     /**
+     * Retrieve the details of a specific payment request by its ID. The response includes the reference, status (created, sent, reminderSent, or paid), cart details, notification configuration, contact ID, and the number of reminders sent. Returns a `404` error if no payment request matches the provided ID.
+     *
      * @param {Brevo.GetPaymentRequestRequest} request
      * @param {PaymentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -141,7 +145,7 @@ export class PaymentsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -175,6 +179,8 @@ export class PaymentsClient {
     }
 
     /**
+     * Delete a payment request by its UUID. Once deleted, the payment request can no longer be accessed or paid. Returns a `404` error if no payment request matches the provided ID, and a `403` error if Brevo Payments is not activated or the account is not validated.
+     *
      * @param {Brevo.DeletePaymentRequestRequest} request
      * @param {PaymentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -214,7 +220,7 @@ export class PaymentsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

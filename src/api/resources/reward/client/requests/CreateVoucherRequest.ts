@@ -24,4 +24,6 @@ export interface CreateVoucherRequest {
     rewardId: string;
     /** Value of the selected reward config */
     value?: number;
+    /** Date from which the voucher becomes valid. Accepts RFC 3339 or DD/MM/YYYY HH:MM AM/PM format. Converted to UTC using the organization's timezone. */
+    validFrom?: string;
 }

@@ -83,28 +83,36 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1482512803740,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
@@ -124,6 +132,10 @@ describe("ConversationsClient", () => {
             text: "Hello! How can I help you?",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -160,28 +172,36 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1482512803740,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
@@ -201,6 +221,10 @@ describe("ConversationsClient", () => {
             text: "Hello! How can I help you?",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -238,28 +262,36 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1482512803740,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
@@ -279,6 +311,10 @@ describe("ConversationsClient", () => {
             text: "Hello! How can I help you?",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -303,7 +339,7 @@ describe("ConversationsClient", () => {
     test("sendAMessageAsAnAgent (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { text: { key: "value" }, visitorId: { key: "value" } };
+        const rawRequestBody = { text: "text", visitorId: "visitorId" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -317,12 +353,8 @@ describe("ConversationsClient", () => {
 
         await expect(async () => {
             return await client.conversations.sendAMessageAsAnAgent({
-                text: {
-                    key: "value",
-                },
-                visitorId: {
-                    key: "value",
-                },
+                text: "text",
+                visitorId: "visitorId",
             });
         }).rejects.toThrow(Brevo.BadRequestError);
     });
@@ -337,28 +369,36 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1482512803740,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
@@ -378,6 +418,10 @@ describe("ConversationsClient", () => {
             text: "Hello! How can I help you?",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -447,32 +491,40 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1482512803740,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
-            html: "Hello! How can I help you?",
+            html: "Good morning! How can I help you?",
             id: "eYBEm3gq3zc5ayE2g",
             integrations: { key: "value" },
             isBot: true,
@@ -485,9 +537,13 @@ describe("ConversationsClient", () => {
             replyTo: { email: "email", name: "name" },
             sourceMessageId: "sourceMessageId",
             subject: "Invitation to a meeting",
-            text: "Hello! How can I help you?",
+            text: "Good morning! How can I help you?",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -612,7 +668,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             groupId: "PjRBMhWGen6aRHjif",
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
         const rawResponseBody = {
@@ -621,32 +677,40 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1470222622433,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
-            html: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            html: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             id: "AXCR3k9bpSY7bpuh7",
             integrations: { key: "value" },
             isBot: true,
@@ -659,9 +723,13 @@ describe("ConversationsClient", () => {
             replyTo: { email: "email", name: "name" },
             sourceMessageId: "sourceMessageId",
             subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -676,7 +744,7 @@ describe("ConversationsClient", () => {
 
         const response = await client.conversations.sendAnAutomatedMessageToAVisitor({
             groupId: "PjRBMhWGen6aRHjif",
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
         expect(response).toEqual(rawResponseBody);
@@ -686,7 +754,7 @@ describe("ConversationsClient", () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
         const rawResponseBody = {
@@ -695,32 +763,40 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1470222622433,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
-            html: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            html: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             id: "AXCR3k9bpSY7bpuh7",
             integrations: { key: "value" },
             isBot: true,
@@ -733,9 +809,13 @@ describe("ConversationsClient", () => {
             replyTo: { email: "email", name: "name" },
             sourceMessageId: "sourceMessageId",
             subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -749,7 +829,7 @@ describe("ConversationsClient", () => {
             .build();
 
         const response = await client.conversations.sendAnAutomatedMessageToAVisitor({
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
         expect(response).toEqual(rawResponseBody);
@@ -760,7 +840,7 @@ describe("ConversationsClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             agentId: "d9nKoegKSjmCtyK78",
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
         const rawResponseBody = {
@@ -769,32 +849,40 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1470222622433,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
-            html: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            html: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             id: "AXCR3k9bpSY7bpuh7",
             integrations: { key: "value" },
             isBot: true,
@@ -807,9 +895,13 @@ describe("ConversationsClient", () => {
             replyTo: { email: "email", name: "name" },
             sourceMessageId: "sourceMessageId",
             subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -824,7 +916,7 @@ describe("ConversationsClient", () => {
 
         const response = await client.conversations.sendAnAutomatedMessageToAVisitor({
             agentId: "d9nKoegKSjmCtyK78",
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         });
         expect(response).toEqual(rawResponseBody);
@@ -833,7 +925,7 @@ describe("ConversationsClient", () => {
     test("sendAnAutomatedMessageToAVisitor (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { text: { key: "value" }, visitorId: { key: "value" } };
+        const rawRequestBody = { text: "text", visitorId: "visitorId" };
         const rawResponseBody = { key: "value" };
 
         server
@@ -847,12 +939,8 @@ describe("ConversationsClient", () => {
 
         await expect(async () => {
             return await client.conversations.sendAnAutomatedMessageToAVisitor({
-                text: {
-                    key: "value",
-                },
-                visitorId: {
-                    key: "value",
-                },
+                text: "text",
+                visitorId: "visitorId",
             });
         }).rejects.toThrow(Brevo.BadRequestError);
     });
@@ -867,32 +955,40 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1470222622433,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
-            html: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            html: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             id: "AXCR3k9bpSY7bpuh7",
             integrations: { key: "value" },
             isBot: true,
@@ -905,9 +1001,13 @@ describe("ConversationsClient", () => {
             replyTo: { email: "email", name: "name" },
             sourceMessageId: "sourceMessageId",
             subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 3325 9667 4328 88",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -971,7 +1071,7 @@ describe("ConversationsClient", () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 4668 7775 9233 54",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 4668 7775 9233 54",
         };
         const rawResponseBody = {
             agentId: "d9nKoegKSjmCtyK78",
@@ -979,32 +1079,40 @@ describe("ConversationsClient", () => {
             agentUserpic: "https://www.brevo.com/",
             attachments: [
                 {
-                    fileName: "fileName",
-                    inlineId: "inlineId",
+                    name: "name",
+                    link: "link",
+                    mimeType: "mimeType",
                     isImage: true,
-                    isInline: "isInline",
+                    isSticker: true,
+                    isInline: true,
+                    inlineId: "inlineId",
                     size: 1000000,
-                    url: "url",
+                    isAllowedFileType: true,
                 },
             ],
             bcc: [{ email: "email", name: "name" }],
             cc: [{ email: "email", name: "name" }],
             createdAt: 1470222622433,
             file: {
-                filename: "conversations.png",
-                imageInfo: {
-                    height: 525,
-                    previewUrl:
-                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/lighter/",
-                    width: 1129,
-                },
+                name: "conversations.png",
+                link: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                mimeType: "mimeType",
                 isImage: true,
+                isSticker: true,
+                isInline: true,
+                inlineId: "inlineId",
                 size: 15538,
-                url: "https://ucarecdn.com/cee5c10c-8302-45c1-b1fb-43860ca941a9/",
+                imageInfo: {
+                    width: 1129,
+                    height: 525,
+                    previewLink:
+                        "https://ucarecdn.com/03cd56cd-1de9-4f65-996d-08afdf27fa1b/-/preview/800x800/-/quality/better/",
+                },
+                isAllowedFileType: true,
             },
             forwardedToSourceStatus: { error: "error", isSuccess: true },
             from: { email: "email", name: "name" },
-            html: "Your order has shipped! Here’s your tracking number: 9114 5847 4668 7775 9233 54",
+            html: "Your order has shipped! Here's your tracking number: 9114 5847 4668 7775 9233 54",
             id: "AXCR3k9bpSY7bpuh7",
             integrations: { key: "value" },
             isBot: true,
@@ -1017,9 +1125,13 @@ describe("ConversationsClient", () => {
             replyTo: { email: "email", name: "name" },
             sourceMessageId: "sourceMessageId",
             subject: "Invitation to a meeting",
-            text: "Your order has shipped! Here’s your tracking number: 9114 5847 4668 7775 9233 54",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 4668 7775 9233 54",
             to: [{ email: "email", name: "name" }],
             type: "agent",
+            isSentViaJsApi: true,
+            messageType: "messageType",
+            isForward: true,
+            source: { key: "value" },
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
         };
 
@@ -1034,7 +1146,7 @@ describe("ConversationsClient", () => {
 
         const response = await client.conversations.updateAnAutomatedMessage({
             id: "id",
-            text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 4668 7775 9233 54",
+            text: "Your order has shipped! Here's your tracking number: 9114 5847 4668 7775 9233 54",
         });
         expect(response).toEqual(rawResponseBody);
     });

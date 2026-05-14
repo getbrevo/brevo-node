@@ -7,6 +7,6 @@
  *     }
  */
 export interface DeleteScheduledEmailByIdRequest {
-    /** The `batchId` of scheduled emails batch (Should be a valid UUIDv4) or the `messageId` of scheduled email. */
+    /** The `batchId` of scheduled emails batch (must be a valid UUIDv4) or the `messageId` of scheduled email (enclosed in angle brackets with @ sign, e.g. `<...@domain>`). */
     identifier: string;
 }

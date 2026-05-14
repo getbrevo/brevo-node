@@ -4,18 +4,20 @@
  * Note Details
  */
 export interface Note {
-    /** Account details of user which created the note */
-    authorId?: Record<string, unknown> | undefined;
-    /** Contact ids linked to a note */
-    contactIds?: number[] | undefined;
-    /** Note created date/time */
-    createdAt?: string | undefined;
-    /** Deal ids linked to a note */
-    dealIds?: string[] | undefined;
     /** Unique note Id */
     id?: string | undefined;
-    /** Text content of a note */
+    /** Content of the note. Supports HTML for rich text formatting. Supported tags include: `<p>` (paragraph), `<b>` / `<strong>` (bold), `<i>` / `<em>` (italic), `<u>` (underline), `<br>` (line break), `<a href="...">` (labelled hyperlink). Example labelled link: `<a href="https://example.com">Link text</a>`. */
     text: string;
+    /** Contact ids linked to a note */
+    contactIds?: number[] | undefined;
+    /** Company ids linked to a note */
+    companyIds?: string[] | undefined;
+    /** Deal ids linked to a note */
+    dealIds?: string[] | undefined;
+    /** Account details of user which created the note */
+    authorId?: Record<string, unknown> | undefined;
+    /** Note created date/time */
+    createdAt?: string | undefined;
     /** Note updated date/time */
     updatedAt?: string | undefined;
 }

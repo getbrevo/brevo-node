@@ -8,7 +8,22 @@ describe("CustomObjectsClient", () => {
     test("upsertrecords (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { records: [{}] };
+        const rawRequestBody = {
+            records: [
+                {
+                    associations: [
+                        { object_type: "garage", action: "link", records: [{ identifiers: { id: 435435 } }] },
+                        {
+                            object_type: "garage",
+                            action: "unlink",
+                            records: [{ identifiers: { ext_id: "old-garage-001" } }],
+                        },
+                    ],
+                    attributes: { make: "Toyota", model: "Camry", year: 2020, engine_type: "hybrid" },
+                    identifiers: { ext_id: "VIN123" },
+                },
+            ],
+        };
         const rawResponseBody = { message: "Batch object records are being processed", processId: 21 };
 
         server
@@ -22,12 +37,115 @@ describe("CustomObjectsClient", () => {
 
         const response = await client.customObjects.upsertrecords({
             object_type: "vehicle",
-            records: [{}],
+            records: [
+                {
+                    associations: [
+                        {
+                            object_type: "garage",
+                            action: "link",
+                            records: [
+                                {
+                                    identifiers: {
+                                        id: 435435,
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            object_type: "garage",
+                            action: "unlink",
+                            records: [
+                                {
+                                    identifiers: {
+                                        ext_id: "old-garage-001",
+                                    },
+                                },
+                            ],
+                        },
+                    ],
+                    attributes: {
+                        make: "Toyota",
+                        model: "Camry",
+                        year: 2020,
+                        engine_type: "hybrid",
+                    },
+                    identifiers: {
+                        ext_id: "VIN123",
+                    },
+                },
+            ],
         });
         expect(response).toEqual(rawResponseBody);
     });
 
     test("upsertrecords (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            records: [{ attributes: { make: "Honda", model: "Civic", year: 2023, engine_type: "petrol" } }],
+        };
+        const rawResponseBody = { message: "Batch object records are being processed", processId: 21 };
+
+        server
+            .mockEndpoint()
+            .post("/objects/vehicle/batch/upsert")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.customObjects.upsertrecords({
+            object_type: "vehicle",
+            records: [
+                {
+                    attributes: {
+                        make: "Honda",
+                        model: "Civic",
+                        year: 2023,
+                        engine_type: "petrol",
+                    },
+                },
+            ],
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("upsertrecords (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            records: [{ attributes: { color: "red", engine_type: "diesel" }, identifiers: { id: 42 } }],
+        };
+        const rawResponseBody = { message: "Batch object records are being processed", processId: 21 };
+
+        server
+            .mockEndpoint()
+            .post("/objects/vehicle/batch/upsert")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.customObjects.upsertrecords({
+            object_type: "vehicle",
+            records: [
+                {
+                    attributes: {
+                        color: "red",
+                        engine_type: "diesel",
+                    },
+                    identifiers: {
+                        id: 42,
+                    },
+                },
+            ],
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("upsertrecords (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}, {}] };
@@ -50,7 +168,7 @@ describe("CustomObjectsClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
-    test("upsertrecords (3)", async () => {
+    test("upsertrecords (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}, {}] };
@@ -73,7 +191,7 @@ describe("CustomObjectsClient", () => {
         }).rejects.toThrow(Brevo.ForbiddenError);
     });
 
-    test("upsertrecords (4)", async () => {
+    test("upsertrecords (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}, {}] };
@@ -96,7 +214,7 @@ describe("CustomObjectsClient", () => {
         }).rejects.toThrow(Brevo.NotFoundError);
     });
 
-    test("upsertrecords (5)", async () => {
+    test("upsertrecords (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { records: [{}, {}] };
@@ -128,7 +246,7 @@ describe("CustomObjectsClient", () => {
             records: [
                 {
                     associations: [{ object_type: "garage", records: [{ identifiers: { id: 12345 } }] }],
-                    attributes: { color: "Black", engine_type: "Hybrid", make: "Toyoto", model: "Corolla", year: 2020 },
+                    attributes: { make: "Toyota", model: "Corolla", color: "Black", year: 2020, engine_type: "hybrid" },
                     createdAt: "2025-07-22T10:20:30Z",
                     identifiers: { ext_id: "507f1f77bc", id: 16789 },
                     updatedAt: "2025-07-22T10:20:30Z",
@@ -248,7 +366,7 @@ describe("CustomObjectsClient", () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { identifiers: { ext_ids: ["ext-001", "ext-002"] } };
-        const rawResponseBody = { processId: 21, message: "Batch object records are being processed for deletion." };
+        const rawResponseBody = { processId: 21, message: "Batch object records are being processed for deletion" };
 
         server
             .mockEndpoint()
@@ -313,28 +431,6 @@ describe("CustomObjectsClient", () => {
     });
 
     test("batchDeleteObjectRecords (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = {};
-        const rawResponseBody = { key: "value" };
-
-        server
-            .mockEndpoint()
-            .post("/objects/object_type/batch/delete")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.customObjects.batchDeleteObjectRecords({
-                object_type: "object_type",
-            });
-        }).rejects.toThrow(Brevo.NotFoundError);
-    });
-
-    test("batchDeleteObjectRecords (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {};

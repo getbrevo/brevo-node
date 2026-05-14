@@ -7,6 +7,10 @@
  *     }
  */
 export interface DeleteSmtpLogIdentifierRequest {
-    /** MessageId of the transactional log(s) to delete */
+    /** MessageId or email address of the transactional log(s) to delete. Must be a valid message ID (enclosed in angle brackets with @ sign) or a valid email address. */
     identifier: string;
+    /** Starting date (YYYY-MM-DD) to narrow down logs for deletion */
+    from_date?: string;
+    /** Ending date (YYYY-MM-DD) to narrow down logs for deletion */
+    to_date?: string;
 }

@@ -13,6 +13,6 @@ export interface GetLpListRequest {
     offset?: number;
     /** Sort documents by field */
     sort_field?: Brevo.GetLpListRequestSortField;
-    /** Sort documents by field */
-    sort?: string;
+    /** Sort order */
+    sort?: Brevo.GetLpListRequestSort;
 }

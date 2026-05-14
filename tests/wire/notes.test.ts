@@ -11,6 +11,11 @@ describe("NotesClient", () => {
 
         const rawResponseBody = [
             {
+                id: "61a5cd07ca1347c82306ad09",
+                text: '<p>Meeting notes: <b>Action item</b> - visit <a href="https://www.brevo.com/">Brevo</a> for details.</p>',
+                contactIds: [247, 1, 2],
+                companyIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991"],
+                dealIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991"],
                 authorId: {
                     email: "johndoe@example.com",
                     id: "61a5ce58y5d4795761045991",
@@ -18,11 +23,7 @@ describe("NotesClient", () => {
                     name: { fullName: "John Doe" },
                     timezone: "Asia/Kolkata",
                 },
-                contactIds: [247, 1, 2],
                 createdAt: "2017-05-01T17:05:03Z",
-                dealIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991"],
-                id: "61a5cd07ca1347c82306ad09",
-                text: "In communication with client_dev for resolution of queries.",
                 updatedAt: "2017-05-01T17:05:03Z",
             },
         ];
@@ -49,7 +50,9 @@ describe("NotesClient", () => {
     test("createANote (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { text: "In communication with client_dev for resolution of queries." };
+        const rawRequestBody = {
+            text: '<p>Meeting notes: <b>Action item</b> - visit <a href="https://www.brevo.com/">Brevo</a> for details.</p>',
+        };
         const rawResponseBody = { id: "61a5cd07ca1347c82306ad09" };
 
         server
@@ -62,7 +65,7 @@ describe("NotesClient", () => {
             .build();
 
         const response = await client.notes.createANote({
-            text: "In communication with client_dev for resolution of queries.",
+            text: '<p>Meeting notes: <b>Action item</b> - visit <a href="https://www.brevo.com/">Brevo</a> for details.</p>',
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -116,6 +119,11 @@ describe("NotesClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
+            id: "61a5cd07ca1347c82306ad09",
+            text: '<p>Meeting notes: <b>Action item</b> - visit <a href="https://www.brevo.com/">Brevo</a> for details.</p>',
+            contactIds: [247, 1, 2],
+            companyIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991"],
+            dealIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991"],
             authorId: {
                 email: "johndoe@example.com",
                 id: "61a5ce58y5d4795761045991",
@@ -123,11 +131,7 @@ describe("NotesClient", () => {
                 name: { fullName: "John Doe" },
                 timezone: "Asia/Kolkata",
             },
-            contactIds: [247, 1, 2],
             createdAt: "2017-05-01T17:05:03Z",
-            dealIds: ["61a5ce58c5d4795761045990", "61a5ce58c5d4795761045991"],
-            id: "61a5cd07ca1347c82306ad09",
-            text: "In communication with client_dev for resolution of queries.",
             updatedAt: "2017-05-01T17:05:03Z",
         };
 
@@ -214,14 +218,16 @@ describe("NotesClient", () => {
     test("updateANote (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = { text: "In communication with client_dev for resolution of queries." };
+        const rawRequestBody = {
+            text: '<p>Meeting notes: <b>Action item</b> - visit <a href="https://www.brevo.com/">Brevo</a> for details.</p>',
+        };
 
         server.mockEndpoint().patch("/crm/notes/id").jsonBody(rawRequestBody).respondWith().statusCode(200).build();
 
         const response = await client.notes.updateANote({
             id: "id",
             body: {
-                text: "In communication with client_dev for resolution of queries.",
+                text: '<p>Meeting notes: <b>Action item</b> - visit <a href="https://www.brevo.com/">Brevo</a> for details.</p>',
             },
         });
         expect(response).toEqual(undefined);

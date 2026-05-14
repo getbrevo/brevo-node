@@ -13,7 +13,7 @@ export interface GetProductDetails {
     id: string;
     /** Absolute URL to the cover image of the product */
     imageUrl?: string | undefined;
-    /** Product get deleted from the shop's database but not from Brevo */
+    /** Product deleted from the shop's database but not from Brevo */
     isDeleted?: boolean | undefined;
     /** Meta data of product such as description, vendor, producer, stock level, etc. */
     metaInfo?: Record<string, unknown> | undefined;
@@ -25,6 +25,8 @@ export interface GetProductDetails {
     parentId?: string | undefined;
     /** Price of the product */
     price?: number | undefined;
+    /** Alternative price of the product */
+    alternativePrice?: number | undefined;
     /** S3 url of original image */
     s3Original?: string | undefined;
     /** S3 thumbnail url of original image in 120x120 dimension for analytics section */

@@ -98,4 +98,25 @@ describe("InboundParsingClient", () => {
             });
         }).rejects.toThrow(Brevo.BadRequestError);
     });
+
+    test("getInboundEmailEventsByUuid (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/inbound/events/uuid")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.inboundParsing.getInboundEmailEventsByUuid({
+                uuid: "uuid",
+            });
+        }).rejects.toThrow(Brevo.NotFoundError);
+    });
 });

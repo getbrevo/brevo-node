@@ -2,9 +2,9 @@
 
 export interface GetTransacEmailContentResponse {
     /** Count of the attachments that were sent in the email */
-    attachmentCount: number;
+    attachmentCount?: number | undefined;
     /** Actual content of the transactional email that has been sent */
-    body: string;
+    body?: string | undefined;
     /** Date on which transactional email was sent */
     date: string;
     /** Email address to which transactional email has been sent */

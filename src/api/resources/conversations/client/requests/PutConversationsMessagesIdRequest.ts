@@ -10,6 +10,6 @@
 export interface PutConversationsMessagesIdRequest {
     /** ID of the message */
     id: string;
-    /** edited message text */
+    /** The new message text. */
     text: string;
 }

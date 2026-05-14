@@ -17,6 +17,8 @@ export interface GetContactDetails {
     modifiedAt: string;
     /** Blacklist status for SMS campaigns (true=blacklisted, false=not blacklisted) */
     smsBlacklisted: boolean;
+    /** Blacklist status for WhatsApp campaigns (true=blacklisted, false=not blacklisted) */
+    whatsappBlacklisted: boolean;
 }
 
 export namespace GetContactDetails {

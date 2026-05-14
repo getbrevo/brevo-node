@@ -482,17 +482,18 @@ describe("CompaniesClient", () => {
         }).rejects.toThrow(Brevo.NotFoundError);
     });
 
-    test("getCompanyAttributes", async () => {
+    test("getCompanyAttributes (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = [
             {
-                attributeOptions: [{ key: "custom key", value: "custom label" }],
-                attributeTypeName: "text",
                 internalName: "name",
-                isRequired: true,
+                attributeTypeName: "text",
                 label: "Company Name",
+                attributeOptions: [{ key: "custom key", value: "custom label" }],
+                isRequired: true,
+                isValueReadonly: false,
             },
         ];
 
@@ -506,5 +507,24 @@ describe("CompaniesClient", () => {
 
         const response = await client.companies.getCompanyAttributes();
         expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getCompanyAttributes (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/crm/attributes/companies")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.companies.getCompanyAttributes();
+        }).rejects.toThrow(Brevo.BadRequestError);
     });
 });

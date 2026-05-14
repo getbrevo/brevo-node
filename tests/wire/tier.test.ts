@@ -347,6 +347,20 @@ describe("TierClient", () => {
             tierOrder: ["tierOrder"],
             updatedAt: "2024-01-15T09:30:00Z",
             upgradeStrategy: "real_time",
+            upgradeSchedule: {
+                strategy: "strategy",
+                durationValue: 1,
+                durationUnit: "day",
+                durationModifier: "start_of_period",
+                scheduledDate: "scheduledDate",
+            },
+            downgradeSchedule: {
+                strategy: "strategy",
+                durationValue: 1,
+                durationUnit: "day",
+                durationModifier: "start_of_period",
+                scheduledDate: "scheduledDate",
+            },
         };
 
         server
@@ -516,6 +530,20 @@ describe("TierClient", () => {
             tierOrder: ["tierOrder"],
             updatedAt: "2024-01-15T09:30:00Z",
             upgradeStrategy: "real_time",
+            upgradeSchedule: {
+                strategy: "strategy",
+                durationValue: 1,
+                durationUnit: "day",
+                durationModifier: "start_of_period",
+                scheduledDate: "scheduledDate",
+            },
+            downgradeSchedule: {
+                strategy: "strategy",
+                durationValue: 1,
+                durationUnit: "day",
+                durationModifier: "start_of_period",
+                scheduledDate: "scheduledDate",
+            },
         };
 
         server
@@ -661,6 +689,20 @@ describe("TierClient", () => {
             tierOrder: ["tierOrder"],
             updatedAt: "2024-01-15T09:30:00Z",
             upgradeStrategy: "real_time",
+            upgradeSchedule: {
+                strategy: "strategy",
+                durationValue: 1,
+                durationUnit: "day",
+                durationModifier: "start_of_period",
+                scheduledDate: "scheduledDate",
+            },
+            downgradeSchedule: {
+                strategy: "strategy",
+                durationValue: 1,
+                durationUnit: "day",
+                durationModifier: "start_of_period",
+                scheduledDate: "scheduledDate",
+            },
         };
 
         server

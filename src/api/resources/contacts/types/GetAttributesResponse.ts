@@ -40,8 +40,10 @@ export namespace GetAttributesResponse {
                 export interface Item {
                     /** Label of the "category" type attribute */
                     label: string;
-                    /** ID of Value of the "category" type attribute */
+                    /** Numeric ID of the "category" type attribute value. Set to 0 when the raw value cannot be converted to an integer (for example non-numeric values such as "en" or "fr"). Refer to `valueStr` for the original string representation. */
                     value: number;
+                    /** String representation of the "category" type attribute value. Always contains the original value as stored. Use this field when the attribute value is non-numeric (e.g. "en", "fr") or when you need the exact string form alongside the numeric `value`. */
+                    valueStr: string;
                 }
             }
 

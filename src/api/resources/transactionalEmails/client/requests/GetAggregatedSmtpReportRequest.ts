@@ -9,7 +9,7 @@ export interface GetAggregatedSmtpReportRequest {
     startDate?: string;
     /** **Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD). Must be greater than equal to startDate */
     endDate?: string;
-    /** Number of days in the past including today (positive integer). _Not compatible with 'startDate' and 'endDate'_ */
+    /** Number of days in the past including today (positive integer, maximum 90). _Not compatible with 'startDate' and 'endDate'_. Defaults to 90 if neither dates nor days are provided. */
     days?: number;
     /** Tag of the emails */
     tag?: string;

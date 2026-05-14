@@ -215,6 +215,7 @@ describe("WhatsAppCampaignsClient", () => {
                     modifiedAt: "2017-05-01T12:30:00Z",
                     name: "campaign_22",
                     status: "approved",
+                    type: "whatsapp",
                 },
                 {
                     category: "MARKETING",
@@ -225,6 +226,7 @@ describe("WhatsAppCampaignsClient", () => {
                     modifiedAt: "2017-05-01T12:30:00Z",
                     name: "test-template",
                     status: "draft",
+                    type: "whatsapp",
                 },
             ],
         };
@@ -309,6 +311,7 @@ describe("WhatsAppCampaignsClient", () => {
             id: 1672035851100690,
             modifiedAt: "2022-12-26T08:50:00Z",
             scheduledAt: "2022-12-27T09:50:00Z",
+            recipients: { excludedLists: [45], includedLists: [22], segments: [23], type: "list" },
             senderNumber: "senderNumber",
             stats: { delivered: 3, notSent: 4, read: 2, sent: 3, unsubscribe: 0 },
             template: {

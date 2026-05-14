@@ -23,6 +23,8 @@ export class SmsCampaignsClient {
     }
 
     /**
+     * Retrieve a paginated list of all your SMS campaigns with their statistics and recipient information. Results can be filtered by status and date range, with a default limit of 500 and maximum of 1000 per page. The sort order defaults to descending by creation date; date filters are only available when status is not passed or is set to sent.
+     *
      * @param {Brevo.GetSmsCampaignsRequest} request
      * @param {SmsCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -66,7 +68,11 @@ export class SmsCampaignsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -94,6 +100,8 @@ export class SmsCampaignsClient {
     }
 
     /**
+     * Create a new SMS campaign with the required name, sender, and content fields. The sender name is limited to 11 alphanumeric characters or 15 numeric characters, and the content should stay within 160 characters per SMS segment. If a scheduledAt date is provided, listIds in recipients become mandatory; accounts under validation are limited to 4 total campaigns and campaigns with more than 10 recipients will be saved as draft.
+     *
      * @param {Brevo.CreateSmsCampaignRequest} request
      * @param {SmsCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -133,7 +141,7 @@ export class SmsCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -163,6 +171,8 @@ export class SmsCampaignsClient {
     }
 
     /**
+     * Retrieve detailed information about a specific SMS campaign by its ID, including campaign content, sender, recipients with list names, statistics (delivered, sent, bounces, unsubscriptions, answered), and tags. Unlike the list endpoint, recipients are returned as objects with id and name fields rather than plain IDs.
+     *
      * @param {Brevo.GetSmsCampaignRequest} request
      * @param {SmsCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -201,7 +211,7 @@ export class SmsCampaignsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -231,6 +241,8 @@ export class SmsCampaignsClient {
     }
 
     /**
+     * Update an existing SMS campaign''s properties such as name, sender, content, recipients, scheduled date, organisation prefix, and unsubscribe instructions. The request body must contain at least one valid field to update. The campaign must exist and must be of type SMS; if a scheduledAt is provided, valid recipients must be present either in the request or already configured on the campaign.
+     *
      * @param {Brevo.UpdateSmsCampaignRequest} request
      * @param {SmsCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -270,7 +282,7 @@ export class SmsCampaignsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -302,6 +314,8 @@ export class SmsCampaignsClient {
     }
 
     /**
+     * Delete an SMS campaign by its campaign ID. Only campaigns that have not been scheduled or sent can be deleted; attempting to delete a campaign that is queued, in process, or has been sent with recipients will return a 403 permission denied error.
+     *
      * @param {Brevo.DeleteSmsCampaignRequest} request
      * @param {SmsCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -340,7 +354,7 @@ export class SmsCampaignsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -412,7 +426,7 @@ export class SmsCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -452,6 +466,8 @@ export class SmsCampaignsClient {
     }
 
     /**
+     * Send an existing SMS campaign immediately by scheduling it for the current time. The system verifies your account''s SMS credit balance before dispatching; if credits are insufficient or the remaining credit is less than the number of recipients, a 402 error is returned. The campaign must have valid recipients and content already configured.
+     *
      * @param {Brevo.SendSmsCampaignNowRequest} request
      * @param {SmsCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -491,7 +507,7 @@ export class SmsCampaignsClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -578,7 +594,7 @@ export class SmsCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -615,6 +631,8 @@ export class SmsCampaignsClient {
     }
 
     /**
+     * Send a test SMS to a specified phone number to preview the campaign before sending it to all recipients. The phone number must belong to one of your existing contacts in your Brevo account and must not be blacklisted. The number should include the country code (e.g. 33689965433).
+     *
      * @param {Brevo.SendTestSmsRequest} request
      * @param {SmsCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -654,7 +672,7 @@ export class SmsCampaignsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -691,6 +709,8 @@ export class SmsCampaignsClient {
     }
 
     /**
+     * Update the status of an SMS campaign, such as suspending, archiving, or replicating it. Available status values include suspended, archive, darchive, sent, queued, replicate, replicateTemplate, cancel, and draft. Note that the replicateTemplate status is only available for template type campaigns.
+     *
      * @param {Brevo.UpdateSmsCampaignStatusRequest} request
      * @param {SmsCampaignsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -731,7 +751,7 @@ export class SmsCampaignsClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,

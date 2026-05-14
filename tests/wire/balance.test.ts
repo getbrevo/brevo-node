@@ -10,16 +10,13 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
+            count: 1000000,
+            loyaltyProgramId: "loyaltyProgramId",
+            contactId: 1000000,
             balanceDefinitionId: "balanceDefinitionId",
-            constraintType: "constraintType",
-            createdAt: "createdAt",
-            durationUnit: "durationUnit",
-            durationValue: 1,
-            id: "id",
-            slidingSchedule: true,
-            transactionType: "transactionType",
-            updatedAt: "updatedAt",
-            value: 1,
+            activeBalances: [
+                { id: "id", amount: 1.1, createdAt: "2024-01-15T09:30:00Z", expiresAt: "2024-01-15T09:30:00Z" },
+            ],
         };
 
         server
@@ -32,8 +29,8 @@ describe("BalanceClient", () => {
 
         const response = await client.balance.getActiveBalancesApi({
             pid: "pid",
-            contact_id: 1,
-            balance_definition_id: "balance_definition_id",
+            contactId: 1000000,
+            balanceDefinitionId: "balanceDefinitionId",
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -55,8 +52,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getActiveBalancesApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1000000,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.UnauthorizedError);
     });
@@ -78,8 +75,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getActiveBalancesApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1000000,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.ForbiddenError);
     });
@@ -101,8 +98,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getActiveBalancesApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1000000,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.NotFoundError);
     });
@@ -124,8 +121,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getActiveBalancesApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1000000,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.UnprocessableEntityError);
     });
@@ -147,8 +144,8 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getActiveBalancesApi({
                 pid: "pid",
-                contact_id: 1,
-                balance_definition_id: "balance_definition_id",
+                contactId: 1000000,
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.InternalServerError);
     });
@@ -160,26 +157,26 @@ describe("BalanceClient", () => {
         const rawResponseBody = {
             items: [
                 {
-                    balanceAvailabilityDurationModifier: "startOfPeriod",
-                    balanceAvailabilityDurationUnit: "balanceAvailabilityDurationUnit",
-                    balanceAvailabilityDurationValue: 1,
-                    balanceExpirationDate: "2024-01-15T09:30:00Z",
-                    balanceOptionAmountOvertakingStrategy: "balanceOptionAmountOvertakingStrategy",
-                    balanceOptionCreditRounding: "balanceOptionCreditRounding",
-                    balanceOptionDebitRounding: "balanceOptionDebitRounding",
-                    createdAt: "2024-01-15T09:30:00Z",
-                    deletedAt: "deletedAt",
-                    description: "description",
                     id: "id",
+                    name: "name",
+                    description: "description",
                     imageRef: "imageRef",
+                    meta: { key: "value" },
+                    unit: "POINTS",
+                    minAmount: 1.1,
                     maxAmount: 1.1,
                     maxCreditAmountLimit: 1.1,
                     maxDebitAmountLimit: 1.1,
-                    meta: { key: "value" },
-                    minAmount: 1.1,
-                    name: "name",
-                    unit: "unit",
-                    updatedAt: "updatedAt",
+                    balanceOptionAmountOvertakingStrategy: "strict",
+                    balanceOptionCreditRounding: "lower",
+                    balanceOptionDebitRounding: "lower",
+                    balanceAvailabilityDurationValue: 1,
+                    balanceAvailabilityDurationUnit: "day",
+                    balanceAvailabilityDurationModifier: "noModification",
+                    balanceExpirationDate: "balanceExpirationDate",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    deletedAt: "2024-01-15T09:30:00Z",
                 },
             ],
         };
@@ -287,26 +284,26 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = {
-            balanceAvailabilityDurationModifier: "startOfPeriod",
-            balanceAvailabilityDurationUnit: "balanceAvailabilityDurationUnit",
-            balanceAvailabilityDurationValue: 1,
-            balanceExpirationDate: "2024-01-15T09:30:00Z",
-            balanceOptionAmountOvertakingStrategy: "balanceOptionAmountOvertakingStrategy",
-            balanceOptionCreditRounding: "balanceOptionCreditRounding",
-            balanceOptionDebitRounding: "balanceOptionDebitRounding",
-            createdAt: "2024-01-15T09:30:00Z",
-            deletedAt: "deletedAt",
-            description: "description",
             id: "id",
+            name: "name",
+            description: "description",
             imageRef: "imageRef",
+            meta: { key: "value" },
+            unit: "POINTS",
+            minAmount: 1.1,
             maxAmount: 1.1,
             maxCreditAmountLimit: 1.1,
             maxDebitAmountLimit: 1.1,
-            meta: { key: "value" },
-            minAmount: 1.1,
-            name: "name",
-            unit: "unit",
-            updatedAt: "updatedAt",
+            balanceOptionAmountOvertakingStrategy: "strict",
+            balanceOptionCreditRounding: "lower",
+            balanceOptionDebitRounding: "lower",
+            balanceAvailabilityDurationValue: 1,
+            balanceAvailabilityDurationUnit: "day",
+            balanceAvailabilityDurationModifier: "noModification",
+            balanceExpirationDate: "balanceExpirationDate",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
+            deletedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -451,26 +448,26 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            balanceAvailabilityDurationModifier: "startOfPeriod",
-            balanceAvailabilityDurationUnit: "balanceAvailabilityDurationUnit",
-            balanceAvailabilityDurationValue: 1,
-            balanceExpirationDate: "2024-01-15T09:30:00Z",
-            balanceOptionAmountOvertakingStrategy: "balanceOptionAmountOvertakingStrategy",
-            balanceOptionCreditRounding: "balanceOptionCreditRounding",
-            balanceOptionDebitRounding: "balanceOptionDebitRounding",
-            createdAt: "2024-01-15T09:30:00Z",
-            deletedAt: "deletedAt",
-            description: "description",
             id: "id",
+            name: "name",
+            description: "description",
             imageRef: "imageRef",
+            meta: { key: "value" },
+            unit: "POINTS",
+            minAmount: 1.1,
             maxAmount: 1.1,
             maxCreditAmountLimit: 1.1,
             maxDebitAmountLimit: 1.1,
-            meta: { key: "value" },
-            minAmount: 1.1,
-            name: "name",
-            unit: "unit",
-            updatedAt: "updatedAt",
+            balanceOptionAmountOvertakingStrategy: "strict",
+            balanceOptionCreditRounding: "lower",
+            balanceOptionDebitRounding: "lower",
+            balanceAvailabilityDurationValue: 1,
+            balanceAvailabilityDurationUnit: "day",
+            balanceAvailabilityDurationModifier: "noModification",
+            balanceExpirationDate: "balanceExpirationDate",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
+            deletedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -603,26 +600,26 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { name: "name", unit: "POINTS" };
         const rawResponseBody = {
-            balanceAvailabilityDurationModifier: "startOfPeriod",
-            balanceAvailabilityDurationUnit: "balanceAvailabilityDurationUnit",
-            balanceAvailabilityDurationValue: 1,
-            balanceExpirationDate: "2024-01-15T09:30:00Z",
-            balanceOptionAmountOvertakingStrategy: "balanceOptionAmountOvertakingStrategy",
-            balanceOptionCreditRounding: "balanceOptionCreditRounding",
-            balanceOptionDebitRounding: "balanceOptionDebitRounding",
-            createdAt: "2024-01-15T09:30:00Z",
-            deletedAt: "deletedAt",
-            description: "description",
             id: "id",
+            name: "name",
+            description: "description",
             imageRef: "imageRef",
+            meta: { key: "value" },
+            unit: "POINTS",
+            minAmount: 1.1,
             maxAmount: 1.1,
             maxCreditAmountLimit: 1.1,
             maxDebitAmountLimit: 1.1,
-            meta: { key: "value" },
-            minAmount: 1.1,
-            name: "name",
-            unit: "unit",
-            updatedAt: "updatedAt",
+            balanceOptionAmountOvertakingStrategy: "strict",
+            balanceOptionCreditRounding: "lower",
+            balanceOptionDebitRounding: "lower",
+            balanceAvailabilityDurationValue: 1,
+            balanceAvailabilityDurationUnit: "day",
+            balanceAvailabilityDurationModifier: "noModification",
+            balanceExpirationDate: "balanceExpirationDate",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
+            deletedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -932,16 +929,16 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = {
-            balanceDefinitionId: "balanceDefinitionId",
-            constraintType: "constraintType",
-            createdAt: "createdAt",
-            durationUnit: "durationUnit",
-            durationValue: 1,
             id: "id",
+            balanceDefinitionId: "balanceDefinitionId",
+            transactionType: "credit",
+            constraintType: "transaction",
+            durationValue: 1,
+            durationUnit: "hour",
+            value: 1.1,
             slidingSchedule: true,
-            transactionType: "transactionType",
-            updatedAt: "updatedAt",
-            value: 1,
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -1140,16 +1137,16 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            balanceDefinitionId: "balanceDefinitionId",
-            constraintType: "constraintType",
-            createdAt: "createdAt",
-            durationUnit: "durationUnit",
-            durationValue: 1,
             id: "id",
+            balanceDefinitionId: "balanceDefinitionId",
+            transactionType: "credit",
+            constraintType: "transaction",
+            durationValue: 1,
+            durationUnit: "hour",
+            value: 1.1,
             slidingSchedule: true,
-            transactionType: "transactionType",
-            updatedAt: "updatedAt",
-            value: 1,
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -1294,16 +1291,16 @@ describe("BalanceClient", () => {
             value: 1,
         };
         const rawResponseBody = {
-            balanceDefinitionId: "balanceDefinitionId",
-            constraintType: "constraintType",
-            createdAt: "createdAt",
-            durationUnit: "durationUnit",
-            durationValue: 1,
             id: "id",
+            balanceDefinitionId: "balanceDefinitionId",
+            transactionType: "credit",
+            constraintType: "transaction",
+            durationValue: 1,
+            durationUnit: "hour",
+            value: 1.1,
             slidingSchedule: true,
-            transactionType: "transactionType",
-            updatedAt: "updatedAt",
-            value: 1,
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -1660,6 +1657,7 @@ describe("BalanceClient", () => {
 
         const response = await client.balance.getContactBalances({
             pid: "pid",
+            balanceDefinitionId: "balanceDefinitionId",
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -1681,6 +1679,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getContactBalances({
                 pid: "pid",
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.UnauthorizedError);
     });
@@ -1702,6 +1701,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getContactBalances({
                 pid: "pid",
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.ForbiddenError);
     });
@@ -1723,6 +1723,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getContactBalances({
                 pid: "pid",
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.NotFoundError);
     });
@@ -1744,6 +1745,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getContactBalances({
                 pid: "pid",
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.UnprocessableEntityError);
     });
@@ -1765,6 +1767,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getContactBalances({
                 pid: "pid",
+                balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.InternalServerError);
     });
@@ -1777,7 +1780,7 @@ describe("BalanceClient", () => {
             balanceDefinitionId: "balanceDefinitionId",
             contactId: 1,
             dueAt: "dueAt",
-            source: "source",
+            source: "engine",
         };
         const rawResponseBody = {
             amount: 1.1,
@@ -1809,7 +1812,7 @@ describe("BalanceClient", () => {
             balanceDefinitionId: "balanceDefinitionId",
             contactId: 1,
             dueAt: "dueAt",
-            source: "source",
+            source: "engine",
         });
         expect(response).toEqual(rawResponseBody);
     });
@@ -1822,7 +1825,7 @@ describe("BalanceClient", () => {
             balanceDefinitionId: "balanceDefinitionId",
             contactId: 1,
             dueAt: "dueAt",
-            source: "source",
+            source: "engine",
         };
         const rawResponseBody = { key: "value" };
 
@@ -1842,7 +1845,7 @@ describe("BalanceClient", () => {
                 balanceDefinitionId: "balanceDefinitionId",
                 contactId: 1,
                 dueAt: "dueAt",
-                source: "source",
+                source: "engine",
             });
         }).rejects.toThrow(Brevo.UnauthorizedError);
     });
@@ -1855,7 +1858,7 @@ describe("BalanceClient", () => {
             balanceDefinitionId: "balanceDefinitionId",
             contactId: 1,
             dueAt: "dueAt",
-            source: "source",
+            source: "engine",
         };
         const rawResponseBody = { key: "value" };
 
@@ -1875,7 +1878,7 @@ describe("BalanceClient", () => {
                 balanceDefinitionId: "balanceDefinitionId",
                 contactId: 1,
                 dueAt: "dueAt",
-                source: "source",
+                source: "engine",
             });
         }).rejects.toThrow(Brevo.ForbiddenError);
     });
@@ -1888,7 +1891,7 @@ describe("BalanceClient", () => {
             balanceDefinitionId: "balanceDefinitionId",
             contactId: 1,
             dueAt: "dueAt",
-            source: "source",
+            source: "engine",
         };
         const rawResponseBody = { message: "message" };
 
@@ -1908,7 +1911,7 @@ describe("BalanceClient", () => {
                 balanceDefinitionId: "balanceDefinitionId",
                 contactId: 1,
                 dueAt: "dueAt",
-                source: "source",
+                source: "engine",
             });
         }).rejects.toThrow(Brevo.UnprocessableEntityError);
     });
@@ -1921,7 +1924,7 @@ describe("BalanceClient", () => {
             balanceDefinitionId: "balanceDefinitionId",
             contactId: 1,
             dueAt: "dueAt",
-            source: "source",
+            source: "engine",
         };
         const rawResponseBody = { key: "value" };
 
@@ -1941,7 +1944,7 @@ describe("BalanceClient", () => {
                 balanceDefinitionId: "balanceDefinitionId",
                 contactId: 1,
                 dueAt: "dueAt",
-                source: "source",
+                source: "engine",
             });
         }).rejects.toThrow(Brevo.InternalServerError);
     });
@@ -1950,7 +1953,11 @@ describe("BalanceClient", () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
-        const rawResponseBody = { balance: [{ balanceDefinitionId: "balanceDefinitionId", value: 1.1 }] };
+        const rawResponseBody = {
+            loyaltyProgramId: "loyaltyProgramId",
+            contactId: 1000000,
+            balance: [{ balanceDefinitionId: "balanceDefinitionId", value: 1.1 }],
+        };
 
         server
             .mockEndpoint()
@@ -2082,15 +2089,15 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = {
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            consumedAt: "consumedAt",
-            contactId: 1,
-            createdAt: "createdAt",
-            expiresAt: "expiresAt",
             id: "id",
+            amount: 1.1,
             loyaltyProgramId: "loyaltyProgramId",
-            organizationId: 1,
+            organizationId: 1000000,
+            contactId: 1000000,
+            balanceDefinitionId: "balanceDefinitionId",
+            createdAt: "2024-01-15T09:30:00Z",
+            expiresAt: "2024-01-15T09:30:00Z",
+            consumedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -2242,6 +2249,7 @@ describe("BalanceClient", () => {
             transactionHistory: [
                 {
                     amount: 1.1,
+                    transactionType: "credit",
                     balanceExpirationDate: "balanceExpirationDate",
                     cancelledAt: "cancelledAt",
                     completedAt: "completedAt",
@@ -2265,7 +2273,7 @@ describe("BalanceClient", () => {
 
         const response = await client.balance.getTransactionHistoryApi({
             pid: "pid",
-            contactId: 1,
+            contactId: 1000000,
             balanceDefinitionId: "balanceDefinitionId",
         });
         expect(response).toEqual(rawResponseBody);
@@ -2288,7 +2296,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
                 balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.UnauthorizedError);
@@ -2311,7 +2319,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
                 balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.ForbiddenError);
@@ -2334,7 +2342,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
                 balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.NotFoundError);
@@ -2357,7 +2365,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
                 balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.UnprocessableEntityError);
@@ -2380,7 +2388,7 @@ describe("BalanceClient", () => {
         await expect(async () => {
             return await client.balance.getTransactionHistoryApi({
                 pid: "pid",
-                contactId: 1,
+                contactId: 1000000,
                 balanceDefinitionId: "balanceDefinitionId",
             });
         }).rejects.toThrow(Brevo.InternalServerError);
@@ -2391,21 +2399,22 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { amount: 1.1, balanceDefinitionId: "balanceDefinitionId" };
         const rawResponseBody = {
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            cancelledAt: "cancelledAt",
-            completedAt: "completedAt",
-            contactId: 1,
-            createdAt: "createdAt",
-            eventTime: "eventTime",
-            expirationDate: "expirationDate",
             id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
+            amount: 1.1,
+            transactionType: "credit",
             meta: { key: "value" },
+            status: "pending",
+            loyaltyProgramId: "loyaltyProgramId",
+            balanceDefinitionId: "balanceDefinitionId",
+            contactId: 1000000,
+            eventTime: "2024-01-15T09:30:00Z",
             rejectReason: "rejectReason",
-            rejectedAt: "rejectedAt",
-            status: "status",
-            updatedAt: "updatedAt",
+            rejectedAt: "2024-01-15T09:30:00Z",
+            expirationDate: "2024-01-15T09:30:00Z",
+            completedAt: "2024-01-15T09:30:00Z",
+            cancelledAt: "2024-01-15T09:30:00Z",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -2550,21 +2559,22 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            cancelledAt: "cancelledAt",
-            completedAt: "completedAt",
-            contactId: 1,
-            createdAt: "createdAt",
-            eventTime: "eventTime",
-            expirationDate: "expirationDate",
             id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
+            amount: 1.1,
+            transactionType: "credit",
             meta: { key: "value" },
+            status: "pending",
+            loyaltyProgramId: "loyaltyProgramId",
+            balanceDefinitionId: "balanceDefinitionId",
+            contactId: 1000000,
+            eventTime: "2024-01-15T09:30:00Z",
             rejectReason: "rejectReason",
-            rejectedAt: "rejectedAt",
-            status: "status",
-            updatedAt: "updatedAt",
+            rejectedAt: "2024-01-15T09:30:00Z",
+            expirationDate: "2024-01-15T09:30:00Z",
+            completedAt: "2024-01-15T09:30:00Z",
+            cancelledAt: "2024-01-15T09:30:00Z",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server
@@ -2697,21 +2707,22 @@ describe("BalanceClient", () => {
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            amount: 1.1,
-            balanceDefinitionId: "balanceDefinitionId",
-            cancelledAt: "cancelledAt",
-            completedAt: "completedAt",
-            contactId: 1,
-            createdAt: "createdAt",
-            eventTime: "eventTime",
-            expirationDate: "expirationDate",
             id: "id",
-            loyaltyProgramId: "loyaltyProgramId",
+            amount: 1.1,
+            transactionType: "credit",
             meta: { key: "value" },
+            status: "pending",
+            loyaltyProgramId: "loyaltyProgramId",
+            balanceDefinitionId: "balanceDefinitionId",
+            contactId: 1000000,
+            eventTime: "2024-01-15T09:30:00Z",
             rejectReason: "rejectReason",
-            rejectedAt: "rejectedAt",
-            status: "status",
-            updatedAt: "updatedAt",
+            rejectedAt: "2024-01-15T09:30:00Z",
+            expirationDate: "2024-01-15T09:30:00Z",
+            completedAt: "2024-01-15T09:30:00Z",
+            cancelledAt: "2024-01-15T09:30:00Z",
+            createdAt: "2024-01-15T09:30:00Z",
+            updatedAt: "2024-01-15T09:30:00Z",
         };
 
         server

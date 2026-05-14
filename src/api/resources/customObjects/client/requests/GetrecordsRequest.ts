@@ -11,7 +11,7 @@ import type * as Brevo from "../../../../index.js";
  *     }
  */
 export interface GetrecordsRequest {
-    /** object type for the attribute */
+    /** Object type for the records to retrieve. Must be a previously created custom object type. Contact as object type is not supported in this endpoint. */
     object_type: string;
     /** Number of records returned per page */
     limit: number;

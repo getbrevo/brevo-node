@@ -10,7 +10,7 @@ export interface PatchCrmDealsIdRequest {
     id: string;
     /** Attributes for deal update To assign owner of a Deal you can send attributes.deal_owner and utilize the account email or ID. If you wish to update the pipeline of a deal you need to provide the `pipeline` and the `deal_stage` Pipeline and deal_stage are ids you can fetch using this endpoint `/crm/pipeline/details/{pipelineID}` */
     attributes?: Record<string, unknown>;
-    /** Warning - Using PATCH on linkedCompaniesIds replaces the list of linked contacts. Omitted IDs will be removed. */
+    /** Warning - Using PATCH on linkedCompaniesIds replaces the list of linked companies. Omitted IDs will be removed. */
     linkedCompaniesIds?: string[];
     /** Warning - Using PATCH on linkedContactIds replaces the list of linked contacts. Omitted IDs will be removed. */
     linkedContactsIds?: number[];

@@ -27,7 +27,7 @@ export interface ExportWebhooksHistoryRequest {
      * Filter the history for a specific message id. Applicable
      * only for transactional webhooks.
      */
-    messageId?: number;
+    messageId?: string;
     /** Webhook URL to receive CSV file link */
     notifyURL: string;
     /** Sorting order of records (asc or desc) */

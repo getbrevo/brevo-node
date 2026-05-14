@@ -15,7 +15,7 @@ export interface GetSmtpReportRequest {
     startDate?: string;
     /** **Mandatory if startDate is used.** Ending date of the report (YYYY-MM-DD) */
     endDate?: string;
-    /** Number of days in the past including today (positive integer). _Not compatible with 'startDate' and 'endDate'_ */
+    /** Number of days in the past including today (positive integer, maximum 30). _Not compatible with 'startDate' and 'endDate'_ */
     days?: number;
     /** Tag of the emails */
     tag?: string;

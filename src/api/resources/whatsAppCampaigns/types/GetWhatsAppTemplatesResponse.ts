@@ -27,6 +27,8 @@ export namespace GetWhatsAppTemplatesResponse {
             name: string;
             /** Status of the whatsApp template */
             status: string;
+            /** Type of the whatsApp template */
+            type: string;
         }
     }
 }

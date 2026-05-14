@@ -24,17 +24,19 @@ export interface CreateUpdateProductRequest {
     isDeleted?: boolean;
     /** Meta data of product such as description, vendor, producer, stock level. The total characters of cumulative metaInfo shall not exceed **20000 characters**. */
     metaInfo?: Record<string, CreateUpdateProductRequest.MetaInfo.Value>;
-    /** Mandatory in case of creation**. Name of the product for which you requested the details */
+    /** **Mandatory in case of creation**. Name of the product, as displayed in the shop */
     name: string;
     /** Parent product id of the product */
     parentId?: string;
     /** Price of the product */
     price?: number;
+    /** Alternative price of the product */
+    alternativePrice?: number;
     /** Product identifier from the shop */
     sku?: string;
     /** Current stock value of the product from the shop's database */
     stock?: number;
-    /** Facilitate to update the existing category in the same request (updateEnabled = true) */
+    /** Facilitate to update the existing product in the same request (updateEnabled = true) */
     updateEnabled?: boolean;
     /** URL to the product */
     url?: string;

@@ -25,24 +25,51 @@ export class CustomObjectsClient {
     /**
      * <Note title="Enterprise access only">Custom objects are only available to Enterprise plans.
      * This feature is in beta. These are subject to change.</Note>
-     * This API allows bulk upsert of object records in a single request. Each object record may include
-     *   - Attributes
-     *   - Identifiers
-     *   - Associations
-     * **Response:**
-     *   The API processes the request asynchronously and returns a processId that you can use to track the background process status.
-     * **API and Schema Limitation:**
-     *   - Size:
-     *       - Max 1000 objects records per request
-     *       - Max request body size: 1 MB
-     *   - Max 500 attributes defined per object record upsert request
-     *     - This is coherent with schema limitation: an object cannot have more than 500 attributes.
-     *     - Worth noting: Nothing happens If an attribute is mentioned in the request, but was not previously defined for the object schema (no error, no attribute creation)
-     *   - Max 10 associations defined per associated object type, in each record of the request
-     *     - This is not a schema limitation. You can associate an object record to an unlimited number of other object records by running multiple requests.
+     * Performs bulk create or update (upsert) operations for object records in a single asynchronous request. This endpoint is optimized for high-volume data imports and synchronization scenarios.
+     *
+     * **How Upsert Works:**
+     * - **Create**: Omit `identifiers`, or provide only `ext_id` (if it doesn't already exist). A new record is created with a Brevo-generated `id`.
+     * - **Update**: Provide `id` (Brevo internal ID) or an `ext_id` that already exists. The matching record is updated with the new attribute values.
+     * - **Important:** `id` is for **updates only**. Providing an `id` that does not belong to an existing record will fail during async processing (the HTTP response will still be 202, but the record will be rejected in the background). To create a new record with a stable external reference, use `ext_id` instead.
+     *
+     * **Request Structure:**
+     * Each object record in the `records` array can include:
+     * - `identifiers`: Either `id` (internal Brevo ID) or `ext_id` (your external system ID) — required for updates. **Note:** use `id` (singular), not `ids`.
+     * - `attributes`: Key-value pairs where each key is the attribute **key** (e.g., `company_name`), not the attribute label (e.g., "Company Name").
+     * - `associations`: Controls linking and unlinking of associated records (optional). Each entry specifies:
+     *     - `object_type`: The type of the associated object
+     *     - `action`: `link` (default) to create the association, or `unlink` to remove it
+     *     - `records`: The associated records to link or unlink (each identified by `ext_id` or `id`)
+     *     - **Unlink is idempotent** — unlinking a non-existing association is a no-op (no error returned)
+     *     - `link` and `unlink` actions can be submitted for the same `object_type` in a single record entry
+     *     - Both associated records must already exist before a link can be created
+     *
+     * > **Common mistake:** Passing the attribute **label** (the display name you see in the UI) instead of the attribute **key** will cause the attribute to be silently ignored and the record may not be created as expected.
+     *
+     * **Asynchronous Processing:**
+     * - Returns immediately with a `processId` (HTTP 202 Accepted)
+     * - Use the processId to track status via the Get process API
+     *
+     * **API and Schema Limitations:**
+     * - Max 1000 object records per request
+     * - Max request body size: 1 MB
+     * - Max 500 attributes per object record (matches the schema limit of 500 attributes per object)
+     * - Unknown attribute keys are silently ignored (no error, no attribute creation)
+     * - Max 10 association records per associated object-type in each record of the request. If you need more, send multiple requests.
+     *
+     * **Important Behaviors:**
+     * - The object schema must be created before upserting records
+     * - Unknown attribute keys are silently ignored (no error, no creation)
+     * - Both associated object records must already exist before creating a link association
+     * - Unlink operations are idempotent: attempting to unlink a non-existing association returns success
+     * - `link` and `unlink` actions can be submitted for the same `object_type` in a single record entry
+     * - Contact objects cannot be created via this endpoint
+     * - For `category` and `multiple_category` attributes, pass the option **key** as the value (not the option label or option ID).
+     * - The `id` identifier (internal Brevo ID) can only be used for **updating** existing records. To create new records, either omit identifiers (Brevo auto-generates an ID) or provide an `ext_id`.
+     *
      * **Errors:**
-     *     - Make sure both object records exist before associating them, else the API will return an error.
-     *     - This route does not create objects. The object where the object records are upserted by this API must be created already else the API will return an error "invalid object type".
+     * - Make sure both object records exist before associating them, else the API will return an error.
+     * - This route does not create objects. The object where the object records are upserted by this API must be created already else the API will return an error "invalid object type".
      *
      * @param {Brevo.UpsertrecordsRequest} request
      * @param {CustomObjectsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -55,7 +82,61 @@ export class CustomObjectsClient {
      * @example
      *     await client.customObjects.upsertrecords({
      *         object_type: "vehicle",
-     *         records: [{}]
+     *         records: [{
+     *                 associations: [{
+     *                         object_type: "garage",
+     *                         action: "link",
+     *                         records: [{
+     *                                 identifiers: {
+     *                                     id: 435435
+     *                                 }
+     *                             }]
+     *                     }, {
+     *                         object_type: "garage",
+     *                         action: "unlink",
+     *                         records: [{
+     *                                 identifiers: {
+     *                                     ext_id: "old-garage-001"
+     *                                 }
+     *                             }]
+     *                     }],
+     *                 attributes: {
+     *                     "make": "Toyota",
+     *                     "model": "Camry",
+     *                     "year": 2020,
+     *                     "engine_type": "hybrid"
+     *                 },
+     *                 identifiers: {
+     *                     ext_id: "VIN123"
+     *                 }
+     *             }]
+     *     })
+     *
+     * @example
+     *     await client.customObjects.upsertrecords({
+     *         object_type: "vehicle",
+     *         records: [{
+     *                 attributes: {
+     *                     "make": "Honda",
+     *                     "model": "Civic",
+     *                     "year": 2023,
+     *                     "engine_type": "petrol"
+     *                 }
+     *             }]
+     *     })
+     *
+     * @example
+     *     await client.customObjects.upsertrecords({
+     *         object_type: "vehicle",
+     *         records: [{
+     *                 attributes: {
+     *                     "color": "red",
+     *                     "engine_type": "diesel"
+     *                 },
+     *                 identifiers: {
+     *                     id: 42
+     *                 }
+     *             }]
      *     })
      */
     public upsertrecords(
@@ -86,7 +167,7 @@ export class CustomObjectsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -179,7 +260,11 @@ export class CustomObjectsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -219,15 +304,14 @@ export class CustomObjectsClient {
 
     /**
      * Use this endpoint to delete multiple object records of the same object-type in one request.
-     * The request is accepted and processed asynchronously.   You can track the status of the deletion process using the returned **processId**.
-     * **API and Schema Limitations:** - Each request can contain up to **1000** object record identifiers   - If more records must be deleted → send multiple batch requests
+     * The request is accepted and processed asynchronously. You can track the status of the deletion process using the returned **processId**.
+     * **Limitations:** - Each request can contain up to **1000** object record identifiers - Either `ids` or `ext_ids` must be provided, but **not both** in the same request - Deletion of Brevo standard object records is not supported via this endpoint - If more records must be deleted, send multiple batch requests
      *
      * @param {Brevo.BatchDeleteObjectRecordsRequest} request
      * @param {CustomObjectsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.ForbiddenError}
-     * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.InternalServerError}
      *
      * @example
@@ -266,7 +350,7 @@ export class CustomObjectsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -288,8 +372,6 @@ export class CustomObjectsClient {
                     throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
                 case 403:
                     throw new Brevo.ForbiddenError(_response.error.body as unknown, _response.rawResponse);
-                case 404:
-                    throw new Brevo.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
                     throw new Brevo.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 default:

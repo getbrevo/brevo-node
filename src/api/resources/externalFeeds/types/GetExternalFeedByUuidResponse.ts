@@ -9,18 +9,12 @@ export interface GetExternalFeedByUuidResponse {
     url: string;
     /** Authentication type for accessing the feed */
     authType: GetExternalFeedByUuidResponse.AuthType;
-    /** Username for basic authentication (null if not using basic auth) */
+    /** Username for basic authentication. Only returned when authType is 'basic'. Excluded from response when authType is 'token'. */
     username?: (string | null) | undefined;
-    /** Password for basic authentication (null if not using basic auth) */
+    /** Password for basic authentication. Only returned when authType is 'basic'. Excluded from response when authType is 'token'. */
     password?: (string | null) | undefined;
-    /** Token for token-based authentication (null if not using token auth) */
+    /** Token for token-based authentication. Only returned when authType is 'token'. Excluded from response when authType is 'basic' or 'noAuth'. */
     token?: (string | null) | undefined;
-    /** Whether personalization is enabled for this feed */
-    personalization: boolean;
-    /** Default attribute name for personalization fallback (empty string if not set) */
-    defaultAttr: string;
-    /** Default contact email for personalization fallback (empty string if not set) */
-    defaultContact: string;
     /** Custom HTTP headers for the feed request */
     headers?: (GetExternalFeedByUuidResponse.Headers.Item[] | null) | undefined;
     /** Maximum number of retry attempts for failed requests */

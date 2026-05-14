@@ -14,7 +14,7 @@ export interface PatchCompaniesIdRequest {
     countryCode?: number;
     /** Warning - Using PATCH on linkedContactIds replaces the list of linked contacts. Omitted IDs will be removed. */
     linkedContactsIds?: number[];
-    /** Warning - Using PATCH on linkedDealsIds replaces the list of linked contacts. Omitted IDs will be removed. */
+    /** Warning - Using PATCH on linkedDealsIds replaces the list of linked deals. Omitted IDs will be removed. */
     linkedDealsIds?: string[];
     /** Name of company */
     name?: string;

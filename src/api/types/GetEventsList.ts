@@ -23,8 +23,6 @@ export namespace GetEventsList {
             event_name?: string | undefined;
             /** Filter ID of the event */
             event_filter_id?: string | undefined;
-            /** Source of the event */
-            source?: string | undefined;
             /** Object type associated with the event */
             object_type?: string | undefined;
             /** Event-level custom properties */

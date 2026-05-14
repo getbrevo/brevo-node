@@ -23,6 +23,8 @@ export class FilesClient {
     }
 
     /**
+     * Retrieve a paginated list of CRM files with optional filtering by entity type, entity IDs, and date range. Results are sorted by creation date in descending order by default, with a default limit of 50 files per page.
+     *
      * @param {Brevo.GetCrmFilesRequest} request
      * @param {FilesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -67,7 +69,11 @@ export class FilesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -95,6 +101,8 @@ export class FilesClient {
     }
 
     /**
+     * Upload a file and associate it with a contact, company, or deal. The file must be sent as multipart form data with a maximum size of 10 MB. You can optionally link the file to a specific entity by providing the corresponding entity ID.
+     *
      * @param {Brevo.PostCrmFilesRequest} request
      * @param {FilesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -148,7 +156,7 @@ export class FilesClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "file",
             duplex: _maybeEncodedRequest.duplex,
             body: _maybeEncodedRequest.body,
@@ -179,6 +187,8 @@ export class FilesClient {
     }
 
     /**
+     * Get a temporary download URL for a CRM file by its identifier. The returned URL is valid for 5 minutes only and provides direct access to the file content.
+     *
      * @param {Brevo.GetCrmFilesIdRequest} request
      * @param {FilesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -217,7 +227,7 @@ export class FilesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -247,6 +257,8 @@ export class FilesClient {
     }
 
     /**
+     * Permanently delete a CRM file by its identifier. This removes the file from storage and unlinks it from any associated contacts, companies, or deals.
+     *
      * @param {Brevo.DeleteCrmFilesIdRequest} request
      * @param {FilesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -285,7 +297,7 @@ export class FilesClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -315,6 +327,8 @@ export class FilesClient {
     }
 
     /**
+     * Retrieve the metadata and details of a specific CRM file by its identifier. This returns information such as the file name, size, type, creation date, and associated entities, but does not include the file content itself.
+     *
      * @param {Brevo.GetCrmFilesIdDataRequest} request
      * @param {FilesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -353,7 +367,7 @@ export class FilesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

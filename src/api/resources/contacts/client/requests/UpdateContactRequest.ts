@@ -9,9 +9,9 @@ import type * as Brevo from "../../../../index.js";
  *     }
  */
 export interface UpdateContactRequest {
-    /** Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) OR its SMS attribute value OR its WHATSAPP attribute value OR its LANDLINE attribute value */
+    /** Email (urlencoded) OR ID of the contact OR EXT_ID attribute (urlencoded) OR its SMS attribute value OR its WHATSAPP attribute value OR its LANDLINE_NUMBER attribute value */
     identifier: Brevo.UpdateContactRequestIdentifier;
-    /** email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE attribute */
+    /** email_id for Email, contact_id for ID of the contact, ext_id for EXT_ID attribute, phone_id for SMS attribute, whatsapp_id for WHATSAPP attribute, landline_number_id for LANDLINE_NUMBER attribute */
     identifierType?: Brevo.UpdateContactRequestIdentifierType;
     /** Pass the set of attributes to be updated. **These attributes must be present in your account**. To update existing email address of a contact with the new one please pass EMAIL in attributes. For example, **{ "EMAIL":"newemail@domain.com", "FNAME":"Ellie", "LNAME":"Roger", "COUNTRIES":["India","China"]}**. The attribute's parameter should be passed in capital letter while updating a contact. Values that don't match the attribute type (e.g. text or string in a date attribute) will be ignored .Keep in mind transactional attributes can be updated the same way as normal attributes. Mobile Number in **SMS** field should be passed with proper country code. For example: **{"SMS":"+91xxxxxxxxxx"} or {"SMS":"0091xxxxxxxxxx"}** */
     attributes?: Record<string, UpdateContactRequest.Attributes.Value>;
@@ -27,6 +27,8 @@ export interface UpdateContactRequest {
     smtpBlacklistSender?: string[];
     /** Ids of the lists to remove the contact from */
     unlinkListIds?: number[];
+    /** When true, if the contact being updated shares an identifier (email, SMS, ext_id, whatsapp, landline) with an existing contact, the two contacts are force-merged. The contact with the most recent `last_modified` timestamp is retained; the other is deleted. When false (default), a 4xx error is returned on identifier conflict. */
+    forceMerge?: boolean;
 }
 
 export namespace UpdateContactRequest {

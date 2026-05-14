@@ -19,25 +19,22 @@ Retrieves details of your Brevo account.
 - Check plan details (type, credits, expiration)
 - Get relay information (for transactional emails)
 - Check Marketing Automation status
-- View date/time preferences and account settings
 - Access organization and user identifiers
 
 **Key information returned:**
 - Complete account details (organization ID, user ID, company information)
 - Address and contact information
 - Plan configurations and credit allocations across different verticals
-- Marketing Automation settings and tracker key
+- Marketing Automation settings and tracker key (when enabled)
 - SMTP relay configuration for transactional emails
-- Date/time preferences and account settings
 - Enterprise features availability status
 
 **Important considerations:**
 - Provides comprehensive account overview for billing and configuration management
 - Essential for understanding current plan limitations and feature availability
-- Marketing Automation key required for advanced automation features
-- Plan verticals show detailed breakdown across Marketing, Chat, and CRM categories
+- Marketing Automation key is only returned when Marketing Automation is enabled on the account
+- Plan verticals show detailed breakdown across Marketing, Chat, and CRM categories (only returned when plan verticals are available)
 - Relay configuration crucial for transactional email setup and deliverability
-- Date/time preferences affect campaign scheduling and reporting displays
 - Enterprise status determines access to advanced features and sub-account management
 </dd>
 </dl>
@@ -1261,6 +1258,20 @@ await client.masterAccount.getSubAccountDetails({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently deletes a sub-account from the corporate master account. Once deleted, all data associated with the sub-account organization is removed and cannot be recovered, so ensure the sub-account is no longer needed before proceeding.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -1931,6 +1942,20 @@ await client.masterAccount.changeAdminUserPermissions({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves the list of all users associated with your organization, including both active and pending invited users. Each user entry includes their email address, owner status, current invitation status, and feature access levels for marketing, CRM, and conversations.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -1971,6 +1996,20 @@ await client.user.getInvitedUsersList();
 <details><summary><code>client.user.<a href="/src/api/resources/user/client/Client.ts">putRevokeUserPermission</a>({ ...params }) -> Brevo.PutRevokeUserPermissionResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Revokes all permissions for an invited user in the organization, effectively removing their access to the platform. If the user''s plan change generated credit notes, they are returned in the response for billing reconciliation.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -2157,6 +2196,20 @@ await client.user.inviteuser({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Resends or cancels a pending invitation for a user in the organization, depending on the action path parameter. Use `resend` to send a new invitation email to the user, or `cancel` to revoke the pending invitation entirely and remove the user''s pending access.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -2342,6 +2395,20 @@ await client.user.editUserPermission({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieves the granular feature-level permissions assigned to a specific user in the organization, identified by their email address. The response includes the user''s current status (active or pending) and a detailed list of privileges specifying which features and permission levels are granted.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -2412,20 +2479,19 @@ Retrieves a list of background processes from your Brevo account with filtering 
 - Identify failed or stuck processes for troubleshooting
 
 **Key information returned:**
-- Process details (ID, name, type, status)
-- Process creation and completion timestamps
-- Process progress and completion status
-- Error information for failed processes
-- Process result data and download links
+- Process details (ID, name, status)
+- Export download URLs for completed export processes
+- Import details with CSV report URLs for completed import processes
+- Total count of processes for pagination
 
 **Important considerations:**
 - Background processes handle long-running operations like imports and exports
-- Process status indicates current state (queued, processing, completed, failed, cancelled)
+- Process status indicates current state (queued, processing, completed)
 - Export processes provide download URLs when completed
-- Failed processes include error messages for troubleshooting
+- Import processes provide CSV report URLs with details about problematic records
 - Use pagination for accounts with many historical processes
 - Sort options available for creation order (ascending or descending)
-- Different process types handle specific operations (imports, exports, calculations)
+- Default limit is 10 results per page, maximum is 50
 </dd>
 </dl>
 </dd>
@@ -2498,18 +2564,14 @@ Retrieves detailed information about a specific background process.
 - Track process execution times
 
 **Key information returned:**
-- Complete process details and status
-- Import/export statistics and results
-- Error information for troubleshooting
-- Download URLs for export processes
-- Process timing and performance data
+- Complete process details (ID, name, status)
+- Download URLs for completed export processes
+- Import details with CSV report URLs for completed import processes
 
 **Important considerations:**
-- Process ID must exist in your account
-- Completed processes provide detailed statistics and results
-- Export processes include download URLs when successful
-- Failed processes contain error messages for debugging
-- Timing information helps with performance analysis
+- Process ID must exist in your account and not be deleted
+- Completed export processes include download URLs
+- Completed import processes include CSV report URLs with details about problematic records
 - Different process types return different result structures
 </dd>
 </dl>
@@ -3588,7 +3650,6 @@ Key information returned:
 
 ```typescript
 await client.webhooks.createWebhook({
-    events: ["sent"],
     url: "http://requestb.in/173lyyx1"
 });
 
@@ -4377,24 +4438,51 @@ await client.externalFeeds.deleteExternalFeed({
 
 <Note title="Enterprise access only">Custom objects are only available to Enterprise plans.
 This feature is in beta. These are subject to change.</Note>
-This API allows bulk upsert of object records in a single request. Each object record may include
-  - Attributes
-  - Identifiers
-  - Associations
-**Response:**
-  The API processes the request asynchronously and returns a processId that you can use to track the background process status.
-**API and Schema Limitation:**
-  - Size:
-      - Max 1000 objects records per request
-      - Max request body size: 1 MB
-  - Max 500 attributes defined per object record upsert request
-    - This is coherent with schema limitation: an object cannot have more than 500 attributes.
-    - Worth noting: Nothing happens If an attribute is mentioned in the request, but was not previously defined for the object schema (no error, no attribute creation)
-  - Max 10 associations defined per associated object type, in each record of the request
-    - This is not a schema limitation. You can associate an object record to an unlimited number of other object records by running multiple requests.
+Performs bulk create or update (upsert) operations for object records in a single asynchronous request. This endpoint is optimized for high-volume data imports and synchronization scenarios.
+
+**How Upsert Works:**
+- **Create**: Omit `identifiers`, or provide only `ext_id` (if it doesn't already exist). A new record is created with a Brevo-generated `id`.
+- **Update**: Provide `id` (Brevo internal ID) or an `ext_id` that already exists. The matching record is updated with the new attribute values.
+- **Important:** `id` is for **updates only**. Providing an `id` that does not belong to an existing record will fail during async processing (the HTTP response will still be 202, but the record will be rejected in the background). To create a new record with a stable external reference, use `ext_id` instead.
+
+**Request Structure:**
+Each object record in the `records` array can include:
+- `identifiers`: Either `id` (internal Brevo ID) or `ext_id` (your external system ID) — required for updates. **Note:** use `id` (singular), not `ids`.
+- `attributes`: Key-value pairs where each key is the attribute **key** (e.g., `company_name`), not the attribute label (e.g., "Company Name").
+- `associations`: Controls linking and unlinking of associated records (optional). Each entry specifies:
+    - `object_type`: The type of the associated object
+    - `action`: `link` (default) to create the association, or `unlink` to remove it
+    - `records`: The associated records to link or unlink (each identified by `ext_id` or `id`)
+    - **Unlink is idempotent** — unlinking a non-existing association is a no-op (no error returned)
+    - `link` and `unlink` actions can be submitted for the same `object_type` in a single record entry
+    - Both associated records must already exist before a link can be created
+
+> **Common mistake:** Passing the attribute **label** (the display name you see in the UI) instead of the attribute **key** will cause the attribute to be silently ignored and the record may not be created as expected.
+
+**Asynchronous Processing:**
+- Returns immediately with a `processId` (HTTP 202 Accepted)
+- Use the processId to track status via the Get process API
+
+**API and Schema Limitations:**
+- Max 1000 object records per request
+- Max request body size: 1 MB
+- Max 500 attributes per object record (matches the schema limit of 500 attributes per object)
+- Unknown attribute keys are silently ignored (no error, no attribute creation)
+- Max 10 association records per associated object-type in each record of the request. If you need more, send multiple requests.
+
+**Important Behaviors:**
+- The object schema must be created before upserting records
+- Unknown attribute keys are silently ignored (no error, no creation)
+- Both associated object records must already exist before creating a link association
+- Unlink operations are idempotent: attempting to unlink a non-existing association returns success
+- `link` and `unlink` actions can be submitted for the same `object_type` in a single record entry
+- Contact objects cannot be created via this endpoint
+- For `category` and `multiple_category` attributes, pass the option **key** as the value (not the option label or option ID).
+- The `id` identifier (internal Brevo ID) can only be used for **updating** existing records. To create new records, either omit identifiers (Brevo auto-generates an ID) or provide an `ext_id`.
+
 **Errors:**
-    - Make sure both object records exist before associating them, else the API will return an error.
-    - This route does not create objects. The object where the object records are upserted by this API must be created already else the API will return an error "invalid object type".
+- Make sure both object records exist before associating them, else the API will return an error.
+- This route does not create objects. The object where the object records are upserted by this API must be created already else the API will return an error "invalid object type".
 </dd>
 </dl>
 </dd>
@@ -4411,7 +4499,34 @@ This API allows bulk upsert of object records in a single request. Each object r
 ```typescript
 await client.customObjects.upsertrecords({
     object_type: "vehicle",
-    records: [{}]
+    records: [{
+            associations: [{
+                    object_type: "garage",
+                    action: "link",
+                    records: [{
+                            identifiers: {
+                                id: 435435
+                            }
+                        }]
+                }, {
+                    object_type: "garage",
+                    action: "unlink",
+                    records: [{
+                            identifiers: {
+                                ext_id: "old-garage-001"
+                            }
+                        }]
+                }],
+            attributes: {
+                "make": "Toyota",
+                "model": "Camry",
+                "year": 2020,
+                "engine_type": "hybrid"
+            },
+            identifiers: {
+                ext_id: "VIN123"
+            }
+        }]
 });
 
 ```
@@ -4530,8 +4645,8 @@ await client.customObjects.getrecords({
 <dd>
 
 Use this endpoint to delete multiple object records of the same object-type in one request.
-The request is accepted and processed asynchronously.   You can track the status of the deletion process using the returned **processId**.
-**API and Schema Limitations:** - Each request can contain up to **1000** object record identifiers   - If more records must be deleted → send multiple batch requests
+The request is accepted and processed asynchronously. You can track the status of the deletion process using the returned **processId**.
+**Limitations:** - Each request can contain up to **1000** object record identifiers - Either `ids` or `ext_ids` must be provided, but **not both** in the same request - Deletion of Brevo standard object records is not supported via this endpoint - If more records must be deleted, send multiple batch requests
 </dd>
 </dl>
 </dd>
@@ -4591,6 +4706,20 @@ await client.customObjects.batchDeleteObjectRecords({
 <details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">getContacts</a>({ ...params }) -> Brevo.GetContacts</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all contacts from your Brevo account with support for pagination, filtering, and sorting. Results default to 50 contacts per page (maximum 1000) sorted in descending order of creation, and can be filtered by modification date, creation date, contact IDs (up to 20), list IDs, segment ID, or contact attributes using the equals operator. Note that either listIds or segmentId can be passed but not both simultaneously.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -4706,6 +4835,20 @@ await client.contacts.createContact();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all contact attributes defined in your Brevo account, grouped by category (normal, transactional, category, calculated, global). Each attribute includes its name, type, and category, along with enumeration values for category-type attributes and options for multiple-choice-type attributes.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -4746,6 +4889,20 @@ await client.contacts.getAttributes();
 <details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">createAttribute</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new contact attribute under the specified category and name. The required body properties depend on the category: use "type" for normal, transactional, or category attributes; use "value" for calculated or global attributes; use "enumeration" for category attributes; and use "multiCategoryOptions" for normal multiple-choice attributes. None of the category or multicategory option values can exceed 200 characters.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -4799,6 +4956,20 @@ await client.contacts.createAttribute({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing contact attribute identified by its category and name. For category-type attributes, you can update the enumeration values; for calculated or global attributes, update the computed value formula; and for normal multiple-choice attributes, update the multicategory options. None of the category or multicategory option values can exceed 200 characters.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -4850,6 +5021,20 @@ await client.contacts.updateAttribute({
 <details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">deleteAttribute</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete an existing contact attribute by its category and name. The attribute must exist in the specified category (normal, transactional, category, calculated, or global), otherwise a 404 error is returned.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -4903,6 +5088,20 @@ await client.contacts.deleteAttribute({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a specific option from an existing multiple-choice contact attribute. The attribute type must be "multiple-choice", and both the attribute name and the option to delete must already exist in your account.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -4955,6 +5154,20 @@ await client.contacts.deleteMultiAttributeOptions({
 <details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">updateBatchContacts</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update multiple contacts in a single API call by passing an array of contact objects. Each contact in the array must be identified by one of: email, id, or sms (only one identifier per contact). You can update attributes, blacklist status, list memberships, ext_id, and transactional email forbidden senders for each contact in the batch.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -5205,6 +5418,20 @@ await client.contacts.getFolders();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new folder to organize your contact lists. Folders serve as containers for grouping related lists together. The folder name is required and must be provided in the request body.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -5321,6 +5548,20 @@ await client.contacts.getFolder({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the name of an existing folder identified by its ID. The new folder name must be provided in the request body. Returns a 404 error if the folder ID does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -5372,6 +5613,20 @@ await client.contacts.updateFolder({
 <details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">deleteFolder</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete a folder identified by its ID. Deleting a folder will also delete all the contact lists contained within it. This action cannot be undone.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -5619,6 +5874,20 @@ await client.contacts.getLists();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new contact list inside a specified folder. Both the list name and the parent folder ID are required. The newly created list will be empty and ready to receive contacts via the add contacts endpoint.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -5671,6 +5940,20 @@ await client.contacts.createList({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the details of a specific contact list by its ID, including its name, folder ID, creation date, subscriber counts, and campaign statistics. You can optionally filter campaign statistics by providing startDate and endDate parameters (both must be used together in YYYY-MM-DD format).
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -5721,6 +6004,20 @@ await client.contacts.getList({
 <details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">updateList</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing contact list identified by its ID. You can update the list name, move it to a different folder by providing a new folderId, or both. Only one of the two parameters (name, folderId) needs to be provided per request.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -5773,6 +6070,20 @@ await client.contacts.updateList({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete a contact list identified by its ID. The contacts in the list are not deleted; they are only removed from this list. Returns a 404 error if the list ID does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -5823,6 +6134,20 @@ await client.contacts.deleteList({
 <details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">getContactsFromList</a>({ ...params }) -> Brevo.GetContacts</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all contacts belonging to a specific list, identified by its list ID. Results are paginated with a default of 50 contacts per page (maximum 500) and sorted in descending order of creation. You can optionally filter contacts by their modification date using the modifiedSince parameter.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -5982,6 +6307,20 @@ await client.contacts.removeContactFromList({
 <details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">getSegments</a>({ ...params }) -> Brevo.GetSegmentsResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all contact segments defined in your Brevo account with support for pagination and sorting. Results default to 10 segments per page (maximum 50) sorted in descending order of creation. Each segment includes its ID, name, category name, and last update timestamp.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -6231,6 +6570,20 @@ await client.contacts.deleteContact({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve email campaign statistics for a specific contact identified by email address or numeric ID. Statistics include messages sent, opens, clicks, hard/soft bounces, deliveries, unsubscriptions, complaints, and transactional attributes. By default, data covers the last 90 days; use startDate and endDate parameters (YYYY-MM-DD) to specify a custom range with a maximum span of 90 days.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -6291,7 +6644,7 @@ await client.contacts.getContactStats({
 <dl>
 <dd>
 
-We recommend pinging this endpoint every minute for as long as the agent has to be considered online.
+Sets the agent's status to online for 2-3 minutes. We recommend pinging this endpoint every minute for as long as the agent has to be considered online. You must provide either `agentId` alone, or all three of `agentEmail` + `agentName` + `receivedFrom`.
 </dd>
 </dl>
 </dd>
@@ -6348,6 +6701,20 @@ await client.conversations.setsAgentsStatusToOnlineFor23Minutes({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send a message as an agent to an existing visitor's conversation. You must provide either `agentId` alone, or all three of `agentEmail` + `agentName` + `receivedFrom` to identify the agent.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -6400,6 +6767,20 @@ await client.conversations.sendAMessageAsAnAgent({
 <details><summary><code>client.conversations.<a href="/src/api/resources/conversations/client/Client.ts">getAMessage</a>({ ...params }) -> Brevo.ConversationsMessage</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single message by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -6460,7 +6841,7 @@ await client.conversations.getAMessage({
 <dl>
 <dd>
 
-Only agents’ messages can be edited.
+Update the text of a message sent by an agent. Only messages of type `agent` can be edited. The `text` and `html` fields of the message will be updated.
 </dd>
 </dl>
 </dd>
@@ -6526,7 +6907,7 @@ await client.conversations.updateAMessageSentByAnAgent({
 <dl>
 <dd>
 
-Only agents’ messages can be deleted.
+Delete a message sent by an agent. Only messages of type `agent` can be deleted.
 </dd>
 </dl>
 </dd>
@@ -6591,7 +6972,7 @@ await client.conversations.deleteAMessageSentByAnAgent({
 <dl>
 <dd>
 
-Example of automated messages: order status, announce new features in your web app, etc.
+Send an automated (pushed) message to a visitor on behalf of an agent. Example use cases: order status updates, announcing new features in your web app, etc.
 </dd>
 </dl>
 </dd>
@@ -6608,7 +6989,7 @@ Example of automated messages: order status, announce new features in your web a
 ```typescript
 await client.conversations.sendAnAutomatedMessageToAVisitor({
     groupId: "PjRBMhWGen6aRHjif",
-    text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 3325 9667 4328 88",
+    text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
     visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg"
 });
 
@@ -6649,6 +7030,20 @@ await client.conversations.sendAnAutomatedMessageToAVisitor({
 <details><summary><code>client.conversations.<a href="/src/api/resources/conversations/client/Client.ts">getAnAutomatedMessage</a>({ ...params }) -> Brevo.ConversationsMessage</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single automated (pushed) message by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -6701,6 +7096,20 @@ await client.conversations.getAnAutomatedMessage({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the text of an automated (pushed) message. The `text` and `html` fields of the message will be updated.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -6712,7 +7121,7 @@ await client.conversations.getAnAutomatedMessage({
 ```typescript
 await client.conversations.updateAnAutomatedMessage({
     id: "id",
-    text: "Your order has shipped! Here\u2019s your tracking number: 9114 5847 4668 7775 9233 54"
+    text: "Your order has shipped! Here's your tracking number: 9114 5847 4668 7775 9233 54"
 });
 
 ```
@@ -6752,6 +7161,20 @@ await client.conversations.updateAnAutomatedMessage({
 <details><summary><code>client.conversations.<a href="/src/api/resources/conversations/client/Client.ts">deleteAnAutomatedMessage</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete an automated (pushed) message by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -6870,6 +7293,20 @@ await client.conversations.setVisitorGroupAssignment({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of all ecommerce categories stored in your Brevo account. Results are sorted by creation date in descending order by default, and can be filtered by category IDs, name, modification date, creation date, or deletion status. The response includes a `count` field with the total number of matching categories, and pagination defaults to 50 categories per page (maximum 100).
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -6918,6 +7355,20 @@ await client.ecommerce.getCategories();
 <details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createUpdateCategory</a>({ ...params }) -> Brevo.CreateUpdateCategoryResponse | undefined</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new ecommerce category or update an existing one, identified by the mandatory `id` field. When `updateEnabled` is set to `false` (the default), the endpoint performs an insert and returns `201`; if the category ID already exists, a `400` error is returned. When `updateEnabled` is `true`, the endpoint performs an upsert, returning `201` for a new category or `204` when an existing category is updated. The `name` field is mandatory for creation but optional for updates.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -6969,6 +7420,20 @@ await client.ecommerce.createUpdateCategory({
 <details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createUpdateBatchCategory</a>({ ...params }) -> Brevo.CreateUpdateBatchCategoryResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create or update multiple ecommerce categories in a single request. The `categories` array accepts up to 100 category objects, each requiring a unique `id`. When `updateEnabled` is `false` (the default), all categories are inserted as new; if any ID already exists, a `400` error is returned. When `updateEnabled` is `true`, existing categories are updated and new ones are created via upsert. Duplicate IDs within the same request payload are rejected. The response returns the count of created and updated categories.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7022,6 +7487,20 @@ await client.ecommerce.createUpdateBatchCategory({
 <details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">getCategoryInfo</a>({ ...params }) -> Brevo.GetCategoryDetails</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the full details of a single ecommerce category by its unique ID. The response includes the category name, URL, creation and modification timestamps, and deletion status. Returns a `404` error if no category matches the provided ID.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7129,6 +7608,20 @@ await client.ecommerce.activateTheECommerceApp();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve aggregated ecommerce attribution metrics for one or more Brevo email campaigns, SMS campaigns, or automation workflows. You can optionally filter by a date range using `periodFrom` and `periodTo` in RFC3339 format. The response includes per-source metrics (orders count, revenue, and average basket) as well as aggregated totals across all requested sources.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -7140,7 +7633,8 @@ await client.ecommerce.activateTheECommerceApp();
 ```typescript
 await client.ecommerce.getAttributionMetricsForOneOrMoreBrevoCampaignsOrWorkflows({
     periodFrom: "2022-01-02T00:00:00Z",
-    periodTo: "2022-01-03T00:00:00Z"
+    periodTo: "2022-01-03T00:00:00Z",
+    "emailCampaignId[]": ["sale"]
 });
 
 ```
@@ -7180,6 +7674,20 @@ await client.ecommerce.getAttributionMetricsForOneOrMoreBrevoCampaignsOrWorkflow
 <details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">getDetailedAttributionMetricsForASingleBrevoCampaignOrWorkflow</a>({ ...params }) -> Brevo.GetEcommerceAttributionMetricsConversionSourceConversionSourceIdResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve detailed attribution metrics for a single Brevo campaign or automation workflow, identified by its conversion source type and ID. The response includes orders count, revenue, average basket value, and the number of new customers attributed to that specific campaign or workflow.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7233,6 +7741,20 @@ await client.ecommerce.getDetailedAttributionMetricsForASingleBrevoCampaignOrWor
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the list of products whose sales have been attributed to a specific Brevo campaign or automation workflow. Each product entry includes its ID, name, SKU, image URL, product URL, price, revenue, and orders count. The conversion source type must be one of `email_campaign`, `sms_campaign`, `automation_workflow_email`, or `automation_workflow_sms`.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -7285,6 +7807,20 @@ await client.ecommerce.getAttributedProductSalesForASingleBrevoCampaignOrWorkflo
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the ISO 4217 display currency code currently configured for your Brevo ecommerce account. This currency is used to display monetary values across the ecommerce dashboard and reports. Returns a `403` error if ecommerce is not activated on the account.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -7325,6 +7861,20 @@ await client.ecommerce.getTheIso4217CompliantDisplayCurrencyCodeForYourBrevoAcco
 <details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">setConfigDisplayCurrency</a>({ ...params }) -> Brevo.SetConfigDisplayCurrencyResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Set or update the ISO 4217 display currency code for your Brevo ecommerce account. This currency determines how monetary values are displayed in the ecommerce dashboard and reports. The provided currency code must be a valid ISO 4217 code; invalid codes result in a `422` error. Returns a `403` error if ecommerce is not activated on the account.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7588,6 +8138,20 @@ await client.ecommerce.createBatchOrder({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of all ecommerce products stored in your Brevo account. Results are sorted by creation date in descending order by default, and can be filtered by product IDs, name (minimum 3 characters), price range, category IDs, modification date, creation date, or deletion status. Use the `search` parameter to query across SKU, name, and ID simultaneously — results are prioritized as exact SKU match > SKU prefix match > name match > ID match. Pagination defaults to 50 products per page (maximum 1000), and the response includes a `count` field with the total number of matching products.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -7636,6 +8200,20 @@ await client.ecommerce.getProducts();
 <details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createUpdateProduct</a>({ ...params }) -> Brevo.CreateUpdateProductResponse | undefined</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new ecommerce product or update an existing one, identified by the mandatory `id` field. When `updateEnabled` is `false` (the default), the endpoint inserts a new product and returns `201`; if the product ID already exists, a `400` error is returned. When `updateEnabled` is `true`, the endpoint performs an upsert, returning `201` for a new product or `204` for an update. The `name` field is mandatory for creation but optional for updates. Product images are downloaded, validated (max 5 MB, formats: jpeg, jpg, png, bmp, gif, webp), and re-hosted on S3. The `metaInfo` object supports up to 20 keys with a cumulative size limit of approximately 1000 KB.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7688,6 +8266,20 @@ await client.ecommerce.createUpdateProduct({
 <details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createUpdateBatchProducts</a>({ ...params }) -> Brevo.CreateUpdateBatchProductsResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create or update multiple ecommerce products in a single request. The `products` array accepts up to 100 product objects for creation (or up to 1000 when `updateEnabled` is `true` and the account has an increased limit). Each product requires a unique `id` and `name` (name is mandatory for creation only). When `updateEnabled` is `false`, all products are inserted as new; if any ID already exists, a `400` error is returned. When `updateEnabled` is `true`, existing products are updated and new ones are created via upsert. Duplicate IDs within the same request payload are rejected. The response returns the count of created and updated products.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7743,6 +8335,20 @@ await client.ecommerce.createUpdateBatchProducts({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the full details of a single ecommerce product by its unique ID. The response includes the product name, price, SKU, URL, image URLs (original and thumbnails), categories, stock level, meta information, creation and modification timestamps, and deletion status. Returns a `404` error if no product matches the provided ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -7793,6 +8399,20 @@ await client.ecommerce.getProductInfo({
 <details><summary><code>client.ecommerce.<a href="/src/api/resources/ecommerce/client/Client.ts">createProductAlert</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Register a contact to receive an alert for a specific product event, such as `back_in_stock`. At least one contact identifier (`ext_id`, `email`, or `sms`) must be provided; when multiple are given, priority is `ext_id` > `email` > `sms`. Returns a `404` error if the product ID does not exist, and a `403` error if product alerts are not enabled for the account.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7847,6 +8467,20 @@ await client.ecommerce.createProductAlert({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of all coupon collections in your Brevo account. Results can be sorted by creation date, remaining coupons count, or expiration date, in ascending or descending order. Pagination defaults to 50 collections per page (maximum 100).
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -7895,6 +8529,20 @@ await client.coupons.getCouponCollections();
 <details><summary><code>client.coupons.<a href="/src/api/resources/coupons/client/Client.ts">createCouponCollection</a>({ ...params }) -> Brevo.CreateCouponCollectionResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new coupon collection with a name and a default coupon value. You can optionally set an expiration date in RFC3339 format and configure alert thresholds to receive email notifications when remaining coupons or remaining days before expiration fall below a specified number. The collection ID is auto-generated as a UUID and returned in the response.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -7948,6 +8596,20 @@ await client.coupons.createCouponCollection({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the details of a single coupon collection by its UUID. The response includes the collection name, default coupon value, total and remaining coupon counts, and creation timestamp. Returns a `404` error if no collection matches the provided ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -7999,6 +8661,20 @@ await client.coupons.getCouponCollection({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing coupon collection by its UUID. You can modify the default coupon value, set or remove the expiration date (pass `null` to remove), and configure or disable alert thresholds for remaining coupons or remaining days. Only the fields included in the request body are updated; omitted fields remain unchanged.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -8049,6 +8725,20 @@ await client.coupons.updateCouponCollection({
 <details><summary><code>client.coupons.<a href="/src/api/resources/coupons/client/Client.ts">createCoupons</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Add coupons to an existing coupon collection. The `coupons` array must contain between 1 and 10,000 unique coupon code strings, all associated with the specified `collectionId`. Coupon creation is processed asynchronously and a `204` status is returned immediately upon acceptance. Returns a `404` error if the specified coupon collection does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -8102,6 +8792,20 @@ await client.coupons.createCoupons({
 <details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">createPaymentRequest</a>({ ...params }) -> Brevo.CreatePaymentRequestResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new payment request for a Brevo contact. The request requires a reference (displayed on the payment page), a contact ID, and a cart with currency and amount in cents. You can optionally configure a custom success redirect URL and enable email notifications with reminders. Returns the payment request ID and its public payment URL. A `403` error is returned if Brevo Payments is not activated or the account is not validated.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -8159,6 +8863,20 @@ await client.payments.createPaymentRequest({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the details of a specific payment request by its ID. The response includes the reference, status (created, sent, reminderSent, or paid), cart details, notification configuration, contact ID, and the number of reminders sent. Returns a `404` error if no payment request matches the provided ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -8209,6 +8927,20 @@ await client.payments.getPaymentRequest({
 <details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">deletePaymentRequest</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a payment request by its UUID. Once deleted, the payment request can no longer be accessed or paid. Returns a `404` error if no payment request matches the provided ID, and a `403` error if Brevo Payments is not activated or the account is not validated.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -8418,10 +9150,12 @@ Create multiple events to track contacts' interactions in a single request.
 <dd>
 
 ```typescript
-await client.event.createBatchEvents([{
-        event_name: "order_created",
-        identifiers: {}
-    }]);
+await client.event.createBatchEvents({
+    events: [{
+            event_name: "order_created",
+            identifiers: {}
+        }]
+});
 
 ```
 </dd>
@@ -8437,7 +9171,7 @@ await client.event.createBatchEvents([{
 <dl>
 <dd>
 
-**request:** `Brevo.CreateBatchEventsRequestItem[]` 
+**request:** `Brevo.CreateBatchEventsRequest` 
     
 </dd>
 </dl>
@@ -8470,7 +9204,7 @@ await client.event.createBatchEvents([{
 <dl>
 <dd>
 
-This endpoint will show the list of all the events for the received emails.
+This endpoint will show the list of all the events for the received emails. When no date range is provided, the last 30 days of events are returned by default.
 </dd>
 </dl>
 </dd>
@@ -8652,7 +9386,7 @@ await client.inboundParsing.getInboundEmailAttachment({
 </details>
 
 ## Balance
-<details><summary><code>client.balance.<a href="/src/api/resources/balance/client/Client.ts">getActiveBalancesApi</a>({ ...params }) -> Brevo.BalanceLimit</code></summary>
+<details><summary><code>client.balance.<a href="/src/api/resources/balance/client/Client.ts">getActiveBalancesApi</a>({ ...params }) -> Brevo.GetLoyaltyBalanceProgramsPidActiveBalanceResponse</code></summary>
 <dl>
 <dd>
 
@@ -8681,8 +9415,8 @@ Returns Active Balances
 ```typescript
 await client.balance.getActiveBalancesApi({
     pid: "pid",
-    contact_id: 1,
-    balance_definition_id: "balance_definition_id"
+    contactId: 1000000,
+    balanceDefinitionId: "balanceDefinitionId"
 });
 
 ```
@@ -9340,7 +10074,7 @@ await client.balance.deleteBalanceLimit({
 <dl>
 <dd>
 
-Returns balance list
+Returns contact balances for a given balance definition across all subscriptions.
 </dd>
 </dl>
 </dd>
@@ -9356,7 +10090,8 @@ Returns balance list
 
 ```typescript
 await client.balance.getContactBalances({
-    pid: "pid"
+    pid: "pid",
+    balanceDefinitionId: "balanceDefinitionId"
 });
 
 ```
@@ -9426,7 +10161,7 @@ await client.balance.createBalanceOrder({
     balanceDefinitionId: "balanceDefinitionId",
     contactId: 1,
     dueAt: "dueAt",
-    source: "source"
+    source: "engine"
 });
 
 ```
@@ -9625,7 +10360,7 @@ Returns transaction history
 ```typescript
 await client.balance.getTransactionHistoryApi({
     pid: "pid",
-    contactId: 1,
+    contactId: 1000000,
     balanceDefinitionId: "balanceDefinitionId"
 });
 
@@ -10609,7 +11344,7 @@ Subscribes to a loyalty program
 ```typescript
 await client.program.subscribeToLoyaltyProgram({
     pid: "pid",
-    contactId: 1
+    contactId: 1000000
 });
 
 ```
@@ -11986,7 +12721,7 @@ await client.tier.deleteTier({
 <dd>
 
 <Note>The response payload for this endpoint has changed
-You now need to specify which type of statistics you would like to retrieve. For more information visit [this page](https://developers.brevo.com/changelog/get-all-marketing-campaigns).</Note>
+You now need to specify which type of statistics you would like to retrieve. For more information visit [this page](https://developers.brevo.com/changelog/2023/2/7).</Note>
 </dd>
 </dl>
 </dd>
@@ -12041,6 +12776,20 @@ await client.emailCampaigns.getEmailCampaigns();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new email campaign. The campaign requires at minimum a name and sender details, and is created in draft status by default. You must provide email content via one of three mutually exclusive options: htmlContent (inline HTML), htmlUrl (remote URL), or templateId (existing template); additionally, A/B testing can be enabled by setting abTesting to true with subjectA and subjectB, but this is incompatible with sendAtBestTime.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12093,6 +12842,20 @@ await client.emailCampaigns.createEmailCampaign({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upload an image to your account''s image gallery by providing an absolute URL to the image. The maximum allowed image size is 2MB and supported formats are jpeg, jpg, png, bmp, and gif; local file uploads are not supported.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12143,6 +12906,20 @@ await client.emailCampaigns.uploadImageToGallery({
 <details><summary><code>client.emailCampaigns.<a href="/src/api/resources/emailCampaigns/client/Client.ts">getEmailCampaign</a>({ ...params }) -> Brevo.GetEmailCampaignResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve detailed information about a specific email campaign by its ID, including recipients, statistics, and HTML content. Use the statistics query parameter to select which statistics to include (globalStats, linksStats, statsByDomain, statsByDevice, or statsByBrowser); statsByDevice and statsByBrowser are only available on this single-campaign endpoint. You can exclude HTML content from the response by setting excludeHtmlContent to true.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -12195,6 +12972,20 @@ await client.emailCampaigns.getEmailCampaign({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing email campaign''s properties such as name, subject, content, sender, recipients, schedule, and A/B testing configuration. The campaign must exist and the request body must contain at least one valid field to update. Only draft or scheduled campaigns can be modified; if sendAtBestTime is enabled, IP warmup will be automatically disabled.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12245,6 +13036,20 @@ await client.emailCampaigns.updateEmailCampaign({
 <details><summary><code>client.emailCampaigns.<a href="/src/api/resources/emailCampaigns/client/Client.ts">deleteEmailCampaign</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete an email campaign by its campaign ID. Only campaigns that have not been scheduled can be deleted; attempting to delete a campaign that has already been scheduled will return a 403 permission denied error. Related data in templates, newsletter builder, and schedule collections is also cleaned up.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -12362,6 +13167,20 @@ await client.emailCampaigns.getAbTestCampaignResult({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Export the recipients of a sent email campaign as an asynchronous process, filtered by recipient type (e.g. openers, clickers, hardBounces). The recipientsType field is required and determines which subset of recipients to export. An optional notifyURL webhook will be called once the export is complete, and the response returns a processId to track the export status.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12413,6 +13232,20 @@ await client.emailCampaigns.emailExportRecipients({
 <details><summary><code>client.emailCampaigns.<a href="/src/api/resources/emailCampaigns/client/Client.ts">sendEmailCampaignNow</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send an existing email campaign immediately by scheduling it for the current time. The campaign must have valid recipients and content configured before sending. The system verifies your account''s send limit and credit balance before dispatching; if credits are insufficient, a 402 error is returned.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -12536,6 +13369,20 @@ await client.emailCampaigns.sendReport({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send a test version of an email campaign to specified email addresses or your entire test list. If the emailTo array is left empty, the test mail will be sent to all addresses in your test list. You can send a maximum of 50 test emails per day.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12653,6 +13500,20 @@ await client.emailCampaigns.getSharedTemplateUrl({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the status of an email campaign, such as suspending, archiving, or replicating it. Available status values include suspended, archive, darchive, sent, queued, replicate, replicateTemplate, cancel, and draft. Note that the replicateTemplate status is only available for template type campaigns.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12706,6 +13567,20 @@ await client.emailCampaigns.updateCampaignStatus({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of all your SMS campaigns with their statistics and recipient information. Results can be filtered by status and date range, with a default limit of 500 and maximum of 1000 per page. The sort order defaults to descending by creation date; date filters are only available when status is not passed or is set to sent.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12754,6 +13629,20 @@ await client.smsCampaigns.getSmsCampaigns();
 <details><summary><code>client.smsCampaigns.<a href="/src/api/resources/smsCampaigns/client/Client.ts">createSmsCampaign</a>({ ...params }) -> Brevo.CreateSmsCampaignResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new SMS campaign with the required name, sender, and content fields. The sender name is limited to 11 alphanumeric characters or 15 numeric characters, and the content should stay within 160 characters per SMS segment. If a scheduledAt date is provided, listIds in recipients become mandatory; accounts under validation are limited to 4 total campaigns and campaigns with more than 10 recipients will be saved as draft.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -12808,6 +13697,20 @@ await client.smsCampaigns.createSmsCampaign({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve detailed information about a specific SMS campaign by its ID, including campaign content, sender, recipients with list names, statistics (delivered, sent, bounces, unsubscriptions, answered), and tags. Unlike the list endpoint, recipients are returned as objects with id and name fields rather than plain IDs.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12859,6 +13762,20 @@ await client.smsCampaigns.getSmsCampaign({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing SMS campaign''s properties such as name, sender, content, recipients, scheduled date, organisation prefix, and unsubscribe instructions. The request body must contain at least one valid field to update. The campaign must exist and must be of type SMS; if a scheduledAt is provided, valid recipients must be present either in the request or already configured on the campaign.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -12909,6 +13826,20 @@ await client.smsCampaigns.updateSmsCampaign({
 <details><summary><code>client.smsCampaigns.<a href="/src/api/resources/smsCampaigns/client/Client.ts">deleteSmsCampaign</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete an SMS campaign by its campaign ID. Only campaigns that have not been scheduled or sent can be deleted; attempting to delete a campaign that is queued, in process, or has been sent with recipients will return a 403 permission denied error.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -13026,6 +13957,20 @@ await client.smsCampaigns.requestSmsRecipientExport({
 <details><summary><code>client.smsCampaigns.<a href="/src/api/resources/smsCampaigns/client/Client.ts">sendSmsCampaignNow</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send an existing SMS campaign immediately by scheduling it for the current time. The system verifies your account''s SMS credit balance before dispatching; if credits are insufficient or the remaining credit is less than the number of recipients, a 402 error is returned. The campaign must have valid recipients and content already configured.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -13149,6 +14094,20 @@ await client.smsCampaigns.sendSmsReport({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send a test SMS to a specified phone number to preview the campaign before sending it to all recipients. The phone number must belong to one of your existing contacts in your Brevo account and must not be blacklisted. The number should include the country code (e.g. 33689965433).
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -13199,6 +14158,20 @@ await client.smsCampaigns.sendTestSms({
 <details><summary><code>client.smsCampaigns.<a href="/src/api/resources/smsCampaigns/client/Client.ts">updateSmsCampaignStatus</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update the status of an SMS campaign, such as suspending, archiving, or replicating it. Available status values include suspended, archive, darchive, sent, queued, replicate, replicateTemplate, cancel, and draft. Note that the replicateTemplate status is only available for template type campaigns.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -13252,6 +14225,20 @@ await client.smsCampaigns.updateSmsCampaignStatus({
 <details><summary><code>client.whatsAppCampaigns.<a href="/src/api/resources/whatsAppCampaigns/client/Client.ts">getWhatsAppCampaigns</a>({ ...params }) -> Brevo.GetWhatsAppCampaignsResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of all your WhatsApp campaigns with their statistics and metadata. Results can be filtered by creation date range using startDate and endDate, with a default limit of 50 and maximum of 100 per page. The sort order defaults to descending by modification date.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -13498,6 +14485,20 @@ await client.whatsAppCampaigns.createWhatsAppTemplate({
 <details><summary><code>client.whatsAppCampaigns.<a href="/src/api/resources/whatsAppCampaigns/client/Client.ts">getWhatsAppTemplates</a>({ ...params }) -> Brevo.GetWhatsAppTemplatesResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of all your WhatsApp templates with their status, category, language, and metadata. Results can be filtered by creation date range and optionally by source (Automation or Conversations), with a default limit of 50 and maximum of 100 per page. The sort order defaults to descending by modification date.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -13752,6 +14753,20 @@ await client.whatsAppCampaigns.updateWhatsAppCampaign({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a WhatsApp campaign by its campaign ID. The campaign must exist; if the campaign ID is not found, a 404 error is returned. This action is permanent and cannot be undone.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -13804,6 +14819,20 @@ await client.whatsAppCampaigns.deleteWhatsAppCampaign({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of companies with optional filtering, sorting, and search capabilities. Results are sorted by creation date in descending order by default, and can be filtered by attributes, linked contacts, linked deals, or modification/creation timestamps.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -13852,6 +14881,20 @@ await client.companies.getAllCompanies();
 <details><summary><code>client.companies.<a href="/src/api/resources/companies/client/Client.ts">createACompany</a>({ ...params }) -> Brevo.PostCompaniesResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new CRM company with the specified name, attributes, and optional associations to contacts and deals. The company name is required, and you can optionally provide a country code when a phone number attribute is included.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -13967,6 +15010,20 @@ await client.companies.importCompaniesCreationAndUpdation({});
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Link or unlink contacts and deals with a specific company in a single request. You can simultaneously link new contacts/deals and unlink existing ones by providing the respective ID arrays in the request body.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14017,6 +15074,20 @@ await client.companies.linkAndUnlinkCompanyWithContactAndDeal({
 <details><summary><code>client.companies.<a href="/src/api/resources/companies/client/Client.ts">getACompany</a>({ ...params }) -> Brevo.Company</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the full details of a single company by its identifier, including its attributes, linked contacts, and linked deals. Returns a 404 error if the company does not exist, or a 403 error if the user lacks permission to view the company.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -14069,6 +15140,20 @@ await client.companies.getACompany({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete a company by its identifier. The requesting user must be the company owner or have manage permission on companies; otherwise, a 403 Forbidden error is returned.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14120,6 +15205,20 @@ await client.companies.deleteACompany({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing company''s attributes, name, linked contacts, or linked deals. Note that passing `linkedContactsIds` or `linkedDealsIds` replaces the entire list of associations, so omitted IDs will be removed. The company name cannot be set to an empty string.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14170,6 +15269,20 @@ await client.companies.updateACompany({
 <details><summary><code>client.companies.<a href="/src/api/resources/companies/client/Client.ts">createACompanyDealAttribute</a>({ ...params }) -> Brevo.PostCrmAttributesResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new custom attribute for companies or deals. The attribute label must be unique within the object type, cannot exceed 50 characters, and cannot use reserved names. For `single-select` or `multi-choice` attribute types, you must also provide the `optionsLabels` array.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -14224,6 +15337,20 @@ await client.companies.createACompanyDealAttribute({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete an existing custom attribute by its identifier. This permanently removes the attribute definition and cleans up all references to it across companies or deals. System-default and non-editable attributes cannot be deleted.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14274,6 +15401,20 @@ await client.companies.deleteAnAttribute({
 <details><summary><code>client.companies.<a href="/src/api/resources/companies/client/Client.ts">updateAnAttribute</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing custom attribute''s label or options. You can rename the attribute label or modify the available options for `single-select` and `multi-choice` attribute types. System-default attributes cannot be modified except for specific editable fields.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -14326,6 +15467,20 @@ await client.companies.updateAnAttribute({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the list of all attributes defined for companies, including both system-default and custom attributes. Each attribute includes its label, internal name, type, required status, and available options for select-type attributes.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14368,6 +15523,20 @@ await client.companies.getCompanyAttributes();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the list of all attributes defined for deals, including both system-default and custom attributes. Each attribute includes its label, internal name, type, required status, and available options for select-type attributes.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14408,6 +15577,20 @@ await client.deals.getDealAttributes();
 <details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">getAllDeals</a>({ ...params }) -> Brevo.GetCrmDealsResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of deals with optional filtering, sorting, and search capabilities. Results can be filtered by attributes such as deal name or owner, linked companies, linked contacts, or modification/creation timestamps. Default sort order is descending by creation date.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -14457,6 +15640,20 @@ await client.deals.getAllDeals();
 <details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">createADeal</a>({ ...params }) -> Brevo.PostCrmDealsResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new deal in the CRM with the specified name, attributes, and optional associations to contacts and companies. You can assign the deal to a specific pipeline and stage by providing `pipeline` and `deal_stage` attribute IDs, which can be retrieved from the pipeline details endpoint.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -14572,6 +15769,20 @@ await client.deals.importDealsCreationAndUpdation({});
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Link or unlink contacts and companies with a specific deal in a single request. You can simultaneously link new contacts/companies and unlink existing ones by providing the respective ID arrays in the request body.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14622,6 +15833,20 @@ await client.deals.linkAndUnlinkADealWithContactsAndCompanies({
 <details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">getADeal</a>({ ...params }) -> Brevo.Deal</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the full details of a single deal by its identifier, including its attributes, pipeline stage, linked contacts, and linked companies. Returns a 404 error if the deal does not exist.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -14674,6 +15899,20 @@ await client.deals.getADeal({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete a deal by its identifier. The requesting user must be the deal owner or have manage permission on deals; otherwise, a 403 Forbidden error is returned.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14724,6 +15963,20 @@ await client.deals.deleteADeal({
 <details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">updateADeal</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing deal''s attributes, name, linked contacts, or linked companies. Note that passing `linkedContactsIds` or `linkedCompaniesIds` replaces the entire list of associations, so omitted IDs will be removed. To move a deal to a different pipeline or stage, provide both the `pipeline` and `deal_stage` attribute IDs.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -14831,6 +16084,20 @@ await client.deals.getPipelineStages();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the list of all deal pipelines configured for your account, including each pipeline''s stages and settings. If no pipelines have been configured yet, a default pipeline is automatically created and returned.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14871,6 +16138,20 @@ await client.deals.getAllPipelines();
 <details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">getAPipeline</a>({ ...params }) -> Brevo.Pipelines</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the details of a specific deal pipeline by its identifier, including its stages, stage ordering, and configuration. Use this endpoint to obtain the pipeline and stage IDs needed when creating or updating deals.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -14924,6 +16205,20 @@ await client.deals.getAPipeline({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of CRM files with optional filtering by entity type, entity IDs, and date range. Results are sorted by creation date in descending order by default, with a default limit of 50 files per page.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -14972,6 +16267,20 @@ await client.files.getAllFiles();
 <details><summary><code>client.files.<a href="/src/api/resources/files/client/Client.ts">uploadAFile</a>({ ...params }) -> Brevo.FileData</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upload a file and associate it with a contact, company, or deal. The file must be sent as multipart form data with a maximum size of 10 MB. You can optionally link the file to a specific entity by providing the corresponding entity ID.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -15024,6 +16333,20 @@ await client.files.uploadAFile({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Get a temporary download URL for a CRM file by its identifier. The returned URL is valid for 5 minutes only and provides direct access to the file content.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15075,6 +16398,20 @@ await client.files.downloadAFile({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete a CRM file by its identifier. This removes the file from storage and unlinks it from any associated contacts, companies, or deals.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15125,6 +16462,20 @@ await client.files.deleteAFile({
 <details><summary><code>client.files.<a href="/src/api/resources/files/client/Client.ts">getFileDetails</a>({ ...params }) -> Brevo.FileData</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the metadata and details of a specific CRM file by its identifier. This returns information such as the file name, size, type, creation date, and associated entities, but does not include the file content itself.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -15178,6 +16529,20 @@ await client.files.getFileDetails({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of CRM notes with optional filtering by entity type, entity IDs, and date range. Results are sorted by creation date in descending order by default, with a default limit of 50 notes per page.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15227,6 +16592,20 @@ await client.notes.getAllNotes();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new CRM note and optionally associate it with contacts, companies, or deals. The note text content is required, and you can link the note to multiple entities simultaneously during creation.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15237,7 +16616,7 @@ await client.notes.getAllNotes();
 
 ```typescript
 await client.notes.createANote({
-    text: "In communication with client_dev for resolution of queries."
+    text: "<p>Meeting notes: <b>Action item</b> - visit <a href=\"https://www.brevo.com/\">Brevo</a> for details.</p>"
 });
 
 ```
@@ -15277,6 +16656,20 @@ await client.notes.createANote({
 <details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">getANote</a>({ ...params }) -> Brevo.Note</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the full details of a single CRM note by its identifier. The response includes the note''s text content, creation date, author, and any associated contacts, companies, or deals.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -15329,6 +16722,20 @@ await client.notes.getANote({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete a CRM note by its identifier. This removes the note and unlinks it from any associated contacts, companies, or deals.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15380,6 +16787,20 @@ await client.notes.deleteANote({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing CRM note''s text content and its associations with contacts, companies, or deals. You can modify the note text, change the pinned status, or update the linked entities.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15392,7 +16813,7 @@ await client.notes.deleteANote({
 await client.notes.updateANote({
     id: "id",
     body: {
-        text: "In communication with client_dev for resolution of queries."
+        text: "<p>Meeting notes: <b>Action item</b> - visit <a href=\"https://www.brevo.com/\">Brevo</a> for details.</p>"
     }
 });
 
@@ -15434,6 +16855,20 @@ await client.notes.updateANote({
 <details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">getAllTasks</a>({ ...params }) -> Brevo.GetCrmTasksResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of CRM tasks with optional filtering by task type, status, date range, assignee, and linked entities (contacts, deals, companies). Results are sorted by creation date in descending order by default, with a default limit of 50 tasks per page.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -15486,6 +16921,20 @@ await client.tasks.getAllTasks({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new CRM task with the specified name, type, due date, and optional associations to contacts, companies, or deals. A task requires a name, task type ID, and due date at minimum. You can also set a duration, notes, a reminder, and assign the task to a specific user.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15497,7 +16946,7 @@ await client.tasks.getAllTasks({
 ```typescript
 await client.tasks.createATask({
     date: "2021-11-01T17:44:54Z",
-    name: "Task: Connect with client_dev",
+    name: "Task: Connect with client",
     taskTypeId: "61a5cd07ca1347c82306ad09"
 });
 
@@ -15538,6 +16987,20 @@ await client.tasks.createATask({
 <details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">getATask</a>({ ...params }) -> Brevo.Task</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the full details of a single CRM task by its identifier. The response includes the task''s name, type, status, due date, duration, notes, assignee, reminder settings, and linked contacts, companies, or deals.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -15590,6 +17053,20 @@ await client.tasks.getATask({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete a CRM task by its identifier. This removes the task and cancels any associated reminders. The requesting user must be the task assignee or have manage permission on tasks.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15641,6 +17118,20 @@ await client.tasks.deleteATask({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing CRM task''s properties such as name, type, due date, status, duration, notes, assignee, reminder, or linked entities. Only the fields provided in the request body will be updated; omitted fields remain unchanged.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15688,9 +17179,23 @@ await client.tasks.updateATask({
 </dl>
 </details>
 
-<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">getAllTaskTypes</a>() -> Brevo.GetCrmTasktypesResponse</code></summary>
+<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">getAllTaskTypes</a>() -> Brevo.GetCrmTasktypesResponseItem[]</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the list of all available task types, such as Email, Call, Meeting, Todo, Lunch, Deadline, and LinkedIn. If no task types exist yet, the default set is automatically created and returned. Use the task type ID when creating or updating tasks.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -15867,6 +17372,20 @@ await client.transactionalWhatsApp.getWhatsappEventReport();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of transactional contacts that have been blocked or unsubscribed, along with the reason for blocking (e.g. hard bounce, admin blocked, spam complaint, or unsubscription via email/API/Marketing Automation). Both `startDate` and `endDate` must be provided together when filtering by date range, and neither date can be in the future. Results default to 50 per page (max 100) and are sorted in descending order of record creation unless overridden with the `sort` parameter.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -15915,6 +17434,20 @@ await client.transactionalEmails.getTransacBlockedContacts();
 <details><summary><code>client.transactionalEmails.<a href="/src/api/resources/transactionalEmails/client/Client.ts">unblockOrResubscribeATransactionalContact</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Unblock or resubscribe a transactional contact by removing their email address from the blacklist. The email address must be URL-encoded in the path parameter and must be a valid email format. If the contact is not found in the blocklist, a 404 error is returned.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -16214,6 +17747,20 @@ await client.transactionalEmails.deleteHardbounces();
 <details><summary><code>client.transactionalEmails.<a href="/src/api/resources/transactionalEmails/client/Client.ts">sendTransacEmail</a>({ ...params }) -> Brevo.SendTransacEmailResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send a transactional email to one or more recipients, either using inline HTML content or a pre-built template via `templateId`. You can schedule emails for future delivery using `scheduledAt` (UTC, up to 5-minute delay), send multiple personalized versions with `messageVersions` (max 2000 total recipients, 99 per version), and attach files via URL or base64-encoded content. A `sender` and `subject` are required when no `templateId` is provided; when a `templateId` is used, the template''s sender and subject are applied unless overridden.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -16537,6 +18084,20 @@ await client.transactionalEmails.getTransacEmailContent({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete SMTP transactional log entries identified by a message ID (enclosed in angle brackets with an @ sign) or a valid email address. Optionally narrow the deletion to a specific date range using `from_date` and `to_date` query parameters (YYYY-MM-DD format). The operation also removes any associated stored email preview content.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -16714,6 +18275,20 @@ await client.transactionalEmails.getEmailEventReport();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+This endpoint will show the aggregated stats per day for the past 10 days by default if `startDate` and `endDate` OR `days` is not passed. The date range can not exceed 30 days.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -16763,6 +18338,20 @@ await client.transactionalEmails.getSmtpReport();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate a fully rendered preview of a transactional email template by resolving dynamic variables. Provide either an `email` address (to populate variables from the contact''s attributes) or a `params` object with key-value pairs for manual substitution; at least one of these is required alongside the mandatory `templateId`. The response includes the rendered HTML, subject, sender details, preview text, and any feed names used in the template.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -16790,7 +18379,7 @@ await client.transactionalEmails.postPreviewSmtpEmailTemplates({
 <dl>
 <dd>
 
-**request:** `unknown` 
+**request:** `Brevo.PostPreviewSmtpEmailTemplatesRequest` 
     
 </dd>
 </dl>
@@ -16813,6 +18402,20 @@ await client.transactionalEmails.postPreviewSmtpEmailTemplates({
 <details><summary><code>client.transactionalEmails.<a href="/src/api/resources/transactionalEmails/client/Client.ts">getSmtpTemplates</a>({ ...params }) -> Brevo.GetSmtpTemplatesResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of all transactional email templates (including automation templates) with their details such as name, subject, sender, status, HTML content, and timestamps. Results default to 50 per page (max 1000) and are sorted in descending creation order unless overridden. You can filter by active/inactive status using `templateStatus` and by editor type using `editorType` (currently only `richTextEditor` is supported).
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -16862,6 +18465,20 @@ await client.transactionalEmails.getSmtpTemplates();
 <details><summary><code>client.transactionalEmails.<a href="/src/api/resources/transactionalEmails/client/Client.ts">createSmtpTemplate</a>({ ...params }) -> Brevo.CreateSmtpTemplateResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new transactional email template with the specified sender, subject, and content. The `sender`, `subject`, and `templateName` fields are required. Template content can be provided via `htmlContent` (minimum 10 characters) or `htmlUrl`; at least one must be supplied. Templates are created as inactive by default unless `isActive` is explicitly set to `true`.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -16916,6 +18533,20 @@ await client.transactionalEmails.createSmtpTemplate({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the full details of a specific transactional email template by its numeric ID or custom template identifier string. The response includes the template name, subject, sender information, HTML content, active status, creation and modification timestamps, reply-to address, tag, and a `doiTemplate` flag indicating whether the template is a double opt-in template (detected by the presence of optin-related tags or variables in the content).
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -16966,6 +18597,20 @@ await client.transactionalEmails.getSmtpTemplate({
 <details><summary><code>client.transactionalEmails.<a href="/src/api/resources/transactionalEmails/client/Client.ts">updateSmtpTemplate</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update an existing transactional email template by its numeric ID or custom template identifier string. All fields in the request body are optional; only the provided fields will be updated. You can update the template name, subject, sender, reply-to address, HTML content (via `htmlContent` or `htmlUrl`), active status, tag, attachment URL, and the personalized `toField`. Only one of sender email or sender ID should be provided per request.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -17018,6 +18663,20 @@ await client.transactionalEmails.updateSmtpTemplate({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete a transactional email template by its numeric ID. Only inactive templates can be deleted; attempting to delete an active template returns a 405 error. To deactivate a template before deletion, use `PUT /smtp/templates/{templateId}` with `isActive` set to `false`. Deletion also removes associated newsletter template data and triggers asynchronous cleanup of shared assets.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -17068,6 +18727,20 @@ await client.transactionalEmails.deleteSmtpTemplate({
 <details><summary><code>client.transactionalEmails.<a href="/src/api/resources/transactionalEmails/client/Client.ts">sendTestTemplate</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send a test email of the specified transactional template to one or more recipients. Provide an array of email addresses in the `emailTo` field; if left empty, the test mail is sent to your entire test list. You can send a maximum of 50 test emails per day, and all provided email addresses must be valid.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -17190,6 +18863,20 @@ await client.transactionalSms.sendAsyncTransactionalSms({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Send a transactional SMS message to a single mobile number. The `sender`, `recipient`, and either `content` or `templateId` fields are required. The sender name is limited to 11 alphanumeric characters or 15 numeric characters, and the recipient must be a valid international phone number (6-15 digits, optional leading +). Tags can be a string or an array of up to 10 strings. The SMS type defaults to `transactional` but can be set to `marketing`; if the content includes a stop code, it is automatically treated as marketing. Returns the message ID, SMS count, credits used, and remaining credits.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -17242,6 +18929,20 @@ await client.transactionalSms.sendTransacSms({
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve an aggregated report of your transactional SMS activity over a specified time period, including counts for requests, delivered, hard bounces, soft bounces, blocked, unsubscribed, replied, accepted, rejected, and skipped messages. Filter by date range using `startDate` and `endDate` (both required together, YYYY-MM-DD format) or by a number of past `days` (not compatible with date range). You can further narrow results by `tag`. If no date filter is provided, the report covers all available data and returns the auto-detected date range.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -17291,6 +18992,20 @@ await client.transactionalSms.getTransacAggregatedSmsReport();
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of individual SMS event records (unaggregated), including event type, phone number, message ID, timestamp, tag, and reason or reply content where applicable. Results default to 50 per page (max 100) and are sorted in descending order unless overridden. Filter by date range (`startDate`/`endDate`), past `days` (not compatible with date range), specific `event` type (e.g. delivered, bounces, replies), `phoneNumber`, or `tags`. Bounce events include the failure reason, and reply events include the reply content.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -17339,6 +19054,20 @@ await client.transactionalSms.getSmsEvents();
 <details><summary><code>client.transactionalSms.<a href="/src/api/resources/transactionalSms/client/Client.ts">getTransacSmsReport</a>({ ...params }) -> Brevo.GetTransacSmsReportResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a day-by-day breakdown of your transactional SMS activity, with each entry containing the date and counts for requests, delivered, hard bounces, soft bounces, blocked, unsubscribed, replied, accepted, rejected, and skipped messages. Filter by date range using `startDate` and `endDate` (both required together, YYYY-MM-DD format), by a number of past `days` (not compatible with date range), or by `tag`. Results are sorted in descending order by default unless overridden with the `sort` parameter.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 

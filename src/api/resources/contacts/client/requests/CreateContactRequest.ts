@@ -21,6 +21,10 @@ export interface CreateContactRequest {
     smtpBlacklistSender?: string[];
     /** Facilitate to update the existing contact in the same request (updateEnabled = true) */
     updateEnabled?: boolean;
+    /** When true, if the contact being created shares an identifier (email, SMS, ext_id, whatsapp, landline) with an existing contact, the two contacts are force-merged. The contact with the most recent `last_modified` timestamp is retained; the other is deleted. When false (default), a 4xx error is returned on identifier conflict. */
+    forceMerge?: boolean;
+    /** When true, the response returns the `id` of the surviving contact after merge. */
+    getId?: boolean;
 }
 
 export namespace CreateContactRequest {

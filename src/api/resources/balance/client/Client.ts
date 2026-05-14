@@ -37,38 +37,29 @@ export class BalanceClient {
      * @example
      *     await client.balance.getActiveBalancesApi({
      *         pid: "pid",
-     *         contact_id: 1,
-     *         balance_definition_id: "balance_definition_id"
+     *         contactId: 1000000,
+     *         balanceDefinitionId: "balanceDefinitionId"
      *     })
      */
     public getActiveBalancesApi(
         request: Brevo.GetLoyaltyBalanceProgramsPidActiveBalanceRequest,
         requestOptions?: BalanceClient.RequestOptions,
-    ): core.HttpResponsePromise<Brevo.BalanceLimit> {
+    ): core.HttpResponsePromise<Brevo.GetLoyaltyBalanceProgramsPidActiveBalanceResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getActiveBalancesApi(request, requestOptions));
     }
 
     private async __getActiveBalancesApi(
         request: Brevo.GetLoyaltyBalanceProgramsPidActiveBalanceRequest,
         requestOptions?: BalanceClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Brevo.BalanceLimit>> {
-        const {
-            pid,
-            limit,
-            offset,
-            sort_field: sortField,
-            sort,
-            contact_id: contactId,
-            balance_definition_id: balanceDefinitionId,
-            includeInternal,
-        } = request;
+    ): Promise<core.WithRawResponse<Brevo.GetLoyaltyBalanceProgramsPidActiveBalanceResponse>> {
+        const { pid, limit, offset, sortField, sort, contactId, balanceDefinitionId, includeInternal } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
             offset,
-            sort_field: sortField,
-            sort,
-            contact_id: contactId,
-            balance_definition_id: balanceDefinitionId,
+            sortField: sortField != null ? sortField : undefined,
+            sort: sort != null ? sort : undefined,
+            contactId,
+            balanceDefinitionId,
             includeInternal,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -86,7 +77,11 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -94,7 +89,10 @@ export class BalanceClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Brevo.BalanceLimit, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Brevo.GetLoyaltyBalanceProgramsPidActiveBalanceResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -179,7 +177,11 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -270,7 +272,7 @@ export class BalanceClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -363,7 +365,11 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -455,7 +461,7 @@ export class BalanceClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -547,7 +553,7 @@ export class BalanceClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -641,7 +647,7 @@ export class BalanceClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -735,7 +741,11 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -830,7 +840,7 @@ export class BalanceClient {
             method: "PUT",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -921,7 +931,7 @@ export class BalanceClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -965,7 +975,7 @@ export class BalanceClient {
     }
 
     /**
-     * Returns balance list
+     * Returns contact balances for a given balance definition across all subscriptions.
      *
      * @param {Brevo.GetContactBalancesRequest} request
      * @param {BalanceClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -978,7 +988,8 @@ export class BalanceClient {
      *
      * @example
      *     await client.balance.getContactBalances({
-     *         pid: "pid"
+     *         pid: "pid",
+     *         balanceDefinitionId: "balanceDefinitionId"
      *     })
      */
     public getContactBalances(
@@ -992,9 +1003,14 @@ export class BalanceClient {
         request: Brevo.GetContactBalancesRequest,
         requestOptions?: BalanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Brevo.GetContactBalancesResponse>> {
-        const { pid, includeInternal } = request;
+        const { pid, includeInternal, limit, offset, sort, sortField, balanceDefinitionId } = request;
         const _queryParams: Record<string, unknown> = {
             includeInternal,
+            limit,
+            offset,
+            sort: sort != null ? sort : undefined,
+            sortField: sortField != null ? sortField : undefined,
+            balanceDefinitionId,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1011,7 +1027,11 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1072,7 +1092,7 @@ export class BalanceClient {
      *         balanceDefinitionId: "balanceDefinitionId",
      *         contactId: 1,
      *         dueAt: "dueAt",
-     *         source: "source"
+     *         source: "engine"
      *     })
      */
     public createBalanceOrder(
@@ -1103,7 +1123,7 @@ export class BalanceClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -1194,7 +1214,11 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1287,7 +1311,7 @@ export class BalanceClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -1350,7 +1374,7 @@ export class BalanceClient {
      * @example
      *     await client.balance.getTransactionHistoryApi({
      *         pid: "pid",
-     *         contactId: 1,
+     *         contactId: 1000000,
      *         balanceDefinitionId: "balanceDefinitionId"
      *     })
      */
@@ -1373,9 +1397,9 @@ export class BalanceClient {
             sort,
             contactId,
             balanceDefinitionId,
-            filters,
             status,
             transactionType,
+            loyaltySubscriptionId,
         } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
@@ -1384,9 +1408,9 @@ export class BalanceClient {
             sort: sort != null ? sort : undefined,
             contactId,
             balanceDefinitionId,
-            filters,
             status: status != null ? status : undefined,
             transactionType: transactionType != null ? transactionType : undefined,
+            loyaltySubscriptionId,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1403,7 +1427,11 @@ export class BalanceClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1496,7 +1524,7 @@ export class BalanceClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -1586,7 +1614,7 @@ export class BalanceClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1674,7 +1702,7 @@ export class BalanceClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
