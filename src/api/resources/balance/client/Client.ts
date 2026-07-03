@@ -146,14 +146,14 @@ export class BalanceClient {
     public getBalanceDefinitionList(
         request: Brevo.GetBalanceDefinitionListRequest,
         requestOptions?: BalanceClient.RequestOptions,
-    ): core.HttpResponsePromise<Brevo.GetBalanceDefinitionListResponse> {
+    ): core.HttpResponsePromise<Brevo.GetBalanceDefinitionListResponse | undefined> {
         return core.HttpResponsePromise.fromPromise(this.__getBalanceDefinitionList(request, requestOptions));
     }
 
     private async __getBalanceDefinitionList(
         request: Brevo.GetBalanceDefinitionListRequest,
         requestOptions?: BalanceClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Brevo.GetBalanceDefinitionListResponse>> {
+    ): Promise<core.WithRawResponse<Brevo.GetBalanceDefinitionListResponse | undefined>> {
         const { pid, limit, offset, sortField, sort, version } = request;
         const _queryParams: Record<string, unknown> = {
             limit,
@@ -190,7 +190,7 @@ export class BalanceClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as Brevo.GetBalanceDefinitionListResponse,
+                data: _response.body as Brevo.GetBalanceDefinitionListResponse | undefined,
                 rawResponse: _response.rawResponse,
             };
         }

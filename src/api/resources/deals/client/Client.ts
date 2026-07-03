@@ -111,6 +111,9 @@ export class DealsClient {
     ): Promise<core.WithRawResponse<Brevo.GetCrmDealsResponse>> {
         const {
             "filters[attributes.deal_name]": filtersAttributesDealName,
+            "filters[attributes.deal_owner]": filtersAttributesDealOwner,
+            "filters[attributes.deal_stage]": filtersAttributesDealStage,
+            "filters[attributes.pipeline]": filtersAttributesPipeline,
             "filters[linkedCompaniesIds]": filtersLinkedCompaniesIds,
             "filters[linkedContactsIds]": filtersLinkedContactsIds,
             modifiedSince,
@@ -122,6 +125,9 @@ export class DealsClient {
         } = request;
         const _queryParams: Record<string, unknown> = {
             "filters[attributes.deal_name]": filtersAttributesDealName,
+            "filters[attributes.deal_owner]": filtersAttributesDealOwner,
+            "filters[attributes.deal_stage]": filtersAttributesDealStage,
+            "filters[attributes.pipeline]": filtersAttributesPipeline,
             "filters[linkedCompaniesIds]": filtersLinkedCompaniesIds,
             "filters[linkedContactsIds]": filtersLinkedContactsIds,
             modifiedSince,
