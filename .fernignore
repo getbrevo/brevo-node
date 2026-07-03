@@ -2,3 +2,6 @@
 README.md
 banner.png
 changelog.md
+.fern/replay.lock
+.fern/replay.yml
+.gitattributes

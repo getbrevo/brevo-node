@@ -6631,6 +6631,341 @@ await client.contacts.getContactStats({
 </dl>
 </details>
 
+## ConsentGroups
+<details><summary><code>client.consentGroups.<a href="/src/api/resources/consentGroups/client/Client.ts">getConsentGroups</a>({ ...params }) -> Brevo.ConsentGroupsListResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a paginated list of consent groups for the account.
+
+<Note>This endpoint is only available when the Consent Groups feature is enabled for your account. Returns `403` if the feature is not activated.</Note>
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.consentGroups.getConsentGroups();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Brevo.GetConsentGroupsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ConsentGroupsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.consentGroups.<a href="/src/api/resources/consentGroups/client/Client.ts">createConsentGroup</a>({ ...params }) -> Brevo.ConsentGroup</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new consent group for the account.
+
+<Note>This endpoint is only available when the Consent Groups feature is enabled for your account.</Note>
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.consentGroups.createConsentGroup({
+    name: "Newsletter EU",
+    signupMode: "manual"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Brevo.CreateConsentGroupRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ConsentGroupsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.consentGroups.<a href="/src/api/resources/consentGroups/client/Client.ts">getConsentGroup</a>({ ...params }) -> Brevo.ConsentGroup</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single consent group by ID for the account.
+
+<Note>This endpoint is only available when the Consent Groups feature is enabled for your account.</Note>
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.consentGroups.getConsentGroup({
+    id: 1000000
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Brevo.GetConsentGroupRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ConsentGroupsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.consentGroups.<a href="/src/api/resources/consentGroups/client/Client.ts">updateConsentGroup</a>({ ...params }) -> Brevo.ConsentGroup</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates name, description, or signupMode of a consent group. At least one field must be provided.
+
+<Note>This endpoint is only available when the Consent Groups feature is enabled for your account.</Note>
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.consentGroups.updateConsentGroup({
+    id: 1000000
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Brevo.UpdateConsentGroupRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ConsentGroupsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.consentGroups.<a href="/src/api/resources/consentGroups/client/Client.ts">deleteConsentGroup</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a consent group by ID and removes it from all associated contacts.
+
+<Note>This endpoint is only available when the Consent Groups feature is enabled for your account.</Note>
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.consentGroups.deleteConsentGroup({
+    id: 1000000
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Brevo.DeleteConsentGroupRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ConsentGroupsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Conversations
 <details><summary><code>client.conversations.<a href="/src/api/resources/conversations/client/Client.ts">setsAgentsStatusToOnlineFor23Minutes</a>({ ...params }) -> void</code></summary>
 <dl>
@@ -9453,7 +9788,7 @@ await client.balance.getActiveBalancesApi({
 </dl>
 </details>
 
-<details><summary><code>client.balance.<a href="/src/api/resources/balance/client/Client.ts">getBalanceDefinitionList</a>({ ...params }) -> Brevo.GetBalanceDefinitionListResponse</code></summary>
+<details><summary><code>client.balance.<a href="/src/api/resources/balance/client/Client.ts">getBalanceDefinitionList</a>({ ...params }) -> Brevo.GetBalanceDefinitionListResponse | undefined</code></summary>
 <dl>
 <dd>
 
@@ -12696,6 +13031,73 @@ await client.tier.deleteTier({
 <dd>
 
 **requestOptions:** `TierClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Wallet
+<details><summary><code>client.wallet.<a href="/src/api/resources/wallet/client/Client.ts">getWalletPassInstallUrl</a>({ ...params }) -> Brevo.WalletPassInstallUrl</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Generate a wallet installation URL for a specific contact. The returned URL points to the pass installation page and encodes the pass, contact and organization identifiers as an encrypted token, so it can be shared with the contact (email, SMS, QR code, ...) to add the pass to their Apple Wallet or Google Wallet.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.wallet.getWalletPassInstallUrl({
+    passId: "passId",
+    contactId: 1000000
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Brevo.GetWalletPassInstallUrlRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `WalletClient.RequestOptions` 
     
 </dd>
 </dl>

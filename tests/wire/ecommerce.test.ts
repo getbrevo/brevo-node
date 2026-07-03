@@ -729,7 +729,7 @@ describe("EcommerceClient", () => {
                 },
             ],
         };
-        const rawResponseBody = { batchId: 1.1, count: 17655 };
+        const rawResponseBody = { count: 17655, batch_id: 1.1 };
 
         server
             .mockEndpoint()

@@ -18,7 +18,7 @@ export namespace GetTransacBlockedContactsResponse {
             /** Reason for blocking / unsubscribing */
             reason: Item.Reason;
             /** Sender email address of the blocked or unsubscribed contact */
-            senderEmail: string;
+            senderEmail: string | null;
         }
 
         export namespace Item {
