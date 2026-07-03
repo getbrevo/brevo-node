@@ -17,6 +17,6 @@ export class TooManyRequestsError extends errors.BrevoError {
             Error.captureStackTrace(this, this.constructor);
         }
 
-        this.name = this.constructor.name;
+        this.name = "TooManyRequestsError";
     }
 }

@@ -4,17 +4,17 @@ export interface GetCampaignStats {
     /** Numbers of times your email has been opened automatically through Apple MPP. */
     appleMppOpens: number | null;
     /** Number of total clicks for the campaign */
-    clickers: number;
+    clickers: number | null;
     /** Number of complaints (Spam reports) for the campaign */
-    complaints: number;
+    complaints: number | null;
     /** Number of deferred emails for the campaign */
     deferred?: number | undefined;
     /** Number of delivered emails for the campaign */
-    delivered: number;
+    delivered: number | null;
     /** Rate of recipients without any privacy protection option enabled in their email client, applied to all delivered emails */
     estimatedViews?: number | undefined;
     /** Number of hard bounces for the campaign */
-    hardBounces: number;
+    hardBounces: number | null;
     /** List Id of email campaign (only in case of get email campaign(s)(not for global stats)) */
     listId?: number | undefined;
     /** Percentage of recipients who open the email out of your total number of recipients. Depending on your Campaign settings, they may include Apple MPP opens. */
@@ -22,19 +22,19 @@ export interface GetCampaignStats {
     /** Total number of non-delivered campaigns for a particular campaign id. */
     returnBounce?: number | undefined;
     /** Number of sent emails for the campaign */
-    sent: number;
+    sent: number | null;
     /** Number of softbounce for the campaign */
-    softBounces: number;
+    softBounces: number | null;
     /** Recipients without any privacy protection option enabled in their email email client */
-    trackableViews: number;
+    trackableViews: number | null;
     /** Rate of recipients without any privacy protection option enabled in their email client */
     trackableViewsRate?: number | undefined;
     /** Number of unique clicks for the campaign */
-    uniqueClicks: number;
+    uniqueClicks: number | null;
     /** Number of unique openings for the campaign */
-    uniqueViews: number;
+    uniqueViews: number | null;
     /** Number of unsubscription for the campaign */
-    unsubscriptions: number;
+    unsubscriptions: number | null;
     /** Number of openings for the campaign */
-    viewed: number;
+    viewed: number | null;
 }

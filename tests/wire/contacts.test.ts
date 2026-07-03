@@ -22,6 +22,7 @@ describe("ContactsClient", () => {
                     modifiedAt: "2017-05-01T17:05:03Z",
                     smsBlacklisted: true,
                     whatsappBlacklisted: false,
+                    consentGroups: [{ id: 42, status: "subscribed" }],
                 },
                 {
                     attributes: {},
@@ -34,6 +35,7 @@ describe("ContactsClient", () => {
                     modifiedAt: "2017-05-01T17:05:03Z",
                     smsBlacklisted: false,
                     whatsappBlacklisted: false,
+                    consentGroups: [{ id: 42, status: "subscribed" }],
                 },
             ],
             count: 3,
@@ -1326,6 +1328,7 @@ describe("ContactsClient", () => {
                     modifiedAt: "2017-05-12T12:30:00Z",
                     smsBlacklisted: true,
                     whatsappBlacklisted: false,
+                    consentGroups: [{ id: 42, status: "subscribed" }],
                 },
                 {
                     attributes: {},
@@ -1338,6 +1341,7 @@ describe("ContactsClient", () => {
                     modifiedAt: "2017-05-12T12:30:00Z",
                     smsBlacklisted: false,
                     whatsappBlacklisted: false,
+                    consentGroups: [{ id: 42, status: "subscribed" }],
                 },
                 {
                     attributes: {},
@@ -1350,6 +1354,7 @@ describe("ContactsClient", () => {
                     modifiedAt: "2017-05-12T12:30:00Z",
                     smsBlacklisted: false,
                     whatsappBlacklisted: false,
+                    consentGroups: [{ id: 42, status: "subscribed" }],
                 },
             ],
             count: 17655,
@@ -2004,6 +2009,7 @@ describe("ContactsClient", () => {
             modifiedAt: "2017-05-02T16:40:31Z",
             smsBlacklisted: false,
             whatsappBlacklisted: false,
+            consentGroups: [{ id: 42, status: "subscribed" }],
             statistics: {
                 clicked: [
                     {

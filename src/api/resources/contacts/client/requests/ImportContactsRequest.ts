@@ -19,6 +19,8 @@ export interface ImportContactsRequest {
     jsonBody?: ImportContactsRequest.JsonBody.Item[];
     /** **Mandatory if newList is not defined.** Ids of the lists in which the contacts shall be imported. For example, **[2, 4, 7]**. */
     listIds?: number[];
+    /** **Optional.** Ids of the consent groups to which all imported contacts will be added. Requires consent groups to be enabled for the organisation. For example, **[1, 3]**. */
+    consentGroupIds?: number[];
     /** To create a new list and import the contacts into it, pass the listName and an optional folderId. */
     newList?: ImportContactsRequest.NewList;
     /** URL that will be called once the import process is finished. For reference, https://help.brevo.com/hc/en-us/articles/360007666479 */

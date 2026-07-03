@@ -25,6 +25,8 @@ export type BaseClientOptions = {
     fetch?: typeof fetch;
     /** Configure logging for the client. */
     logging?: core.logging.LogConfig | core.logging.Logger;
+    /** Default options for SSE stream reconnection behavior. Has no effect on non-resumable endpoints. */
+    stream?: { reconnectionEnabled?: boolean; maxReconnectionAttempts?: number };
     /** Override auth. Pass false to disable, a function returning auth headers, an AuthProvider, or auth options. */
     auth?: AuthOption;
 } & HeaderAuthProvider.AuthOptions;
@@ -40,6 +42,8 @@ export interface BaseRequestOptions {
     queryParams?: Record<string, unknown>;
     /** Additional headers to include in the request. */
     headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
+    /** Options for SSE stream reconnection behavior. Has no effect on non-resumable endpoints. */
+    stream?: { reconnectionEnabled?: boolean; maxReconnectionAttempts?: number };
 }
 
 export type NormalizedClientOptions<T extends BaseClientOptions = BaseClientOptions> = T & {
@@ -59,8 +63,8 @@ export function normalizeClientOptions<T extends BaseClientOptions = BaseClientO
         {
             "X-Fern-Language": "JavaScript",
             "X-Fern-SDK-Name": "@getbrevo/brevo",
-            "X-Fern-SDK-Version": "6.0.1",
-            "User-Agent": "@getbrevo/brevo/6.0.1",
+            "X-Fern-SDK-Version": "6.0.2",
+            "User-Agent": "@getbrevo/brevo/6.0.2",
             "X-Fern-Runtime": core.RUNTIME.type,
             "X-Fern-Runtime-Version": core.RUNTIME.version,
         },
