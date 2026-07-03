@@ -150,7 +150,7 @@ export namespace GetContactStatsResponse {
         export namespace UserUnsubscription {
             export interface Item {
                 /** ID of the campaign which generated the event */
-                campaignId: number;
+                campaignId: number | null;
                 /** UTC date-time of the event */
                 eventTime: string;
                 /** IP from which the user has unsubscribed */

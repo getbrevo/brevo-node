@@ -3,6 +3,7 @@
 import { AccountClient } from "./api/resources/account/client/Client.js";
 import { BalanceClient } from "./api/resources/balance/client/Client.js";
 import { CompaniesClient } from "./api/resources/companies/client/Client.js";
+import { ConsentGroupsClient } from "./api/resources/consentGroups/client/Client.js";
 import { ContactsClient } from "./api/resources/contacts/client/Client.js";
 import { ConversationsClient } from "./api/resources/conversations/client/Client.js";
 import { CouponsClient } from "./api/resources/coupons/client/Client.js";
@@ -30,6 +31,7 @@ import { TransactionalEmailsClient } from "./api/resources/transactionalEmails/c
 import { TransactionalSmsClient } from "./api/resources/transactionalSms/client/Client.js";
 import { TransactionalWhatsAppClient } from "./api/resources/transactionalWhatsApp/client/Client.js";
 import { UserClient } from "./api/resources/user/client/Client.js";
+import { WalletClient } from "./api/resources/wallet/client/Client.js";
 import { WebhooksClient } from "./api/resources/webhooks/client/Client.js";
 import { WhatsAppCampaignsClient } from "./api/resources/whatsAppCampaigns/client/Client.js";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient.js";
@@ -54,6 +56,7 @@ export class BrevoClient {
     protected _externalFeeds: ExternalFeedsClient | undefined;
     protected _customObjects: CustomObjectsClient | undefined;
     protected _contacts: ContactsClient | undefined;
+    protected _consentGroups: ConsentGroupsClient | undefined;
     protected _conversations: ConversationsClient | undefined;
     protected _ecommerce: EcommerceClient | undefined;
     protected _coupons: CouponsClient | undefined;
@@ -64,6 +67,7 @@ export class BrevoClient {
     protected _program: ProgramClient | undefined;
     protected _reward: RewardClient | undefined;
     protected _tier: TierClient | undefined;
+    protected _wallet: WalletClient | undefined;
     protected _emailCampaigns: EmailCampaignsClient | undefined;
     protected _smsCampaigns: SmsCampaignsClient | undefined;
     protected _whatsAppCampaigns: WhatsAppCampaignsClient | undefined;
@@ -121,6 +125,10 @@ export class BrevoClient {
         return (this._contacts ??= new ContactsClient(this._options));
     }
 
+    public get consentGroups(): ConsentGroupsClient {
+        return (this._consentGroups ??= new ConsentGroupsClient(this._options));
+    }
+
     public get conversations(): ConversationsClient {
         return (this._conversations ??= new ConversationsClient(this._options));
     }
@@ -159,6 +167,10 @@ export class BrevoClient {
 
     public get tier(): TierClient {
         return (this._tier ??= new TierClient(this._options));
+    }
+
+    public get wallet(): WalletClient {
+        return (this._wallet ??= new WalletClient(this._options));
     }
 
     public get emailCampaigns(): EmailCampaignsClient {

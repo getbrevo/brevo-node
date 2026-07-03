@@ -9,6 +9,12 @@ import type * as Brevo from "../../../../index.js";
 export interface GetCrmDealsRequest {
     /** Filter by attributes. If you have a filter for the owner on your end, please send it as filters[attributes.deal_owner] and utilize the account email for the filtering. */
     "filters[attributes.deal_name]"?: string;
+    /** Filter by the deal owner. Pass the account email address of the deal owner. */
+    "filters[attributes.deal_owner]"?: string;
+    /** Filter by the deal stage. Pass the stage id, retrievable from GET /crm/pipeline/details/{pipelineID}. */
+    "filters[attributes.deal_stage]"?: string;
+    /** Filter by the pipeline. Pass the pipeline id, retrievable from GET /crm/pipeline/details/{pipelineID}. */
+    "filters[attributes.pipeline]"?: string;
     /** Filter by linked companies ids */
     "filters[linkedCompaniesIds]"?: string;
     /** Filter by linked contacts ids */
