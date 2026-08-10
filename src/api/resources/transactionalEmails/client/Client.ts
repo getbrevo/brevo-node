@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -29,6 +30,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getTransacBlockedContacts()
@@ -111,6 +114,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.unblockOrResubscribeATransactionalContact({
@@ -186,6 +191,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getBlockedDomains()
@@ -248,6 +255,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.blockNewDomain({
@@ -283,7 +292,7 @@ export class TransactionalEmailsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -318,6 +327,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.deleteBlockedDomain({
@@ -392,6 +403,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.deleteHardbounces()
@@ -425,7 +438,7 @@ export class TransactionalEmailsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -459,6 +472,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.sendTransacEmail({
@@ -521,7 +536,7 @@ export class TransactionalEmailsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -556,6 +571,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.deleteScheduledEmailById({
@@ -626,6 +643,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getScheduledEmailById({
@@ -714,6 +733,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getTransacEmailsList()
@@ -796,6 +817,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getTransacEmailContent({
@@ -866,6 +889,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.deleteAnSmtpTransactionalLog({
@@ -943,6 +968,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getAggregatedSmtpReport()
@@ -1026,6 +1053,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getEmailEventReport()
@@ -1108,6 +1137,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getSmtpReport()
@@ -1186,6 +1217,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.postPreviewSmtpEmailTemplates({
@@ -1221,7 +1254,7 @@ export class TransactionalEmailsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1258,6 +1291,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getSmtpTemplates()
@@ -1334,6 +1369,8 @@ export class TransactionalEmailsClient {
      * @param {TransactionalEmailsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.createSmtpTemplate({
@@ -1371,7 +1408,7 @@ export class TransactionalEmailsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1406,6 +1443,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.getSmtpTemplate({
@@ -1476,6 +1515,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.updateSmtpTemplate({
@@ -1512,7 +1553,7 @@ export class TransactionalEmailsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1549,6 +1590,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.deleteSmtpTemplate({
@@ -1624,6 +1667,8 @@ export class TransactionalEmailsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.transactionalEmails.sendTestTemplate({
@@ -1661,7 +1706,7 @@ export class TransactionalEmailsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

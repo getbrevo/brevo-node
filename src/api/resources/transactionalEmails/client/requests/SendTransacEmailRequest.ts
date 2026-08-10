@@ -86,6 +86,8 @@ export namespace SendTransacEmailRequest {
 
     export namespace Bcc {
         export interface Item {
+            /** Consent of the recipient in bcc for open (pixel) and click tracking, resolved by the sender at send time. Considered only if the per-contact pixel tracking consent feature is enabled for your account. Pass `true` if this recipient has consented to open and click tracking, in which case the open pixel and tracked links identify the recipient. Pass `false` to anonymise the open and click events (counted in aggregate statistics only). If it is not passed, the recipient is treated as unknown consent status and the email is still sent (the open and click are anonymised unless your account tracks unknown-consent contacts). A value other than `true`/`false` is rejected. Ignored when the feature is not enabled for your account. */
+            contactPixelTrackingConsent?: boolean | undefined;
             /** BCC recipient email address */
             email: string;
             /** Display name of the BCC recipient. Maximum length is 70 characters. */
@@ -97,6 +99,8 @@ export namespace SendTransacEmailRequest {
 
     export namespace Cc {
         export interface Item {
+            /** Consent of the recipient in cc for open (pixel) and click tracking, resolved by the sender at send time. Considered only if the per-contact pixel tracking consent feature is enabled for your account. Pass `true` if this recipient has consented to open and click tracking, in which case the open pixel and tracked links identify the recipient. Pass `false` to anonymise the open and click events (counted in aggregate statistics only). If it is not passed, the recipient is treated as unknown consent status and the email is still sent (the open and click are anonymised unless your account tracks unknown-consent contacts). A value other than `true`/`false` is rejected. Ignored when the feature is not enabled for your account. */
+            contactPixelTrackingConsent?: boolean | undefined;
             /** CC recipient email address */
             email: string;
             /** Display name of the CC recipient. Maximum length is 70 characters. */
@@ -131,6 +135,8 @@ export namespace SendTransacEmailRequest {
 
             export namespace Bcc {
                 export interface Item {
+                    /** Consent of the recipient in bcc for open (pixel) and click tracking, resolved by the sender at send time. Considered only if the per-contact pixel tracking consent feature is enabled for your account. Pass `true` if this recipient has consented to open and click tracking, in which case the open pixel and tracked links identify the recipient. Pass `false` to anonymise the open and click events (counted in aggregate statistics only). If it is not passed, the recipient is treated as unknown consent status and the email is still sent (the open and click are anonymised unless your account tracks unknown-consent contacts). A value other than `true`/`false` is rejected. Ignored when the feature is not enabled for your account. */
+                    contactPixelTrackingConsent?: boolean | undefined;
                     /** BCC recipient email address */
                     email: string;
                     /** Display name of the BCC recipient. Maximum length is 70 characters. */
@@ -142,6 +148,8 @@ export namespace SendTransacEmailRequest {
 
             export namespace Cc {
                 export interface Item {
+                    /** Consent of the recipient in cc for open (pixel) and click tracking, resolved by the sender at send time. Considered only if the per-contact pixel tracking consent feature is enabled for your account. Pass `true` if this recipient has consented to open and click tracking, in which case the open pixel and tracked links identify the recipient. Pass `false` to anonymise the open and click events (counted in aggregate statistics only). If it is not passed, the recipient is treated as unknown consent status and the email is still sent (the open and click are anonymised unless your account tracks unknown-consent contacts). A value other than `true`/`false` is rejected. Ignored when the feature is not enabled for your account. */
+                    contactPixelTrackingConsent?: boolean | undefined;
                     /** CC recipient email address */
                     email: string;
                     /** Display name of the CC recipient. Maximum length is 70 characters. */
@@ -163,6 +171,8 @@ export namespace SendTransacEmailRequest {
 
             export namespace To {
                 export interface Item {
+                    /** Consent of the recipient for open (pixel) and click tracking, resolved by the sender at send time. Considered only if the per-contact pixel tracking consent feature is enabled for your account. Pass `true` if this recipient has consented to open and click tracking, in which case the open pixel and tracked links identify the recipient. Pass `false` to anonymise the open and click events (counted in aggregate statistics only). If it is not passed, the recipient is treated as unknown consent status and the email is still sent (the open and click are anonymised unless your account tracks unknown-consent contacts). A value other than `true`/`false` is rejected. Ignored when the feature is not enabled for your account. */
+                    contactPixelTrackingConsent?: boolean | undefined;
                     /** Email address of the recipient */
                     email: string;
                     /** Display name of the recipient. Maximum length is 70 characters. */
@@ -198,6 +208,8 @@ export namespace SendTransacEmailRequest {
 
     export namespace To {
         export interface Item {
+            /** Consent of the recipient for open (pixel) and click tracking, resolved by the sender at send time. Considered only if the per-contact pixel tracking consent feature is enabled for your account. Pass `true` if this recipient has consented to open and click tracking, in which case the open pixel and tracked links identify the recipient. Pass `false` to anonymise the open and click events (counted in aggregate statistics only). If it is not passed, the recipient is treated as unknown consent status and the email is still sent (the open and click are anonymised unless your account tracks unknown-consent contacts). A value other than `true`/`false` is rejected. Ignored when the feature is not enabled for your account. */
+            contactPixelTrackingConsent?: boolean | undefined;
             /** Email address of the recipient */
             email: string;
             /** Display name of the recipient. Maximum length is 70 characters. */

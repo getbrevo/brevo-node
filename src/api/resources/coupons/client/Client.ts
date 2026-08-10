@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -30,6 +31,8 @@ export class CouponsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.UnauthorizedError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.coupons.getCouponCollections()
@@ -108,6 +111,8 @@ export class CouponsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.UnauthorizedError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.coupons.createCouponCollection({
@@ -144,7 +149,7 @@ export class CouponsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -182,6 +187,8 @@ export class CouponsClient {
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.UnauthorizedError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.coupons.getCouponCollection({
@@ -254,6 +261,8 @@ export class CouponsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.UnauthorizedError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.coupons.updateCouponCollection({
@@ -290,7 +299,7 @@ export class CouponsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -328,6 +337,8 @@ export class CouponsClient {
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.UnauthorizedError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.coupons.createCoupons({
@@ -364,7 +375,7 @@ export class CouponsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

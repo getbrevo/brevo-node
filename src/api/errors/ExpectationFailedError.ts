@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Brevo from "../index.js";
 
 export class ExpectationFailedError extends errors.BrevoError {
+    public declare readonly body: Brevo.ErrorModel;
+
     constructor(body: Brevo.ErrorModel, rawResponse?: core.RawResponse) {
         super({
             message: "ExpectationFailedError",

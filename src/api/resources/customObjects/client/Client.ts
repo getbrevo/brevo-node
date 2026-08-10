@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -78,6 +79,8 @@ export class CustomObjectsClient {
      * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.customObjects.upsertrecords({
@@ -169,7 +172,7 @@ export class CustomObjectsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -219,6 +222,8 @@ export class CustomObjectsClient {
      * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.FailedDependencyError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.customObjects.getrecords({
@@ -313,6 +318,8 @@ export class CustomObjectsClient {
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.customObjects.batchDeleteObjectRecords({
@@ -352,7 +359,7 @@ export class CustomObjectsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -388,6 +395,124 @@ export class CustomObjectsClient {
             _response.rawResponse,
             "POST",
             "/objects/{object_type}/batch/delete",
+        );
+    }
+
+    /**
+     * <Note title="Enterprise access only">Custom objects are only available to Enterprise plans.
+     * This feature is in beta. These are subject to change.</Note>
+     * Returns the records associated with a single source record. Associations of every type are returned together in one paginated list, ordered by association creation time with the most recently created association first.
+     *
+     * **Identifying the source record**
+     * Provide exactly one of `id`, `ext_id`, `email` or `sms`. Passing none of them, or more than one, returns `400`. `email` and `sms` are only accepted when `object_type` is `contact`; using either with any other object type returns `400`.
+     *
+     * **Object types**
+     * Use the object type exactly as it is defined in your account, for example `vehicle` for a custom object of that name, or `contact` for contacts. An object type that does not exist in your account returns `400`.
+     *
+     * **Filtering by associated object type**
+     * Use `type` to restrict the response to one or more associated object types, for example `?type=contact&type=garage`. Up to 5 types can be requested per call; more returns `400`. When `type` is omitted, associations of every type are returned.
+     *
+     * **Pagination**
+     * Results are returned 20 per page. The page size is fixed and cannot be changed. Increase `offset` by 20 to walk through the pages until `has_more` is `false`. An `offset` beyond the last record returns an empty `items` array with `has_more` set to `false`.
+     *
+     * **Working with contacts**
+     * - `contact` is supported both as the source `object_type` and as an associated object type.
+     * - An `id`, `ext_id`, `email` or `sms` that matches no contact returns `404`.
+     * - If several contacts share the same `ext_id`, `email` or `sms`, identify the contact by `id` to be sure of which one is used.
+     * - Contacts returned in `items` carry all of the contact's attributes, with attribute keys in lowercase — `email`, `first_name`, `last_name`, `sms`, `ext_id`, and any other contact attribute lowercased.
+     * - For contacts, `ext_id`, `created_at` and `updated_at` are not returned on `object`. A contact's external ID is available as `attributes.ext_id` when it is set.
+     *
+     * @param {Brevo.GetAssociatedRecordsRequest} request
+     * @param {CustomObjectsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Brevo.BadRequestError}
+     * @throws {@link Brevo.NotFoundError}
+     * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
+     *
+     * @example
+     *     await client.customObjects.getAssociatedRecords({
+     *         object_type: "vehicle",
+     *         id: 16789,
+     *         ext_id: "507f1f77bc",
+     *         email: "jane.doe@example.com",
+     *         sms: "33612345678",
+     *         offset: 0
+     *     })
+     */
+    public getAssociatedRecords(
+        request: Brevo.GetAssociatedRecordsRequest,
+        requestOptions?: CustomObjectsClient.RequestOptions,
+    ): core.HttpResponsePromise<Brevo.GetAssociatedRecordsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__getAssociatedRecords(request, requestOptions));
+    }
+
+    private async __getAssociatedRecords(
+        request: Brevo.GetAssociatedRecordsRequest,
+        requestOptions?: CustomObjectsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Brevo.GetAssociatedRecordsResponse>> {
+        const { object_type: objectType, id, ext_id: extId, email, sms, type: type_, offset } = request;
+        const _queryParams: Record<string, unknown> = {
+            id,
+            ext_id: extId,
+            email,
+            sms,
+            type: type_,
+            offset,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BrevoEnvironment.Default,
+                `objects/${core.url.encodePathParam(objectType)}/associated-records`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: _response.body as Brevo.GetAssociatedRecordsResponse, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Brevo.BadRequestError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Brevo.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Brevo.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.BrevoError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "GET",
+            "/objects/{object_type}/associated-records",
         );
     }
 }

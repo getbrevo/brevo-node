@@ -5,6 +5,7 @@ import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } 
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
 import { toJson } from "../../../../core/json.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -29,6 +30,8 @@ export class DealsClient {
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.getDealAttributes()
@@ -94,6 +97,8 @@ export class DealsClient {
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.getAllDeals()
@@ -190,6 +195,8 @@ export class DealsClient {
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.createADeal({
@@ -225,7 +232,7 @@ export class DealsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -259,6 +266,8 @@ export class DealsClient {
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     import { createReadStream } from "fs";
@@ -338,6 +347,8 @@ export class DealsClient {
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.linkAndUnlinkADealWithContactsAndCompanies({
@@ -376,7 +387,7 @@ export class DealsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -411,6 +422,8 @@ export class DealsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.getADeal({
@@ -481,6 +494,8 @@ export class DealsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.deleteADeal({
@@ -551,6 +566,8 @@ export class DealsClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.updateADeal({
@@ -587,7 +604,7 @@ export class DealsClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -624,6 +641,8 @@ export class DealsClient {
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.getPipelineStages()
@@ -683,6 +702,8 @@ export class DealsClient {
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.getAllPipelines()
@@ -743,6 +764,8 @@ export class DealsClient {
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.deals.getAPipeline({

@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -33,6 +34,8 @@ export class RewardClient {
      * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.getCodeCount({
@@ -122,6 +125,8 @@ export class RewardClient {
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.FailedDependencyError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.getRewardPageApi({
@@ -223,6 +228,8 @@ export class RewardClient {
      * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.createReward({
@@ -260,7 +267,7 @@ export class RewardClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -313,6 +320,8 @@ export class RewardClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.createVoucher({
@@ -350,7 +359,7 @@ export class RewardClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -409,6 +418,8 @@ export class RewardClient {
      * @throws {@link Brevo.ExpectationFailedError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.redeemVoucher({
@@ -445,7 +456,7 @@ export class RewardClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -514,6 +525,8 @@ export class RewardClient {
      * @throws {@link Brevo.ExpectationFailedError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.completeRedeemTransaction({
@@ -611,6 +624,8 @@ export class RewardClient {
      *
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.revokeVouchers({
@@ -697,6 +712,8 @@ export class RewardClient {
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.FailedDependencyError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.validateReward({
@@ -733,7 +750,7 @@ export class RewardClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -790,6 +807,8 @@ export class RewardClient {
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.FailedDependencyError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.getRewardInformation({
@@ -890,6 +909,8 @@ export class RewardClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.reward.getVoucherForAContact({

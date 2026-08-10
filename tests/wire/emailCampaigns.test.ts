@@ -47,9 +47,11 @@ describe("EmailCampaignsClient", () => {
                     testSent: true,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
+                    utmContent: "hero_button",
                     utmID: 12,
                     utmMedium: "EMAIL",
                     utmSource: "Brevo",
+                    utmTerm: "summer_sale",
                     recipients: { excludedSegments: [14], exclusionLists: [13], lists: [5], segments: [23] },
                     statistics: {
                         campaignStats: [
@@ -177,9 +179,11 @@ describe("EmailCampaignsClient", () => {
                     testSent: false,
                     toField: "{FNAME} {LNAME}",
                     utmCampaignValue: "myutm",
+                    utmContent: "hero_button",
                     utmID: 12,
                     utmMedium: "EMAIL",
                     utmSource: "Brevo",
+                    utmTerm: "summer_sale",
                     recipients: { excludedSegments: [14], exclusionLists: [45], lists: [10], segments: [23] },
                     statistics: {
                         campaignStats: [
@@ -451,9 +455,11 @@ describe("EmailCampaignsClient", () => {
             testSent: false,
             toField: "{FNAME} {LNAME}",
             utmCampaignValue: "myutm",
+            utmContent: "hero_button",
             utmID: 12,
             utmMedium: "EMAIL",
             utmSource: "Brevo",
+            utmTerm: "summer_sale",
             recipients: { excludedSegments: [14], exclusionLists: [45], lists: [22], segments: [23] },
             statistics: {
                 campaignStats: [

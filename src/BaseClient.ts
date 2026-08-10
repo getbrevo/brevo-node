@@ -40,6 +40,8 @@ export interface BaseRequestOptions {
     abortSignal?: AbortSignal;
     /** Additional query string parameters to include in the request. */
     queryParams?: Record<string, unknown>;
+    /** A dictionary containing additional parameters to spread into the request's body. */
+    additionalBodyParameters?: Record<string, unknown>;
     /** Additional headers to include in the request. */
     headers?: Record<string, string | core.Supplier<string | null | undefined> | null | undefined>;
     /** Options for SSE stream reconnection behavior. Has no effect on non-resumable endpoints. */
@@ -63,8 +65,8 @@ export function normalizeClientOptions<T extends BaseClientOptions = BaseClientO
         {
             "X-Fern-Language": "JavaScript",
             "X-Fern-SDK-Name": "@getbrevo/brevo",
-            "X-Fern-SDK-Version": "6.0.2",
-            "User-Agent": "@getbrevo/brevo/6.0.2",
+            "X-Fern-SDK-Version": "6.0.3",
+            "User-Agent": "@getbrevo/brevo/6.0.3",
             "X-Fern-Runtime": core.RUNTIME.type,
             "X-Fern-Runtime-Version": core.RUNTIME.version,
         },

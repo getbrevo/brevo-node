@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -33,6 +34,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.getActiveBalancesApi({
@@ -137,6 +140,8 @@ export class BalanceClient {
      * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.getBalanceDefinitionList({
@@ -236,6 +241,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.createBalanceDefinition({
@@ -274,7 +281,7 @@ export class BalanceClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -328,6 +335,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.getBalanceDefinition({
@@ -424,6 +433,8 @@ export class BalanceClient {
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.FailedDependencyError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.updateBalanceDefinition({
@@ -463,7 +474,7 @@ export class BalanceClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -519,6 +530,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.deleteBalanceDefinition({
@@ -607,6 +620,8 @@ export class BalanceClient {
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.FailedDependencyError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.createBalanceLimit({
@@ -649,7 +664,7 @@ export class BalanceClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -703,6 +718,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.getBalanceLimit({
@@ -799,6 +816,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.updateBalanceLimit({
@@ -842,7 +861,7 @@ export class BalanceClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -896,6 +915,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.deleteBalanceLimit({
@@ -985,6 +1006,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.getContactBalances({
@@ -1084,6 +1107,8 @@ export class BalanceClient {
      * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.createBalanceOrder({
@@ -1125,7 +1150,7 @@ export class BalanceClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1177,6 +1202,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.getSubscriptionBalances({
@@ -1275,6 +1302,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.createSubscriptionBalances({
@@ -1313,7 +1342,7 @@ export class BalanceClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1370,6 +1399,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.getTransactionHistoryApi({
@@ -1488,6 +1519,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.beginTransaction({
@@ -1526,7 +1559,7 @@ export class BalanceClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1580,6 +1613,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.cancelTransaction({
@@ -1668,6 +1703,8 @@ export class BalanceClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.balance.completeTransaction({

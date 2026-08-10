@@ -451,4 +451,122 @@ describe("CustomObjectsClient", () => {
             });
         }).rejects.toThrow(Brevo.InternalServerError);
     });
+
+    test("getAssociatedRecords (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {
+            has_more: true,
+            items: [
+                {
+                    object: {
+                        attributes: { name: "Downtown Motors", city: "Paris" },
+                        created_at: "2026-07-22T10:20:30Z",
+                        ext_id: "f7e8d9c0ba",
+                        id: 12345,
+                        updated_at: "2026-07-22T10:20:30Z",
+                    },
+                    type: "garage",
+                },
+                {
+                    object: {
+                        attributes: {
+                            email: "jane.doe@example.com",
+                            first_name: "Jane",
+                            last_name: "Doe",
+                            ext_id: "crm-4471",
+                        },
+                        created_at: "2026-07-22T10:20:30Z",
+                        ext_id: "f7e8d9c0ba",
+                        id: 402,
+                        updated_at: "2026-07-22T10:20:30Z",
+                    },
+                    type: "contact",
+                },
+            ],
+            offset: 0,
+        };
+
+        server
+            .mockEndpoint()
+            .get("/objects/vehicle/associated-records")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.customObjects.getAssociatedRecords({
+            object_type: "vehicle",
+            id: 16789,
+            ext_id: "507f1f77bc",
+            email: "jane.doe@example.com",
+            sms: "33612345678",
+            offset: 0,
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getAssociatedRecords (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/objects/object_type/associated-records")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customObjects.getAssociatedRecords({
+                object_type: "object_type",
+            });
+        }).rejects.toThrow(Brevo.BadRequestError);
+    });
+
+    test("getAssociatedRecords (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/objects/object_type/associated-records")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customObjects.getAssociatedRecords({
+                object_type: "object_type",
+            });
+        }).rejects.toThrow(Brevo.NotFoundError);
+    });
+
+    test("getAssociatedRecords (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/objects/object_type/associated-records")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.customObjects.getAssociatedRecords({
+                object_type: "object_type",
+            });
+        }).rejects.toThrow(Brevo.InternalServerError);
+    });
 });

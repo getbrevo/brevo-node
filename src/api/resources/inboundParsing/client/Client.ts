@@ -29,6 +29,8 @@ export class InboundParsingClient {
      * @param {InboundParsingClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Brevo.BadRequestError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.inboundParsing.getInboundEmailEvents()
@@ -107,6 +109,8 @@ export class InboundParsingClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.inboundParsing.getInboundEmailEventsByUuid({
@@ -177,6 +181,8 @@ export class InboundParsingClient {
      *
      * @throws {@link Brevo.BadRequestError}
      * @throws {@link Brevo.NotFoundError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      */
     public getInboundEmailAttachment(
         request: Brevo.GetInboundEmailAttachmentRequest,

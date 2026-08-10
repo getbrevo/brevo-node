@@ -69,6 +69,10 @@ export interface UpdateEmailCampaignRequest {
     updateFormId?: string;
     /** Customize the utm_campaign value. If this field is empty, the campaign name will be used. Only alphanumeric characters and spaces are allowed */
     utmCampaign?: string;
+    /** Customize the utm_content value. Appears on outgoing tracking links alongside utm_campaign. Only alphanumeric characters and spaces are allowed */
+    utmContent?: string;
+    /** Customize the utm_term value. Appears on outgoing tracking links alongside utm_campaign. Only alphanumeric characters and spaces are allowed */
+    utmTerm?: string;
     /** Choose the metrics that will determinate the winning version. **Mandatory if _splitRule_ >= 1 and < 50**. If splitRule = 50, `winnerCriteria` is ignored if passed */
     winnerCriteria?: UpdateEmailCampaignRequest.WinnerCriteria;
     /** Choose the duration of the test in hours. Maximum is 7 days, pass 24*7 = 168 hours. The winning version will be sent at the end of the test. **Mandatory if _splitRule_ >= 1 and < 50**. If splitRule = 50, `winnerDelay` is ignored if passed */
