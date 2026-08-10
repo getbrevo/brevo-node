@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -34,6 +35,8 @@ export class ProgramClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.getLpList()
@@ -126,6 +129,8 @@ export class ProgramClient {
      * @throws {@link Brevo.ConflictError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.createNewLp({
@@ -161,7 +166,7 @@ export class ProgramClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: request,
+            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -210,6 +215,8 @@ export class ProgramClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.getLoyaltyProgramInfo({
@@ -298,6 +305,8 @@ export class ProgramClient {
      * @throws {@link Brevo.ConflictError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.updateLoyaltyProgram({
@@ -335,7 +344,7 @@ export class ProgramClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -391,6 +400,8 @@ export class ProgramClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.deleteLoyaltyProgram({
@@ -479,6 +490,8 @@ export class ProgramClient {
      * @throws {@link Brevo.ConflictError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.partiallyUpdateLoyaltyProgram({
@@ -515,7 +528,7 @@ export class ProgramClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -571,6 +584,8 @@ export class ProgramClient {
      * @throws {@link Brevo.ForbiddenError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.getParameterSubscriptionInfo({
@@ -672,6 +687,8 @@ export class ProgramClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.deleteContactSubscription({
@@ -762,6 +779,8 @@ export class ProgramClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.publishLoyaltyProgram({
@@ -850,6 +869,8 @@ export class ProgramClient {
      * @throws {@link Brevo.ConflictError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.subscribeMemberToASubscription({
@@ -887,7 +908,7 @@ export class ProgramClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -947,6 +968,8 @@ export class ProgramClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.deleteContactMembers({
@@ -1045,6 +1068,8 @@ export class ProgramClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.program.subscribeToLoyaltyProgram({
@@ -1082,7 +1107,7 @@ export class ProgramClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

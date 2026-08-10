@@ -4,6 +4,7 @@ import type { BaseClientOptions, BaseRequestOptions } from "../../../../BaseClie
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { mergeHeaders } from "../../../../core/headers.js";
 import * as core from "../../../../core/index.js";
+import { mergeAdditionalBodyParameters } from "../../../../core/requestBody.js";
 import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
@@ -35,6 +36,8 @@ export class TierClient {
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.FailedDependencyError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.addSubscriptionToTier({
@@ -128,6 +131,8 @@ export class TierClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.getListOfTierGroups({
@@ -223,6 +228,8 @@ export class TierClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.ConflictError}
      * @throws {@link Brevo.UnprocessableEntityError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.createTierGroup({
@@ -260,7 +267,7 @@ export class TierClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -316,6 +323,8 @@ export class TierClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.getTierGroup({
@@ -411,6 +420,8 @@ export class TierClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.updateTierGroup({
@@ -452,7 +463,7 @@ export class TierClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -507,6 +518,8 @@ export class TierClient {
      * @throws {@link Brevo.ConflictError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.deleteTierGroup({
@@ -597,6 +610,8 @@ export class TierClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.createTierForTierGroup({
@@ -636,7 +651,7 @@ export class TierClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -690,6 +705,8 @@ export class TierClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.getLoyaltyProgramTier({
@@ -784,6 +801,8 @@ export class TierClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.updateTier({
@@ -824,7 +843,7 @@ export class TierClient {
             contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
-            body: _body,
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -878,6 +897,8 @@ export class TierClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.tier.deleteTier({

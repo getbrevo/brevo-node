@@ -70,12 +70,16 @@ export interface GetExtendedCampaignOverview {
     toField?: string | undefined;
     /** The utm_campaign value associated with the campaign. Only present if a UTM campaign value was set. */
     utmCampaignValue?: string | undefined;
+    /** The utm_content value associated with the campaign. Only present if a utm_content value was set on create or update. */
+    utmContent?: string | undefined;
     /** The campaign ID used as utm_id parameter. Only present if UTM campaign tracking with ID is enabled. */
     utmID?: number | undefined;
     /** The utm_medium value. Set to "EMAIL" when UTM campaign tracking is enabled. */
     utmMedium?: string | undefined;
     /** The utm_source value. Set to "Brevo" when UTM campaign tracking is enabled. */
     utmSource?: string | undefined;
+    /** The utm_term value associated with the campaign. Only present if a utm_term value was set on create or update. */
+    utmTerm?: string | undefined;
 }
 
 export namespace GetExtendedCampaignOverview {

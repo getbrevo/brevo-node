@@ -1,4 +1,5 @@
 export * from "./BatchDeleteObjectRecordsResponse.js";
+export * from "./GetAssociatedRecordsResponse.js";
 export * from "./GetrecordsRequestAssociation.js";
 export * from "./GetrecordsRequestSort.js";
 export * from "./GetrecordsResponse.js";

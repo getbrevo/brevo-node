@@ -34,6 +34,8 @@ export class WalletClient {
      * @throws {@link Brevo.NotFoundError}
      * @throws {@link Brevo.UnprocessableEntityError}
      * @throws {@link Brevo.InternalServerError}
+     * @throws {@link errors.BrevoError}
+     * @throws {@link errors.BrevoTimeoutError}
      *
      * @example
      *     await client.wallet.getWalletPassInstallUrl({

@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Brevo from "../index.js";
 
 export class TooEarlyError extends errors.BrevoError {
+    public declare readonly body: Brevo.ContactErrorModel;
+
     constructor(body: Brevo.ContactErrorModel, rawResponse?: core.RawResponse) {
         super({
             message: "TooEarlyError",
