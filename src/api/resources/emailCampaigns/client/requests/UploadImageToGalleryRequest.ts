@@ -9,6 +9,6 @@
 export interface UploadImageToGalleryRequest {
     /** The absolute url of the image (**no local file**). Maximum allowed size for image is **2MB**. Allowed extensions for images are: #### jpeg, jpg, png, bmp, gif. */
     imageUrl: string;
-    /** Name of the image. */
+    /** Name shown in your Brevo image gallery. Include the file extension, e.g. product-banner.png */
     name?: string;
 }
