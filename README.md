@@ -67,14 +67,14 @@ const brevo = new BrevoClient({
 The SDK throws specific error types based on HTTP status codes.
 
 ```typescript
-import { BrevoError, UnauthorizedError, TooManyRequestsError } from '@getbrevo/brevo';
+import { Brevo, BrevoError } from '@getbrevo/brevo';
 
 try {
   await brevo.transactionalEmails.sendTransacEmail({...});
 } catch (err) {
-  if (err instanceof UnauthorizedError) {
+  if (err instanceof Brevo.UnauthorizedError) {
     console.error('Invalid API key');
-  } else if (err instanceof TooManyRequestsError) {
+  } else if (err instanceof Brevo.TooManyRequestsError) {
     const retryAfter = err.rawResponse.headers['retry-after'];
     console.error(`Rate limited. Retry after ${retryAfter} seconds`);
   } else if (err instanceof BrevoError) {
@@ -83,14 +83,16 @@ try {
 }
 ```
 
+Typed subclasses are namespaced under `Brevo` (e.g. `Brevo.UnauthorizedError`) — only `BrevoError` and `BrevoTimeoutError` are top-level exports.
+
 **Error Types:**
-- `400` - `BadRequestError`
-- `401` - `UnauthorizedError`
-- `403` - `ForbiddenError`
-- `404` - `NotFoundError`
-- `422` - `UnprocessableEntityError`
-- `429` - `TooManyRequestsError`
-- `500+` - `InternalServerError`
+- `400` - `Brevo.BadRequestError`
+- `401` - `Brevo.UnauthorizedError`
+- `403` - `Brevo.ForbiddenError`
+- `404` - `Brevo.NotFoundError`
+- `422` - `Brevo.UnprocessableEntityError`
+- `429` - `Brevo.TooManyRequestsError`
+- `500+` - `Brevo.InternalServerError`
 
 <details>
 <summary>Error properties</summary>
