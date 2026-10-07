@@ -19,7 +19,7 @@ export declare namespace ConversationsClient {
 export class ConversationsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ConversationsClient.Options>;
 
-    constructor(options: ConversationsClient.Options) {
+    constructor(options: ConversationsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -67,8 +67,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "conversations/agentOnlinePing",
             ),
             method: "POST",
@@ -162,8 +162,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "conversations/messages",
             ),
             method: "POST",
@@ -235,8 +235,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `conversations/messages/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -308,8 +308,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `conversations/messages/${core.url.encodePathParam(id)}`,
             ),
             method: "PUT",
@@ -383,8 +383,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `conversations/messages/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",
@@ -473,8 +473,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "conversations/pushedMessages",
             ),
             method: "POST",
@@ -551,8 +551,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `conversations/pushedMessages/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -629,8 +629,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `conversations/pushedMessages/${core.url.encodePathParam(id)}`,
             ),
             method: "PUT",
@@ -709,8 +709,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `conversations/pushedMessages/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",
@@ -764,6 +764,11 @@ export class ConversationsClient {
      *     await client.conversations.setVisitorGroupAssignment({
      *         groupId: "PjRBMhWGen6aRHjif"
      *     })
+     *
+     * @example
+     *     await client.conversations.setVisitorGroupAssignment({
+     *         groupId: null
+     *     })
      */
     public setVisitorGroupAssignment(
         request: Brevo.PutConversationsVisitorGroupRequest,
@@ -785,8 +790,8 @@ export class ConversationsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "conversations/visitorGroup",
             ),
             method: "PUT",

@@ -19,7 +19,7 @@ export declare namespace SendersClient {
 export class SendersClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<SendersClient.Options>;
 
-    constructor(options: SendersClient.Options) {
+    constructor(options: SendersClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -81,8 +81,8 @@ export class SendersClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "senders",
             ),
             method: "GET",
@@ -198,8 +198,8 @@ export class SendersClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "senders",
             ),
             method: "POST",
@@ -275,8 +275,8 @@ export class SendersClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "senders/ips",
             ),
             method: "GET",
@@ -397,8 +397,8 @@ export class SendersClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `senders/${core.url.encodePathParam(senderId)}`,
             ),
             method: "PUT",
@@ -480,8 +480,8 @@ export class SendersClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `senders/${core.url.encodePathParam(senderId)}`,
             ),
             method: "DELETE",
@@ -563,8 +563,8 @@ export class SendersClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `senders/${core.url.encodePathParam(senderId)}/ips`,
             ),
             method: "GET",
@@ -652,8 +652,8 @@ export class SendersClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `senders/${core.url.encodePathParam(senderId)}/validate`,
             ),
             method: "PUT",

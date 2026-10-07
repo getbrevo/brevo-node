@@ -18,7 +18,7 @@ export declare namespace SmsTemplatesClient {
 export class SmsTemplatesClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<SmsTemplatesClient.Options>;
 
-    constructor(options: SmsTemplatesClient.Options) {
+    constructor(options: SmsTemplatesClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -59,8 +59,8 @@ export class SmsTemplatesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "transactionalSMS/templates",
             ),
             method: "GET",

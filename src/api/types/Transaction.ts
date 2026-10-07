@@ -8,6 +8,8 @@ export interface Transaction {
     id?: string | undefined;
     /** The transaction amount. */
     amount?: number | undefined;
+    /** The contact's total balance for this balance definition after the transaction was applied. Only returned when the transaction actually updated the balance (i.e. it was completed or auto-completed). */
+    balance?: number | undefined;
     /** The type of the transaction. */
     transactionType?: Transaction.TransactionType | undefined;
     /** Optional metadata associated with the transaction. */
@@ -47,8 +49,8 @@ export namespace Transaction {
     export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType];
     /** The current status of the transaction. */
     export const Status = {
-        Pending: "pending",
-        Complete: "complete",
+        Draft: "draft",
+        Completed: "completed",
         Rejected: "rejected",
         Cancelled: "cancelled",
         Expired: "expired",

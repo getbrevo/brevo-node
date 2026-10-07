@@ -18,7 +18,7 @@ export declare namespace AccountClient {
 export class AccountClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<AccountClient.Options>;
 
-    constructor(options: AccountClient.Options) {
+    constructor(options: AccountClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -75,8 +75,8 @@ export class AccountClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "account",
             ),
             method: "GET",
@@ -165,8 +165,8 @@ export class AccountClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "organization/activities",
             ),
             method: "GET",

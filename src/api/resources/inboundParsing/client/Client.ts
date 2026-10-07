@@ -18,7 +18,7 @@ export declare namespace InboundParsingClient {
 export class InboundParsingClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<InboundParsingClient.Options>;
 
-    constructor(options: InboundParsingClient.Options) {
+    constructor(options: InboundParsingClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -64,8 +64,8 @@ export class InboundParsingClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "inbound/events",
             ),
             method: "GET",
@@ -138,8 +138,8 @@ export class InboundParsingClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `inbound/events/${core.url.encodePathParam(uuid)}`,
             ),
             method: "GET",
@@ -205,8 +205,8 @@ export class InboundParsingClient {
         const _response = await core.fetcher<core.BinaryResponse>({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `inbound/attachments/${core.url.encodePathParam(downloadToken)}`,
             ),
             method: "GET",

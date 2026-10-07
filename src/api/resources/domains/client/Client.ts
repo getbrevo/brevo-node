@@ -19,7 +19,7 @@ export declare namespace DomainsClient {
 export class DomainsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<DomainsClient.Options>;
 
-    constructor(options: DomainsClient.Options) {
+    constructor(options: DomainsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -67,8 +67,8 @@ export class DomainsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "senders/domains",
             ),
             method: "GET",
@@ -157,8 +157,8 @@ export class DomainsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "senders/domains",
             ),
             method: "POST",
@@ -241,8 +241,8 @@ export class DomainsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `senders/domains/${core.url.encodePathParam(domainName)}`,
             ),
             method: "GET",
@@ -321,8 +321,8 @@ export class DomainsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `senders/domains/${core.url.encodePathParam(domainName)}`,
             ),
             method: "DELETE",
@@ -408,8 +408,8 @@ export class DomainsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `senders/domains/${core.url.encodePathParam(domainName)}/authenticate`,
             ),
             method: "PUT",

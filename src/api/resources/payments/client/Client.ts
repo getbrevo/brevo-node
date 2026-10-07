@@ -19,7 +19,7 @@ export declare namespace PaymentsClient {
 export class PaymentsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<PaymentsClient.Options>;
 
-    constructor(options: PaymentsClient.Options) {
+    constructor(options: PaymentsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -65,8 +65,8 @@ export class PaymentsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "payments/requests",
             ),
             method: "POST",
@@ -144,8 +144,8 @@ export class PaymentsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `payments/requests/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -221,8 +221,8 @@ export class PaymentsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `payments/requests/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",

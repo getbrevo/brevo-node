@@ -1,7 +1,7 @@
 {
-    "cliVersion": "5.92.1",
+    "cliVersion": "5.113.1",
     "generatorName": "fernapi/fern-typescript-sdk",
-    "generatorVersion": "3.87.3",
+    "generatorVersion": "3.95.1",
     "generatorConfig": {
         "generateWireTests": true,
         "namespaceExport": "Brevo",
@@ -15,9 +15,10 @@
             }
         }
     },
-    "originGitCommit": "f03678b950bc1ad4cb8f8de2037cc502935efaae",
-    "originGitCommitIsDirty": true,
-    "invokedBy": "manual",
-    "requestedVersion": "6.0.3",
-    "sdkVersion": "6.0.3"
+    "originGitCommit": "f6bec48d6e48a124bd59b7430e048eb189303447",
+    "originGitCommitIsDirty": false,
+    "invokedBy": "ci",
+    "requestedVersion": "6.0.4",
+    "ciProvider": "github",
+    "sdkVersion": "6.0.4"
 }

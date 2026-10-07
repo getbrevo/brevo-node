@@ -71,6 +71,12 @@ export interface UpdateEmailCampaignRequest {
     utmCampaign?: string;
     /** Customize the utm_content value. Appears on outgoing tracking links alongside utm_campaign. Only alphanumeric characters and spaces are allowed */
     utmContent?: string;
+    /** Customize the utm_id value. Appears on outgoing tracking links alongside utm_campaign. When omitted or empty, the utm_id entry from the account's global utm_settings is used if enabled; otherwise no utm_id parameter is emitted. */
+    utmId?: string;
+    /** Customize the utm_medium value. When omitted or empty, the utm_medium entry from the account's global utm_settings is used if set; otherwise the default `email` is used. */
+    utmMedium?: string;
+    /** Customize the utm_source value. When omitted or empty, the utm_source entry from the account's global utm_settings is used if set; otherwise the account default (`brevo` or `sendinblue`) is used. */
+    utmSource?: string;
     /** Customize the utm_term value. Appears on outgoing tracking links alongside utm_campaign. Only alphanumeric characters and spaces are allowed */
     utmTerm?: string;
     /** Choose the metrics that will determinate the winning version. **Mandatory if _splitRule_ >= 1 and < 50**. If splitRule = 50, `winnerCriteria` is ignored if passed */

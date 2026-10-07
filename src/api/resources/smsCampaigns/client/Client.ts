@@ -19,7 +19,7 @@ export declare namespace SmsCampaignsClient {
 export class SmsCampaignsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<SmsCampaignsClient.Options>;
 
-    constructor(options: SmsCampaignsClient.Options) {
+    constructor(options: SmsCampaignsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -65,8 +65,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smsCampaigns",
             ),
             method: "GET",
@@ -139,8 +139,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smsCampaigns",
             ),
             method: "POST",
@@ -212,8 +212,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smsCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "GET",
@@ -284,8 +284,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smsCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "PUT",
@@ -359,8 +359,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smsCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "DELETE",
@@ -432,8 +432,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smsCampaigns/${core.url.encodePathParam(campaignId)}/exportRecipients`,
             ),
             method: "POST",
@@ -516,8 +516,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smsCampaigns/${core.url.encodePathParam(campaignId)}/sendNow`,
             ),
             method: "POST",
@@ -604,8 +604,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smsCampaigns/${core.url.encodePathParam(campaignId)}/sendReport`,
             ),
             method: "POST",
@@ -684,8 +684,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smsCampaigns/${core.url.encodePathParam(campaignId)}/sendTest`,
             ),
             method: "POST",
@@ -765,8 +765,8 @@ export class SmsCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smsCampaigns/${core.url.encodePathParam(campaignId)}/status`,
             ),
             method: "PUT",

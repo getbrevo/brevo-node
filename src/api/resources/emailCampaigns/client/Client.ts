@@ -19,7 +19,7 @@ export declare namespace EmailCampaignsClient {
 export class EmailCampaignsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<EmailCampaignsClient.Options>;
 
-    constructor(options: EmailCampaignsClient.Options) {
+    constructor(options: EmailCampaignsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -81,8 +81,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "emailCampaigns",
             ),
             method: "GET",
@@ -155,8 +155,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "emailCampaigns",
             ),
             method: "POST",
@@ -231,8 +231,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "emailCampaigns/images",
             ),
             method: "POST",
@@ -308,8 +308,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "GET",
@@ -385,8 +385,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "PUT",
@@ -466,8 +466,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "DELETE",
@@ -545,8 +545,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}/abTestCampaignResult`,
             ),
             method: "GET",
@@ -626,8 +626,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}/exportRecipients`,
             ),
             method: "POST",
@@ -707,8 +707,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}/sendNow`,
             ),
             method: "POST",
@@ -795,8 +795,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}/sendReport`,
             ),
             method: "POST",
@@ -876,8 +876,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}/sendTest`,
             ),
             method: "POST",
@@ -957,8 +957,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}/sharedUrl`,
             ),
             method: "GET",
@@ -1040,8 +1040,8 @@ export class EmailCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `emailCampaigns/${core.url.encodePathParam(campaignId)}/status`,
             ),
             method: "PUT",

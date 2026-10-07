@@ -19,7 +19,7 @@ export declare namespace UserClient {
 export class UserClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<UserClient.Options>;
 
-    constructor(options: UserClient.Options) {
+    constructor(options: UserClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -53,8 +53,8 @@ export class UserClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "organization/invited/users",
             ),
             method: "GET",
@@ -122,8 +122,8 @@ export class UserClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `organization/user/invitation/revoke/${core.url.encodePathParam(email)}`,
             ),
             method: "PUT",
@@ -267,8 +267,8 @@ export class UserClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "organization/user/invitation/send",
             ),
             method: "POST",
@@ -345,8 +345,8 @@ export class UserClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `organization/user/invitation/${core.url.encodePathParam(action)}/${core.url.encodePathParam(email)}`,
             ),
             method: "PUT",
@@ -489,8 +489,8 @@ export class UserClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "organization/user/update/permissions",
             ),
             method: "POST",
@@ -566,8 +566,8 @@ export class UserClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `organization/user/${core.url.encodePathParam(email)}/permissions`,
             ),
             method: "GET",

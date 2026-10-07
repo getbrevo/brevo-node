@@ -19,7 +19,7 @@ export declare namespace CustomObjectsClient {
 export class CustomObjectsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<CustomObjectsClient.Options>;
 
-    constructor(options: CustomObjectsClient.Options) {
+    constructor(options: CustomObjectsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -163,8 +163,8 @@ export class CustomObjectsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `objects/${core.url.encodePathParam(objectType)}/batch/upsert`,
             ),
             method: "POST",
@@ -259,8 +259,8 @@ export class CustomObjectsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `objects/${core.url.encodePathParam(objectType)}/records`,
             ),
             method: "GET",
@@ -350,8 +350,8 @@ export class CustomObjectsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `objects/${core.url.encodePathParam(objectType)}/batch/delete`,
             ),
             method: "POST",
@@ -470,8 +470,8 @@ export class CustomObjectsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `objects/${core.url.encodePathParam(objectType)}/associated-records`,
             ),
             method: "GET",

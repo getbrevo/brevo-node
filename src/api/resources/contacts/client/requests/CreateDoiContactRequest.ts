@@ -12,6 +12,8 @@
 export interface CreateDoiContactRequest {
     /** Pass the set of attributes and their values. **These attributes must be present in your Brevo account**. For eg. **{'FNAME':'Elly', 'LNAME':'Roger', 'COUNTRIES': ['India','China']}** */
     attributes?: Record<string, CreateDoiContactRequest.Attributes.Value>;
+    /** Consent of the DOI recipient for open (pixel) and click tracking in the double opt-in confirmation email, resolved by the sender at send time. Considered only if the per-contact pixel tracking consent feature is enabled for your account. Pass `true` if this recipient has consented to open and click tracking, in which case the open pixel and tracked links identify the recipient. Pass `false` to anonymise the open and click events (counted in aggregate statistics only). If it is not passed, the recipient is treated as unknown consent status and the email is still sent (the open and click are anonymised unless your account tracks unknown-consent contacts). A value other than `true`/`false` is rejected. Ignored when the feature is not enabled for your account. */
+    contactPixelTrackingConsent?: boolean;
     /** Email address where the confirmation email will be sent. This email address will be the identifier for all other contact attributes. */
     email: string;
     /** Lists under user account where contact should not be added */

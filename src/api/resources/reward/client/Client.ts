@@ -19,7 +19,7 @@ export declare namespace RewardClient {
 export class RewardClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<RewardClient.Options>;
 
-    constructor(options: RewardClient.Options) {
+    constructor(options: RewardClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -64,8 +64,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/code-pools/${core.url.encodePathParam(cpid)}/codes-count`,
             ),
             method: "GET",
@@ -160,8 +160,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/offers`,
             ),
             method: "GET",
@@ -258,8 +258,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/offers`,
             ),
             method: "POST",
@@ -350,8 +350,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/attribute`,
             ),
             method: "POST",
@@ -447,8 +447,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/redeem`,
             ),
             method: "POST",
@@ -555,8 +555,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/redeem/${core.url.encodePathParam(tid)}/complete`,
             ),
             method: "POST",
@@ -656,8 +656,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/revoke`,
             ),
             method: "DELETE",
@@ -741,8 +741,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/validate`,
             ),
             method: "POST",
@@ -840,8 +840,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/${core.url.encodePathParam(rid)}`,
             ),
             method: "GET",
@@ -957,8 +957,8 @@ export class RewardClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/offer/programs/${core.url.encodePathParam(pid)}/vouchers`,
             ),
             method: "GET",

@@ -19,7 +19,7 @@ export declare namespace TierClient {
 export class TierClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TierClient.Options>;
 
-    constructor(options: TierClient.Options) {
+    constructor(options: TierClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -67,8 +67,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/contacts/${core.url.encodePathParam(cid)}/tiers/${core.url.encodePathParam(tid)}`,
             ),
             method: "POST",
@@ -163,8 +163,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups`,
             ),
             method: "GET",
@@ -258,8 +258,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups`,
             ),
             method: "POST",
@@ -356,8 +356,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups/${core.url.encodePathParam(gid)}`,
             ),
             method: "GET",
@@ -454,8 +454,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups/${core.url.encodePathParam(gid)}`,
             ),
             method: "PUT",
@@ -548,8 +548,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups/${core.url.encodePathParam(gid)}`,
             ),
             method: "DELETE",
@@ -642,8 +642,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups/${core.url.encodePathParam(gid)}/tiers`,
             ),
             method: "POST",
@@ -737,8 +737,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tiers`,
             ),
             method: "GET",
@@ -834,8 +834,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tiers/${core.url.encodePathParam(tid)}`,
             ),
             method: "PUT",
@@ -927,8 +927,8 @@ export class TierClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tiers/${core.url.encodePathParam(tid)}`,
             ),
             method: "DELETE",
