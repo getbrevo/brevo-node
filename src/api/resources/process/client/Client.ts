@@ -18,7 +18,7 @@ export declare namespace ProcessClient {
 export class ProcessClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ProcessClient.Options>;
 
-    constructor(options: ProcessClient.Options) {
+    constructor(options: ProcessClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -83,8 +83,8 @@ export class ProcessClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "processes",
             ),
             method: "GET",
@@ -175,8 +175,8 @@ export class ProcessClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `processes/${core.url.encodePathParam(processId)}`,
             ),
             method: "GET",

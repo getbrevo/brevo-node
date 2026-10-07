@@ -3,11 +3,19 @@
 import * as Brevo from "../../src/api/index";
 import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
+import { mockOauth2 } from "./mockAuth";
 
 describe("InboundParsingClient", () => {
     test("getInboundEmailEvents (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = {
             events: [
@@ -34,7 +42,14 @@ describe("InboundParsingClient", () => {
 
     test("getInboundEmailEvents (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -47,7 +62,14 @@ describe("InboundParsingClient", () => {
 
     test("getInboundEmailEventsByUuid (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = {
             attachments: [{ contentLength: 12345, contentType: "application/pdf", name: "invoice.pdf" }],
@@ -80,7 +102,14 @@ describe("InboundParsingClient", () => {
 
     test("getInboundEmailEventsByUuid (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -101,7 +130,14 @@ describe("InboundParsingClient", () => {
 
     test("getInboundEmailEventsByUuid (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 

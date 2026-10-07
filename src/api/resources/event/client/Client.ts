@@ -19,7 +19,7 @@ export declare namespace EventClient {
 export class EventClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<EventClient.Options>;
 
-    constructor(options: EventClient.Options) {
+    constructor(options: EventClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -80,8 +80,8 @@ export class EventClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "events",
             ),
             method: "GET",
@@ -158,8 +158,8 @@ export class EventClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "events",
             ),
             method: "POST",
@@ -235,8 +235,8 @@ export class EventClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "events/batch",
             ),
             method: "POST",

@@ -19,7 +19,7 @@ export declare namespace BalanceClient {
 export class BalanceClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<BalanceClient.Options>;
 
-    constructor(options: BalanceClient.Options) {
+    constructor(options: BalanceClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -74,8 +74,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/active-balance`,
             ),
             method: "GET",
@@ -176,8 +176,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions`,
             ),
             method: "GET",
@@ -272,8 +272,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions`,
             ),
             method: "POST",
@@ -368,8 +368,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}`,
             ),
             method: "GET",
@@ -465,8 +465,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}`,
             ),
             method: "PUT",
@@ -560,8 +560,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}`,
             ),
             method: "DELETE",
@@ -655,8 +655,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}/limits`,
             ),
             method: "POST",
@@ -752,8 +752,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}/limits/${core.url.encodePathParam(blid)}`,
             ),
             method: "GET",
@@ -852,8 +852,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}/limits/${core.url.encodePathParam(blid)}`,
             ),
             method: "PUT",
@@ -946,8 +946,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}/limits/${core.url.encodePathParam(blid)}`,
             ),
             method: "DELETE",
@@ -1044,8 +1044,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/contact-balances`,
             ),
             method: "GET",
@@ -1141,8 +1141,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/create-order`,
             ),
             method: "POST",
@@ -1235,8 +1235,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/subscriptions/${core.url.encodePathParam(cid)}/balances`,
             ),
             method: "GET",
@@ -1333,8 +1333,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/subscriptions/${core.url.encodePathParam(cid)}/balances`,
             ),
             method: "POST",
@@ -1452,8 +1452,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/transaction-history`,
             ),
             method: "GET",
@@ -1550,8 +1550,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/transactions`,
             ),
             method: "POST",
@@ -1643,8 +1643,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/transactions/${core.url.encodePathParam(tid)}/cancel`,
             ),
             method: "POST",
@@ -1733,8 +1733,8 @@ export class BalanceClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/balance/programs/${core.url.encodePathParam(pid)}/transactions/${core.url.encodePathParam(tid)}/complete`,
             ),
             method: "POST",

@@ -3,11 +3,19 @@
 import * as Brevo from "../../src/api/index";
 import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
+import { mockOauth2 } from "./mockAuth";
 
 describe("WalletClient", () => {
     test("getWalletPassInstallUrl (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { url: "https://wallet.brevo.com/pass/eyJhbGciOiJ..." };
 
@@ -28,7 +36,14 @@ describe("WalletClient", () => {
 
     test("getWalletPassInstallUrl (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -50,7 +65,14 @@ describe("WalletClient", () => {
 
     test("getWalletPassInstallUrl (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -72,7 +94,14 @@ describe("WalletClient", () => {
 
     test("getWalletPassInstallUrl (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -94,7 +123,14 @@ describe("WalletClient", () => {
 
     test("getWalletPassInstallUrl (5)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -116,7 +152,14 @@ describe("WalletClient", () => {
 
     test("getWalletPassInstallUrl (6)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { message: "message" };
 
@@ -138,7 +181,14 @@ describe("WalletClient", () => {
 
     test("getWalletPassInstallUrl (7)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 

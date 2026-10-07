@@ -3,11 +3,19 @@
 import * as Brevo from "../../src/api/index";
 import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
+import { mockOauth2 } from "./mockAuth";
 
 describe("ProcessClient", () => {
     test("getProcesses (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = {
             count: 198,
@@ -41,7 +49,14 @@ describe("ProcessClient", () => {
 
     test("getProcesses (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -54,7 +69,14 @@ describe("ProcessClient", () => {
 
     test("getProcess (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = {
             id: 217,
@@ -84,7 +106,14 @@ describe("ProcessClient", () => {
 
     test("getProcess (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = {
             id: 217,
@@ -103,7 +132,14 @@ describe("ProcessClient", () => {
 
     test("getProcess (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = {
             id: 213,
@@ -133,7 +169,14 @@ describe("ProcessClient", () => {
 
     test("getProcess (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -148,7 +191,14 @@ describe("ProcessClient", () => {
 
     test("getProcess (5)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 

@@ -19,7 +19,7 @@ export declare namespace TransactionalSmsClient {
 export class TransactionalSmsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TransactionalSmsClient.Options>;
 
-    constructor(options: TransactionalSmsClient.Options) {
+    constructor(options: TransactionalSmsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -61,8 +61,8 @@ export class TransactionalSmsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "transactionalSMS/send",
             ),
             method: "POST",
@@ -140,8 +140,8 @@ export class TransactionalSmsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "transactionalSMS/sms",
             ),
             method: "POST",
@@ -226,8 +226,8 @@ export class TransactionalSmsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "transactionalSMS/statistics/aggregatedReport",
             ),
             method: "GET",
@@ -316,8 +316,8 @@ export class TransactionalSmsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "transactionalSMS/statistics/events",
             ),
             method: "GET",
@@ -399,8 +399,8 @@ export class TransactionalSmsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "transactionalSMS/statistics/reports",
             ),
             method: "GET",

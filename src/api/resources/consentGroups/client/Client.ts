@@ -19,7 +19,7 @@ export declare namespace ConsentGroupsClient {
 export class ConsentGroupsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ConsentGroupsClient.Options>;
 
-    constructor(options: ConsentGroupsClient.Options) {
+    constructor(options: ConsentGroupsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -68,8 +68,8 @@ export class ConsentGroupsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "contacts/consent-groups",
             ),
             method: "GET",
@@ -152,8 +152,8 @@ export class ConsentGroupsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "contacts/consent-groups",
             ),
             method: "POST",
@@ -232,8 +232,8 @@ export class ConsentGroupsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `contacts/consent-groups/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -310,8 +310,8 @@ export class ConsentGroupsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `contacts/consent-groups/${core.url.encodePathParam(id)}`,
             ),
             method: "PUT",
@@ -392,8 +392,8 @@ export class ConsentGroupsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `contacts/consent-groups/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",

@@ -19,7 +19,7 @@ export declare namespace NotesClient {
 export class NotesClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<NotesClient.Options>;
 
-    constructor(options: NotesClient.Options) {
+    constructor(options: NotesClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -66,8 +66,8 @@ export class NotesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/notes",
             ),
             method: "GET",
@@ -139,8 +139,8 @@ export class NotesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/notes",
             ),
             method: "POST",
@@ -217,8 +217,8 @@ export class NotesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/notes/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -289,8 +289,8 @@ export class NotesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/notes/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",
@@ -365,8 +365,8 @@ export class NotesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/notes/${core.url.encodePathParam(id)}`,
             ),
             method: "PATCH",

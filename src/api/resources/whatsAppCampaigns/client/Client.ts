@@ -19,7 +19,7 @@ export declare namespace WhatsAppCampaignsClient {
 export class WhatsAppCampaignsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<WhatsAppCampaignsClient.Options>;
 
-    constructor(options: WhatsAppCampaignsClient.Options) {
+    constructor(options: WhatsAppCampaignsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -64,8 +64,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "whatsappCampaigns",
             ),
             method: "GET",
@@ -143,8 +143,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "whatsappCampaigns",
             ),
             method: "POST",
@@ -210,8 +210,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "whatsappCampaigns/config",
             ),
             method: "GET",
@@ -282,8 +282,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "whatsappCampaigns/template",
             ),
             method: "POST",
@@ -360,8 +360,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "whatsappCampaigns/template-list",
             ),
             method: "GET",
@@ -439,8 +439,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `whatsappCampaigns/template/approval/${core.url.encodePathParam(templateId)}`,
             ),
             method: "POST",
@@ -518,8 +518,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `whatsappCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "GET",
@@ -598,8 +598,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `whatsappCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "PUT",
@@ -676,8 +676,8 @@ export class WhatsAppCampaignsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `whatsappCampaigns/${core.url.encodePathParam(campaignId)}`,
             ),
             method: "DELETE",

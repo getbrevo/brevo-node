@@ -20,7 +20,7 @@ export declare namespace CompaniesClient {
 export class CompaniesClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<CompaniesClient.Options>;
 
-    constructor(options: CompaniesClient.Options) {
+    constructor(options: CompaniesClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -79,8 +79,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "companies",
             ),
             method: "GET",
@@ -151,8 +151,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "companies",
             ),
             method: "POST",
@@ -232,8 +232,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "companies/import",
             ),
             method: "POST",
@@ -306,8 +306,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `companies/link-unlink/${core.url.encodePathParam(id)}`,
             ),
             method: "PATCH",
@@ -379,8 +379,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `companies/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -451,8 +451,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `companies/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",
@@ -523,8 +523,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `companies/${core.url.encodePathParam(id)}`,
             ),
             method: "PATCH",
@@ -598,8 +598,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/attributes",
             ),
             method: "POST",
@@ -671,8 +671,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/attributes/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",
@@ -743,8 +743,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/attributes/${core.url.encodePathParam(id)}`,
             ),
             method: "PATCH",
@@ -811,8 +811,8 @@ export class CompaniesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/attributes/companies",
             ),
             method: "GET",

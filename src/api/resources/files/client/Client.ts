@@ -18,7 +18,7 @@ export declare namespace FilesClient {
 export class FilesClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<FilesClient.Options>;
 
-    constructor(options: FilesClient.Options) {
+    constructor(options: FilesClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -65,8 +65,8 @@ export class FilesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/files",
             ),
             method: "GET",
@@ -154,8 +154,8 @@ export class FilesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/files",
             ),
             method: "POST",
@@ -227,8 +227,8 @@ export class FilesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/files/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -299,8 +299,8 @@ export class FilesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/files/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",
@@ -371,8 +371,8 @@ export class FilesClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/files/${core.url.encodePathParam(id)}/data`,
             ),
             method: "GET",

@@ -19,7 +19,7 @@ export declare namespace TransactionalEmailsClient {
 export class TransactionalEmailsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TransactionalEmailsClient.Options>;
 
-    constructor(options: TransactionalEmailsClient.Options) {
+    constructor(options: TransactionalEmailsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -65,8 +65,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/blockedContacts",
             ),
             method: "GET",
@@ -145,8 +145,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/blockedContacts/${core.url.encodePathParam(email)}`,
             ),
             method: "DELETE",
@@ -215,8 +215,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/blockedDomains",
             ),
             method: "GET",
@@ -283,8 +283,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/blockedDomains",
             ),
             method: "POST",
@@ -356,8 +356,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/blockedDomains/${core.url.encodePathParam(domain)}`,
             ),
             method: "DELETE",
@@ -429,8 +429,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/deleteHardbounces",
             ),
             method: "POST",
@@ -527,8 +527,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/email",
             ),
             method: "POST",
@@ -600,8 +600,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/email/${core.url.encodePathParam(identifier)}`,
             ),
             method: "DELETE",
@@ -682,8 +682,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/emailStatus/${core.url.encodePathParam(identifier)}`,
             ),
             method: "GET",
@@ -770,8 +770,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/emails",
             ),
             method: "GET",
@@ -846,8 +846,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/emails/${core.url.encodePathParam(uuid)}`,
             ),
             method: "GET",
@@ -922,8 +922,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/log/${core.url.encodePathParam(identifier)}`,
             ),
             method: "DELETE",
@@ -1001,8 +1001,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/statistics/aggregatedReport",
             ),
             method: "GET",
@@ -1093,8 +1093,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/statistics/events",
             ),
             method: "GET",
@@ -1173,8 +1173,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/statistics/reports",
             ),
             method: "GET",
@@ -1245,8 +1245,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/template/preview",
             ),
             method: "POST",
@@ -1325,8 +1325,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/templates",
             ),
             method: "GET",
@@ -1399,8 +1399,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "smtp/templates",
             ),
             method: "POST",
@@ -1472,8 +1472,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/templates/${core.url.encodePathParam(templateId)}`,
             ),
             method: "GET",
@@ -1544,8 +1544,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/templates/${core.url.encodePathParam(templateId)}`,
             ),
             method: "PUT",
@@ -1619,8 +1619,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/templates/${core.url.encodePathParam(templateId)}`,
             ),
             method: "DELETE",
@@ -1697,8 +1697,8 @@ export class TransactionalEmailsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `smtp/templates/${core.url.encodePathParam(templateId)}/sendTest`,
             ),
             method: "POST",

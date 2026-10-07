@@ -3,8 +3,12 @@
 export interface GetParameterSubscriptionInfoResponse {
     /** Balance details for the subscription. */
     balance?: GetParameterSubscriptionInfoResponse.Balance | undefined;
+    /** Name of the loyalty program. */
+    loyaltyProgramName?: string | undefined;
     /** List of members associated with the subscription. */
     members?: GetParameterSubscriptionInfoResponse.Members.Item[] | undefined;
+    /** Membership details of the subscription. Returned when the subscription could be resolved from the provided `contactId` or `loyaltySubscriptionId`. */
+    membership?: GetParameterSubscriptionInfoResponse.Membership | undefined;
     /** List of rewards associated with the subscription. */
     reward?: GetParameterSubscriptionInfoResponse.Reward.Item[] | undefined;
     /** List of tier assignments for the subscription. */
@@ -28,6 +32,8 @@ export namespace GetParameterSubscriptionInfoResponse {
             export interface Item {
                 /** Unique identifier for the balance definition). */
                 balanceDefinitionId?: string | undefined;
+                /** Name of the balance definition. */
+                balanceDefinitionName?: string | undefined;
                 /** The amount of the balance. */
                 value?: number | undefined;
             }
@@ -45,6 +51,18 @@ export namespace GetParameterSubscriptionInfoResponse {
             /** Timestamp when the member was last updated. */
             updatedAt?: string | undefined;
         }
+    }
+
+    /**
+     * Membership details of the subscription. Returned when the subscription could be resolved from the provided `contactId` or `loyaltySubscriptionId`.
+     */
+    export interface Membership {
+        /** Timestamp when the subscription was created. */
+        createdAt?: string | undefined;
+        /** Unique identifier of the loyalty subscription. */
+        loyaltySubscriptionId?: string | undefined;
+        /** Timestamp when the subscription was last updated. */
+        updatedAt?: string | undefined;
     }
 
     export type Reward = Reward.Item[];
@@ -65,12 +83,44 @@ export namespace GetParameterSubscriptionInfoResponse {
             loyaltyProgramId?: string | undefined;
             /** Additional metadata related to the reward. */
             meta?: Record<string, unknown> | undefined;
+            /** Customer-facing description of the reward, as configured on the reward definition. */
+            publicDescription?: string | undefined;
             /** Unique identifier of the reward definition. */
             rewardId?: string | undefined;
+            /** Customer-facing name of the reward. Falls back to the internal reward name when no public name is set. */
+            rewardName?: string | undefined;
+            /** Unit the reward's value is expressed in — one of the currency codes listed below, or PERCENT. Omitted when the reward has no unit (e.g. free-product rewards). */
+            unit?: Item.Unit | undefined;
             /** Timestamp when the reward was last updated. */
             updatedAt?: string | undefined;
             /** Date from which the voucher becomes valid. */
             validFrom?: string | undefined;
+            /** The value recorded when this reward was attributed to the contact — a snapshot, not necessarily the reward's current configured value. Omitted when not set. */
+            value?: number | undefined;
+        }
+
+        export namespace Item {
+            /** Unit the reward's value is expressed in — one of the currency codes listed below, or PERCENT. Omitted when the reward has no unit (e.g. free-product rewards). */
+            export const Unit = {
+                Percent: "PERCENT",
+                Eur: "EUR",
+                Usd: "USD",
+                Mxn: "MXN",
+                Gbp: "GBP",
+                Inr: "INR",
+                Cad: "CAD",
+                Sgd: "SGD",
+                Ron: "RON",
+                Jpy: "JPY",
+                Myr: "MYR",
+                Clp: "CLP",
+                Pen: "PEN",
+                Mad: "MAD",
+                Aud: "AUD",
+                Chf: "CHF",
+                Brl: "BRL",
+            } as const;
+            export type Unit = (typeof Unit)[keyof typeof Unit];
         }
     }
 
@@ -84,12 +134,16 @@ export namespace GetParameterSubscriptionInfoResponse {
             createdAt?: string | undefined;
             /** Unique identifier of the group associated with the tier. */
             groupId?: string | undefined;
+            /** Name of the group associated with the tier. */
+            groupName?: string | undefined;
             /** Unique identifier of the loyalty program. */
             loyaltyProgramId?: string | undefined;
             /** Additional metadata related to the tier. */
             meta?: Record<string, unknown> | undefined;
             /** Unique identifier of the tier. */
             tierId?: string | undefined;
+            /** Name of the tier. */
+            tierName?: string | undefined;
             /** Timestamp when the tier was last updated */
             updatedAt?: string | undefined;
         }

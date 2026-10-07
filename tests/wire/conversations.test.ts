@@ -3,11 +3,19 @@
 import * as Brevo from "../../src/api/index";
 import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
+import { mockOauth2 } from "./mockAuth";
 
 describe("ConversationsClient", () => {
     test("setsAgentsStatusToOnlineFor23Minutes (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { agentId: "d9nKoegKSjmCtyK78" };
 
         server
@@ -26,7 +34,14 @@ describe("ConversationsClient", () => {
 
     test("setsAgentsStatusToOnlineFor23Minutes (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {
             agentEmail: "liz@getwear.com",
             agentName: "Liz",
@@ -51,7 +66,14 @@ describe("ConversationsClient", () => {
 
     test("setsAgentsStatusToOnlineFor23Minutes (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
@@ -71,7 +93,14 @@ describe("ConversationsClient", () => {
 
     test("sendAMessageAsAnAgent (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {
             agentId: "d9nKoegKSjmCtyK78",
             text: "Hello! How can I help you?",
@@ -158,7 +187,14 @@ describe("ConversationsClient", () => {
 
     test("sendAMessageAsAnAgent (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {
             agentEmail: "liz@getwear.com",
             agentName: "Liz",
@@ -249,7 +285,14 @@ describe("ConversationsClient", () => {
 
     test("sendAMessageAsAnAgent (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {
             agentId: "d9nKoegKSjmCtyK78",
             receivedFrom: "SuperAwesomeHelpdesk",
@@ -338,7 +381,14 @@ describe("ConversationsClient", () => {
 
     test("sendAMessageAsAnAgent (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { text: "text", visitorId: "visitorId" };
         const rawResponseBody = { key: "value" };
 
@@ -361,7 +411,14 @@ describe("ConversationsClient", () => {
 
     test("getAMessage (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = {
             agentId: "d9nKoegKSjmCtyK78",
@@ -441,7 +498,14 @@ describe("ConversationsClient", () => {
 
     test("getAMessage (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -462,7 +526,14 @@ describe("ConversationsClient", () => {
 
     test("getAMessage (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -483,7 +554,14 @@ describe("ConversationsClient", () => {
 
     test("updateAMessageSentByAnAgent (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { text: "Good morning! How can I help you?" };
         const rawResponseBody = {
             agentId: "d9nKoegKSjmCtyK78",
@@ -565,7 +643,14 @@ describe("ConversationsClient", () => {
 
     test("updateAMessageSentByAnAgent (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { text: "text" };
         const rawResponseBody = { key: "value" };
 
@@ -588,7 +673,14 @@ describe("ConversationsClient", () => {
 
     test("updateAMessageSentByAnAgent (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { text: "text" };
         const rawResponseBody = { key: "value" };
 
@@ -611,7 +703,14 @@ describe("ConversationsClient", () => {
 
     test("deleteAMessageSentByAnAgent (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         server.mockEndpoint().delete("/conversations/messages/id").respondWith().statusCode(200).build();
 
@@ -623,7 +722,14 @@ describe("ConversationsClient", () => {
 
     test("deleteAMessageSentByAnAgent (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -644,7 +750,14 @@ describe("ConversationsClient", () => {
 
     test("deleteAMessageSentByAnAgent (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -665,7 +778,14 @@ describe("ConversationsClient", () => {
 
     test("sendAnAutomatedMessageToAVisitor (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {
             groupId: "PjRBMhWGen6aRHjif",
             text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
@@ -752,7 +872,14 @@ describe("ConversationsClient", () => {
 
     test("sendAnAutomatedMessageToAVisitor (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {
             text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
             visitorId: "kZMvWhf8npAu3H6qd57w2Hv6nh6rnxvg",
@@ -837,7 +964,14 @@ describe("ConversationsClient", () => {
 
     test("sendAnAutomatedMessageToAVisitor (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {
             agentId: "d9nKoegKSjmCtyK78",
             text: "Your order has shipped! Here's your tracking number: 9114 5847 3325 9667 4328 88",
@@ -924,7 +1058,14 @@ describe("ConversationsClient", () => {
 
     test("sendAnAutomatedMessageToAVisitor (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { text: "text", visitorId: "visitorId" };
         const rawResponseBody = { key: "value" };
 
@@ -947,7 +1088,14 @@ describe("ConversationsClient", () => {
 
     test("getAnAutomatedMessage (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = {
             agentId: "d9nKoegKSjmCtyK78",
@@ -1027,7 +1175,14 @@ describe("ConversationsClient", () => {
 
     test("getAnAutomatedMessage (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -1048,7 +1203,14 @@ describe("ConversationsClient", () => {
 
     test("getAnAutomatedMessage (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -1069,7 +1231,14 @@ describe("ConversationsClient", () => {
 
     test("updateAnAutomatedMessage (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = {
             text: "Your order has shipped! Here's your tracking number: 9114 5847 4668 7775 9233 54",
         };
@@ -1153,7 +1322,14 @@ describe("ConversationsClient", () => {
 
     test("updateAnAutomatedMessage (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { text: "text" };
         const rawResponseBody = { key: "value" };
 
@@ -1176,7 +1352,14 @@ describe("ConversationsClient", () => {
 
     test("updateAnAutomatedMessage (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { text: "text" };
         const rawResponseBody = { key: "value" };
 
@@ -1199,7 +1382,14 @@ describe("ConversationsClient", () => {
 
     test("deleteAnAutomatedMessage (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         server.mockEndpoint().delete("/conversations/pushedMessages/id").respondWith().statusCode(200).build();
 
@@ -1211,7 +1401,14 @@ describe("ConversationsClient", () => {
 
     test("deleteAnAutomatedMessage (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -1232,7 +1429,14 @@ describe("ConversationsClient", () => {
 
     test("deleteAnAutomatedMessage (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -1253,7 +1457,14 @@ describe("ConversationsClient", () => {
 
     test("setVisitorGroupAssignment (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { groupId: "PjRBMhWGen6aRHjif" };
         const rawResponseBody = { groupId: "PjRBMhWGen6aRHjif", visitorId: "AXCR3k9bpSY7bpuh7" };
 
@@ -1274,7 +1485,42 @@ describe("ConversationsClient", () => {
 
     test("setVisitorGroupAssignment (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
+        const rawRequestBody = { groupId: null };
+        const rawResponseBody = { groupId: "PjRBMhWGen6aRHjif", visitorId: "AXCR3k9bpSY7bpuh7" };
+
+        server
+            .mockEndpoint()
+            .put("/conversations/visitorGroup")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.conversations.setVisitorGroupAssignment({
+            groupId: null,
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("setVisitorGroupAssignment (3)", async () => {
+        const server = mockServerPool.createServer();
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { groupId: { key: "value" } };
         const rawResponseBody = { key: "value" };
 
@@ -1296,9 +1542,16 @@ describe("ConversationsClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
-    test("setVisitorGroupAssignment (3)", async () => {
+    test("setVisitorGroupAssignment (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: { apiKey: "test" },
+            oauth2: { clientId: "client_id", clientSecret: "client_secret" },
+            environment: { base: server.baseUrl, oAuth: server.baseUrl },
+        });
         const rawRequestBody = { groupId: { key: "value" } };
         const rawResponseBody = { key: "value" };
 

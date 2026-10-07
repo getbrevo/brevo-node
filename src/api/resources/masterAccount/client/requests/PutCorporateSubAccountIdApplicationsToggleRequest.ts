@@ -15,6 +15,12 @@ export interface PutCorporateSubAccountIdApplicationsToggleRequest {
     /** Id of the sub-account organization (mandatory) */
     id: number;
     /**
+     * Set this field to enable or disable Analytics on the
+     * sub-account. Requires the master account's plan to include
+     * Analytics; otherwise the call returns a 400 error.
+     */
+    analytics?: boolean;
+    /**
      * Set this field to enable or disable Automation on the
      * sub-account
      */

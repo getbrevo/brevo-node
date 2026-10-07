@@ -19,7 +19,7 @@ export declare namespace TasksClient {
 export class TasksClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TasksClient.Options>;
 
-    constructor(options: TasksClient.Options) {
+    constructor(options: TasksClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -88,8 +88,8 @@ export class TasksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/tasks",
             ),
             method: "GET",
@@ -162,8 +162,8 @@ export class TasksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/tasks",
             ),
             method: "POST",
@@ -235,8 +235,8 @@ export class TasksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/tasks/${core.url.encodePathParam(id)}`,
             ),
             method: "GET",
@@ -307,8 +307,8 @@ export class TasksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/tasks/${core.url.encodePathParam(id)}`,
             ),
             method: "DELETE",
@@ -379,8 +379,8 @@ export class TasksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `crm/tasks/${core.url.encodePathParam(id)}`,
             ),
             method: "PATCH",
@@ -447,8 +447,8 @@ export class TasksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "crm/tasktypes",
             ),
             method: "GET",

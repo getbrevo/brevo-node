@@ -18,6 +18,7 @@ import { FilesClient } from "./api/resources/files/client/Client.js";
 import { InboundParsingClient } from "./api/resources/inboundParsing/client/Client.js";
 import { MasterAccountClient } from "./api/resources/masterAccount/client/Client.js";
 import { NotesClient } from "./api/resources/notes/client/Client.js";
+import { OAuthClient } from "./api/resources/oAuth/client/Client.js";
 import { PaymentsClient } from "./api/resources/payments/client/Client.js";
 import { ProcessClient } from "./api/resources/process/client/Client.js";
 import { ProgramClient } from "./api/resources/program/client/Client.js";
@@ -37,6 +38,7 @@ import { WhatsAppCampaignsClient } from "./api/resources/whatsAppCampaigns/clien
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient.js";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient.js";
 import * as core from "./core/index.js";
+import * as environments from "./environments.js";
 
 export declare namespace BrevoClient {
     export type Options = BaseClientOptions;
@@ -80,8 +82,9 @@ export class BrevoClient {
     protected _transactionalEmails: TransactionalEmailsClient | undefined;
     protected _transactionalSms: TransactionalSmsClient | undefined;
     protected _smsTemplates: SmsTemplatesClient | undefined;
+    protected _oAuth: OAuthClient | undefined;
 
-    constructor(options: BrevoClient.Options) {
+    constructor(options: BrevoClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -221,6 +224,10 @@ export class BrevoClient {
         return (this._smsTemplates ??= new SmsTemplatesClient(this._options));
     }
 
+    public get oAuth(): OAuthClient {
+        return (this._oAuth ??= new OAuthClient(this._options));
+    }
+
     /**
      * Make a passthrough request using the SDK's configured auth, retry, logging, etc.
      * This is useful for making requests to endpoints not yet supported in the SDK.
@@ -240,7 +247,14 @@ export class BrevoClient {
             input,
             init,
             {
-                baseUrl: this._options.baseUrl ?? this._options.environment,
+                baseUrl:
+                    this._options.baseUrl ??
+                    (async () => {
+                        const env = await core.Supplier.get(this._options.environment);
+                        return typeof env === "string"
+                            ? env
+                            : ((env as Record<string, string>)?.base ?? environments.BrevoEnvironment.Default.base);
+                    }),
                 headers: this._options.headers,
                 timeoutInSeconds: this._options.timeoutInSeconds,
                 maxRetries: this._options.maxRetries,

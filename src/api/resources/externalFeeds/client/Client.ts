@@ -19,7 +19,7 @@ export declare namespace ExternalFeedsClient {
 export class ExternalFeedsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ExternalFeedsClient.Options>;
 
-    constructor(options: ExternalFeedsClient.Options) {
+    constructor(options: ExternalFeedsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -95,8 +95,8 @@ export class ExternalFeedsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "feeds",
             ),
             method: "GET",
@@ -211,8 +211,8 @@ export class ExternalFeedsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "feeds",
             ),
             method: "POST",
@@ -305,8 +305,8 @@ export class ExternalFeedsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `feeds/${core.url.encodePathParam(uuid)}`,
             ),
             method: "GET",
@@ -440,8 +440,8 @@ export class ExternalFeedsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `feeds/${core.url.encodePathParam(uuid)}`,
             ),
             method: "PUT",
@@ -531,8 +531,8 @@ export class ExternalFeedsClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `feeds/${core.url.encodePathParam(uuid)}`,
             ),
             method: "DELETE",

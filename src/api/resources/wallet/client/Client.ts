@@ -18,7 +18,7 @@ export declare namespace WalletClient {
 export class WalletClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<WalletClient.Options>;
 
-    constructor(options: WalletClient.Options) {
+    constructor(options: WalletClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -64,8 +64,8 @@ export class WalletClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `wallet/passes/${core.url.encodePathParam(passId)}/installUrl/${core.url.encodePathParam(contactId)}`,
             ),
             method: "GET",

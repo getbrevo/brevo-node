@@ -1,6 +1,6 @@
 {
     "name": "@getbrevo/brevo",
-    "version": "6.0.3",
+    "version": "6.0.4",
     "private": false,
     "repository": {
         "type": "git",
@@ -395,6 +395,17 @@
                 "default": "./dist/cjs/api/resources/smsTemplates/exports.js"
             },
             "default": "./dist/cjs/api/resources/smsTemplates/exports.js"
+        },
+        "./oAuth": {
+            "import": {
+                "types": "./dist/esm/api/resources/oAuth/exports.d.mts",
+                "default": "./dist/esm/api/resources/oAuth/exports.mjs"
+            },
+            "require": {
+                "types": "./dist/cjs/api/resources/oAuth/exports.d.ts",
+                "default": "./dist/cjs/api/resources/oAuth/exports.js"
+            },
+            "default": "./dist/cjs/api/resources/oAuth/exports.js"
         },
         "./package.json": "./package.json"
     },

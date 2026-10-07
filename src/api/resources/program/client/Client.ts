@@ -19,7 +19,7 @@ export declare namespace ProgramClient {
 export class ProgramClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ProgramClient.Options>;
 
-    constructor(options: ProgramClient.Options) {
+    constructor(options: ProgramClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -68,8 +68,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "loyalty/config/programs",
             ),
             method: "GET",
@@ -157,8 +157,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "loyalty/config/programs",
             ),
             method: "POST",
@@ -244,8 +244,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}`,
             ),
             method: "GET",
@@ -335,8 +335,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}`,
             ),
             method: "PUT",
@@ -429,8 +429,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}`,
             ),
             method: "DELETE",
@@ -519,8 +519,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}`,
             ),
             method: "PATCH",
@@ -619,8 +619,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}/account-info`,
             ),
             method: "GET",
@@ -717,8 +717,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}/contact/${core.url.encodePathParam(cid)}`,
             ),
             method: "DELETE",
@@ -808,8 +808,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}/publish`,
             ),
             method: "POST",
@@ -899,8 +899,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}/subscription-members`,
             ),
             method: "POST",
@@ -1001,8 +1001,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}/subscription-members`,
             ),
             method: "DELETE",
@@ -1098,8 +1098,8 @@ export class ProgramClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `loyalty/config/programs/${core.url.encodePathParam(pid)}/subscriptions`,
             ),
             method: "POST",

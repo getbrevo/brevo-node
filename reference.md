@@ -19657,3 +19657,70 @@ await client.smsTemplates.getSmsTemplates();
 </dl>
 </details>
 
+## OAuth
+<details><summary><code>client.oAuth.<a href="/src/api/resources/oAuth/client/Client.ts">getOAuthM2MToken</a>({ ...params }) -> Brevo.GetOAuthM2MTokenResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Exchanges an app's client_id/client_secret for a short-lived access token using the OAuth 2.0 client_credentials grant (RFC 6749 §4.4). Confirmed working via a direct manual test (2026-09-18). See docs/superpowers/specs/ for the design.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.oAuth.getOAuthM2MToken({
+    client_id: "client_id",
+    client_secret: "client_secret"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Brevo.GetOAuthM2MTokenRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `OAuthClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+

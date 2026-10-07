@@ -19,7 +19,7 @@ export declare namespace WebhooksClient {
 export class WebhooksClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<WebhooksClient.Options>;
 
-    constructor(options: WebhooksClient.Options) {
+    constructor(options: WebhooksClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -75,8 +75,8 @@ export class WebhooksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "webhooks",
             ),
             method: "GET",
@@ -158,8 +158,8 @@ export class WebhooksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "webhooks",
             ),
             method: "POST",
@@ -240,8 +240,8 @@ export class WebhooksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "webhooks/export",
             ),
             method: "POST",
@@ -327,8 +327,8 @@ export class WebhooksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `webhooks/${core.url.encodePathParam(webhookId)}`,
             ),
             method: "GET",
@@ -409,8 +409,8 @@ export class WebhooksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `webhooks/${core.url.encodePathParam(webhookId)}`,
             ),
             method: "PUT",
@@ -493,8 +493,8 @@ export class WebhooksClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 `webhooks/${core.url.encodePathParam(webhookId)}`,
             ),
             method: "DELETE",

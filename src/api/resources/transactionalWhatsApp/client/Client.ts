@@ -19,7 +19,7 @@ export declare namespace TransactionalWhatsAppClient {
 export class TransactionalWhatsAppClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TransactionalWhatsAppClient.Options>;
 
-    constructor(options: TransactionalWhatsAppClient.Options) {
+    constructor(options: TransactionalWhatsAppClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -62,8 +62,8 @@ export class TransactionalWhatsAppClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "whatsapp/sendMessage",
             ),
             method: "POST",
@@ -142,8 +142,8 @@ export class TransactionalWhatsAppClient {
         const _response = await core.fetcher({
             url: core.url.join(
                 (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BrevoEnvironment.Default,
+                    ((await core.Supplier.get(this._options.environment)) ?? environments.BrevoEnvironment.Default)
+                        .base,
                 "whatsapp/statistics/events",
             ),
             method: "GET",
