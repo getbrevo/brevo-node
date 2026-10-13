@@ -19,7 +19,7 @@ export declare namespace TransactionalWhatsAppClient {
 export class TransactionalWhatsAppClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TransactionalWhatsAppClient.Options>;
 
-    constructor(options: TransactionalWhatsAppClient.Options) {
+    constructor(options: TransactionalWhatsAppClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

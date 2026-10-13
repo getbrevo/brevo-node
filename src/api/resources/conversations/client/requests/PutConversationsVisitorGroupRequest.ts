@@ -5,6 +5,11 @@
  *     {
  *         groupId: "PjRBMhWGen6aRHjif"
  *     }
+ *
+ * @example
+ *     {
+ *         groupId: null
+ *     }
  */
 export interface PutConversationsVisitorGroupRequest {
     groupId?: unknown;

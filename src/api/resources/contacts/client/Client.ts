@@ -19,7 +19,7 @@ export declare namespace ContactsClient {
 export class ContactsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ContactsClient.Options>;
 
-    constructor(options: ContactsClient.Options) {
+    constructor(options: ContactsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

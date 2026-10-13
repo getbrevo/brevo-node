@@ -19,7 +19,7 @@ export declare namespace PaymentsClient {
 export class PaymentsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<PaymentsClient.Options>;
 
-    constructor(options: PaymentsClient.Options) {
+    constructor(options: PaymentsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

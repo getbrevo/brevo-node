@@ -19,7 +19,7 @@ export declare namespace ConsentGroupsClient {
 export class ConsentGroupsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ConsentGroupsClient.Options>;
 
-    constructor(options: ConsentGroupsClient.Options) {
+    constructor(options: ConsentGroupsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

@@ -19,7 +19,7 @@ export declare namespace TransactionalSmsClient {
 export class TransactionalSmsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TransactionalSmsClient.Options>;
 
-    constructor(options: TransactionalSmsClient.Options) {
+    constructor(options: TransactionalSmsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

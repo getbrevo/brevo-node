@@ -19,7 +19,7 @@ export declare namespace SendersClient {
 export class SendersClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<SendersClient.Options>;
 
-    constructor(options: SendersClient.Options) {
+    constructor(options: SendersClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

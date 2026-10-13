@@ -68,17 +68,19 @@ export interface GetExtendedCampaignOverview {
     testSent: boolean;
     /** Customisation of the "to" field of the campaign */
     toField?: string | undefined;
-    /** The utm_campaign value associated with the campaign. Only present if a UTM campaign value was set. */
+    /** The utm_campaign value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the campaign name if neither is configured. Only returned when UTM tracking is enabled on the campaign. */
     utmCampaignValue?: string | undefined;
-    /** The utm_content value associated with the campaign. Only present if a utm_content value was set on create or update. */
+    /** The utm_content value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels. */
     utmContent?: string | undefined;
-    /** The campaign ID used as utm_id parameter. Only present if UTM campaign tracking with ID is enabled. */
+    /** Legacy numeric utm_id value applied to the campaign's tracking links. Present only when UTM tracking is enabled on the campaign and the resolved utm_id is numeric (typically the campaign's ID). For customer-supplied non-numeric values (for example `promo_042`), read `utmId` (string) instead. Kept for backward compatibility. */
     utmID?: number | undefined;
-    /** The utm_medium value. Set to "EMAIL" when UTM campaign tracking is enabled. */
+    /** The utm_id value applied to the campaign's tracking links, returned verbatim as a string. Falls back to your account's global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels. Preferred field for new consumers — covers both numeric IDs and customer-supplied non-numeric strings. */
+    utmId?: string | undefined;
+    /** The utm_medium value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the default `email` if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign. */
     utmMedium?: string | undefined;
-    /** The utm_source value. Set to "Brevo" when UTM campaign tracking is enabled. */
+    /** The utm_source value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign, or the account default (`brevo` or `sendinblue`) if neither is configured. Case is preserved verbatim. Only returned when UTM tracking is enabled on the campaign. */
     utmSource?: string | undefined;
-    /** The utm_term value associated with the campaign. Only present if a utm_term value was set on create or update. */
+    /** The utm_term value applied to the campaign's tracking links. Falls back to your account's global UTM settings when no custom value was set on the campaign. Only returned when UTM tracking is enabled on the campaign and a value is set at one of these levels. */
     utmTerm?: string | undefined;
 }
 

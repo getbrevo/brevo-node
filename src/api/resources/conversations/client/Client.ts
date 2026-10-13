@@ -19,7 +19,7 @@ export declare namespace ConversationsClient {
 export class ConversationsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ConversationsClient.Options>;
 
-    constructor(options: ConversationsClient.Options) {
+    constructor(options: ConversationsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -763,6 +763,11 @@ export class ConversationsClient {
      * @example
      *     await client.conversations.setVisitorGroupAssignment({
      *         groupId: "PjRBMhWGen6aRHjif"
+     *     })
+     *
+     * @example
+     *     await client.conversations.setVisitorGroupAssignment({
+     *         groupId: null
      *     })
      */
     public setVisitorGroupAssignment(

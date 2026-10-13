@@ -19,7 +19,7 @@ export declare namespace TransactionalEmailsClient {
 export class TransactionalEmailsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TransactionalEmailsClient.Options>;
 
-    constructor(options: TransactionalEmailsClient.Options) {
+    constructor(options: TransactionalEmailsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

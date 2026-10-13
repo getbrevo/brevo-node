@@ -19,7 +19,7 @@ export declare namespace EventClient {
 export class EventClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<EventClient.Options>;
 
-    constructor(options: EventClient.Options) {
+    constructor(options: EventClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

@@ -19,7 +19,7 @@ export declare namespace WhatsAppCampaignsClient {
 export class WhatsAppCampaignsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<WhatsAppCampaignsClient.Options>;
 
-    constructor(options: WhatsAppCampaignsClient.Options) {
+    constructor(options: WhatsAppCampaignsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

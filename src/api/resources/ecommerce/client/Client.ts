@@ -19,7 +19,7 @@ export declare namespace EcommerceClient {
 export class EcommerceClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<EcommerceClient.Options>;
 
-    constructor(options: EcommerceClient.Options) {
+    constructor(options: EcommerceClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

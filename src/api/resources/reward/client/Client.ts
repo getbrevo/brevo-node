@@ -19,7 +19,7 @@ export declare namespace RewardClient {
 export class RewardClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<RewardClient.Options>;
 
-    constructor(options: RewardClient.Options) {
+    constructor(options: RewardClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
