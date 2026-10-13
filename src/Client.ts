@@ -18,6 +18,7 @@ import { FilesClient } from "./api/resources/files/client/Client.js";
 import { InboundParsingClient } from "./api/resources/inboundParsing/client/Client.js";
 import { MasterAccountClient } from "./api/resources/masterAccount/client/Client.js";
 import { NotesClient } from "./api/resources/notes/client/Client.js";
+import { OAuthClient } from "./api/resources/oAuth/client/Client.js";
 import { PaymentsClient } from "./api/resources/payments/client/Client.js";
 import { ProcessClient } from "./api/resources/process/client/Client.js";
 import { ProgramClient } from "./api/resources/program/client/Client.js";
@@ -80,8 +81,9 @@ export class BrevoClient {
     protected _transactionalEmails: TransactionalEmailsClient | undefined;
     protected _transactionalSms: TransactionalSmsClient | undefined;
     protected _smsTemplates: SmsTemplatesClient | undefined;
+    protected _oAuth: OAuthClient | undefined;
 
-    constructor(options: BrevoClient.Options) {
+    constructor(options: BrevoClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
@@ -219,6 +221,10 @@ export class BrevoClient {
 
     public get smsTemplates(): SmsTemplatesClient {
         return (this._smsTemplates ??= new SmsTemplatesClient(this._options));
+    }
+
+    public get oAuth(): OAuthClient {
+        return (this._oAuth ??= new OAuthClient(this._options));
     }
 
     /**

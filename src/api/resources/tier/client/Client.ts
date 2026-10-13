@@ -19,7 +19,7 @@ export declare namespace TierClient {
 export class TierClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TierClient.Options>;
 
-    constructor(options: TierClient.Options) {
+    constructor(options: TierClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

@@ -18,7 +18,7 @@ export declare namespace SmsTemplatesClient {
 export class SmsTemplatesClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<SmsTemplatesClient.Options>;
 
-    constructor(options: SmsTemplatesClient.Options) {
+    constructor(options: SmsTemplatesClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

@@ -19,7 +19,7 @@ export declare namespace CustomObjectsClient {
 export class CustomObjectsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<CustomObjectsClient.Options>;
 
-    constructor(options: CustomObjectsClient.Options) {
+    constructor(options: CustomObjectsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

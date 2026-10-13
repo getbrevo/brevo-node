@@ -1275,6 +1275,27 @@ describe("ConversationsClient", () => {
     test("setVisitorGroupAssignment (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = { groupId: null };
+        const rawResponseBody = { groupId: "PjRBMhWGen6aRHjif", visitorId: "AXCR3k9bpSY7bpuh7" };
+
+        server
+            .mockEndpoint()
+            .put("/conversations/visitorGroup")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.conversations.setVisitorGroupAssignment({
+            groupId: null,
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("setVisitorGroupAssignment (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { groupId: { key: "value" } };
         const rawResponseBody = { key: "value" };
 
@@ -1296,7 +1317,7 @@ describe("ConversationsClient", () => {
         }).rejects.toThrow(Brevo.BadRequestError);
     });
 
-    test("setVisitorGroupAssignment (3)", async () => {
+    test("setVisitorGroupAssignment (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { groupId: { key: "value" } };

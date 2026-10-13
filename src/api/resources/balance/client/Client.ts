@@ -19,7 +19,7 @@ export declare namespace BalanceClient {
 export class BalanceClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<BalanceClient.Options>;
 
-    constructor(options: BalanceClient.Options) {
+    constructor(options: BalanceClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

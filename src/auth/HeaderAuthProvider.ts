@@ -40,7 +40,7 @@ export namespace HeaderAuthProvider {
     export const AUTH_CONFIG_ERROR_MESSAGE: string =
         `Please provide '${PARAM_KEY}' when initializing the client` as const;
     export type Options = AuthOptions;
-    export type AuthOptions = { [PARAM_KEY]: core.Supplier<string> };
+    export type AuthOptions = { [PARAM_KEY]?: core.Supplier<string> };
 
     export function createInstance(options: Options): core.AuthProvider {
         return new HeaderAuthProvider(options);

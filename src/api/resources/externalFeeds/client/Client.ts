@@ -19,7 +19,7 @@ export declare namespace ExternalFeedsClient {
 export class ExternalFeedsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ExternalFeedsClient.Options>;
 
-    constructor(options: ExternalFeedsClient.Options) {
+    constructor(options: ExternalFeedsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

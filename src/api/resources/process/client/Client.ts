@@ -18,7 +18,7 @@ export declare namespace ProcessClient {
 export class ProcessClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ProcessClient.Options>;
 
-    constructor(options: ProcessClient.Options) {
+    constructor(options: ProcessClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

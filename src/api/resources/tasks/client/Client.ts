@@ -19,7 +19,7 @@ export declare namespace TasksClient {
 export class TasksClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TasksClient.Options>;
 
-    constructor(options: TasksClient.Options) {
+    constructor(options: TasksClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

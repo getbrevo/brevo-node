@@ -19,7 +19,7 @@ export declare namespace ProgramClient {
 export class ProgramClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ProgramClient.Options>;
 
-    constructor(options: ProgramClient.Options) {
+    constructor(options: ProgramClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

@@ -903,7 +903,13 @@ describe("ProgramClient", () => {
 
         const rawResponseBody = {
             balance: { balances: [{}], contactId: 1, loyaltyProgramId: "loyaltyProgramId" },
+            loyaltyProgramName: "loyaltyProgramName",
             members: [{ createdAt: "createdAt", memberContactId: 1, updatedAt: "updatedAt" }],
+            membership: {
+                createdAt: "2024-01-15T09:30:00Z",
+                loyaltySubscriptionId: "loyaltySubscriptionId",
+                updatedAt: "2024-01-15T09:30:00Z",
+            },
             reward: [
                 {
                     code: "code",
@@ -913,9 +919,13 @@ describe("ProgramClient", () => {
                     id: "id",
                     loyaltyProgramId: "loyaltyProgramId",
                     meta: { key: "value" },
+                    publicDescription: "publicDescription",
                     rewardId: "rewardId",
+                    rewardName: "rewardName",
+                    unit: "PERCENT",
                     updatedAt: "2024-01-15T09:30:00Z",
                     validFrom: "2024-01-15T09:30:00Z",
+                    value: 1.1,
                 },
             ],
             tier: [
@@ -923,9 +933,11 @@ describe("ProgramClient", () => {
                     contactId: 1,
                     createdAt: "createdAt",
                     groupId: "groupId",
+                    groupName: "groupName",
                     loyaltyProgramId: "loyaltyProgramId",
                     meta: { key: "value" },
                     tierId: "tierId",
+                    tierName: "tierName",
                     updatedAt: "updatedAt",
                 },
             ],

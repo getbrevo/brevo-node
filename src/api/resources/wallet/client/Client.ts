@@ -18,7 +18,7 @@ export declare namespace WalletClient {
 export class WalletClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<WalletClient.Options>;
 
-    constructor(options: WalletClient.Options) {
+    constructor(options: WalletClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

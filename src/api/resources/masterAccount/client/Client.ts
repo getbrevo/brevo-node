@@ -19,7 +19,7 @@ export declare namespace MasterAccountClient {
 export class MasterAccountClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<MasterAccountClient.Options>;
 
-    constructor(options: MasterAccountClient.Options) {
+    constructor(options: MasterAccountClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

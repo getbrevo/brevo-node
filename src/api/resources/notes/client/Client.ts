@@ -19,7 +19,7 @@ export declare namespace NotesClient {
 export class NotesClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<NotesClient.Options>;
 
-    constructor(options: NotesClient.Options) {
+    constructor(options: NotesClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

@@ -42,7 +42,7 @@ export interface SendTransacEmailRequest {
     bcc?: SendTransacEmailRequest.Bcc.Item[];
     /** Array of CC recipient objects. Each object contains an email address and an optional name. */
     cc?: SendTransacEmailRequest.Cc.Item[];
-    /** Custom email headers (non-standard headers) to include in the email. The `sender.ip` header can be set to specify the IP address used for sending transactional emails (dedicated IP users only). Header names must use Title-Case-Format (words separated by hyphens with the first letter of each word capitalized). Headers not in this format are automatically converted. Standard email headers are not supported. Example: `{"sender.ip":"1.2.3.4", "X-Mailin-custom":"some_custom_value", "Idempotency-Key":"abc-123"}` */
+    /** Custom email headers (non-standard headers) to include in the email. The `sender.ip` header can be set to specify the IP address used for sending transactional emails (dedicated IP users only). Header names must use Title-Case-Format (words separated by hyphens with the first letter of each word capitalized). Headers not in this format are automatically converted. Standard email headers are not supported. Example: `{"sender.ip":"1.2.3.4", "X-Mailin-custom":"some_custom_value", "IdempotencyKey":"abc-123"}` */
     headers?: Record<string, unknown>;
     /** HTML body content of the email. Required when `templateId` is not provided. Ignored when `templateId` is provided. */
     htmlContent?: string;

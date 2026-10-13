@@ -19,7 +19,7 @@ export declare namespace CouponsClient {
 export class CouponsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<CouponsClient.Options>;
 
-    constructor(options: CouponsClient.Options) {
+    constructor(options: CouponsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

@@ -19,7 +19,7 @@ export declare namespace SmsCampaignsClient {
 export class SmsCampaignsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<SmsCampaignsClient.Options>;
 
-    constructor(options: SmsCampaignsClient.Options) {
+    constructor(options: SmsCampaignsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

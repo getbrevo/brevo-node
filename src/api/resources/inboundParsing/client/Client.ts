@@ -18,7 +18,7 @@ export declare namespace InboundParsingClient {
 export class InboundParsingClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<InboundParsingClient.Options>;
 
-    constructor(options: InboundParsingClient.Options) {
+    constructor(options: InboundParsingClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 

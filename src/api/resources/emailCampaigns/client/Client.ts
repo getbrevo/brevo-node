@@ -19,7 +19,7 @@ export declare namespace EmailCampaignsClient {
 export class EmailCampaignsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<EmailCampaignsClient.Options>;
 
-    constructor(options: EmailCampaignsClient.Options) {
+    constructor(options: EmailCampaignsClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
