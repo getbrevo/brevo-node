@@ -3,11 +3,20 @@
 import * as Brevo from "../../src/api/index";
 import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
+import { mockOauth2 } from "./mockAuth";
 
 describe("WhatsAppCampaignsClient", () => {
     test("getWhatsAppCampaigns (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             campaigns: [
@@ -36,7 +45,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("getWhatsAppCampaigns (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -49,7 +66,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("createWhatsAppCampaign (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             name: "Test Campaign",
             recipients: {},
@@ -78,7 +103,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("createWhatsAppCampaign (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { name: "name", recipients: {}, scheduledAt: "scheduledAt", templateId: 1 };
         const rawResponseBody = { key: "value" };
 
@@ -103,7 +136,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("getWhatsAppConfig (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             businessStatus: "verified",
@@ -128,7 +169,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("getWhatsAppConfig (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -147,7 +196,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("createWhatsAppTemplate (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             bodyText: "making it look like readable English",
             category: "MARKETING",
@@ -176,7 +233,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("createWhatsAppTemplate (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { bodyText: "bodyText", category: "MARKETING", language: "language", name: "name" };
         const rawResponseBody = { key: "value" };
 
@@ -201,7 +266,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("getWhatsAppTemplates (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             count: 2,
@@ -245,7 +318,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("getWhatsAppTemplates (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -264,7 +345,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("sendWhatsAppTemplateApproval (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         server
             .mockEndpoint()
@@ -281,7 +370,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("sendWhatsAppTemplateApproval (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -302,7 +399,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("getWhatsAppCampaign (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             campaignName: "Test WhatsApp Campaign",
@@ -348,7 +453,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("getWhatsAppCampaign (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -369,7 +482,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("getWhatsAppCampaign (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -390,7 +511,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("updateWhatsAppCampaign (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {};
 
         server
@@ -409,7 +538,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("updateWhatsAppCampaign (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
@@ -431,7 +568,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("deleteWhatsAppCampaign (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         server.mockEndpoint().delete("/whatsappCampaigns/1000000").respondWith().statusCode(200).build();
 
@@ -443,7 +588,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("deleteWhatsAppCampaign (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -464,7 +617,15 @@ describe("WhatsAppCampaignsClient", () => {
 
     test("deleteWhatsAppCampaign (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 

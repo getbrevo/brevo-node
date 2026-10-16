@@ -214,7 +214,7 @@ export class SmsCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smsCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `smsCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -286,7 +286,7 @@ export class SmsCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smsCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `smsCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -361,7 +361,7 @@ export class SmsCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smsCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `smsCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -434,7 +434,7 @@ export class SmsCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smsCampaigns/${core.url.encodePathParam(campaignId)}/exportRecipients`,
+                `smsCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/exportRecipients`,
             ),
             method: "POST",
             headers: _headers,
@@ -518,7 +518,7 @@ export class SmsCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smsCampaigns/${core.url.encodePathParam(campaignId)}/sendNow`,
+                `smsCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/sendNow`,
             ),
             method: "POST",
             headers: _headers,
@@ -606,7 +606,7 @@ export class SmsCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smsCampaigns/${core.url.encodePathParam(campaignId)}/sendReport`,
+                `smsCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/sendReport`,
             ),
             method: "POST",
             headers: _headers,
@@ -686,7 +686,7 @@ export class SmsCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smsCampaigns/${core.url.encodePathParam(campaignId)}/sendTest`,
+                `smsCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/sendTest`,
             ),
             method: "POST",
             headers: _headers,
@@ -767,7 +767,7 @@ export class SmsCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smsCampaigns/${core.url.encodePathParam(campaignId)}/status`,
+                `smsCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/status`,
             ),
             method: "PUT",
             headers: _headers,

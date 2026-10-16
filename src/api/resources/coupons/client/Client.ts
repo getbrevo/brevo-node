@@ -218,7 +218,7 @@ export class CouponsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `couponCollections/${core.url.encodePathParam(id)}`,
+                `couponCollections/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -292,7 +292,7 @@ export class CouponsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `couponCollections/${core.url.encodePathParam(id)}`,
+                `couponCollections/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PATCH",
             headers: _headers,

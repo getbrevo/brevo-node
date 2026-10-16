@@ -66,7 +66,7 @@ export class WalletClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `wallet/passes/${core.url.encodePathParam(passId)}/installUrl/${core.url.encodePathParam(contactId)}`,
+                `wallet/passes/${core.url.encodePathParam(passId, errors.BrevoError)}/installUrl/${core.url.encodePathParam(contactId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,

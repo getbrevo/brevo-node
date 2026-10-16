@@ -229,7 +229,7 @@ export class FilesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/files/${core.url.encodePathParam(id)}`,
+                `crm/files/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -301,7 +301,7 @@ export class FilesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/files/${core.url.encodePathParam(id)}`,
+                `crm/files/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -373,7 +373,7 @@ export class FilesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/files/${core.url.encodePathParam(id)}/data`,
+                `crm/files/${core.url.encodePathParam(id, errors.BrevoError)}/data`,
             ),
             method: "GET",
             headers: _headers,

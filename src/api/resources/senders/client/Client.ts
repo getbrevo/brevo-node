@@ -399,7 +399,7 @@ export class SendersClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `senders/${core.url.encodePathParam(senderId)}`,
+                `senders/${core.url.encodePathParam(senderId, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -482,7 +482,7 @@ export class SendersClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `senders/${core.url.encodePathParam(senderId)}`,
+                `senders/${core.url.encodePathParam(senderId, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -565,7 +565,7 @@ export class SendersClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `senders/${core.url.encodePathParam(senderId)}/ips`,
+                `senders/${core.url.encodePathParam(senderId, errors.BrevoError)}/ips`,
             ),
             method: "GET",
             headers: _headers,
@@ -654,7 +654,7 @@ export class SendersClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `senders/${core.url.encodePathParam(senderId)}/validate`,
+                `senders/${core.url.encodePathParam(senderId, errors.BrevoError)}/validate`,
             ),
             method: "PUT",
             headers: _headers,

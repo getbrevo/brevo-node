@@ -3,11 +3,20 @@
 import * as Brevo from "../../src/api/index";
 import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
+import { mockOauth2 } from "./mockAuth";
 
 describe("ExternalFeedsClient", () => {
     test("getAllExternalFeeds (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             count: 18,
@@ -69,7 +78,15 @@ describe("ExternalFeedsClient", () => {
 
     test("getAllExternalFeeds (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -82,7 +99,15 @@ describe("ExternalFeedsClient", () => {
 
     test("getAllExternalFeeds (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -95,7 +120,15 @@ describe("ExternalFeedsClient", () => {
 
     test("createExternalFeed (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             name: "Public API Feed",
             url: "https://jsonplaceholder.typicode.com/posts",
@@ -126,7 +159,15 @@ describe("ExternalFeedsClient", () => {
 
     test("createExternalFeed (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             name: "Product Catalog",
             url: "https://api.example.com/products",
@@ -157,7 +198,15 @@ describe("ExternalFeedsClient", () => {
 
     test("createExternalFeed (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             name: "Internal Blog Feed",
             url: "https://blog.example.com/api/posts",
@@ -188,7 +237,15 @@ describe("ExternalFeedsClient", () => {
 
     test("createExternalFeed (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
 
@@ -211,7 +268,15 @@ describe("ExternalFeedsClient", () => {
 
     test("getExternalFeedByUUID (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             id: "b1c2d3e4-f5a6-47b8-89c0-d1e2f3a4b5c6",
@@ -243,7 +308,15 @@ describe("ExternalFeedsClient", () => {
 
     test("getExternalFeedByUUID (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             id: "c2d3e4f5-a6b7-48c9-90d1-e2f3a4b5c6d7",
@@ -275,7 +348,15 @@ describe("ExternalFeedsClient", () => {
 
     test("getExternalFeedByUUID (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             id: "d3e4f5a6-b7c8-49d0-91e2-f3a4b5c6d7e8",
@@ -307,7 +388,15 @@ describe("ExternalFeedsClient", () => {
 
     test("getExternalFeedByUUID (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -322,7 +411,15 @@ describe("ExternalFeedsClient", () => {
 
     test("getExternalFeedByUUID (5)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -337,7 +434,15 @@ describe("ExternalFeedsClient", () => {
 
     test("updateExternalFeed (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { name: "Updated Product Catalog", url: "https://api.newstore.com/products/v2" };
 
         server
@@ -358,7 +463,15 @@ describe("ExternalFeedsClient", () => {
 
     test("updateExternalFeed (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { authType: "token", token: "newabc123token789" };
 
         server
@@ -379,7 +492,15 @@ describe("ExternalFeedsClient", () => {
 
     test("updateExternalFeed (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { maxRetries: 5, cache: true };
 
         server
@@ -400,7 +521,15 @@ describe("ExternalFeedsClient", () => {
 
     test("updateExternalFeed (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             headers: [
                 { name: "X-API-Version", value: "v2" },
@@ -434,7 +563,15 @@ describe("ExternalFeedsClient", () => {
 
     test("updateExternalFeed (5)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             name: "Enterprise Product Feed",
             url: "https://enterprise-api.company.com/catalog",
@@ -480,7 +617,15 @@ describe("ExternalFeedsClient", () => {
 
     test("updateExternalFeed (6)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
@@ -502,7 +647,15 @@ describe("ExternalFeedsClient", () => {
 
     test("updateExternalFeed (7)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
 
@@ -524,7 +677,15 @@ describe("ExternalFeedsClient", () => {
 
     test("deleteExternalFeed (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         server
             .mockEndpoint()
@@ -541,7 +702,15 @@ describe("ExternalFeedsClient", () => {
 
     test("deleteExternalFeed (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -556,7 +725,15 @@ describe("ExternalFeedsClient", () => {
 
     test("deleteExternalFeed (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 

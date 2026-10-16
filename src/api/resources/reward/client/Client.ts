@@ -66,7 +66,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/code-pools/${core.url.encodePathParam(cpid)}/codes-count`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/code-pools/${core.url.encodePathParam(cpid, errors.BrevoError)}/codes-count`,
             ),
             method: "GET",
             headers: _headers,
@@ -162,7 +162,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/offers`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/offers`,
             ),
             method: "GET",
             headers: _headers,
@@ -260,7 +260,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/offers`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/offers`,
             ),
             method: "POST",
             headers: _headers,
@@ -352,7 +352,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/attribute`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/rewards/attribute`,
             ),
             method: "POST",
             headers: _headers,
@@ -449,7 +449,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/redeem`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/rewards/redeem`,
             ),
             method: "POST",
             headers: _headers,
@@ -557,7 +557,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/redeem/${core.url.encodePathParam(tid)}/complete`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/rewards/redeem/${core.url.encodePathParam(tid, errors.BrevoError)}/complete`,
             ),
             method: "POST",
             headers: _headers,
@@ -658,7 +658,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/revoke`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/rewards/revoke`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -743,7 +743,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/validate`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/rewards/validate`,
             ),
             method: "POST",
             headers: _headers,
@@ -842,7 +842,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/rewards/${core.url.encodePathParam(rid)}`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/rewards/${core.url.encodePathParam(rid, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -959,7 +959,7 @@ export class RewardClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/offer/programs/${core.url.encodePathParam(pid)}/vouchers`,
+                `loyalty/offer/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/vouchers`,
             ),
             method: "GET",
             headers: _headers,

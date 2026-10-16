@@ -3,11 +3,20 @@
 import * as Brevo from "../../src/api/index";
 import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
+import { mockOauth2 } from "./mockAuth";
 
 describe("PaymentsClient", () => {
     test("createPaymentRequest (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             cart: { currency: "EUR", specificAmount: 1200 },
             contactId: 43,
@@ -37,7 +46,15 @@ describe("PaymentsClient", () => {
 
     test("createPaymentRequest (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             cart: { currency: "EUR", specificAmount: 1000000 },
             contactId: 1000000,
@@ -68,7 +85,15 @@ describe("PaymentsClient", () => {
 
     test("createPaymentRequest (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             cart: { currency: "EUR", specificAmount: 1000000 },
             contactId: 1000000,
@@ -99,7 +124,15 @@ describe("PaymentsClient", () => {
 
     test("createPaymentRequest (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             cart: { currency: "EUR", specificAmount: 1000000 },
             contactId: 1000000,
@@ -130,7 +163,15 @@ describe("PaymentsClient", () => {
 
     test("getPaymentRequest (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             cart: { currency: "EUR", specificAmount: 1200 },
@@ -158,7 +199,15 @@ describe("PaymentsClient", () => {
 
     test("getPaymentRequest (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -179,7 +228,15 @@ describe("PaymentsClient", () => {
 
     test("getPaymentRequest (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -200,7 +257,15 @@ describe("PaymentsClient", () => {
 
     test("getPaymentRequest (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -221,7 +286,15 @@ describe("PaymentsClient", () => {
 
     test("getPaymentRequest (5)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -242,7 +315,15 @@ describe("PaymentsClient", () => {
 
     test("deletePaymentRequest (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         server
             .mockEndpoint()
@@ -259,7 +340,15 @@ describe("PaymentsClient", () => {
 
     test("deletePaymentRequest (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -280,7 +369,15 @@ describe("PaymentsClient", () => {
 
     test("deletePaymentRequest (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -301,7 +398,15 @@ describe("PaymentsClient", () => {
 
     test("deletePaymentRequest (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 

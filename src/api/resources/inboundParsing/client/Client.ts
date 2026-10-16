@@ -140,7 +140,7 @@ export class InboundParsingClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `inbound/events/${core.url.encodePathParam(uuid)}`,
+                `inbound/events/${core.url.encodePathParam(uuid, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -207,7 +207,7 @@ export class InboundParsingClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `inbound/attachments/${core.url.encodePathParam(downloadToken)}`,
+                `inbound/attachments/${core.url.encodePathParam(downloadToken, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,

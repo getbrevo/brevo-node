@@ -307,7 +307,7 @@ export class ExternalFeedsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `feeds/${core.url.encodePathParam(uuid)}`,
+                `feeds/${core.url.encodePathParam(uuid, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -442,7 +442,7 @@ export class ExternalFeedsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `feeds/${core.url.encodePathParam(uuid)}`,
+                `feeds/${core.url.encodePathParam(uuid, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -533,7 +533,7 @@ export class ExternalFeedsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `feeds/${core.url.encodePathParam(uuid)}`,
+                `feeds/${core.url.encodePathParam(uuid, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,

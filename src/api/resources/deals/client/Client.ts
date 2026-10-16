@@ -380,7 +380,7 @@ export class DealsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/deals/link-unlink/${core.url.encodePathParam(id)}`,
+                `crm/deals/link-unlink/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PATCH",
             headers: _headers,
@@ -453,7 +453,7 @@ export class DealsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/deals/${core.url.encodePathParam(id)}`,
+                `crm/deals/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -525,7 +525,7 @@ export class DealsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/deals/${core.url.encodePathParam(id)}`,
+                `crm/deals/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -597,7 +597,7 @@ export class DealsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/deals/${core.url.encodePathParam(id)}`,
+                `crm/deals/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PATCH",
             headers: _headers,
@@ -795,7 +795,7 @@ export class DealsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/pipeline/details/${core.url.encodePathParam(pipelineId)}`,
+                `crm/pipeline/details/${core.url.encodePathParam(pipelineId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,

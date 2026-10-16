@@ -3,11 +3,20 @@
 import * as Brevo from "../../src/api/index";
 import { BrevoClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
+import { mockOauth2 } from "./mockAuth";
 
 describe("EventClient", () => {
     test("getEvents (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = {
             events: [
@@ -32,7 +41,15 @@ describe("EventClient", () => {
 
     test("getEvents (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -45,7 +62,15 @@ describe("EventClient", () => {
 
     test("getEvents (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -58,7 +83,15 @@ describe("EventClient", () => {
 
     test("getEvents (4)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
 
         const rawResponseBody = { key: "value" };
 
@@ -71,7 +104,15 @@ describe("EventClient", () => {
 
     test("createEvent (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { event_name: "video_played", identifiers: {} };
 
         server.mockEndpoint().post("/events").jsonBody(rawRequestBody).respondWith().statusCode(200).build();
@@ -85,7 +126,15 @@ describe("EventClient", () => {
 
     test("createEvent (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { event_name: "event_name", identifiers: {} };
         const rawResponseBody = { key: "value" };
 
@@ -108,7 +157,15 @@ describe("EventClient", () => {
 
     test("createEvent (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { event_name: "event_name", identifiers: {} };
         const rawResponseBody = { key: "value" };
 
@@ -131,7 +188,15 @@ describe("EventClient", () => {
 
     test("createBatchEvents (1)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = { events: [{ event_name: "order_created", identifiers: {} }] };
         const rawResponseBody = {
             message: "Batch accepted. Valid events have been added to the processing queue.",
@@ -160,7 +225,15 @@ describe("EventClient", () => {
 
     test("createBatchEvents (2)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             events: [
                 { event_name: "event_name", identifiers: {} },
@@ -196,7 +269,15 @@ describe("EventClient", () => {
 
     test("createBatchEvents (3)", async () => {
         const server = mockServerPool.createServer();
-        const client = new BrevoClient({ maxRetries: 0, apiKey: "test", environment: server.baseUrl });
+        mockOauth2(server);
+
+        const client = new BrevoClient({
+            maxRetries: 0,
+            apiKey: "test",
+            clientId: "client_id",
+            clientSecret: "client_secret",
+            environment: server.baseUrl,
+        });
         const rawRequestBody = {
             events: [
                 { event_name: "event_name", identifiers: {} },

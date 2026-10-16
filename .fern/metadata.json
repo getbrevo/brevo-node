@@ -1,10 +1,11 @@
 {
     "cliVersion": "5.113.1",
     "generatorName": "fernapi/fern-typescript-sdk",
-    "generatorVersion": "3.95.1",
+    "generatorVersion": "3.107.2",
     "generatorConfig": {
         "generateWireTests": true,
         "namespaceExport": "Brevo",
+        "flattenAnyAuthOptions": true,
         "fetchSupport": "native",
         "packageJson": {
             "description": "Brevo SDK for Node.js with TypeScript support.",
@@ -15,10 +16,10 @@
             }
         }
     },
-    "originGitCommit": "b65996c55b284aa0a71eb03fa2fc6bdfa824f265",
+    "originGitCommit": "61c7045ffd55d8392b6b13477cd0b1b2b7b0144d",
     "originGitCommitIsDirty": false,
     "invokedBy": "ci",
-    "requestedVersion": "6.1.0",
+    "requestedVersion": "6.2.0",
     "ciProvider": "github",
-    "sdkVersion": "6.1.0"
+    "sdkVersion": "6.2.0"
 }

@@ -308,7 +308,7 @@ export class CompaniesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `companies/link-unlink/${core.url.encodePathParam(id)}`,
+                `companies/link-unlink/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PATCH",
             headers: _headers,
@@ -381,7 +381,7 @@ export class CompaniesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `companies/${core.url.encodePathParam(id)}`,
+                `companies/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -453,7 +453,7 @@ export class CompaniesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `companies/${core.url.encodePathParam(id)}`,
+                `companies/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -525,7 +525,7 @@ export class CompaniesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `companies/${core.url.encodePathParam(id)}`,
+                `companies/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PATCH",
             headers: _headers,
@@ -673,7 +673,7 @@ export class CompaniesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/attributes/${core.url.encodePathParam(id)}`,
+                `crm/attributes/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -745,7 +745,7 @@ export class CompaniesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `crm/attributes/${core.url.encodePathParam(id)}`,
+                `crm/attributes/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PATCH",
             headers: _headers,

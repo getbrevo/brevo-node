@@ -310,7 +310,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -387,7 +387,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -468,7 +468,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -547,7 +547,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}/abTestCampaignResult`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/abTestCampaignResult`,
             ),
             method: "GET",
             headers: _headers,
@@ -628,7 +628,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}/exportRecipients`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/exportRecipients`,
             ),
             method: "POST",
             headers: _headers,
@@ -709,7 +709,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}/sendNow`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/sendNow`,
             ),
             method: "POST",
             headers: _headers,
@@ -797,7 +797,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}/sendReport`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/sendReport`,
             ),
             method: "POST",
             headers: _headers,
@@ -878,7 +878,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}/sendTest`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/sendTest`,
             ),
             method: "POST",
             headers: _headers,
@@ -959,7 +959,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}/sharedUrl`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/sharedUrl`,
             ),
             method: "GET",
             headers: _headers,
@@ -1042,7 +1042,7 @@ export class EmailCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `emailCampaigns/${core.url.encodePathParam(campaignId)}/status`,
+                `emailCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}/status`,
             ),
             method: "PUT",
             headers: _headers,

@@ -69,7 +69,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/contacts/${core.url.encodePathParam(cid)}/tiers/${core.url.encodePathParam(tid)}`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/contacts/${core.url.encodePathParam(cid, errors.BrevoError)}/tiers/${core.url.encodePathParam(tid, errors.BrevoError)}`,
             ),
             method: "POST",
             headers: _headers,
@@ -165,7 +165,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tier-groups`,
             ),
             method: "GET",
             headers: _headers,
@@ -260,7 +260,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tier-groups`,
             ),
             method: "POST",
             headers: _headers,
@@ -358,7 +358,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups/${core.url.encodePathParam(gid)}`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tier-groups/${core.url.encodePathParam(gid, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -456,7 +456,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups/${core.url.encodePathParam(gid)}`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tier-groups/${core.url.encodePathParam(gid, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -550,7 +550,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups/${core.url.encodePathParam(gid)}`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tier-groups/${core.url.encodePathParam(gid, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -644,7 +644,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tier-groups/${core.url.encodePathParam(gid)}/tiers`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tier-groups/${core.url.encodePathParam(gid, errors.BrevoError)}/tiers`,
             ),
             method: "POST",
             headers: _headers,
@@ -739,7 +739,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tiers`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tiers`,
             ),
             method: "GET",
             headers: _headers,
@@ -836,7 +836,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tiers/${core.url.encodePathParam(tid)}`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tiers/${core.url.encodePathParam(tid, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -929,7 +929,7 @@ export class TierClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/tier/programs/${core.url.encodePathParam(pid)}/tiers/${core.url.encodePathParam(tid)}`,
+                `loyalty/tier/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/tiers/${core.url.encodePathParam(tid, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,

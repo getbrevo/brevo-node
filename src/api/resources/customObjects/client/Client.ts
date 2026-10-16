@@ -165,7 +165,7 @@ export class CustomObjectsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `objects/${core.url.encodePathParam(objectType)}/batch/upsert`,
+                `objects/${core.url.encodePathParam(objectType, errors.BrevoError)}/batch/upsert`,
             ),
             method: "POST",
             headers: _headers,
@@ -261,7 +261,7 @@ export class CustomObjectsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `objects/${core.url.encodePathParam(objectType)}/records`,
+                `objects/${core.url.encodePathParam(objectType, errors.BrevoError)}/records`,
             ),
             method: "GET",
             headers: _headers,
@@ -352,7 +352,7 @@ export class CustomObjectsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `objects/${core.url.encodePathParam(objectType)}/batch/delete`,
+                `objects/${core.url.encodePathParam(objectType, errors.BrevoError)}/batch/delete`,
             ),
             method: "POST",
             headers: _headers,
@@ -472,7 +472,7 @@ export class CustomObjectsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `objects/${core.url.encodePathParam(objectType)}/associated-records`,
+                `objects/${core.url.encodePathParam(objectType, errors.BrevoError)}/associated-records`,
             ),
             method: "GET",
             headers: _headers,
