@@ -441,7 +441,7 @@ export class WhatsAppCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `whatsappCampaigns/template/approval/${core.url.encodePathParam(templateId)}`,
+                `whatsappCampaigns/template/approval/${core.url.encodePathParam(templateId, errors.BrevoError)}`,
             ),
             method: "POST",
             headers: _headers,
@@ -520,7 +520,7 @@ export class WhatsAppCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `whatsappCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `whatsappCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -600,7 +600,7 @@ export class WhatsAppCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `whatsappCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `whatsappCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -678,7 +678,7 @@ export class WhatsAppCampaignsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `whatsappCampaigns/${core.url.encodePathParam(campaignId)}`,
+                `whatsappCampaigns/${core.url.encodePathParam(campaignId, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,

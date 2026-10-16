@@ -146,7 +146,7 @@ export class PaymentsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `payments/requests/${core.url.encodePathParam(id)}`,
+                `payments/requests/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -223,7 +223,7 @@ export class PaymentsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `payments/requests/${core.url.encodePathParam(id)}`,
+                `payments/requests/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,

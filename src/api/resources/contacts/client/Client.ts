@@ -293,7 +293,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/attributes/${core.url.encodePathParam(attributeCategory)}/${core.url.encodePathParam(attributeName)}`,
+                `contacts/attributes/${core.url.encodePathParam(attributeCategory, errors.BrevoError)}/${core.url.encodePathParam(attributeName, errors.BrevoError)}`,
             ),
             method: "POST",
             headers: _headers,
@@ -372,7 +372,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/attributes/${core.url.encodePathParam(attributeCategory)}/${core.url.encodePathParam(attributeName)}`,
+                `contacts/attributes/${core.url.encodePathParam(attributeCategory, errors.BrevoError)}/${core.url.encodePathParam(attributeName, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -453,7 +453,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/attributes/${core.url.encodePathParam(attributeCategory)}/${core.url.encodePathParam(attributeName)}`,
+                `contacts/attributes/${core.url.encodePathParam(attributeCategory, errors.BrevoError)}/${core.url.encodePathParam(attributeName, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -532,7 +532,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/attributes/${core.url.encodePathParam(attributeType)}/${core.url.encodePathParam(multipleChoiceAttribute)}/${core.url.encodePathParam(multipleChoiceAttributeOption)}`,
+                `contacts/attributes/${core.url.encodePathParam(attributeType, errors.BrevoError)}/${core.url.encodePathParam(multipleChoiceAttribute, errors.BrevoError)}/${core.url.encodePathParam(multipleChoiceAttributeOption, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -985,7 +985,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/folders/${core.url.encodePathParam(folderId)}`,
+                `contacts/folders/${core.url.encodePathParam(folderId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -1058,7 +1058,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/folders/${core.url.encodePathParam(folderId)}`,
+                `contacts/folders/${core.url.encodePathParam(folderId, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -1133,7 +1133,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/folders/${core.url.encodePathParam(folderId)}`,
+                `contacts/folders/${core.url.encodePathParam(folderId, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1217,7 +1217,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/folders/${core.url.encodePathParam(folderId)}/lists`,
+                `contacts/folders/${core.url.encodePathParam(folderId, errors.BrevoError)}/lists`,
             ),
             method: "GET",
             headers: _headers,
@@ -1521,7 +1521,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/lists/${core.url.encodePathParam(listId)}`,
+                `contacts/lists/${core.url.encodePathParam(listId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -1597,7 +1597,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/lists/${core.url.encodePathParam(listId)}`,
+                `contacts/lists/${core.url.encodePathParam(listId, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -1672,7 +1672,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/lists/${core.url.encodePathParam(listId)}`,
+                `contacts/lists/${core.url.encodePathParam(listId, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1751,7 +1751,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/lists/${core.url.encodePathParam(listId)}/contacts`,
+                `contacts/lists/${core.url.encodePathParam(listId, errors.BrevoError)}/contacts`,
             ),
             method: "GET",
             headers: _headers,
@@ -1854,7 +1854,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/lists/${core.url.encodePathParam(listId)}/contacts/add`,
+                `contacts/lists/${core.url.encodePathParam(listId, errors.BrevoError)}/contacts/add`,
             ),
             method: "POST",
             headers: _headers,
@@ -1959,7 +1959,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/lists/${core.url.encodePathParam(listId)}/contacts/remove`,
+                `contacts/lists/${core.url.encodePathParam(listId, errors.BrevoError)}/contacts/remove`,
             ),
             method: "POST",
             headers: _headers,
@@ -2122,7 +2122,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/${core.url.encodePathParam(identifier)}`,
+                `contacts/${core.url.encodePathParam(identifier, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -2204,7 +2204,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/${core.url.encodePathParam(identifier)}`,
+                `contacts/${core.url.encodePathParam(identifier, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -2292,7 +2292,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/${core.url.encodePathParam(identifier)}`,
+                `contacts/${core.url.encodePathParam(identifier, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -2377,7 +2377,7 @@ export class ContactsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/${core.url.encodePathParam(identifier)}/campaignStats`,
+                `contacts/${core.url.encodePathParam(identifier, errors.BrevoError)}/campaignStats`,
             ),
             method: "GET",
             headers: _headers,

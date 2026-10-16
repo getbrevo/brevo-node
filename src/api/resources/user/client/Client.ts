@@ -124,7 +124,7 @@ export class UserClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `organization/user/invitation/revoke/${core.url.encodePathParam(email)}`,
+                `organization/user/invitation/revoke/${core.url.encodePathParam(email, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -347,7 +347,7 @@ export class UserClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `organization/user/invitation/${core.url.encodePathParam(action)}/${core.url.encodePathParam(email)}`,
+                `organization/user/invitation/${core.url.encodePathParam(action, errors.BrevoError)}/${core.url.encodePathParam(email, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -568,7 +568,7 @@ export class UserClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `organization/user/${core.url.encodePathParam(email)}/permissions`,
+                `organization/user/${core.url.encodePathParam(email, errors.BrevoError)}/permissions`,
             ),
             method: "GET",
             headers: _headers,

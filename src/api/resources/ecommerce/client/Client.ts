@@ -293,7 +293,7 @@ export class EcommerceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `categories/${core.url.encodePathParam(id)}`,
+                `categories/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -531,7 +531,7 @@ export class EcommerceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `ecommerce/attribution/metrics/${core.url.encodePathParam(conversionSource)}/${core.url.encodePathParam(conversionSourceId)}`,
+                `ecommerce/attribution/metrics/${core.url.encodePathParam(conversionSource, errors.BrevoError)}/${core.url.encodePathParam(conversionSourceId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -611,7 +611,7 @@ export class EcommerceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `ecommerce/attribution/products/${core.url.encodePathParam(conversionSource)}/${core.url.encodePathParam(conversionSourceId)}`,
+                `ecommerce/attribution/products/${core.url.encodePathParam(conversionSource, errors.BrevoError)}/${core.url.encodePathParam(conversionSourceId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -1369,7 +1369,7 @@ export class EcommerceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `products/${core.url.encodePathParam(id)}`,
+                `products/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -1444,7 +1444,7 @@ export class EcommerceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `products/${core.url.encodePathParam(id)}/alerts/${core.url.encodePathParam(type_)}`,
+                `products/${core.url.encodePathParam(id, errors.BrevoError)}/alerts/${core.url.encodePathParam(type_, errors.BrevoError)}`,
             ),
             method: "POST",
             headers: _headers,

@@ -177,7 +177,7 @@ export class ProcessClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `processes/${core.url.encodePathParam(processId)}`,
+                `processes/${core.url.encodePathParam(processId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,

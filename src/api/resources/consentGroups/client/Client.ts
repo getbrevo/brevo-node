@@ -234,7 +234,7 @@ export class ConsentGroupsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/consent-groups/${core.url.encodePathParam(id)}`,
+                `contacts/consent-groups/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -312,7 +312,7 @@ export class ConsentGroupsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/consent-groups/${core.url.encodePathParam(id)}`,
+                `contacts/consent-groups/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -394,7 +394,7 @@ export class ConsentGroupsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `contacts/consent-groups/${core.url.encodePathParam(id)}`,
+                `contacts/consent-groups/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,

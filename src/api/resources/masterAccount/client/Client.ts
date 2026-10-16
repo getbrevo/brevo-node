@@ -133,7 +133,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/group/unlink/${core.url.encodePathParam(groupId)}/subAccounts`,
+                `corporate/group/unlink/${core.url.encodePathParam(groupId, errors.BrevoError)}/subAccounts`,
             ),
             method: "PUT",
             headers: _headers,
@@ -211,7 +211,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/group/${core.url.encodePathParam(id)}`,
+                `corporate/group/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -280,7 +280,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/group/${core.url.encodePathParam(id)}`,
+                `corporate/group/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -355,7 +355,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/group/${core.url.encodePathParam(id)}`,
+                `corporate/group/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1252,7 +1252,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/subAccount/${core.url.encodePathParam(id)}`,
+                `corporate/subAccount/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -1325,7 +1325,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/subAccount/${core.url.encodePathParam(id)}`,
+                `corporate/subAccount/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1405,7 +1405,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/subAccount/${core.url.encodePathParam(id)}/applications/toggle`,
+                `corporate/subAccount/${core.url.encodePathParam(id, errors.BrevoError)}/applications/toggle`,
             ),
             method: "PUT",
             headers: _headers,
@@ -1501,7 +1501,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/subAccount/${core.url.encodePathParam(id)}/plan`,
+                `corporate/subAccount/${core.url.encodePathParam(id, errors.BrevoError)}/plan`,
             ),
             method: "PUT",
             headers: _headers,
@@ -1775,7 +1775,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/user/invitation/${core.url.encodePathParam(action)}/${core.url.encodePathParam(email)}`,
+                `corporate/user/invitation/${core.url.encodePathParam(action, errors.BrevoError)}/${core.url.encodePathParam(email, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -1853,7 +1853,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/user/revoke/${core.url.encodePathParam(email)}`,
+                `corporate/user/revoke/${core.url.encodePathParam(email, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1927,7 +1927,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/user/${core.url.encodePathParam(email)}/permissions`,
+                `corporate/user/${core.url.encodePathParam(email, errors.BrevoError)}/permissions`,
             ),
             method: "GET",
             headers: _headers,
@@ -2034,7 +2034,7 @@ export class MasterAccountClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `corporate/user/${core.url.encodePathParam(email)}/permissions`,
+                `corporate/user/${core.url.encodePathParam(email, errors.BrevoError)}/permissions`,
             ),
             method: "PUT",
             headers: _headers,

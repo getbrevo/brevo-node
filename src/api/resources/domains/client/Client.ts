@@ -243,7 +243,7 @@ export class DomainsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `senders/domains/${core.url.encodePathParam(domainName)}`,
+                `senders/domains/${core.url.encodePathParam(domainName, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -323,7 +323,7 @@ export class DomainsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `senders/domains/${core.url.encodePathParam(domainName)}`,
+                `senders/domains/${core.url.encodePathParam(domainName, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -410,7 +410,7 @@ export class DomainsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `senders/domains/${core.url.encodePathParam(domainName)}/authenticate`,
+                `senders/domains/${core.url.encodePathParam(domainName, errors.BrevoError)}/authenticate`,
             ),
             method: "PUT",
             headers: _headers,

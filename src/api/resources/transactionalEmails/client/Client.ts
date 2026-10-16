@@ -147,7 +147,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/blockedContacts/${core.url.encodePathParam(email)}`,
+                `smtp/blockedContacts/${core.url.encodePathParam(email, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -358,7 +358,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/blockedDomains/${core.url.encodePathParam(domain)}`,
+                `smtp/blockedDomains/${core.url.encodePathParam(domain, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -602,7 +602,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/email/${core.url.encodePathParam(identifier)}`,
+                `smtp/email/${core.url.encodePathParam(identifier, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -684,7 +684,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/emailStatus/${core.url.encodePathParam(identifier)}`,
+                `smtp/emailStatus/${core.url.encodePathParam(identifier, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -848,7 +848,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/emails/${core.url.encodePathParam(uuid)}`,
+                `smtp/emails/${core.url.encodePathParam(uuid, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -924,7 +924,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/log/${core.url.encodePathParam(identifier)}`,
+                `smtp/log/${core.url.encodePathParam(identifier, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1474,7 +1474,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/templates/${core.url.encodePathParam(templateId)}`,
+                `smtp/templates/${core.url.encodePathParam(templateId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -1546,7 +1546,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/templates/${core.url.encodePathParam(templateId)}`,
+                `smtp/templates/${core.url.encodePathParam(templateId, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -1621,7 +1621,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/templates/${core.url.encodePathParam(templateId)}`,
+                `smtp/templates/${core.url.encodePathParam(templateId, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1699,7 +1699,7 @@ export class TransactionalEmailsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `smtp/templates/${core.url.encodePathParam(templateId)}/sendTest`,
+                `smtp/templates/${core.url.encodePathParam(templateId, errors.BrevoError)}/sendTest`,
             ),
             method: "POST",
             headers: _headers,

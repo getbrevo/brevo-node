@@ -237,7 +237,7 @@ export class ConversationsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `conversations/messages/${core.url.encodePathParam(id)}`,
+                `conversations/messages/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -310,7 +310,7 @@ export class ConversationsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `conversations/messages/${core.url.encodePathParam(id)}`,
+                `conversations/messages/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -385,7 +385,7 @@ export class ConversationsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `conversations/messages/${core.url.encodePathParam(id)}`,
+                `conversations/messages/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -553,7 +553,7 @@ export class ConversationsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `conversations/pushedMessages/${core.url.encodePathParam(id)}`,
+                `conversations/pushedMessages/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -631,7 +631,7 @@ export class ConversationsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `conversations/pushedMessages/${core.url.encodePathParam(id)}`,
+                `conversations/pushedMessages/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -711,7 +711,7 @@ export class ConversationsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `conversations/pushedMessages/${core.url.encodePathParam(id)}`,
+                `conversations/pushedMessages/${core.url.encodePathParam(id, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,

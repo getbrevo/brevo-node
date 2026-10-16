@@ -329,7 +329,7 @@ export class WebhooksClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `webhooks/${core.url.encodePathParam(webhookId)}`,
+                `webhooks/${core.url.encodePathParam(webhookId, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -411,7 +411,7 @@ export class WebhooksClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `webhooks/${core.url.encodePathParam(webhookId)}`,
+                `webhooks/${core.url.encodePathParam(webhookId, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -495,7 +495,7 @@ export class WebhooksClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `webhooks/${core.url.encodePathParam(webhookId)}`,
+                `webhooks/${core.url.encodePathParam(webhookId, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,

@@ -246,7 +246,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -337,7 +337,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -431,7 +431,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -521,7 +521,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}`,
             ),
             method: "PATCH",
             headers: _headers,
@@ -621,7 +621,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}/account-info`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/account-info`,
             ),
             method: "GET",
             headers: _headers,
@@ -719,7 +719,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}/contact/${core.url.encodePathParam(cid)}`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/contact/${core.url.encodePathParam(cid, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -810,7 +810,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}/publish`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/publish`,
             ),
             method: "POST",
             headers: _headers,
@@ -901,7 +901,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}/subscription-members`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/subscription-members`,
             ),
             method: "POST",
             headers: _headers,
@@ -1003,7 +1003,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}/subscription-members`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/subscription-members`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1100,7 +1100,7 @@ export class ProgramClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/config/programs/${core.url.encodePathParam(pid)}/subscriptions`,
+                `loyalty/config/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/subscriptions`,
             ),
             method: "POST",
             headers: _headers,

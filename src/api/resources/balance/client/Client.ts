@@ -76,7 +76,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/active-balance`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/active-balance`,
             ),
             method: "GET",
             headers: _headers,
@@ -178,7 +178,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions`,
             ),
             method: "GET",
             headers: _headers,
@@ -274,7 +274,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions`,
             ),
             method: "POST",
             headers: _headers,
@@ -370,7 +370,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions/${core.url.encodePathParam(bdid, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -467,7 +467,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions/${core.url.encodePathParam(bdid, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -562,7 +562,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions/${core.url.encodePathParam(bdid, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -657,7 +657,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}/limits`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions/${core.url.encodePathParam(bdid, errors.BrevoError)}/limits`,
             ),
             method: "POST",
             headers: _headers,
@@ -754,7 +754,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}/limits/${core.url.encodePathParam(blid)}`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions/${core.url.encodePathParam(bdid, errors.BrevoError)}/limits/${core.url.encodePathParam(blid, errors.BrevoError)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -854,7 +854,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}/limits/${core.url.encodePathParam(blid)}`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions/${core.url.encodePathParam(bdid, errors.BrevoError)}/limits/${core.url.encodePathParam(blid, errors.BrevoError)}`,
             ),
             method: "PUT",
             headers: _headers,
@@ -948,7 +948,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/balance-definitions/${core.url.encodePathParam(bdid)}/limits/${core.url.encodePathParam(blid)}`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/balance-definitions/${core.url.encodePathParam(bdid, errors.BrevoError)}/limits/${core.url.encodePathParam(blid, errors.BrevoError)}`,
             ),
             method: "DELETE",
             headers: _headers,
@@ -1046,7 +1046,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/contact-balances`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/contact-balances`,
             ),
             method: "GET",
             headers: _headers,
@@ -1143,7 +1143,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/create-order`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/create-order`,
             ),
             method: "POST",
             headers: _headers,
@@ -1237,7 +1237,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/subscriptions/${core.url.encodePathParam(cid)}/balances`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/subscriptions/${core.url.encodePathParam(cid, errors.BrevoError)}/balances`,
             ),
             method: "GET",
             headers: _headers,
@@ -1335,7 +1335,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/subscriptions/${core.url.encodePathParam(cid)}/balances`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/subscriptions/${core.url.encodePathParam(cid, errors.BrevoError)}/balances`,
             ),
             method: "POST",
             headers: _headers,
@@ -1454,7 +1454,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/transaction-history`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/transaction-history`,
             ),
             method: "GET",
             headers: _headers,
@@ -1552,7 +1552,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/transactions`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/transactions`,
             ),
             method: "POST",
             headers: _headers,
@@ -1645,7 +1645,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/transactions/${core.url.encodePathParam(tid)}/cancel`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/transactions/${core.url.encodePathParam(tid, errors.BrevoError)}/cancel`,
             ),
             method: "POST",
             headers: _headers,
@@ -1735,7 +1735,7 @@ export class BalanceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BrevoEnvironment.Default,
-                `loyalty/balance/programs/${core.url.encodePathParam(pid)}/transactions/${core.url.encodePathParam(tid)}/complete`,
+                `loyalty/balance/programs/${core.url.encodePathParam(pid, errors.BrevoError)}/transactions/${core.url.encodePathParam(tid, errors.BrevoError)}/complete`,
             ),
             method: "POST",
             headers: _headers,
