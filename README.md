@@ -51,8 +51,11 @@ const brevo = new BrevoClient({
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `apiKey` | `string` | Required (unless `auth` is provided) | Your Brevo API key |
-| `auth` | `AuthProvider` | `null` | Custom auth provider (OAuth, dynamic tokens, key rotation). Mutually exclusive with `apiKey`. |
+| `apiKey` | `string` | `null` | Your Brevo API key. See [Authentication](#authentication). |
+| `clientId` | `string` | `BREVO_CLIENT_ID` env var | OAuth 2.0 M2M app client ID |
+| `clientSecret` | `string` | `BREVO_CLIENT_SECRET` env var | OAuth 2.0 M2M app client secret |
+| `token` | `string` | `null` | An OAuth access token you already have (not refreshed by the SDK) |
+| `auth` | `AuthProvider` | `null` | Custom auth provider (dynamic tokens, key rotation). |
 | `timeoutInSeconds` | `number` | `60` | Default request timeout in seconds |
 | `maxRetries` | `number` | `2` | Maximum retry attempts on retryable errors |
 | `baseUrl` | `string` | `null` | Override the default API base URL |
@@ -61,6 +64,49 @@ const brevo = new BrevoClient({
 | `logging` | `LogConfig \| Logger` | `null` | Logging configuration |
 
 ---
+
+## Authentication
+
+The client supports two authentication methods. Use one per client.
+
+### API key
+
+```typescript
+import { BrevoClient } from '@getbrevo/brevo';
+
+const brevo = new BrevoClient({ apiKey: 'xkeysib-xxx' });
+```
+
+Create an API key in your Brevo account at [app.brevo.com/settings/keys/api](https://app.brevo.com/settings/keys/api). See [API key authentication](https://developers.brevo.com/docs/api-key-authentication).
+
+### OAuth 2.0 machine-to-machine (M2M)
+
+Pass the client ID and secret of an M2M app. The client exchanges them for an access token on the first request, reuses the token, and fetches a new one shortly before it expires (tokens are valid for about one hour).
+
+```typescript
+import { BrevoClient } from '@getbrevo/brevo';
+
+const brevo = new BrevoClient({
+  clientId: 'your-client-id',
+  clientSecret: 'your-client-secret',
+});
+
+const account = await brevo.account.getAccount();
+```
+
+Or set `BREVO_CLIENT_ID` and `BREVO_CLIENT_SECRET` in the environment and create the client without arguments:
+
+```typescript
+const brevo = new BrevoClient();
+```
+
+If you already have an access token, pass it directly. The client sends it as-is and does not refresh it:
+
+```typescript
+const brevo = new BrevoClient({ token: 'your-access-token' });
+```
+
+A token requested by the client carries every scope granted to the app. To create an M2M app and choose its scopes, or to request a token with specific scopes, see [Machine-to-machine (M2M) authentication](https://developers.brevo.com/docs/oauth-m2m-authentication).
 
 ## Error Handling
 
