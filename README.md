@@ -8,6 +8,25 @@
 
 [Website](https://brevo.com) • [API Reference](https://developers.brevo.com) • [Support](mailto:support@brevo.com)
 
+## Quick facts
+
+For people and AI coding agents who want the essentials first.
+
+| | |
+|---|---|
+| Package | `@getbrevo/brevo` (`npm install @getbrevo/brevo`) |
+| Import | `import { BrevoClient } from '@getbrevo/brevo';` (ESM and CommonJS) |
+| Client | `new BrevoClient({ apiKey })` |
+| Authentication | API key (`apiKey`) or OAuth 2.0 machine-to-machine (`clientId` and `clientSecret`, or the `BREVO_CLIENT_ID` and `BREVO_CLIENT_SECRET` environment variables). See [Authentication](#authentication). |
+| Call shape | `await brevo.<resource>.<method>(request)`, for example `brevo.transactionalEmails.sendTransacEmail({ ... })` |
+| Resources | Over 30 namespaced clients on `BrevoClient`, such as `contacts`, `emailCampaigns`, `transactionalEmails` and `account` |
+| Errors | `BrevoError`, with `statusCode`, `body` and `rawResponse` |
+| Defaults | 60 second timeout; 2 retries on `408`, `429` and `5xx` |
+| Base URL | `https://api.brevo.com/v3` |
+| Runtime | Node.js 18 or later; ships its own TypeScript types |
+| Full method list | [`reference.md`](reference.md) |
+| API docs | <https://developers.brevo.com> |
+
 ---
 
 ## Installation
